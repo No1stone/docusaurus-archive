@@ -60,7 +60,7 @@ function ArchiveHero(): ReactNode {
               </span>
             </li>
             <li>
-              <strong>Source of Truth</strong>
+              <strong>Single Source of Truth</strong>
               <span>
                 지식과 기준, 템플릿을 Markdown과 Git으로 일관되게 관리합니다.
               </span>
@@ -68,8 +68,9 @@ function ArchiveHero(): ReactNode {
             <li>
               <strong>Context Engineering</strong>
               <span>
-                Orchestration으로 필요한 Engineering Asset을 조합하고 필요한
-                Context만 Agent에 전달합니다.
+                Orchestration으로 필요한 Engineering Asset을 조합하고
+                <br />
+                필요한 Context만 Agent에 전달합니다.
               </span>
             </li>
           </ul>
