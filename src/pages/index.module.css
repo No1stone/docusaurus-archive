@@ -21,36 +21,68 @@
 
 .tagline {
   margin: 1rem auto 0;
-  max-width: 36rem;
+  max-width: 40rem;
   color: var(--ifm-color-emphasis-700);
-  font-size: 1.15rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.65;
 }
 
-.searchSlot {
+.purposeBox {
   margin: 2rem auto 0;
-  max-width: 28rem;
-  padding: 0.85rem 1rem;
+  max-width: 36rem;
+  padding: 1.1rem 1.25rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 4px;
   background: var(--ifm-background-surface-color);
   text-align: left;
 }
 
-.searchPlaceholder {
-  display: block;
-  color: var(--ifm-color-emphasis-500);
-}
-
-.searchHint {
-  display: block;
-  margin-top: 0.35rem;
+.purposeLead {
+  margin: 0 0 0.75rem;
   color: var(--ifm-color-emphasis-600);
   font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.purposeList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.purposeList li {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.purposeList li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.purposeList strong {
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.purposeList span {
+  color: var(--ifm-color-emphasis-700);
 }
 
 .actions {
   margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
 }
 
 .section {
@@ -106,6 +138,11 @@
 @media screen and (max-width: 768px) {
   .hero {
     padding: 2.5rem 0 2rem;
+  }
+
+  .purposeList li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
   }
 
   .categoryGrid {

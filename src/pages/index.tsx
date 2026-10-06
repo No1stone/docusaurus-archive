@@ -35,26 +35,54 @@ function ArchiveHero(): ReactNode {
   return (
     <header className={styles.hero}>
       <div className="container">
-        <p className={styles.kicker}>Engineering Archive</p>
+        <p className={styles.kicker}>Personal Engineering Archive</p>
         <Heading as="h1" className={styles.title}>
           ORIGEMITE ARCHIVE
         </Heading>
         <p className={styles.tagline}>
-          Engineering knowledge accumulated through building things.
+          개발하며 쌓은 지식과 결정을 기록하고 필요한 Context로 조합해 다시
+          개발에 사용합니다.
         </p>
 
-        <div className={styles.searchSlot} role="note">
-          <span className={styles.searchPlaceholder}>
-            Search the archive…
-          </span>
-          <span className={styles.searchHint}>
-            Search integration pending — browse the archive for now.
-          </span>
+        <div className={styles.purposeBox} role="region" aria-label="Archive purpose">
+          <p className={styles.purposeLead}>Core Principles</p>
+          <ul className={styles.purposeList}>
+            <li>
+              <strong>Knowledge</strong>
+              <span>
+                개발 과정에서 얻은 기술 지식과 구현 경험을 축적합니다.
+              </span>
+            </li>
+            <li>
+              <strong>Decisions</strong>
+              <span>
+                기술 선택과 아키텍처 결정의 이유를 ADR과 History로 남깁니다.
+              </span>
+            </li>
+            <li>
+              <strong>Source of Truth</strong>
+              <span>
+                지식과 기준, 템플릿을 Markdown과 Git으로 일관되게 관리합니다.
+              </span>
+            </li>
+            <li>
+              <strong>Context Engineering</strong>
+              <span>
+                Orchestration으로 필요한 Engineering Asset을 조합하고 필요한
+                Context만 Agent에 전달합니다.
+              </span>
+            </li>
+          </ul>
         </div>
 
         <div className={styles.actions}>
           <Link className="button button--primary button--lg" to="/docs/">
             Explore Archive
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/decisions/">
+            Browse ADRs
           </Link>
         </div>
       </div>
@@ -106,7 +134,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Home"
-      description="Origemite Archive — personal engineering knowledge in Markdown and Git.">
+      description="Origemite Archive — ADR, SSOT, and continuity for engineering knowledge in Markdown and Git.">
       <ArchiveHero />
       <main>
         <ArchiveCategories />

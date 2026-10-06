@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> **개요:** 에이전트용 부트스트랩/라우터. 거대한 프롬프트가 아니라, harness·workflow·profile을 골라 단계적으로 읽게 하는 진입점.
+> **개요:** 에이전트용 부트스트랩/라우터. 거대한 프롬프트가 아니라, harness, workflow, profile을 골라 단계적으로 읽게 하는 진입점.
 
 Bootstrap for Origemite Archive agents. Not a giant prompt.
 

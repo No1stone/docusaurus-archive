@@ -9,7 +9,7 @@ status: accepted
 ---
 # ADR-0001: Markdown and Git as engineering source of truth
 
-> **개요:** Markdown + Git을 엔지니어링 SoT로 쓰기로 한 결정과 대안·결과.
+> **개요:** Markdown + Git을 엔지니어링 SoT로 쓰기로 한 결정과 대안, 결과.
 
 ## Status
 

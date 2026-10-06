@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Origemite Archive',
-  tagline: 'Engineering knowledge accumulated through building things.',
+  tagline: 'ADR, SSOT, and continuity — engineering archive in Markdown and Git.',
   favicon: 'img/favicon.ico',
 
   future: {

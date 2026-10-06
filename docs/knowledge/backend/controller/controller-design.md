@@ -9,7 +9,7 @@ status: active
 ---
 # Controller Design
 
-> **개요:** Controller를 어떻게 설계하는지(책임·경계). Spring MVC 사용법 문서가 아님.
+> **개요:** Controller를 어떻게 설계하는지(책임, 경계). Spring MVC 사용법 문서가 아님.
 
 How the controller layer is designed: responsibilities and boundaries.
 

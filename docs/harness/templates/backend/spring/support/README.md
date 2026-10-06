@@ -1,6 +1,6 @@
 # Support template
 
-> **개요:** 공통 응답·예외·매핑·페이지 쿼리 등 지원 타입 스텁.
+> **개요:** 공통 응답, 예외, 매핑, 페이지 쿼리 등 지원 타입 스텁.
 
 Shared stubs used across the ExampleItem slice (response envelope, errors, paging, mapping).
 

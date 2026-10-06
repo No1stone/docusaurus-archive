@@ -1,6 +1,6 @@
 # Agent: Implementer
 
-> **개요:** 구현 담당. Master가 준 orchestration·문서만 보고 코드·문서·템플릿을 만든다.
+> **개요:** 구현 담당. Master가 준 orchestration, 문서만 보고 코드, 문서, 템플릿을 만든다.
 
 **Role model:** Builder — owns concrete changes to code, docs, templates, or harness assets.
 
