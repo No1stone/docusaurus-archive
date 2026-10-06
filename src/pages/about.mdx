@@ -1,0 +1,39 @@
+---
+title: About
+description: What Origemite Archive is
+---
+
+# About
+
+> **개요:** Origemite Archive가 뭔지 — Markdown/Git 기반 개인 엔지니어링 아카이브와 사람·AI 공용 자산.
+
+Origemite Archive is a personal engineering archive.
+
+It stores engineering knowledge, architecture, decisions, patterns and
+implementation references in Markdown and Git.
+
+The same engineering assets are intended to be consumed by both humans and
+AI coding agents.
+
+## What this is
+
+- An **Engineering Archive**, not a daily blog
+- Source of truth in **Markdown + Git**
+- Docusaurus as a **reading UI** for humans
+- A portable **harness** skeleton for selective AI context loading
+
+## What this is not (yet)
+
+Not a finished multi-agent platform, CMS, or vector/RAG product. Those concerns
+may grow later; the archive structure is meant to stay independent of any single
+AI vendor or presentation tool.
+
+## Repository layout (high level)
+
+| Path | Role |
+|------|------|
+| `docs/` | Engineering archive content |
+| `docs/harness/` | Portable AI engineering harness ([browse](/docs/harness/)) |
+| `docs/harness/templates/` | Implementation reference assets |
+| `index/` | Asset map for humans and agents |
+| `AGENTS.md` | Agent bootstrap / router |

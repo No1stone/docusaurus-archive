@@ -1,43 +1,76 @@
-# Website
+# Origemite Archive
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+> **개요:** Origemite Archive 저장소 안내. Engineering Archive + Harness + Templates 구조와 로컬 실행 방법.
 
-## Installation
+Personal **Engineering Archive** built on Docusaurus.
+
+It stores engineering knowledge, architecture, decisions, patterns, and implementation references in **Markdown and Git**. The same assets are meant to be consumed by humans (this site) and by AI coding agents (via `docs/harness/`, `index/`, and `docs/harness/templates/`).
+
+This is not a daily blog. Repository name: `docusaurus-archive`. Intended site: `archive.origemite.com`.
+
+## What is Origemite Archive?
+
+| Concern | Location |
+|---------|----------|
+| Engineering knowledge & ADRs | `docs/` |
+| Portable AI harness | `docs/harness/` |
+| Implementation templates | `docs/harness/templates/` |
+| Asset map (“what is where?”) | `index/` |
+| Agent bootstrap | `AGENTS.md` |
+| Human browsing UI | Docusaurus (`src/`, `docusaurus.config.ts`) |
+
+**Write once, consume by humans and AI.**
+
+## Repository structure
+
+```text
+docs/           Engineering archive (knowledge, architecture, patterns, …)
+docs/harness/        Entrypoints, agents, context, workflows, profiles, bundles
+docs/harness/templates/      Reusable implementation reference assets
+index/          Engineering asset index / context map
+AGENTS.md       Agent router (not a giant prompt)
+src/            Site UI (homepage, about, theme)
+```
+
+## Local development
+
+Toolchain: Node via `mise.toml` (`node = "22"`). Package manager: **npm**.
 
 ```bash
+mise install          # if needed
 npm install
+npm run start         # local dev server
+npm run build         # production build → build/
+npm run typecheck     # TypeScript check
+npm run serve         # serve the production build
 ```
 
-**Note**: feel free to use the package manager of your choice.
+## Engineering Archive
 
-## Local Development
+Browse from `/docs/`. Areas:
 
-```bash
-npm run start
-```
+- **Knowledge** — current how-we-build notes (concept vs technology separated)
+- **Architecture** — system design
+- **Patterns** — reusable patterns
+- **Decisions** — ADRs
+- **Experiments / Postmortems / History** — non-default context; promote or consult as needed
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Markdown should remain useful without Docusaurus.
 
-## Build
+## Harness
 
-```bash
-npm run build
-```
+See [`docs/harness/index.md`](./docs/harness/index.md) and root [`AGENTS.md`](./AGENTS.md).
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Agents should **not** load the entire archive. Prefer Index → selected docs → docs/harness/templates/ADRs → history only when necessary.
 
-## Deployment
+## Templates
 
-Using SSH:
+See [`docs/harness/templates/README.md`](./docs/harness/templates/README.md). Knowledge explains responsibility; templates show concrete code shape.
 
-```bash
-USE_SSH=true npm run deploy
-```
+## Writing conventions
 
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- Prefer small Markdown units an agent can include or exclude independently
+- Use light YAML frontmatter (`id`, `title`, `description`, `tags`, `status`) where useful
+- Link related docs that exist; do not invent large fake trees
+- Keep personal coding rules out of the archive until they are real — use TODO/skeleton
+- Docusaurus `_category_.json` is navigation only; it must not define engineering meaning
