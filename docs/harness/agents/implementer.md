@@ -24,6 +24,30 @@
 Skip missing slugs; use the next. Prefer **not** `kimi-k3-max` / K3 unless orchestration explicitly elevates.  
 Orchestration may reorder this list for one task, but keep 2–4 options when possible.
 
+## Freedom
+
+| Field | Value |
+|-------|--------|
+| level | **low** (lowest of all roles) |
+| rationale | Implementer exists to reproduce the registered code style, not to improve on it. Deviation here is template drift that Reviewer must catch later; cheaper to forbid it up front. |
+
+**May**
+
+- Copy structure from the listed Template and fill it with mission data
+- Make purely mechanical choices the Template leaves open (names derived from the mission, obvious imports)
+- Return `BLOCKED` or a Rework Hint when the listed context does not cover the case
+
+**May not**
+
+- Choose a different layering, naming, or error-handling shape than the Template
+- Introduce libraries, patterns, or conventions not present in the assembled context
+- Widen or narrow the mission ("while I was here…")
+- Resolve ambiguity by guessing — ambiguity goes back to Master
+
+If the Template and the mission conflict, stop and report; do not pick one silently.
+
+Scale: [`index.md`](./index.md#freedom-자유도)
+
 ---
 
 ## Responsibilities

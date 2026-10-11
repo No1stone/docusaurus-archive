@@ -21,6 +21,28 @@
 3. `composer-2.5-fast`
 4. `kimi-k2.7-code`
 
+## Freedom
+
+| Field | Value |
+|-------|--------|
+| level | medium |
+| rationale | QA has to turn a human request into a checklist, which takes judgment about what the user meant. It may interpret the request; it may not change it. |
+
+**May**
+
+- Restate the request as a checklist, resolving obvious implied items (e.g. "add the endpoint" implies it is reachable)
+- Decide what counts as sufficient evidence for each item
+- Mark `PARTIAL` and list exactly what is missing
+- Recommend that Master rework or ask the user to narrow scope
+
+**May not**
+
+- Add requirements the user did not state, or drop ones they did
+- Accept "looks good" as evidence
+- Re-review architecture or re-run suites on its own initiative
+
+Scale: [`index.md`](./index.md#freedom-자유도)
+
 ---
 
 ## Responsibilities
@@ -37,6 +59,7 @@
 - Trace request → deliverables one-by-one
 - Treat “docs only” vs “code + docs” literally as requested
 - Flag when Tester did not cover a requested verification
+- Weigh Tester evidence by tool: a passing spec or test run (`backend-unit-test`, `playwright-e2e`) is strong; `browser-manual` is weaker and may not satisfy an item the orchestration marked as needing repeatable proof — see [`../tools/`](../tools/index.md)
 - Suggest whether Master should rework or ask the user to narrow scope
 
 ## Does not

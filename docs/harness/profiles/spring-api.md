@@ -36,6 +36,15 @@ Skeleton profile for Spring-style HTTP API work.
 
 - [ADR-0001](/docs/decisions/adr-0001)
 
+### Verification (default tool set)
+
+| Tool | Default rung |
+|------|--------------|
+| [backend-unit-test](/docs/harness/tools/backend-unit-test) | unit (Service / Facade), slice if the project already has them |
+| [playwright-e2e](/docs/harness/tools/playwright-e2e) | only when this API backs a UI flow listed in the orchestration |
+
+Orchestrations for Spring situations start from this set and may narrow it.
+
 ## Notes
 
 Profile ≠ Bundle. Profile is the usual combo; a Bundle is the concrete reading list for one task.

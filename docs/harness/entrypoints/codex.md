@@ -15,4 +15,14 @@ Adapter: Codex ↔ Origemite harness roles.
 Parent session = **Master**.  
 Spawned workers (or sequential role simulation) = Implementer / Reviewer / Tester / QA with the same spawn contract as Cursor.
 
+## Verification tool mapping
+
+How Codex runs the capabilities in [`../tools/`](../tools/index.md):
+
+| Tool | In Codex |
+|------|----------|
+| `backend-unit-test` | project's own runner through the shell |
+| `playwright-e2e` | `npx playwright test` through the shell |
+| `browser-manual` | TODO — confirm which browser capability Codex exposes; until then Tester returns `BLOCKED` for this tool |
+
 Do not fork harness core for Codex-only trees. Product differences stay in this entrypoint only.

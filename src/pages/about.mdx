@@ -1,39 +1,166 @@
 ---
 title: About
-description: What Origemite Archive is
+description: Origemite Archive를 왜 만들었고 어떻게 쓰는지
 ---
 
 # About
 
-> **개요:** Origemite Archive가 뭔지 — Markdown/Git 기반 개인 엔지니어링 아카이브와 사람, AI 공용 자산.
+> **개요:** Origemite Archive는 내가 쓰는 기술 결정, 코드 스타일, 구현 기준을 한 곳(SSOT)에 등록하고, AI 하네스가 그것을 계속 꺼내 쓰게 하기 위한 개인 엔지니어링 아카이브다.
 
-Origemite Archive is a personal engineering archive.
+## 왜 만들었나
 
-It stores engineering knowledge, architecture, decisions, patterns and
-implementation references in Markdown and Git.
+개발하면서 내린 결정과 굳어진 코드 스타일은 머릿속, 지난 프로젝트, 흩어진 메모에 남는다.
+새 프로젝트를 시작하거나 AI 코딩 에이전트에게 일을 맡길 때마다 그것을 다시 설명해야 했다.
 
-The same engineering assets are intended to be consumed by both humans and
-AI coding agents.
+이 아카이브는 그 반복을 없애기 위한 것이다.
 
-## What this is
+- 내가 **주로 쓰는 코드 스타일과 구현 기준**을 Markdown으로 등록한다.
+- **왜 그렇게 정했는지**를 ADR과 History로 남긴다.
+- **하네스**가 상황에 맞는 문서와 템플릿만 골라 에이전트에게 전달한다.
 
-- An **Engineering Archive**, not a daily blog
-- Source of truth in **Markdown + Git**
-- Docusaurus as a **reading UI** for humans
-- A portable **harness** skeleton for selective AI context loading
+한 번 쓰고, 사람과 AI가 계속 쓴다.
 
-## What this is not (yet)
+## 무엇을 담나
 
-Not a finished multi-agent platform, CMS, or vector/RAG product. Those concerns
-may grow later; the archive structure is meant to stay independent of any single
-AI vendor or presentation tool.
+| 자산 | 역할 | 위치 |
+|------|------|------|
+| Knowledge | 레이어별 책임과 설계 기준 (예: Controller는 무엇을 하고, 무엇을 하지 않는가) | [`/docs/knowledge/`](/docs/knowledge/) |
+| Decisions (ADR) | 기술 선택과 구조 결정의 이유, 대안, 결과 | [`/docs/decisions/`](/docs/decisions/) |
+| Architecture / Patterns | 특정 라이브러리와 분리한 구조와 재사용 패턴 | [`/docs/architecture/`](/docs/architecture/), [`/docs/patterns/`](/docs/patterns/) |
+| Templates | 내 스타일대로 쓴 실제 코드 조각 (DTO → Persistence → Service → Facade → Controller → Test) | [`/docs/harness/templates/`](/docs/harness/templates/) |
+| Harness | 에이전트 역할, 상황별 조합 레시피, 우선순위 규칙 | [`/docs/harness/`](/docs/harness/) |
+| Experiments / Postmortems / History | 아직 기준이 아닌 것, 실패에서 얻은 것, 기준이 바뀐 경로 | 기본 컨텍스트가 아님 |
 
-## Repository layout (high level)
+Knowledge는 *왜와 책임*을, Template은 *구체적인 코드 모양*을 맡는다. 둘은 연결하되 중복하지 않는다.
 
-| Path | Role |
-|------|------|
-| `docs/` | Engineering archive content |
-| `docs/harness/` | Portable AI engineering harness ([browse](/docs/harness/)) |
-| `docs/harness/templates/` | Implementation reference assets |
-| `index/` | Asset map for humans and agents |
-| `AGENTS.md` | Agent bootstrap / router |
+## 단일 출처 (SSOT)
+
+원본은 **Markdown + Git**이다. Docusaurus는 사람이 읽기 위한 화면일 뿐이다.
+
+- 사이트가 바뀌어도, AI 제품이 바뀌어도 자산은 그대로 남는다.
+- 사이드바나 카테고리 설정은 탐색용이지, 엔지니어링 의미를 정의하지 않는다.
+- 규칙이 충돌하면 순서가 있다: 프로젝트 로컬 규칙 → 현재 하네스 기준 → Profile → 채택된 ADR → Template → 일반 관행.
+
+## 하네스가 쓰는 방식
+
+에이전트는 아카이브 전체를 읽지 않는다.
+
+```text
+요청
+  → Master가 상황을 분류
+  → 상황에 맞는 Orchestration(어떤 역할 + 어떤 문서)을 선택
+      없으면 빈칸을 알리고 레시피를 작성
+  → 워커는 그 레시피에 적힌 문서와 템플릿만 읽고 작업
+```
+
+그래서 코드 스타일을 한 번 등록해 두면, Cursor든 Codex든 Claude Code든 같은 기준으로 코드를 낸다.
+에이전트 입구는 저장소 루트의 `AGENTS.md`와 `index/`다.
+
+### 에이전트는 미리 세팅해 둔다
+
+역할별 에이전트를 `docs/harness/agents/`에 하나씩 정의해 둔다. 매번 프롬프트를 새로 쓰지 않는다.
+
+| 역할 | 맡는 질문 | 모델 | 자유도 |
+|------|-----------|------|--------|
+| Master | 이 상황에 맞는 레시피가 있나, 없으면 무엇이 비었나 | 강한 모델 (Opus급) | **높음** |
+| Implementer | 모인 컨텍스트대로 어떻게 구현하나 | 저렴한 코딩 모델 | **낮음** (가장 낮음) |
+| Reviewer | 기준, 구조, 템플릿과 맞나 | 저렴한 체크리스트 모델 | 중간 |
+| Tester | 실제로 동작하나 | 저렴한 체크리스트 모델 | 중간 |
+| QA | 요청한 것을 다 했나 | 저렴한 체크리스트 모델 | 중간 |
+
+Implementer만 낮음에 둔다. 등록한 코드 스타일대로 코드를 내는 역할이라 가장 강하게 규제한다. 검증하는 역할들은 판단할 여지가 필요해서 한 단계 위에 둔다.
+
+각 에이전트 문서에는 세 가지가 들어간다.
+
+- **역할 계약** — 하는 것, 하지 않는 것, 반환 형식
+- **모델 풀** — 하나의 모델에 고정하지 않고 우선순위 목록을 둔다. 제품이 바뀌어 슬러그가 사라져도 다음 후보로 넘어간다. Master만 강한 모델을 쓰고, 워커는 싼 모델을 쓴다. 검증은 Master가 다시 한다.
+- **자유도** — 모인 컨텍스트에서 얼마나 벗어나도 되는지를 역할마다 다르게 둔다.
+  - *낮음*: 적힌 대로 따른다. 템플릿을 복사하고 빈칸만 채우며, 모르면 `BLOCKED`로 돌려보낸다. 대안 설계나 "더 나은 방법"은 금지.
+  - *중간*: 컨텍스트가 허용하는 범위 안에서 판단한다. 어떤 테스트 단계를 돌릴지, 지적의 심각도를 어떻게 매길지 정도.
+  - *높음*: 질문하고, 반박하고, 레시피를 새로 쓴다. 나와 계속 대화하는 쪽이라 Master만 여기 둔다.
+
+  오케스트레이션 파일은 역할의 자유도를 **낮출 수만** 있고 올릴 수는 없다.
+
+### 오케스트레이션은 MSA의 서비스처럼 쪼갠다
+
+흩어져 있는 자료를 한 덩어리로 묶지 않는다. **상황 하나당 오케스트레이션 MD 파일 하나**를 둔다. 각 파일은 그 상황에 필요한 것만 인덱싱한다.
+
+- 어떤 역할을 어떤 순서로 부를지
+- 어떤 Knowledge 문서를 읽을지
+- 어떤 템플릿을 기준으로 삼을지 — 가장 최근에 정리한 코드 예제가 여기 연결된다
+- 성공 기준과 제약
+
+예를 들어 `spring-api-one-set` 같은 오케스트레이션은 이렇게 생긴다.
+
+```text
+상황: Spring REST API 한 세트 추가
+
+Knowledge: controller-design, service-design, persistence 기준
+Templates: ExampleItem 슬라이스
+           dto → persistence(Entity, Repository, JPA Specification)
+               → service → facade → controller → testing
+
+Implementer  템플릿을 따라 DTO, Repository, Spec, Service, Facade, Controller 구현
+Reviewer     레이어 경계와 템플릿 드리프트 확인
+Tester       Service, Facade 테스트 작성과 실행
+QA           요청한 엔드포인트가 전부 있는지 확인
+```
+
+같은 방식으로 `spring-bugfix`, `spring-refactor-layer`, `archive-promote-pattern` 같은 파일이 따로 존재한다.
+어떤 파일은 Tester를 빼고, 어떤 파일은 ADR을 반드시 읽게 하고, 어떤 파일은 Implementer 모델 풀을 바꾼다.
+
+Master는 요청이 들어오면 이 파일들 중 하나를 고른다. 고를 것이 없으면 "이 상황에 맞는 레시피가 없다"고 알리고, 템플릿을 바탕으로 새 오케스트레이션 파일을 쓴 뒤에 진행한다. 즉흥적으로 문서를 섞어 쓰고 버리지 않는다. 한 번 쓴 레시피는 다음에 같은 상황이 오면 그대로 다시 쓴다.
+
+```text
+흩어진 자료
+  Knowledge · Templates · ADR · Patterns
+        ↓ 인덱싱
+오케스트레이션 MD 파일들
+  spring-api-one-set.md · spring-bugfix.md · …
+        ↓ Master가 선택
+워커 에이전트들
+  Implementer → Reviewer → Tester → QA
+        ↓
+구현 · 검증 · 테스트 결과를 Master가 확인
+```
+
+새 코드 예제가 정리되면 템플릿을 갱신하고, 오케스트레이션 파일의 링크만 바꾼다. 에이전트 프롬프트는 건드리지 않는다.
+
+### 바이브 코딩은 검증 도구와 함께 간다
+
+이 아카이브는 바이브 코딩을 허용한다. 대신 **AI가 제대로 바이브 코딩을 했는지 AI 스스로 검증할 수 있는 도구를 제공하는 방법**을 같이 제공한다. 빠르게 쓰는 것과 맞는지 확인하는 것은 한 묶음이고, 확인 없는 "잘 된 것 같다"는 결과로 치지 않는다.
+
+검증 도구는 `docs/harness/tools/`에 카탈로그로 등록한다.
+
+| 대상 | 도구 | 증명하는 것 |
+|------|------|-------------|
+| 백엔드 | 단위 / 슬라이스 테스트 코드 | Service, Facade, Controller가 명세대로 동작한다 |
+| 프론트엔드 (반복 가능) | Playwright E2E | 사용자 흐름이 실제 브라우저에서 끝까지 돌아간다 |
+| 프론트엔드 (지금 확인) | 에이전트가 직접 크롬을 열어 조작 | 화면이 뜨고 클릭이 기대한 대로 반응한다 |
+
+역할을 나누면 이렇다.
+
+- **Implementer**가 템플릿대로 빠르게 쓴다.
+- **Tester**는 이 카탈로그에 등록된 도구로만 동작을 증명한다. 못 돌리면 가짜 PASS 대신 `BLOCKED`로 이유를 돌려보낸다.
+- **QA**는 Tester가 남긴 증거의 강도를 보고 요청이 채워졌는지 판정한다. 테스트 통과는 강한 증거, 수동 스모크는 약한 증거다.
+
+도구가 뭔지는 `tools/`에, 어느 스택에서 기본으로 뭘 쓰는지는 Profile에, 이번 작업에 어떤 도구를 어느 단계까지 쓸지는 오케스트레이션 파일에, 크롬을 실제로 어떻게 여는지는 제품별 Entrypoint에 적는다. 새 도구가 생기면 `tools/`에 파일 하나를 더하고 Profile 링크만 바꾼다.
+
+## 아카이브의 흐름
+
+```text
+프로젝트에서 반복되는 선택
+  → Experiment
+  → ADR (왜 이렇게 정했나)
+  → Knowledge / Pattern (기준으로 승격)
+  → Template (코드 모양)
+  → Harness가 다음 작업에 투입
+```
+
+실패나 장애는 Postmortem으로 들어와 같은 경로를 탄다.
+
+## 이것이 아닌 것
+
+- 일상 블로그가 아니다.
+- 완성된 멀티 에이전트 플랫폼, CMS, RAG 제품이 아니다.
+- 일반적인 모범 사례 모음이 아니다. 여기 적힌 것은 **내가 실제로 쓰는 기준**이고, 아직 굳지 않은 것은 TODO로 비워 둔다.

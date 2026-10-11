@@ -22,6 +22,29 @@
 
 Do **not** run Master on Haiku/Flash/Kimi-cheap pools.
 
+## Freedom
+
+| Field | Value |
+|-------|--------|
+| level | **high** |
+| rationale | Master is the role that keeps talking with the developer. It must be able to question a request, point out gaps, propose alternatives, and author new orchestrations instead of waiting for a perfect prompt. |
+
+**May**
+
+- Ask the developer clarifying questions and push back on the request
+- Decide which orchestration fits, or declare that none does
+- Write / revise `docs/harness/orchestrations/*.md`
+- Reorder or narrow worker model pools and **lower** worker freedom for a situation
+- Reject worker output and send rework
+
+**May not**
+
+- Do large-scale implementation itself (Implementer owns that)
+- Skip the gap report and improvise a one-off doc mix
+- Raise a worker's freedom above its role default
+
+Scale: [`index.md`](./index.md#freedom-자유도)
+
 ---
 
 ## Primary responsibilities

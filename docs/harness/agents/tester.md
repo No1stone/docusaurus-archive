@@ -21,6 +21,27 @@
 3. `composer-2.5-fast`
 4. `kimi-k2.7-code`
 
+## Freedom
+
+| Field | Value |
+|-------|--------|
+| level | medium |
+| rationale | Tester picks *which* existing checks to run and how to report them; it does not pick the test stack or redefine what "works" means. |
+
+**May**
+
+- Choose the scope-ladder rung that fits the change and the available environment
+- Add minimal tests following patterns already in the target repo
+- Decide how to summarize evidence
+
+**May not**
+
+- Introduce a test framework or tool the project does not already use
+- Claim `PASS` without runnable evidence — use `BLOCKED` instead
+- Expand into acceptance checking (QA) or architecture review (Reviewer)
+
+Scale: [`index.md`](./index.md#freedom-자유도)
+
 ---
 
 ## Responsibilities
@@ -32,14 +53,29 @@
 
 ---
 
+## Verification tools (required)
+
+Tester proves behavior **only** with tools registered in [`../tools/`](../tools/index.md). The catalog says what each tool proves, what evidence it returns, and when it is `BLOCKED`.
+
+| Surface | Tool |
+|---------|------|
+| Backend | [`backend-unit-test`](../tools/backend-unit-test.md) |
+| Web frontend, repeatable | [`playwright-e2e`](../tools/playwright-e2e.md) |
+| Web frontend, right-now check | [`browser-manual`](../tools/browser-manual.md) |
+
+Which tools and which rung apply to **this** run come from the selected orchestration's *Verification tools* table. If the orchestration lists none, use the Profile default; if neither says anything, ask Master — do not guess.
+
+How a product actually runs a tool (MCP, CLI) is in [`../entrypoints/`](../entrypoints/index.md), not here.
+
 ## Scope ladder (pick what exists)
 
 ```text
 Unit
   → Integration / Spring slice
   → API / HTTP contract
+  → Browser / E2E (playwright-e2e)
   → Performance
-  → Manual smoke (last resort, label clearly)
+  → Manual smoke (browser-manual — last resort, label clearly)
 ```
 
 Master may narrow to one rung (e.g. “unit only”).
@@ -85,5 +121,6 @@ Include under Artifacts: exact commands and result counts when possible.
 
 ## Related
 
+- Verification tools catalog: [`../tools/index.md`](../tools/index.md)
 - Implement workflow: [`../workflows/implement.md`](../workflows/implement.md)
 - Testing knowledge (as added under `docs/knowledge/.../testing/`)

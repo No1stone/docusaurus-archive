@@ -18,6 +18,7 @@ Helps coding agents (Cursor, Codex, Claude Code, …) reuse the same Markdown kn
 | [`orchestrations/`](./orchestrations/) | Situation recipes (agents + knowledge assembly) |
 | [`entrypoints/`](./entrypoints/) | Product adapters (Cursor / Codex / …) |
 | [`agents/`](./agents/) | Role contracts (Master writes orchestrations; others execute) |
+| [`tools/`](./tools/) | Verification tools the Tester may use to prove vibe-coded results (tests, Playwright, agent-driven browser) |
 | [`context/`](./context/) | Identity, principles, conventions, precedence |
 | [`workflows/`](./workflows/) | Default role order hints |
 | [`profiles/`](./profiles/) | Usual asset combo for a *kind* of stack |

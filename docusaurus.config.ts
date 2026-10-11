@@ -19,6 +19,15 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  // Google AdSense — injected into <head> of every page
+  scripts: [
+    {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7928208116313519',
+      async: true,
+      crossorigin: 'anonymous',
+    },
+  ],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],

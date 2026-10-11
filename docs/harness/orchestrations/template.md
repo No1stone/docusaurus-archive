@@ -28,17 +28,33 @@
 
 ## Agent assembly
 
-| Order | Role | Model pool | Mission template | Required |
-|-------|------|------------|------------------|----------|
-| 0 | Master | role default (Opus-class pool) | route / approve | yes |
-| 1 | Implementer | role default (cheap coding pool) | … | yes |
-| 2 | Reviewer | role default (cheap checklist pool) | … | yes |
-| 3 | Tester | role default (cheap checklist pool) | … | yes / no |
-| 4 | QA | role default (cheap checklist pool) | … | yes |
+| Order | Role | Model pool | Freedom | Mission template | Required |
+|-------|------|------------|---------|------------------|----------|
+| 0 | Master | role default (Opus-class pool) | role default (high) | route / approve | yes |
+| 1 | Implementer | role default (cheap coding pool) | role default (low) | … | yes |
+| 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | … | yes |
+| 3 | Tester | role default (cheap checklist pool) | role default (medium) | … | yes / no |
+| 4 | QA | role default (cheap checklist pool) | role default (medium) | … | yes |
 
-Contracts + `model_candidates`: `docs/harness/agents/<role>.md`  
+Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`  
 
 **Model pool column:** usually `role default`. To override, put an **ordered list** (2–4), not one forced slug — e.g. `kimi-k2.7-code → composer-2.5-fast → haiku`. Pick first available at runtime. Avoid K3/K3-max for routine workers.
+
+**Freedom column:** usually `role default`. An orchestration may only **lower** a role's freedom (e.g. Reviewer `medium → low` for a template-fidelity check). Never raise it here. Scale: `docs/harness/agents/index.md`.
+
+---
+
+## Verification tools
+
+What the Tester must use to prove this situation's result. Pick from [`../tools/`](../tools/index.md); do not name tools that are not catalogued.
+
+| Tool | Rung / scope | Required | Evidence QA expects |
+|------|--------------|----------|---------------------|
+| `backend-unit-test` | unit → slice | yes / no | command + pass/fail counts |
+| `playwright-e2e` | flows: … | yes / no | spec file + run result |
+| `browser-manual` | smoke only | yes / no | steps + screenshot (labelled manual) |
+
+If a required tool is `BLOCKED` in the target environment, Tester returns `BLOCKED` and Master decides — the orchestration does not get silently downgraded to "looks fine".
 
 ---
 
@@ -72,6 +88,7 @@ Role: docs/harness/agents/<role>.md
 Model: first available from Agent assembly pool or role model_candidates
 Mission: from Agent assembly
 Load: Knowledge assembly only
+Verify with: Verification tools table (Tester)
 Return: docs/harness/orchestration.md schema
 ```
 

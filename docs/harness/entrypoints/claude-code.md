@@ -15,4 +15,14 @@ Adapter: Claude Code ↔ Origemite harness roles.
 Parent session = **Master**.  
 Subagents / sequential role passes follow [`../agents/`](../agents/) contracts and the spawn payload in orchestration §4.
 
+## Verification tool mapping
+
+How Claude Code runs the capabilities in [`../tools/`](../tools/index.md):
+
+| Tool | In Claude Code |
+|------|----------------|
+| `backend-unit-test` | project's own runner through Bash |
+| `playwright-e2e` | `npx playwright test` through Bash, or a Playwright MCP if configured |
+| `browser-manual` | Playwright MCP (or equivalent browser MCP) — navigate, snapshot, click, screenshot |
+
 Keep Claude-only config out of `docs/` and `docs/harness/templates/`.

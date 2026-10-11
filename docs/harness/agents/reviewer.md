@@ -21,6 +21,27 @@
 3. `kimi-k2.7-code`
 4. `composer-2.5-fast`
 
+## Freedom
+
+| Field | Value |
+|-------|--------|
+| level | medium |
+| rationale | Reviewer must judge, but only against standards that are actually in context. Severity and wording are its call; the standards themselves are not. |
+
+**May**
+
+- Decide severity (`high` / `medium` / `low`) and whether a finding blocks `PASS`
+- Choose which listed clause (Knowledge, ADR, Template) a finding cites
+- Note an obvious gap outside its checklist as a low-severity Finding
+
+**May not**
+
+- Fail a change against a standard that is not in the assembled context
+- Rewrite the code (unless Master said "review + fix")
+- Redefine the mission or add requirements
+
+Scale: [`index.md`](./index.md#freedom-자유도)
+
 ---
 
 ## Responsibilities

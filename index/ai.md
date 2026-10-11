@@ -10,6 +10,7 @@
 | Template | [`docs/harness/orchestrations/_template.md`](../docs/harness/orchestrations/_template.md) |
 | Master | [`docs/harness/agents/master.md`](../docs/harness/agents/master.md) |
 | Other agents | `docs/harness/agents/` |
+| **Verification tools** | [`docs/harness/tools/`](../docs/harness/tools/index.md) |
 | Entrypoints | `docs/harness/entrypoints/` |
 | Profiles / Bundles / Workflows / Context | under `docs/harness/` |
 
