@@ -1,0 +1,9 @@
+.rail {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+.rail :global(.thin-scrollbar) {
+  position: static;
+  max-height: min(40vh, calc(100vh - var(--ifm-navbar-height) - 18rem));
+}

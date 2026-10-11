@@ -4,6 +4,8 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
+import AdSlot from '@site/src/components/AdSlot';
+
 import styles from './index.module.css';
 
 const categories = [
@@ -22,11 +24,15 @@ const categories = [
 
 const recentDocuments = [
   {
+    title: 'ADR-0002 — Docusaurus를 선택한 이유',
+    to: '/docs/decisions/adr-0002',
+  },
+  {
     title: 'Controller Design',
     to: '/docs/knowledge/backend/controller/controller-design',
   },
   {
-    title: 'ADR-0001 — Markdown & Git as source of truth',
+    title: 'ADR-0001 — SSOT란?',
     to: '/docs/decisions/adr-0001',
   },
 ] as const;
@@ -139,6 +145,7 @@ export default function Home(): ReactNode {
       <ArchiveHero />
       <main>
         <ArchiveCategories />
+        <AdSlot placement="home" />
         <RecentDocuments />
       </main>
     </Layout>

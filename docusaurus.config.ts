@@ -2,6 +2,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+import {remarkAdPlacement} from './src/remark/adPlacement';
+
 const config: Config = {
   title: 'Origemite Archive',
   tagline: 'ADR, SSOT, and continuity — engineering archive in Markdown and Git.',
@@ -40,6 +42,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
+          remarkPlugins: [remarkAdPlacement],
         },
         blog: false,
         theme: {
@@ -91,6 +94,7 @@ const config: Config = {
           title: 'More',
           items: [
             {label: 'About', to: '/about'},
+            {label: '개인정보처리방침', to: '/privacy'},
             {
               label: 'GitHub',
               href: 'https://github.com/No1stone',

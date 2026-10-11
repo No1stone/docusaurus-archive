@@ -2,6 +2,7 @@
 id: architecture
 title: Architecture
 description: System design independent of a single library
+unlisted: true
 ---
 # Architecture
 

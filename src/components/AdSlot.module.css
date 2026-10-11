@@ -1,0 +1,21 @@
+.home {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1rem 2.5rem;
+}
+
+.inArticle,
+.end {
+  margin: 1.75rem 0;
+}
+
+.rail {
+  margin-top: 1rem;
+}
+
+.home :global(.adsbygoogle),
+.inArticle :global(.adsbygoogle),
+.rail :global(.adsbygoogle),
+.end :global(.adsbygoogle) {
+  min-height: 90px;
+}

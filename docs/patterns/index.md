@@ -2,6 +2,7 @@
 id: patterns
 title: Patterns
 description: Reusable engineering patterns
+unlisted: true
 ---
 # Patterns
 

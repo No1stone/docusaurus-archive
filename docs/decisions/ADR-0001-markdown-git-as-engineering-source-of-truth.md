@@ -1,54 +1,118 @@
 ---
 id: adr-0001
-title: ADR-0001 Markdown and Git as engineering source of truth
-description: Choose Markdown + Git as the long-term store for engineering assets
+title: SSOT란?
+description: 개발하며 내린 의사결정을 누적해 사람과 AI가 함께 관리하는, 하네스 관점의 단일 진실 원천
 tags:
   - adr
   - archive
+  - ssot
 status: accepted
 ---
-# ADR-0001: Markdown and Git as engineering source of truth
+# SSOT란?
 
-> **개요:** Markdown + Git을 엔지니어링 SoT로 쓰기로 한 결정과 대안, 결과.
+> **개요:** 이 아카이브에서 말하는 SSOT는 "문서를 한 곳에 모은다"가 아니다. 개발하며 내린 의사결정을 기록하고, 단편적인 판단이 아니라 누적된 자료와 히스토리를 사람과 AI가 같은 자리에서 함께 관리하는 것이다. 그 자리를 Markdown + Git으로 둔 이유까지.
 
-## Status
+## 상태
 
-Accepted
+채택됨
 
-## Context
+## 이 아카이브에서 SSOT가 뜻하는 것
 
-Engineering knowledge, decisions, patterns, templates, and harness rules need a durable home that:
+일반적으로 SSOT(Single Source of Truth)는 "어떤 정보의 원본을 하나만 둔다"는 데이터 관리 원칙이다. 여기서는 그 뜻을 **하네스 관점**으로 좁혀 쓴다.
 
-- Humans can browse and search
-- AI coding agents can selectively load
-- Survives changes of presentation UI or AI product
+> 개발하면서 내린 **의사결정**을 기록하고, 그 결정들이 쌓여 만들어진 **누적된 자료와 히스토리**를, **사람과 AI가 동시에** 읽고 고치고 넓혀 가는 하나의 자리.
 
-A separate CMS, database, or AI-vendor-specific store would couple the archive to a transient interface.
+세 가지가 핵심이다.
 
-## Decision
+### 1. 기록하는 것은 의사결정이다
 
-Use **Markdown files in Git** as the source of truth for Origemite Archive.
+코드 스타일, 레이어 책임, 트랜잭션 경계, 소프트 삭제, 응답 봉투 하나하나는 전부 어느 시점에 어떤 이유로 내린 **결정**이다. SSOT에 들어가는 것은 "이렇게 하라"는 규칙 문장이 아니라 **왜 그렇게 정했는지가 붙어 있는 결정**이다. 규칙만 남으면 상황이 바뀌었을 때 지켜야 할지 버려야 할지 판단할 근거가 없다. 결정으로 남기면 그 근거가 같이 남는다.
 
-- Docusaurus (or a future UI) renders Markdown for humans
-- Harness / Index / Profiles / Bundles reference the same Markdown and templates for AI consumption
-- Engineering meaning must not depend on Docusaurus-only structures
+### 2. 단편적인 판단이 아니라 누적이다
 
-## Alternatives
+한 번의 채팅에서 내린 판단은 그 채팅이 끝나면 사라진다. 다음 작업에서 비슷한 상황이 오면 처음부터 다시 판단하고, 결과는 그때그때 조금씩 다르다. 이것이 **단편적인 판단**이다.
 
-1. **Wiki / CMS** — richer editing UX; weaker portability and agent-friendly plain text
-2. **AI-vendor knowledge base** — fast for one product; couples the archive to that vendor
-3. **Database-backed docs** — flexible querying; higher ops cost and weaker Git history as SoT
+SSOT는 그 판단들이 **쌓이게** 한다.
 
-## Consequences
+```text
+어떤 작업에서 내린 판단
+  → 반복되면 Experiment 로 기록
+  → 이유가 정리되면 ADR
+  → 기준이 되면 Knowledge / Pattern
+  → 코드 모양이 되면 Template
+  → 바뀌면 History 에 "왜 바뀌었나"
+```
 
-- Docs stay readable without Docusaurus
-- Progressive context loading (Index → selected docs) becomes practical
-- Presentation and agent tooling can evolve independently
-- Authors must keep Markdown granularity and metadata discipline
+새 판단은 빈 바닥에서 시작하지 않는다. 이전 결정 위에서 시작하고, 이전 결정을 바꾸려면 바꾸는 이유를 기록한다. 그래서 같은 상황에 같은 답이 나오고, 다른 답이 나올 때는 그 이유가 남는다.
 
-## Related
+### 3. 사람과 AI가 동시에 관리한다
 
-- [Archive home](../)
+이 SSOT는 사람이 쓰고 AI가 읽기만 하는 문서가 아니다. 양쪽 다 **읽고, 쓰고, 지킨다**.
+
+| | 사람 | AI (하네스) |
+|--|------|-------------|
+| 읽는다 | Docusaurus로 둘러본다 | Index → Orchestration → 필요한 문서만 읽는다 |
+| 지킨다 | 리뷰할 때 기준으로 삼는다 | Implementer는 그대로 따르고, Reviewer는 어긋남을 잡는다 |
+| 쓴다 | 결정을 내리고 승인한다 | Curator가 반복된 것을 승격 제안하고, Master가 빈칸을 보고한다 |
+| 넓힌다 | 새 경험을 ADR과 Postmortem으로 남긴다 | 작업에서 나온 증거(테스트, 실패)를 승격 근거로 올린다 |
+
+같은 파일을 두고 사람은 결정하고 AI는 제안하고 실행한다. 어느 한쪽만 아는 규칙은 SSOT가 아니다. 프롬프트에만 있는 규칙, 머릿속에만 있는 규칙이 바로 그것이다.
+
+## 왜 이렇게 관리하나
+
+이 아카이브를 만들기 전의 상태가 반대 사례다.
+
+- 결정의 이유는 그 프로젝트의 코드와 당시 기억에만 있었다
+- AI에게 일을 맡길 때마다 같은 설명을 프롬프트에 다시 적었고, 적을 때마다 조금씩 달랐다
+- 에이전트가 낸 코드가 내 스타일과 다르면 에이전트 탓인지 설명 탓인지 알 수 없었다
+- 새 프로젝트는 매번 빈 바닥에서 시작했다
+
+SSOT로 관리하면 질문이 바뀐다. "이번엔 어떻게 할까"가 아니라 "기록된 결정이 있나, 있으면 그대로, 없으면 결정하고 기록하자"가 된다. 하네스의 Master가 오케스트레이션을 찾고 없으면 빈칸을 보고하는 흐름은 이 질문을 그대로 절차로 옮긴 것이다.
+
+## 원본을 어디에 둘 것인가 — 배경
+
+위의 SSOT가 되려면 그 자리는 다음을 만족해야 한다.
+
+- 사람이 둘러보고 검색할 수 있다
+- AI 코딩 에이전트가 필요한 부분만 골라 읽을 수 있다
+- 보여 주는 UI나 AI 제품이 바뀌어도 살아남는다
+- **변경 이력이 남는다** — 누적과 히스토리가 핵심이므로, 언제 왜 바뀌었는지가 저장소 자체에 있어야 한다
+- 사람과 AI가 같은 방식으로 쓸 수 있다 — 평문이어야 한다
+
+별도의 CMS, 데이터베이스, 특정 AI 벤더의 저장소에 두면 원본이 그 일시적인 인터페이스에 묶인다. 인터페이스가 사라지면 누적된 히스토리도 같이 사라지거나 옮겨 적어야 한다.
+
+## 결정
+
+Origemite Archive의 원본은 **Git 안의 Markdown 파일**로 한다.
+
+- Markdown은 사람과 AI가 같은 문법으로 읽고 쓰는 평문이다
+- Git 이력이 변경 추적이고, ADR이 변경 이유다 — 둘이 합쳐져 히스토리가 된다
+- Docusaurus(또는 나중의 다른 UI)는 사람을 위해 Markdown을 렌더링한다 — 이유는 ADR-0002
+- Harness, Index, Profile, Orchestration은 같은 Markdown과 템플릿을 AI용으로 참조한다
+- 엔지니어링 의미는 Docusaurus 전용 구조(`_category_.json`, frontmatter)에 의존하면 안 된다
+
+## 대안
+
+1. **위키 / CMS** — 편집 경험은 더 좋지만, AI가 같은 방식으로 쓰기 어렵고 이력이 도구 안에 갇힌다
+2. **AI 벤더 지식 베이스** — 그 제품 하나에서는 빠르지만, 원본이 그 벤더에 묶인다. 벤더 종속이면 SSOT가 아니다
+3. **데이터베이스 기반 문서** — 질의는 유연하지만, 운영 비용이 높고 변경 이력이 Git만큼 자연스럽지 않다
+4. **원본 없이 프롬프트에 계속 적기** — 가장 빠른 시작이고 지금까지 해 온 방식. 단편적인 판단만 남고 누적되지 않는다
+
+## 결과
+
+- 문서는 Docusaurus 없이도 읽을 수 있다
+- 점진적 컨텍스트 로딩(Index → 선택한 문서)이 실제로 가능해진다
+- 화면과 에이전트 도구가 서로 독립적으로 바뀔 수 있다
+- 작성자(사람과 Curator 둘 다)는 Markdown 단위 크기와 메타데이터 규율을 지켜야 한다
+- 규칙이 어긋나면 "어느 쪽이 맞나"가 아니라 "원본을 고쳐야 하나, 고치면 왜인지 기록하자"가 질문이 된다
+- 결정을 바꾸는 비용이 생긴다 — ADR을 쓰거나 History에 남겨야 한다. 이것은 의도한 마찰이다
+
+## 관련
+
+- [아카이브 홈](../)
 - [Controller Design](../knowledge/backend/controller/controller-design.md)
+- ADR-0002 [Docusaurus를 아카이브 읽기 화면으로 쓴다](./ADR-0002-docusaurus-as-archive-reading-ui.md)
+- 승격을 맡는 역할(저장소): `docs/harness/agents/curator.md`
+- 원칙 1(저장소): `docs/harness/context/engineering-principles.md`
 
-Repo paths: `docs/harness/index.md`, `index/INDEX.md`.
+저장소 경로: `docs/harness/index.md`, `index/INDEX.md`.
