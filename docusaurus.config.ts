@@ -52,13 +52,13 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        {to: '/about', label: 'About', position: 'left'},
         {
           type: 'docSidebar',
           sidebarId: 'archiveSidebar',
           position: 'left',
           label: 'Archive',
         },
-        {to: '/about', label: 'About', position: 'left'},
         {
           href: 'https://github.com/No1stone',
           label: 'GitHub',
