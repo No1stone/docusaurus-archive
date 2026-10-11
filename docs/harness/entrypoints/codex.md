@@ -13,7 +13,7 @@ Adapter: Codex ↔ Origemite harness roles.
 ## Role binding
 
 Parent session = **Master**.  
-Spawned workers (or sequential role simulation) = Implementer / Reviewer / Tester / QA with the same spawn contract as Cursor.
+Spawned workers (or sequential role simulation) = Implementer / Reviewer / Tester / QA, plus Scout / Curator when the orchestration lists them, with the same spawn contract as Cursor.
 
 ## Verification tool mapping
 

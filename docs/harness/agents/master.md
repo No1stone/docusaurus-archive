@@ -66,10 +66,15 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ```text
 Request
+  → unfamiliar repo? → Scout (read-only repo map)
   → find orchestration for this situation
       → found: run its agent + knowledge assembly
       → missing: developer feedback → write orchestration → then run
+  → after delivery: anything proven worth keeping? → Curator (promotion proposal)
+      → Master + developer approve → archive updated
 ```
+
+Scout: [`scout.md`](./scout.md) · Curator: [`curator.md`](./curator.md)
 
 Meta rules: [`../orchestration.md`](../orchestration.md)  
 Recipes: [`../orchestrations/`](../orchestrations/)  
@@ -99,6 +104,8 @@ If Index lacks knowledge pages, say so — do not fake Current Practice.
 - Use Index + Profile to choose what to put **into** a new recipe  
 - Persist new recipes under `docs/harness/orchestrations/`  
 - Spawn roles only from the **selected** orchestration  
+- Send Scout ahead instead of exploring an unfamiliar repo itself  
+- Approve or reject Curator promotion proposals, and surface them to the developer  
 
 ## Does not
 

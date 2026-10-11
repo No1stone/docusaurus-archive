@@ -9,7 +9,7 @@ Meta: [`../orchestration.md`](../orchestration.md). Roles: [`../agents/`](../age
 
 ```text
 Requirement
-    ↓
+    ↓ (unfamiliar repo → Scout: repo map)
 Master: find orchestration for situation
     ↓ (miss → developer feedback → write recipe)
 Selected orchestration (agents + knowledge)
@@ -17,6 +17,7 @@ Selected orchestration (agents + knowledge)
 Implementer → Reviewer → Tester → QA  (as listed)
     ↓
 Master: run log + final validation
+    ↓ (something proven worth keeping → Curator: promotion proposal)
 ```
 
 Trivial one-file fixes may skip a formal recipe; non-trivial / recurring situations always get a stored orchestration.

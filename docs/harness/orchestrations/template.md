@@ -31,10 +31,12 @@
 | Order | Role | Model pool | Freedom | Mission template | Required |
 |-------|------|------------|---------|------------------|----------|
 | 0 | Master | role default (Opus-class pool) | role default (high) | route / approve | yes |
+| 0a | Scout | role default (cheap exploration pool) | role default (medium, read-only) | repo map for … | no (unfamiliar repo only) |
 | 1 | Implementer | role default (cheap coding pool) | role default (low) | … | yes |
 | 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | … | yes |
 | 3 | Tester | role default (cheap checklist pool) | role default (medium) | … | yes / no |
 | 4 | QA | role default (cheap checklist pool) | role default (medium) | … | yes |
+| 5 | Curator | role default (cheap writing pool) | role default (medium) | promote … if proven | no (promotion situations) |
 
 Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`  
 

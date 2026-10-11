@@ -9,8 +9,25 @@
 | Reviewer | [`reviewer.md`](./reviewer.md) | Cheap checklist pool | medium | Standards check |
 | Tester | [`tester.md`](./tester.md) | Cheap checklist pool | medium | Behavioral proof |
 | QA | [`qa.md`](./qa.md) | Cheap checklist pool | medium | Success criteria |
+| Scout | [`scout.md`](./scout.md) | Cheap exploration pool | medium (read-only) | Repo map before Master selects a recipe |
+| Curator | [`curator.md`](./curator.md) | Cheap writing pool | medium | Promote proven project material into the archive; keep Index / History current |
 
 Implementer is the role that produces code in the registered style, so it is the only one held at `low`. Checking roles need room to judge, so they sit at `medium`.
+
+## Two kinds of roles
+
+```text
+Delivery loop (per task)      Implementer → Reviewer → Tester → QA
+Around the loop               Scout   (before: what does this repo look like?)
+                              Curator (after: what here should become a standard?)
+Supervising both              Master
+```
+
+Scout and Curator are dispatched by Master only when the situation calls for them; orchestrations list them explicitly when required.
+
+## Adding a role
+
+Add a role only when a **new question** appears that no existing role owns. A new checklist for an existing question (security review, performance test) is a mission label on the existing role, not a new file.
 
 Exact candidate lists live in each role file. **Do not hard-require a single slug.**
 
