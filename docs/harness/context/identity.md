@@ -1,6 +1,7 @@
 # Identity
 
-> **개요:** 이 하네스가 누구의 것인지. 백엔드 기반 개발자 장원석의 개인 엔지니어링 아카이브이고, 여기 적힌 기준은 그 사람이 실제로 쓰는 방식이다.
+> **개요:** 이 하네스가 누구의 것인지입니다.
+> 백엔드 기반 개발자 장원석의 개인 엔지니어링 아카이브이고, 여기 적힌 기준은 그 사람이 실제로 쓰는 방식입니다.
 
 Who this harness represents. Agents read this to understand whose conventions they are reproducing — and that the conventions are a person's actual practice, not a committee's ideal.
 
@@ -9,7 +10,7 @@ Who this harness represents. Agents read this to understand whose conventions th
 - **Origemite Archive** — personal engineering archive at `archive.origemite.com`
 - Consumer surfaces: humans (Docusaurus) and AI coding agents (this harness)
 - Preference: durable Markdown/Git assets over vendor-locked stores
-- Companion sites: GitHub [`No1stone`](https://github.com/No1stone) · Blog `blog.origemite.com` (migrating into this archive)
+- Companion sites: GitHub [`No1stone`](https://github.com/No1stone), Blog `blog.origemite.com` (migrating into this archive)
 
 ## The engineer
 

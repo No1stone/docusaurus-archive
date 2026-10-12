@@ -84,4 +84,4 @@ If a label has no checklist page yet, Reviewer says so; it does not improvise a 
 - Running Tester and QA for a shape-only question
 - Reviewing an unbounded change set
 
-Related: [`implement.md`](./implement.md) · [`refactor.md`](./refactor.md) · [`../agents/reviewer.md`](../agents/reviewer.md)
+Related: [`implement.md`](./implement.md), [`refactor.md`](./refactor.md), [`../agents/reviewer.md`](../agents/reviewer.md)

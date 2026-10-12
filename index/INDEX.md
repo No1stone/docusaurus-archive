@@ -1,6 +1,7 @@
 # Engineering Asset Index
 
-> **개요:** 엔지니어링 자산 지도. “뭐가 어디에 있나?” — 사이드바가 아님.
+> **개요:** 엔지니어링 자산 지도입니다.
+> "무엇이 어디에 있는지"를 보여 주며, 사이드바가 아닙니다.
 
 Human- and AI-readable map of **what lives where**.
 

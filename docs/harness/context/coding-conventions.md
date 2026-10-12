@@ -1,6 +1,8 @@
 # Coding Conventions
 
-> **개요:** 공통 구현 규칙. 템플릿 `ExampleItem` 슬라이스에 이미 박혀 있는 규칙을 글로 풀어 둔 것. Implementer는 이 문서와 템플릿을 그대로 따른다.
+> **개요:** 공통 구현 규칙입니다.
+> 템플릿 `ExampleItem` 슬라이스에 이미 있는 규칙을 글로 풀어 둔 것입니다.
+> Implementer는 이 문서와 템플릿을 그대로 따릅니다.
 
 Shared implementation conventions for agent-assisted work. Every rule here is **already visible in code** under [`templates/backend/spring/`](../templates/backend/spring/README.md); this page states the rule so a worker does not have to infer it. When this page and the template disagree, report it — do not pick one.
 
@@ -81,6 +83,18 @@ One holder class per domain per direction. Do not scatter `CreateExampleItemRequ
 - Mock at the **next layer only**: Facade tests mock Service, Service tests mock Repository.
 - Use `given(...)` BDD style and `verify(...)` on writes. `@DisplayName` in the host's language.
 - Test shape: [`templates/backend/spring/testing/`](../templates/backend/spring/testing/README.md).
+
+## Prose
+
+이 아카이브는 작성자만 보는 문서가 아닙니다.
+외부 독자도 읽습니다.
+
+- 반말을 쓰지 않습니다.
+`한다`, `이다`, `해` 대신 `합니다`, `입니다`를 씁니다.
+- 중점 `·`을 쓰지 않습니다.
+쉼표(`, `)를 씁니다.
+- 문장을 끝내는 마침표(`.`) 다음에는 다음 문장을 새 줄에 씁니다.
+코드 블록, 표, 식별자는 예외입니다.
 
 ## General
 

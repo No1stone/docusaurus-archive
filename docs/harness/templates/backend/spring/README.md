@@ -1,6 +1,7 @@
 # Spring ExampleItem slice
 
-> **개요:** dto → persistence → service → facade → controller → testing 한 줄 세로 슬라이스. 옆에 `.java` 소스가 있고 README 본문에 코드 블록으로도 보인다.
+> **개요:** dto, persistence, service, facade, controller, testing으로 이어지는 한 줄 세로 슬라이스입니다.
+> 옆에 `.java` 소스가 있고 README 본문에 코드 블록으로도 보입니다.
 
 One vertical reference flow for agents and humans.
 

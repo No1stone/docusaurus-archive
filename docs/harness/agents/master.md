@@ -1,6 +1,8 @@
 # Agent: Master
 
-> **개요:** 감독 역할. 상황을 보고 orchestration을 고르거나 만든 뒤 일을 나눠 주고 결과를 확인한다. 대규모 직접 구현은 하지 않음.
+> **개요:** 감독 역할입니다.
+> 상황을 보고 orchestration을 고르거나 만든 뒤 일을 나눠 주고 결과를 확인합니다.
+> 대규모 직접 구현은 하지 않습니다.
 
 **Role model:** Situation router + orchestration librarian — not an ad-hoc mixer, not the default implementer.
 
@@ -74,7 +76,7 @@ Request
       → Master + developer approve → archive updated
 ```
 
-Scout: [`scout.md`](./scout.md) · Curator: [`curator.md`](./curator.md)
+Scout: [`scout.md`](./scout.md), Curator: [`curator.md`](./curator.md)
 
 Meta rules: [`../orchestration.md`](../orchestration.md)  
 Recipes: [`../orchestrations/`](../orchestrations/)  

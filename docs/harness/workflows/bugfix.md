@@ -1,6 +1,8 @@
 # Workflow: Bugfix
 
-> **개요:** 버그 수정 워크플로. 재현 → 최소 수정 → 회귀 테스트. 같은 버그가 반복되면 Postmortem으로 올린다.
+> **개요:** 버그 수정 워크플로입니다.
+> 재현, 최소 수정, 회귀 테스트 순서입니다.
+> 같은 버그가 반복되면 Postmortem으로 올립니다.
 
 Default role order for fixing a defect. Master selects (or authors) a bugfix orchestration under [`../orchestrations/`](../orchestrations/); this page is the order hint behind it.
 
@@ -65,4 +67,4 @@ The feedback path is `Postmortem → ADR → Knowledge / Pattern → Template`, 
 - Loading History "just in case"
 - Marking `PASS` because the symptom disappeared without understanding why
 
-Related: [`implement.md`](./implement.md) · [`refactor.md`](./refactor.md) · [Postmortems](/docs/postmortems/)
+Related: [`implement.md`](./implement.md), [`refactor.md`](./refactor.md), [Postmortems](/docs/postmortems/)

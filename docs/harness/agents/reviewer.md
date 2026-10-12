@@ -1,6 +1,7 @@
 # Agent: Reviewer
 
-> **개요:** 구조, 기준 리뷰. “도나?”는 Tester, “요청 다 했나?”는 QA.
+> **개요:** 구조와 기준 리뷰입니다.
+> 동작 여부는 Tester, 요청을 다 했는지 여부는 QA가 봅니다.
 
 **Role model:** Architecture & standards reviewer — not a test runner, not a product QA.
 

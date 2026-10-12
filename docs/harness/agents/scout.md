@@ -1,6 +1,8 @@
 # Agent: Scout
 
-> **개요:** 사전 탐색 담당. 작업 대상 저장소를 읽기 전용으로 훑어 스택, 레이아웃, 기존 컨벤션, 테스트 러너, 프로젝트 로컬 규칙을 지도로 그려 Master에게 준다. 강한 모델이 파일을 뒤지며 토큰을 쓰지 않게 하는 싼 눈.
+> **개요:** 사전 탐색 담당입니다.
+> 작업 대상 저장소를 읽기 전용으로 훑어 스택, 레이아웃, 기존 컨벤션, 테스트 러너, 프로젝트 로컬 규칙을 지도로 그려 Master에게 줍니다.
+> 강한 모델이 파일을 뒤지며 토큰을 쓰지 않게 하는 역할입니다.
 
 **Role model:** Read-only reconnaissance — maps the terrain so Master can pick the right orchestration and Implementer can respect project-local rules.
 

@@ -1,6 +1,7 @@
 # Orchestration: `SITUATION_ID`
 
-> **개요:** 상황 레시피 작성 양식. Worker는 Knowledge assembly에 적힌 경로만 읽는다.
+> **개요:** 상황 레시피 작성 양식입니다.
+> Worker는 Knowledge assembly에 적힌 경로만 읽습니다.
 
 > Situation recipe. Master selects this file when the situation matches.  
 > Workers load **only** Knowledge assembly paths below.

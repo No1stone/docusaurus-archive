@@ -1,6 +1,7 @@
 # Controller template
 
-> **개요:** 얇은 Web BFF Controller 예제. Facade에 위임하고 CommonResponse로 감싼다.
+> **개요:** 얇은 Web BFF Controller 예제입니다.
+> Facade에 위임하고 CommonResponse로 감쌉니다.
 
 Thin Web BFF controller.
 

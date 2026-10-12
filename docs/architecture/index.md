@@ -6,7 +6,8 @@ unlisted: true
 ---
 # Architecture
 
-> **개요:** 시스템 설계(아키텍처). 특정 라이브러리 사용법이 아니라 구조, 경계를 기록한다.
+> **개요:** 시스템 설계(아키텍처)입니다.
+> 특정 라이브러리 사용법이 아니라 구조와 경계를 기록합니다.
 
 System design notes. Prefer technology-agnostic framing.
 

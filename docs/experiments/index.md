@@ -6,7 +6,8 @@ unlisted: true
 ---
 # Experiments
 
-> **개요:** 아직 표준이 아닌 실험. 채택되면 Knowledge/Pattern/Template/ADR로 승격한다.
+> **개요:** 아직 표준이 아닌 실험입니다.
+> 채택되면 Knowledge, Pattern, Template, ADR로 승격합니다.
 
 Techniques or approaches that are **not** current standards.
 

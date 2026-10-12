@@ -1,6 +1,7 @@
 # Agent: QA
 
-> **개요:** 요청 완수 확인. 처음 부탁한 항목이 빠짐없이 반영됐는지 체크리스트로 본다.
+> **개요:** 요청 완수 확인입니다.
+> 처음 부탁한 항목이 빠짐없이 반영됐는지 체크리스트로 봅니다.
 
 **Role model:** Acceptance / requirement fulfillment checker.
 

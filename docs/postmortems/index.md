@@ -6,7 +6,8 @@ unlisted: true
 ---
 # Postmortems
 
-> **개요:** 실패, 장애, 잘못된 설계 기록. 교훈이 ADR, Knowledge로 흘러가게 한다.
+> **개요:** 실패, 장애, 잘못된 설계 기록입니다.
+> 교훈이 ADR, Knowledge로 흘러가게 합니다.
 
 Failures, incidents, bad designs, and operational problems.
 

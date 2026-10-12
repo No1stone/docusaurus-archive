@@ -5,7 +5,8 @@ description: Current engineering knowledge by domain
 ---
 # Knowledge
 
-> **개요:** 현재 쓰는 엔지니어링 지식. 개념(어떻게 설계하나)과 기술(프레임워크 사용법)을 분리한다.
+> **개요:** 현재 쓰는 엔지니어링 지식입니다.
+> 개념(어떻게 설계하는지)과 기술(프레임워크 사용법)을 분리합니다.
 
 Technology and implementation knowledge that is currently active.
 

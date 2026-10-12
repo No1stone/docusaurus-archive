@@ -6,7 +6,8 @@ unlisted: true
 ---
 # History
 
-> **개요:** 엔지니어링 방식이 어떻게 바뀌어 왔는지. Changelog가 아니며 기본 컨텍스트가 아님.
+> **개요:** 엔지니어링 방식이 어떻게 바뀌어 왔는지입니다.
+> Changelog가 아니며 기본 컨텍스트가 아닙니다.
 
 Not a changelog. Tracks how the engineering approach evolved:
 

@@ -6,7 +6,8 @@ unlisted: true
 ---
 # Patterns
 
-> **개요:** 재사용 가능한 엔지니어링 패턴. 기술(Kafka)과 패턴(Outbox)과 아키텍처(EDA)를 구분한다.
+> **개요:** 재사용 가능한 엔지니어링 패턴입니다.
+> 기술(Kafka)과 패턴(Outbox)과 아키텍처(EDA)를 구분합니다.
 
 Reusable engineering patterns.
 

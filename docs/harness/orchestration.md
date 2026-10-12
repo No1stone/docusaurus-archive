@@ -1,6 +1,7 @@
 # Orchestration System (meta)
 
-> **개요:** 상황 레시피를 고르고/만들고/실행하는 메타 규칙. 이번 작업용 읽을거리 목록이 아님.
+> **개요:** 상황 레시피를 고르고, 만들고, 실행하는 메타 규칙입니다.
+> 이번 작업용 읽을거리 목록이 아닙니다.
 
 This file is **not** a per-job reading list.
 

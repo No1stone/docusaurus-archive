@@ -42,4 +42,4 @@ Every tool page answers, in this order:
 
 Add one file here, then link it from the relevant Profile. Do not edit `agents/tester.md` for a new tool — the role rule already says "any tool in `tools/`".
 
-Related: [`../agents/tester.md`](../agents/tester.md) · [`../agents/qa.md`](../agents/qa.md) · [`../orchestrations/template.md`](../orchestrations/template.md)
+Related: [`../agents/tester.md`](../agents/tester.md), [`../agents/qa.md`](../agents/qa.md), [`../orchestrations/template.md`](../orchestrations/template.md)

@@ -5,7 +5,8 @@ description: Backend engineering knowledge
 ---
 # Backend
 
-> **개요:** 백엔드 지식 입구. 레이어 개념을 먼저 두고, Spring 등 기술 문서는 그다음에 둔다.
+> **개요:** 백엔드 지식 입구입니다.
+> 레이어 개념을 먼저 두고, Spring 등 기술 문서는 그다음에 둡니다.
 
 Backend knowledge is organized by **engineering concept** first, then by technology where useful.
 

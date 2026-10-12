@@ -9,7 +9,9 @@ status: active
 ---
 # Controller Design
 
-> **개요:** Controller를 어떻게 설계하는지(책임, 경계). Spring MVC 사용법 문서가 아님. 짝이 되는 코드 모양은 템플릿 `ExampleItemWebController`.
+> **개요:** Controller를 어떻게 설계하는지(책임, 경계)입니다.
+> Spring MVC 사용법 문서가 아닙니다.
+> 짝이 되는 코드 모양은 템플릿 `ExampleItemWebController`입니다.
 
 How the controller layer is designed: responsibilities and boundaries.
 

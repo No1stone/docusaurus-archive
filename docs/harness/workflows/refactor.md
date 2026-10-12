@@ -62,4 +62,4 @@ If the refactor produced a cleaner shape than the current Template (not just a d
 - Changing the public response shape and calling it internal
 - Re-architecting beyond the named package because the rest "looked the same"
 
-Related: [`implement.md`](./implement.md) · [`bugfix.md`](./bugfix.md) · [`review.md`](./review.md)
+Related: [`implement.md`](./implement.md), [`bugfix.md`](./bugfix.md), [`review.md`](./review.md)

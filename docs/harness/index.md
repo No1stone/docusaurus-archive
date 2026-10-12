@@ -4,7 +4,8 @@ title: Harness
 ---
 # Harness
 
-> **개요:** Origemite Archive용 휴대용 AI 작업 뼈대. 잡동사니 메모장이 아니라, 에이전트가 같은 Markdown 지식, 템플릿을 골라 쓰게 한다.
+> **개요:** Origemite Archive용 휴대용 AI 작업 뼈대입니다.
+> 잡동사니 메모장이 아니며, 에이전트가 같은 Markdown 지식과 템플릿을 골라 쓰게 합니다.
 
 Portable AI engineering harness for Origemite Archive.
 
