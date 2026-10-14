@@ -7,7 +7,7 @@ Who this harness represents. Agents read this to understand whose conventions th
 
 ## The archive
 
-- **Origemite Archive** — personal engineering archive at `archive.origemite.com`
+- **Origemite Archive** — personal engineering archive at `origemite.com`
 - Consumer surfaces: humans (Docusaurus) and AI coding agents (this harness)
 - Preference: durable Markdown/Git assets over vendor-locked stores
 - Companion sites: GitHub [`No1stone`](https://github.com/No1stone), Blog `blog.origemite.com` (migrating into this archive)

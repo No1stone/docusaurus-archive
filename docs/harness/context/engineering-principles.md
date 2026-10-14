@@ -23,7 +23,7 @@ A Controller *concept* page says what belongs at the HTTP edge. A Spring MVC *te
 
 **If violated.** Knowledge pages fill with version-specific snippets; the archive becomes a tutorial collection that is wrong the moment a major version ships, and the agent cannot tell a rule from an example.
 
-**Where it lives.** The folder split under `docs/` (Knowledge / Architecture / Patterns / Decisions), and the separation table on the [Patterns](/docs/patterns/) index.
+**Where it lives.** The folder split under `docs/` (Knowledge / Decisions / Harness). Concept pages stay in Knowledge. The reason for a choice stays in [Decisions](/docs/decisions/).
 
 Knowledge and these principles are what Master reads when a situation needs a judgment.
 When a template applies, Implementer builds that shape.

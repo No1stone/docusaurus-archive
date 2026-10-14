@@ -1,5 +1,4 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
@@ -8,32 +7,35 @@ import AdSlot from '@site/src/components/AdSlot';
 
 import styles from './index.module.css';
 
-const categories = [
-  {label: 'Backend', to: '/docs/knowledge/backend/'},
-  {label: 'Frontend', to: '/docs/knowledge/'},
-  {label: 'Data', to: '/docs/knowledge/'},
-  {label: 'Messaging', to: '/docs/knowledge/'},
-  {label: 'Infrastructure', to: '/docs/knowledge/'},
-  {label: 'CI/CD', to: '/docs/knowledge/'},
-  {label: 'Observability', to: '/docs/knowledge/'},
-  {label: 'Architecture', to: '/docs/architecture/'},
-  {label: 'Patterns', to: '/docs/patterns/'},
-  {label: 'Decisions', to: '/docs/decisions/'},
-  {label: 'AI / Harness', to: '/docs/harness/'},
-] as const;
-
-const recentDocuments = [
+const sections = [
   {
-    title: 'ADR-0002 — Docusaurus를 선택한 이유',
-    to: '/docs/decisions/adr-0002',
+    title: 'Backend',
+    to: '/docs/knowledge/backend/',
+    items: [
+      {title: 'Controller Design', to: '/docs/knowledge/backend/controller/controller-design'},
+      {title: 'Facade Design', to: '/docs/knowledge/backend/facade/facade-design'},
+      {title: 'Service의 책임과 분리 가능한 데이터 접근 경계', to: '/docs/knowledge/backend/service/service-design'},
+      {title: '테스트 기본 구조', to: '/docs/knowledge/backend/testing/test-structure'},
+    ],
   },
   {
-    title: 'Controller Design',
-    to: '/docs/knowledge/backend/controller/controller-design',
+    title: 'Decisions',
+    to: '/docs/decisions/',
+    items: [
+      {title: 'SSOT란?', to: '/docs/decisions/adr-0001'},
+      {title: 'Docusaurus를 선택한 이유', to: '/docs/decisions/adr-0002'},
+      {title: '글 광고는 레이아웃이 넣습니다', to: '/docs/decisions/adr-0003'},
+    ],
   },
   {
-    title: 'ADR-0001 — SSOT란?',
-    to: '/docs/decisions/adr-0001',
+    title: 'Harness',
+    to: '/docs/harness/',
+    items: [
+      {title: '에이전트', to: '/docs/harness/agents/'},
+      {title: '오케스트레이션', to: '/docs/harness/orchestrations/'},
+      {title: '구현 흐름', to: '/docs/harness/workflows/implement'},
+      {title: 'Spring 템플릿', to: '/docs/harness/templates/backend/spring/'},
+    ],
   },
 ] as const;
 
@@ -97,41 +99,29 @@ function ArchiveHero(): ReactNode {
   );
 }
 
-function ArchiveCategories(): ReactNode {
+function ArchiveSections(): ReactNode {
   return (
     <section className={styles.section}>
       <div className="container">
         <Heading as="h2" className={styles.sectionTitle}>
-          Explore Archive
+          글
         </Heading>
-        <ul className={styles.categoryGrid}>
-          {categories.map((item) => (
-            <li key={item.label}>
-              <Link className={styles.categoryLink} to={item.to}>
-                {item.label}
-              </Link>
-            </li>
+        <div className={styles.docGroups}>
+          {sections.map((section) => (
+            <section key={section.title}>
+              <Heading as="h3" className={styles.groupTitle}>
+                <Link to={section.to}>{section.title}</Link>
+              </Heading>
+              <ul className={styles.recentList}>
+                {section.items.map((item) => (
+                  <li key={item.to}>
+                    <Link to={item.to}>{item.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function RecentDocuments(): ReactNode {
-  return (
-    <section className={clsx(styles.section, styles.sectionMuted)}>
-      <div className="container">
-        <Heading as="h2" className={styles.sectionTitle}>
-          Recently Updated
-        </Heading>
-        <ul className={styles.recentList}>
-          {recentDocuments.map((doc) => (
-            <li key={doc.to}>
-              <Link to={doc.to}>{doc.title}</Link>
-            </li>
-          ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
@@ -144,9 +134,8 @@ export default function Home(): ReactNode {
       description="Origemite Archive — ADR, SSOT, and continuity for engineering knowledge in Markdown and Git.">
       <ArchiveHero />
       <main>
-        <ArchiveCategories />
+        <ArchiveSections />
         <AdSlot placement="home" />
-        <RecentDocuments />
       </main>
     </Layout>
   );

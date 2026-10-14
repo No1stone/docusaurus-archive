@@ -13,7 +13,7 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://archive.origemite.com',
+  url: 'https://origemite.com',
   baseUrl: '/',
 
   organizationName: 'No1stone',

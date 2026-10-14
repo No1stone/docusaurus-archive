@@ -75,7 +75,6 @@ Controllers are **not** the primary unit test target. Behavior lives in Facade a
 ## Related
 
 - [Backend knowledge](../)
-- [Architecture](../../../architecture/)
 - [ADR-0001](../../../decisions/ADR-0001-markdown-git-as-engineering-source-of-truth.md)
 - Coding conventions (repo): `docs/harness/context/coding-conventions.md`
 - Profile (repo): `docs/harness/profiles/spring-api.md`

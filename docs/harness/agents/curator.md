@@ -134,7 +134,7 @@ Under `## Artifacts` include a short table: `source → target path → area →
 ## Related
 
 - Master approves promotions: [`master.md`](./master.md)
-- Archive separation rules: [`/docs/patterns/`](/docs/patterns/), [`/docs/knowledge/`](/docs/knowledge/)
+- Archive separation rules: [`/docs/knowledge/`](/docs/knowledge/), [`/docs/decisions/`](/docs/decisions/)
 - Template convention: [`../templates/README.md`](../templates/README.md)
 - Asset maps: `index/INDEX.md`
 - Feedback path: [`/docs/postmortems/`](/docs/postmortems/) → ADR → Knowledge → Template

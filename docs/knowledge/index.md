@@ -12,14 +12,8 @@ Technology and implementation knowledge that is currently active.
 
 Concept documents (how *we* design a layer) stay separate from technology documents (how a framework works). Example: [Controller Design](./backend/controller/controller-design.md) is not the same as Spring MVC usage notes.
 
-## Domains
+## 있는 글
 
-- [Backend](./backend/)
-- Frontend — extend when needed
-- Data — extend when needed
-- Messaging — extend when needed
-- Infrastructure — extend when needed
-- CI/CD — extend when needed
-- Observability — extend when needed
+- [Backend](./backend/) — Controller, Facade, Service, 테스트 구조
 
 Asset map for agents: repository `index/INDEX.md`.

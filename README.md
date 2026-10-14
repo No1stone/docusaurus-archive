@@ -10,7 +10,7 @@ Docusaurus 위에 올린 개인 **Engineering Archive**입니다.
 
 날짜순 블로그가 아닙니다.
 저장소 이름은 `docusaurus-archive`입니다.
-공개 주소는 `archive.origemite.com`입니다.
+공개 주소는 `origemite.com`입니다.
 
 ## Origemite Archive란?
 

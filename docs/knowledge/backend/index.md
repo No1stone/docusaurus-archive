@@ -23,6 +23,5 @@ Technology-specific pages (e.g. Spring) will live under this tree when added. Pr
 
 ## Related
 
-- [Architecture](../../architecture/)
-- [Patterns](../../patterns/)
+- [Decisions](../../decisions/)
 - Agent maps: `index/backend.md`, `docs/harness/templates/`, `docs/harness/profiles/spring-api.md`
