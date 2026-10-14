@@ -34,9 +34,11 @@ description: Origemite Archive를 왜 만들었고 어떻게 쓰는지
 Knowledge는 큰 개념과 설계 기준입니다.
 Master가 판단이 필요한 상황에서 설계 원칙과 함께 봅니다.
 Template은 임플리먼터가 구현하는 고정된 코드 구조입니다.
-템플릿이 있으면 임플리먼터는 그 모양대로 구현합니다.
-템플릿이 없으면 임플리먼터가 Knowledge로 구조를 만들지 않습니다.
-그 판단은 Master가 합니다.
+적용 가능한 템플릿이 있으면 임플리먼터는 그 모양대로 구현합니다.
+없으면 저장소의 기존 구현 패턴을 따릅니다.
+둘 다 없으면 승인된 범위 안에서 최소 구현을 합니다.
+새 계층, 공개 계약, 의존성, 아키텍처 결정이 필요하면 Master가 정한 뒤에 진행합니다.
+템플릿이 없다는 이유만으로 구현을 멈추지 않습니다.
 
 ## 단일 출처 (SSOT)
 
@@ -81,8 +83,9 @@ Implementer만 낮음에 둡니다.
 등록한 코드 스타일대로 코드를 내는 역할이라 가장 강하게 규제합니다.
 검증하는 역할들은 판단할 여지가 필요해서 한 단계 위에 둡니다.
 
-Implementer부터 QA까지가 작업 하나를 처리하는 루프입니다.
-Scout과 Curator는 그 루프의 앞뒤에 섭니다.
+역할 문서는 책임입니다.
+매번 모든 역할을 별도 에이전트로 실행하지 않습니다.
+익숙한 저장소의 기존 패턴은 기본 흐름만 사용합니다.
 
 - **Scout**은 낯선 저장소에 들어갈 때 먼저 갑니다.
   스택, 폴더 구조, 프로젝트 로컬 규칙, 테스트 실행 방법, 아카이브 템플릿과 다른 점을 한 화면짜리 지도로 만들어 Master에게 줍니다.
@@ -130,25 +133,22 @@ Scout과 Curator는 그 루프의 앞뒤에 섭니다.
 
 ```text
 상황: Spring REST API 한 세트 추가
+파일: docs/harness/orchestrations/spring-api-one-set.md
 
-Knowledge: controller-design, service-design, persistence 기준
-Templates: ExampleItem 슬라이스
-           dto → persistence(Entity, Repository, JPA Specification)
-               → service → facade → controller → testing
-
-Implementer  템플릿을 따라 DTO, Repository, Spec, Service, Facade, Controller 구현
-Reviewer     레이어 경계와 템플릿 드리프트 확인
-Tester       Service, Facade 테스트 작성과 실행
-QA           요청한 엔드포인트가 전부 있는지 확인
+Tester     통과 기준과, 없을 때 실패하는 테스트
+Reviewer   기준이 요구사항을 담는지
+Master     통과 기준 확정
+Implementer  ExampleItem 템플릿으로 구현
+Tester     같은 테스트 실행
+QA         엔드포인트, 요구사항, 회귀
 ```
 
 같은 방식으로 `spring-bugfix`, `spring-refactor-layer`, `archive-promote-pattern` 같은 파일이 따로 있습니다.
 어떤 파일은 Tester를 빼고, 어떤 파일은 ADR을 반드시 읽게 하고, 어떤 파일은 Implementer 모델 풀을 바꿉니다.
 
-Master는 요청이 들어오면 이 파일들 중 하나를 고릅니다.
-고를 것이 없으면 "이 상황에 맞는 레시피가 없습니다"라고 알리고, 템플릿을 바탕으로 새 오케스트레이션 파일을 쓴 뒤에 진행합니다.
-즉흥적으로 문서를 섞어 쓰고 버리지 않습니다.
-한 번 쓴 레시피는 다음에 같은 상황이 오면 그대로 다시 씁니다.
+Master는 같은 상황의 레시피가 있으면 재사용합니다.
+없으면 기본 흐름으로 진행합니다.
+새 레시피는 그 상황이 반복될 때만 제안합니다.
 
 ```text
 흩어진 자료
@@ -156,17 +156,33 @@ Master는 요청이 들어오면 이 파일들 중 하나를 고릅니다.
         ↓ 인덱싱
 오케스트레이션 MD 파일들
   spring-api-one-set.md, spring-bugfix.md, …
-        ↓ Master가 선택  (낯선 저장소면 Scout이 먼저 지도를 그림)
-워커 에이전트들
-  Implementer → Reviewer → Tester → QA
-        ↓
-구현, 검증, 테스트 결과를 Master가 확인
-        ↓ 기준이 될 만한 것이 있으면
-Curator가 아카이브로 승격 제안 → Master와 작성자가 승인
+        ↓ 같은 상황이면 재사용, 아니면 기본 흐름
+요청, 범위, 템플릿, 통과 기준, 구현, 검증, 짧은 기록
+        ↓ 조건일 때만 Scout, Reviewer, QA
+        ↓ 사용자가 승격을 요청할 때만 Curator
 ```
 
 새 코드 예제가 정리되면 템플릿을 갱신하고, 오케스트레이션 파일의 링크만 바꿉니다.
 에이전트 프롬프트는 건드리지 않습니다.
+
+### 통과 가능한 코딩의 기준
+
+이 하네스의 중요 기준입니다.
+바이브 코딩은 구현 전에 통과 기준이 확정된 뒤에만 시작합니다.
+
+Master가 요구사항, 작업 범위와 제외 범위를 정리합니다.
+Tester가 정상, 경계, 실패의 항목과 검증 방법을 작성합니다.
+Reviewer가 기준이 요구사항을 담고 불필요한 제약을 강요하지 않는지 봅니다.
+Master가 기준을 확정한 뒤 Implementer가 구현합니다.
+
+적용 가능한 템플릿이 있으면 그 모양대로 구현합니다.
+없으면 저장소의 기존 패턴을 따르고, 그것도 없으면 승인된 범위의 최소 구현을 합니다.
+새 계층, 공개 계약, 의존성, 아키텍처 결정만 Master가 고른 뒤에 진행합니다.
+Scout은 그 전에 저장소를 읽고, Curator는 끝난 뒤에 승격을 제안합니다.
+
+완료는 테스트 통과만이 아닙니다.
+요구사항을 충족했는지, 기존 동작이 회귀하지 않았는지를 함께 봅니다.
+본문은 [`구현 전 통과 기준`](/docs/harness/workflows/acceptance)입니다.
 
 ### 바이브 코딩은 검증 도구와 함께 갑니다
 

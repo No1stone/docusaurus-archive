@@ -132,4 +132,5 @@ CQRS를 적용하기 위해 처음부터 DB를 물리적으로 분리할 필요�
 - [Facade Design](../facade/facade-design.md)
 - [Controller Design](../controller/controller-design.md)
 - [Backend knowledge](../)
+- [테스트 기본 구조](../testing/test-structure.md)
 - 테이블 Service 코드 모양(저장소): `docs/harness/templates/backend/spring/service/`

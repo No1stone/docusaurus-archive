@@ -73,9 +73,10 @@ Index, 고른 문서, `docs/harness/templates`와 ADR, 필요할 때만 History 
 
 [`docs/harness/templates/README.md`](./docs/harness/templates/README.md)를 봅니다.
 Knowledge와 설계 원칙은 Master가 판단할 때 봅니다.
-템플릿이 있으면 임플리먼터는 그 모양대로 구현합니다.
-템플릿이 없으면 Master가 판단해서 돕습니다.
-임플리먼터는 Knowledge로 구조를 만들지 않습니다.
+기본 흐름은 [`docs/harness/workflows/implement.md`](./docs/harness/workflows/implement.md)입니다.
+통과 기준은 [`docs/harness/workflows/acceptance.md`](./docs/harness/workflows/acceptance.md)입니다.
+구현 우선순위는 [`docs/harness/agents/implementer.md`](./docs/harness/agents/implementer.md)입니다.
+현재 상태는 [`docs/harness/CURRENT.md`](./docs/harness/CURRENT.md)입니다.
 
 ## 글 작성
 

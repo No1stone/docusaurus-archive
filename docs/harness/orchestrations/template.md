@@ -2,6 +2,9 @@
 
 > **개요:** 상황 레시피 작성 양식입니다.
 > Worker는 Knowledge assembly에 적힌 경로만 읽습니다.
+> 이 양식은 반복되는 상황용입니다.
+> 모든 요청에 새 파일을 만들지 않습니다.
+> 기본 흐름은 `docs/harness/workflows/implement.md`입니다.
 
 > Situation recipe. Master selects this file when the situation matches.  
 > Workers load **only** Knowledge assembly paths below.
@@ -31,13 +34,14 @@
 
 | Order | Role | Model pool | Freedom | Mission template | Required |
 |-------|------|------------|---------|------------------|----------|
-| 0 | Master | role default (Opus-class pool) | role default (high) | route / approve | yes |
+| 0 | Master | role default (Opus-class pool) | role default (high) | route. Later, confirm the pass bar before Implementer | yes |
 | 0a | Scout | role default (cheap exploration pool) | role default (medium, read-only) | repo map for … | no (unfamiliar repo only) |
-| 1 | Implementer | role default (cheap coding pool) | role default (low) | … | yes |
-| 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | … | yes |
-| 3 | Tester | role default (cheap checklist pool) | role default (medium) | … | yes / no |
-| 4 | QA | role default (cheap checklist pool) | role default (medium) | … | yes |
-| 5 | Curator | role default (cheap writing pool) | role default (medium) | promote … if proven | no (promotion situations) |
+| 1 | Tester | role default (cheap checklist pool) | role default (medium) | pass criteria, test skeleton, and tests for the missing behavior | yes |
+| 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | criteria cover the requirement and do not add needless constraints | yes |
+| 3 | Implementer | role default (cheap coding pool) | role default (low) | implement the confirmed pass bar and project rules. Use an applicable template, otherwise the repo's existing pattern, otherwise the minimum change in scope. A new layer, public contract, dependency, or architecture choice waits for Master | yes |
+| 4 | Tester | role default (cheap checklist pool) | role default (medium) | run the same tests. Do not delete or weaken them | yes |
+| 5 | QA | role default (cheap checklist pool) | role default (medium) | requirement met, and no regression | yes |
+| 6 | Curator | role default (cheap writing pool) | role default (medium) | promote … if proven | no (promotion situations) |
 
 Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`  
 
@@ -53,7 +57,7 @@ What the Tester must use to prove this situation's result. Pick from [`../tools/
 
 | Tool | Rung / scope | Required | Evidence QA expects |
 |------|--------------|----------|---------------------|
-| `backend-unit-test` | unit → slice | yes / no | command + pass/fail counts |
+| `backend-unit-test` | unit → slice. Layout: `docs/knowledge/backend/testing/test-structure.md` | yes / no | command + pass/fail counts |
 | `playwright-e2e` | flows: … | yes / no | spec file + run result |
 | `browser-manual` | smoke only | yes / no | steps + screenshot (labelled manual) |
 

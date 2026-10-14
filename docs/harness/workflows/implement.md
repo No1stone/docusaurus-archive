@@ -1,25 +1,45 @@
 # Workflow: Implement
 
-> **개요:** 기능 구현 워크플로 순서.
+> **개요:** 기본 개발 흐름입니다.
+> 역할 문서는 책임이고, 매번 모든 역할을 별도 에이전트로 실행하지 않습니다.
 
-Default path for feature / implementation work.
-
-Master **selects** (or after gap feedback **authors**) an [`../orchestrations/`](../orchestrations/) recipe.  
-Meta: [`../orchestration.md`](../orchestration.md). Roles: [`../agents/`](../agents/index.md).
+## 기본 흐름
 
 ```text
-Requirement
-    ↓ (unfamiliar repo → Scout: repo map)
-Master: find orchestration for situation
-    ↓ (miss → developer feedback → write recipe)
-Selected orchestration (agents + knowledge)
-    ↓
-Implementer → Reviewer → Tester → QA  (as listed)
-    ↓
-Master: run log + final validation
-    ↓ (something proven worth keeping → Curator: promotion proposal)
+요청 및 범위 확인
+→ 필요한 프로젝트 규칙과 템플릿 선택
+→ 통과 기준 확인
+→ 구현과 필요한 테스트
+→ 검증
+→ 짧은 작업 기록
 ```
 
-Trivial one-file fixes may skip a formal recipe; non-trivial / recurring situations always get a stored orchestration.
+통과 기준의 형식은 [`acceptance.md`](./acceptance.md)입니다.
+템플릿에 있는 기준은 재사용하고, 이번 작업의 차이만 추가합니다.
+기준의 분량과 검토는 작업 복잡도에 맞춥니다.
 
-See also: [`bugfix.md`](./bugfix.md), [`refactor.md`](./refactor.md), [`review.md`](./review.md).
+구현 우선순위는 [`implementer.md`](../agents/implementer.md)입니다.
+
+## 추가 절차
+
+| 상황 | 추가 절차 |
+|---|---|
+| 익숙한 저장소와 기존 패턴 적용 | 기본 흐름만 사용 |
+| 낯선 저장소 또는 정보 부족 | Scout 탐색 |
+| 새 계약, 복잡한 정합성 또는 중요한 설계 변경 | 기준 검토 및 필요한 Reviewer 참여 |
+| 중요한 사용자 흐름 변경 | 필요한 QA 및 E2E 검증 |
+| 재사용할 기준 발견 | 갱신 후보 보고. 승격은 사용자가 요청할 때만 |
+
+모든 요청에 새 orchestration을 만들지 않습니다.
+기존 레시피가 있으면 재사용합니다.
+새 레시피는 반복되는 상황에 한해 제안합니다.
+
+Curator는 기본 경로에 없습니다.
+버그 재현과 리팩터의 기존 테스트 확인은 [`bugfix.md`](./bugfix.md), [`refactor.md`](./refactor.md)를 따릅니다.
+그 문서도 위 표의 추가 절차를 넘지 않습니다.
+
+## 작업 기록
+
+현재 상태는 [`../CURRENT.md`](../CURRENT.md)입니다.
+누적 기록은 [`../history/`](../history/)입니다.
+매 작업에 그 폴더 전체를 읽지 않습니다.

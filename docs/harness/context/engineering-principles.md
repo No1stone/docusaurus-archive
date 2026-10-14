@@ -25,14 +25,18 @@ A Controller *concept* page says what belongs at the HTTP edge. A Spring MVC *te
 **Where it lives.** The folder split under `docs/` (Knowledge / Architecture / Patterns / Decisions), and the separation table on the [Patterns](/docs/patterns/) index.
 
 Knowledge and these principles are what Master reads when a situation needs a judgment.
-When a template covers the work, Implementer builds that shape.
-When it does not, Implementer does not invent the structure.
-Master reads Knowledge and these principles and decides.
+When a template applies, Implementer builds that shape.
+Otherwise Implementer follows the repository's existing pattern, or the minimum change inside the approved scope.
+Missing a template does not stop the work.
+A new layer, public contract, dependency, or architecture choice goes to Master with options and impact.
+Master reads Knowledge and these principles for that decision.
 They are not two writings of the same rule.
 
 ## 3. Progressive context loading
 
-Never hand an agent the whole archive. Index → selected orchestration → only the knowledge and templates that recipe lists.
+Never hand an agent the whole archive.
+Start from `docs/harness/CURRENT.md` and the documents for this task.
+Do not load `docs/history`, `docs/harness/history`, every role file, or every template by default.
 
 **Why.** Context is a budget. Everything loaded that is not needed crowds out what is, makes the model average between conflicting examples, and costs money on every run. A worker that reads one template produces that template; a worker that reads ten produces a blend.
 
@@ -49,6 +53,25 @@ Docusaurus is a reading UI. Cursor, Codex, Claude Code are adapters. Neither may
 **If violated.** Migrating the site or switching AI products becomes a content migration, and parts of the standard quietly live only in one vendor's config.
 
 **Where it lives.** Thin [entrypoints](../entrypoints/index.md) that hold product-specific mappings only, product-neutral [tools](../tools/index.md) pages, and the rule that `_category_.json` is navigation only.
+
+## 5. A pass bar before coding
+
+The harness states what coding must satisfy before it counts as done.
+Implementer starts only after that bar is confirmed.
+
+Master writes the requirement, scope, and exclusions.
+Tester writes the normal, boundary, and failure cases and how each is verified.
+Reviewer checks that the bar covers the requirement and does not force needless constraints.
+Master confirms it.
+Done means the tests pass, the requirement is met, and existing behavior did not regress.
+
+**Why.** Vibe coding without a bar ends at "it looks right".
+A bar written after the code gets weakened to match whatever was written.
+
+**If violated.** Tests are deleted or expected results are softened so the run turns green.
+The mission is then called done with no check for the original requirement or for regressions.
+
+**Where it lives.** [구현 전 통과 기준](../workflows/acceptance.md), the About page, and the implement workflow.
 
 ## Applying them
 

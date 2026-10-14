@@ -7,7 +7,7 @@
 | Bootstrap | [`AGENTS.md`](../AGENTS.md) |
 | Orchestration **meta** | [`docs/harness/orchestration.md`](../docs/harness/orchestration.md) |
 | **Situation orchestrations** | [`docs/harness/orchestrations/`](../docs/harness/orchestrations/) |
-| Template | [`docs/harness/orchestrations/_template.md`](../docs/harness/orchestrations/_template.md) |
+| Template | [`docs/harness/orchestrations/template.md`](../docs/harness/orchestrations/template.md) |
 | Master | [`docs/harness/agents/master.md`](../docs/harness/agents/master.md) |
 | Other agents | `docs/harness/agents/` |
 | **Verification tools** | [`docs/harness/tools/`](../docs/harness/tools/index.md) |
@@ -16,4 +16,4 @@
 
 ## Master (one line)
 
-Select a situation orchestration (agents + knowledge). If none → feedback to developer → write the recipe → then dispatch.
+Reuse a situation recipe when one matches. Otherwise follow `docs/harness/workflows/implement.md`. Propose a new recipe only when the situation will repeat.

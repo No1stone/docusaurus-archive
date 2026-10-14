@@ -22,7 +22,7 @@ General Best Practice
 
 | Level | What it is | Where it lives |
 |-------|------------|----------------|
-| **Project Local Rules** | Rules of the repository being worked on: its `AGENTS.md`, `.cursor/rules`, lint/format config, PR template, CI checks, existing code style | the target repo, found by Scout |
+| **Project Local Rules** | Rules of the repository being worked on: its `AGENTS.md`, `.cursor/rules`, lint/format config, PR template, CI checks, existing code style. A project copy of a common rule states its scope and why it differs | the target repo |
 | **Current Harness Standards** | What this archive currently says is the way: [coding conventions](./coding-conventions.md), Knowledge pages marked `status: active`, tool rules | `docs/harness/context/`, `docs/knowledge/` |
 | **Profile** | The usual asset combo for a kind of stack, including its default verification set | `docs/harness/profiles/` |
 | **Accepted ADR** | A recorded decision with context, alternatives, consequences | `docs/decisions/` |

@@ -15,6 +15,7 @@ Backend knowledge is organized by **engineering concept** first, then by technol
 - [Controller](./controller/) — layer responsibilities and boundaries
 - [Facade](./facade/) — use-case composition of Service and Port
 - [Service](./service/) — stable data-access contracts, query and command split
+- [Testing](./testing/) — test boundaries, layout, names, and how to run them
 
 ## Technology notes
 

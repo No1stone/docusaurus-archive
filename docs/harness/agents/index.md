@@ -19,14 +19,14 @@ Implementer is the role that produces code in the registered style, so it is the
 
 ## Two kinds of roles
 
-```text
-Delivery loop (per task)      Implementer → Reviewer → Tester → QA
-Around the loop               Scout   (before: what does this repo look like?)
-                              Curator (after: what here should become a standard?)
-Supervising both              Master
-```
+역할 문서는 책임입니다.
+매번 모든 역할을 별도 에이전트로 실행하지 않습니다.
+기본 흐름은 [`../workflows/implement.md`](../workflows/implement.md)입니다.
 
-Scout and Curator are dispatched by Master only when the situation calls for them; orchestrations list them explicitly when required.
+Scout은 낯선 저장소나 정보가 부족할 때만 갑니다.
+Reviewer는 새 계약, 복잡한 정합성, 중요한 설계 변경일 때만 참여합니다.
+QA와 E2E는 중요한 사용자 흐름일 때만 합니다.
+Curator는 사용자가 승격을 요청할 때만 사용합니다.
 
 ## Adding a role
 

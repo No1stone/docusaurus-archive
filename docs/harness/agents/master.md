@@ -2,6 +2,7 @@
 
 > **개요:** 감독 역할입니다.
 > 상황을 보고 orchestration을 고르거나 만든 뒤 일을 나눠 주고 결과를 확인합니다.
+> 구현 전에 요구사항, 작업 범위, 제외 범위를 정리하고 통과 기준을 확정합니다.
 > 판단이 필요하면 Knowledge와 설계 원칙을 봅니다.
 > 그 글을 임플리먼터의 구현 명세로 넘기지 않습니다.
 > 대규모 직접 구현은 하지 않습니다.
@@ -45,7 +46,7 @@ Do **not** run Master on Haiku/Flash/Kimi-cheap pools.
 **May not**
 
 - Do large-scale implementation itself (Implementer owns that)
-- Hand Knowledge to Implementer as the structure to invent. Where a template covers the work, Implementer follows it. Where it does not, Master decides.
+- Hand Knowledge to Implementer as the structure to invent. Implementer follows an applicable template, otherwise the repository's existing pattern, otherwise a minimum change inside the approved scope. Master decides only when a new layer, public contract, dependency, or architecture choice is required.
 - Skip the gap report and improvise a one-off doc mix
 - Raise a worker's freedom above its role default
 
@@ -57,8 +58,8 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 1. **Classify** the user request into a situation  
 2. **Select** a matching file under `docs/harness/orchestrations/`  
-3. If **none / poor fit** → **feedback to the developer** (gap report) → **author** the fitting orchestration MD  
-4. **Dispatch** subagents listed in that orchestration, with its knowledge assembly  
+3. If none fits, use the [default path](../workflows/implement.md). Propose a new recipe only when the situation will repeat.  
+4. Run only the roles that path or the selected recipe requires. Do not spawn every role.  
 5. **Collect** returns → rework / approve  
 
 ### Not the primary job
@@ -72,12 +73,12 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ```text
 Request
-  → unfamiliar repo? → Scout (read-only repo map)
-  → find orchestration for this situation
-      → found: run its agent + knowledge assembly
-      → missing: developer feedback → write orchestration → then run
-  → after delivery: anything proven worth keeping? → Curator (promotion proposal)
-      → Master + developer approve → archive updated
+  → read CURRENT.md and the docs this task needs
+  → familiar repo and existing pattern? → default path only
+  → unfamiliar or missing facts? → Scout
+  → existing recipe? → reuse it
+  → no recipe? → default path. Propose a new recipe only if this situation will repeat
+  → reusable finding? → report a candidate. Curator only if the user asks
 ```
 
 Scout: [`scout.md`](./scout.md), Curator: [`curator.md`](./curator.md)
@@ -96,9 +97,9 @@ When no orchestration fits, tell the developer:
 |------|---------|
 | Detected situation | “Spring Web BFF CRUD 추가” |
 | Search result | no file / only partial match `…` |
-| Proposed agents | Implementer → Reviewer → Tester → QA |
+| Proposed agents | Tester (기준과 테스트) → Reviewer (기준 검토) → Master 확정 → Implementer → Tester (실행) → QA |
 | Proposed knowledge mix | paths from Index (or “Index also missing pages”) |
-| Next action | write `docs/harness/orchestrations/{id}.md` |
+| Next action | default path. Propose a recipe only if the situation will repeat |
 
 If Index lacks knowledge pages, say so — do not fake Current Practice.
 

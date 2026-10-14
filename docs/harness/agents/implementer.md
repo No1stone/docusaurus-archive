@@ -1,9 +1,11 @@
 # Agent: Implementer
 
 > **개요:** 구현 담당입니다.
-> 템플릿이 있으면 그 모양대로 구현합니다.
-> 템플릿이 없으면 구조를 만들지 않고 Master에게 돌립니다.
-> Knowledge를 읽어 구조를 설계하지 않습니다.
+> 우선순위는 프로젝트 규칙과 실제 구현, 적용 가능한 템플릿, 저장소의 기존 패턴, 승인된 범위의 최소 구현입니다.
+> 템플릿이 없다는 이유만으로 중단하지 않습니다.
+> 새 계층, 공개 계약, 의존성, 아키텍처 결정은 선택지와 영향을 보고한 뒤, 결정 이후에 진행합니다.
+> 이미 승인된 결정은 다시 받지 않습니다.
+> 테스트를 지우거나 기대 결과를 약화하지 않습니다.
 
 **Role model:** Builder — owns concrete changes to code, docs, templates, or harness assets.
 
@@ -36,16 +38,18 @@ Orchestration may reorder this list for one task, but keep 2–4 options when po
 
 **May**
 
-- Copy the Template source in full. Do not drop methods
+- Copy an applicable Template in full. Do not drop methods
 - Replace the token `ExampleItem` with the mission domain name, and replace sample columns with the target entity fields
-- Make purely mechanical choices the Template leaves open (names derived from the mission, obvious imports)
-- Return `BLOCKED` or a Rework Hint when the listed context does not cover the case
+- Follow the repository's existing implementation pattern when no template applies
+- Make the minimum change inside the approved scope when neither a template nor an existing pattern applies
+- Return options and impact to Master before adding a layer, a public contract, a dependency, or an architecture decision
 
 **May not**
 
-- Choose a different layering, naming, or error-handling shape than the Template
-- Introduce libraries, patterns, or conventions not present in the assembled context
+- Stop only because a template is absent
+- Add a layer, public contract, dependency, or architecture decision before Master chooses
 - Widen or narrow the mission ("while I was here…")
+- Delete tests or weaken expected results to pass
 - Resolve ambiguity by guessing — ambiguity goes back to Master
 
 If the Template and the mission conflict, stop and report; do not pick one silently.
@@ -57,7 +61,7 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 ## Responsibilities
 
 1. Follow **only** the Context mix paths in the **task orchestration** Master attached (`docs/harness/orchestrations/{task-id}.md`), plus minimal discovery if a listed path is wrong.
-2. Where a Template covers the work, copy that shape. Where it does not, return `BLOCKED` to Master. Do not read Knowledge or engineering principles to invent a structure.
+2. Follow this order: project rules and the code that is already there, an applicable template, the repository's existing pattern, then the minimum change inside the approved scope. Do not stop because a template is missing. Report options and impact before a new layer, public contract, dependency, or architecture decision. Do not ask again for a decision that is already approved.
 3. Implement the mission (code and/or Archive Markdown/templates)
 4. Keep changes surgical — no drive-by refactors
 5. Return status + artifacts for Master

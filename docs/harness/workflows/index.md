@@ -6,6 +6,7 @@ Default role-order hints. Situation-specific assembly lives in [`../orchestratio
 
 | Workflow | Doc |
 |----------|-----|
+| 구현 전 통과 기준 | [acceptance.md](./acceptance.md) |
 | Implement | [implement.md](./implement.md) |
 | Bugfix | [bugfix.md](./bugfix.md) |
 | Refactor | [refactor.md](./refactor.md) |

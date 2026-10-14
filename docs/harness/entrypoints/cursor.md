@@ -4,12 +4,11 @@
 
 ## Master behavior
 
-1. Classify situation from the user request  
-2. Search `docs/harness/orchestrations/` for a matching recipe  
-3. **If missing** → tell the developer (gap) → write `docs/harness/orchestrations/{id}.md` from `template.md`  
-4. Dispatch Task workers using **that** orchestration (agent assembly + knowledge assembly)  
-
-Do **not** treat “mix docs live in chat” as the normal path.
+1. Read `docs/harness/CURRENT.md` and the task docs. Do not load the whole archive.  
+2. Follow [`../workflows/implement.md`](../workflows/implement.md).  
+3. Reuse a file under `docs/harness/orchestrations/` when one matches.  
+4. Do not write a new recipe unless the situation will repeat.  
+5. Do not spawn every role. Curator runs only when the user asks to promote.
 
 ## Task prompt
 

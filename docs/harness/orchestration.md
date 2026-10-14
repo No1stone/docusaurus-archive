@@ -20,18 +20,17 @@ Stored under [`orchestrations/`](./orchestrations/). Reused when the same situat
 ```text
 User request
     ↓
-Master: classify situation
+CURRENT.md와 이번 작업 문서만
     ↓
 Matching orchestration exists?
-    ├─ YES → select it → run agent pipeline with its knowledge mix
-    └─ NO  → feedback to developer (gap)
-              → author docs/harness/orchestrations/{situation}.md
-              → then run (or wait for human OK)
+    ├─ YES → reuse it
+    └─ NO  → default path in workflows/implement.md
+              A new recipe is proposed only when the situation will repeat
 ```
 
-Master does **not** casually remix the Archive every turn as improvisation.
-
-Master **selects** an existing orchestration, or **creates** one for a new situation after telling the developer what was missing.
+Master does **not** write a recipe for every request.
+Master does **not** spawn every role.
+Curator runs only when the user asks to promote Knowledge or templates.
 
 ---
 
@@ -51,9 +50,9 @@ Master must tell the developer, clearly:
 1. What situation was detected  
 2. That **no orchestration** covers it (or only a partial match)  
 3. What agents + knowledge pages would be needed  
-4. That Master will **write** `docs/harness/orchestrations/{id}.md` (or asks approval first if policy requires)
+4. The run uses the [default path](./workflows/implement.md) unless a recipe already exists.
 
-Do not silently invent a one-off mix and discard it. Persist the recipe.
+Do not write a one-off recipe and do not spawn every role.
 
 ---
 

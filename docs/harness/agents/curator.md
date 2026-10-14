@@ -3,7 +3,9 @@
 > **개요:** 아카이브 승격 담당입니다.
 > 프로젝트에서 반복된 코드와 결정을 도메인과 비밀을 벗겨 Template, Knowledge, ADR로 올리고 Index와 History를 맞춥니다.
 > "이것이 기준이 될 만한지"를 묻는 유일한 역할입니다.
-> 최종 승인은 Master와 개발자입니다.
+> 기본 개발 경로에서는 실행하지 않습니다.
+> 사용자가 기준 정리나 승격을 요청할 때만 사용합니다.
+> 최종 승인은 사용자입니다.
 
 **Role model:** Archive librarian — moves what has proven itself in projects into the SSOT, in the archive's own shape, and keeps the maps current.
 

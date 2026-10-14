@@ -1,10 +1,21 @@
 # Task / Situation Orchestrations
 
-> **개요:** 상황별 레시피 모음. 있으면 재사용, 없으면 알린 뒤 template으로 작성.
+> **개요:** 반복되는 상황의 레시피입니다.
+> 없는 요청은 기본 흐름으로 처리합니다.
+> 새 파일은 같은 상황이 반복될 때만 제안합니다.
 
 Durable **recipes**: which agents + which knowledge-base docs for a situation.
 
 Master **selects** these. Master **writes** one only when the situation is new (after feedback to the developer).
+
+## Recipes
+
+| ID | When |
+|----|------|
+| [spring-api-one-set](./spring-api-one-set.md) | Spring REST 테이블 한 세트 추가. 통과 테스트 다음 구현 |
+| [spring-bugfix](./spring-bugfix.md) | 재현 테스트 다음 최소 수정 |
+| [spring-refactor-layer](./spring-refactor-layer.md) | 기존 테스트가 녹색인 뒤 구조만 변경 |
+| [archive-promote-pattern](./archive-promote-pattern.md) | 구현이 끝난 뒤 Curator 승격 제안 |
 
 ## Layout
 
