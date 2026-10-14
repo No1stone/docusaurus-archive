@@ -26,7 +26,7 @@ General Best Practice
 | **Current Harness Standards** | What this archive currently says is the way: [coding conventions](./coding-conventions.md), Knowledge pages marked `status: active`, tool rules | `docs/harness/context/`, `docs/knowledge/` |
 | **Profile** | The usual asset combo for a kind of stack, including its default verification set | `docs/harness/profiles/` |
 | **Accepted ADR** | A recorded decision with context, alternatives, consequences | `docs/decisions/` |
-| **Template** | Concrete reference code (`ExampleItem` slice) | `docs/harness/templates/` |
+| **Template** | Concrete reference code (RestOutLog table set and enum apply set) | `docs/harness/templates/` |
 | **General Best Practice** | What the model knows from the wider world | nowhere in this repo |
 
 ## Why this order
@@ -43,8 +43,8 @@ General Best Practice
 | Project uses Lombok `@Getter/@Setter`; template has explicit getters | Project local wins. Write Lombok. Do not "fix" the project. |
 | Project lint enforces 2-space indent; template is 4-space | Project local wins. Formatter config is a local rule. |
 | Project has no Facade layer; template Controller → Facade → Service | Project local wins for layering **in that repo**. Scout reports the mismatch; Curator may later propose an ADR if the pattern recurs. |
-| Template uses `MapperSupport`; project has `ModelMapperUtil` | Project local. The template itself says "prefer host utilities". |
-| Knowledge page says soft delete; model "knows" hard delete is simpler | Harness standard wins over general practice. Soft delete. |
+| Template uses `ModelMapperUtil`; project has another mapper | Project local. Use the host mapper with the same `map` / `mapAll` calls. |
+| Knowledge page says `delete()` stays empty until a status column exists; model "knows" hard delete is simpler | Harness standard wins over general practice. Do not add `repository.delete`. |
 | Accepted ADR says Markdown + Git is SoT; someone proposes a CMS for docs | ADR wins unless a new ADR supersedes it. |
 | Profile lists `backend-unit-test` as default; project has no test runner | Profile is a default; Tester returns `BLOCKED`, Master decides. Nobody invents a runner. |
 | Two archive pages disagree | Treat as a bug in the archive. Report to Master; Curator fixes the page. Do not pick silently. |

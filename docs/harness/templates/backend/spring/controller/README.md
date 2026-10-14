@@ -1,35 +1,35 @@
 # Controller template
 
-> **개요:** 얇은 Web BFF Controller 예제입니다.
-> Facade에 위임하고 CommonResponse로 감쌉니다.
+> **개요:** 테이블 입구 컨트롤러입니다. entrance.{도메인}에 두고 @Hidden 입니다.
 
-Thin Web BFF controller.
-
-- `@Valid` on body / query
-- Delegate to Facade
-- Wrap with `CommonResponseUtils.responseSuccess`
-- No business logic / no Repository
-
-Linked knowledge: `docs/knowledge/backend/controller/controller-design.md`
+파사드 메서드와 같은 이름으로 한 번만 호출합니다.
+`controller` 하위 패키지는 두지 않습니다.
+응답은 `CommonResponseUtils.responseSuccess` 입니다.
 
 ## Files
 
-- [`ExampleItemWebController.java`](./ExampleItemWebController.java)
+- [`RestOutLogController.java`](./RestOutLogController.java)
 
 ## Source
 
-### `ExampleItemWebController.java`
+### `RestOutLogController.java`
 
 ```java
-package com.example.template.exampleitem.controller;
+package com.example.template.restoutlog.entrance;
 
-import com.example.template.exampleitem.dto.ExampleItemReq;
-import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.facade.ExampleItemFacade;
-import com.example.template.support.CommonResponse;
+import com.example.template.restoutlog.dto.RestOutLogReq;
+import com.example.template.restoutlog.dto.RestOutLogRes;
+import com.example.template.restoutlog.facade.RestOutLogFacade;
 import com.example.template.support.CommonResponseUtils;
-import jakarta.validation.Valid;
+import com.example.template.support.CommonResponse;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,46 +43,81 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Hidden
+@Tag(name = "RestOutLog", description = "le_rest_out_log")
+@Slf4j
 @RestController
-@RequestMapping("/web/example-items")
-public class ExampleItemWebController {
+@RequiredArgsConstructor
+@RequestMapping("/rest-out-logs")
+public class RestOutLogController {
 
-    private final ExampleItemFacade exampleItemFacade;
+    private final RestOutLogFacade restOutLogFacade;
 
-    public ExampleItemWebController(ExampleItemFacade exampleItemFacade) {
-        this.exampleItemFacade = exampleItemFacade;
-    }
-
+    @Operation(summary = "목록 조회")
     @GetMapping
-    public CommonResponse<Page<ExampleItemRes.Item>> searchForWeb(
-            @Valid @ModelAttribute ExampleItemReq.WebListQuery query
-    ) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.searchForWeb(query));
+    public CommonResponse<Page<RestOutLogRes.Item>> search(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.search(filter, pageable));
     }
 
+    @Operation(summary = "생성")
     @PostMapping
-    public CommonResponse<ExampleItemRes.WebCreated> createForWeb(
-            @Valid @RequestBody ExampleItemReq.WebCreate body
-    ) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.createForWeb(body));
+    public CommonResponse<RestOutLogRes.Id> save(@RequestBody RestOutLogReq.Create create) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.save(create));
     }
 
-    @PutMapping("/{id}")
-    public CommonResponse<ExampleItemRes.WebUpdated> updateForWeb(
-            @PathVariable Long id,
-            @Valid @RequestBody ExampleItemReq.WebUpdate body
-    ) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.updateForWeb(id, body));
+    @Operation(summary = "일괄 생성")
+    @PostMapping("/save-all")
+    public CommonResponse<List<RestOutLogRes.Id>> saveAll(@RequestBody List<RestOutLogReq.Create> createList) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveAll(createList));
     }
 
+    @Operation(summary = "단건 조회")
     @GetMapping("/{id}")
-    public CommonResponse<ExampleItemRes.Item> findByIdForWeb(@PathVariable Long id) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.findById(id));
+    public CommonResponse<RestOutLogRes.Item> findById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.findById(id));
     }
 
+    @Operation(summary = "수정")
+    @PutMapping("/{id}")
+    public CommonResponse<RestOutLogRes.Id> saveById(@Parameter(description = "ID") @PathVariable(name = "id") Long id, @RequestBody RestOutLogReq.Update update) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveById(id, update));
+    }
+
+    @Operation(summary = "삭제")
+    @DeleteMapping("/{id}")
+    public CommonResponse<?> deleteById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
+        restOutLogFacade.deleteById(id);
+        return CommonResponseUtils.responseSuccess();
+    }
+
+    @Operation(summary = "전체 조회")
+    @GetMapping("/find-all")
+    public CommonResponse<List<RestOutLogRes.Item>> findAll(@ModelAttribute RestOutLogReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAll(filter));
+    }
+
+    @Operation(summary = "아이디 선택 조회")
+    @GetMapping("/find-by-ids")
+    public CommonResponse<List<RestOutLogRes.Item>> findByIds(@RequestParam List<Long> ids) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.findByIds(ids));
+    }
+
+    @Operation(summary = "이름 검색")
+    @GetMapping("/search-name")
+    public CommonResponse<Page<RestOutLogRes.Name>> searchName(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.searchName(filter, pageable));
+    }
+
+    @Operation(summary = "이름 전체 조회")
+    @GetMapping("/find-all-name")
+    public CommonResponse<List<RestOutLogRes.Name>> findAllName(@ModelAttribute RestOutLogReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAllName(filter));
+    }
+
+    @Operation(summary = "아이디 선택 삭제")
     @DeleteMapping("/delete-by-ids")
-    public CommonResponse<Void> deactivateByIdsForWeb(@RequestParam List<Long> ids) {
-        exampleItemFacade.deactivateByIdsForWeb(ids);
+    public CommonResponse<?> deleteByIds(@RequestParam List<Long> ids) {
+        restOutLogFacade.deleteByIds(ids);
         return CommonResponseUtils.responseSuccess();
     }
 }

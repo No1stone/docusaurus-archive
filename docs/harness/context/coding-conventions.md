@@ -1,8 +1,9 @@
 # Coding Conventions
 
 > **개요:** 공통 구현 규칙입니다.
-> 템플릿 `ExampleItem` 슬라이스에 이미 있는 규칙을 글로 풀어 둔 것입니다.
+> 템플릿 `RestOutLog` 테이블 세트와 enum 적용 세트에 이미 있는 규칙을 글로 풀어 둔 것입니다.
 > Implementer는 이 문서와 템플릿을 그대로 따릅니다.
+> 예제 소스에서 메서드나 필드를 생략하지 않습니다.
 
 Shared implementation conventions for agent-assisted work. Every rule here is **already visible in code** under [`templates/backend/spring/`](../templates/backend/spring/README.md); this page states the rule so a worker does not have to infer it. When this page and the template disagree, report it — do not pick one.
 
@@ -12,15 +13,18 @@ Project-local rules always win over this page (see [precedence](./precedence.md)
 
 ```text
 Controller → Facade → Service → Repository
-                ↑ support (CommonResponse, BizErrorException, EnStatus, PageQuery, MapperSupport)
+                         ↓
+                    Spec.of(Filter)
+support: CommonResponse, BizErrorException, ModelMapperUtil, BeanUtils, PredicateBuilder
+enum apply: templates/backend/spring/enum
 ```
 
 | Layer | Owns | Must not |
 |-------|------|----------|
-| Controller | HTTP binding, `@Valid`, wrap response | Business rules, call Repository, open transactions |
-| Facade | Use-case composition, **transaction boundary**, Web↔domain DTO conversion | Touch JPA entities directly, call Repository |
-| Service | Domain operations on entities, mapping entity → `Res` | Know about HTTP or Web DTOs |
-| Repository | `JpaRepository` + `JpaSpecificationExecutor`; derived queries only | Business logic, mapping |
+| Controller | HTTP binding, wrap `CommonResponse`, `@Hidden` on the table entrance | Business rules, call Repository, open transactions |
+| Facade | Call the matching Service method. On enum apply, set `getCode()` back onto the String DTO | Touch JPA entities, call Repository, call Specs |
+| Service | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()` | Know about HTTP |
+| Repository | `JpaRepository` + empty custom repository + `JpaSpecificationExecutor` | Derived query methods, business logic, mapping |
 
 Controller may call only Facade. Facade may call only Service. Skipping a layer is a Reviewer `high` finding.
 
@@ -28,47 +32,52 @@ Controller may call only Facade. Facade may call only Service. Skipping a layer 
 
 | Thing | Convention | Example |
 |-------|------------|---------|
-| Request DTO holder | `{Domain}Req` with **inner static classes** | `ExampleItemReq.Create`, `ExampleItemReq.WebListQuery` |
-| Response DTO holder | `{Domain}Res` with inner static classes | `ExampleItemRes.Item`, `ExampleItemRes.Id` |
-| BFF-facing DTO | `Web` prefix inside the holder | `WebCreate`, `WebUpdate`, `WebCreated` |
-| Domain service input | no prefix | `Create`, `Update`, `Filter`, `Ids` |
-| Facade / Controller method for a surface | `{verb}For{Surface}` | `searchForWeb`, `createForWeb`, `deactivateByIdsForWeb` |
-| Service method | plain verb | `search`, `save`, `saveById`, `findById`, `deleteByIds` |
-| Specification holder | `{Domain}Specs`, `final`, private ctor, static factories | `ExampleItemSpecs.forWebList(...)` |
-| Entity table | `{prefix}_{snake_name}` | `ex_example_item` |
-| Status enum | `En{Name}` with short code + `of(String)` | `EnStatus.ACTIVE("A")` |
+| Request DTO holder | `{Domain}Req` with inner static classes | `RestOutLogReq.Ids`, `Filter`, `Create`, `Update` |
+| Response DTO holder | `{Domain}Res` with inner static classes | `Id`, then `Name`, then `Single`, then `Item` |
+| Facade / Controller method | same plain name on both | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
+| Service method | the same list, unchanged when an enum is applied | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
+| Specification holder | `{Domain}Specs.of(Filter)` only | `RestOutLogSpecs.of` |
+| Entity table | `{prefix}_{snake_name}` | `le_rest_out_log` |
+| Enum | `@BizEnum` + `CodeValue` + `code` / `value` | `EnHttpMethod`, shared `EnYn`, `EnStatus` |
 
-One holder class per domain per direction. Do not scatter `CreateExampleItemRequest`-style top-level classes.
+One holder class per domain per direction. Do not scatter `CreateRestOutLogRequest`-style top-level classes.
 
 ## DTO rules
 
-- Plain POJOs with getters/setters; no Lombok assumed in the template (follow the host project if it uses Lombok).
-- Validation annotations (`@NotBlank`, …) live on **Web** DTOs only. Domain `Create` / `Update` are trusted inputs.
-- `Web*` DTOs own the conversion: `WebCreate.toCreate()`, `WebUpdate.toUpdate()`. Trim strings there.
-- List queries extend `PageQuery` and expose `toPageable()`; default size 20, max 100, sort `id DESC`.
-- `Res.Id` is the standard "what was written" response; `WebCreated` / `WebUpdated` extend it rather than duplicating fields.
+- The template uses Lombok `@Data`. Match the host project when it differs.
+- Req inner classes are only `Ids`, `Filter`, `Create`, `Update`.
+- Res inner classes are only `Id`, `Name extends Id`, `Single extends Name`, `Item extends Single`.
+- `Filter` has `id`, then `ids`, then the column filters, then `startAt` and `endAt`.
+- Enum columns stay `String` on every DTO. Do not store `enum.name()`.
+- Paging is Spring `Pageable` on the controller. Do not add a `PageQuery` type.
 
 ## Transactions
 
-- Class-level `@Transactional(readOnly = true)` on **both** Facade and Service.
+- Class-level `@Transactional(readOnly = true, transactionManager = "transactionManager")` on both Facade and Service.
 - Write methods override with `@Transactional` at the method.
-- The Facade is the outer boundary; Service transactions join it. Do not start a transaction in the Controller.
+- Service transactions join the Facade. Do not start a transaction in the Controller.
 
 ## Persistence
 
-- Repository = `JpaRepository<E, Long>` + `JpaSpecificationExecutor<E>`; add derived queries (`findByIdIn`) only when a Specification does not fit.
-- Dynamic filters go into `{Domain}Specs` as composable `Specification` factories. No string-built JPQL in Service.
-- **Soft delete only.** Entities expose `delete()` that flips `EnStatus` to `DEACTIVATED`; nothing calls `repository.delete(...)`.
-- Status filter convention: `all` means no filter; otherwise `EnStatus.of(code)`.
+- Repository = `JpaRepository` + an empty custom repository + `JpaSpecificationExecutor`. No derived query methods. Single get is `findById`.
+- `findByIds` and `deleteByIds` fill `Filter.ids` and call `Specs.of`. If `ids` is null or empty, return without querying.
+- One spec factory: `of(Filter)`. `equal` per column, `in` on `id` for `ids`, `goe` / `loe` on `CreatedEntity.createdAt` for `startAt` / `endAt`.
+- `delete()` is empty until a status column exists. Do not call `repository.delete`.
+- Enum equality in a spec passes the enum from `ofNullable`, not the raw string. See the enum template.
 
 ## Partial update
 
-`saveById(id, Update)` treats **null as "leave unchanged"**. Check each field for null before setting, or use `MapperSupport.copyNonNull`. Never overwrite with null on update.
+`saveById` loads the entity and calls `BeanUtils.map(update, entity)`.
+Null and blank strings are not updates.
+Never overwrite with null on update.
 
 ## Mapping
 
-- Entity → `Res` via `MapperSupport.map` / `mapAll` (stand-in for the host's ModelMapper/BeanUtils). Prefer the host utility when one exists.
-- `Res` → entity mapping does not exist; writes go through explicit setters in Service so the write path stays readable.
+- `ModelMapperUtil.map` and `mapAll` convert DTO ↔ entity and entity → `Res`.
+- On enum apply, `BizEnumProcessor` emits `_Enum` whose static block registers two converters on `ModelMapperUtil.modelMapper`: enum to `getCode()`, and `String` to `of(code)`.
+- `static { new _Enum(); }` runs that registration before `map` / `mapAll`.
+- Do not add a conversion method on the Service. The full processor is in the enum template.
+- Prefer the host `ModelMapperUtil` when the project already has one.
 
 ## Errors and responses
 
@@ -79,10 +88,9 @@ One holder class per domain per direction. Do not scatter `CreateExampleItemRequ
 
 ## Testing
 
-- Unit tests per Service and Facade; JUnit 5 + Mockito, `@ExtendWith(MockitoExtension.class)`, `@InjectMocks` on the subject, `@Mock` on the next layer down.
-- Mock at the **next layer only**: Facade tests mock Service, Service tests mock Repository.
-- Use `given(...)` BDD style and `verify(...)` on writes. `@DisplayName` in the host's language.
-- Test shape: [`templates/backend/spring/testing/`](../templates/backend/spring/testing/README.md).
+- Follow tests the target repo already has.
+- The Spring template does not include a test slice.
+- When the repo uses Mockito, mock the next layer only: Facade tests mock Service, Service tests mock Repository.
 
 ## Prose
 

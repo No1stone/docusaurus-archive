@@ -30,7 +30,7 @@ The observable contract stays identical: same inputs produce the same outputs, s
 
 Two lists before anyone starts:
 
-- **Change**: e.g. "move query logic from Service into `ExampleItemSpecs`", "introduce Facade between Controller and Service"
+- **Change**: e.g. "move query logic from Service into `RestOutLogSpecs`", "introduce Facade between Controller and Service"
 - **Must not change**: endpoints, response shapes, DB schema, error codes, anything outside the named package
 
 The fence is what QA checks against. Without it, every refactor grows.

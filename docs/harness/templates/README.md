@@ -16,11 +16,14 @@ Lives under `docs/harness/templates/`.
 
 ## Start here
 
-- [Spring ExampleItem slice](./backend/spring/) — vertical flow with embedded sources:
+- [Spring RestOutLog slice](./backend/spring/) — table set, then the enum apply set. Both embed full sources with no omitted methods:
 
 ```text
-dto → persistence → service → facade → controller → testing
-(+ support stubs)
+controller → facade → service → repository
+                         ↓
+                    dto, spec, entity
+enum/ applies @BizEnum to one column of that set
+(+ support)
 ```
 
 Each layer folder:

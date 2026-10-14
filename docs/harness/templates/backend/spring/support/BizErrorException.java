@@ -11,4 +11,18 @@ public class BizErrorException extends RuntimeException {
     public ResponseType getType() {
         return type;
     }
+
+    public BizErrorException addData(String key, Object value) {
+        if (data == null) {
+            data = new java.util.HashMap<>();
+        }
+        data.put(key, value);
+        return this;
+    }
+
+    public java.util.Map<String, Object> getData() {
+        return data;
+    }
+
+    private java.util.Map<String, Object> data;
 }

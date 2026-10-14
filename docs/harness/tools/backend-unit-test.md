@@ -24,7 +24,7 @@ Does **not** prove: the HTTP contract against a real client, performance, UI.
 
 | Need | Source |
 |------|--------|
-| Test patterns to follow | target repo's existing tests first; then [`templates/backend/spring/testing/`](../templates/backend/spring/testing/README.md) |
+| Test patterns to follow | target repo's existing tests. The Spring template has no test slice. |
 | Runner | project's own (`./gradlew test`, `./mvnw test`, …) — never introduce a new one |
 | Mocking boundary | as the repo already does (e.g. Mockito at Service boundary) |
 
@@ -43,9 +43,9 @@ Master or the orchestration may pin a rung ("unit only").
 Under `## Artifacts`:
 
 ```text
-command: ./gradlew test --tests "com.example.ExampleItemServiceTest"
+command: ./gradlew test --tests "com.example.template.restoutlog.service.RestOutLogServiceTest"
 result:  12 tests, 12 passed, 0 failed, 0 skipped
-files:   src/test/java/.../ExampleItemServiceTest.java (added)
+files:   src/test/java/.../RestOutLogServiceTest.java (added)
 ```
 
 Counts and the exact command are required. A log excerpt is optional.
@@ -62,6 +62,6 @@ Return `BLOCKED` with the reason. Do not mark `PASS` on "compiles".
 
 | Item | Status |
 |------|--------|
-| JUnit 5 + Mockito unit tests | current (see template) |
+| JUnit 5 + Mockito unit tests | current when the target repo already has them |
 | Spring slice tests | use if the project already has them |
 | Testcontainers, k6 | recommended extension — only when listed in the orchestration |

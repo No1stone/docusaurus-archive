@@ -72,7 +72,7 @@ A new kind of review does not need a new agent. Master adds a label to the Revie
 |-------|-------|------------------|
 | *(none)* | Structure, layering, template fidelity | coding conventions + Template |
 | `security` | Input validation at the edge, secrets, auth boundaries, injection surfaces | security Knowledge page when written; until then, flag only what a listed standard covers |
-| `performance` | N+1, pagination caps, transaction scope, unbounded queries | persistence Knowledge + `PageQuery` limits |
+| `performance` | N+1, pagination caps, transaction scope, unbounded queries | persistence Knowledge + Spring `Pageable` on the table controller |
 | `archive` | A Curator proposal: separation rules, sanitization, evidence bar | [`curator.md`](../agents/curator.md) rules |
 
 If a label has no checklist page yet, Reviewer says so; it does not improvise a standard.
