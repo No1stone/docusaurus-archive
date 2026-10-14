@@ -1,6 +1,7 @@
 # Engineering Principles
 
-> **개요:** 이 아카이브와 하네스가 우선하는 원칙 네 가지. 각각 왜 필요한지, 어기면 무엇이 깨지는지, 아카이브 어디에 반영돼 있는지.
+> **개요:** 이 아카이브와 하네스가 우선하는 원칙입니다.
+> 각각 왜 필요한지, 어기면 무엇이 깨지는지, 아카이브 어디에 반영돼 있는지를 적습니다.
 
 High-level principles for this harness. They are few on purpose; each one shows up somewhere concrete in the repository.
 
@@ -56,14 +57,12 @@ Docusaurus is a reading UI. Cursor, Codex, Claude Code are adapters. Neither may
 
 ## 5. A pass bar before coding
 
-The harness states what coding must satisfy before it counts as done.
-Implementer starts only after that bar is confirmed.
-
-Master writes the requirement, scope, and exclusions.
-Tester writes the normal, boundary, and failure cases and how each is verified.
-Reviewer checks that the bar covers the requirement and does not force needless constraints.
-Master confirms it.
-Done means the tests pass, the requirement is met, and existing behavior did not regress.
+Before implementation, write the expected result and the done criteria.
+That is not a requirement to write tests first, or to cycle failure, pass, and cleanup, on every task.
+How each kind of work checks itself is [구현 전 통과 기준](../workflows/acceptance.md).
+Who runs the check is [implement](../workflows/implement.md).
+Done means the requirement is met and existing behavior did not regress.
+A green test run alone does not prove that.
 
 **Why.** Vibe coding without a bar ends at "it looks right".
 A bar written after the code gets weakened to match whatever was written.

@@ -5,12 +5,12 @@
 
 ## 기본 흐름
 
-요청과 범위를 확인합니다.
+범위와 통과 기준을 확인합니다.
 필요한 프로젝트 규칙과 템플릿을 고릅니다.
-통과 기준을 확인합니다.
 구현과 필요한 테스트를 합니다.
 검증합니다.
 짧은 작업 기록을 남깁니다.
+승인된 경우에만 커밋합니다.
 
 조건과 추가 절차는 [`docs/harness/workflows/implement.md`](./docs/harness/workflows/implement.md)입니다.
 통과 기준은 [`docs/harness/workflows/acceptance.md`](./docs/harness/workflows/acceptance.md)입니다.
@@ -28,7 +28,8 @@
 새 레시피는 같은 상황이 반복될 때만 제안합니다.
 모든 요청에 레시피를 만들지 않습니다.
 역할 문서는 책임입니다.
-매번 모든 역할을 별도 에이전트로 실행하지 않습니다.
+기본적으로 한 에이전트가 필요한 책임을 수행합니다.
+별도 에이전트 조건은 [`docs/harness/workflows/implement.md`](./docs/harness/workflows/implement.md)입니다.
 
 ## 규칙
 

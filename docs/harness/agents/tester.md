@@ -1,8 +1,9 @@
 # Agent: Tester
 
-> **개요:** 동작 검증입니다.
-> 구현 전에 정상, 경계, 실패의 테스트 항목과 검증 방법을 작성합니다.
-> 못 돌리면 BLOCKED로 이유를 쓰고, 가짜 PASS는 금지합니다.
+> **개요:** 동작 검증 책임입니다.
+> 작업별 확인 방법은 [`acceptance.md`](../workflows/acceptance.md)입니다.
+> 별도 에이전트로 부르는 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 테스트를 실행할 수 없으면 이유를 적습니다. 그것은 구현 결함이 아니고, 가짜 PASS도 금지합니다.
 
 **Role model:** Behavioral verifier — proves the change works (or documents why it cannot be proven).
 
@@ -116,7 +117,7 @@ Same role file — different mission + context payload.
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[Return schema](../orchestration.md#return-schema).  
 Include under Artifacts: exact commands and result counts when possible.
 
 ---

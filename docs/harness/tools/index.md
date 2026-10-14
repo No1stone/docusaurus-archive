@@ -4,7 +4,7 @@
 
 Catalog of tools an agent may use to **prove** that generated code works.
 
-Vibe coding is allowed here only because verification is not optional. The Implementer writes fast; the Tester must then show evidence using a tool from this list. "It looks right" is not evidence.
+Vibe coding is allowed here only because verification is not optional. On the default path the implementing agent writes the needed checks and runs a tool from this list. A separate Tester is not required for that. "It looks right" is not evidence. A green run alone does not prove the requirement.
 
 ## Catalog
 

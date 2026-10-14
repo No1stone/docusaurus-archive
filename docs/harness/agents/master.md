@@ -97,7 +97,7 @@ When no orchestration fits, tell the developer:
 |------|---------|
 | Detected situation | “Spring Web BFF CRUD 추가” |
 | Search result | no file / only partial match `…` |
-| Proposed agents | Tester (기준과 테스트) → Reviewer (기준 검토) → Master 확정 → Implementer → Tester (실행) → QA |
+| Proposed agents | 기본 흐름의 한 에이전트. 별도 에이전트는 implement.md 조건일 때만 |
 | Proposed knowledge mix | paths from Index (or “Index also missing pages”) |
 | Next action | default path. Propose a recipe only if the situation will repeat |
 
@@ -110,13 +110,13 @@ If Index lacks knowledge pages, say so — do not fake Current Practice.
 - Maintain / select **situation** orchestrations (agents + knowledge assembly)  
 - Use Index + Profile to choose what to put **into** a new recipe  
 - Persist new recipes under `docs/harness/orchestrations/`  
-- Spawn roles only from the **selected** orchestration  
+- 기본 Workflow의 조건에 맞는 역할만 별도로 실행합니다. 레시피가 없어도 기본 경로로 진행합니다.
 - Send Scout ahead instead of exploring an unfamiliar repo itself  
 - Approve or reject Curator promotion proposals, and surface them to the developer  
 
 ## Does not
 
-- Silently one-off remix without feedback or a saved orchestration  
+- 기본 경로로 충분한 요청에 새 레시피나 불필요한 역할을 추가하는 것
 - Load the whole Archive into workers  
 - Skip developer-visible gap reports when nothing matches  
 

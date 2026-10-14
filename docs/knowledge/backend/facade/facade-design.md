@@ -5,13 +5,18 @@ description: 업무 Facade가 Service와 Port를 유스케이스 흐름으로 �
 tags:
   - backend
   - facade
-status: active
+status: draft
 ---
 # Facade Design
 
 > **개요:** 업무 Facade가 Service와 Port를 유스케이스 흐름으로 조합하는 방식입니다.
 > 기술 연결을 Facade 안에서 만들지 않습니다.
 > Spring 템플릿의 테이블 파사드는 서비스만 주입하는 코드 모양이고, 이 문서는 그 조합 책임입니다.
+
+## 적용 상태
+
+문서는 게시되어 있지만 공통 구현 기준으로의 채택은 사용자 검토 대기입니다.
+명시적으로 채택되거나 해당 작업에 적용하도록 요청되기 전에는 기존 프로젝트 규칙과 템플릿을 대체하지 않습니다.
 
 ## 예시: ID를 이름으로 변환하여 제공
 

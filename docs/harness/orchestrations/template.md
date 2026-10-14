@@ -32,16 +32,20 @@
 
 ## Agent assembly
 
-| Order | Role | Model pool | Freedom | Mission template | Required |
-|-------|------|------------|---------|------------------|----------|
-| 0 | Master | role default (Opus-class pool) | role default (high) | route. Later, confirm the pass bar before Implementer | yes |
-| 0a | Scout | role default (cheap exploration pool) | role default (medium, read-only) | repo map for … | no (unfamiliar repo only) |
-| 1 | Tester | role default (cheap checklist pool) | role default (medium) | pass criteria, test skeleton, and tests for the missing behavior | yes |
-| 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | criteria cover the requirement and do not add needless constraints | yes |
-| 3 | Implementer | role default (cheap coding pool) | role default (low) | implement the confirmed pass bar and project rules. Use an applicable template, otherwise the repo's existing pattern, otherwise the minimum change in scope. A new layer, public contract, dependency, or architecture choice waits for Master | yes |
-| 4 | Tester | role default (cheap checklist pool) | role default (medium) | run the same tests. Do not delete or weaken them | yes |
-| 5 | QA | role default (cheap checklist pool) | role default (medium) | requirement met, and no regression | yes |
-| 6 | Curator | role default (cheap writing pool) | role default (medium) | promote … if proven | no (promotion situations) |
+별도 에이전트는 `docs/harness/workflows/implement.md`를 넘지 않습니다.
+역할 열은 책임입니다. 별도 실행 열에 기본 흐름의 한 에이전트가 하면 `no`입니다.
+
+| Order | Role | Model pool | Freedom | Mission template | 별도 에이전트 |
+|-------|------|------------|---------|------------------|----------------|
+| 0 | Master | role default (Opus-class pool) | role default (high) | 범위와 통과 기준 | 기본 흐름에서는 구현 담당과 나눌 때만 |
+| 0a | Scout | role default (cheap exploration pool) | role default (medium, read-only) | repo map for … | 낯선 저장소 또는 정보 부족일 때만 |
+| 1 | Implementer | role default (cheap coding pool) | role default (low) | 확정된 기준과 프로젝트 규칙. 적용 템플릿, 없으면 저장소 패턴, 없으면 승인 범위의 최소 구현. 새 계층, 공개 계약, 의존성, 아키텍처는 Master 결정 후 | 구현을 맡을 때 |
+| 2 | Reviewer | role default (cheap checklist pool) | role default (medium) | 복잡한 계약, 중요한 정합성, 중요한 설계 변경만 | 그 조건일 때만 |
+| 3 | QA | role default (cheap checklist pool) | role default (medium) | 중요한 사용자 흐름의 요구사항과 회귀 | 그 조건일 때만 |
+| 4 | Curator | role default (cheap writing pool) | role default (medium) | 후보를 문서로 올릴 때 | 사용자가 요청할 때만 |
+
+확인 방법은 `docs/harness/workflows/acceptance.md`입니다.
+테스트를 삭제하거나 기대 결과를 약화하지 않습니다.
 
 Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`  
 
@@ -53,7 +57,7 @@ Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`
 
 ## Verification tools
 
-What the Tester must use to prove this situation's result. Pick from [`../tools/`](../tools/index.md); do not name tools that are not catalogued.
+검증에 쓸 도구입니다. 별도 Tester 실행을 뜻하지 않습니다. Pick from [`../tools/`](../tools/index.md); do not name tools that are not catalogued.
 
 | Tool | Rung / scope | Required | Evidence QA expects |
 |------|--------------|----------|---------------------|
@@ -61,7 +65,7 @@ What the Tester must use to prove this situation's result. Pick from [`../tools/
 | `playwright-e2e` | flows: … | yes / no | spec file + run result |
 | `browser-manual` | smoke only | yes / no | steps + screenshot (labelled manual) |
 
-If a required tool is `BLOCKED` in the target environment, Tester returns `BLOCKED` and Master decides — the orchestration does not get silently downgraded to "looks fine".
+실행할 수 없는 도구는 `BLOCKED`와 이유를 적습니다. 그것은 구현 결함이 아닙니다. 결과를 눈으로 통과 처리하지 않습니다.
 
 ---
 
@@ -95,7 +99,7 @@ Role: docs/harness/agents/<role>.md
 Model: first available from Agent assembly pool or role model_candidates
 Mission: from Agent assembly
 Load: Knowledge assembly only
-Verify with: Verification tools table (Tester)
+Verify with: Verification tools table. This is the check, not a separate Tester.
 Return: docs/harness/orchestration.md schema
 ```
 

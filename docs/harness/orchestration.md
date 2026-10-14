@@ -80,9 +80,11 @@ Workers receive:
 role MD + selected orchestration MD + mission for that role
 ```
 
-They load **only** the knowledge paths listed in that orchestration.
+선택된 레시피가 있으면 그 읽기 목록을 따릅니다.
+레시피가 없는 기본 경로에서는 작업 범위, 프로젝트 규칙과 관련 템플릿만 확인합니다.
+별도 에이전트를 사용하는 경우에도 필요한 경로와 역할만 전달합니다.
 
-Return schema:
+## Return schema
 
 ```markdown
 ## Status
@@ -98,7 +100,7 @@ PASS | FAIL | BLOCKED | PARTIAL
 
 ## Anti-patterns
 
-- Remixing docs every request without writing/selecting an orchestration file  
+- 기본 경로로 충분한 요청에 새 레시피나 불필요한 읽기 목록을 만드는 것
 - Hiding “no recipe” gaps from the developer  
 - One mega orchestration for the whole Archive  
 - Workers free-browsing `docs/` outside the selected recipe  

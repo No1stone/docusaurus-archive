@@ -13,7 +13,9 @@ Skeleton profile for Spring-style HTTP API work.
 ### Knowledge
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
-- Service / persistence / validation — TODO when written
+- [Facade Design](/docs/knowledge/backend/facade/facade-design) — 참고 문서, 공통 구현 기준 채택 대기
+- [Service](/docs/knowledge/backend/service/service-design) — 참고 문서, 공통 구현 기준 채택 대기
+- [테스트 기본 구조](/docs/knowledge/backend/testing/test-structure)
 
 ### Technology
 

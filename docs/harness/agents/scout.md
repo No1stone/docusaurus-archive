@@ -118,7 +118,7 @@ Keep it to one screen. Detail goes in a short appendix only if Master asked.
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[Return schema](../orchestration.md#return-schema).  
 `PASS` = map delivered within scope. `PARTIAL` = some checklist items could not be determined (list them). `BLOCKED` = repo not accessible.
 
 ---

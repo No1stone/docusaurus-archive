@@ -1,8 +1,10 @@
 # Agent: QA
 
-> **개요:** 요청 완수 확인입니다.
-> 테스트 통과만이 아니라 요구사항 충족과 기존 동작의 회귀를 봅니다.
-> 처음 부탁한 항목이 빠짐없이 반영됐는지 체크리스트로 봅니다.
+> **개요:** 요청 완수 확인 책임입니다.
+> 별도 에이전트는 중요한 사용자 흐름일 때만입니다.
+> 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 별도 실행이 없어도 요구사항 충족과 회귀 확인은 합니다.
+> 테스트 통과만으로 요청 충족을 단정하지 않습니다.
 
 **Role model:** Acceptance / requirement fulfillment checker.
 
@@ -99,7 +101,7 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[Return schema](../orchestration.md#return-schema).  
 `PASS` only if every checklist item has evidence.
 
 ---

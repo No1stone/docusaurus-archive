@@ -43,6 +43,8 @@ Orchestration may reorder this list for one task, but keep 2–4 options when po
 - Follow the repository's existing implementation pattern when no template applies
 - Make the minimum change inside the approved scope when neither a template nor an existing pattern applies
 - Return options and impact to Master before adding a layer, a public contract, a dependency, or an architecture decision
+- On the default path, when Tester and QA are not separate agents, write the needed tests, run them, and verify the change. The return stays Implementer
+- When Tester or QA is a separate agent, keep that role's result separate from the implementation result
 
 **May not**
 
@@ -60,7 +62,10 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Responsibilities
 
-1. Follow **only** the Context mix paths in the **task orchestration** Master attached (`docs/harness/orchestrations/{task-id}.md`), plus minimal discovery if a listed path is wrong.
+1. 선택된 orchestration이 있으면 그 읽기 목록을 따릅니다.
+기본 경로에서는 작업 범위, 프로젝트 규칙과 관련 템플릿만 확인합니다.
+레시피가 없다는 이유로 중단하거나 새 레시피를 만들지 않습니다.
+경로가 잘못됐거나 구현에 필요한 정보가 부족한 경우에만 최소 탐색을 수행합니다.
 2. Follow this order: project rules and the code that is already there, an applicable template, the repository's existing pattern, then the minimum change inside the approved scope. Do not stop because a template is missing. Report options and impact before a new layer, public contract, dependency, or architecture decision. Do not ask again for a decision that is already approved.
 3. Implement the mission (code and/or Archive Markdown/templates)
 4. Keep changes surgical — no drive-by refactors
@@ -81,7 +86,8 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 - Broad folder rewrites unrelated to mission
 - Invent ADRs or History without evidence
 - Load entire Knowledge tree
-- Act as Reviewer/Tester/QA (may self-check lightly, but role returns stay Implementer)
+- Act as Reviewer, or return a Reviewer verdict
+- Take over Tester or QA when that role is already assigned as a separate agent
 
 ---
 
@@ -113,7 +119,7 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Return schema
 
-Use [`../orchestration.md`](../orchestration.md) §4. Status `PASS` only when mission artifacts exist and constraints were respected.
+Use the [return schema](../orchestration.md#return-schema). Status `PASS` only when mission artifacts exist and constraints were respected.
 
 ---
 

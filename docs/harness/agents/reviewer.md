@@ -1,8 +1,9 @@
 # Agent: Reviewer
 
-> **개요:** 구조와 기준 리뷰입니다.
-> 구현 전에 통과 기준이 요구사항을 담고 불필요한 제약을 강요하지 않는지 봅니다.
-> 동작 여부는 Tester, 요청을 다 했는지 여부는 QA가 봅니다.
+> **개요:** 구조와 기준 리뷰 책임입니다.
+> 별도 에이전트는 복잡한 계약, 중요한 정합성, 중요한 설계 변경일 때만입니다.
+> 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 동작 확인과 요청 충족 확인은 그 책임과 결과를 구분합니다.
 
 **Role model:** Architecture & standards reviewer — not a test runner, not a product QA.
 
@@ -96,7 +97,7 @@ Reviewer may **PASS** while QA **FAIL**s (correct architecture, incomplete deliv
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[Return schema](../orchestration.md#return-schema).  
 `FAIL` if any high-severity finding remains unaddressed.
 
 ---

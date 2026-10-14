@@ -124,7 +124,7 @@ One-off code from a single task stays in the project or goes to **Experiments**,
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[Return schema](../orchestration.md#return-schema).  
 `PASS` = proposal staged and sanitized, evidence listed, no secrets, maps updated. `PARTIAL` = staged but evidence bar not met (say so). `BLOCKED` = source material unavailable or domain cannot be separated safely.
 
 Under `## Artifacts` include a short table: `source → target path → area → evidence`.

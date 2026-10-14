@@ -13,7 +13,7 @@ Adapter: Claude Code ↔ Origemite harness roles.
 ## Role binding
 
 Parent session = **Master**.  
-Subagents / sequential role passes follow [`../agents/`](../agents/) contracts and the spawn payload in orchestration §4.
+Subagents follow [`../agents/`](../agents/) contracts and the [return schema](../orchestration.md#return-schema). Separate agents follow [`../workflows/implement.md`](../workflows/implement.md).
 
 ## Verification tool mapping
 

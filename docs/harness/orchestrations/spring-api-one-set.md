@@ -1,9 +1,8 @@
 # Orchestration: `spring-api-one-set`
 
 > **개요:** Spring REST API 테이블 한 세트를 추가하는 상황입니다.
-> 익숙한 저장소면 [`implement.md`](../workflows/implement.md)의 기본 흐름만 사용합니다.
-> 통과 기준은 템플릿 기준을 재사용하고 이번 차이만 추가합니다.
-> Reviewer, QA, Scout, Curator는 그 문서의 추가 절차일 때만 참여합니다.
+> 기본 흐름과 별도 에이전트는 [`implement.md`](../workflows/implement.md)입니다.
+> 확인 방법은 [`acceptance.md`](../workflows/acceptance.md)의 템플릿 기반 CRUD입니다.
 
 | Field | Value |
 |-------|--------|
@@ -13,44 +12,43 @@
 | Profile hint | `docs/harness/profiles/spring-api.md` |
 | Status | active |
 
-## Agent assembly
+## 이 상황
 
-| Order | Role | Mission | Required |
-|-------|------|---------|----------|
-| 0 | Master | 범위와 제외 범위를 정리하고, 기준 검토 후 통과 기준을 확정합니다. | yes |
-| 0a | Scout | 낯선 저장소면 읽기 전용 지도를 만듭니다. | no |
-| 1 | Tester | 통과 기준, 테스트 골격, 기대한 동작이 없을 때 실패하는 테스트를 작성합니다. | yes |
-| 2 | Reviewer | 기준이 요구사항을 담고 불필요한 구현 제약을 강요하지 않는지 봅니다. | yes |
-| 3 | Implementer | 확정된 기준과 프로젝트 규칙으로 구현합니다. 이 상황은 ExampleItem 템플릿을 씁니다. 메서드를 생략하지 않습니다. | yes |
-| 4 | Tester | 같은 테스트를 실행합니다. 테스트를 지우거나 기대 결과를 약화하지 않습니다. | yes |
-| 5 | QA | 요청한 엔드포인트, 요구사항 충족, 기존 동작의 회귀를 확인합니다. | yes |
-| 6 | Curator | 반복되어 기준이 될 때만 승격을 제안합니다. | no |
+별도 에이전트는 [`implement.md`](../workflows/implement.md)를 따릅니다.
+아래는 그 흐름 안에서 이 상황이 지키는 것입니다.
+
+- 템플릿 기준을 재사용하고 이번 차이만 추가합니다.
+- ExampleItem 템플릿의 구조, 메서드 목록, DTO 형태, 계층 책임을 유지합니다. 도메인명만 바꿉니다.
+- 관련 테스트를 작성하고 실행합니다. 기존 테스트로 충분하면 중복을 만들지 않습니다.
+- 요구사항과 회귀를 확인합니다. Reviewer와 QA를 별도로 실행하지 않아도 이 확인은 합니다.
+- 반복되어 기준이 될 발견은 후보만 보고합니다.
 
 모델 풀과 자유도는 각 역할 기본값입니다.
 Freedom은 역할 기본값보다 높이지 않습니다.
 
 ## Verification tools
 
-| Tool | Rung / scope | Required | Evidence QA expects |
-|------|--------------|----------|---------------------|
-| `backend-unit-test` | `./gradlew test`. 배치는 `docs/knowledge/backend/testing/test-structure.md` | yes | command + pass/fail counts |
-| `playwright-e2e` | 이 상황의 기본값이 아님 | no | |
-| `browser-manual` | 이 상황의 기본값이 아님 | no | |
+| Tool | Rung / scope | 검증 | 증거 |
+|------|--------------|------|------|
+| `backend-unit-test` | `./gradlew test`. 배치는 `docs/knowledge/backend/testing/test-structure.md` | 관련 테스트가 있을 때 | command와 pass/fail |
+| `playwright-e2e` | 이 상황의 기본값이 아님 | 아님 | |
+| `browser-manual` | 이 상황의 기본값이 아님 | 아님 | |
+
+이 표의 검증은 별도 에이전트 실행이 아닙니다.
+테스트 건수는 실행 증거이며 품질의 단독 기준이 아닙니다.
 
 ## Knowledge assembly
 
-Implementer는 템플릿만 읽습니다.
-Knowledge는 Master와 Reviewer가 기준을 볼 때 읽습니다.
+Implementer는 적용 템플릿을 읽습니다.
+Facade, Service 설계 문서는 구현 기준으로 쓰지 않습니다. 채택은 사용자 확인 전입니다.
 
 | Path | Who | Kind |
 |------|-----|------|
-| `docs/knowledge/backend/controller/controller-design.md` | Master, Reviewer | current |
-| `docs/knowledge/backend/facade/facade-design.md` | Master, Reviewer | current |
-| `docs/knowledge/backend/service/service-design.md` | Master, Reviewer | current |
-| `docs/knowledge/backend/testing/test-structure.md` | Master, Tester, Reviewer | current |
-| `docs/harness/workflows/acceptance.md` | Master, Tester, Reviewer | current |
-| `docs/harness/templates/backend/spring/` | Implementer, Tester | current |
-| `docs/harness/templates/backend/spring/testing/` | Tester, Implementer | current |
+| `docs/knowledge/backend/controller/controller-design.md` | 판단이 필요할 때 | current |
+| `docs/knowledge/backend/testing/test-structure.md` | 테스트를 둘 때 | current |
+| `docs/harness/workflows/acceptance.md` | 기준을 정할 때 | current |
+| `docs/harness/templates/backend/spring/` | 구현 | current |
+| `docs/harness/templates/backend/spring/testing/` | 테스트가 필요할 때 | current |
 
 ## Constraints
 

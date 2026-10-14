@@ -17,16 +17,12 @@
 
 Implementer is the role that produces code in the registered style, so it is the only one held at `low`. Checking roles need room to judge, so they sit at `medium`.
 
-## Two kinds of roles
+## 실행
 
 역할 문서는 책임입니다.
-매번 모든 역할을 별도 에이전트로 실행하지 않습니다.
-기본 흐름은 [`../workflows/implement.md`](../workflows/implement.md)입니다.
-
-Scout은 낯선 저장소나 정보가 부족할 때만 갑니다.
-Reviewer는 새 계약, 복잡한 정합성, 중요한 설계 변경일 때만 참여합니다.
-QA와 E2E는 중요한 사용자 흐름일 때만 합니다.
-Curator는 사용자가 승격을 요청할 때만 사용합니다.
+기본적으로 한 에이전트가 필요한 책임을 수행합니다.
+별도 에이전트 조건은 [`../workflows/implement.md`](../workflows/implement.md) 한 곳입니다.
+필수 검증과 필수 에이전트 실행은 다릅니다.
 
 ## Adding a role
 

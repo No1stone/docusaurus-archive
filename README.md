@@ -66,8 +66,8 @@ Markdown은 Docusaurus 없이도 읽을 수 있어야 합니다.
 
 [`docs/harness/index.md`](./docs/harness/index.md)와 루트 [`AGENTS.md`](./AGENTS.md)를 봅니다.
 
-에이전트는 아카이브 전체를 읽지 않습니다.
-Index, 고른 문서, `docs/harness/templates`와 ADR, 필요할 때만 History 순으로 읽습니다.
+에이전트는 [`AGENTS.md`](./AGENTS.md)와 [`docs/harness/CURRENT.md`](./docs/harness/CURRENT.md), 이번 작업 문서만 읽습니다.
+전체 히스토리, 모든 역할 문서, 전체 템플릿을 기본으로 읽지 않습니다.
 
 ## Templates
 
