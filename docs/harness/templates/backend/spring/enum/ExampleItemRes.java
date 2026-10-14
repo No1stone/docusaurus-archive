@@ -1,4 +1,4 @@
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -8,9 +8,9 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 
-public class RestOutLogRes {
+public class ExampleItemRes {
 
-    @Schema(description = "RestOutLogRes.Id DTO")
+    @Schema(description = "ExampleItemRes.Id DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Id {
@@ -18,7 +18,7 @@ public class RestOutLogRes {
         private Long id;
     }
 
-    @Schema(description = "RestOutLogRes.Name DTO")
+    @Schema(description = "ExampleItemRes.Name DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -26,7 +26,7 @@ public class RestOutLogRes {
         // 변수 없음
     }
 
-    @Schema(description = "RestOutLogRes.Single DTO")
+    @Schema(description = "ExampleItemRes.Single DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -49,7 +49,7 @@ public class RestOutLogRes {
         private String response;
     }
 
-    @Schema(description = "RestOutLogRes.Item DTO")
+    @Schema(description = "ExampleItemRes.Item DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)

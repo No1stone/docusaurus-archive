@@ -8,15 +8,15 @@
 
 ## Files
 
-- [`RestOutLogReq.java`](./RestOutLogReq.java)
-- [`RestOutLogRes.java`](./RestOutLogRes.java)
+- [`ExampleItemReq.java`](./ExampleItemReq.java)
+- [`ExampleItemRes.java`](./ExampleItemRes.java)
 
 ## Source
 
-### `RestOutLogReq.java`
+### `ExampleItemReq.java`
 
 ```java
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -27,9 +27,9 @@ import lombok.experimental.FieldNameConstants;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class RestOutLogReq {
+public class ExampleItemReq {
 
-    @Schema(description = "RestOutLogReq.Ids DTO")
+    @Schema(description = "ExampleItemReq.Ids DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Ids {
@@ -37,7 +37,7 @@ public class RestOutLogReq {
         private List<Long> ids;
     }
 
-    @Schema(description = "RestOutLogReq.Filter DTO")
+    @Schema(description = "ExampleItemReq.Filter DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     @FieldNameConstants
@@ -68,7 +68,7 @@ public class RestOutLogReq {
         private LocalDateTime endAt;
     }
 
-    @Schema(description = "RestOutLogReq.Create DTO")
+    @Schema(description = "ExampleItemReq.Create DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Create {
@@ -88,7 +88,7 @@ public class RestOutLogReq {
         private String response;
     }
 
-    @Schema(description = "RestOutLogReq.Update DTO")
+    @Schema(description = "ExampleItemReq.Update DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Update {
@@ -111,10 +111,10 @@ public class RestOutLogReq {
 }
 ```
 
-### `RestOutLogRes.java`
+### `ExampleItemRes.java`
 
 ```java
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -124,9 +124,9 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 
-public class RestOutLogRes {
+public class ExampleItemRes {
 
-    @Schema(description = "RestOutLogRes.Id DTO")
+    @Schema(description = "ExampleItemRes.Id DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Id {
@@ -134,7 +134,7 @@ public class RestOutLogRes {
         private Long id;
     }
 
-    @Schema(description = "RestOutLogRes.Name DTO")
+    @Schema(description = "ExampleItemRes.Name DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -142,7 +142,7 @@ public class RestOutLogRes {
         // 변수 없음
     }
 
-    @Schema(description = "RestOutLogRes.Single DTO")
+    @Schema(description = "ExampleItemRes.Single DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -165,7 +165,7 @@ public class RestOutLogRes {
         private String response;
     }
 
-    @Schema(description = "RestOutLogRes.Item DTO")
+    @Schema(description = "ExampleItemRes.Item DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)

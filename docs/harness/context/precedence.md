@@ -26,7 +26,7 @@ General Best Practice
 | **Current Harness Standards** | What this archive currently says is the way: [coding conventions](./coding-conventions.md), Knowledge pages marked `status: active`, tool rules | `docs/harness/context/`, `docs/knowledge/` |
 | **Profile** | The usual asset combo for a kind of stack, including its default verification set | `docs/harness/profiles/` |
 | **Accepted ADR** | A recorded decision with context, alternatives, consequences | `docs/decisions/` |
-| **Template** | Concrete reference code (RestOutLog table set and enum apply set) | `docs/harness/templates/` |
+| **Template** | Concrete reference code (ExampleItem table set and enum apply set) | `docs/harness/templates/` |
 | **General Best Practice** | What the model knows from the wider world | nowhere in this repo |
 
 ## Why this order

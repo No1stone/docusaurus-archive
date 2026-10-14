@@ -34,7 +34,8 @@ Orchestration may reorder this list for one task, but keep 2–4 options when po
 
 **May**
 
-- Copy structure from the listed Template and fill it with mission data
+- Copy the Template source in full. Do not drop methods
+- Replace the token `ExampleItem` with the mission domain name, and replace sample columns with the target entity fields
 - Make purely mechanical choices the Template leaves open (names derived from the mission, obvious imports)
 - Return `BLOCKED` or a Rework Hint when the listed context does not cover the case
 

@@ -1,4 +1,4 @@
-package com.example.template.restoutlog.enums;
+package com.example.template.exampleitem.enums;
 
 import com.example.template.support.CodeValue;
 import com.example.template.support.BizErrorException;

@@ -30,7 +30,7 @@ Skeleton profile for Spring-style HTTP API work.
 ### Templates
 
 - Site: [/docs/harness/templates/backend/spring/](/docs/harness/templates/backend/spring/)
-- Repo: `docs/harness/templates/backend/spring/` — RestOutLog table set (controller → facade → service → repository, dto, spec, entity) and [enum/](../templates/backend/spring/enum/) for applying `@BizEnum`
+- Repo: `docs/harness/templates/backend/spring/` — ExampleItem table set (controller → facade → service → repository, dto, spec, entity) and [enum/](../templates/backend/spring/enum/) for applying `@BizEnum`
 
 ### Decisions
 

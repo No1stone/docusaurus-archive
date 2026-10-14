@@ -16,7 +16,7 @@ Lives under `docs/harness/templates/`.
 
 ## Start here
 
-- [Spring RestOutLog slice](./backend/spring/) — table set, then the enum apply set. Both embed full sources with no omitted methods:
+- [Spring ExampleItem slice](./backend/spring/) — table set, then the enum apply set. Both embed full sources with no omitted methods:
 
 ```text
 controller → facade → service → repository

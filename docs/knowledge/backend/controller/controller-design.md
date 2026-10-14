@@ -11,7 +11,7 @@ status: active
 
 > **개요:** Controller를 어떻게 설계하는지(책임, 경계)입니다.
 > Spring MVC 사용법 문서가 아닙니다.
-> 짝이 되는 코드 모양은 템플릿 `RestOutLogController`입니다.
+> 짝이 되는 코드 모양은 템플릿 `ExampleItemController`입니다.
 
 How the controller layer is designed: responsibilities and boundaries.
 
@@ -30,8 +30,8 @@ A different contract gets its own controller and path.
 
 | Responsibility | How it looks |
 |----------------|--------------|
-| **Bind** the request | `@RequestBody`, `@ModelAttribute`, `@PathVariable`, `@RequestParam` onto `RestOutLogReq` inner classes and `Pageable` |
-| **Delegate** | Exactly one Facade call per endpoint, same method name: `restOutLogFacade.save(create)` |
+| **Bind** the request | `@RequestBody`, `@ModelAttribute`, `@PathVariable`, `@RequestParam` onto `ExampleItemReq` inner classes and `Pageable` |
+| **Delegate** | Exactly one Facade call per endpoint, same method name: `exampleItemFacade.save(create)` |
 | **Shape the response** | Wrap the Facade result in `CommonResponse<T>` via `CommonResponseUtils.responseSuccess(...)`; void writes return `responseSuccess()` |
 | **Own the route** | Class-level `@RequestMapping("/rest-out-logs")` and `@Hidden`; method paths match the template controller, including `/save-all`, `/find-all`, `/find-by-ids`, `/search-name`, `/find-all-name`, `/delete-by-ids` |
 
@@ -82,4 +82,4 @@ Controllers are **not** the primary unit test target. Behavior lives in Facade a
 
 ## Templates
 
-Knowledge answers *why / what / responsibility*. Templates show *concrete code shape*. Keep them linked, not duplicated: when this page and `RestOutLogController` disagree, one of them is wrong — report it rather than following either silently.
+Knowledge answers *why / what / responsibility*. Templates show *concrete code shape*. Keep them linked, not duplicated: when this page and `ExampleItemController` disagree, one of them is wrong — report it rather than following either silently.

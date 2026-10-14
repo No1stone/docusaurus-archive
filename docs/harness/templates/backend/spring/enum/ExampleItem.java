@@ -1,6 +1,6 @@
-package com.example.template.restoutlog.entity;
+package com.example.template.exampleitem.entity;
 
-import com.example.template.restoutlog.enums.EnHttpMethod;
+import com.example.template.exampleitem.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +22,7 @@ import org.hibernate.annotations.DynamicInsert;
 import static lombok.AccessLevel.PROTECTED;
 
 /**
- * REST outbound 호출 로그. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
+ * 샘플 엔티티입니다. 클래스명 ExampleItem은 치환 토큰이고 컬럼은 샘플입니다. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
  *
  * @see db/init/01_init.sql
  */
@@ -33,12 +33,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Setter
 @Entity
 @FieldNameConstants
-@Table(name = "le_rest_out_log", indexes = {
-        @Index(name = "ix_le_rest_out_log_response_http_status", columnList = "response_http_status"),
-        @Index(name = "ix_le_rest_out_log_url", columnList = "url")
+@Table(name = "le_example_item", indexes = {
+        @Index(name = "ix_le_example_item_response_http_status", columnList = "response_http_status"),
+        @Index(name = "ix_le_example_item_url", columnList = "url")
 })
 @DynamicInsert
-public class RestOutLog extends CreatedEntity {
+public class ExampleItem extends CreatedEntity {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)

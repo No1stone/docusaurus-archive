@@ -43,9 +43,9 @@ Master or the orchestration may pin a rung ("unit only").
 Under `## Artifacts`:
 
 ```text
-command: ./gradlew test --tests "com.example.template.restoutlog.service.RestOutLogServiceTest"
+command: ./gradlew test --tests "com.example.template.exampleitem.service.ExampleItemServiceTest"
 result:  12 tests, 12 passed, 0 failed, 0 skipped
-files:   src/test/java/.../RestOutLogServiceTest.java (added)
+files:   src/test/java/.../ExampleItemServiceTest.java (added)
 ```
 
 Counts and the exact command are required. A log excerpt is optional.

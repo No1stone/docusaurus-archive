@@ -9,23 +9,23 @@
 
 ## Files
 
-- [`RestOutLogService.java`](./RestOutLogService.java)
+- [`ExampleItemService.java`](./ExampleItemService.java)
 
 ## Source
 
-### `RestOutLogService.java`
+### `ExampleItemService.java`
 
 ```java
-package com.example.template.restoutlog.service;
+package com.example.template.exampleitem.service;
 
 import com.example.template.support.BizErrorException;
 import com.example.template.support.BeanUtils;
 import com.example.template.support.ResponseType;
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.entity.RestOutLog;
-import com.example.template.restoutlog.repository.RestOutLogRepository;
-import com.example.template.restoutlog.spec.RestOutLogSpecs;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.repository.ExampleItemRepository;
+import com.example.template.exampleitem.spec.ExampleItemSpecs;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -42,75 +42,75 @@ import static com.example.template.support.ModelMapperUtil.mapAll;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class RestOutLogService {
+public class ExampleItemService {
 
-    private final RestOutLogRepository restOutLogRepository;
+    private final ExampleItemRepository exampleItemRepository;
 
-    public Page<RestOutLogRes.Item> search(RestOutLogReq.Filter filter, Pageable pageable) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), pageable);
-        return mapAll(page, RestOutLogRes.Item.class);
+    public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), pageable);
+        return mapAll(page, ExampleItemRes.Item.class);
     }
 
     @Transactional
-    public RestOutLogRes.Id save(RestOutLogReq.Create create) {
-        RestOutLog entity = map(create, RestOutLog.class);
-        entity = restOutLogRepository.save(entity);
-        return map(entity, RestOutLogRes.Id.class);
+    public ExampleItemRes.Id save(ExampleItemReq.Create create) {
+        ExampleItem entity = map(create, ExampleItem.class);
+        entity = exampleItemRepository.save(entity);
+        return map(entity, ExampleItemRes.Id.class);
     }
 
     @Transactional
-    public List<RestOutLogRes.Id> saveAll(List<RestOutLogReq.Create> createList) {
+    public List<ExampleItemRes.Id> saveAll(List<ExampleItemReq.Create> createList) {
         if (createList == null || createList.isEmpty()) {
             return List.of();
         }
-        List<RestOutLog> saveList = createList.stream()
-                .map(item -> map(item, RestOutLog.class))
+        List<ExampleItem> saveList = createList.stream()
+                .map(item -> map(item, ExampleItem.class))
                 .toList();
-        return mapAll(restOutLogRepository.saveAll(saveList), RestOutLogRes.Id.class);
+        return mapAll(exampleItemRepository.saveAll(saveList), ExampleItemRes.Id.class);
     }
 
-    public RestOutLogRes.Item findById(Long id) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
-        return map(entity, RestOutLogRes.Item.class);
+    public ExampleItemRes.Item findById(Long id) {
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
+        return map(entity, ExampleItemRes.Item.class);
     }
 
     @Transactional
-    public RestOutLogRes.Id saveById(Long id, RestOutLogReq.Update update) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
+    public ExampleItemRes.Id saveById(Long id, ExampleItemReq.Update update) {
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
         BeanUtils.map(update, entity);
-        return map(entity, RestOutLogRes.Id.class);
+        return map(entity, ExampleItemRes.Id.class);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.UNDEFINED));
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.UNDEFINED));
         entity.delete();
     }
 
-    public List<RestOutLogRes.Item> findAll(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
         return search(filter, Pageable.unpaged()).getContent();
     }
 
-    public List<RestOutLogRes.Item> findByIds(List<Long> ids) {
+    public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
         if (ids == null || ids.isEmpty()) {
             return List.of();
         }
-        RestOutLogReq.Filter filter = new RestOutLogReq.Filter();
+        ExampleItemReq.Filter filter = new ExampleItemReq.Filter();
         filter.setIds(ids);
-        return mapAll(restOutLogRepository.findAll(RestOutLogSpecs.of(filter)), RestOutLogRes.Item.class);
+        return mapAll(exampleItemRepository.findAll(ExampleItemSpecs.of(filter)), ExampleItemRes.Item.class);
     }
 
-    public Page<RestOutLogRes.Name> searchName(RestOutLogReq.Filter filter, Pageable pageable) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), pageable);
-        return mapAll(page, RestOutLogRes.Name.class);
+    public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), pageable);
+        return mapAll(page, ExampleItemRes.Name.class);
     }
 
-    public List<RestOutLogRes.Name> findAllName(RestOutLogReq.Filter filter) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), Pageable.unpaged());
-        return mapAll(page.stream().toList(), RestOutLogRes.Name.class);
+    public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), Pageable.unpaged());
+        return mapAll(page.stream().toList(), ExampleItemRes.Name.class);
     }
 
     @Transactional
@@ -118,9 +118,9 @@ public class RestOutLogService {
         if (ids == null || ids.isEmpty()) {
             return;
         }
-        RestOutLogReq.Filter filter = new RestOutLogReq.Filter();
+        ExampleItemReq.Filter filter = new ExampleItemReq.Filter();
         filter.setIds(ids);
-        restOutLogRepository.findAll(RestOutLogSpecs.of(filter)).forEach(RestOutLog::delete);
+        exampleItemRepository.findAll(ExampleItemSpecs.of(filter)).forEach(ExampleItem::delete);
     }
 }
 ```

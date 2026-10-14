@@ -1,7 +1,7 @@
 # Coding Conventions
 
 > **개요:** 공통 구현 규칙입니다.
-> 템플릿 `RestOutLog` 테이블 세트와 enum 적용 세트에 이미 있는 규칙을 글로 풀어 둔 것입니다.
+> 템플릿 `ExampleItem` 테이블 세트와 enum 적용 세트에 이미 있는 규칙을 글로 풀어 둔 것입니다.
 > Implementer는 이 문서와 템플릿을 그대로 따릅니다.
 > 예제 소스에서 메서드나 필드를 생략하지 않습니다.
 
@@ -32,15 +32,15 @@ Controller may call only Facade. Facade may call only Service. Skipping a layer 
 
 | Thing | Convention | Example |
 |-------|------------|---------|
-| Request DTO holder | `{Domain}Req` with inner static classes | `RestOutLogReq.Ids`, `Filter`, `Create`, `Update` |
+| Request DTO holder | `{Domain}Req` with inner static classes | `ExampleItemReq.Ids`, `Filter`, `Create`, `Update` |
 | Response DTO holder | `{Domain}Res` with inner static classes | `Id`, then `Name`, then `Single`, then `Item` |
 | Facade / Controller method | same plain name on both | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
 | Service method | the same list, unchanged when an enum is applied | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
-| Specification holder | `{Domain}Specs.of(Filter)` only | `RestOutLogSpecs.of` |
-| Entity table | `{prefix}_{snake_name}` | `le_rest_out_log` |
+| Specification holder | `{Domain}Specs.of(Filter)` only | `ExampleItemSpecs.of` |
+| Entity table | `{prefix}_{snake_name}` | `le_example_item` |
 | Enum | `@BizEnum` + `CodeValue` + `code` / `value` | `EnHttpMethod`, shared `EnYn`, `EnStatus` |
 
-One holder class per domain per direction. Do not scatter `CreateRestOutLogRequest`-style top-level classes.
+One holder class per domain per direction. Do not scatter `CreateExampleItemRequest`-style top-level classes.
 
 ## DTO rules
 

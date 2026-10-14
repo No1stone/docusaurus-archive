@@ -1,4 +1,4 @@
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -9,9 +9,9 @@ import lombok.experimental.FieldNameConstants;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class RestOutLogReq {
+public class ExampleItemReq {
 
-    @Schema(description = "RestOutLogReq.Ids DTO")
+    @Schema(description = "ExampleItemReq.Ids DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Ids {
@@ -19,7 +19,7 @@ public class RestOutLogReq {
         private List<Long> ids;
     }
 
-    @Schema(description = "RestOutLogReq.Filter DTO")
+    @Schema(description = "ExampleItemReq.Filter DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     @FieldNameConstants
@@ -50,7 +50,7 @@ public class RestOutLogReq {
         private LocalDateTime endAt;
     }
 
-    @Schema(description = "RestOutLogReq.Create DTO")
+    @Schema(description = "ExampleItemReq.Create DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Create {
@@ -70,7 +70,7 @@ public class RestOutLogReq {
         private String response;
     }
 
-    @Schema(description = "RestOutLogReq.Update DTO")
+    @Schema(description = "ExampleItemReq.Update DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Update {

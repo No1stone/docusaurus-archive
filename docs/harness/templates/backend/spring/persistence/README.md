@@ -13,16 +13,16 @@
 
 ## Files
 
-- [`RestOutLog.java`](./RestOutLog.java)
-- [`RestOutLogRepository.java`](./RestOutLogRepository.java)
-- [`RestOutLogSpecs.java`](./RestOutLogSpecs.java)
+- [`ExampleItem.java`](./ExampleItem.java)
+- [`ExampleItemRepository.java`](./ExampleItemRepository.java)
+- [`ExampleItemSpecs.java`](./ExampleItemSpecs.java)
 
 ## Source
 
-### `RestOutLog.java`
+### `ExampleItem.java`
 
 ```java
-package com.example.template.restoutlog.entity;
+package com.example.template.exampleitem.entity;
 
 import com.example.template.support.CreatedEntity;
 import jakarta.persistence.Column;
@@ -45,7 +45,7 @@ import org.hibernate.annotations.DynamicInsert;
 import static lombok.AccessLevel.PROTECTED;
 
 /**
- * REST outbound 호출 로그. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
+ * 샘플 엔티티입니다. 클래스명 ExampleItem은 치환 토큰이고 컬럼은 샘플입니다. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
  *
  * @see db/init/01_init.sql
  */
@@ -56,12 +56,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Setter
 @Entity
 @FieldNameConstants
-@Table(name = "le_rest_out_log", indexes = {
-        @Index(name = "ix_le_rest_out_log_response_http_status", columnList = "response_http_status"),
-        @Index(name = "ix_le_rest_out_log_url", columnList = "url")
+@Table(name = "le_example_item", indexes = {
+        @Index(name = "ix_le_example_item_response_http_status", columnList = "response_http_status"),
+        @Index(name = "ix_le_example_item_url", columnList = "url")
 })
 @DynamicInsert
-public class RestOutLog extends CreatedEntity {
+public class ExampleItem extends CreatedEntity {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)
@@ -94,12 +94,12 @@ public class RestOutLog extends CreatedEntity {
 }
 ```
 
-### `RestOutLogRepository.java`
+### `ExampleItemRepository.java`
 
 ```java
-package com.example.template.restoutlog.repository;
+package com.example.template.exampleitem.repository;
 
-import com.example.template.restoutlog.entity.RestOutLog;
+import com.example.template.exampleitem.entity.ExampleItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -107,49 +107,49 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
- * RestOutLog Repository
+ * ExampleItem Repository
  */
-public interface RestOutLogRepository extends JpaRepository<RestOutLog, Long>, RestOutLogCustomRepository, JpaSpecificationExecutor<RestOutLog> {
+public interface ExampleItemRepository extends JpaRepository<ExampleItem, Long>, ExampleItemCustomRepository, JpaSpecificationExecutor<ExampleItem> {
 }
 
 @Repository
-interface RestOutLogCustomRepository {
+interface ExampleItemCustomRepository {
 }
 
 @RequiredArgsConstructor
-class RestOutLogCustomRepositoryImpl implements RestOutLogCustomRepository {
+class ExampleItemCustomRepositoryImpl implements ExampleItemCustomRepository {
     private final JPAQueryFactory queryFactory;
 }
 ```
 
-### `RestOutLogSpecs.java`
+### `ExampleItemSpecs.java`
 
 ```java
-package com.example.template.restoutlog.spec;
+package com.example.template.exampleitem.spec;
 
 import com.example.template.support.CreatedEntity;
 import com.example.template.support.PredicateBuilder;
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.entity.RestOutLog;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.entity.ExampleItem;
 import org.springframework.data.jpa.domain.Specification;
 
-public class RestOutLogSpecs {
+public class ExampleItemSpecs {
 
-    public static Specification<RestOutLog> of(RestOutLogReq.Filter filter) {
+    public static Specification<ExampleItem> of(ExampleItemReq.Filter filter) {
         return (root, query, builder) -> {
 
             PredicateBuilder predicateBuilder = new PredicateBuilder(builder, root);
 
-            predicateBuilder.equal(RestOutLog.Fields.id, filter.getId());
-            predicateBuilder.in(RestOutLog.Fields.id, filter.getIds());
+            predicateBuilder.equal(ExampleItem.Fields.id, filter.getId());
+            predicateBuilder.in(ExampleItem.Fields.id, filter.getIds());
             predicateBuilder.goe(CreatedEntity.Fields.createdAt, filter.getStartAt());
             predicateBuilder.loe(CreatedEntity.Fields.createdAt, filter.getEndAt());
-            predicateBuilder.equal(RestOutLog.Fields.httpMethod, filter.getHttpMethod());
-            predicateBuilder.equal(RestOutLog.Fields.url, filter.getUrl());
-            predicateBuilder.equal(RestOutLog.Fields.parameter, filter.getParameter());
-            predicateBuilder.equal(RestOutLog.Fields.payload, filter.getPayload());
-            predicateBuilder.equal(RestOutLog.Fields.responseHttpStatus, filter.getResponseHttpStatus());
-            predicateBuilder.equal(RestOutLog.Fields.response, filter.getResponse());
+            predicateBuilder.equal(ExampleItem.Fields.httpMethod, filter.getHttpMethod());
+            predicateBuilder.equal(ExampleItem.Fields.url, filter.getUrl());
+            predicateBuilder.equal(ExampleItem.Fields.parameter, filter.getParameter());
+            predicateBuilder.equal(ExampleItem.Fields.payload, filter.getPayload());
+            predicateBuilder.equal(ExampleItem.Fields.responseHttpStatus, filter.getResponseHttpStatus());
+            predicateBuilder.equal(ExampleItem.Fields.response, filter.getResponse());
             return predicateBuilder.build();
         };
     }

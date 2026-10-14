@@ -8,18 +8,18 @@
 
 ## Files
 
-- [`RestOutLogController.java`](./RestOutLogController.java)
+- [`ExampleItemController.java`](./ExampleItemController.java)
 
 ## Source
 
-### `RestOutLogController.java`
+### `ExampleItemController.java`
 
 ```java
-package com.example.template.restoutlog.entrance;
+package com.example.template.exampleitem.entrance;
 
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.facade.RestOutLogFacade;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.facade.ExampleItemFacade;
 import com.example.template.support.CommonResponseUtils;
 import com.example.template.support.CommonResponse;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -44,80 +44,80 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Hidden
-@Tag(name = "RestOutLog", description = "le_rest_out_log")
+@Tag(name = "ExampleItem", description = "le_example_item")
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/rest-out-logs")
-public class RestOutLogController {
+public class ExampleItemController {
 
-    private final RestOutLogFacade restOutLogFacade;
+    private final ExampleItemFacade exampleItemFacade;
 
     @Operation(summary = "목록 조회")
     @GetMapping
-    public CommonResponse<Page<RestOutLogRes.Item>> search(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.search(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Item>> search(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.search(filter, pageable));
     }
 
     @Operation(summary = "생성")
     @PostMapping
-    public CommonResponse<RestOutLogRes.Id> save(@RequestBody RestOutLogReq.Create create) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.save(create));
+    public CommonResponse<ExampleItemRes.Id> save(@RequestBody ExampleItemReq.Create create) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.save(create));
     }
 
     @Operation(summary = "일괄 생성")
     @PostMapping("/save-all")
-    public CommonResponse<List<RestOutLogRes.Id>> saveAll(@RequestBody List<RestOutLogReq.Create> createList) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveAll(createList));
+    public CommonResponse<List<ExampleItemRes.Id>> saveAll(@RequestBody List<ExampleItemReq.Create> createList) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.saveAll(createList));
     }
 
     @Operation(summary = "단건 조회")
     @GetMapping("/{id}")
-    public CommonResponse<RestOutLogRes.Item> findById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findById(id));
+    public CommonResponse<ExampleItemRes.Item> findById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findById(id));
     }
 
     @Operation(summary = "수정")
     @PutMapping("/{id}")
-    public CommonResponse<RestOutLogRes.Id> saveById(@Parameter(description = "ID") @PathVariable(name = "id") Long id, @RequestBody RestOutLogReq.Update update) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveById(id, update));
+    public CommonResponse<ExampleItemRes.Id> saveById(@Parameter(description = "ID") @PathVariable(name = "id") Long id, @RequestBody ExampleItemReq.Update update) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.saveById(id, update));
     }
 
     @Operation(summary = "삭제")
     @DeleteMapping("/{id}")
     public CommonResponse<?> deleteById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
-        restOutLogFacade.deleteById(id);
+        exampleItemFacade.deleteById(id);
         return CommonResponseUtils.responseSuccess();
     }
 
     @Operation(summary = "전체 조회")
     @GetMapping("/find-all")
-    public CommonResponse<List<RestOutLogRes.Item>> findAll(@ModelAttribute RestOutLogReq.Filter filter) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAll(filter));
+    public CommonResponse<List<ExampleItemRes.Item>> findAll(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findAll(filter));
     }
 
     @Operation(summary = "아이디 선택 조회")
     @GetMapping("/find-by-ids")
-    public CommonResponse<List<RestOutLogRes.Item>> findByIds(@RequestParam List<Long> ids) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findByIds(ids));
+    public CommonResponse<List<ExampleItemRes.Item>> findByIds(@RequestParam List<Long> ids) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findByIds(ids));
     }
 
     @Operation(summary = "이름 검색")
     @GetMapping("/search-name")
-    public CommonResponse<Page<RestOutLogRes.Name>> searchName(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.searchName(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Name>> searchName(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.searchName(filter, pageable));
     }
 
     @Operation(summary = "이름 전체 조회")
     @GetMapping("/find-all-name")
-    public CommonResponse<List<RestOutLogRes.Name>> findAllName(@ModelAttribute RestOutLogReq.Filter filter) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAllName(filter));
+    public CommonResponse<List<ExampleItemRes.Name>> findAllName(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findAllName(filter));
     }
 
     @Operation(summary = "아이디 선택 삭제")
     @DeleteMapping("/delete-by-ids")
     public CommonResponse<?> deleteByIds(@RequestParam List<Long> ids) {
-        restOutLogFacade.deleteByIds(ids);
+        exampleItemFacade.deleteByIds(ids);
         return CommonResponseUtils.responseSuccess();
     }
 }

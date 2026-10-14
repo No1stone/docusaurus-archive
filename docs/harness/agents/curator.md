@@ -35,7 +35,7 @@
 
 - Judge whether material is reusable enough to propose for promotion (see evidence bar)
 - Choose the target area (Experiment / Knowledge / Pattern / Template / ADR) and the page shape
-- Rewrite project code into the `RestOutLog` table-set form and strip domain terms
+- Rewrite project code into the `ExampleItem` table-set form and strip domain terms
 - Update `index/*.md`, Profile links, and History lines that follow from an approved promotion
 
 **May not**
@@ -70,7 +70,7 @@ Implementer is held at `low` freedom and must not judge what becomes a standard.
 
 1. **Intake** — take a candidate from Master: a project slice, a decision that keeps recurring, a Postmortem lesson, or an Experiment up for review
 2. **Classify** — decide the target area using the archive's separation: concept (Knowledge) vs technology note vs Pattern vs Architecture vs Decision vs Template
-3. **Sanitize** — remove business domain, real hostnames, credentials, PII, customer names; replace with the `RestOutLog` table set in `docs/harness/templates/`
+3. **Sanitize** — remove business domain, real hostnames, credentials, PII, customer names; replace with the `ExampleItem` table set in `docs/harness/templates/`
 4. **Write in archive form** — light frontmatter, `> **개요:**` line, small independent Markdown units, links to related pages that exist
 5. **Wire the maps** — `index/*.md`, the relevant Profile, template README; add a History line when a standard *replaces* an older one
 6. **Return a promotion proposal** for Master, not a fait accompli — files staged under the right paths, with the evidence listed

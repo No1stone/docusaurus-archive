@@ -1,9 +1,9 @@
-package com.example.template.restoutlog.facade;
+package com.example.template.exampleitem.facade;
 
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.enums.EnHttpMethod;
-import com.example.template.restoutlog.service.RestOutLogService;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.enums.EnHttpMethod;
+import com.example.template.exampleitem.service.ExampleItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -17,80 +17,80 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class RestOutLogFacade {
+public class ExampleItemFacade {
 
-    private final RestOutLogService restOutLogService;
+    private final ExampleItemService exampleItemService;
 
-    public Page<RestOutLogRes.Item> search(RestOutLogReq.Filter filter, Pageable pageable) {
+    public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.search(filter, pageable);
+        return exampleItemService.search(filter, pageable);
     }
 
     @Transactional
-    public RestOutLogRes.Id save(RestOutLogReq.Create create) {
+    public ExampleItemRes.Id save(ExampleItemReq.Create create) {
         create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode());
-        return restOutLogService.save(create);
+        return exampleItemService.save(create);
     }
 
     @Transactional
-    public List<RestOutLogRes.Id> saveAll(List<RestOutLogReq.Create> createList) {
+    public List<ExampleItemRes.Id> saveAll(List<ExampleItemReq.Create> createList) {
         if (createList != null) {
             createList.forEach(create -> create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode()));
         }
-        return restOutLogService.saveAll(createList);
+        return exampleItemService.saveAll(createList);
     }
 
-    public RestOutLogRes.Item findById(Long id) {
-        return restOutLogService.findById(id);
+    public ExampleItemRes.Item findById(Long id) {
+        return exampleItemService.findById(id);
     }
 
     @Transactional
-    public RestOutLogRes.Id saveById(Long id, RestOutLogReq.Update update) {
+    public ExampleItemRes.Id saveById(Long id, ExampleItemReq.Update update) {
         if (update != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(update.getHttpMethod());
             update.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.saveById(id, update);
+        return exampleItemService.saveById(id, update);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        restOutLogService.deleteById(id);
+        exampleItemService.deleteById(id);
     }
 
-    public List<RestOutLogRes.Item> findAll(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.findAll(filter);
+        return exampleItemService.findAll(filter);
     }
 
-    public List<RestOutLogRes.Item> findByIds(List<Long> ids) {
-        return restOutLogService.findByIds(ids);
+    public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
+        return exampleItemService.findByIds(ids);
     }
 
-    public Page<RestOutLogRes.Name> searchName(RestOutLogReq.Filter filter, Pageable pageable) {
+    public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.searchName(filter, pageable);
+        return exampleItemService.searchName(filter, pageable);
     }
 
-    public List<RestOutLogRes.Name> findAllName(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.findAllName(filter);
+        return exampleItemService.findAllName(filter);
     }
 
     @Transactional
     public void deleteByIds(List<Long> ids) {
-        restOutLogService.deleteByIds(ids);
+        exampleItemService.deleteByIds(ids);
     }
 }

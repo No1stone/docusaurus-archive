@@ -70,12 +70,12 @@ dependencies {
 
 ## 빌드가 만드는 파일
 
-경로 예시는 `build/generated/sources/annotationProcessor/java/main/com/example/template/restoutlog/enums/_EnHttpMethod.java` 입니다.
+경로 예시는 `build/generated/sources/annotationProcessor/java/main/com/example/template/exampleitem/enums/_EnHttpMethod.java` 입니다.
 이 파일을 소스 트리에 복사하지 않습니다.
 `EnYn`, `EnStatus`도 같은 방식으로 `_EnYn.java`, `_EnStatus.java`가 생깁니다.
 
 ```java
-package com.example.template.restoutlog.enums;
+package com.example.template.exampleitem.enums;
 
 import com.example.template.support.CodeValueConverter;
 import com.example.template.support.ModelMapperUtil;
@@ -119,14 +119,14 @@ public class _EnHttpMethod extends CodeValueConverter<EnHttpMethod> {
 - [`EnHttpMethod.java`](./EnHttpMethod.java)
 - [`EnYn.java`](./EnYn.java)
 - [`EnStatus.java`](./EnStatus.java)
-- [`RestOutLog.java`](./RestOutLog.java)
-- [`RestOutLogFacade.java`](./RestOutLogFacade.java)
-- [`RestOutLogSpecs.java`](./RestOutLogSpecs.java)
-- [`RestOutLogReq.java`](./RestOutLogReq.java)
-- [`RestOutLogRes.java`](./RestOutLogRes.java)
-- [`RestOutLogService.java`](./RestOutLogService.java)
-- [`RestOutLogRepository.java`](./RestOutLogRepository.java)
-- [`RestOutLogController.java`](./RestOutLogController.java)
+- [`ExampleItem.java`](./ExampleItem.java)
+- [`ExampleItemFacade.java`](./ExampleItemFacade.java)
+- [`ExampleItemSpecs.java`](./ExampleItemSpecs.java)
+- [`ExampleItemReq.java`](./ExampleItemReq.java)
+- [`ExampleItemRes.java`](./ExampleItemRes.java)
+- [`ExampleItemService.java`](./ExampleItemService.java)
+- [`ExampleItemRepository.java`](./ExampleItemRepository.java)
+- [`ExampleItemController.java`](./ExampleItemController.java)
 
 ## Source
 
@@ -462,7 +462,7 @@ public class ModelMapperUtil {
 ### `EnHttpMethod.java`
 
 ```java
-package com.example.template.restoutlog.enums;
+package com.example.template.exampleitem.enums;
 
 import com.example.template.support.CodeValue;
 import com.example.template.support.BizErrorException;
@@ -672,12 +672,12 @@ public enum EnStatus implements CodeValue {
 }
 ```
 
-### `RestOutLog.java`
+### `ExampleItem.java`
 
 ```java
-package com.example.template.restoutlog.entity;
+package com.example.template.exampleitem.entity;
 
-import com.example.template.restoutlog.enums.EnHttpMethod;
+import com.example.template.exampleitem.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -699,7 +699,7 @@ import org.hibernate.annotations.DynamicInsert;
 import static lombok.AccessLevel.PROTECTED;
 
 /**
- * REST outbound 호출 로그. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
+ * 샘플 엔티티입니다. 클래스명 ExampleItem은 치환 토큰이고 컬럼은 샘플입니다. {@code createdAt}/{@code createdBy}는 {@link CreatedEntity} 상속.
  *
  * @see db/init/01_init.sql
  */
@@ -710,12 +710,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Setter
 @Entity
 @FieldNameConstants
-@Table(name = "le_rest_out_log", indexes = {
-        @Index(name = "ix_le_rest_out_log_response_http_status", columnList = "response_http_status"),
-        @Index(name = "ix_le_rest_out_log_url", columnList = "url")
+@Table(name = "le_example_item", indexes = {
+        @Index(name = "ix_le_example_item_response_http_status", columnList = "response_http_status"),
+        @Index(name = "ix_le_example_item_url", columnList = "url")
 })
 @DynamicInsert
-public class RestOutLog extends CreatedEntity {
+public class ExampleItem extends CreatedEntity {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)
@@ -748,15 +748,15 @@ public class RestOutLog extends CreatedEntity {
 }
 ```
 
-### `RestOutLogFacade.java`
+### `ExampleItemFacade.java`
 
 ```java
-package com.example.template.restoutlog.facade;
+package com.example.template.exampleitem.facade;
 
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.enums.EnHttpMethod;
-import com.example.template.restoutlog.service.RestOutLogService;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.enums.EnHttpMethod;
+import com.example.template.exampleitem.service.ExampleItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -770,124 +770,124 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class RestOutLogFacade {
+public class ExampleItemFacade {
 
-    private final RestOutLogService restOutLogService;
+    private final ExampleItemService exampleItemService;
 
-    public Page<RestOutLogRes.Item> search(RestOutLogReq.Filter filter, Pageable pageable) {
+    public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.search(filter, pageable);
+        return exampleItemService.search(filter, pageable);
     }
 
     @Transactional
-    public RestOutLogRes.Id save(RestOutLogReq.Create create) {
+    public ExampleItemRes.Id save(ExampleItemReq.Create create) {
         create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode());
-        return restOutLogService.save(create);
+        return exampleItemService.save(create);
     }
 
     @Transactional
-    public List<RestOutLogRes.Id> saveAll(List<RestOutLogReq.Create> createList) {
+    public List<ExampleItemRes.Id> saveAll(List<ExampleItemReq.Create> createList) {
         if (createList != null) {
             createList.forEach(create -> create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode()));
         }
-        return restOutLogService.saveAll(createList);
+        return exampleItemService.saveAll(createList);
     }
 
-    public RestOutLogRes.Item findById(Long id) {
-        return restOutLogService.findById(id);
+    public ExampleItemRes.Item findById(Long id) {
+        return exampleItemService.findById(id);
     }
 
     @Transactional
-    public RestOutLogRes.Id saveById(Long id, RestOutLogReq.Update update) {
+    public ExampleItemRes.Id saveById(Long id, ExampleItemReq.Update update) {
         if (update != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(update.getHttpMethod());
             update.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.saveById(id, update);
+        return exampleItemService.saveById(id, update);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        restOutLogService.deleteById(id);
+        exampleItemService.deleteById(id);
     }
 
-    public List<RestOutLogRes.Item> findAll(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.findAll(filter);
+        return exampleItemService.findAll(filter);
     }
 
-    public List<RestOutLogRes.Item> findByIds(List<Long> ids) {
-        return restOutLogService.findByIds(ids);
+    public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
+        return exampleItemService.findByIds(ids);
     }
 
-    public Page<RestOutLogRes.Name> searchName(RestOutLogReq.Filter filter, Pageable pageable) {
+    public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.searchName(filter, pageable);
+        return exampleItemService.searchName(filter, pageable);
     }
 
-    public List<RestOutLogRes.Name> findAllName(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return restOutLogService.findAllName(filter);
+        return exampleItemService.findAllName(filter);
     }
 
     @Transactional
     public void deleteByIds(List<Long> ids) {
-        restOutLogService.deleteByIds(ids);
+        exampleItemService.deleteByIds(ids);
     }
 }
 ```
 
-### `RestOutLogSpecs.java`
+### `ExampleItemSpecs.java`
 
 ```java
-package com.example.template.restoutlog.spec;
+package com.example.template.exampleitem.spec;
 
-import com.example.template.restoutlog.enums.EnHttpMethod;
+import com.example.template.exampleitem.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import com.example.template.support.PredicateBuilder;
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.entity.RestOutLog;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.entity.ExampleItem;
 import org.springframework.data.jpa.domain.Specification;
 
-public class RestOutLogSpecs {
+public class ExampleItemSpecs {
 
-    public static Specification<RestOutLog> of(RestOutLogReq.Filter filter) {
+    public static Specification<ExampleItem> of(ExampleItemReq.Filter filter) {
         return (root, query, builder) -> {
 
             PredicateBuilder predicateBuilder = new PredicateBuilder(builder, root);
 
-            predicateBuilder.equal(RestOutLog.Fields.id, filter.getId());
-            predicateBuilder.in(RestOutLog.Fields.id, filter.getIds());
+            predicateBuilder.equal(ExampleItem.Fields.id, filter.getId());
+            predicateBuilder.in(ExampleItem.Fields.id, filter.getIds());
             predicateBuilder.goe(CreatedEntity.Fields.createdAt, filter.getStartAt());
             predicateBuilder.loe(CreatedEntity.Fields.createdAt, filter.getEndAt());
-            predicateBuilder.equal(RestOutLog.Fields.httpMethod, EnHttpMethod.ofNullable(filter.getHttpMethod()));
-            predicateBuilder.equal(RestOutLog.Fields.url, filter.getUrl());
-            predicateBuilder.equal(RestOutLog.Fields.parameter, filter.getParameter());
-            predicateBuilder.equal(RestOutLog.Fields.payload, filter.getPayload());
-            predicateBuilder.equal(RestOutLog.Fields.responseHttpStatus, filter.getResponseHttpStatus());
-            predicateBuilder.equal(RestOutLog.Fields.response, filter.getResponse());
+            predicateBuilder.equal(ExampleItem.Fields.httpMethod, EnHttpMethod.ofNullable(filter.getHttpMethod()));
+            predicateBuilder.equal(ExampleItem.Fields.url, filter.getUrl());
+            predicateBuilder.equal(ExampleItem.Fields.parameter, filter.getParameter());
+            predicateBuilder.equal(ExampleItem.Fields.payload, filter.getPayload());
+            predicateBuilder.equal(ExampleItem.Fields.responseHttpStatus, filter.getResponseHttpStatus());
+            predicateBuilder.equal(ExampleItem.Fields.response, filter.getResponse());
             return predicateBuilder.build();
         };
     }
 }
 ```
 
-### `RestOutLogReq.java`
+### `ExampleItemReq.java`
 
 ```java
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -898,9 +898,9 @@ import lombok.experimental.FieldNameConstants;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class RestOutLogReq {
+public class ExampleItemReq {
 
-    @Schema(description = "RestOutLogReq.Ids DTO")
+    @Schema(description = "ExampleItemReq.Ids DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Ids {
@@ -908,7 +908,7 @@ public class RestOutLogReq {
         private List<Long> ids;
     }
 
-    @Schema(description = "RestOutLogReq.Filter DTO")
+    @Schema(description = "ExampleItemReq.Filter DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     @FieldNameConstants
@@ -939,7 +939,7 @@ public class RestOutLogReq {
         private LocalDateTime endAt;
     }
 
-    @Schema(description = "RestOutLogReq.Create DTO")
+    @Schema(description = "ExampleItemReq.Create DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Create {
@@ -959,7 +959,7 @@ public class RestOutLogReq {
         private String response;
     }
 
-    @Schema(description = "RestOutLogReq.Update DTO")
+    @Schema(description = "ExampleItemReq.Update DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Update {
@@ -982,10 +982,10 @@ public class RestOutLogReq {
 }
 ```
 
-### `RestOutLogRes.java`
+### `ExampleItemRes.java`
 
 ```java
-package com.example.template.restoutlog.dto;
+package com.example.template.exampleitem.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -995,9 +995,9 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
 
-public class RestOutLogRes {
+public class ExampleItemRes {
 
-    @Schema(description = "RestOutLogRes.Id DTO")
+    @Schema(description = "ExampleItemRes.Id DTO")
     @Data
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Id {
@@ -1005,7 +1005,7 @@ public class RestOutLogRes {
         private Long id;
     }
 
-    @Schema(description = "RestOutLogRes.Name DTO")
+    @Schema(description = "ExampleItemRes.Name DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -1013,7 +1013,7 @@ public class RestOutLogRes {
         // 변수 없음
     }
 
-    @Schema(description = "RestOutLogRes.Single DTO")
+    @Schema(description = "ExampleItemRes.Single DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -1036,7 +1036,7 @@ public class RestOutLogRes {
         private String response;
     }
 
-    @Schema(description = "RestOutLogRes.Item DTO")
+    @Schema(description = "ExampleItemRes.Item DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -1046,19 +1046,19 @@ public class RestOutLogRes {
 }
 ```
 
-### `RestOutLogService.java`
+### `ExampleItemService.java`
 
 ```java
-package com.example.template.restoutlog.service;
+package com.example.template.exampleitem.service;
 
 import com.example.template.support.BizErrorException;
 import com.example.template.support.BeanUtils;
 import com.example.template.support.ResponseType;
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.entity.RestOutLog;
-import com.example.template.restoutlog.repository.RestOutLogRepository;
-import com.example.template.restoutlog.spec.RestOutLogSpecs;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.repository.ExampleItemRepository;
+import com.example.template.exampleitem.spec.ExampleItemSpecs;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -1075,75 +1075,75 @@ import static com.example.template.support.ModelMapperUtil.mapAll;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class RestOutLogService {
+public class ExampleItemService {
 
-    private final RestOutLogRepository restOutLogRepository;
+    private final ExampleItemRepository exampleItemRepository;
 
-    public Page<RestOutLogRes.Item> search(RestOutLogReq.Filter filter, Pageable pageable) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), pageable);
-        return mapAll(page, RestOutLogRes.Item.class);
+    public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), pageable);
+        return mapAll(page, ExampleItemRes.Item.class);
     }
 
     @Transactional
-    public RestOutLogRes.Id save(RestOutLogReq.Create create) {
-        RestOutLog entity = map(create, RestOutLog.class);
-        entity = restOutLogRepository.save(entity);
-        return map(entity, RestOutLogRes.Id.class);
+    public ExampleItemRes.Id save(ExampleItemReq.Create create) {
+        ExampleItem entity = map(create, ExampleItem.class);
+        entity = exampleItemRepository.save(entity);
+        return map(entity, ExampleItemRes.Id.class);
     }
 
     @Transactional
-    public List<RestOutLogRes.Id> saveAll(List<RestOutLogReq.Create> createList) {
+    public List<ExampleItemRes.Id> saveAll(List<ExampleItemReq.Create> createList) {
         if (createList == null || createList.isEmpty()) {
             return List.of();
         }
-        List<RestOutLog> saveList = createList.stream()
-                .map(item -> map(item, RestOutLog.class))
+        List<ExampleItem> saveList = createList.stream()
+                .map(item -> map(item, ExampleItem.class))
                 .toList();
-        return mapAll(restOutLogRepository.saveAll(saveList), RestOutLogRes.Id.class);
+        return mapAll(exampleItemRepository.saveAll(saveList), ExampleItemRes.Id.class);
     }
 
-    public RestOutLogRes.Item findById(Long id) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
-        return map(entity, RestOutLogRes.Item.class);
+    public ExampleItemRes.Item findById(Long id) {
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
+        return map(entity, ExampleItemRes.Item.class);
     }
 
     @Transactional
-    public RestOutLogRes.Id saveById(Long id, RestOutLogReq.Update update) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
+    public ExampleItemRes.Id saveById(Long id, ExampleItemReq.Update update) {
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.NOT_FOUND_RESOURCE));
         BeanUtils.map(update, entity);
-        return map(entity, RestOutLogRes.Id.class);
+        return map(entity, ExampleItemRes.Id.class);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        RestOutLog entity = restOutLogRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.UNDEFINED));
+        ExampleItem entity = exampleItemRepository.findById(id).orElseThrow(() -> new BizErrorException(ResponseType.UNDEFINED));
         entity.delete();
     }
 
-    public List<RestOutLogRes.Item> findAll(RestOutLogReq.Filter filter) {
+    public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
         return search(filter, Pageable.unpaged()).getContent();
     }
 
-    public List<RestOutLogRes.Item> findByIds(List<Long> ids) {
+    public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
         if (ids == null || ids.isEmpty()) {
             return List.of();
         }
-        RestOutLogReq.Filter filter = new RestOutLogReq.Filter();
+        ExampleItemReq.Filter filter = new ExampleItemReq.Filter();
         filter.setIds(ids);
-        return mapAll(restOutLogRepository.findAll(RestOutLogSpecs.of(filter)), RestOutLogRes.Item.class);
+        return mapAll(exampleItemRepository.findAll(ExampleItemSpecs.of(filter)), ExampleItemRes.Item.class);
     }
 
-    public Page<RestOutLogRes.Name> searchName(RestOutLogReq.Filter filter, Pageable pageable) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), pageable);
-        return mapAll(page, RestOutLogRes.Name.class);
+    public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), pageable);
+        return mapAll(page, ExampleItemRes.Name.class);
     }
 
-    public List<RestOutLogRes.Name> findAllName(RestOutLogReq.Filter filter) {
-        RestOutLog entity = map(filter, RestOutLog.class);
-        Page<RestOutLog> page = restOutLogRepository.findAll(RestOutLogSpecs.of(filter), Pageable.unpaged());
-        return mapAll(page.stream().toList(), RestOutLogRes.Name.class);
+    public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
+        ExampleItem entity = map(filter, ExampleItem.class);
+        Page<ExampleItem> page = exampleItemRepository.findAll(ExampleItemSpecs.of(filter), Pageable.unpaged());
+        return mapAll(page.stream().toList(), ExampleItemRes.Name.class);
     }
 
     @Transactional
@@ -1151,19 +1151,19 @@ public class RestOutLogService {
         if (ids == null || ids.isEmpty()) {
             return;
         }
-        RestOutLogReq.Filter filter = new RestOutLogReq.Filter();
+        ExampleItemReq.Filter filter = new ExampleItemReq.Filter();
         filter.setIds(ids);
-        restOutLogRepository.findAll(RestOutLogSpecs.of(filter)).forEach(RestOutLog::delete);
+        exampleItemRepository.findAll(ExampleItemSpecs.of(filter)).forEach(ExampleItem::delete);
     }
 }
 ```
 
-### `RestOutLogRepository.java`
+### `ExampleItemRepository.java`
 
 ```java
-package com.example.template.restoutlog.repository;
+package com.example.template.exampleitem.repository;
 
-import com.example.template.restoutlog.entity.RestOutLog;
+import com.example.template.exampleitem.entity.ExampleItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -1171,29 +1171,29 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
- * RestOutLog Repository
+ * ExampleItem Repository
  */
-public interface RestOutLogRepository extends JpaRepository<RestOutLog, Long>, RestOutLogCustomRepository, JpaSpecificationExecutor<RestOutLog> {
+public interface ExampleItemRepository extends JpaRepository<ExampleItem, Long>, ExampleItemCustomRepository, JpaSpecificationExecutor<ExampleItem> {
 }
 
 @Repository
-interface RestOutLogCustomRepository {
+interface ExampleItemCustomRepository {
 }
 
 @RequiredArgsConstructor
-class RestOutLogCustomRepositoryImpl implements RestOutLogCustomRepository {
+class ExampleItemCustomRepositoryImpl implements ExampleItemCustomRepository {
     private final JPAQueryFactory queryFactory;
 }
 ```
 
-### `RestOutLogController.java`
+### `ExampleItemController.java`
 
 ```java
-package com.example.template.restoutlog.entrance;
+package com.example.template.exampleitem.entrance;
 
-import com.example.template.restoutlog.dto.RestOutLogReq;
-import com.example.template.restoutlog.dto.RestOutLogRes;
-import com.example.template.restoutlog.facade.RestOutLogFacade;
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.facade.ExampleItemFacade;
 import com.example.template.support.CommonResponseUtils;
 import com.example.template.support.CommonResponse;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -1218,80 +1218,80 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Hidden
-@Tag(name = "RestOutLog", description = "le_rest_out_log")
+@Tag(name = "ExampleItem", description = "le_example_item")
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/rest-out-logs")
-public class RestOutLogController {
+public class ExampleItemController {
 
-    private final RestOutLogFacade restOutLogFacade;
+    private final ExampleItemFacade exampleItemFacade;
 
     @Operation(summary = "목록 조회")
     @GetMapping
-    public CommonResponse<Page<RestOutLogRes.Item>> search(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.search(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Item>> search(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.search(filter, pageable));
     }
 
     @Operation(summary = "생성")
     @PostMapping
-    public CommonResponse<RestOutLogRes.Id> save(@RequestBody RestOutLogReq.Create create) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.save(create));
+    public CommonResponse<ExampleItemRes.Id> save(@RequestBody ExampleItemReq.Create create) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.save(create));
     }
 
     @Operation(summary = "일괄 생성")
     @PostMapping("/save-all")
-    public CommonResponse<List<RestOutLogRes.Id>> saveAll(@RequestBody List<RestOutLogReq.Create> createList) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveAll(createList));
+    public CommonResponse<List<ExampleItemRes.Id>> saveAll(@RequestBody List<ExampleItemReq.Create> createList) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.saveAll(createList));
     }
 
     @Operation(summary = "단건 조회")
     @GetMapping("/{id}")
-    public CommonResponse<RestOutLogRes.Item> findById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findById(id));
+    public CommonResponse<ExampleItemRes.Item> findById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findById(id));
     }
 
     @Operation(summary = "수정")
     @PutMapping("/{id}")
-    public CommonResponse<RestOutLogRes.Id> saveById(@Parameter(description = "ID") @PathVariable(name = "id") Long id, @RequestBody RestOutLogReq.Update update) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.saveById(id, update));
+    public CommonResponse<ExampleItemRes.Id> saveById(@Parameter(description = "ID") @PathVariable(name = "id") Long id, @RequestBody ExampleItemReq.Update update) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.saveById(id, update));
     }
 
     @Operation(summary = "삭제")
     @DeleteMapping("/{id}")
     public CommonResponse<?> deleteById(@Parameter(description = "ID") @PathVariable(name = "id") Long id) {
-        restOutLogFacade.deleteById(id);
+        exampleItemFacade.deleteById(id);
         return CommonResponseUtils.responseSuccess();
     }
 
     @Operation(summary = "전체 조회")
     @GetMapping("/find-all")
-    public CommonResponse<List<RestOutLogRes.Item>> findAll(@ModelAttribute RestOutLogReq.Filter filter) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAll(filter));
+    public CommonResponse<List<ExampleItemRes.Item>> findAll(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findAll(filter));
     }
 
     @Operation(summary = "아이디 선택 조회")
     @GetMapping("/find-by-ids")
-    public CommonResponse<List<RestOutLogRes.Item>> findByIds(@RequestParam List<Long> ids) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findByIds(ids));
+    public CommonResponse<List<ExampleItemRes.Item>> findByIds(@RequestParam List<Long> ids) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findByIds(ids));
     }
 
     @Operation(summary = "이름 검색")
     @GetMapping("/search-name")
-    public CommonResponse<Page<RestOutLogRes.Name>> searchName(@ModelAttribute RestOutLogReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.searchName(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Name>> searchName(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.searchName(filter, pageable));
     }
 
     @Operation(summary = "이름 전체 조회")
     @GetMapping("/find-all-name")
-    public CommonResponse<List<RestOutLogRes.Name>> findAllName(@ModelAttribute RestOutLogReq.Filter filter) {
-        return CommonResponseUtils.responseSuccess(restOutLogFacade.findAllName(filter));
+    public CommonResponse<List<ExampleItemRes.Name>> findAllName(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.findAllName(filter));
     }
 
     @Operation(summary = "아이디 선택 삭제")
     @DeleteMapping("/delete-by-ids")
     public CommonResponse<?> deleteByIds(@RequestParam List<Long> ids) {
-        restOutLogFacade.deleteByIds(ids);
+        exampleItemFacade.deleteByIds(ids);
         return CommonResponseUtils.responseSuccess();
     }
 }
