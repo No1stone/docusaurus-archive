@@ -17,14 +17,18 @@ type Props = {
 };
 
 /**
- * One responsive display unit. The account script is loaded from
- * docusaurus.config.ts. Rail and end wait until the viewport is known so a
- * page never requests both, and never requests the rail slot twice.
+ * One responsive display unit. The account script in docusaurus.config.ts
+ * stays loaded for site verification. This component requests a manual unit
+ * only when that placement has a slot id.
+ * Rail and end wait until the viewport is known so a page never requests both,
+ * and never requests the rail slot twice.
  */
 export default function AdSlot({placement = 'home'}: Props): ReactNode {
+  const slot = slotForPlacement(placement).trim();
   const immediate = placement === 'home' || placement === 'inArticle';
   const [visible, setVisible] = useState(immediate);
   const pushed = useRef(false);
+  const canRequest = visible && slot !== '';
 
   useEffect(() => {
     if (immediate) {
@@ -35,7 +39,7 @@ export default function AdSlot({placement = 'home'}: Props): ReactNode {
   }, [immediate, placement]);
 
   useEffect(() => {
-    if (!visible || pushed.current) {
+    if (!canRequest || pushed.current) {
       return;
     }
     pushed.current = true;
@@ -44,13 +48,11 @@ export default function AdSlot({placement = 'home'}: Props): ReactNode {
     } catch {
       pushed.current = false;
     }
-  }, [visible]);
+  }, [canRequest]);
 
-  if (!visible) {
+  if (!canRequest) {
     return null;
   }
-
-  const slot = slotForPlacement(placement);
   return (
     <aside className={styles[placement]} aria-label="Advertisement">
       <ins
@@ -59,7 +61,7 @@ export default function AdSlot({placement = 'home'}: Props): ReactNode {
         data-ad-client={AD_CLIENT}
         data-ad-format="auto"
         data-full-width-responsive="true"
-        {...(slot ? {'data-ad-slot': slot} : {})}
+        data-ad-slot={slot}
       />
     </aside>
   );
