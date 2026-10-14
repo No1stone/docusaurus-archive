@@ -63,6 +63,7 @@ One holder class per domain per direction. Do not scatter `CreateExampleItemRequ
 - `findByIds` and `deleteByIds` fill `Filter.ids` and call `Specs.of`. If `ids` is null or empty, return without querying.
 - One spec factory: `of(Filter)`. `equal` per column, `in` on `id` for `ids`, `goe` / `loe` on `CreatedEntity.createdAt` for `startAt` / `endAt`.
 - `delete()` is empty until a status column exists. Do not call `repository.delete`.
+- A column with a database `DEFAULT` has no field initializer and no `@Builder.Default`. `@DynamicInsert` omits the null column so the database default is stored.
 - Enum equality in a spec passes the enum from `ofNullable`, not the raw string. See the enum template.
 
 ## Partial update
@@ -74,8 +75,8 @@ Never overwrite with null on update.
 ## Mapping
 
 - `ModelMapperUtil.map` and `mapAll` convert DTO ↔ entity and entity → `Res`.
-- On enum apply, `BizEnumProcessor` emits `_Enum` whose static block registers two converters on `ModelMapperUtil.modelMapper`: enum to `getCode()`, and `String` to `of(code)`.
-- `static { new _Enum(); }` runs that registration before `map` / `mapAll`.
+- On enum apply, `BizEnumProcessor` emits `_Enum` with `@Converter(autoApply = true)`. JPA loads that class. Its static block registers two converters on `ModelMapperUtil.modelMapper`: enum to `getCode()`, and `String` to `of(code)`.
+- Do not add `static { new _Enum(); }` on the enum.
 - Do not add a conversion method on the Service. The full processor is in the enum template.
 - Prefer the host `ModelMapperUtil` when the project already has one.
 

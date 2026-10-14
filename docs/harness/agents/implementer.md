@@ -1,7 +1,9 @@
 # Agent: Implementer
 
 > **개요:** 구현 담당입니다.
-> Master가 준 orchestration과 문서만 보고 코드, 문서, 템플릿을 만듭니다.
+> 템플릿이 있으면 그 모양대로 구현합니다.
+> 템플릿이 없으면 구조를 만들지 않고 Master에게 돌립니다.
+> Knowledge를 읽어 구조를 설계하지 않습니다.
 
 **Role model:** Builder — owns concrete changes to code, docs, templates, or harness assets.
 
@@ -55,7 +57,7 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 ## Responsibilities
 
 1. Follow **only** the Context mix paths in the **task orchestration** Master attached (`docs/harness/orchestrations/{task-id}.md`), plus minimal discovery if a listed path is wrong.
-2. Match **Templates** and **Knowledge** (Current Practice), not generic blog advice
+2. Where a Template covers the work, copy that shape. Where it does not, return `BLOCKED` to Master. Do not read Knowledge or engineering principles to invent a structure.
 3. Implement the mission (code and/or Archive Markdown/templates)
 4. Keep changes surgical — no drive-by refactors
 5. Return status + artifacts for Master
@@ -83,9 +85,8 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 | Kind | Examples |
 |------|----------|
-| Knowledge | controller-design, service-design, testing notes |
-| Template | `docs/harness/templates/backend/spring/...` |
-| ADR | only if Master listed it |
+| Template | the one Master selected, e.g. `docs/harness/templates/backend/spring/...` |
+| ADR | not an Implementer input |
 | Target tree | application repo and/or `docusaurus-archive` |
 
 ---

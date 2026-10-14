@@ -14,7 +14,10 @@ DTO는 문자열입니다.
 이넘에서 문자열은 `getCode()` 입니다.
 문자열에서 이넘은 `of(code)` 입니다.
 null은 null입니다.
-이넘의 `static \{ new _열거형이름(); \}` 이 그 등록을 `map` / `mapAll`보다 먼저 실행합니다.
+이넘 소스에 `static \{ new _열거형이름(); \}` 을 두지 않습니다.
+JPA `@Converter(autoApply = true)`가 생성 클래스를 읽고, 그 클래스의 static 블록이 `ModelMapper`에 등록합니다.
+DB `DEFAULT`가 있는 컬럼은 엔티티 필드에 초기값을 두지 않습니다.
+`@Builder.Default`도 붙이지 않습니다.
 
 
 테이블 전용 열거형은 `application.\{도메인\}.enums` 입니다.
@@ -23,9 +26,6 @@ null은 null입니다.
 `EnYn`은 `Y`/`N`, `EnStatus`는 `A` 활성 / `D` 비활성입니다.
 
 ## 주의
-
-상수 아래에 `static \{ new _열거형이름(); \}` 을 둡니다.
-이 줄이 생성된 컨버터를 올려 `ModelMapper` 변환을 등록합니다.
 
 `_열거형이름.java`는 소스에 두지 않습니다.
 아래 생성 결과는 컴파일러가 `build/generated/sources/annotationProcessor/java/main`에 만드는 파일입니다.
@@ -490,10 +490,6 @@ public enum EnHttpMethod implements CodeValue {
     TRACE("TRACE", "TRACE"),
     ;
 
-    static {
-        new _EnHttpMethod();
-    }
-
     final String code;
     final String value;
 
@@ -559,10 +555,6 @@ public enum EnYn implements CodeValue {
     N("N", "N"),
     ;
 
-    static {
-        new _EnYn();
-    }
-
     final String code;
     final String value;
 
@@ -627,10 +619,6 @@ public enum EnStatus implements CodeValue {
     ACTIVATED("A", "활성"),
     DEACTIVATED("D", "비활성"),
     ;
-
-    static {
-        new _EnStatus();
-    }
 
     final String code;
     final String value;

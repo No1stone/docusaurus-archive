@@ -26,10 +26,6 @@ public enum EnHttpMethod implements CodeValue {
     TRACE("TRACE", "TRACE"),
     ;
 
-    static {
-        new _EnHttpMethod();
-    }
-
     final String code;
     final String value;
 

@@ -20,10 +20,6 @@ public enum EnStatus implements CodeValue {
     DEACTIVATED("D", "비활성"),
     ;
 
-    static {
-        new _EnStatus();
-    }
-
     final String code;
     final String value;
 

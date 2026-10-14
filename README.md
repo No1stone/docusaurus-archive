@@ -72,7 +72,10 @@ Index, 고른 문서, `docs/harness/templates`와 ADR, 필요할 때만 History 
 ## Templates
 
 [`docs/harness/templates/README.md`](./docs/harness/templates/README.md)를 봅니다.
-Knowledge는 책임을 설명하고, 템플릿은 구체적인 코드 모양을 보여 줍니다.
+Knowledge와 설계 원칙은 Master가 판단할 때 봅니다.
+템플릿이 있으면 임플리먼터는 그 모양대로 구현합니다.
+템플릿이 없으면 Master가 판단해서 돕습니다.
+임플리먼터는 Knowledge로 구조를 만들지 않습니다.
 
 ## 글 작성
 

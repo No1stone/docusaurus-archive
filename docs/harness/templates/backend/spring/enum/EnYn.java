@@ -20,10 +20,6 @@ public enum EnYn implements CodeValue {
     N("N", "N"),
     ;
 
-    static {
-        new _EnYn();
-    }
-
     final String code;
     final String value;
 

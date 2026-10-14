@@ -22,7 +22,13 @@ A Controller *concept* page says what belongs at the HTTP edge. A Spring MVC *te
 
 **If violated.** Knowledge pages fill with version-specific snippets; the archive becomes a tutorial collection that is wrong the moment a major version ships, and the agent cannot tell a rule from an example.
 
-**Where it lives.** The folder split under `docs/` (Knowledge / Architecture / Patterns / Decisions), the separation table on the [Patterns](/docs/patterns/) index, and the Knowledge ↔ Template pairing rule ("Knowledge explains responsibility; templates show concrete code shape").
+**Where it lives.** The folder split under `docs/` (Knowledge / Architecture / Patterns / Decisions), and the separation table on the [Patterns](/docs/patterns/) index.
+
+Knowledge and these principles are what Master reads when a situation needs a judgment.
+When a template covers the work, Implementer builds that shape.
+When it does not, Implementer does not invent the structure.
+Master reads Knowledge and these principles and decides.
+They are not two writings of the same rule.
 
 ## 3. Progressive context loading
 
