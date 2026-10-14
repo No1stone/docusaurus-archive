@@ -14,17 +14,17 @@ DTO는 문자열입니다.
 이넘에서 문자열은 `getCode()` 입니다.
 문자열에서 이넘은 `of(code)` 입니다.
 null은 null입니다.
-이넘의 `static { new _열거형이름(); }` 이 그 등록을 `map` / `mapAll`보다 먼저 실행합니다.
+이넘의 `static \{ new _열거형이름(); \}` 이 그 등록을 `map` / `mapAll`보다 먼저 실행합니다.
 
 
-테이블 전용 열거형은 `application.{도메인}.enums` 입니다.
+테이블 전용 열거형은 `application.\{도메인\}.enums` 입니다.
 `EnHttpMethod`가 그 예제입니다.
 공유 열거형은 `application.shared.enums` 입니다.
 `EnYn`은 `Y`/`N`, `EnStatus`는 `A` 활성 / `D` 비활성입니다.
 
 ## 주의
 
-상수 아래에 `static { new _열거형이름(); }` 을 둡니다.
+상수 아래에 `static \{ new _열거형이름(); \}` 을 둡니다.
 이 줄이 생성된 컨버터를 올려 `ModelMapper` 변환을 등록합니다.
 
 `_열거형이름.java`는 소스에 두지 않습니다.

@@ -1,6 +1,6 @@
 # Controller template
 
-> **개요:** 테이블 입구 컨트롤러입니다. entrance.{도메인}에 두고 @Hidden 입니다.
+> **개요:** 테이블 입구 컨트롤러입니다. entrance.\{도메인\}에 두고 @Hidden 입니다.
 
 파사드 메서드와 같은 이름으로 한 번만 호출합니다.
 `controller` 하위 패키지는 두지 않습니다.
