@@ -13,8 +13,8 @@ Backend knowledge is organized by **engineering concept** first, then by technol
 ## Concepts
 
 - [Controller](./controller/) — layer responsibilities and boundaries
-- [Facade](./facade/) — use-case composition of Service and Port
-- [Service](./service/) — stable data-access contracts, query and command split
+- [Facade](./facade/) — table entrance, use-case composition, or a screen boundary. Not a stack every request must pass through. Draft
+- [Service](./service/) — data access and the rules of that data set. Draft
 - [Testing](./testing/) — test boundaries, layout, names, and how to run them
 
 ## Technology notes
