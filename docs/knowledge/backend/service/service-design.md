@@ -5,7 +5,7 @@ description: Service는 고정된 데이터 접근 계약을 제공하고, 조�
 tags:
   - backend
   - service
-status: draft
+status: active
 ---
 # Service의 책임과 분리 가능한 데이터 접근 경계
 
@@ -15,8 +15,9 @@ status: draft
 
 ## 적용 상태
 
-문서는 게시되어 있지만 공통 구현 기준으로의 채택은 사용자 검토 대기입니다.
-명시적으로 채택되거나 해당 작업에 적용하도록 요청되기 전에는 기존 프로젝트 규칙과 템플릿을 대체하지 않습니다.
+공통 구현 기준으로 채택되었습니다.
+Backend Knowledge의 Controller, Facade, 테스트 구조와 함께 현재 기준입니다.
+테이블 Service의 코드 모양은 Spring 템플릿을 따릅니다.
 
 ## 설계 의도
 

@@ -41,8 +41,8 @@ Each endpoint is therefore one line of real code. If it is longer, something has
 
 | Must not | Where it goes instead |
 |----------|-----------------------|
-| Rules of one data set: existence, its own state transition, persistence consistency | Service. See [Service 설계](../service/service-design.md). That page is still under review |
-| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | The Facade that owns that use case. See [Facade 설계](../facade/facade-design.md). That page is still under review |
+| Rules of one data set: existence, its own state transition, persistence consistency | Service. See [Service 설계](../service/service-design.md) |
+| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | The Facade that owns that use case. See [Facade 설계](../facade/facade-design.md) |
 | A stack of Facade layers on every request | Not required. A table Facade can delegate to one Service. A screen composition calls the Facade that owns it |
 | Transactions (`@Transactional`) | Inside one process, the use-case Facade decides the local transaction and Service joins it. After a remote split, that local transaction does not remain |
 | Calling a Repository or touching an entity | Service only |

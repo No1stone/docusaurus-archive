@@ -39,12 +39,13 @@ Freedom은 역할 기본값보다 높이지 않습니다.
 
 ## Knowledge assembly
 
-Implementer는 적용 템플릿을 읽습니다.
-Facade, Service 설계 문서는 구현 기준으로 쓰지 않습니다. 채택은 사용자 확인 전입니다.
+Implementer는 적용 템플릿과 채택된 Backend Knowledge를 읽습니다.
 
 | Path | Who | Kind |
 |------|-----|------|
 | `docs/knowledge/backend/controller/controller-design.md` | 판단이 필요할 때 | current |
+| `docs/knowledge/backend/facade/facade-design.md` | 판단이 필요할 때 | current |
+| `docs/knowledge/backend/service/service-design.md` | 판단이 필요할 때 | current |
 | `docs/knowledge/backend/testing/test-structure.md` | 테스트를 둘 때 | current |
 | `docs/harness/workflows/acceptance.md` | 기준을 정할 때 | current |
 | `docs/harness/templates/backend/spring/` | 구현 | current |
