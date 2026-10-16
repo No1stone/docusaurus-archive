@@ -1,26 +1,24 @@
 # Workflow: Refactor
 
-> **개요:** 리팩터 워크플로입니다.
-> 기존 검증 범위를 보존하고 동작이 유지되는지 확인합니다.
-> 테스트 건수를 품질의 단독 기준으로 쓰지 않습니다.
+> **개요:** 리팩터 워크플로. 동작 보존을 증명하는 방법(기존 테스트 먼저 녹색 → 변경 → 동일 결과), 범위 확장 금지, Reviewer가 볼 것.
 
 Default role order for changing structure without changing behavior. Master selects (or authors) a refactor orchestration under [`../orchestrations/`](../orchestrations/).
 
 Control plane: [`../orchestration.md`](../orchestration.md)
 
 ```text
-바꿀 것과 바꾸면 안 되는 것
+Master: intent & constraints (what changes, what must not)
+    ↓  (unfamiliar repo → Scout)
+Master: context resolution (Architecture / Patterns / Templates)
     ↓
-기존 스위트가 있으면 통과를 기록
+Tester: baseline — existing suite green, counts recorded
     ↓
-동작은 유지하고 구조만 변경
+Implementer: behavior-preserving change
     ↓
-기존 검증 범위와 동작 유지 확인
+Reviewer (structure, template fidelity) → Tester (same suite, same counts) → QA (scope & constraints)
     ↓
-반복되는 모양이면 후보만 기록. Curator는 사용자가 요청할 때만
+Master: finalize; new shape proven? → Curator
 ```
-
-별도 에이전트는 [`implement.md`](./implement.md)입니다.
 
 ## What "behavior-preserving" means here
 
@@ -37,9 +35,9 @@ Two lists before anyone starts:
 
 The fence is what QA checks against. Without it, every refactor grows.
 
-### 2. Record the baseline
+### 2. Tester records the baseline
 
-Run the existing suite **before** the change and record the command and that it passed. This shows which verification existed. If there is no suite covering the area, say so. Do not change structure until characterization tests are accepted or manual verification is explicitly labeled.
+Run the existing suite **before** the change and record the exact command and counts. This is the proof the refactor will be measured against. If there is no suite covering the area, Tester says so; Master then decides whether to add characterization tests first (a separate Tester mission) or to accept manual verification with a clear label.
 
 ### 3. Implementer changes structure only
 
@@ -47,19 +45,15 @@ Run the existing suite **before** the change and record the command and that it 
 - One structural move per task when possible. Moving and renaming and reformatting in the same diff makes review impossible.
 - No behavior fixes, even obvious ones. Note them for Master; they become bugfix tasks.
 
-### 4. Check shape and behavior
+### 4. Review for shape, test for sameness
 
-The same agent checks these unless [`implement.md`](./implement.md) calls for a separate role.
+- **Reviewer** compares the result to the Template and the layering rules in [coding conventions](../context/coding-conventions.md): did the move land in the right layer, are boundaries now cleaner, did anything leak (Repository call in Facade, HTTP type in Service).
+- **Tester** re-runs the baseline command. Same counts, same passes. A new failure is a behavior change — back to Implementer.
+- **QA** checks the fence: nothing in the "must not change" list moved, and nothing outside scope was touched.
 
-- Compare the result to the Template and the layering rules in [coding conventions](../context/coding-conventions.md): right layer, no boundary leak.
-- Re-run the baseline command. Existing checks still pass. A new failure is a behavior change.
-- Added tests are allowed when they cover a gap. Deleting or replacing a test needs a recorded reason.
-- Test counts are run evidence, not the only quality bar.
-- Nothing in the "must not change" list moved, and nothing outside scope was touched.
+### 5. Promote if it proved a shape
 
-### 5. Record a candidate, do not promote
-
-If the refactor shows a shape worth reusing, report a short candidate. Curator and template updates run only when the user asks.
+If the refactor produced a cleaner shape than the current Template (not just a different one), Master dispatches **Curator** to propose updating the Template, with a History line explaining the change. A refactor is the most common source of template evolution.
 
 ## Anti-patterns
 
