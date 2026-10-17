@@ -1,3 +1,10 @@
+.home,
+.inArticle,
+.rail,
+.end {
+  max-width: 100%;
+}
+
 .home {
   max-width: 48rem;
   margin: 0 auto;
@@ -17,5 +24,17 @@
 .inArticle :global(.adsbygoogle),
 .rail :global(.adsbygoogle),
 .end :global(.adsbygoogle) {
+  display: block;
   min-height: 90px;
+  max-width: 100%;
+}
+
+.unfilled {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.unfilled :global(.adsbygoogle) {
+  min-height: 0;
 }

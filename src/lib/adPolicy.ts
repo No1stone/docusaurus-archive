@@ -9,17 +9,27 @@ export const AD_CLIENT = 'ca-pub-7928208116313519';
 /**
  * Two AdSense units. Home and in-article share the first.
  * The rail and the long-page mobile end share the second, because they never
- * render on the same page. Paste the unit ids from the AdSense console.
+ * render on the same page. Values come from the build environment.
+ * An empty value means that unit is not rendered.
  */
-export const AD_SLOT_IN_ARTICLE = '';
-export const AD_SLOT_RAIL = '';
+function readEnv(name: 'AD_SLOT_IN_ARTICLE' | 'AD_SLOT_RAIL'): string {
+  const value = process.env[name];
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+export const AD_SLOT_IN_ARTICLE = readEnv('AD_SLOT_IN_ARTICLE');
+export const AD_SLOT_RAIL = readEnv('AD_SLOT_RAIL');
 
 export type AdPlacement = 'home' | 'inArticle' | 'rail' | 'end';
 
-export function slotForPlacement(placement: AdPlacement): string {
-  return placement === 'rail' || placement === 'end'
-    ? AD_SLOT_RAIL
-    : AD_SLOT_IN_ARTICLE;
+export type AdSlotIds = {
+  inArticle: string;
+  rail: string;
+};
+
+export function slotForPlacement(placement: AdPlacement, slots: AdSlotIds): string {
+  const id = placement === 'rail' || placement === 'end' ? slots.rail : slots.inArticle;
+  return id.trim();
 }
 
 export function isHarnessDoc(filePath: string): boolean {

@@ -27,6 +27,9 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          AD_SLOT_IN_ARTICLE: '9697315554'
+          AD_SLOT_RAIL: '1192139579'
         run: npm run build
 
       - name: Configure AWS credentials

@@ -3,6 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 import {remarkAdPlacement} from './src/remark/adPlacement';
+import {AD_SLOT_IN_ARTICLE, AD_SLOT_RAIL} from './src/lib/adPolicy';
 
 const config: Config = {
   title: 'Origemite Archive',
@@ -20,6 +21,11 @@ const config: Config = {
   projectName: 'docusaurus-archive',
 
   onBrokenLinks: 'throw',
+
+  customFields: {
+    adSlotInArticle: AD_SLOT_IN_ARTICLE,
+    adSlotRail: AD_SLOT_RAIL,
+  },
 
   // Google AdSense — injected into <head> of every page
   scripts: [
