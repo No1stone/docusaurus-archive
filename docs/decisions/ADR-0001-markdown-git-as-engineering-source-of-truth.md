@@ -1,6 +1,6 @@
 ---
 id: adr-0001
-title: SSOT란?
+title: 원본은 Git 안의 Markdown으로 둡니다
 description: 개발하며 내린 의사결정을 누적해 사람과 AI가 함께 관리하는, 하네스 관점의 단일 진실 원천
 tags:
   - adr
@@ -8,7 +8,7 @@ tags:
   - ssot
 status: accepted
 ---
-# SSOT란?
+# 원본은 Git 안의 Markdown으로 둡니다
 
 > **개요:** 이 아카이브에서 말하는 SSOT는 "문서를 한 곳에 모읍니다"가 아닙니다.
 > 개발하며 내린 의사결정을 기록하고, 단편적인 판단이 아니라 누적된 자료와 히스토리를 사람과 AI가 같은 자리에서 함께 관리하는 것입니다.
@@ -127,7 +127,7 @@ Origemite Archive의 원본은 **Git 안의 Markdown 파일**로 합니다.
 
 - [아카이브 홈](../)
 - [Controller Design](../knowledge/backend/controller/controller-design.md)
-- ADR-0002 [Docusaurus를 아카이브 읽기 화면으로 씁니다](./ADR-0002-docusaurus-as-archive-reading-ui.md)
+- ADR-0002 [아카이브 화면은 Docusaurus로 둡니다](./ADR-0002-docusaurus-as-archive-reading-ui.md)
 - 승격을 맡는 역할(저장소): `docs/harness/agents/curator.md`
 - 원칙 1(저장소): `docs/harness/context/engineering-principles.md`
 

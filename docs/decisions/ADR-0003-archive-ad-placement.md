@@ -1,14 +1,11 @@
 ---
 id: adr-0003
-title: 글 광고는 레이아웃이 넣습니다
+title: 광고는 글 파일이 아니라 화면이 넣습니다
 description: Origemite Archive에 애드센스를 넣는 위치와, 글을 쓰거나 사이트를 고칠 때 지키는 규칙
-tags:
-  - adr
-  - archive
-  - ads
 status: accepted
+unlisted: true
 ---
-# 글 광고는 레이아웃이 넣습니다
+# 광고는 글 파일이 아니라 화면이 넣습니다
 
 > **개요:** 광고는 Markdown에 적지 않습니다.
 > 홈은 한 칸, 문서 페이지는 본문 첫 절 뒤와 오른쪽 목차 아래 두 칸입니다.
@@ -94,7 +91,7 @@ Explore Archive와 Recently Updated 사이입니다.
 
 ## 관련
 
-- ADR-0001 [SSOT란?](./ADR-0001-markdown-git-as-engineering-source-of-truth.md)
-- ADR-0002 [Docusaurus를 선택한 이유](./ADR-0002-docusaurus-as-archive-reading-ui.md)
+- ADR-0001 [원본은 Git 안의 Markdown으로 둡니다](./ADR-0001-markdown-git-as-engineering-source-of-truth.md)
+- ADR-0002 [아카이브 화면은 Docusaurus로 둡니다](./ADR-0002-docusaurus-as-archive-reading-ui.md)
 
 저장소 경로: `src/components/AdSlot.tsx`, `src/pages/index.tsx`, `docusaurus.config.ts`.

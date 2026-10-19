@@ -1,14 +1,14 @@
 ---
 id: adr-0002
-title: Docusaurus를 선택한 이유
-description: 아카이브를 보여 주고 관리하는 도구로 Docusaurus를 선택한 이유
+title: 아카이브 화면은 Docusaurus로 둡니다
+description: 아카이브를 보여 주고 관리하는 화면으로 Docusaurus를 씁니다
 tags:
   - adr
   - archive
   - tooling
 status: accepted
 ---
-# Docusaurus를 선택한 이유
+# 아카이브 화면은 Docusaurus로 둡니다
 
 > **개요:** 아카이브 도구로 Docusaurus를 고른 이유입니다.
 > Markdown 파일이라 에이전트가 읽고 쓰기 쉽고, React라 화면 커스텀이 쉬우며, 요즘 AI 에이전트는 다른 폴더를 그대로 임포트해서 쓰므로 Markdown 파일 관리가 곧 에이전트 사용이 됩니다.
@@ -80,7 +80,7 @@ Cursor, Claude Code, Codex 같은 에이전트는 작업 중인 프로젝트 밖
 
 ## 관련
 
-- ADR-0001 [SSOT란?](./ADR-0001-markdown-git-as-engineering-source-of-truth.md)
+- ADR-0001 [원본은 Git 안의 Markdown으로 둡니다](./ADR-0001-markdown-git-as-engineering-source-of-truth.md)
 - [아카이브 홈](../)
 
 저장소 경로: `docusaurus.config.ts`, `sidebars.ts`, `docs/**/_category_.json`, `src/pages/`.

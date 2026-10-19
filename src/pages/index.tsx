@@ -22,9 +22,8 @@ const sections = [
     title: 'Decisions',
     to: '/docs/decisions/',
     items: [
-      {title: 'SSOT란?', to: '/docs/decisions/adr-0001'},
-      {title: 'Docusaurus를 선택한 이유', to: '/docs/decisions/adr-0002'},
-      {title: '글 광고는 레이아웃이 넣습니다', to: '/docs/decisions/adr-0003'},
+      {title: '원본은 Git 안의 Markdown으로 둡니다', to: '/docs/decisions/adr-0001'},
+      {title: '아카이브 화면은 Docusaurus로 둡니다', to: '/docs/decisions/adr-0002'},
     ],
   },
   {

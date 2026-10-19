@@ -16,7 +16,7 @@ Personal engineering archive. Markdown and Git are the source of truth; Docusaur
 | 영역 | 내용 |
 |------|------|
 | [Backend](./knowledge/backend/) | Controller, Facade, Service, 테스트 구조 |
-| [Decisions](./decisions/) | SSOT, Docusaurus를 선택한 이유, 광고 배치 |
+| [Decisions](./decisions/) | Markdown 원본, Docusaurus 화면 |
 | [Harness](/docs/harness/) | 에이전트, 오케스트레이션, 템플릿, 구현 흐름 |
 
 ## How to use this archive
