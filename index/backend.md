@@ -33,6 +33,7 @@ Map of backend-related engineering assets.
 ### Decisions
 
 - [ADR-0001](../docs/decisions/ADR-0001-markdown-git-as-engineering-source-of-truth.md)
+- [ADR-0004](../docs/decisions/ADR-0004-blocking-flow-uses-mvc.md)
 
 ### History
 

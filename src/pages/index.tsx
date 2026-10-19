@@ -24,6 +24,7 @@ const sections = [
     items: [
       {title: '원본은 Git 안의 Markdown으로 둡니다', to: '/docs/decisions/adr-0001'},
       {title: '아카이브 화면은 Docusaurus로 둡니다', to: '/docs/decisions/adr-0002'},
+      {title: '블로킹 기반 업무 처리에 Spring MVC와 Virtual Threads를 선택한 이유', to: '/docs/decisions/adr-0004'},
     ],
   },
   {

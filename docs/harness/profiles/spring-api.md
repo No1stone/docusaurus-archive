@@ -37,6 +37,7 @@ Skeleton profile for Spring-style HTTP API work.
 ### Decisions
 
 - [ADR-0001](/docs/decisions/adr-0001)
+- [ADR-0004](/docs/decisions/adr-0004)
 
 ### Verification (default tool set)
 
