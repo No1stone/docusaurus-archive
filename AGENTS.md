@@ -37,3 +37,6 @@
 [`docs/harness/context/precedence.md`](./docs/harness/context/precedence.md)
 Knowledge와 템플릿은 사용자가 갱신을 요청할 때만 고칩니다.
 커밋은 [`docs/harness/context/git.md`](./docs/harness/context/git.md)입니다.
+문서를 작성하거나 수정할 때는 공통 글쓰기 기준을 확인합니다.
+[`docs/harness/context/writing-conventions.md`](./docs/harness/context/writing-conventions.md)
+코드 작업에서는 이 문서를 읽지 않습니다.

@@ -80,20 +80,4 @@ Knowledge와 설계 원칙은 Master가 판단할 때 봅니다.
 
 ## 글 작성
 
-이 아카이브는 작성자만 보는 문서가 아닙니다.
-외부 독자도 읽습니다.
-
-- 반말을 쓰지 않습니다.
-  `한다`, `이다`, `해` 대신 `합니다`, `입니다`를 씁니다.
-- 중점 `·`을 쓰지 않습니다.
-  쉼표(`, `)를 씁니다.
-- 문장을 끝내는 마침표(`.`) 다음에는 다음 문장을 새 줄에 씁니다.
-  코드 블록, 표, 식별자는 예외입니다.
-- 에이전트가 넣거나 뺄 수 있게 Markdown 단위를 작게 둡니다.
-- 필요할 때 가벼운 YAML frontmatter(`id`, `title`, `description`, `tags`, `status`)를 씁니다.
-- 있는 문서만 링크합니다.
-  없는 큰 트리를 만들지 않습니다.
-- 아직 확정되지 않은 개인 코딩 규칙은 아카이브에 올리지 않습니다.
-  그때는 TODO나 골격만 둡니다.
-- Docusaurus `_category_.json`은 탐색용입니다.
-  엔지니어링 의미를 정의하지 않습니다.
+문서를 작성하거나 수정할 때의 기준은 [`docs/harness/context/writing-conventions.md`](./docs/harness/context/writing-conventions.md)입니다.

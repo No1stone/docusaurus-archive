@@ -11,3 +11,4 @@
 - 작업 로그는 [`history/`](./history/)입니다. 필요할 때 해당 월만 검색합니다.
 - 개인 세션 메모는 이 저장소 밖입니다. 여기 기록과 복제하지 않습니다.
 - Backend Knowledge(Controller, Facade, Service, 테스트 구조)는 채택된 구현 기준입니다.
+- 문서를 작성하거나 수정할 때의 기준은 [`context/writing-conventions.md`](./context/writing-conventions.md)입니다. 코드 작업에서는 읽지 않습니다.
