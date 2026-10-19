@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 import {remarkAdPlacement} from './src/remark/adPlacement';
-import {AD_SLOT_IN_ARTICLE, AD_SLOT_RAIL} from './src/lib/adPolicy';
+import {AD_SLOT_IN_ARTICLE, AD_SLOT_RAIL} from './src/lib/adSlotEnv';
 
 const config: Config = {
   title: 'Origemite Archive',

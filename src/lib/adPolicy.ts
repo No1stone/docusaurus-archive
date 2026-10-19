@@ -6,20 +6,6 @@ export const AD_LONG_WORDS = 1500;
 
 export const AD_CLIENT = 'ca-pub-7928208116313519';
 
-/**
- * Two AdSense units. Home and in-article share the first.
- * The rail and the long-page mobile end share the second, because they never
- * render on the same page. Values come from the build environment.
- * An empty value means that unit is not rendered.
- */
-function readEnv(name: 'AD_SLOT_IN_ARTICLE' | 'AD_SLOT_RAIL'): string {
-  const value = process.env[name];
-  return typeof value === 'string' ? value.trim() : '';
-}
-
-export const AD_SLOT_IN_ARTICLE = readEnv('AD_SLOT_IN_ARTICLE');
-export const AD_SLOT_RAIL = readEnv('AD_SLOT_RAIL');
-
 export type AdPlacement = 'home' | 'inArticle' | 'rail' | 'end';
 
 export type AdSlotIds = {
