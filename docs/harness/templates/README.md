@@ -16,7 +16,7 @@ Lives under `docs/harness/templates/`.
 
 ## Start here
 
-- [Spring RestOutLog slice](./backend/spring/) — table set, then the enum apply set. Both embed full sources with no omitted methods:
+- [Spring ExampleItem 원셋](./backend/spring/) — 구현·testing·e2e. 안내는 [ONESET.md](./backend/spring/ONESET.md). enum 적용 세트는 조건부.
 
 ```text
 controller → facade → service → repository

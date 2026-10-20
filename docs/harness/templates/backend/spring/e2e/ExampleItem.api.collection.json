@@ -1,0 +1,177 @@
+{
+  "info": {
+    "name": "ExampleItem Controller API E2E",
+    "description": "내 서버 Controller→Facade→Service→Repository→DB CRUD 순차 검증입니다. 경로 /example-items 와 응답 code=OK 는 치환 토큰입니다. 실행마다 runId로 고유 데이터를 씁니다. 실키·운영 주소·외부 더미는 넣지 않습니다. 삭제 방식·없는 id의 HTTP/응답·삭제 후 부재 단언은 저장소 계약에 맞춰 채웁니다(ONESET 확장 지점).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "if (!pm.environment.get('runId')) {",
+          "  pm.environment.set('runId', Date.now().toString());",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "01 등록",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('업무 성공 코드', () => pm.expect(body.code).to.eql('OK'));",
+              "pm.test('data.id', () => pm.expect(body.data.id).to.be.a('number'));",
+              "pm.environment.set('itemId', String(body.data.id));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"httpMethod\": \"GET\",\n  \"url\": \"/e2e-{{runId}}\",\n  \"parameter\": \"\",\n  \"payload\": \"{\\\"source\\\":\\\"example-item-e2e\\\",\\\"run\\\":\\\"{{runId}}\\\"}\",\n  \"responseHttpStatus\": \"200\",\n  \"response\": \"ok\"\n}"
+        },
+        "url": "{{baseUrl}}/example-items"
+      }
+    },
+    {
+      "name": "02 등록 ID로 조회",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('업무 성공 코드', () => pm.expect(body.code).to.eql('OK'));",
+              "pm.test('url 유지', () => pm.expect(body.data.url).to.eql('/e2e-' + pm.environment.get('runId')));",
+              "pm.test('httpMethod 유지', () => pm.expect(body.data.httpMethod).to.eql('GET'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/example-items/{{itemId}}"
+      }
+    },
+    {
+      "name": "03 수정",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('업무 성공 코드', () => pm.expect(body.code).to.eql('OK'));",
+              "pm.test('같은 id', () => pm.expect(String(body.data.id)).to.eql(pm.environment.get('itemId')));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"/e2e-{{runId}}-renamed\",\n  \"payload\": \"{\\\"source\\\":\\\"example-item-e2e\\\",\\\"run\\\":\\\"{{runId}}\\\",\\\"updated\\\":true}\"\n}"
+        },
+        "url": "{{baseUrl}}/example-items/{{itemId}}"
+      }
+    },
+    {
+      "name": "04 변경값 조회",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('url 변경', () => pm.expect(body.data.url).to.eql('/e2e-' + pm.environment.get('runId') + '-renamed'));",
+              "pm.test('payload 변경', () => pm.expect(body.data.payload).to.include('updated'));",
+              "pm.test('httpMethod 유지(부분 수정)', () => pm.expect(body.data.httpMethod).to.eql('GET'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/example-items/{{itemId}}"
+      }
+    },
+    {
+      "name": "05 삭제",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "const body = pm.response.json();",
+              "pm.test('업무 성공 코드', () => pm.expect(body.code).to.eql('OK'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/example-items/{{itemId}}"
+      }
+    },
+    {
+      "name": "06 입력 오류 대표 케이스",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.test('성공 코드가 아니다', () => pm.expect(body.code).to.not.eql('OK'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"httpMethod\": \"NOT_A_VALID_METHOD\",\n  \"url\": \"/e2e-bad-{{runId}}\",\n  \"parameter\": \"\",\n  \"payload\": \"{}\",\n  \"responseHttpStatus\": \"200\",\n  \"response\": \"bad\"\n}"
+        },
+        "url": "{{baseUrl}}/example-items"
+      }
+    },
+    {
+      "name": "07 없는 자원 조회",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.test('성공(200+OK)이 아니다', () => {",
+              "  const ok = pm.response.code === 200 && body.code === 'OK';",
+              "  pm.expect(ok).to.eql(false);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/example-items/999999001"
+      }
+    }
+  ]
+}

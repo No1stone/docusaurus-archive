@@ -48,7 +48,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rest-out-logs")
+@RequestMapping("/example-items")
 public class ExampleItemController {
 
     private final ExampleItemFacade exampleItemFacade;
