@@ -1,6 +1,7 @@
 ---
 id: harness-work-history
 title: 작업 기록
+unlisted: true
 ---
 # 작업 기록
 

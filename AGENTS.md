@@ -14,7 +14,7 @@
 
 조건과 추가 절차는 [`docs/harness/workflows/implement.md`](./docs/harness/workflows/implement.md)입니다.
 통과 기준은 [`docs/harness/workflows/acceptance.md`](./docs/harness/workflows/acceptance.md)입니다.
-구현 우선순위는 [`docs/harness/agents/implementer.md`](./docs/harness/agents/implementer.md)입니다.
+구현 우선순위와 실행 원칙(토큰 최소 경로)은 [`docs/harness/agents/implementer.md`](./docs/harness/agents/implementer.md)입니다.
 
 ## 읽기
 
@@ -24,11 +24,12 @@
 
 ## 레시피
 
-있는 레시피는 재사용합니다.
+있는 레시피는 [`docs/harness/orchestrations/index.md`](./docs/harness/orchestrations/index.md)에서 적용 조건만 보고 고릅니다.
 새 레시피는 같은 상황이 반복될 때만 제안합니다.
 모든 요청에 레시피를 만들지 않습니다.
 역할 문서는 책임입니다.
 기본적으로 한 에이전트가 필요한 책임을 수행합니다.
+레시피 선택과 별도 에이전트 실행은 다릅니다.
 별도 에이전트 조건은 [`docs/harness/workflows/implement.md`](./docs/harness/workflows/implement.md)입니다.
 
 ## 규칙

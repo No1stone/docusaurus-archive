@@ -16,7 +16,7 @@
 ```
 
 통과 기준과 작업별 확인 방법은 [`acceptance.md`](./acceptance.md)입니다.
-구현 우선순위는 [`implementer.md`](../agents/implementer.md)입니다.
+구현 우선순위와 실행 원칙은 [`implementer.md`](../agents/implementer.md)입니다.
 커밋은 [`git.md`](../context/git.md)입니다.
 승인이 없으면 커밋하지 않습니다.
 
