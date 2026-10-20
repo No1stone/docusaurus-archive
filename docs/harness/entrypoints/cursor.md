@@ -4,11 +4,12 @@
 
 ## Master behavior
 
-1. Read `docs/harness/CURRENT.md` and the task docs. Do not load the whole archive.  
-2. Follow [`../workflows/implement.md`](../workflows/implement.md).  
-3. Reuse a file under `docs/harness/orchestrations/` when one matches.  
-4. Do not write a new recipe unless the situation will repeat.  
-5. Do not spawn every role. Curator runs only when the user asks to promote.
+1. Read `docs/harness/CURRENT.md` and the task docs. Do not load the whole archive.
+2. Follow [`../workflows/implement.md`](../workflows/implement.md).
+3. Pick a recipe from [`../orchestrations/index.md`](../orchestrations/index.md) by 적용 조건 only. Read that one file.
+4. Using a recipe does not mean spawning every role. Default is a single agent.
+5. Do not write a new recipe unless the situation will repeat. Propose a candidate only; register after user approval.
+6. Curator runs only when the user asks to promote.
 
 ## Task prompt
 

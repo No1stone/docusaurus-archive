@@ -22,15 +22,17 @@ User request
     ↓
 CURRENT.md와 이번 작업 문서만
     ↓
-Matching orchestration exists?
-    ├─ YES → reuse it
-    └─ NO  → default path in workflows/implement.md
+orchestrations/index.md에서 적용 조건만 보고 선택
+    ├─ hit → 해당 레시피 한 파일만 읽기 → 기본은 단일 에이전트 실행
+    └─ miss → default path in workflows/implement.md
               A new recipe is proposed only when the situation will repeat
 ```
 
 Master does **not** write a recipe for every request.
 Master does **not** spawn every role.
+Selecting a recipe is not the same as running every role in its table.
 Curator runs only when the user asks to promote Knowledge or templates.
+Recipe list: [`orchestrations/index.md`](./orchestrations/index.md).
 
 ---
 

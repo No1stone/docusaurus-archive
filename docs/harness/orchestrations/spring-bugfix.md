@@ -1,45 +1,88 @@
 # Orchestration: `spring-bugfix`
 
-> **개요:** 재현되는 버그를 최소로 고치는 상황입니다.
+> **개요:** 재현되는 버그를 최소로 고칩니다.
+> 기본은 단일 에이전트입니다.
 > 별도 에이전트는 [`implement.md`](../workflows/implement.md)입니다.
-> 확인 방법은 [`acceptance.md`](../workflows/acceptance.md)의 버그 수정입니다.
 
 | Field | Value |
 |-------|--------|
 | ID | `spring-bugfix` |
-| When to use | 입력, 기대 결과, 실제 결과가 말로 고정되는 결함 |
-| When not to use | 재현이 안 되는 보고, 새 기능, 동작이 바뀌는 리팩터 |
-| Profile hint | `docs/harness/profiles/spring-api.md` |
 | Status | active |
+| Profile hint | `docs/harness/profiles/spring-api.md` |
 
-## 이 상황
+## 적용 조건
 
-별도 에이전트는 [`implement.md`](../workflows/implement.md)를 따릅니다.
+**적용합니다.**
 
-- 입력, 기대, 실제, 관찰 위치가 고정되지 않으면 수정하지 않습니다.
-- 재현 테스트를 만들 수 있으면 수정 전에 작성합니다. 수정 후 그 테스트와 기존 테스트의 회귀를 확인합니다.
-- 러너가 없으면 구현 결함이 아닙니다. 승인된 범위 안에서 수동 재현과 검증을 수행하고 방법 및 한계를 기록합니다. 기대 동작이나 필요한 접근 범위가 불명확한 경우에만 확인합니다.
-- 보고된 결함이 해결됐는지, 범위 밖 변경이 없는지는 별도 QA 없이도 확인합니다.
-- 같은 버그가 반복되면 후보만 기록합니다. 문서 갱신은 사용자가 요청할 때 합니다.
+- 입력, 기대 결과, 실제 결과가 말로 고정되는 결함
+- 수정 범위가 기존 동작의 복구인 경우
 
-모델 풀과 자유도는 각 역할 기본값입니다.
+**적용하지 않습니다.**
 
-## Verification tools
+- 재현이 안 되는 보고
+- 새 기능 → [`spring-api-one-set`](./spring-api-one-set.md) 또는 기본 흐름
+- 동작이 바뀌는 리팩터 → [`spring-refactor-layer`](./spring-refactor-layer.md)
 
-| Tool | Rung / scope | 검증 | 증거 |
-|------|--------------|------|------|
-| `backend-unit-test` | 재현이 가능하면 재현 테스트와 기존 `./gradlew test` | 러너가 있을 때 | 실패 로그, 이후 command와 pass/fail |
+## 입력과 미확정
 
-이 표의 검증은 별도 에이전트 실행이 아닙니다.
+**필요합니다.**
 
-## Knowledge assembly
+- 재현 입력과 기대·실제 결과
+- 관찰 위치(로그, 화면, 테스트, API)
 
-버그가 있는 층의 템플릿만 읽습니다.
-과거 장애와 증상이 같을 때만 Postmortem을 읽습니다.
+**미확정이면 수정하지 않습니다.**
 
-| Path | Who | Kind |
-|------|-----|------|
-| `docs/knowledge/backend/testing/test-structure.md` | 테스트를 둘 때 | current |
-| `docs/harness/workflows/bugfix.md` | 이 상황 | current |
-| `docs/harness/templates/backend/spring/` | Implementer | current |
-| `docs/postmortems/` | Master | 증상이 같을 때만 |
+- 기대 동작
+- 수정해도 되는 파일 범위
+
+## 읽을 문서와 템플릿
+
+| Path | 언제 |
+|------|------|
+| `docs/harness/workflows/bugfix.md` | 이 상황의 절차 |
+| `docs/harness/workflows/acceptance.md` | 통과 기준 형식 |
+| `docs/knowledge/backend/testing/test-structure.md` | 재현 테스트를 둘 때 |
+| 버그가 있는 층의 ExampleItem 대응 파일만 | 모양이 필요할 때. `docs/harness/templates/backend/spring/`에서 해당 층만 |
+| `docs/postmortems/` | 증상이 같은 기록이 있을 때만 |
+
+## 작업 순서와 산출물
+
+1. 입력·기대·실제·관찰 위치를 고정합니다. → 재현 문장
+2. 재현 테스트를 만들 수 있으면 수정 전에 작성해 실패를 확인합니다. → 실패하는 테스트
+3. 최소 수정을 합니다. → 패치
+4. 재현 테스트와 관련 회귀를 확인합니다. → 명령과 결과
+5. 범위를 넘긴 변경이 없는지 확인합니다. → 완료 보고
+
+## 단일 에이전트 기본 경로
+
+한 에이전트가 재현, 수정, 검증을 합니다.
+별도 QA 없이도 결함 해결과 범위 밖 변경 없음을 확인합니다.
+
+## 별도 에이전트
+
+| 조건 | 역할 |
+|------|------|
+| 코드 위치를 찾지 못함 | Scout |
+| 수정이 공개 계약이나 여러 경계를 바꿈 | Reviewer |
+| 같은 버그가 반복됨 | 후보만 기록. Curator는 사용자 요청 시 |
+
+## 통과 기준과 검증
+
+| 구분 | 기준 | 방법 |
+|------|------|------|
+| 정상 | 보고된 재현이 기대 결과로 바뀜 | 재현 테스트 또는 승인된 수동 재현 |
+| 경계 | 인접 입력에서 회귀 없음 | 관련 기존 테스트 |
+| 실패 | 러너·환경 문제는 구현 결함으로 단정하지 않음 | `BLOCKED`와 이유 |
+
+도구: `backend-unit-test`.
+화면만의 결함이면 `browser-manual`을 쓸 수 있습니다.
+
+## 실패·정보 부족 시
+
+- 재현이 안 되면 수정하지 않고 필요한 정보를 요청합니다.
+- 테스트를 지워 통과시키지 않습니다.
+- 승인된 수동 재현만 가능하면 방법과 한계를 적습니다.
+
+## 완료 보고
+
+원인 요약, 변경 파일, 검증 증거, 남은 위험, 반복 시 승격 후보를 적습니다.

@@ -1,21 +1,35 @@
 # Task / Situation Orchestrations
 
 > **개요:** 반복되는 상황의 레시피입니다.
-> 없는 요청은 기본 흐름으로 처리합니다.
-> 새 파일은 같은 상황이 반복될 때만 제안합니다.
+> 목록의 적용 조건만 보고 고른 뒤, 필요한 파일 하나만 읽습니다.
+> 레시피를 골라도 기본은 단일 에이전트입니다.
+> 별도 에이전트 실행은 [`../workflows/implement.md`](../workflows/implement.md)입니다.
+> 맞는 레시피가 없으면 기본 흐름으로 작업합니다.
+> 없는 레시피를 매번 만들지 않습니다.
+> 반복 가치가 있으면 후보만 제안하고, 등록은 사용자 승인 후입니다.
 
-Durable **recipes**: which agents + which knowledge-base docs for a situation.
+## 선택
 
-Master **selects** these. Master **writes** one only when the situation is new (after feedback to the developer).
+| ID | 적용할 때 | 적용하지 않을 때 |
+|----|-----------|------------------|
+| [spring-api-one-set](./spring-api-one-set.md) | **공통 원셋.** 구현·단위/시나리오·API E2E를 복사 후 도메인만 채움 | 버그, 리팩터, E2E만 |
+| [api-collection-e2e](./api-collection-e2e.md) | **원셋 E2E.** 컬렉션만 수정·실행 | 구현부터 추가, UI-only E2E |
+| [spring-bugfix](./spring-bugfix.md) | 재현이 고정된 결함을 최소 수정 | 재현 불가, 새 기능 |
+| [spring-refactor-layer](./spring-refactor-layer.md) | 동작 유지 구조 변경 | 공개 API·동작 변경 |
+| [archive-promote-pattern](./archive-promote-pattern.md) | 반복된 구현을 아카이브 기준으로 올릴지 제안 | 한 번 쓴 코드, 구현 중 기능 |
+| [spring-external-contract](./spring-external-contract.md) | (원셋 범위 밖) OpenAPI·RestClient 계약 | 내부 CRUD 원셋 |
+| [docs-field-manual](./docs-field-manual.md) | (원셋 범위 밖) 관리자·현장 매뉴얼 | Knowledge 승격, API 구현만 |
 
-## Recipes
+## 레시피와 에이전트
 
-| ID | When |
-|----|------|
-| [spring-api-one-set](./spring-api-one-set.md) | Spring REST 테이블 한 세트 추가. 통과 테스트 다음 구현 |
-| [spring-bugfix](./spring-bugfix.md) | 재현 테스트 다음 최소 수정 |
-| [spring-refactor-layer](./spring-refactor-layer.md) | 기존 테스트가 녹색인 뒤 구조만 변경 |
-| [archive-promote-pattern](./archive-promote-pattern.md) | 구현이 끝난 뒤 Curator 승격 제안 |
+```text
+상황 판단
+  → 위 표에서 레시피 선택 (또는 없음 → implement.md 기본 경로)
+  → 단일 에이전트가 레시피의 순서·템플릿·검증을 수행
+  → 별도 에이전트는 레시피에 적힌 조건 + implement.md 표일 때만
+```
+
+레시피 사용과 별도 에이전트 실행은 다릅니다.
 
 ## Layout
 
@@ -26,30 +40,14 @@ docs/harness/orchestrations/
 └── <situation-id>.md
 ```
 
-## Lifecycle
-
-```text
-Situation occurs
-  → Master searches this folder
-  → hit: reuse
-  → miss: feedback to developer → write from template.md → reuse next time
-```
-
-## What each file must assemble
-
-1. **When to use** (situation)  
-2. **Agent assembly** (which subagents, order, model pool)  
-3. **Knowledge assembly** (which Archive docs)  
-4. Success criteria / constraints  
-
 ## vs Bundle / Profile
 
 | | Profile | Bundle | Orchestration |
 |--|---------|--------|----------------|
 | Usual stack combo | ✓ | | hint only |
 | Read list helper | | ✓ | |
-| Agents + knowledge for a **situation** | | | ✓ (source of truth for runs) |
+| Agents + knowledge + templates for a **situation** | | | ✓ |
 
 ## Naming
 
-`{stack}-{situation}.md` e.g. `spring-web-bff-crud.md`, `archive-extract-testing-practice.md`
+`{stack}-{situation}.md` 또는 `docs-{situation}.md`
