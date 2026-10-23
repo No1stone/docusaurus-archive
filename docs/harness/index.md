@@ -22,7 +22,7 @@ Helps coding agents (Cursor, Codex, Claude Code, …) reuse the same Markdown kn
 | [`agents/`](./agents/) | Role contracts (Master writes orchestrations; others execute) |
 | [`tools/`](./tools/) | Verification tools the Tester may use to prove vibe-coded results (tests, Playwright, agent-driven browser) |
 | [`context/`](./context/) | Identity, principles, conventions, precedence |
-| [`workflows/implement.md`](./workflows/implement.md) | 기본 개발 흐름. 매번 모든 역할을 실행하지 않습니다 |
+| [`workflows/implement.md`](./workflows/implement.md) | 기본 개발 흐름·요청 모드·검증·보고 허브. 매번 모든 역할을 실행하지 않습니다 |
 | [`CURRENT.md`](./CURRENT.md) | 현재 상태. 작업 로그 전체가 아닙니다 |
 | [`history/`](./history/) | 작업 기록. 필요할 때만 해당 월을 읽습니다 |
 | [`profiles/`](./profiles/) | Usual asset combo for a *kind* of stack |
@@ -41,9 +41,12 @@ Harness structure must not depend on a single AI vendor. Entrypoints are thin ad
 
 ```text
 Index (what exists)
+  → 요청 모드 확인 (workflows/implement.md)
   → Master selects orchestration for situation
       or gap feedback → write orchestration
   → workers load only that recipe’s knowledge assembly
 ```
 
+질문·확인·설명만이면 레시피·역할을 돌리지 않고 답합니다.
 History / Postmortems only if the selected orchestration lists them.
+변경 없는 자료의 반복 읽기는 줄이고, 파일 변경·컨텍스트 압축·작업 전환 시 필요분을 재확인합니다 ([`implement.md`](./workflows/implement.md)).

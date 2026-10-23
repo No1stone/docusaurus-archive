@@ -20,7 +20,7 @@
 
 시작 시 [`docs/harness/CURRENT.md`](./docs/harness/CURRENT.md)와 이번 작업 문서만 읽습니다.
 저장소 전체, `docs/history`, `docs/harness/history`, 모든 역할 문서, 모든 템플릿을 기본으로 읽지 않습니다.
-이미 읽었고 바뀌지 않은 문서는 다시 읽지 않습니다.
+변경 없는 자료의 반복 읽기는 줄입니다. 파일 변경·컨텍스트 압축·작업 전환 시 필요한 부분은 재확인합니다.
 
 ## 레시피
 

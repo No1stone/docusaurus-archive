@@ -1,15 +1,18 @@
 # Entrypoint: Cursor
 
 > **개요:** Cursor에서 이 하네스로 들어오는 방법.
+> 공통 작업 범위는 [`../workflows/implement.md`](../workflows/implement.md)입니다.
 
 ## Master behavior
 
 1. Read `docs/harness/CURRENT.md` and the task docs. Do not load the whole archive.
-2. Follow [`../workflows/implement.md`](../workflows/implement.md).
-3. Pick a recipe from [`../orchestrations/index.md`](../orchestrations/index.md) by 적용 조건 only. Read that one file.
-4. Using a recipe does not mean spawning every role. Default is a single agent.
-5. Do not write a new recipe unless the situation will repeat. Propose a candidate only; register after user approval.
-6. Curator runs only when the user asks to promote.
+2. Follow [`../workflows/implement.md`](../workflows/implement.md) (요청 모드·단일 에이전트 기본·검증·보고).
+3. 질문·확인·설명만이면 파일을 수정하지 않고 답합니다. 레시피·역할을 돌리지 않습니다.
+4. Pick a recipe from [`../orchestrations/index.md`](../orchestrations/index.md) by 적용 조건 only. Read that one file.
+5. Using a recipe does not mean spawning every role. Default is a single agent.
+6. Do not write a new recipe unless the situation will repeat. Propose a candidate only; register after user approval.
+7. Curator runs only when the user asks to promote.
+8. 생략한 역할을 나열해 보고하지 않습니다. 결과·검증·남은 문제만 짧게 보고합니다.
 
 ## Task prompt
 
@@ -32,7 +35,9 @@ How Cursor runs the capabilities in [`../tools/`](../tools/index.md):
 | `browser-manual` | Cursor's built-in browser tools: navigate → snapshot → click / type → screenshot. Lock the tab for longer runs; stop after four failed attempts at one step |
 
 Tester records evidence in the tool page's format. Product-specific tool names stay in this file only.
+부하·동시성은 프로젝트 조건에 맞는 도구로 하며, 공통 하네스에 특정 VU·도구를 고정하지 않습니다 ([`implement.md`](../workflows/implement.md)).
 
 Meta: [`../orchestration.md`](../orchestration.md)  
 Master: [`../agents/master.md`](../agents/master.md)  
 Tools: [`../tools/index.md`](../tools/index.md)  
+Implement hub: [`../workflows/implement.md`](../workflows/implement.md)

@@ -2,8 +2,10 @@
 
 > **개요:** 상황 레시피를 고르고, 만들고, 실행하는 메타 규칙입니다.
 > 이번 작업용 읽을거리 목록이 아닙니다.
+> 요청 모드·단일 에이전트 기본·검증·보고의 공통 원칙은 [`workflows/implement.md`](./workflows/implement.md)입니다.
 
 This file is **not** a per-job reading list.
+질문·확인·설명만인 요청과 문서·다이어그램만의 수정에는 역할 파이프라인을 자동으로 돌리지 않습니다.
 
 ## What an orchestration document is
 
@@ -31,6 +33,7 @@ orchestrations/index.md에서 적용 조건만 보고 선택
 Master does **not** write a recipe for every request.
 Master does **not** spawn every role.
 Selecting a recipe is not the same as running every role in its table.
+기본은 단일 에이전트입니다. 역할마다 별도 에이전트를 자동 실행하지 않습니다 ([`implement.md`](./workflows/implement.md)).
 Curator runs only when the user asks to promote Knowledge or templates.
 Recipe list: [`orchestrations/index.md`](./orchestrations/index.md).
 
@@ -103,6 +106,8 @@ PASS | FAIL | BLOCKED | PARTIAL
 ## Anti-patterns
 
 - 기본 경로로 충분한 요청에 새 레시피나 불필요한 읽기 목록을 만드는 것
+- 질문·문서만인 요청에 전체 역할 파이프라인을 돌리는 것
+- 미실행·생략 검증을 PASS로 적는 것 ([`implement.md`](./workflows/implement.md))
 - Hiding “no recipe” gaps from the developer  
 - One mega orchestration for the whole Archive  
 - Workers free-browsing `docs/` outside the selected recipe  

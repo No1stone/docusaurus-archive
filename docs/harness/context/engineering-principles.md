@@ -38,12 +38,13 @@ They are not two writings of the same rule.
 Never hand an agent the whole archive.
 Start from `docs/harness/CURRENT.md` and the documents for this task.
 Do not load `docs/history`, `docs/harness/history`, every role file, or every template by default.
+Skip re-reading unchanged material; re-check after file changes, context compaction, or a work-area switch ([implement](../workflows/implement.md)).
 
 **Why.** Context is a budget. Everything loaded that is not needed crowds out what is, makes the model average between conflicting examples, and costs money on every run. A worker that reads one template produces that template; a worker that reads ten produces a blend.
 
 **If violated.** Implementer output stops matching any single standard, Reviewer findings become arguable, and Master's token spend grows with the archive instead of with the task.
 
-**Where it lives.** [Orchestration](../orchestration.md) meta rules, the *Knowledge assembly* section of every recipe, the Scout role that maps a repo so Master does not have to read it, and the explicit "do not load History by default" notes on non-default areas.
+**Where it lives.** [implement](../workflows/implement.md) (read rules), [Orchestration](../orchestration.md) meta rules, the *Knowledge assembly* section of every recipe, the Scout role that maps a repo so Master does not have to read it, and the explicit "do not load History by default" notes on non-default areas.
 
 ## 4. Low coupling between presentation, AI product, and engineering assets
 
@@ -59,6 +60,8 @@ Docusaurus is a reading UI. Cursor, Codex, Claude Code are adapters. Neither may
 
 Before implementation, write the expected result and the done criteria.
 That is not a requirement to write tests first, or to cycle failure, pass, and cleanup, on every task.
+Reuse existing tests when they already cover the bar.
+Skipped or unrun checks are not recorded as pass ([implement](../workflows/implement.md)).
 How each kind of work checks itself is [구현 전 통과 기준](../workflows/acceptance.md).
 Who runs the check is [implement](../workflows/implement.md).
 Done means the requirement is met and existing behavior did not regress.

@@ -7,8 +7,9 @@ Adapter: Codex ↔ Origemite harness roles.
 ## Start here
 
 1. Repo root: `AGENTS.md`
-2. [`../orchestration.md`](../orchestration.md)
-3. [`../agents/index.md`](../agents/index.md)
+2. [`../workflows/implement.md`](../workflows/implement.md) — 요청 모드·검증·보고
+3. [`../orchestration.md`](../orchestration.md)
+4. [`../agents/index.md`](../agents/index.md)
 
 ## Role binding
 

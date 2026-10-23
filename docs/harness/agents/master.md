@@ -3,6 +3,7 @@
 > **개요:** 감독 역할입니다.
 > 상황을 보고 orchestration을 고르거나 만든 뒤 일을 나눠 주고 결과를 확인합니다.
 > 구현 전에 요구사항, 작업 범위, 제외 범위를 정리하고 통과 기준을 확정합니다.
+> 요청 모드·단일 에이전트 기본·검증 기록은 [`implement.md`](../workflows/implement.md)를 따릅니다.
 > 판단이 필요하면 Knowledge와 설계 원칙을 봅니다.
 > 그 글을 임플리먼터의 구현 명세로 넘기지 않습니다.
 > 대규모 직접 구현은 하지 않습니다.
@@ -59,8 +60,9 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 1. **Classify** the user request into a situation  
 2. **Select** a matching file under `docs/harness/orchestrations/`  
 3. If none fits, use the [default path](../workflows/implement.md). Propose a new recipe only when the situation will repeat.  
-4. Run only the roles that path or the selected recipe requires. Do not spawn every role.  
-5. **Collect** returns → rework / approve  
+4. Run only the roles that path or the selected recipe requires. Do not spawn every role. Default is a single agent ([`implement.md`](../workflows/implement.md)).  
+5. Ask only when requirements, external contracts, or hard-to-undo decisions are unclear. Everyday implementation judgment inside scope proceeds.  
+6. **Collect** returns → rework / approve. Skipped checks are not PASS. Report results, verification, and remaining issues only.  
 
 ### Not the primary job
 

@@ -4,8 +4,10 @@
 > 과거 작업 로그를 여기에 덧붙이지 않습니다.
 
 - 공통 원셋 목표: 검증된 구현·단위/시나리오 테스트·Controller API E2E를 템플릿화하고, 새 작업에서는 복사 후 달라지는 부분만 채웁니다. 안내는 [`templates/backend/spring/ONESET.md`](./templates/backend/spring/ONESET.md)입니다. 외부 스펙 더미 연동 E2E는 원셋 밖 추가 조건입니다.
-- 기본 흐름은 [`workflows/implement.md`](./workflows/implement.md)입니다.
+- 기본 흐름·요청 모드·검증·보고 허브는 [`workflows/implement.md`](./workflows/implement.md)입니다.
 - 통과 기준 형식은 [`workflows/acceptance.md`](./workflows/acceptance.md)입니다.
+- 질문·확인·설명만이면 파일을 수정하지 않습니다. 문서·다이어그램 수정은 승인 작업이며 코딩 역할 파이프라인을 자동 적용하지 않습니다.
+- 미실행·생략 검증은 통과로 기록하지 않습니다.
 - 구현 우선순위는 프로젝트 규칙, 적용 가능한 템플릿, 저장소의 기존 패턴, 승인된 범위의 최소 구현입니다.
 - Curator와 Knowledge, 템플릿 수정은 사용자가 요청할 때만 합니다.
 - `docs/history`는 엔지니어링 방식의 변천입니다. 작업 로그가 아니며 기본으로 읽지 않습니다.

@@ -6,6 +6,9 @@ Catalog of tools an agent may use to **prove** that generated code works.
 
 Vibe coding is allowed here only because verification is not optional. On the default path the implementing agent writes the needed checks and runs a tool from this list. A separate Tester is not required for that. "It looks right" is not evidence. A green run alone does not prove the requirement.
 
+요청 모드·검증 선택·미실행 기록은 [`../workflows/implement.md`](../workflows/implement.md)입니다.
+계약 검증과 부하·동시성 검증을 구분합니다. 부하는 성능·동시성 관련 변경이거나 명시 요청일 때, **프로젝트 도구·조건**에 맞게 수행합니다. 이 카탈로그에 없는 부하 도구를 공통 규칙에 고정하지 않습니다.
+
 ## Catalog
 
 | Tool | File | Proves | Typical stack | Used by |
