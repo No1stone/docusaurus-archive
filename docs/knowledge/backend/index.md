@@ -6,22 +6,24 @@ description: Backend engineering knowledge
 # Backend
 
 > **개요:** 백엔드 지식 입구입니다.
-> 레이어 개념을 먼저 두고, Spring 등 기술 문서는 그다음에 둡니다.
-
-Backend knowledge is organized by **engineering concept** first, then by technology where useful.
+> 레이어 개념을 먼저 두고, Java·Spring 등 기술 메모는 그다음에 둡니다.
 
 ## Concepts
 
 - [Controller](./controller/) — layer responsibilities and boundaries
-- [Facade](./facade/) — external contract and allowed access path for a function and its data
-- [Service](./service/) — data access and the rules of that data set
-- [Testing](./testing/) — test boundaries, layout, names, and how to run them
+- [Facade](./facade/) — external contract and allowed access path
+- [Service](./service/) — data access and rules of that data set
+- [Testing](./testing/) — test boundaries, layout, names
 
-## Technology notes
+## Technology
 
-Technology-specific pages (e.g. Spring) will live under this tree when added. Prefer not to bury reusable concepts under a single framework folder.
+분량이 있어 나눈 기술 묶음입니다. Spring·Java는 주제별 하위를 둡니다.
+
+- [Java](./java/index.md) — 언어·JVM, [JSON](./java/json-utils/index.md)
+- [Spring](./spring/index.md) — Core·Config·Web·WebFlux·Scheduling
+- [Spring Cloud](./spring-cloud/index.md) — Config Server, Eureka, Gateway
 
 ## Related
 
-- [Decisions](../../decisions/)
-- Agent maps: `index/backend.md`, `docs/harness/templates/`, `docs/harness/profiles/spring-api.md`
+- [Security](../security/) — JWT·Spring Security 메모
+- [Patterns](../../patterns/)

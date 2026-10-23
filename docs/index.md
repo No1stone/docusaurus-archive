@@ -15,8 +15,8 @@ Personal engineering archive. Markdown and Git are the source of truth; Docusaur
 
 | 영역 | 내용 |
 |------|------|
-| [Backend](./knowledge/backend/) | Controller, Facade, Service, 테스트 구조 |
-| [Decisions](./decisions/) | Markdown 원본, Docusaurus 화면, 블로킹 업무의 Spring MVC |
+| [Backend](./knowledge/backend/index.md) | Controller, Facade, Service, 테스트 구조 |
+| [Decisions](./decisions/index.md) | Markdown 원본, Docusaurus 화면, 블로킹 업무의 Spring MVC |
 | [Harness](/docs/harness/) | 에이전트, 오케스트레이션, 템플릿, 구현 흐름 |
 
 ## How to use this archive
