@@ -3,8 +3,6 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
-import AdSlot from '@site/src/components/AdSlot';
-
 import styles from './index.module.css';
 
 const sections = [
@@ -135,7 +133,6 @@ export default function Home(): ReactNode {
       <ArchiveHero />
       <main>
         <ArchiveSections />
-        <AdSlot placement="home" />
       </main>
     </Layout>
   );
