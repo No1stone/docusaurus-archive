@@ -21,3 +21,6 @@ yarn-error.log*
 
 # Local work scratch
 .tmp/
+
+# Local migration sources
+/_imports/
