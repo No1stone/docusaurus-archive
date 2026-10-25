@@ -3,7 +3,7 @@
 > **개요:** 테이블 한 세트의 구현, 단위·시나리오 테스트, API E2E입니다.
 > 옆에 `.java`와 E2E JSON이 있습니다.
 > 예제에서 메서드나 필드를 생략하지 않습니다.
-> 복사·치환·실행 순서는 [`ONESET.md`](./ONESET.md)입니다.
+> 복사·치환·실행 순서는 [`ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
 
 ## 목표
 

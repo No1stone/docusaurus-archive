@@ -18,10 +18,10 @@
 - 템플릿으로 해결되지 않는 차이가 있을 때만 추가 탐색과 설계 판단을 합니다.
 - 간단한 수정은 관련 파일만 고칩니다. 원셋 전체 재읽기·재생성은 하지 않습니다.
 - 별도 에이전트는 필요할 때만 씁니다.
-- 변경 없는 자료의 반복 읽기는 줄입니다. 파일 변경·컨텍스트 압축·작업 전환 시 필요한 부분은 재확인합니다 ([`implement.md`](../workflows/implement.md)).
+- 변경 없는 자료의 반복 읽기는 줄입니다. 파일 변경·컨텍스트 압축·작업 전환 시 필요한 부분은 재확인합니다 ([`implement.md`](/docs/harness/workflows/implement)).
 - 코드 전체와 장황한 보고를 출력하지 않습니다. 결과·검증·남은 문제만 짧게 보고합니다.
 
-원셋(구현·테스트·Controller API E2E) 작업의 복사·치환·확장 지점은 [`ONESET.md`](../templates/backend/spring/ONESET.md)입니다.
+원셋(구현·테스트·Controller API E2E) 작업의 복사·치환·확장 지점은 [`ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
 
 **Role model:** Builder — owns concrete changes to code, docs, templates, or harness assets.
 
@@ -72,7 +72,7 @@ Orchestration may reorder this list for one task, but keep 2–4 options when po
 
 If the Template and the mission conflict, stop and report; do not pick one silently.
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -135,12 +135,12 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Return schema
 
-Use the [return schema](../orchestration.md#return-schema). Status `PASS` only when mission artifacts exist and constraints were respected.
+Use the [return schema](/docs/harness/orchestration#return-schema). Status `PASS` only when mission artifacts exist and constraints were respected.
 
 ---
 
 ## Related
 
-- Master: [`master.md`](./master.md)
-- Profile example: [`../profiles/spring-api.md`](../profiles/spring-api.md)
+- Master: [`master.md`](/docs/harness/agents/master)
+- Profile example: [`../profiles/spring-api.md`](/docs/harness/profiles/spring-api)
 - Templates root (repo): `docs/harness/templates/README.md`

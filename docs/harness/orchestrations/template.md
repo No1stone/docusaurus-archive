@@ -57,11 +57,11 @@ Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`
 
 ## Verification tools
 
-검증에 쓸 도구입니다. 별도 Tester 실행을 뜻하지 않습니다. Pick from [`../tools/`](../tools/index.md); do not name tools that are not catalogued.
+검증에 쓸 도구입니다. 별도 Tester 실행을 뜻하지 않습니다. Pick from [`../tools/`](/docs/harness/tools/); do not name tools that are not catalogued.
 
 | Tool | Rung / scope | Required | Evidence QA expects |
 |------|--------------|----------|---------------------|
-| `backend-unit-test` | unit → slice. Layout: `docs/knowledge/backend/testing/test-structure.md` | yes / no | command + pass/fail counts |
+| `backend-unit-test` | unit → slice. Layout: `docs/development/spring/testing/test-structure.md` | yes / no | command + pass/fail counts |
 | `playwright-e2e` | flows: … | yes / no | spec file + run result |
 | `browser-manual` | smoke only | yes / no | steps + screenshot (labelled manual) |
 

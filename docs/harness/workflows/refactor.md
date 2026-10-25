@@ -2,9 +2,9 @@
 
 > **개요:** 리팩터 워크플로. 동작 보존을 증명하는 방법(기존 테스트 먼저 녹색 → 변경 → 동일 결과), 범위 확장 금지, Reviewer가 볼 것.
 
-Default role order for changing structure without changing behavior. Master selects (or authors) a refactor orchestration under [`../orchestrations/`](../orchestrations/).
+Default role order for changing structure without changing behavior. Master selects (or authors) a refactor orchestration under [`../orchestrations/`](/docs/harness/orchestrations/).
 
-Control plane: [`../orchestration.md`](../orchestration.md)
+Control plane: [`../orchestration.md`](/docs/harness/orchestration)
 
 ```text
 Master: intent & constraints (what changes, what must not)
@@ -47,7 +47,7 @@ Run the existing suite **before** the change and record the exact command and co
 
 ### 4. Review for shape, test for sameness
 
-- **Reviewer** compares the result to the Template and the layering rules in [coding conventions](../context/coding-conventions.md): did the move land in the right layer, are boundaries now cleaner, did anything leak (Repository call in Facade, HTTP type in Service).
+- **Reviewer** compares the result to the Template and the layering rules in [coding conventions](/docs/harness/context/coding-conventions): did the move land in the right layer, are boundaries now cleaner, did anything leak (Repository call in Facade, HTTP type in Service).
 - **Tester** re-runs the baseline command. Same counts, same passes. A new failure is a behavior change — back to Implementer.
 - **QA** checks the fence: nothing in the "must not change" list moved, and nothing outside scope was touched.
 
@@ -62,4 +62,4 @@ If the refactor produced a cleaner shape than the current Template (not just a d
 - Changing the public response shape and calling it internal
 - Re-architecting beyond the named package because the rest "looked the same"
 
-Related: [`implement.md`](./implement.md), [`bugfix.md`](./bugfix.md), [`review.md`](./review.md)
+Related: [`implement.md`](/docs/harness/workflows/implement), [`bugfix.md`](/docs/harness/workflows/bugfix), [`review.md`](/docs/harness/workflows/review)

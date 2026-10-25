@@ -1,9 +1,9 @@
 # Orchestration: `spring-api-one-set`
 
 > **개요:** ExampleItem 원셋(구현·단위/시나리오 테스트·Controller API E2E)을 복사한 뒤 도메인만 채웁니다.
-> 안내 본문은 [`ONESET.md`](../templates/backend/spring/ONESET.md)입니다.
+> 안내 본문은 [`ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
 > 기본은 단일 에이전트입니다.
-> 별도 에이전트는 [`implement.md`](../workflows/implement.md)입니다.
+> 별도 에이전트는 [`implement.md`](/docs/harness/workflows/implement)입니다.
 
 | Field | Value |
 |-------|--------|
@@ -20,9 +20,9 @@
 
 **적용하지 않습니다.**
 
-- 버그 수정 → [`spring-bugfix`](./spring-bugfix.md)
-- 동작 유지 리팩터 → [`spring-refactor-layer`](./spring-refactor-layer.md)
-- Controller API E2E 컬렉션만 수정·실행 → [`api-collection-e2e`](./api-collection-e2e.md)
+- 버그 수정 → [`spring-bugfix`](/docs/harness/orchestrations/spring-bugfix)
+- 동작 유지 리팩터 → [`spring-refactor-layer`](/docs/harness/orchestrations/spring-refactor-layer)
+- Controller API E2E 컬렉션만 수정·실행 → [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)
 - 외부 OpenAPI·RestClient 계약만, 현장 매뉴얼만 (공통 원셋 범위 밖)
 - 외부 스펙 더미 연동 E2E만 (원셋 밖 추가 조건)
 
@@ -50,7 +50,7 @@
 | `docs/harness/templates/backend/spring/README.md` | 원셋 범위 |
 | `docs/harness/workflows/acceptance.md` | 통과 기준 |
 | `docs/harness/context/coding-conventions.md` | 계층 규칙이 필요할 때 |
-| `docs/knowledge/backend/testing/test-structure.md` | 테스트 배치 |
+| `docs/development/spring/testing/test-structure.md` | 테스트 배치 |
 | `docs/harness/templates/backend/spring/controller/ExampleItemController.java` | Controller |
 | `docs/harness/templates/backend/spring/facade/ExampleItemFacade.java` | Facade |
 | `docs/harness/templates/backend/spring/service/ExampleItemService.java` | Service |
@@ -78,7 +78,7 @@ Knowledge controller/facade/service는 책임이 헷갈릴 때만 읽습니다.
 6. (선택) 외부 통신이 있으면 스펙 더미 → 실제 Client 연동 E2E를 추가합니다.
 7. 실패 원인을 확인한 뒤 관련 구현·설정·테스트만 수정합니다. 기대 결과 완화나 원셋 전체 재생성은 하지 않습니다. → 완료 보고
 
-Controller API E2E만 다시 돌리거나 컬렉션만 고칠 때는 [`api-collection-e2e`](./api-collection-e2e.md)를 따릅니다.
+Controller API E2E만 다시 돌리거나 컬렉션만 고칠 때는 [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)를 따릅니다.
 
 ## 단일 에이전트 기본 경로
 

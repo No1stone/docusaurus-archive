@@ -10,7 +10,7 @@ description: 구현 전에 기대 결과와 완료 기준을 정합니다
 
 ## 실행
 
-누가 확인하는지는 [`implement.md`](./implement.md)입니다.
+누가 확인하는지는 [`implement.md`](/docs/harness/workflows/implement)입니다.
 기본적으로 한 에이전트가 기준을 정하고 검증합니다.
 
 기준은 구현 전에 정합니다.
@@ -33,7 +33,7 @@ description: 구현 전에 기대 결과와 완료 기준을 정합니다
 테스트 통과만으로 요구사항 충족을 단정하지 않습니다.
 요구사항 충족과 기존 동작의 회귀를 함께 봅니다.
 통과를 위해 테스트를 삭제하거나 기대 결과를 약화하지 않습니다.
-미실행·생략은 통과로 기록하지 않습니다. 구현 결과와 미실행 검증을 구분합니다 ([`implement.md`](./implement.md)).
+미실행·생략은 통과로 기록하지 않습니다. 구현 결과와 미실행 검증을 구분합니다 ([`implement.md`](/docs/harness/workflows/implement)).
 토큰 절약을 이유로 필요한 검증을 생략하지 않습니다.
 
 실행 가능한 테스트를 먼저 작성하는 작업에서는, 기대한 동작이 없을 때 실패하는지 확인합니다.
@@ -50,6 +50,6 @@ Spring의 배치와 명명은 [테스트 기본 구조](/docs/knowledge/backend/
 
 ## Related
 
-- [Implement](./implement.md)
-- [Implementer](../agents/implementer.md)
+- [Implement](/docs/harness/workflows/implement)
+- [Implementer](/docs/harness/agents/implementer)
 - [테스트 기본 구조](/docs/knowledge/backend/testing/test-structure)

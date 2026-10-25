@@ -2,7 +2,7 @@
 
 > **개요:** 아카이브 문서를 사람과 AI가 읽기 쉽게 쓰는 공통 기준입니다.
 > 문서를 작성하거나 수정할 때만 확인합니다.
-> 코드 구현 규칙은 [coding-conventions.md](./coding-conventions.md)에 둡니다.
+> 코드 구현 규칙은 [coding-conventions.md](/docs/harness/context/coding-conventions)에 둡니다.
 
 ## 독자
 
@@ -95,7 +95,7 @@ Docusaurus `_category_.json`은 탐색용입니다.
 참고 사례는 선택의 근거와 연결합니다.
 링크만 나열하지 않습니다.
 
-기존 결정 목록은 [Decisions](../../decisions/index.md)입니다.
+기존 결정 목록은 [Decisions](/docs/decisions)입니다.
 
 ## 퇴고
 

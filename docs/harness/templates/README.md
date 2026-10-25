@@ -16,7 +16,7 @@ Lives under `docs/harness/templates/`.
 
 ## Start here
 
-- [Spring ExampleItem 원셋](./backend/spring/) — 구현·testing·e2e. 안내는 [ONESET.md](./backend/spring/ONESET.md). enum 적용 세트는 조건부.
+- [Spring ExampleItem 원셋](./backend/spring/) — 구현·testing·e2e. 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET). enum 적용 세트는 조건부.
 
 ```text
 controller → facade → service → repository

@@ -21,8 +21,8 @@
 
 **적용하지 않습니다.**
 
-- 내부 테이블 CRUD 한 세트 → [`spring-api-one-set`](./spring-api-one-set.md)
-- 컬렉션으로 여러 API를 순서대로만 돌리는 작업 → [`api-collection-e2e`](./api-collection-e2e.md)
+- 내부 테이블 CRUD 한 세트 → [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
+- 컬렉션으로 여러 API를 순서대로만 돌리는 작업 → [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)
 - 스펙 없이 새 연동 아키텍처를 설계하는 작업
 
 ## 입력과 미확정
@@ -43,9 +43,9 @@
 | Path | 언제 |
 |------|------|
 | `docs/harness/workflows/acceptance.md` | 계약·실패 기준을 정할 때 |
-| `docs/knowledge/backend/testing/test-structure.md` | Client·계약 테스트 배치 |
+| `docs/development/spring/testing/test-structure.md` | Client·계약 테스트 배치 |
 | `docs/harness/context/coding-conventions.md` | 계층 경계가 헷갈릴 때 |
-| `docs/decisions/ADR-0004-blocking-flow-uses-mvc.md` | 블로킹 RestClient와 MVC 전제를 확인할 때 |
+| `docs/architecture/adr/ADR-0004-blocking-flow-uses-mvc.md` | 블로킹 RestClient와 MVC 전제를 확인할 때 |
 
 구현 템플릿 폴더는 이 상황의 기본 입력이 아닙니다.
 대상 저장소의 기존 Client, fixture, WireMock·MockWebServer 패턴을 재사용합니다.
@@ -81,7 +81,7 @@
 | 실패 | 4xx·5xx·타임아웃 매핑이 기존 규칙과 맞음 | 계약 테스트 |
 
 도구: `backend-unit-test`.
-컬렉션 전체 순회는 [`api-collection-e2e`](./api-collection-e2e.md)입니다.
+컬렉션 전체 순회는 [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)입니다.
 
 ## 실패·정보 부족 시
 

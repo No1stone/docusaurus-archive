@@ -1,4 +1,5 @@
 ---
+slug: /architecture/
 id: architecture
 title: Architecture
 description: System design independent of a single library
@@ -18,13 +19,13 @@ Examples of future topics (not all created yet): layered architecture, MSA, API,
 
 Event-driven architecture belongs here; Kafka usage belongs under Knowledge / Messaging technology notes.
 
-아이컴시스 MSA·IAM 포트폴리오 사례 묶음은 [Postmortems](../postmortems/icomsys-msa-iam-portfolio/overview.md)에 있습니다.
-민팃 레거시 개선도 [Postmortems](../postmortems/)에 있습니다.
+아이컴시스 MSA·IAM 포트폴리오 사례 묶음은 [Postmortems](/docs/postmortems/icomsys-msa-iam-portfolio/overview)에 있습니다.
+민팃 레거시 개선도 [Postmortems](/docs/postmortems/index)에 있습니다.
 
 ## Related
 
-- [Patterns](../patterns/) — GoF와 [아키텍처 패턴](../patterns/architecture-patterns/)
-- [Decisions](../decisions/)
-- [Knowledge](../knowledge/)
+- [Patterns](/docs/patterns/index) — GoF와 [아키텍처 패턴](/docs/patterns/architecture-patterns)
+- [Decisions](/docs/decisions)
+- [Knowledge](/docs/knowledge)
 
 재사용 해법(Outbox 등)은 Patterns에, 설계 원리와 경계는 여기에 둡니다.

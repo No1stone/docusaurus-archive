@@ -32,7 +32,7 @@ Skeleton profile for Spring-style HTTP API work.
 ### Templates
 
 - Site: [/docs/harness/templates/backend/spring/](/docs/harness/templates/backend/spring/)
-- Repo: `docs/harness/templates/backend/spring/` — ExampleItem 원셋 (구현 + [testing/](../templates/backend/spring/testing/) + [e2e/](../templates/backend/spring/e2e/)). 복사 안내는 [ONESET.md](../templates/backend/spring/ONESET.md). enum은 조건부.
+- Repo: `docs/harness/templates/backend/spring/` — ExampleItem 원셋 (구현 + [testing/](../templates/backend/spring/testing/) + [e2e/](../templates/backend/spring/e2e/)). 복사 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET). enum은 조건부.
 
 ### Decisions
 

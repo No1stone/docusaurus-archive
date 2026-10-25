@@ -5,9 +5,9 @@
 > 같은 버그가 반복되면 후보만 기록합니다.
 > 문서 갱신은 사용자가 요청할 때 합니다.
 
-Default role order for fixing a defect. Master selects (or authors) a bugfix orchestration under [`../orchestrations/`](../orchestrations/); this page is the order hint behind it.
+Default role order for fixing a defect. Master selects (or authors) a bugfix orchestration under [`../orchestrations/`](/docs/harness/orchestrations/); this page is the order hint behind it.
 
-Control plane: [`../orchestration.md`](../orchestration.md)
+Control plane: [`../orchestration.md`](/docs/harness/orchestration)
 
 ```text
 범위와 통과 기준: 입력, 기대, 실제
@@ -21,7 +21,7 @@ Control plane: [`../orchestration.md`](../orchestration.md)
 반복이면 후보만 기록. Curator는 사용자가 요청할 때만
 ```
 
-별도 에이전트는 [`implement.md`](./implement.md)입니다.
+별도 에이전트는 [`implement.md`](/docs/harness/workflows/implement)입니다.
 
 ## Steps
 
@@ -35,7 +35,7 @@ Load only the Knowledge and Template pages for the layer where the bug lives. Lo
 
 ### 3. Reproduction test when possible
 
-When a runner exists and the failure can be expressed as a test, write that failing test before the fix. Use the project's existing test style (see [`backend-unit-test`](../tools/backend-unit-test.md)). A missing runner is not an implementation defect.
+When a runner exists and the failure can be expressed as a test, write that failing test before the fix. Use the project's existing test style (see [`backend-unit-test`](/docs/harness/tools/backend-unit-test)). A missing runner is not an implementation defect.
 자동 테스트가 불가능하면 승인된 작업 범위 안에서 수동 재현과 검증을 수행하고 방법 및 한계를 기록합니다.
 이미 승인된 범위의 수동 검증을 위해 다시 승인을 요청하지 않습니다.
 기대 동작이 불명확하거나 검증에 범위 밖 접근 또는 변경이 필요한 경우에만 확인을 요청합니다.
@@ -48,7 +48,7 @@ When a runner exists and the failure can be expressed as a test, write that fail
 
 ### 5. Verify
 
-The same agent checks these unless [`implement.md`](./implement.md) calls for a separate role.
+The same agent checks these unless [`implement.md`](/docs/harness/workflows/implement) calls for a separate role.
 
 - The change is minimal and does not leak a layer or add a convention.
 - The reproduction test is green when one exists, and the surrounding suite shows no regression. Evidence is the command and the result. Counts are evidence, not the only quality bar.
@@ -74,4 +74,4 @@ The feedback path is `Postmortem → ADR → Knowledge / Pattern → Template`.
 - Loading History "just in case"
 - Marking `PASS` because the symptom disappeared without understanding why
 
-Related: [`implement.md`](./implement.md), [`refactor.md`](./refactor.md), [Postmortems](/docs/postmortems/)
+Related: [`implement.md`](/docs/harness/workflows/implement), [`refactor.md`](/docs/harness/workflows/refactor), [Postmortems](/docs/postmortems/index)

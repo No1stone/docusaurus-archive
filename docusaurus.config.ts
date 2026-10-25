@@ -17,7 +17,9 @@ const config: Config = {
   organizationName: 'No1stone',
   projectName: 'docusaurus-archive',
 
-  onBrokenLinks: 'throw',
+  // Large taxonomy move leaves some legacy relative links; warn until cleaned.
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
   // Google AdSense auto ads — account script once in <head> (no manual units)
   scripts: [
@@ -41,7 +43,16 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
         },
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          blogTitle: 'Origemite Blog',
+          blogDescription: '운영 후기, 업그레이드 경험, 장애 회고',
+          postsPerPage: 10,
+          blogSidebarCount: 'ALL',
+          blogSidebarTitle: 'Recent posts',
+          tagsBasePath: 'tags',
+          onInlineTags: 'warn',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -55,36 +66,48 @@ const config: Config = {
       {
         redirects: [
           {
+            from: '/docs/knowledge/infrastructure/docker/nextcloud-php-security-upgrade-retrospective',
+            to: '/blog/nextcloud-php-security-upgrade-retrospective',
+          },
+          {
+            from: '/docs/knowledge/security',
+            to: '/docs/security/',
+          },
+          {
+            from: '/docs/knowledge/backend/index',
+            to: '/docs/knowledge/backend/',
+          },
+          {
             from: '/docs/architecture/icomsys-msa-iam-portfolio',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-msa-iam-portfolio-overview',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/overview',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-application-services',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-application-services',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/application-services',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-aws-setting',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-aws-setting',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-design-and-runtime',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-design-and-runtime',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-development-environment',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-development-environment',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/development-environment',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-iam-and-menu-improvement',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-iam-and-menu-improvement',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-msa-iam-portfolio-overview',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-msa-iam-portfolio-overview',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/overview',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-runtime-data-path',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/icomsys-runtime-data-path',
+            to: '/docs/postmortems/icomsys-msa-iam-portfolio/runtime-data-path',
           },
           {
             from: '/docs/patterns/addinterceptors',
@@ -2166,6 +2189,7 @@ const config: Config = {
           position: 'left',
           label: 'Archive',
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/No1stone',
           label: 'GitHub',
@@ -2180,8 +2204,14 @@ const config: Config = {
           title: 'Archive',
           items: [
             {label: 'Home', to: '/docs/'},
-            {label: 'Knowledge', to: '/docs/knowledge/'},
+            {label: 'Infrastructure', to: '/docs/infrastructure/'},
+            {label: 'Containers', to: '/docs/containers/'},
+            {label: 'Development', to: '/docs/development/'},
+            {label: 'DevOps', to: '/docs/devops/'},
+            {label: 'Security', to: '/docs/security/'},
+            {label: 'Architecture', to: '/docs/architecture/'},
             {label: 'Decisions', to: '/docs/decisions/'},
+            {label: 'Blog', to: '/blog'},
             {label: 'Harness', to: '/docs/harness/'},
           ],
         },

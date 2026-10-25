@@ -45,7 +45,7 @@
 - Write or edit orchestrations (Master) or application code in a project (Implementer)
 - Mark anything as *Current Practice* that the developer has not actually used
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -122,7 +122,7 @@ One-off code from a single task stays in the project or goes to **Experiments**,
 
 ## Return schema
 
-[`../orchestration.md`](../orchestration.md) §4.  
+[`../orchestration.md`](/docs/harness/orchestration) §4.  
 `PASS` = proposal staged and sanitized, evidence listed, no secrets, maps updated. `PARTIAL` = staged but evidence bar not met (say so). `BLOCKED` = source material unavailable or domain cannot be separated safely.
 
 Under `## Artifacts` include a short table: `source → target path → area → evidence`.
@@ -131,8 +131,8 @@ Under `## Artifacts` include a short table: `source → target path → area →
 
 ## Related
 
-- Master approves promotions: [`master.md`](./master.md)
+- Master approves promotions: [`master.md`](/docs/harness/agents/master)
 - Archive separation rules: [`/docs/knowledge/`](/docs/knowledge/), [`/docs/decisions/`](/docs/decisions/)
-- Template convention: [`../templates/README.md`](../templates/README.md)
+- Template convention: [`../templates/README.md`](/docs/harness/templates/)
 - Asset maps: `index/INDEX.md`
-- Feedback path: [`/docs/postmortems/`](/docs/postmortems/) → ADR → Knowledge → Template
+- Feedback path: [`/docs/postmortems/`](/docs/postmortems/index) → ADR → Knowledge → Template

@@ -1,8 +1,8 @@
 # Agent: Tester
 
 > **개요:** 동작 검증 책임입니다.
-> 작업별 확인 방법은 [`acceptance.md`](../workflows/acceptance.md)입니다.
-> 별도 에이전트로 부르는 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 작업별 확인 방법은 [`acceptance.md`](/docs/harness/workflows/acceptance)입니다.
+> 별도 에이전트로 부르는 조건은 [`implement.md`](/docs/harness/workflows/implement)입니다.
 > 테스트를 실행할 수 없으면 이유를 적습니다. 그것은 구현 결함이 아니고, 가짜 PASS도 금지합니다.
 
 **Role model:** Behavioral verifier — proves the change works (or documents why it cannot be proven).
@@ -43,7 +43,7 @@
 - Claim `PASS` without runnable evidence — use `BLOCKED` instead
 - Expand into acceptance checking (QA) or architecture review (Reviewer)
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -58,17 +58,17 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Verification tools (required)
 
-Tester proves behavior **only** with tools registered in [`../tools/`](../tools/index.md). The catalog says what each tool proves, what evidence it returns, and when it is `BLOCKED`.
+Tester proves behavior **only** with tools registered in [`../tools/`](/docs/harness/tools/). The catalog says what each tool proves, what evidence it returns, and when it is `BLOCKED`.
 
 | Surface | Tool |
 |---------|------|
-| Backend | [`backend-unit-test`](../tools/backend-unit-test.md) |
-| Web frontend, repeatable | [`playwright-e2e`](../tools/playwright-e2e.md) |
-| Web frontend, right-now check | [`browser-manual`](../tools/browser-manual.md) |
+| Backend | [`backend-unit-test`](/docs/harness/tools/backend-unit-test) |
+| Web frontend, repeatable | [`playwright-e2e`](/docs/harness/tools/playwright-e2e) |
+| Web frontend, right-now check | [`browser-manual`](/docs/harness/tools/browser-manual) |
 
 Which tools and which rung apply to **this** run come from the selected orchestration's *Verification tools* table. If the orchestration lists none, use the Profile default; if neither says anything, ask Master — do not guess.
 
-How a product actually runs a tool (MCP, CLI) is in [`../entrypoints/`](../entrypoints/index.md), not here.
+How a product actually runs a tool (MCP, CLI) is in [`../entrypoints/`](/docs/harness/entrypoints/), not here.
 
 ## Scope ladder (pick what exists)
 
@@ -117,13 +117,13 @@ Same role file — different mission + context payload.
 
 ## Return schema
 
-[Return schema](../orchestration.md#return-schema).  
+[Return schema](/docs/harness/orchestration#return-schema).  
 Include under Artifacts: exact commands and result counts when possible.
 
 ---
 
 ## Related
 
-- Verification tools catalog: [`../tools/index.md`](../tools/index.md)
-- Implement workflow: [`../workflows/implement.md`](../workflows/implement.md)
+- Verification tools catalog: [`../tools/index.md`](/docs/harness/tools/)
+- Implement workflow: [`../workflows/implement.md`](/docs/harness/workflows/implement)
 - Testing knowledge (as added under `docs/knowledge/.../testing/`)

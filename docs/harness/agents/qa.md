@@ -2,7 +2,7 @@
 
 > **개요:** 요청 완수 확인 책임입니다.
 > 별도 에이전트는 중요한 사용자 흐름일 때만입니다.
-> 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 조건은 [`implement.md`](/docs/harness/workflows/implement)입니다.
 > 별도 실행이 없어도 요구사항 충족과 회귀 확인은 합니다.
 > 테스트 통과만으로 요청 충족을 단정하지 않습니다.
 
@@ -45,7 +45,7 @@
 - Accept "looks good" as evidence
 - Re-review architecture or re-run suites on its own initiative
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -63,7 +63,7 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 - Trace request → deliverables one-by-one
 - Treat “docs only” vs “code + docs” literally as requested
 - Flag when Tester did not cover a requested verification
-- Weigh Tester evidence by tool: a passing spec or test run (`backend-unit-test`, `playwright-e2e`) is strong; `browser-manual` is weaker and may not satisfy an item the orchestration marked as needing repeatable proof — see [`../tools/`](../tools/index.md)
+- Weigh Tester evidence by tool: a passing spec or test run (`backend-unit-test`, `playwright-e2e`) is strong; `browser-manual` is weaker and may not satisfy an item the orchestration marked as needing repeatable proof — see [`../tools/`](/docs/harness/tools/)
 - Suggest whether Master should rework or ask the user to narrow scope
 
 ## Does not
@@ -101,12 +101,12 @@ Scale: [`index.md`](./index.md#freedom-자유도)
 
 ## Return schema
 
-[Return schema](../orchestration.md#return-schema).  
+[Return schema](/docs/harness/orchestration#return-schema).  
 `PASS` only if every checklist item has evidence.
 
 ---
 
 ## Related
 
-- Master final validation: [`master.md`](./master.md)
-- Implement workflow last gate: [`../workflows/implement.md`](../workflows/implement.md)
+- Master final validation: [`master.md`](/docs/harness/agents/master)
+- Implement workflow last gate: [`../workflows/implement.md`](/docs/harness/workflows/implement)

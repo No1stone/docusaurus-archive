@@ -26,7 +26,7 @@ AWS fanout 아키텍처를 참고합니다.
 
 [https://aws.amazon.com/ko/blogs/compute/messaging-fanout-pattern-for-serverless-architectures-using-amazon-sns/](https://aws.amazon.com/ko/blogs/compute/messaging-fanout-pattern-for-serverless-architectures-using-amazon-sns/)
 
-메시징 Fan-out 개념과 네트워크 broadcast 구분은 [Fan-out 패턴](../patterns/architecture-patterns/fan-out.md)을 봅니다.
+메시징 Fan-out 개념과 네트워크 broadcast 구분은 [Fan-out 패턴](/docs/patterns/architecture-patterns/fan-out)을 봅니다.
 SNS 구성은 학습 예제로 둡니다.
 
 멀티: 토픽에 일치하는 것입니다.

@@ -43,7 +43,7 @@
 - Run builds, tests, or servers (that is Tester's job, under a selected orchestration)
 - Expand scope beyond the repo / paths Master named
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -73,7 +73,7 @@ Not needed for routine work on this archive or on a repo with a fresh map.
 2. **Map the layout** — where controllers / services / repositories / tests / docs live; naming scheme; module boundaries
 3. **Collect project-local rules** — `AGENTS.md`, `.cursor/rules`, `CLAUDE.md`, lint/format configs, PR templates, CI checks. These outrank the archive (see precedence)
 4. **Find existing conventions** — error handling shape, response wrapper, DTO style, test style (mocking boundary, naming), existing E2E setup
-5. **Locate verification entry points** — test command, Playwright config, dev server command and port, env requirements — so Tester knows which [`../tools/`](../tools/index.md) are runnable
+5. **Locate verification entry points** — test command, Playwright config, dev server command and port, env requirements — so Tester knows which [`../tools/`](/docs/harness/tools/) are runnable
 6. **Report mismatches** — where the repo differs from the archive's Knowledge / Template for the likely Profile, as facts, not judgments
 7. **Suggest a Profile match** — "looks like `spring-api`" with the evidence; Master decides
 
@@ -118,14 +118,14 @@ Keep it to one screen. Detail goes in a short appendix only if Master asked.
 
 ## Return schema
 
-[Return schema](../orchestration.md#return-schema).  
+[Return schema](/docs/harness/orchestration#return-schema).  
 `PASS` = map delivered within scope. `PARTIAL` = some checklist items could not be determined (list them). `BLOCKED` = repo not accessible.
 
 ---
 
 ## Related
 
-- Master routing: [`master.md`](./master.md)
-- Precedence (local rules win): [`../context/precedence.md`](../context/precedence.md)
-- Profiles the map should point at: [`../profiles/`](../profiles/index.md)
-- Verification tools the map should locate: [`../tools/`](../tools/index.md)
+- Master routing: [`master.md`](/docs/harness/agents/master)
+- Precedence (local rules win): [`../context/precedence.md`](/docs/harness/context/precedence)
+- Profiles the map should point at: [`../profiles/`](/docs/harness/profiles/)
+- Verification tools the map should locate: [`../tools/`](/docs/harness/tools/)

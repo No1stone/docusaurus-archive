@@ -2,7 +2,7 @@
 
 > **개요:** 내 서버 Controller API 순차 E2E 컬렉션만 추가·수정·실행합니다.
 > 원셋의 E2E 템플릿은 [`ExampleItem e2e`](../templates/backend/spring/e2e/)입니다.
-> 구현 원셋 전체는 [`spring-api-one-set`](./spring-api-one-set.md)입니다.
+> 구현 원셋 전체는 [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)입니다.
 > 기본은 단일 에이전트입니다.
 
 | Field | Value |
@@ -21,12 +21,12 @@
 
 **적용하지 않습니다.**
 
-- 구현부터 테스트까지 새로 추가 → [`spring-api-one-set`](./spring-api-one-set.md)
+- 구현부터 테스트까지 새로 추가 → [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
 - 브라우저 UI E2E만 (`playwright-e2e` 또는 `browser-manual`)
 - 외부 스펙 더미 → RestClient 연동만 (원셋·이 오케스트레이션 밖 추가 조건)
 
 가짜 CRUD나 더미 직접 호출로 Controller E2E를 대체하지 않습니다.
-외부 연동 E2E와 확장 지점(삭제·없는 id)은 [`ONESET.md`](../templates/backend/spring/ONESET.md)입니다.
+외부 연동 E2E와 확장 지점(삭제·없는 id)은 [`ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
 
 ## 입력과 미확정
 

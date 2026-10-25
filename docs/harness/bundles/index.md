@@ -9,7 +9,7 @@ unlisted: true
 A **Bundle** answers: *what should be read?*
 
 A **Task orchestration** answers: *what to read + which agents + success criteria?*  
-→ Prefer [`../orchestrations/`](../orchestrations/) for real jobs. Bundles are optional helpers Master may embed or link.
+→ Prefer [`../orchestrations/`](/docs/harness/orchestrations/) for real jobs. Bundles are optional helpers Master may embed or link.
 
 | Concept | Question |
 |---------|----------|
@@ -26,7 +26,7 @@ Skeleton. No automatic generator required.
 ```text
 task: add validation to checkout API
 reads:
-  - docs/knowledge/backend/controller/controller-design.md
+  - docs/development/spring/controller/controller-design.md
   - docs/harness/profiles/spring-api.md
   - docs/harness/templates/backend/spring/controller/README.md
 ```

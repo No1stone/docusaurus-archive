@@ -1,7 +1,7 @@
 # Orchestration: `spring-refactor-layer`
 
 > **개요:** 동작은 유지하고 구조만 바꾸는 상황입니다.
-> 별도 에이전트는 [`implement.md`](../workflows/implement.md)입니다.
+> 별도 에이전트는 [`implement.md`](/docs/harness/workflows/implement)입니다.
 
 | Field | Value |
 |-------|--------|
@@ -13,7 +13,7 @@
 
 ## 이 상황
 
-별도 에이전트는 [`implement.md`](../workflows/implement.md)를 따릅니다.
+별도 에이전트는 [`implement.md`](/docs/harness/workflows/implement)를 따릅니다.
 
 - 바꿀 것과 바꾸면 안 되는 것을 먼저 고정합니다.
 - 변경 전 기존 스위트가 통과하는지 기록합니다. 녹색이 아니면 시작하지 않습니다.
@@ -42,4 +42,4 @@ Implementer 자유도는 역할 기본값인 낮음을 유지합니다.
 |------|-----|------|
 | `docs/harness/workflows/refactor.md` | 이 상황 | current |
 | `docs/harness/templates/backend/spring/` | 구현 | current |
-| `docs/knowledge/backend/testing/test-structure.md` | 테스트를 둘 때 | current |
+| `docs/development/spring/testing/test-structure.md` | 테스트를 둘 때 | current |

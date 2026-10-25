@@ -20,7 +20,7 @@
 
 **적용하지 않습니다.**
 
-- Knowledge·ADR을 엔지니어링 기준으로 올릴 때 → [`archive-promote-pattern`](./archive-promote-pattern.md) 또는 글쓰기 기준만
+- Knowledge·ADR을 엔지니어링 기준으로 올릴 때 → [`archive-promote-pattern`](/docs/harness/orchestrations/archive-promote-pattern) 또는 글쓰기 기준만
 - API 구현·계약 테스트만 하는 작업
 - 화면 없이 추측으로 매뉴얼을 쓰는 작업
 

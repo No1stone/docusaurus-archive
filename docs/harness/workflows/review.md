@@ -2,9 +2,9 @@
 
 > **개요:** 구현이 이미 있을 때의 리뷰 전용 워크플로. Reviewer 산출물 형식, 미션 라벨(security / performance)로 체크리스트를 바꾸는 법, review+fix 분기.
 
-Standalone review when the implementation already exists — a PR, a branch, or code written outside the harness. Master selects (or authors) a review orchestration under [`../orchestrations/`](../orchestrations/).
+Standalone review when the implementation already exists — a PR, a branch, or code written outside the harness. Master selects (or authors) a review orchestration under [`../orchestrations/`](/docs/harness/orchestrations/).
 
-Control plane: [`../orchestration.md`](../orchestration.md)
+Control plane: [`../orchestration.md`](/docs/harness/orchestration)
 
 ```text
 Master: locate the change set (diff, branch, paths)
@@ -28,10 +28,10 @@ Review needs a boundary. Master names it: a diff range, a branch against base, o
 
 ### 2. Resolve what the code is judged against
 
-Master lists the standards for this review, in [precedence](../context/precedence.md) order:
+Master lists the standards for this review, in [precedence](/docs/harness/context/precedence) order:
 
 1. the project's own rules (lint config, local `AGENTS.md`) — found by Scout if needed
-2. [coding conventions](../context/coding-conventions.md) and the relevant Knowledge pages
+2. [coding conventions](/docs/harness/context/coding-conventions) and the relevant Knowledge pages
 3. the Profile's Template for the layer
 4. any accepted ADR the change touches
 
@@ -55,7 +55,7 @@ Default is read-only. Reviewer returns findings in the fixed format:
 | Developer asked | Roles |
 |-----------------|-------|
 | "Is this shaped right?" | Reviewer only |
-| "…and does it work?" | + Tester with the orchestration's [verification tools](../tools/index.md) |
+| "…and does it work?" | + Tester with the orchestration's [verification tools](/docs/harness/tools/) |
 | "…and is the ticket done?" | + QA against the original request |
 
 Do not run the whole pipeline for a question that only needs Reviewer.
@@ -73,7 +73,7 @@ A new kind of review does not need a new agent. Master adds a label to the Revie
 | *(none)* | Structure, layering, template fidelity | coding conventions + Template |
 | `security` | Input validation at the edge, secrets, auth boundaries, injection surfaces | security Knowledge page when written; until then, flag only what a listed standard covers |
 | `performance` | N+1, pagination caps, transaction scope, unbounded queries | persistence Knowledge + Spring `Pageable` on the table controller |
-| `archive` | A Curator proposal: separation rules, sanitization, evidence bar | [`curator.md`](../agents/curator.md) rules |
+| `archive` | A Curator proposal: separation rules, sanitization, evidence bar | [`curator.md`](/docs/harness/agents/curator) rules |
 
 If a label has no checklist page yet, Reviewer says so; it does not improvise a standard.
 
@@ -84,4 +84,4 @@ If a label has no checklist page yet, Reviewer says so; it does not improvise a 
 - Running Tester and QA for a shape-only question
 - Reviewing an unbounded change set
 
-Related: [`implement.md`](./implement.md), [`refactor.md`](./refactor.md), [`../agents/reviewer.md`](../agents/reviewer.md)
+Related: [`implement.md`](/docs/harness/workflows/implement), [`refactor.md`](/docs/harness/workflows/refactor), [`../agents/reviewer.md`](/docs/harness/agents/reviewer)

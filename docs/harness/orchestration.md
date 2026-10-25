@@ -2,7 +2,7 @@
 
 > **개요:** 상황 레시피를 고르고, 만들고, 실행하는 메타 규칙입니다.
 > 이번 작업용 읽을거리 목록이 아닙니다.
-> 요청 모드·단일 에이전트 기본·검증·보고의 공통 원칙은 [`workflows/implement.md`](./workflows/implement.md)입니다.
+> 요청 모드·단일 에이전트 기본·검증·보고의 공통 원칙은 [`workflows/implement.md`](/docs/harness/workflows/implement)입니다.
 
 This file is **not** a per-job reading list.
 질문·확인·설명만인 요청과 문서·다이어그램만의 수정에는 역할 파이프라인을 자동으로 돌리지 않습니다.
@@ -13,7 +13,7 @@ A **situation recipe**:
 
 > Which **subagents** to assemble + which **knowledge-base documents** to assemble → for this kind of work.
 
-Stored under [`orchestrations/`](./orchestrations/). Reused when the same situation recurs.
+Stored under [`orchestrations/`](/docs/harness/orchestrations/). Reused when the same situation recurs.
 
 ---
 
@@ -33,9 +33,9 @@ orchestrations/index.md에서 적용 조건만 보고 선택
 Master does **not** write a recipe for every request.
 Master does **not** spawn every role.
 Selecting a recipe is not the same as running every role in its table.
-기본은 단일 에이전트입니다. 역할마다 별도 에이전트를 자동 실행하지 않습니다 ([`implement.md`](./workflows/implement.md)).
+기본은 단일 에이전트입니다. 역할마다 별도 에이전트를 자동 실행하지 않습니다 ([`implement.md`](/docs/harness/workflows/implement)).
 Curator runs only when the user asks to promote Knowledge or templates.
-Recipe list: [`orchestrations/index.md`](./orchestrations/index.md).
+Recipe list: [`orchestrations/index.md`](/docs/harness/orchestrations/).
 
 ---
 
@@ -55,7 +55,7 @@ Master must tell the developer, clearly:
 1. What situation was detected  
 2. That **no orchestration** covers it (or only a partial match)  
 3. What agents + knowledge pages would be needed  
-4. The run uses the [default path](./workflows/implement.md) unless a recipe already exists.
+4. The run uses the [default path](/docs/harness/workflows/implement) unless a recipe already exists.
 
 Do not write a one-off recipe and do not spawn every role.
 
@@ -63,7 +63,7 @@ Do not write a one-off recipe and do not spawn every role.
 
 ## Authoring a new orchestration
 
-Use [`orchestrations/template.md`](./orchestrations/template.md).
+Use [`orchestrations/template.md`](/docs/harness/orchestrations/template).
 
 Must define:
 
@@ -107,7 +107,7 @@ PASS | FAIL | BLOCKED | PARTIAL
 
 - 기본 경로로 충분한 요청에 새 레시피나 불필요한 읽기 목록을 만드는 것
 - 질문·문서만인 요청에 전체 역할 파이프라인을 돌리는 것
-- 미실행·생략 검증을 PASS로 적는 것 ([`implement.md`](./workflows/implement.md))
+- 미실행·생략 검증을 PASS로 적는 것 ([`implement.md`](/docs/harness/workflows/implement))
 - Hiding “no recipe” gaps from the developer  
 - One mega orchestration for the whole Archive  
 - Workers free-browsing `docs/` outside the selected recipe  

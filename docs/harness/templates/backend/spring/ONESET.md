@@ -3,7 +3,7 @@
 > **개요:** 검증된 구현, 단위·시나리오 테스트, Controller API E2E를 한 세트로 둡니다.
 > 새 작업에서는 재사용·복사 후 이번 도메인 차이만 채웁니다.
 > 대상 저장소 규칙이 이 안내보다 우선합니다.
-> 실행 원칙(토큰 최소 경로)은 [`implementer.md`](../../../agents/implementer.md)입니다.
+> 실행 원칙(토큰 최소 경로)은 [`implementer.md`](/docs/harness/agents/implementer)입니다.
 
 ## 목표
 
@@ -107,5 +107,5 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 
 ## 오케스트레이션
 
-- 원셋 전체: [`spring-api-one-set`](../../../orchestrations/spring-api-one-set.md)
-- Controller API E2E만: [`api-collection-e2e`](../../../orchestrations/api-collection-e2e.md)
+- 원셋 전체: [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
+- Controller API E2E만: [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)

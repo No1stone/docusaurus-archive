@@ -26,7 +26,7 @@ Does **not** prove: it will keep working. This is a smoke check, not a regressio
 | Need | Source |
 |------|--------|
 | Running app | dev server URL from the mission |
-| Browser control | product capability — see [`../entrypoints/`](../entrypoints/index.md) |
+| Browser control | product capability — see [`../entrypoints/`](/docs/harness/entrypoints/) |
 | What to check | the mission's acceptance list; do not wander |
 
 ## Procedure

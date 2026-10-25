@@ -1,0 +1,8 @@
+{
+  "label": "DevOps",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "devops/devops-home"
+  }
+}

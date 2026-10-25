@@ -1,0 +1,8 @@
+{
+  "label": "GoF 디자인 패턴",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "architecture/patterns/gof/pattern-gof-design-pattern"
+  }
+}

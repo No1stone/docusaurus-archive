@@ -5,9 +5,9 @@
 > Implementer는 이 문서와 템플릿을 그대로 따릅니다.
 > 예제 소스에서 메서드나 필드를 생략하지 않습니다.
 
-Shared implementation conventions for agent-assisted work. Every rule here is **already visible in code** under [`templates/backend/spring/`](../templates/backend/spring/README.md); this page states the rule so a worker does not have to infer it. When this page and the template disagree, report it — do not pick one.
+Shared implementation conventions for agent-assisted work. Every rule here is **already visible in code** under [`templates/backend/spring/`](/docs/harness/templates/backend/spring/README); this page states the rule so a worker does not have to infer it. When this page and the template disagree, report it — do not pick one.
 
-Project-local rules always win over this page (see [precedence](./precedence.md)).
+Project-local rules always win over this page (see [precedence](/docs/harness/context/precedence)).
 
 ## Layering
 
@@ -95,7 +95,7 @@ Never overwrite with null on update.
 
 ## Prose
 
-문서를 작성하거나 수정할 때는 [글쓰기 기준](./writing-conventions.md)을 확인합니다.
+문서를 작성하거나 수정할 때는 [글쓰기 기준](/docs/harness/context/writing-conventions)을 확인합니다.
 코드 구현 규칙은 이 문서의 나머지 절입니다.
 
 ## General

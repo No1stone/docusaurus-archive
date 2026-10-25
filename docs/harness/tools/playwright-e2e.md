@@ -55,4 +55,4 @@ If a screenshot is the only readable proof, attach the path and say what it show
 | Adding Playwright to a project that lacks it | extension — requires the orchestration to say so |
 | Visual regression snapshots | extension |
 
-Product mapping (how the agent runs this) lives in [`../entrypoints/`](../entrypoints/index.md).
+Product mapping (how the agent runs this) lives in [`../entrypoints/`](/docs/harness/entrypoints/).

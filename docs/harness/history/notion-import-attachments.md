@@ -8,7 +8,7 @@ unlisted: true
 # Notion 첨부파일 이전 목록
 
 > **개요:** 원문에서 참조하는 이미지·스크린샷·다이어그램을 조사한 결과입니다.
-> 기준은 [notion-import-worklist.md](./notion-import-worklist.md)의 첨부 규칙을 따릅니다.
+> 기준은 [notion-import-worklist.md](/docs/harness/history/notion-import-worklist)의 첨부 규칙을 따릅니다.
 
 ## 기준
 
@@ -22,23 +22,23 @@ unlisted: true
 
 | 문서 | 첨부 | 게시 |
 |---|---|---|
-| [Factory Method](../../patterns/gof/creational/factory-method.md) | `img/factory-method/package-structure.png` | 게시 |
-| [ACM·ALB](../../knowledge/networking/tls/https-on-alb-with-acm.md) | `img/https-on-alb-with-acm/*.png` (4) | 게시 |
-| [S3 API](../../knowledge/infrastructure/aws/storage/amazon-s3-api-reference.md) | 없음 | - |
+| [Factory Method](/docs/patterns/factory-method) | `img/factory-method/package-structure.png` | 게시 |
+| [ACM·ALB](/docs/knowledge/https-on-alb-with-acm) | `img/https-on-alb-with-acm/*.png` (4) | 게시 |
+| [S3 API](/docs/knowledge/amazon-s3-api-reference) | 없음 | - |
 
 ## 회사·프로젝트 사례
 
 | 문서 | 첨부 | 게시 |
 |---|---|---|
-| [아이컴시스 묶음](../../postmortems/icomsys-msa-iam-portfolio/overview.md) | `postmortems/img/icomsys-msa-iam-portfolio/` (Enum·Query·비용 포함) | 게시 |
-| [민팃 개선 사례](../../postmortems/mintit-improvement-cases.md) | 없음 | 게시 |
+| [아이컴시스 묶음](/docs/postmortems/icomsys-msa-iam-portfolio/overview) | `postmortems/img/icomsys-msa-iam-portfolio/` (Enum·Query·비용 포함) | 게시 |
+| [민팃 개선 사례](/docs/postmortems/mintit-improvement-cases) | 없음 | 게시 |
 | CloudWatch·Redis 장애 초안 2글 | 없음 | `draft` (게시 제외·보류) |
 
 ## 일괄 이전 첨부
 
 | 구분 | 상태 |
 |---|---|
-| 본문 연결 이미지 | `docs/knowledge/img/<slug>/`, `docs/patterns/img/<slug>/`. 연결분 miss 0 |
+| 본문 연결 이미지 | `docs/knowledge/img/<slug>/`, `docs/architecture/patterns/img/<slug>/`. 연결분 miss 0 |
 | 원문 `image.png` 재탐색 | 가능 분은 본문 복원. 상세는 JSON |
 | `secret_hint` 패턴 | 아래 분류 참고 |
 

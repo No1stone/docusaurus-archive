@@ -7,8 +7,8 @@ import styles from './index.module.css';
 
 const sections = [
   {
-    title: 'Backend',
-    to: '/docs/knowledge/backend/',
+    title: 'Development',
+    to: '/docs/development/',
     items: [
       {title: 'Controller Design', to: '/docs/knowledge/backend/controller/controller-design'},
       {title: 'Facade Design', to: '/docs/knowledge/backend/facade/facade-design'},
@@ -17,22 +17,32 @@ const sections = [
     ],
   },
   {
+    title: 'Containers',
+    to: '/docs/containers/',
+    items: [
+      {
+        title: 'Docker 기반 Nextcloud 30 → 35 업그레이드와 보안 점검',
+        to: '/docs/knowledge/infrastructure/docker/nextcloud-docker-upgrade-30-to-35',
+      },
+    ],
+  },
+  {
     title: 'Decisions',
     to: '/docs/decisions/',
     items: [
       {title: '원본은 Git 안의 Markdown으로 둡니다', to: '/docs/decisions/adr-0001'},
       {title: '아카이브 화면은 Docusaurus로 둡니다', to: '/docs/decisions/adr-0002'},
-      {title: '블로킹 기반 업무 처리에 Spring MVC와 Virtual Threads를 선택한 이유', to: '/docs/decisions/adr-0004'},
+      {title: 'PHP 보안 대응 업그레이드', to: '/docs/decisions/adr-0009'},
     ],
   },
   {
-    title: 'Harness',
-    to: '/docs/harness/',
+    title: 'Blog',
+    to: '/blog',
     items: [
-      {title: '에이전트', to: '/docs/harness/agents/'},
-      {title: '오케스트레이션', to: '/docs/harness/orchestrations/'},
-      {title: '구현 흐름', to: '/docs/harness/workflows/implement'},
-      {title: 'Spring 템플릿', to: '/docs/harness/templates/backend/spring/'},
+      {
+        title: 'PHP 보안 패치하려다 Nextcloud 5개 버전을 올렸다',
+        to: '/blog/nextcloud-php-security-upgrade-retrospective',
+      },
     ],
   },
 ] as const;

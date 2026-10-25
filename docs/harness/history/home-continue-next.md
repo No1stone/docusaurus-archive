@@ -9,7 +9,7 @@ unlisted: true
 > **개요:** 2026-10-23 기준 남은 일입니다.
 > 이 문서는 `unlisted`라 사이트 메뉴에 안 나옵니다. 저장소·하네스에서만 봅니다.
 
-시작 시 [`CURRENT.md`](../CURRENT.md)와 이 글만 먼저 읽으면 됩니다.
+시작 시 [`CURRENT.md`](/docs/harness/CURRENT)와 이 글만 먼저 읽으면 됩니다.
 
 ## 참조 경로
 
@@ -32,25 +32,25 @@ unlisted: true
 
 ### 1. 게시 보류 draft — 작성자 재검토 (임의 공개·대량 보완 금지)
 
-목록: [`notion-import-unclear-holds.md`](./notion-import-unclear-holds.md)
+목록: [`notion-import-unclear-holds.md`](/docs/harness/history/notion-import-unclear-holds)
 
 | 경로 |
 |------|
-| `docs/knowledge/backend/java/json-utils/javax-json-se-ee.md` |
-| `docs/knowledge/backend/spring/reactive-web/reactive-streame-api.md` |
-| `docs/knowledge/backend/spring/reactive-web/webflux.md` |
-| `docs/knowledge/infrastructure/aws/network/vpc-creation-order.md` |
-| `docs/knowledge/infrastructure/workspace/self-hosted-messenger-candidates.md` |
-| `docs/knowledge/messaging/brokers/mq-memo.md` |
-| `docs/knowledge/messaging/delivery/webhook.md` |
-| `docs/knowledge/networking/transport/dns-memo.md` |
-| `docs/knowledge/networking/transport/udp-memo.md` |
+| `docs/development/spring/java/json-utils/javax-json-se-ee.md` |
+| `docs/development/spring/spring/reactive-web/reactive-streame-api.md` |
+| `docs/development/spring/spring/reactive-web/webflux.md` |
+| `docs/infrastructure/aws/network/vpc-creation-order.md` |
+| `docs/infrastructure/misc/workspace/self-hosted-messenger-candidates.md` |
+| `docs/development/messaging/brokers/mq-memo.md` |
+| `docs/development/messaging/delivery/webhook.md` |
+| `docs/infrastructure/networking/transport/dns-memo.md` |
+| `docs/infrastructure/networking/transport/udp-memo.md` |
 
 ### 2. 링크 글 품질 2차 (원하는 만큼)
 
 1차에서 일괄 처리된 글 중 본문이 얇거나 원문 요약만인 것은, 대표 3건과 같은 기준으로 손보면 됩니다.
 
-- 기준·구분: [`notion-import-link-rewrite-worklist.md`](./notion-import-link-rewrite-worklist.md)
+- 기준·구분: [`notion-import-link-rewrite-worklist.md`](/docs/harness/history/notion-import-link-rewrite-worklist)
 - 코드 있으면 부트베이스·팜프로 중심으로 재구성
 - 없으면 원문 핵심만 짧게 + details 참고 자료
 - draft 보류 글은 건드리지 않음

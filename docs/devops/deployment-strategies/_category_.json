@@ -1,0 +1,8 @@
+{
+  "label": "Deployment Strategies",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "devops/deployment-strategies/blue-green-buffer-deployment"
+  }
+}

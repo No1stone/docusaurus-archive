@@ -2,7 +2,7 @@
 
 > **개요:** 재현되는 버그를 최소로 고칩니다.
 > 기본은 단일 에이전트입니다.
-> 별도 에이전트는 [`implement.md`](../workflows/implement.md)입니다.
+> 별도 에이전트는 [`implement.md`](/docs/harness/workflows/implement)입니다.
 
 | Field | Value |
 |-------|--------|
@@ -20,8 +20,8 @@
 **적용하지 않습니다.**
 
 - 재현이 안 되는 보고
-- 새 기능 → [`spring-api-one-set`](./spring-api-one-set.md) 또는 기본 흐름
-- 동작이 바뀌는 리팩터 → [`spring-refactor-layer`](./spring-refactor-layer.md)
+- 새 기능 → [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set) 또는 기본 흐름
+- 동작이 바뀌는 리팩터 → [`spring-refactor-layer`](/docs/harness/orchestrations/spring-refactor-layer)
 
 ## 입력과 미확정
 
@@ -41,9 +41,9 @@
 |------|------|
 | `docs/harness/workflows/bugfix.md` | 이 상황의 절차 |
 | `docs/harness/workflows/acceptance.md` | 통과 기준 형식 |
-| `docs/knowledge/backend/testing/test-structure.md` | 재현 테스트를 둘 때 |
+| `docs/development/spring/testing/test-structure.md` | 재현 테스트를 둘 때 |
 | 버그가 있는 층의 ExampleItem 대응 파일만 | 모양이 필요할 때. `docs/harness/templates/backend/spring/`에서 해당 층만 |
-| `docs/postmortems/` | 증상이 같은 기록이 있을 때만 |
+| `docs/architecture/postmortems/` | 증상이 같은 기록이 있을 때만 |
 
 ## 작업 순서와 산출물
 

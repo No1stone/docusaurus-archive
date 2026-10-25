@@ -7,13 +7,13 @@
 
 | Role | File | Model pool (try in order) | Freedom | Owns |
 |------|------|---------------------------|---------|------|
-| Master | [`master.md`](./master.md) | Opus-class pool | **high** | Select orchestration / gap / author / dispatch / approve / talk to developer |
-| Implementer | [`implementer.md`](./implementer.md) | Cheap coding pool | **low** (only role at this level) | Execute under selected recipe |
-| Reviewer | [`reviewer.md`](./reviewer.md) | Cheap checklist pool | medium | Standards check |
-| Tester | [`tester.md`](./tester.md) | Cheap checklist pool | medium | Behavioral proof |
-| QA | [`qa.md`](./qa.md) | Cheap checklist pool | medium | Success criteria |
-| Scout | [`scout.md`](./scout.md) | Cheap exploration pool | medium (read-only) | Repo map before Master selects a recipe |
-| Curator | [`curator.md`](./curator.md) | Cheap writing pool | medium | Promote proven project material into the archive; keep Index / History current |
+| Master | [`master.md`](/docs/harness/agents/master) | Opus-class pool | **high** | Select orchestration / gap / author / dispatch / approve / talk to developer |
+| Implementer | [`implementer.md`](/docs/harness/agents/implementer) | Cheap coding pool | **low** (only role at this level) | Execute under selected recipe |
+| Reviewer | [`reviewer.md`](/docs/harness/agents/reviewer) | Cheap checklist pool | medium | Standards check |
+| Tester | [`tester.md`](/docs/harness/agents/tester) | Cheap checklist pool | medium | Behavioral proof |
+| QA | [`qa.md`](/docs/harness/agents/qa) | Cheap checklist pool | medium | Success criteria |
+| Scout | [`scout.md`](/docs/harness/agents/scout) | Cheap exploration pool | medium (read-only) | Repo map before Master selects a recipe |
+| Curator | [`curator.md`](/docs/harness/agents/curator) | Cheap writing pool | medium | Promote proven project material into the archive; keep Index / History current |
 
 Implementer is the role that produces code in the registered style, so it is the only one held at `low`. Checking roles need room to judge, so they sit at `medium`.
 
@@ -21,7 +21,7 @@ Implementer is the role that produces code in the registered style, so it is the
 
 역할 문서는 책임입니다.
 기본적으로 한 에이전트가 필요한 책임을 수행합니다.
-별도 에이전트 조건은 [`../workflows/implement.md`](../workflows/implement.md) 한 곳입니다.
+별도 에이전트 조건은 [`../workflows/implement.md`](/docs/harness/workflows/implement) 한 곳입니다.
 필수 검증과 필수 에이전트 실행은 다릅니다.
 
 ## Adding a role
@@ -66,5 +66,5 @@ Rules:
 - **Avoid** routine workers on `kimi-k3-max` / K3 by default (~3–4× K2.7 Code on public API lists).
 - Cursor/product billing ≠ raw API list price; harness lists are routing hints.
 
-Recipes: [`../orchestrations/`](../orchestrations/)  
-Meta: [`../orchestration.md`](../orchestration.md)  
+Recipes: [`../orchestrations/`](/docs/harness/orchestrations/)  
+Meta: [`../orchestration.md`](/docs/harness/orchestration)  

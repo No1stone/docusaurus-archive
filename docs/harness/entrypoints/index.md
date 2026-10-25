@@ -6,13 +6,13 @@ Product adapters into the harness. Core structure stays vendor-neutral.
 
 | Product | Doc |
 |---------|-----|
-| Cursor | [cursor.md](./cursor.md) |
-| Codex | [codex.md](./codex.md) |
-| Claude Code | [claude-code.md](./claude-code.md) |
+| Cursor | [cursor.md](/docs/harness/entrypoints/cursor) |
+| Codex | [codex.md](/docs/harness/entrypoints/codex) |
+| Claude Code | [claude-code.md](/docs/harness/entrypoints/claude-code) |
 
 ## Tool mapping
 
-Each entrypoint says how **this product** runs the capabilities described in [`../tools/`](../tools/index.md). The tool pages stay product-neutral; only the mapping lives here.
+Each entrypoint says how **this product** runs the capabilities described in [`../tools/`](/docs/harness/tools/). The tool pages stay product-neutral; only the mapping lives here.
 
 | Capability | Cursor | Claude Code | Codex |
 |------------|--------|-------------|-------|

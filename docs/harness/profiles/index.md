@@ -6,4 +6,4 @@ Usual asset combo for a *kind* of stack. Not the same as a per-task orchestratio
 
 | Profile | Doc |
 |---------|-----|
-| Spring API | [spring-api.md](./spring-api.md) |
+| Spring API | [spring-api.md](/docs/harness/profiles/spring-api) |

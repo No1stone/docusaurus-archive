@@ -38,13 +38,13 @@ They are not two writings of the same rule.
 Never hand an agent the whole archive.
 Start from `docs/harness/CURRENT.md` and the documents for this task.
 Do not load `docs/history`, `docs/harness/history`, every role file, or every template by default.
-Skip re-reading unchanged material; re-check after file changes, context compaction, or a work-area switch ([implement](../workflows/implement.md)).
+Skip re-reading unchanged material; re-check after file changes, context compaction, or a work-area switch ([implement](/docs/harness/workflows/implement)).
 
 **Why.** Context is a budget. Everything loaded that is not needed crowds out what is, makes the model average between conflicting examples, and costs money on every run. A worker that reads one template produces that template; a worker that reads ten produces a blend.
 
 **If violated.** Implementer output stops matching any single standard, Reviewer findings become arguable, and Master's token spend grows with the archive instead of with the task.
 
-**Where it lives.** [implement](../workflows/implement.md) (read rules), [Orchestration](../orchestration.md) meta rules, the *Knowledge assembly* section of every recipe, the Scout role that maps a repo so Master does not have to read it, and the explicit "do not load History by default" notes on non-default areas.
+**Where it lives.** [implement](/docs/harness/workflows/implement) (read rules), [Orchestration](/docs/harness/orchestration) meta rules, the *Knowledge assembly* section of every recipe, the Scout role that maps a repo so Master does not have to read it, and the explicit "do not load History by default" notes on non-default areas.
 
 ## 4. Low coupling between presentation, AI product, and engineering assets
 
@@ -54,16 +54,16 @@ Docusaurus is a reading UI. Cursor, Codex, Claude Code are adapters. Neither may
 
 **If violated.** Migrating the site or switching AI products becomes a content migration, and parts of the standard quietly live only in one vendor's config.
 
-**Where it lives.** Thin [entrypoints](../entrypoints/index.md) that hold product-specific mappings only, product-neutral [tools](../tools/index.md) pages, and the rule that `_category_.json` is navigation only.
+**Where it lives.** Thin [entrypoints](/docs/harness/entrypoints/) that hold product-specific mappings only, product-neutral [tools](/docs/harness/tools/) pages, and the rule that `_category_.json` is navigation only.
 
 ## 5. A pass bar before coding
 
 Before implementation, write the expected result and the done criteria.
 That is not a requirement to write tests first, or to cycle failure, pass, and cleanup, on every task.
 Reuse existing tests when they already cover the bar.
-Skipped or unrun checks are not recorded as pass ([implement](../workflows/implement.md)).
-How each kind of work checks itself is [구현 전 통과 기준](../workflows/acceptance.md).
-Who runs the check is [implement](../workflows/implement.md).
+Skipped or unrun checks are not recorded as pass ([implement](/docs/harness/workflows/implement)).
+How each kind of work checks itself is [구현 전 통과 기준](/docs/harness/workflows/acceptance).
+Who runs the check is [implement](/docs/harness/workflows/implement).
 Done means the requirement is met and existing behavior did not regress.
 A green test run alone does not prove that.
 
@@ -73,10 +73,10 @@ A bar written after the code gets weakened to match whatever was written.
 **If violated.** Tests are deleted or expected results are softened so the run turns green.
 The mission is then called done with no check for the original requirement or for regressions.
 
-**Where it lives.** [구현 전 통과 기준](../workflows/acceptance.md), the About page, and the implement workflow.
+**Where it lives.** [구현 전 통과 기준](/docs/harness/workflows/acceptance), the About page, and the implement workflow.
 
 ## Applying them
 
-When two principles pull in different directions, the [precedence](./precedence.md) order decides for rules; for principles, prefer the one that keeps the archive useful **without** the current tool. Durable choices that follow from these principles go into ADRs, not into this page.
+When two principles pull in different directions, the [precedence](/docs/harness/context/precedence) order decides for rules; for principles, prefer the one that keeps the archive useful **without** the current tool. Durable choices that follow from these principles go into ADRs, not into this page.
 
 Personal engineering preferences that are not yet stable are written as `TODO`, not invented.

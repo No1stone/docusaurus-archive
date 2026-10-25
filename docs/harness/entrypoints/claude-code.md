@@ -7,18 +7,18 @@ Adapter: Claude Code ↔ Origemite harness roles.
 ## Start here
 
 1. Repo root: `AGENTS.md`
-2. [`../workflows/implement.md`](../workflows/implement.md) — 요청 모드·검증·보고
-3. [`../orchestration.md`](../orchestration.md)
-4. [`../agents/index.md`](../agents/index.md)
+2. [`../workflows/implement.md`](/docs/harness/workflows/implement) — 요청 모드·검증·보고
+3. [`../orchestration.md`](/docs/harness/orchestration)
+4. [`../agents/index.md`](/docs/harness/agents/)
 
 ## Role binding
 
 Parent session = **Master**.  
-Subagents follow [`../agents/`](../agents/) contracts and the [return schema](../orchestration.md#return-schema). Separate agents follow [`../workflows/implement.md`](../workflows/implement.md). Default is a single agent.
+Subagents follow [`../agents/`](/docs/harness/agents/) contracts and the [return schema](/docs/harness/orchestration#return-schema). Separate agents follow [`../workflows/implement.md`](/docs/harness/workflows/implement). Default is a single agent.
 
 ## Verification tool mapping
 
-How Claude Code runs the capabilities in [`../tools/`](../tools/index.md):
+How Claude Code runs the capabilities in [`../tools/`](/docs/harness/tools/):
 
 | Tool | In Claude Code |
 |------|----------------|

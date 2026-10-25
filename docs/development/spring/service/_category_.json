@@ -1,0 +1,8 @@
+{
+  "label": "Service",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "development/spring/service/knowledge-backend-service"
+  }
+}

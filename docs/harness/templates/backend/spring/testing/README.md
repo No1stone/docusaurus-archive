@@ -18,5 +18,5 @@
 
 `ExampleItem`과 샘플 필드(`httpMethod`, `url`)는 치환 토큰입니다.
 
-원셋 복사 안내는 [`../ONESET.md`](../ONESET.md)입니다.
+원셋 복사 안내는 [`../ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
 API E2E는 [`../e2e/`](../e2e/)입니다.

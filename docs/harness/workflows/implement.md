@@ -35,16 +35,16 @@
 → 승인된 경우 커밋
 ```
 
-통과 기준과 작업별 확인 방법은 [`acceptance.md`](./acceptance.md)입니다.
-구현 우선순위와 실행 원칙은 [`implementer.md`](../agents/implementer.md)입니다.
-커밋은 [`git.md`](../context/git.md)입니다.
+통과 기준과 작업별 확인 방법은 [`acceptance.md`](/docs/harness/workflows/acceptance)입니다.
+구현 우선순위와 실행 원칙은 [`implementer.md`](/docs/harness/agents/implementer)입니다.
+커밋은 [`git.md`](/docs/harness/context/git)입니다.
 승인이 없으면 커밋하지 않습니다.
 
 ## 템플릿과 간결한 경로
 
 - 템플릿·원셋을 재사용하고 도메인별 차이만 반영합니다.
 - 탐색·실행·검증 중 **품질을 충족하는 가장 간결한 경로**를 고릅니다.
-- 토큰 절약을 이유로 필요한 검증을 생략하거나 기대값을 완화하지 않습니다 ([`acceptance.md`](./acceptance.md)).
+- 토큰 절약을 이유로 필요한 검증을 생략하거나 기대값을 완화하지 않습니다 ([`acceptance.md`](/docs/harness/workflows/acceptance)).
 
 ## 별도 에이전트
 
@@ -57,7 +57,7 @@
 | 재사용할 발견 | 후보만 보고합니다. Curator와 Knowledge, 템플릿 갱신은 사용자가 요청할 때만 합니다 |
 
 역할마다 별도 에이전트를 자동 실행하지 않습니다.
-레시피를 골라도 기본은 단일 에이전트입니다 ([`orchestration.md`](../orchestration.md)).
+레시피를 골라도 기본은 단일 에이전트입니다 ([`orchestration.md`](/docs/harness/orchestration)).
 별도 에이전트를 실행하지 않아도 요구사항 충족과 회귀 검증은 수행합니다.
 필수 검증과 필수 에이전트 실행은 다릅니다.
 
@@ -68,11 +68,11 @@
 ## 검증
 
 - 변경된 **동작·계약·위험**에 맞춰 검증을 고릅니다. 파일 종류만으로 제외하지 않습니다.
-- 기능 개발에서는 **통과 기준을 먼저** 정합니다. 기존 테스트가 충분하면 재사용합니다. 테스트 선작성을 일률적으로 강제하지 않습니다 ([`acceptance.md`](./acceptance.md)).
+- 기능 개발에서는 **통과 기준을 먼저** 정합니다. 기존 테스트가 충분하면 재사용합니다. 테스트 선작성을 일률적으로 강제하지 않습니다 ([`acceptance.md`](/docs/harness/workflows/acceptance)).
 - **미실행·생략은 통과로 기록하지 않습니다.** 구현 결과와 미실행 검증을 구분합니다.
 - HTTP·API **계약** 검증(단위·통합·시나리오·컬렉션)과 **부하·동시성** 검증을 구분합니다.
 - 부하·동시성 검증은 성능·동시성 관련 변경이거나 사용자가 명시할 때 수행합니다. 도구와 부하량은 **프로젝트 조건**에 맞춥니다. 안전한 대상·환경이 없으면 실행하지 않고 미실행 사유를 남깁니다.
-- 검증 도구 목록은 [`../tools/`](../tools/index.md)입니다.
+- 검증 도구 목록은 [`../tools/`](/docs/harness/tools/)입니다.
 
 ## 읽기
 
@@ -86,14 +86,14 @@
 
 - 일반 단일 에이전트 작업에서 생략한 역할·단계를 일일이 보고하지 않습니다.
 - **결과 · 검증 · 남은 문제(미실행 검증 포함)** 만 짧게 보고합니다.
-- 현재 상태: [`../CURRENT.md`](../CURRENT.md). 다음 작업에 필요한 결정·변경·검증·미해결만 갱신합니다.
-- 누적 기록: [`../history/`](../history/). 필요할 때 해당 월만 검색합니다. 매 작업에 폴더 전체를 읽지 않습니다.
+- 현재 상태: [`../CURRENT.md`](/docs/harness/CURRENT). 다음 작업에 필요한 결정·변경·검증·미해결만 갱신합니다.
+- 누적 기록: [`../history/`](/docs/harness/history/harness-work-history). 필요할 때 해당 월만 검색합니다. 매 작업에 폴더 전체를 읽지 않습니다.
 - 개인 세션 메모는 이 저장소 밖에 둡니다. 여기 복제하지 않습니다.
 
 ## Related
 
-- [구현 전 통과 기준](./acceptance.md)
-- [Orchestration meta](../orchestration.md)
-- [Implementer](../agents/implementer.md)
-- [Engineering principles](../context/engineering-principles.md)
-- [Tools](../tools/index.md)
+- [구현 전 통과 기준](/docs/harness/workflows/acceptance)
+- [Orchestration meta](/docs/harness/orchestration)
+- [Implementer](/docs/harness/agents/implementer)
+- [Engineering principles](/docs/harness/context/engineering-principles)
+- [Tools](/docs/harness/tools/)

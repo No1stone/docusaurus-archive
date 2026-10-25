@@ -8,7 +8,7 @@ unlisted: true
 # Notion 원본 목록
 
 > **개요:** `_imports/notion/` 원본 목록입니다.
-> 작업 기준은 [notion-import-worklist.md](./notion-import-worklist.md)입니다.
+> 작업 기준은 [notion-import-worklist.md](/docs/harness/history/notion-import-worklist)입니다.
 > 원본 파일은 수정하지 않습니다.
 
 상태 추정은 분량·코드·외부 링크 휴리스틱이며, 시범 작성 전에 재확인합니다.
@@ -84,14 +84,14 @@ unlisted: true
 | AWS OperationSever | 미완성 | 없음 | Knowledge | AWS,Docker,Java,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Docker-Compose/old info/AWS OperationSever 5e0157da203a43b2bd0ff68553fdd3fa.md` |
 | AWS Setting | 미완성 | 없음 | Knowledge | AWS | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/AWS Setting 89da36220a22460a962b3e9ae4ec25fd.md` |
 | AWS_Ec2 docker-compose 경로 | 미완성 | 없음 | Knowledge | AWS,Docker | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Docker-Compose/old info/AWS_Ec2 docker-compose 경로 7c240806254343ac8c862384ac5373c2.md` |
-| AuthService | 미완성 | 기존 유사: docs/knowledge/backend/service/index.md | Knowledge | Git,HTTP | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/AuthService 552306df6adf4c7985e30bb125602a6b.md` |
+| AuthService | 미완성 | 기존 유사: docs/development/spring/service/index.md | Knowledge | Git,HTTP | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/AuthService 552306df6adf4c7985e30bb125602a6b.md` |
 | Aws Ec2 | 미완성 | 없음 | Knowledge | AWS,Linux | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/AWS/Aws Ec2 e83784ef6aa649dc807eb61b78fa69f1.md` |
 | Aws S3 | 미완성 | 없음 | Knowledge | AWS,Java | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/AWS/Aws S3 cf4dab1d1141471caa5b1f6bd0b5182d.md` |
 | Aws SES | 미완성 | 없음 | Knowledge | AWS | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/AWS/Aws SES 6e2155516ee94d85a8b8dce9489061d7.md` |
 | Caching Annotation | 미완성 | 없음 | Knowledge | Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/DATABASE/Redis/Caching Annotation fcc2f4e821fc4376a8e79f675ee41e02.md` |
 | Cashing | 미완성 | 없음 | Knowledge | Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/DATABASE/Redis/Cashing 575faebc5a6d4afe955ba9ccd5ef5cdd.md` |
 | CentOs | 미완성 | 없음 | Knowledge | Linux | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Linux/common/port/CentOs 13004af42870400a8ed2c527cb6d04fb.md` |
-| CmmService | 미완성 | 기존 유사: docs/knowledge/backend/service/index.md | Knowledge | Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/CmmService 2539664d1faa4e5897c99f91ae955f75.md` |
+| CmmService | 미완성 | 기존 유사: docs/development/spring/service/index.md | Knowledge | Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/CmmService 2539664d1faa4e5897c99f91ae955f75.md` |
 | ConfigServer | 미완성 | 없음 | Knowledge | Docker,Git,HTTP | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/ConfigServer 7905274dfd094216b6ae848d6ca5471a.md` |
 | DATA JPA Rerference | 미완성 | 없음 | Knowledge | HTTP,JPA,QueryDSL,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/Spring DATA JPA/DATA JPA Rerference d47fe9f106eb4f2a8bb5ea670b94c8f8.md` |
 | DATABASE | 미완성 | 없음 | Knowledge | Flyway,PostgreSQL,QueryDSL,Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/DATABASE abbc8e683b37424aae287d1d9430f092.md` |
@@ -142,12 +142,12 @@ unlisted: true
 | Security | 미완성 | 없음 | Knowledge | Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/Security 794041855fbf418ea6183fb49164f60b.md` |
 | Select hibernate | 미완성 | 없음 | Knowledge | JPA,Java,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/Spring DATA JPA/Select hibernate d7e293d43e194b019bc8687f48ef6f01.md` |
 | Sending emails programmatically | 미완성 | 없음 | Knowledge | AWS,Git,HTTP,Java,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/AWS/Aws SES/Sending emails programmatically ef85f2d2c5a8410c9e8f4bded3f38ec5.md` |
-| Server Service | 미완성 | 기존 유사: docs/knowledge/backend/service/index.md | Knowledge | HTTP,Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Server Service 746176c0f29b48c5a2a38614af983586.md` |
+| Server Service | 미완성 | 기존 유사: docs/development/spring/service/index.md | Knowledge | HTTP,Redis | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Server Service 746176c0f29b48c5a2a38614af983586.md` |
 | Server Setting | 미완성 | 없음 | Knowledge | AWS,Docker,Git,HTTP,Kafka,Linux,nginx | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Server Setting 7348577c67ba46f0aeffcc4050f1ee89.md` |
-| Service | 미완성 | 기존 유사: docs/knowledge/backend/service/service-design.md, docs/knowledge/backend/service/index.md | Knowledge | Git,HTTP,Java,QueryDSL,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Service 17a4c39bdd8a4790b5e6b33f05606fc3.md` |
+| Service | 미완성 | 기존 유사: docs/development/spring/service/service-design.md, docs/development/spring/service/index.md | Knowledge | Git,HTTP,Java,QueryDSL,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Service 17a4c39bdd8a4790b5e6b33f05606fc3.md` |
 | Spring Bean Scope | 미완성 | 없음 | Knowledge | HTTP,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring Core/Spring Bean Scope 7a79de44ff2b48b39efadbeb0e48f9d6.md` |
 | Spring Core | 미완성 | 없음 | Knowledge | Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring Core 740bc396550440348ba5c9e97e7791ec.md` |
-| Spring MVC | 미완성 | 기존 유사: docs/decisions/ADR-0004-blocking-flow-uses-mvc.md | Knowledge | HTTP,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring MVC 00015cd959894119b0979ed8a3001d03.md` |
+| Spring MVC | 미완성 | 기존 유사: docs/architecture/adr/ADR-0004-blocking-flow-uses-mvc.md | Knowledge | HTTP,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring MVC 00015cd959894119b0979ed8a3001d03.md` |
 | Spring Rest | 미완성 | 없음 | Knowledge | Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring Rest 534b1ed9912b47d4b1e67672dbb25447.md` |
 | Streams API | 미완성 | 없음 | Knowledge | Java,Redis,Spring | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/Spring/Streams API f2c96ba8680f4d55901258f9550726d0.md` |
 | Token | 미완성 | 없음 | Knowledge | HTTP | 의도 유지하며 설명·예제 보완 | `No1Stone Start Page/UTIL/Webex RestAPI/Token 1f8c96c24a824f17be5861ee9bc036d3.md` |
@@ -245,7 +245,7 @@ unlisted: true
 | AuthTokenInterceptor | 완성 | 없음 | Knowledge | GoF,HTTP,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring MVC/HandlerIntercepter/AuthTokenInterceptor 294e8ae36365443a9b06a11cd28ce781.md` |
 | Aws S3 구조 | 완성 | 없음 | Knowledge | AWS,Git,HTTP,Java | 사실 확인·문체 정리 | `No1Stone Start Page/AWS/Aws S3/Aws S3 구조 975b8ae0a2b14572ac91a3d76426cec1.md` |
 | Aws SES Info, 용어 | 완성 | 없음 | Knowledge | AWS,HTTP,Java | 사실 확인·문체 정리 | `No1Stone Start Page/AWS/Aws SES/Aws SES Info, 용어 4b729889c6a04d4888331b2ba9529614.md` |
-| Aws s3(simple storage service) | 완성 | 기존 유사: docs/knowledge/backend/service/index.md | Knowledge | AWS,HTTP | 사실 확인·문체 정리 | `No1Stone Start Page/AWS/Aws S3/Aws s3(simple storage service) 514d99be39f648e98bf262f96f0faca1.md` |
+| Aws s3(simple storage service) | 완성 | 기존 유사: docs/development/spring/service/index.md | Knowledge | AWS,HTTP | 사실 확인·문체 정리 | `No1Stone Start Page/AWS/Aws S3/Aws s3(simple storage service) 514d99be39f648e98bf262f96f0faca1.md` |
 | Banner | 완성 | 없음 | Knowledge | HTTP,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring Core/Banner 73b480d4b6284b01ba6a12ecf366416b.md` |
 | Config | 완성 | 없음 | Knowledge | GoF,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Mybatis/Config b000499207a64867935d9db3030ded17.md` |
 | Confluentinc Connect Sink | 완성 | 없음 | Knowledge | Docker,Git,HTTP,Kafka | 사실 확인·문체 정리 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Confluentinc Connect Sink 06c6eb108e6049709da97f92a1e9fad0.md` |
@@ -277,13 +277,13 @@ unlisted: true
 | Query의 코드화2 | 완성 | 없음 | Knowledge | - | 사실 확인·문체 정리 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Query의 코드화2 f07732528481474c982e674f04dedb83.md` |
 | R2dbc Redis | 완성 | 없음 | Knowledge | HTTP,Java,Redis,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Webflux/R2dbc/R2dbc Redis d31be3fbc5d94ffa88644446b5243322.md` |
 | R2dbc config | 완성 | 없음 | Knowledge | GoF,Java,PostgreSQL,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Webflux/R2dbc/R2dbc config 60c994e045ee49898eb0ce39cd23b990.md` |
-| R2dbcService | 완성 | 기존 유사: docs/knowledge/backend/service/index.md | Knowledge | GoF,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Webflux/R2dbc/R2dbcService 3cba4c8db9304b61bbbed378cbd7305d.md` |
+| R2dbcService | 완성 | 기존 유사: docs/development/spring/service/index.md | Knowledge | GoF,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Webflux/R2dbc/R2dbcService 3cba4c8db9304b61bbbed378cbd7305d.md` |
 | RequestMapping | 완성 | 없음 | Knowledge | Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring MVC/RequestMapping dcf588fc1cf64fc9864c67f89a595568.md` |
 | ResourceBundleMessageSource | 완성 | 없음 | Knowledge | Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/스프링5 레시피4판/Spring Core/ResourceBundleMessageSource 9fb5764de88643978a5a91e840426350.md` |
 | RestTemplate | 완성 | 기존 유사: docs/harness/orchestrations/template.md | Knowledge | HTTP,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/UTIL/RestTemplate 33e30530381e4d63842342e7fa6060a6.md` |
 | Route | 완성 | 없음 | Knowledge | HTTP | 사실 확인·문체 정리 | `No1Stone Start Page/아이컴시스 개선사례 및 포트폴리오/포트폴리오/Route f8759b66646340b9979eb74f588747af.md` |
 | Security Info | 완성 | 없음 | Knowledge | Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Security/Security Info 7d6aedab0ba14dab9250c0938dff3e26.md` |
-| Spring | 완성 | 기존 유사: docs/decisions/ADR-0004-blocking-flow-uses-mvc.md, docs/harness/orchestrations/spring-bugfix.md | Knowledge | Git,JPA,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring eb3f1dbdaa4a44029587ed3db229e7c4.md` |
+| Spring | 완성 | 기존 유사: docs/architecture/adr/ADR-0004-blocking-flow-uses-mvc.md, docs/harness/orchestrations/spring-bugfix.md | Knowledge | Git,JPA,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring eb3f1dbdaa4a44029587ed3db229e7c4.md` |
 | SseEmitter | 완성 | 없음 | Knowledge | HTTP,Java,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Streams API/SseEmitter 54eb510c03584546bc2cfb3634df58a1.md` |
 | Stomp | 완성 | 없음 | Knowledge | AWS,HTTP,Java,PostgreSQL,Redis,Spring | 사실 확인·문체 정리 | `No1Stone Start Page/Spring/Streams API/Stomp 12089e9a9b4b41cd80374af1720e934c.md` |
 | Ubuntu | 완성 | 없음 | Knowledge | Linux | 사실 확인·문체 정리 | `No1Stone Start Page/Linux/common/port/Ubuntu 5b92ecdeb0d04e7cbff36cdd4b1b7d82.md` |

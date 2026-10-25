@@ -7,18 +7,18 @@ Adapter: Codex ↔ Origemite harness roles.
 ## Start here
 
 1. Repo root: `AGENTS.md`
-2. [`../workflows/implement.md`](../workflows/implement.md) — 요청 모드·검증·보고
-3. [`../orchestration.md`](../orchestration.md)
-4. [`../agents/index.md`](../agents/index.md)
+2. [`../workflows/implement.md`](/docs/harness/workflows/implement) — 요청 모드·검증·보고
+3. [`../orchestration.md`](/docs/harness/orchestration)
+4. [`../agents/index.md`](/docs/harness/agents/)
 
 ## Role binding
 
 Parent session = **Master**.  
-Follow [`../workflows/implement.md`](../workflows/implement.md). One agent covers the default path. Spawn another role only when that page says so.
+Follow [`../workflows/implement.md`](/docs/harness/workflows/implement). One agent covers the default path. Spawn another role only when that page says so.
 
 ## Verification tool mapping
 
-How Codex runs the capabilities in [`../tools/`](../tools/index.md):
+How Codex runs the capabilities in [`../tools/`](/docs/harness/tools/):
 
 | Tool | In Codex |
 |------|----------|

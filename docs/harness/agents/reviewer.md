@@ -2,7 +2,7 @@
 
 > **개요:** 구조와 기준 리뷰 책임입니다.
 > 별도 에이전트는 복잡한 계약, 중요한 정합성, 중요한 설계 변경일 때만입니다.
-> 조건은 [`implement.md`](../workflows/implement.md)입니다.
+> 조건은 [`implement.md`](/docs/harness/workflows/implement)입니다.
 > 동작 확인과 요청 충족 확인은 그 책임과 결과를 구분합니다.
 
 **Role model:** Architecture & standards reviewer — not a test runner, not a product QA.
@@ -43,7 +43,7 @@
 - Rewrite the code (unless Master said "review + fix")
 - Redefine the mission or add requirements
 
-Scale: [`index.md`](./index.md#freedom-자유도)
+Scale: [`index.md`](/docs/harness/agents/#freedom-자유도)
 
 ---
 
@@ -97,12 +97,12 @@ Reviewer may **PASS** while QA **FAIL**s (correct architecture, incomplete deliv
 
 ## Return schema
 
-[Return schema](../orchestration.md#return-schema).  
+[Return schema](/docs/harness/orchestration#return-schema).  
 `FAIL` if any high-severity finding remains unaddressed.
 
 ---
 
 ## Related
 
-- Workflow: [`../workflows/review.md`](../workflows/review.md)
-- Precedence: [`../context/precedence.md`](../context/precedence.md)
+- Workflow: [`../workflows/review.md`](/docs/harness/workflows/review)
+- Precedence: [`../context/precedence.md`](/docs/harness/context/precedence)
