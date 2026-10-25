@@ -1,8 +1,8 @@
 {
-  "label": "Knowledge (legacy)",
-  "position": 9,
+  "label": "Knowledge",
+  "position": 2,
   "link": {
     "type": "doc",
-    "id": "knowledge"
+    "id": "knowledge/knowledge"
   }
 }

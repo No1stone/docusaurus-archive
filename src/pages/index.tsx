@@ -7,23 +7,13 @@ import styles from './index.module.css';
 
 const sections = [
   {
-    title: 'Development',
-    to: '/docs/development/',
+    title: 'Knowledge',
+    to: '/docs/knowledge/',
     items: [
       {title: 'Controller Design', to: '/docs/knowledge/backend/controller/controller-design'},
       {title: 'Facade Design', to: '/docs/knowledge/backend/facade/facade-design'},
       {title: 'Service의 책임과 분리 가능한 데이터 접근 경계', to: '/docs/knowledge/backend/service/service-design'},
       {title: '테스트 기본 구조', to: '/docs/knowledge/backend/testing/test-structure'},
-    ],
-  },
-  {
-    title: 'Containers',
-    to: '/docs/containers/',
-    items: [
-      {
-        title: 'Docker 기반 Nextcloud 30 → 35 업그레이드와 보안 점검',
-        to: '/docs/knowledge/infrastructure/docker/nextcloud-docker-upgrade-30-to-35',
-      },
     ],
   },
   {
@@ -42,6 +32,14 @@ const sections = [
       {
         title: 'PHP 보안 패치하려다 Nextcloud 5개 버전을 올렸다',
         to: '/blog/nextcloud-php-security-upgrade-retrospective',
+      },
+      {
+        title: '설명하다가 깨달은 것',
+        to: '/blog/ai-era-rules-over-code',
+      },
+      {
+        title: 'Alibaba Cloud 검토기',
+        to: '/blog/alibaba-cloud-review',
       },
     ],
   },

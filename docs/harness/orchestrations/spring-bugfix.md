@@ -41,7 +41,7 @@
 |------|------|
 | `docs/harness/workflows/bugfix.md` | 이 상황의 절차 |
 | `docs/harness/workflows/acceptance.md` | 통과 기준 형식 |
-| `docs/development/spring/testing/test-structure.md` | 재현 테스트를 둘 때 |
+| `docs/knowledge/backend/testing/test-structure.md` | 재현 테스트를 둘 때 |
 | 버그가 있는 층의 ExampleItem 대응 파일만 | 모양이 필요할 때. `docs/harness/templates/backend/spring/`에서 해당 층만 |
 | `docs/architecture/postmortems/` | 증상이 같은 기록이 있을 때만 |
 

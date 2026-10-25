@@ -36,15 +36,15 @@ unlisted: true
 
 | 경로 |
 |------|
-| `docs/development/spring/java/json-utils/javax-json-se-ee.md` |
-| `docs/development/spring/spring/reactive-web/reactive-streame-api.md` |
-| `docs/development/spring/spring/reactive-web/webflux.md` |
-| `docs/infrastructure/aws/network/vpc-creation-order.md` |
-| `docs/infrastructure/misc/workspace/self-hosted-messenger-candidates.md` |
-| `docs/development/messaging/brokers/mq-memo.md` |
-| `docs/development/messaging/delivery/webhook.md` |
-| `docs/infrastructure/networking/transport/dns-memo.md` |
-| `docs/infrastructure/networking/transport/udp-memo.md` |
+| `docs/knowledge/backend/java/json-utils/javax-json-se-ee.md` |
+| `docs/knowledge/backend/spring/reactive-web/reactive-streame-api.md` |
+| `docs/knowledge/backend/spring/reactive-web/webflux.md` |
+| `docs/knowledge/infrastructure/aws/network/vpc-creation-order.md` |
+| `docs/knowledge/infrastructure/misc/workspace/self-hosted-messenger-candidates.md` |
+| `docs/knowledge/messaging/brokers/mq-memo.md` |
+| `docs/knowledge/messaging/delivery/webhook.md` |
+| `docs/knowledge/infrastructure/networking/transport/dns-memo.md` |
+| `docs/knowledge/infrastructure/networking/transport/udp-memo.md` |
 
 ### 2. 링크 글 품질 2차 (원하는 만큼)
 

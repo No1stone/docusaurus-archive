@@ -42,4 +42,4 @@ Implementer 자유도는 역할 기본값인 낮음을 유지합니다.
 |------|-----|------|
 | `docs/harness/workflows/refactor.md` | 이 상황 | current |
 | `docs/harness/templates/backend/spring/` | 구현 | current |
-| `docs/development/spring/testing/test-structure.md` | 테스트를 둘 때 | current |
+| `docs/knowledge/backend/testing/test-structure.md` | 테스트를 둘 때 | current |

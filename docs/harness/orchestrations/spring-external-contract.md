@@ -43,7 +43,7 @@
 | Path | 언제 |
 |------|------|
 | `docs/harness/workflows/acceptance.md` | 계약·실패 기준을 정할 때 |
-| `docs/development/spring/testing/test-structure.md` | Client·계약 테스트 배치 |
+| `docs/knowledge/backend/testing/test-structure.md` | Client·계약 테스트 배치 |
 | `docs/harness/context/coding-conventions.md` | 계층 경계가 헷갈릴 때 |
 | `docs/architecture/adr/ADR-0004-blocking-flow-uses-mvc.md` | 블로킹 RestClient와 MVC 전제를 확인할 때 |
 

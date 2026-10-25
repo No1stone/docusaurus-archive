@@ -26,7 +26,7 @@ Skeleton. No automatic generator required.
 ```text
 task: add validation to checkout API
 reads:
-  - docs/development/spring/controller/controller-design.md
+  - docs/knowledge/backend/controller/controller-design.md
   - docs/harness/profiles/spring-api.md
   - docs/harness/templates/backend/spring/controller/README.md
 ```
