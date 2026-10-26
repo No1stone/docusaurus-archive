@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * ExampleItem 시나리오 예시입니다.
  * 한 메서드 안에서 저장 → 조회 → 수정 → 최종 상태 → 없는 아이디 실패 순서를 봅니다.
- * 프로젝트에서는 이 자리를 실제 Facade/Service와 테스트 DB로 바꿉니다.
+ * 프로젝트에서는 이 자리를 실제 Facade, Port, Adapter와 테스트 DB로 바꿉니다.
  * 다른 테스트 메서드를 호출해 시나리오를 짜지 않습니다.
  * ExampleItem 필드명(httpMethod, url)은 치환 토큰입니다.
  */

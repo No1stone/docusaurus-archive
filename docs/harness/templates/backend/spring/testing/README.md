@@ -12,9 +12,9 @@
 
 | 파일 | 자리 | 검증 |
 |---|---|---|
-| [`ExampleItemFacadeTest.java`](./ExampleItemFacadeTest.java) | 파사드와 같은 패키지 | 저장·조회 정상, 빈 ids 경계, 없는 id 실패 |
-| [`ExampleItemServiceTest.java`](./ExampleItemServiceTest.java) | 서비스와 같은 패키지 | 빈·null ids, 빈 saveAll, 없는 id 실패 |
-| [`ExampleItemScenarioTest.java`](./ExampleItemScenarioTest.java) | `scenario/{domain}/` | 저장→수정→조회→없는 id. 프로젝트에서는 실제 계층·DB로 교체 |
+| [`ExampleItemFacadeTest.java`](./ExampleItemFacadeTest.java) | 파사드와 같은 패키지 | Port를 대체. 저장, 조회 정상, 빈 ids 경계, 없는 id 실패 |
+| [`ExampleItemAdapterTest.java`](./ExampleItemAdapterTest.java) | 어댑터와 같은 패키지 | Repository를 대체. 빈, null ids, 빈 saveAll, 없는 id 실패 |
+| [`ExampleItemScenarioTest.java`](./ExampleItemScenarioTest.java) | `scenario/{domain}/` | 저장→수정→조회→없는 id. 프로젝트에서는 실제 계층, DB로 교체 |
 
 `ExampleItem`과 샘플 필드(`httpMethod`, `url`)는 치환 토큰입니다.
 

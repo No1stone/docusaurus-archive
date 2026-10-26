@@ -13,15 +13,17 @@
 
 ## 테이블 한 세트 (구현)
 
-컨트롤러, 파사드, 서비스, 리포지토리, DTO, 스펙, 엔티티입니다.
+컨트롤러, 파사드, Port, JPA Adapter, 리포지토리, DTO, 스펙, 엔티티입니다.
 이 세트의 컬럼은 문자열 샘플입니다.
 공개 경로는 `/example-items`입니다.
+과거 `service/` 이름은 [service/README](./service/)에 이관 안내만 둡니다.
 
 | Layer | Path |
 |-------|------|
 | Controller | [controller/](./controller/) |
 | Facade | [facade/](./facade/) |
-| Service | [service/](./service/) |
+| Port | [port/](./port/) |
+| JPA Adapter | [adapter/](./adapter/) |
 | DTO | [dto/](./dto/) |
 | Entity, Repository, Spec | [persistence/](./persistence/) |
 | Support | [support/](./support/) |
@@ -29,12 +31,17 @@
 | API E2E | [e2e/](./e2e/) |
 
 ```text
-controller → facade → service → repository
-                         ↓
-                    dto, spec, entity
-tests: FacadeTest, ServiceTest, ScenarioTest
+controller → facade → port → jpa adapter → repository
+                                      ↓
+                         CQRS 적용점: Read / Command Provider로 분리 가능
+                                      ↓
+                                 dto, spec, entity
+tests: FacadeTest, AdapterTest, ScenarioTest
 e2e: Postman collection (create → get → put → get → delete → bad input → missing)
 ```
+
+원셋은 Repository 하나를 Adapter가 직접 씁니다.
+조회와 변경을 나눌 때는 [adapter README](./adapter/)에서 Provider로 Repository를 나눕니다.
 
 ## 이넘 적용 한 세트
 

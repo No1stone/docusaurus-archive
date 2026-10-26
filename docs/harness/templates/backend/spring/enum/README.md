@@ -5,11 +5,11 @@
 이 폴더는 테이블 템플릿의 `httpMethod` 컬럼에 열거형을 적용한 전체 예제입니다.
 DTO는 문자열입니다.
 엔티티 필드만 열거형입니다.
-서비스 메서드 목록은 테이블 템플릿과 같습니다.
+Port, JPA Adapter 메서드 목록은 테이블 템플릿과 같습니다.
+이 폴더의 Facade는 Port를 주입하고, Adapter는 [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java) 입니다.
 
-
-서비스 `map` / `mapAll`은 `ModelMapperUtil` 입니다.
-이넘 변환을 서비스 메서드에 새로 넣지 않습니다.
+Adapter의 `map` / `mapAll`은 `ModelMapperUtil` 입니다.
+이넘 변환을 Adapter 메서드에 새로 넣지 않습니다.
 `BizEnumProcessor`가 생성한 `_열거형`의 static 블록이 `ModelMapperUtil.modelMapper.addConverter`를 두 번 등록합니다.
 이넘에서 문자열은 `getCode()` 입니다.
 문자열에서 이넘은 `of(code)` 입니다.
@@ -120,11 +120,11 @@ public class _EnHttpMethod extends CodeValueConverter<EnHttpMethod> {
 - [`EnYn.java`](./EnYn.java)
 - [`EnStatus.java`](./EnStatus.java)
 - [`ExampleItem.java`](./ExampleItem.java)
-- [`ExampleItemFacade.java`](./ExampleItemFacade.java)
+- [`ExampleItemFacade.java`](./ExampleItemFacade.java) (Port 주입. 계약은 [`../port/ExampleItemPort.java`](../port/ExampleItemPort.java))
 - [`ExampleItemSpecs.java`](./ExampleItemSpecs.java)
 - [`ExampleItemReq.java`](./ExampleItemReq.java)
 - [`ExampleItemRes.java`](./ExampleItemRes.java)
-- [`ExampleItemService.java`](./ExampleItemService.java)
+- [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java)
 - [`ExampleItemRepository.java`](./ExampleItemRepository.java)
 - [`ExampleItemController.java`](./ExampleItemController.java)
 
@@ -744,7 +744,7 @@ package com.example.template.exampleitem.facade;
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
 import com.example.template.exampleitem.enums.EnHttpMethod;
-import com.example.template.exampleitem.service.ExampleItemService;
+import com.example.template.exampleitem.port.ExampleItemPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -760,20 +760,20 @@ import java.util.List;
 @Transactional(readOnly = true, transactionManager = "transactionManager")
 public class ExampleItemFacade {
 
-    private final ExampleItemService exampleItemService;
+    private final ExampleItemPort exampleItemPort;
 
     public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
         if (filter != null) {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return exampleItemService.search(filter, pageable);
+        return exampleItemPort.search(filter, pageable);
     }
 
     @Transactional
     public ExampleItemRes.Id save(ExampleItemReq.Create create) {
         create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode());
-        return exampleItemService.save(create);
+        return exampleItemPort.save(create);
     }
 
     @Transactional
@@ -781,11 +781,11 @@ public class ExampleItemFacade {
         if (createList != null) {
             createList.forEach(create -> create.setHttpMethod(EnHttpMethod.of(create.getHttpMethod()).getCode()));
         }
-        return exampleItemService.saveAll(createList);
+        return exampleItemPort.saveAll(createList);
     }
 
     public ExampleItemRes.Item findById(Long id) {
-        return exampleItemService.findById(id);
+        return exampleItemPort.findById(id);
     }
 
     @Transactional
@@ -794,12 +794,12 @@ public class ExampleItemFacade {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(update.getHttpMethod());
             update.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return exampleItemService.saveById(id, update);
+        return exampleItemPort.saveById(id, update);
     }
 
     @Transactional
     public void deleteById(Long id) {
-        exampleItemService.deleteById(id);
+        exampleItemPort.deleteById(id);
     }
 
     public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
@@ -807,11 +807,11 @@ public class ExampleItemFacade {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return exampleItemService.findAll(filter);
+        return exampleItemPort.findAll(filter);
     }
 
     public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
-        return exampleItemService.findByIds(ids);
+        return exampleItemPort.findByIds(ids);
     }
 
     public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
@@ -819,7 +819,7 @@ public class ExampleItemFacade {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return exampleItemService.searchName(filter, pageable);
+        return exampleItemPort.searchName(filter, pageable);
     }
 
     public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
@@ -827,12 +827,12 @@ public class ExampleItemFacade {
             EnHttpMethod httpMethod = EnHttpMethod.ofNullable(filter.getHttpMethod());
             filter.setHttpMethod(httpMethod == null ? null : httpMethod.getCode());
         }
-        return exampleItemService.findAllName(filter);
+        return exampleItemPort.findAllName(filter);
     }
 
     @Transactional
     public void deleteByIds(List<Long> ids) {
-        exampleItemService.deleteByIds(ids);
+        exampleItemPort.deleteByIds(ids);
     }
 }
 ```
@@ -1034,36 +1034,22 @@ public class ExampleItemRes {
 }
 ```
 
-### `ExampleItemService.java`
+### `JpaExampleItemAdapter.java`
+
+원본 파일 [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java)를 복사합니다.
+아래는 참고용 요약입니다.
 
 ```java
-package com.example.template.exampleitem.service;
+package com.example.template.exampleitem.adapter;
 
-import com.example.template.support.BizErrorException;
-import com.example.template.support.BeanUtils;
-import com.example.template.support.ResponseType;
-import com.example.template.exampleitem.dto.ExampleItemReq;
-import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.entity.ExampleItem;
-import com.example.template.exampleitem.repository.ExampleItemRepository;
-import com.example.template.exampleitem.spec.ExampleItemSpecs;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.template.exampleitem.port.ExampleItemPort;
+// … dto, entity, repository, spec, ModelMapperUtil …
 
-import java.util.List;
-
-import static com.example.template.support.ModelMapperUtil.map;
-import static com.example.template.support.ModelMapperUtil.mapAll;
-
-@Service
+@Component
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class ExampleItemService {
+public class JpaExampleItemAdapter implements ExampleItemPort {
 
     private final ExampleItemRepository exampleItemRepository;
 

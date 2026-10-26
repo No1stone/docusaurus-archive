@@ -1,4 +1,4 @@
-package com.example.template.exampleitem.service;
+package com.example.template.exampleitem.adapter;
 
 import com.example.template.exampleitem.dto.ExampleItemRes;
 import com.example.template.exampleitem.repository.ExampleItemRepository;
@@ -24,24 +24,24 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * ExampleItem 서비스 단위 테스트입니다.
- * Repository를 대체하고, 빈 목록·부분 수정·없은 자원 실패를 확인합니다.
- * 프로젝트의 ModelMapperUtil·BeanUtils가 동작하는 환경에서 실행합니다.
+ * ExampleItem JPA Adapter 단위 테스트입니다.
+ * Repository를 대체하고, 빈 목록, 부분 수정, 없는 자원 실패를 확인합니다.
+ * 프로젝트의 ModelMapperUtil, BeanUtils가 동작하는 환경에서 실행합니다.
  * ExampleItem / 필드명은 치환 토큰입니다.
  */
 @ExtendWith(MockitoExtension.class)
-class ExampleItemServiceTest {
+class ExampleItemAdapterTest {
 
     @Mock
     private ExampleItemRepository exampleItemRepository;
 
     @InjectMocks
-    private ExampleItemService exampleItemService;
+    private JpaExampleItemAdapter jpaExampleItemAdapter;
 
     @Test
     @DisplayName("경계: findByIds에 null이면 조회하지 않고 빈 목록이다")
     void findByIdsNullSkipsQuery() {
-        List<ExampleItemRes.Item> actual = exampleItemService.findByIds(null);
+        List<ExampleItemRes.Item> actual = jpaExampleItemAdapter.findByIds(null);
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).findAll(any(Specification.class));
@@ -50,7 +50,7 @@ class ExampleItemServiceTest {
     @Test
     @DisplayName("경계: findByIds에 빈 목록이면 조회하지 않는다")
     void findByIdsEmptySkipsQuery() {
-        List<ExampleItemRes.Item> actual = exampleItemService.findByIds(List.of());
+        List<ExampleItemRes.Item> actual = jpaExampleItemAdapter.findByIds(List.of());
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).findAll(any(Specification.class));
@@ -59,7 +59,7 @@ class ExampleItemServiceTest {
     @Test
     @DisplayName("경계: saveAll에 빈 목록이면 저장하지 않고 빈 목록이다")
     void saveAllEmptySkipsSave() {
-        List<ExampleItemRes.Id> actual = exampleItemService.saveAll(List.of());
+        List<ExampleItemRes.Id> actual = jpaExampleItemAdapter.saveAll(List.of());
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).saveAll(any());
@@ -72,7 +72,7 @@ class ExampleItemServiceTest {
 
         BizErrorException thrown = assertThrows(
                 BizErrorException.class,
-                () -> exampleItemService.findById(99L));
+                () -> jpaExampleItemAdapter.findById(99L));
 
         assertEquals(ResponseType.NOT_FOUND_RESOURCE, thrown.getType());
     }

@@ -25,8 +25,8 @@
 
 ### 그대로 가져와 유지
 
-- Controller → Facade → Service → Repository 계층과 메서드 골격
-- FacadeTest, ServiceTest, ScenarioTest 배치와 정상·경계·실패 골격
+- Controller → Facade → Port → JPA Adapter → Repository 계층과 메서드 골격
+- FacadeTest, AdapterTest, ScenarioTest 배치와 정상·경계·실패 골격
 - E2E 요청 순서: 등록 → 조회 → 수정 → 변경 조회 → 삭제 → 대표 입력 오류 → 없는 id
 - `runId`로 실행마다 고유 데이터를 쓰는 방식
 - 충돌하지 않는 support·공통 응답 유틸 (프로젝트에 이미 있으면 재사용)
@@ -64,7 +64,8 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 |------|----------------|
 | `controller/ExampleItemController.java` | `entrance.{domain}/` |
 | `facade/ExampleItemFacade.java` | `{domain}.facade` |
-| `service/ExampleItemService.java` | `{domain}.service` |
+| `port/ExampleItemPort.java` | `{domain}.port` |
+| `adapter/JpaExampleItemAdapter.java` | `{domain}.adapter` |
 | `dto/ExampleItemReq.java` | `{domain}.dto` |
 | `dto/ExampleItemRes.java` | `{domain}.dto` |
 | `persistence/ExampleItem.java` | `{domain}.entity` |
@@ -76,7 +77,7 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 | 원본 | 대상 자리 |
 |------|-----------|
 | `testing/ExampleItemFacadeTest.java` | 파사드와 같은 패키지 |
-| `testing/ExampleItemServiceTest.java` | 서비스와 같은 패키지 |
+| `testing/ExampleItemAdapterTest.java` | 어댑터와 같은 패키지 |
 | `testing/ExampleItemScenarioTest.java` | `scenario/{domain}/` |
 
 ### Controller API E2E (필수)
@@ -98,7 +99,7 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 
 ```text
 1. 구현·테스트·E2E 복사 후 이름·필드·경로·계약 치환
-2. ./gradlew test  (FacadeTest, ServiceTest, ScenarioTest)
+2. ./gradlew test  (FacadeTest, AdapterTest, ScenarioTest)
 3. 앱을 데모/로컬·테스트 DB로 기동
 4. Controller API 컬렉션 실행
 5. (선택) 외부 통신이 있으면 스펙 더미 → Client 연동 E2E
