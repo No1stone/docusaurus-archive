@@ -50,7 +50,7 @@ Adapter에 남기는 그 데이터 자신의 규칙:
 ## 이름과 하위 호환
 
 기존 코드의 `*Service` 클래스는 대부분 JPA Adapter 역할입니다.
-새 템플릿과 문서는 `ExampleItemPort`와 `JpaExampleItemAdapter`처럼 역할을 이름에 드러냅니다.
+새 템플릿과 문서는 `ExampleItemPort`와 `ExampleItemAdapter`처럼 역할을 이름에 드러냅니다.
 이미 `Service`인 저장소를 일괄 개명할 의무는 없습니다.
 역할을 Adapter로 이해하고, 신규, 리팩터 시 Port와 Adapter로 맞춥니다.
 
@@ -103,7 +103,7 @@ JPA Adapter                         ← CQRS 적용점
 Port를 `UserQueryPort`와 `UserCommandPort`로 나누는 것도 같은 단계에서 허용합니다.
 애플리케이션은 여전히 Port만 호출합니다.
 물리적인 읽기 DB 분리는 그다음 단계입니다.
-자세한 내용은 [CQRS](/docs/patterns/architecture-patterns/cqrs)와 원셋 [adapter README](/docs/harness/templates/backend/spring/adapter/)를 봅니다.
+자세한 내용은 [CQRS](/docs/patterns/architecture-patterns/cqrs)와 원셋 [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/)를 봅니다.
 
 ## 호출 관계
 
@@ -144,4 +144,4 @@ MSA로 가려면 이런 결합을 먼저 줄입니다.
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
 - [CQRS](/docs/patterns/architecture-patterns/cqrs)
 - [ADR-0010](/docs/decisions/adr-0010)
-- 템플릿: `docs/harness/templates/backend/spring/port/`, `adapter/`
+- 템플릿: `docs/harness/templates/backend/spring/exampleitem/persistence/`, `adapter/`

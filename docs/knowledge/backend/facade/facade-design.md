@@ -28,7 +28,7 @@ Backend Knowledge의 Controller, 데이터 접근(Port와 Adapter), 테스트 �
 |---|---|---|
 | 애플리케이션 | 업무 규칙, 계산, 검증, 상태 관리, 유즈케이스 진행과 기능 조합 | Facade, Handler, Manager, Checker, Processor |
 | Port | 도메인이 요구하는 저장소, 외부 기능의 계약 | UserPort, UserQueryPort, ExampleItemPort |
-| Adapter | Port를 구현하여 저장소, 외부 시스템에 접근하고 기술별 데이터를 변환 | JpaExampleItemAdapter, RestClient 구현체, Provider |
+| Adapter | Port를 구현하여 저장소, 외부 시스템에 접근하고 기술별 데이터를 변환 | ExampleItemAdapter, RestClient 구현체, Provider |
 
 위 예시는 닫힌 허용 목록이 아닙니다.
 특정 접미사를 일률적으로 강제하지 않습니다.
@@ -123,7 +123,7 @@ Provider만 바꾸면 Port와 애플리케이션 코드는 그대로 둡니다.
 
 | Port 예시 (능력) | Adapter | Provider 예 (교체 가능) |
 |---|---|---|
-| 데이터 접근 Port | JpaExampleItemAdapter | Read / Command Provider → Repository |
+| 데이터 접근 Port | ExampleItemAdapter | Read / Command Provider → Repository |
 | CachePort | CacheAdapter | RedisProvider, 로컬 캐시 Provider |
 | EncryptionPort | EncryptionAdapter | VaultProvider, KMS Provider |
 | TokenPort / OAuthPort | TokenAdapter / OAuthAdapter | KeycloakProvider, 자체 JWT Provider, 기타 IdP Provider |

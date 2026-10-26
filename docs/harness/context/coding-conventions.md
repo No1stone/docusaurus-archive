@@ -35,7 +35,7 @@ enum apply: templates/backend/spring/enum
 
 Port names describe capability (`CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`), not vendor (`RedisPort`, `VaultPort`, `KeycloakPort`, `KafkaPort`).
 Adapter implements Port and selects Provider (`RedisProvider`, `VaultProvider`, `KeycloakProvider`, custom JWT Provider, `KafkaProvider`, `RabbitMqProvider`, STOMP / WebSocket Provider, etc.).
-See [adapter README](/docs/harness/templates/backend/spring/adapter/).
+See [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/).
 
 Controller may call only a published application entry (usually Facade).
 Application may call only Port of its domain.

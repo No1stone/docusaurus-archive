@@ -11,4 +11,4 @@ slug: "/knowledge/backend/service/index"
 
 - [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
 
-원셋 코드 모양은 저장소 `docs/harness/templates/backend/spring/port/`, `adapter/` 입니다.
+원셋 코드 모양은 저장소 `docs/harness/templates/backend/spring/exampleitem/persistence/`, `adapter/` 입니다.

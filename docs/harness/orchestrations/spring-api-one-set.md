@@ -53,13 +53,13 @@
 | `docs/knowledge/backend/testing/test-structure.md` | 테스트 배치 |
 | `docs/harness/templates/backend/spring/controller/ExampleItemController.java` | Controller |
 | `docs/harness/templates/backend/spring/facade/ExampleItemFacade.java` | Facade |
-| `docs/harness/templates/backend/spring/port/ExampleItemPort.java` | Port |
-| `docs/harness/templates/backend/spring/adapter/JpaExampleItemAdapter.java` | JPA Adapter |
+| `docs/harness/templates/backend/spring/exampleitem/persistence/ExampleItemPort.java` | Port |
+| `docs/harness/templates/backend/spring/exampleitem/persistence/ExampleItemAdapter.java` | JPA Adapter |
 | `docs/harness/templates/backend/spring/dto/ExampleItemReq.java` | Req |
 | `docs/harness/templates/backend/spring/dto/ExampleItemRes.java` | Res |
-| `docs/harness/templates/backend/spring/persistence/ExampleItem.java` | Entity |
-| `docs/harness/templates/backend/spring/persistence/ExampleItemRepository.java` | Repository |
-| `docs/harness/templates/backend/spring/persistence/ExampleItemSpecs.java` | Specs |
+| `docs/harness/templates/backend/spring/exampleitem/persistence/entity/ExampleItem.java` | Entity |
+| `docs/harness/templates/backend/spring/exampleitem/persistence/repository/ExampleItemRepository.java` | Repository |
+| `docs/harness/templates/backend/spring/exampleitem/persistence/spec/ExampleItemSpecs.java` | Specs |
 | `docs/harness/templates/backend/spring/testing/ExampleItemFacadeTest.java` | Facade 단위 |
 | `docs/harness/templates/backend/spring/testing/ExampleItemAdapterTest.java` | Adapter 단위 |
 | `docs/harness/templates/backend/spring/testing/ExampleItemScenarioTest.java` | 시나리오 |

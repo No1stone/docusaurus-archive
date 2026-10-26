@@ -36,5 +36,5 @@ slug: "/decisions/adr-0010"
 - [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
 - [데이터 접근 경계](/docs/knowledge/backend/service/service-design)
 - [coding-conventions](/docs/harness/context/coding-conventions)
-- Spring 원셋: `Controller → Facade → Port → JPA Adapter → Repository`
+- Spring 원셋: `Controller → Facade → Port → Adapter → Repository`
 - 확장: `Port → Adapter → Provider` (캐시, 암호화, Token/OAuth, Messaging 포함. 예: `MessagingPort` → MessagingAdapter → KafkaProvider / RabbitMqProvider / RedisPubSubProvider / StompProvider / WebSocketProvider)

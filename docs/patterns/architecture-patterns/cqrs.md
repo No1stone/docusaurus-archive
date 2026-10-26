@@ -46,7 +46,7 @@ JPA Adapter                         ← CQRS 적용점
 
 처음부터 Query와 Command Port, Provider를 나누지 않아도 됩니다.
 원셋은 Port, JPA Adapter, Repository 하나로 두고, 필요가 보일 때 Adapter 아래에서 분리합니다.
-템플릿 안내는 [adapter README](/docs/harness/templates/backend/spring/adapter/)를 봅니다.
+템플릿 안내는 [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/)를 봅니다.
 
 ## 한 Port로 시작하는 사례
 
