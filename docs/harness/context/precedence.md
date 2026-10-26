@@ -42,7 +42,7 @@ General Best Practice
 |----------|------------|
 | Project uses Lombok `@Getter/@Setter`; template has explicit getters | Project local wins. Write Lombok. Do not "fix" the project. |
 | Project lint enforces 2-space indent; template is 4-space | Project local wins. Formatter config is a local rule. |
-| Project has no Facade layer; template Controller → Facade → Service | Project local wins for layering **in that repo**. Scout reports the mismatch; Curator may later propose an ADR if the pattern recurs. |
+| Project has no Facade layer; template Controller → Facade → Port → Adapter | Project local wins for layering **in that repo**. Scout reports the mismatch; Curator may later propose an ADR if the pattern recurs. |
 | Template uses `ModelMapperUtil`; project has another mapper | Project local. Use the host mapper with the same `map` / `mapAll` calls. |
 | Knowledge page says `delete()` stays empty until a status column exists; model "knows" hard delete is simpler | Harness standard wins over general practice. Do not add `repository.delete`. |
 | Accepted ADR says Markdown + Git is SoT; someone proposes a CMS for docs | ADR wins unless a new ADR supersedes it. |

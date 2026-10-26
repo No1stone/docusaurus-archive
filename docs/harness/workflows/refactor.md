@@ -30,7 +30,7 @@ The observable contract stays identical: same inputs produce the same outputs, s
 
 Two lists before anyone starts:
 
-- **Change**: e.g. "move query logic from Service into `RestOutLogSpecs`", "introduce Facade between Controller and Service"
+- **Change**: e.g. "move query logic from JPA Adapter into `RestOutLogSpecs`", "introduce Facade between Controller and Port"
 - **Must not change**: endpoints, response shapes, DB schema, error codes, anything outside the named package
 
 The fence is what QA checks against. Without it, every refactor grows.
@@ -47,7 +47,7 @@ Run the existing suite **before** the change and record the exact command and co
 
 ### 4. Review for shape, test for sameness
 
-- **Reviewer** compares the result to the Template and the layering rules in [coding conventions](/docs/harness/context/coding-conventions): did the move land in the right layer, are boundaries now cleaner, did anything leak (Repository call in Facade, HTTP type in Service).
+- **Reviewer** compares the result to the Template and the layering rules in [coding conventions](/docs/harness/context/coding-conventions): did the move land in the right layer, are boundaries now cleaner, did anything leak (Repository call in Facade, HTTP type in Adapter).
 - **Tester** re-runs the baseline command. Same counts, same passes. A new failure is a behavior change — back to Implementer.
 - **QA** checks the fence: nothing in the "must not change" list moved, and nothing outside scope was touched.
 

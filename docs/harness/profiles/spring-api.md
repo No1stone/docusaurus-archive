@@ -13,8 +13,9 @@ Skeleton profile for Spring-style HTTP API work.
 ### Knowledge
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
-- [Facade Design](/docs/knowledge/backend/facade/facade-design)
-- [Service](/docs/knowledge/backend/service/service-design)
+- [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
+- [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
+- [ADR-0010](/docs/decisions/adr-0010)
 - [테스트 기본 구조](/docs/knowledge/backend/testing/test-structure)
 
 ### Technology
@@ -43,7 +44,7 @@ Skeleton profile for Spring-style HTTP API work.
 
 | Tool | Default rung |
 |------|--------------|
-| [backend-unit-test](/docs/harness/tools/backend-unit-test) | unit (Service / Facade), slice if the project already has them |
+| [backend-unit-test](/docs/harness/tools/backend-unit-test) | unit (Facade / Port mock, Adapter / Repository mock), slice if the project already has them |
 | [playwright-e2e](/docs/harness/tools/playwright-e2e) | only when this API backs a UI flow listed in the orchestration |
 
 Orchestrations for Spring situations start from this set and may narrow it.

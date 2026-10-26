@@ -11,10 +11,15 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 
 ## Layering
 
+계층은 접미사가 아니라 책임과 의존으로 구분합니다.
+자세한 기준은 [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design), [데이터 접근 경계](/docs/knowledge/backend/service/service-design), [ADR-0010](/docs/decisions/adr-0010)을 봅니다.
+
 ```text
-Controller → Facade → Service → Repository
-                         ↓
-                    Spec.of(Filter)
+Controller → 공개 애플리케이션 진입점(기본 Facade) → Port → JPA Adapter → Repository
+                                                         ↓
+                                              (CQRS 적용점) Read / Command Provider로 분리 가능
+                                                         ↓
+                                                    Spec.of(Filter)
 support: CommonResponse, BizErrorException, ModelMapperUtil, BeanUtils, PredicateBuilder
 enum apply: templates/backend/spring/enum
 ```
@@ -22,11 +27,20 @@ enum apply: templates/backend/spring/enum
 | Layer | Owns | Must not |
 |-------|------|----------|
 | Controller | HTTP binding, wrap `CommonResponse`, `@Hidden` on the table entrance | Business rules, call Repository, open transactions |
-| Facade | Call the matching Service method. On enum apply, set `getCode()` back onto the String DTO | Touch JPA entities, call Repository, call Specs |
-| Service | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()` | Know about HTTP |
+| Application (often Facade) | Use case flow, call Port. On enum apply, set `getCode()` back onto the String DTO | Touch JPA entities, call Repository, call Specs, depend on Adapter types, choose read vs write datastore |
+| Port | Persistence or external capability contract | Know HTTP or JPA types |
+| JPA Adapter | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()`. **CQRS 적용점**: optional Read / Command Provider over Repository | Know about HTTP, own multi-Port business flows |
+| Provider | Tech access behind any Adapter: JPA read/command repo, `RedisProvider`, `VaultProvider`, etc. Swap Provider without changing Port | Business orchestration; appear in Port type names |
 | Repository | `JpaRepository` + empty custom repository + `JpaSpecificationExecutor` | Derived query methods, business logic, mapping |
 
-Controller may call only Facade. Facade may call only Service. Skipping a layer is a Reviewer `high` finding.
+Port names describe capability (`CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`), not vendor (`RedisPort`, `VaultPort`, `KeycloakPort`, `KafkaPort`).
+Adapter implements Port and selects Provider (`RedisProvider`, `VaultProvider`, `KeycloakProvider`, custom JWT Provider, `KafkaProvider`, `RabbitMqProvider`, STOMP / WebSocket Provider, etc.).
+See [adapter README](/docs/harness/templates/backend/spring/adapter/).
+
+Controller may call only a published application entry (usually Facade).
+Application may call only Port of its domain.
+Skipping a layer is a Reviewer `high` finding.
+Legacy `*Service` classes that only wrap JPA are Adapters by role.
 
 ## Naming
 
@@ -35,7 +49,7 @@ Controller may call only Facade. Facade may call only Service. Skipping a layer 
 | Request DTO holder | `{Domain}Req` with inner static classes | `ExampleItemReq.Ids`, `Filter`, `Create`, `Update` |
 | Response DTO holder | `{Domain}Res` with inner static classes | `Id`, then `Name`, then `Single`, then `Item` |
 | Facade / Controller method | same plain name on both | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
-| Service method | the same list, unchanged when an enum is applied | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
+| Port / JPA Adapter method | the same list, unchanged when an enum is applied | `search`, `save`, `saveAll`, `findById`, `saveById`, `deleteById`, `findAll`, `findByIds`, `searchName`, `findAllName`, `deleteByIds` |
 | Specification holder | `{Domain}Specs.of(Filter)` only | `ExampleItemSpecs.of` |
 | Entity table | `{prefix}_{snake_name}` | `le_example_item` |
 | Enum | `@BizEnum` + `CodeValue` + `code` / `value` | `EnHttpMethod`, shared `EnYn`, `EnStatus` |
@@ -53,9 +67,9 @@ One holder class per domain per direction. Do not scatter `CreateExampleItemRequ
 
 ## Transactions
 
-- Class-level `@Transactional(readOnly = true, transactionManager = "transactionManager")` on both Facade and Service.
+- Class-level `@Transactional(readOnly = true, transactionManager = "transactionManager")` on both Facade and JPA Adapter.
 - Write methods override with `@Transactional` at the method.
-- Service transactions join the Facade. Do not start a transaction in the Controller.
+- Adapter transactions join the Facade. Do not start a transaction in the Controller.
 
 ## Persistence
 
@@ -77,7 +91,7 @@ Never overwrite with null on update.
 - `ModelMapperUtil.map` and `mapAll` convert DTO ↔ entity and entity → `Res`.
 - On enum apply, `BizEnumProcessor` emits `_Enum` with `@Converter(autoApply = true)`. JPA loads that class. Its static block registers two converters on `ModelMapperUtil.modelMapper`: enum to `getCode()`, and `String` to `of(code)`.
 - Do not add `static { new _Enum(); }` on the enum.
-- Do not add a conversion method on the Service. The full processor is in the enum template.
+- Do not add a conversion method on the JPA Adapter. The full processor is in the enum template.
 - Prefer the host `ModelMapperUtil` when the project already has one.
 
 ## Errors and responses
@@ -91,7 +105,7 @@ Never overwrite with null on update.
 
 - Follow tests the target repo already has.
 - The Spring template does not include a test slice.
-- When the repo uses Mockito, mock the next layer only: Facade tests mock Service, Service tests mock Repository.
+- When the repo uses Mockito, mock the next layer only: Facade tests mock Port, JPA Adapter tests mock Repository.
 
 ## Prose
 

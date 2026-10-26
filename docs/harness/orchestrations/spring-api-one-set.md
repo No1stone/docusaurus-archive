@@ -16,7 +16,7 @@
 **적용합니다.**
 
 - 테이블 CRUD 한 세트를 구현부터 테스트·Controller API E2E까지 같이 추가할 때
-- 대상 저장소에 Controller → Facade → Service → Repository 패턴이 있거나 ExampleItem을 적용하기로 했을 때
+- 대상 저장소에 Controller → Facade → Port → Adapter → Repository 패턴이 있거나 ExampleItem을 적용하기로 했을 때 (구 Service는 Adapter 역할로 이해)
 
 **적용하지 않습니다.**
 
@@ -53,14 +53,15 @@
 | `docs/knowledge/backend/testing/test-structure.md` | 테스트 배치 |
 | `docs/harness/templates/backend/spring/controller/ExampleItemController.java` | Controller |
 | `docs/harness/templates/backend/spring/facade/ExampleItemFacade.java` | Facade |
-| `docs/harness/templates/backend/spring/service/ExampleItemService.java` | Service |
+| `docs/harness/templates/backend/spring/port/ExampleItemPort.java` | Port |
+| `docs/harness/templates/backend/spring/adapter/JpaExampleItemAdapter.java` | JPA Adapter |
 | `docs/harness/templates/backend/spring/dto/ExampleItemReq.java` | Req |
 | `docs/harness/templates/backend/spring/dto/ExampleItemRes.java` | Res |
 | `docs/harness/templates/backend/spring/persistence/ExampleItem.java` | Entity |
 | `docs/harness/templates/backend/spring/persistence/ExampleItemRepository.java` | Repository |
 | `docs/harness/templates/backend/spring/persistence/ExampleItemSpecs.java` | Specs |
 | `docs/harness/templates/backend/spring/testing/ExampleItemFacadeTest.java` | Facade 단위 |
-| `docs/harness/templates/backend/spring/testing/ExampleItemServiceTest.java` | Service 단위 |
+| `docs/harness/templates/backend/spring/testing/ExampleItemAdapterTest.java` | Adapter 단위 |
 | `docs/harness/templates/backend/spring/testing/ExampleItemScenarioTest.java` | 시나리오 |
 | `docs/harness/templates/backend/spring/e2e/ExampleItem.api.collection.json` | API E2E |
 | `docs/harness/templates/backend/spring/e2e/ExampleItem.api.environment.json` | E2E 환경 |
@@ -72,7 +73,7 @@ Knowledge controller/facade/service는 책임이 헷갈릴 때만 읽습니다.
 
 1. ONESET.md의 복사 목록으로 파일을 복사합니다. → 대상 트리
 2. 치환 표를 적용합니다. 경로·필드·응답 `code`를 구현·테스트·E2E에 맞춥니다. → 도메인 코드·컬렉션
-3. `./gradlew test`로 Facade·Service·Scenario를 실행합니다. → 단위·시나리오 결과
+3. `./gradlew test`로 Facade, Adapter, Scenario를 실행합니다. → 단위, 시나리오 결과
 4. 앱을 로컬·데모·테스트 DB로 기동합니다. → 기동 메모
 5. Controller API 컬렉션을 실행합니다. 명령은 프로젝트 우선, 없으면 newman 예. → E2E 결과
 6. (선택) 외부 통신이 있으면 스펙 더미 → 실제 Client 연동 E2E를 추가합니다.
@@ -97,8 +98,8 @@ Controller API E2E만 다시 돌리거나 컬렉션만 고칠 때는 [`api-colle
 | 구분 | 기준 | 방법 |
 |------|------|------|
 | 정상 | 등록·조회·수정·삭제까지 테스트와 Controller E2E에서 통과 | `backend-unit-test`, 프로젝트 컬렉션 명령 |
-| 경계 | 부분 수정 시 다른 필드 유지, `runId` 고유 데이터 | ServiceTest·시나리오·E2E |
-| 실패 | 대표 입력 오류·없는 id가 성공 코드로 나오지 않음 | Facade/ServiceTest·E2E |
+| 경계 | 부분 수정 시 다른 필드 유지, `runId` 고유 데이터 | AdapterTest, 시나리오, E2E |
+| 실패 | 대표 입력 오류, 없는 id가 성공 코드로 나오지 않음 | FacadeTest, AdapterTest, E2E |
 
 도구: `backend-unit-test`.
 컬렉션 실행은 프로젝트 명령(카탈로그 밖 가능). 증거는 명령과 pass/fail입니다.
