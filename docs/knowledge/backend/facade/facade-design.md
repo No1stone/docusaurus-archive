@@ -1,213 +1,186 @@
 ---
 id: facade-design
-title: Facade Design
-description: 기능 책임과 데이터 소유권에 따라 외부 계약과 허용된 접근 경로를 정하는 경계
+title: 애플리케이션 영역과 Facade
+description: 애플리케이션 영역의 책임, 공개 진입점, 이름 선택, Port 호출 경계를 정합니다
 tags:
   - backend
   - facade
+  - application
 status: active
 slug: "/knowledge/backend/facade/facade-design"
 ---
-# Facade Design
+# 애플리케이션 영역과 Facade
 
-> **개요:** 이 프로젝트의 Facade는 애플리케이션 계층(Application Layer)의 구현으로, 유스케이스의 실행 흐름과 정책을 책임지고 Service와 Port를 통해 필요한 기능을 수행합니다.
-> Facade는 기능의 책임과 데이터 소유권에 따라 외부에 제공할 계약과 허용된 접근 경로를 정의하는 경계입니다.
-> 필요한 경우 여러 기능을 유스케이스로 조합합니다.
-> 내부 데이터 처리와 기술 구현은 호출자에게 직접 노출하지 않습니다.
+> **개요:** 애플리케이션 영역은 유스케이스 진행, 정책, 계산, 검증, 상태 관리, 기능 조합을 담당합니다.
+> Facade는 그 안의 역할 중 하나로, 공개 진입점으로 자주 쓰입니다.
+> 계층은 클래스 접미사가 아니라 패키지, 책임, 의존 관계로 구분합니다.
 
 ## 적용 상태
 
 공통 구현 기준으로 채택되었습니다.
-Backend Knowledge의 Controller, Service, 테스트 구조와 함께 현재 기준입니다.
+Backend Knowledge의 Controller, 데이터 접근(Port와 Adapter), 테스트 구조와 함께 현재 기준입니다.
 테이블 입구의 코드 모양은 Spring 템플릿을 따릅니다.
+관련 결정은 [ADR-0010](/docs/decisions/adr-0010)을 봅니다.
 
-## 현재 구현
+## 계층 구분
 
-현재 운영 형태는 한 프로세스 안의 로컬 호출과 공유 모듈입니다.
-Service가 자기 데이터의 조회·저장과 그 데이터의 상태 규칙을 수행하고, Facade가 화면과 업무 조합을 수행합니다.
-같은 프로세스에서는 Facade가 로컬 트랜잭션 범위를 정하고 Service가 그 트랜잭션에 참여합니다.
+| 영역 | 책임 | 이름 예시 |
+|---|---|---|
+| 애플리케이션 | 업무 규칙, 계산, 검증, 상태 관리, 유즈케이스 진행과 기능 조합 | Facade, Handler, Manager, Checker, Processor |
+| Port | 도메인이 요구하는 저장소, 외부 기능의 계약 | UserPort, UserQueryPort, ExampleItemPort |
+| Adapter | Port를 구현하여 저장소, 외부 시스템에 접근하고 기술별 데이터를 변환 | JpaExampleItemAdapter, RestClient 구현체, Provider |
 
-이 상태에는 결합이 남아 있습니다.
+위 예시는 닫힌 허용 목록이 아닙니다.
+특정 접미사를 일률적으로 강제하지 않습니다.
+이름은 역할을 가장 잘 설명하도록 고릅니다.
 
-- Service가 JPA `Specification`을 인자로 받고, 화면용 Facade가 그 `Specification`을 만들어 Service에 넘깁니다.
-- Service, 엔티티, 리포지토리, DTO가 공유 모듈에 있고 여러 애플리케이션이 그 모듈에 의존합니다.
-- 외부 기능은 아직 Port와 기술 구현체로 분리되어 있지 않습니다.
+Manager나 Processor도 애플리케이션 영역에 속할 수 있습니다.
+Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 
-독립 배포를 선택할 때는 이 결합을 먼저 끊습니다.
-그 배포는 지금 구조의 목적이 아닙니다.
+## 호출 경계
 
-## 설계 의도
+```text
+REST Controller / gRPC 수신부 / GraphQL Resolver / 메시지 Listener
+                              ↓
+               도메인이 공개한 애플리케이션 진입점
+                              ↓
+                     해당 도메인의 Port
+                              ↓
+                       기술별 Adapter
+                              ↓
+                   DB / Redis / Vault / Keycloak / 외부 HTTP
+```
 
-이 아카이브에서는 계층형 구조를 유지하면서 외부 연동에 Port와 Adapter를 선택적으로 적용하는 방식을 Lightweight Hexagonal Architecture라고 표현합니다.
-Facade는 애플리케이션 계층에서 인증, 데이터 변환, Service와 외부 Port 호출을 조합해 유스케이스를 처리합니다.
-계층과 Facade·Service 책임, 대상 저장소의 기존 패턴이 우선하며, 외부 연동이 있을 때 Port와 Adapter를 둡니다.
+- 외부 진입부와 다른 도메인은 지정된 공개 애플리케이션 진입점만 참조합니다.
+- 공개 여부를 Facade라는 이름만으로 판단하지 않습니다.
+- Port는 소유 도메인의 애플리케이션 영역에서만 사용합니다.
+- 다른 도메인의 Port, Adapter, Repository를 직접 참조하지 않습니다.
+- 애플리케이션 영역은 Adapter 구현체를 직접 참조하지 않고 Port에 의존합니다.
+- Adapter는 기술 접근을 담당하며 여러 외부 기능을 묶는 업무 흐름을 소유하지 않습니다.
+- 도메인 간 공개 호출은 가능하지만 순환 의존은 만들지 않습니다.
 
-이 경계는 배포 방식과 통신 기술과 따로 설계합니다.
-한 애플리케이션에서 로컬 호출과 JDBC를 써도, 책임과 접근 범위를 나누면 유지보수와 변경 영향 관리에 의미가 있습니다.
+예를 들어 주문 도메인은 인증 도메인의 공개 기능을 호출합니다.
+인증 도메인 내부의 Vault, Keycloak Port나 Adapter를 직접 사용하지 않습니다.
 
-데이터소스별 모델과 Repository의 등록 범위, 트랜잭션 관리자는 이 경계를 구현하는 수단입니다.
-DB 계정 권한은 그와 별도의 접근 통제 수단입니다.
+## 애플리케이션 이름 선택
 
-현재 구조의 목적은 책임과 접근을 분명하게 해서 변경 영향을 관리하는 것입니다.
-독립 배포는 필요할 때 선택합니다.
+같은 애플리케이션 영역 안에서도 역할이 다르면 이름을 나눌 수 있습니다.
+기본값은 Facade입니다.
+이름만 보고 Facade를 Manager, Handler로 일괄 변경하지 않습니다.
+실제 책임이 분명할 때만 바꿉니다.
 
-## 확장안
+| 이름 | 고를 때 | 이 레포·템플릿에서의 예 |
+|---|---|---|
+| Facade | 도메인 또는 BFF의 공개 진입점. Port 조합, DTO 교환, 유즈케이스 순서 | 원셋 `ExampleItemFacade`, 업무 BFF 진입점 |
+| Manager | 토큰, 세션처럼 수명주기와 상태 갱신을 소유 | TokenManager |
+| Checker | 통과 또는 거절만 담당하고 흐름을 소유하지 않음 | TokenChecker |
+| Handler | 이벤트, 메시지, 단일 유스케이스 처리에 가깝을 때 | (필요 시) |
+| Processor | 단계적 변환, 파이프라인 성격이 강할 때 | (필요 시) |
 
-GraphQL BFF 분리와 MSA·Saga는 이 경계를 바탕으로 선택할 수 있는 확장 방식입니다.
-현재 구현이 아닙니다.
+### 원셋 Facade와 BFF Facade
 
-서비스 간 조합과 화면별 조합은 GraphQL BFF로 떼어 별도 배포할 수 있습니다.
-그 실험 골격은 운영 경계가 아닙니다.
+원셋(Controller와 Facade와 Port와 Adapter)은 기동, 동작 확인, 패턴 학습용 기본 골격입니다.
+실무에서는 테이블 CRUD Controller보다 업무 치중 BFF Controller가 주로 쓰입니다.
+원셋 Controller는 없어도 애플리케이션은 동작하지만, 최초 확인이 어려워 템플릿에 남겨 둡니다.
 
-BFF로 옮기는 책임은 조합입니다.
-권한 판단, 상태 전이, 데이터 정합성은 그 데이터를 소유한 백엔드 업무 경계가 호출 경로와 무관하게 소유합니다.
-화면의 노출 범위를 맞추는 일은 Facade가 조율할 수 있지만, 상태 변경을 허용하는 권한을 BFF만 갖게 두지 않습니다.
+단순 원셋에서는 외부 계약과 Port DTO가 같거나 거의 같아 Port DTO를 그대로 써도 됩니다.
+받는 인터페이스(와이어 DTO)와 Port DTO가 다르면 **유즈케이스 Facade**에서 교환합니다.
+Adapter는 와이어 DTO를 몰라도 됩니다.
 
-Vault 같은 외부 기능은 내부 Port 계약과 기술 구현체로 나눕니다.
-구현 내용은 [Port의 역할](#port의-역할)에 있습니다.
+예를 들어 모바일 BFF가 `BookingRequest`(화면 필드명, 파트너 코드)를 받고, 예약 Port는 `ReservationCommand`(입주 단위 ID, 기간)만 받는다고 가정합니다.
+Controller는 `BookingRequest`만 넘기고, Facade가 `ReservationCommand`로 바꾼 뒤 Port를 호출합니다.
+응답도 Facade가 Port 결과를 BFF 응답 DTO로 맞춥니다.
 
-여러 서비스의 변경을 하나의 유스케이스로 완수해야 할 때는 Saga를 적용할 수 있습니다.
-조회를 조합하는 유스케이스에는 Saga를 쓰지 않습니다.
-구현 내용은 [원격 분리 이후의 Saga](#원격-분리-이후의-saga)에 있습니다.
+## 애플리케이션이 맡을 수 있는 책임
 
-## Facade가 맡을 수 있는 책임
-
-Facade라는 이름 안에 서로 다른 책임이 들어갈 수 있습니다.
-한 요청이 아래 책임을 모두 통과해야 하는 것은 아닙니다.
+한 요청이 아래를 모두 통과해야 하는 것은 아닙니다.
 
 | 책임 | 하는 일 | 호출 |
 |---|---|---|
-| 테이블 기능 제공 | 한 데이터의 입구를 연다 | 해당 Service 하나 |
-| 업무 조합 | 여러 데이터 접근과 Port를 한 유스케이스 순서로 묶는다 | 필요한 Service와 Port |
-| 화면 / BFF | 화면이나 클라이언트에 맞게 결과를 조합한다 | 필요한 Service 또는 다른 Facade |
-| 도메인 공개 경계 | 그 도메인 밖이 호출할 기능을 공개한다 | 도메인 안의 Service 또는 업무 Facade |
+| 테이블 기능 제공 | 한 데이터의 입구를 연다 | 해당 Port 하나 |
+| 업무 조합 | 여러 Port를 한 유스케이스 순서로 묶는다 | 필요한 Port |
+| 화면 / BFF | 클라이언트 계약에 맞게 결과를 조합하고 DTO를 교환한다 | 필요한 Port 또는 다른 공개 진입점 |
+| 도메인 공개 경계 | 그 도메인 밖이 호출할 기능을 공개한다 | 도메인 안의 애플리케이션 구성 |
 
-테이블 입구는 Service를 한 번 호출하는 Facade로 충분합니다.
-화면 조합이 필요하면 그 책임을 가진 Facade가 Service나 다른 Facade를 호출합니다.
 없는 계층을 사이에 넣지 않습니다.
 
-## 원격 분리 이후의 Saga
+## Port와 Adapter와 Provider
 
-모듈을 원격 서비스로 나누면 지금의 로컬 트랜잭션을 그대로 유지할 수 없습니다.
-한 프로세스에서 같이 커밋되던 변경이 서비스마다 따로 커밋됩니다.
+Port는 유스케이스가 필요한 기능을 요청하기 위한 내부 계약입니다.
+인터페이스는 제품 이름보다 **필요한 능력**을 중심으로 정의합니다.
 
-조회 조합은 이 문제에 해당하지 않습니다.
-다른 서비스의 조회가 실패하면 Facade가 전체 실패 또는 일부 결과 반환을 정하면 됩니다.
-조회 조합에 실행 단계와 보상 단계를 두지 않습니다.
+```text
+애플리케이션 (Facade 등)
+        ↓
+Port                         ← 계약 (능력). Redis, Vault 이름을 붙이지 않는다
+        ↓
+Adapter                      ← Port 구현. 어떤 Provider를 쓸지 고른다
+        ↓
+Provider                     ← 제품·기술 접근 (Redis, Vault, JPA Repository 등)
+```
 
-Saga는 여러 서비스의 변경을 모두 완수해야 하는 유스케이스에만 사용합니다.
-일반 설명과 설명용 예제는 [Saga 패턴](/docs/patterns/architecture-patterns/saga)을 봅니다.
-이미 커밋된 변경을 데이터베이스 롤백으로 되돌리는 장치가 아닙니다.
-다른 서비스에 이미 반영된 변경은 보상 동작으로 정정합니다.
+Provider만 바꾸면 Port와 애플리케이션 코드는 그대로 둡니다.
 
-| 정책 | 정할 내용 |
-|---|---|
-| 실행 | 어떤 서비스 변경을 어떤 순서로 요청할지 |
-| 보상 | 이후 단계가 실패했을 때 이미 반영된 변경을 어떤 업무 동작으로 정정할지 |
-| 멱등성 | 같은 요청이 다시 도착해도 변경이 한 번만 적용될지 |
-| 상태 저장 | 진행, 완료, 보상 중, 실패를 어디에 남길지 |
-| 재시도 | 어떤 실패를 다시 시도하고, 어떤 실패는 보상으로 넘길지 |
-| 복구 | 중단된 진행을 어떻게 이어서 완료하거나 보상할지 |
+| Port 예시 (능력) | Adapter | Provider 예 (교체 가능) |
+|---|---|---|
+| 데이터 접근 Port | JpaExampleItemAdapter | Read / Command Provider → Repository |
+| CachePort | CacheAdapter | RedisProvider, 로컬 캐시 Provider |
+| EncryptionPort | EncryptionAdapter | VaultProvider, KMS Provider |
+| TokenPort / OAuthPort | TokenAdapter / OAuthAdapter | KeycloakProvider, 자체 JWT Provider, 기타 IdP Provider |
+| MessagingPort | MessagingAdapter | KafkaProvider, RabbitMqProvider, RedisPubSubProvider, StompProvider, WebSocketProvider |
+| 사용자 조회 Port | UserLookupAdapter | 로컬, REST, gRPC Provider |
+| 계정 관리 Port | AccountAdapter | KeycloakProvider |
+
+토큰 발급·검증, OAuth, 메시징도 제품명을 Port에 두지 않습니다.
+`KeycloakPort`, `KafkaPort`가 아니라 `TokenPort`, `OAuthPort`, `MessagingPort`처럼 능력을 쓰고, Keycloak, Kafka, RabbitMQ, Redis, STOMP, WebSocket 등은 Provider로 둡니다.
+
+암호화는 Port 이름을 `VaultPort`로 두지 않습니다.
+능력은 암호화·복호화이므로 `EncryptionPort`(또는 프로젝트에서 쓰는 동등한 능력명)가 낫습니다.
+Vault는 Provider입니다.
+
+캐시도 같습니다.
+`CachePort` → `CacheAdapter` → `RedisProvider`로 두고, Redis를 다른 캐시 구현으로 바꿀 때 Port는 유지합니다.
+데이터 조회 Port를 캐시로 감싸는 경우에도 애플리케이션이 보는 계약은 Port이고, 캐시 적재·무효화는 Adapter와 Provider 쪽에 둡니다.
+
+RestClient 구현체, JPA 구현체(과거 템플릿의 Service)도 Adapter입니다.
+그 아래 HTTP 클라이언트나 Repository 접근을 Provider로 두면 같은 교체 규칙을 씁니다.
+
+조회와 변경을 나눌 때의 **적용점은 JPA Adapter**입니다.
+Adapter가 Read Provider와 Command Provider로 Repository를 나눕니다.
+자세한 내용은 [CQRS](/docs/patterns/architecture-patterns/cqrs)와 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)를 봅니다.
+
+## 트랜잭션과 실패 정책
+
+같은 프로세스에서는 공개 애플리케이션 진입점이 로컬 트랜잭션 범위를 정하고, JPA Adapter가 그 트랜잭션에 참여합니다.
+다른 모듈 조회가 실패하면 전체 실패인지 일부 결과 반환인지는 애플리케이션이 정합니다.
+
+원격으로 나눈 뒤의 여러 서비스 변경 완수는 Saga 대상입니다.
+조회 조합에는 Saga를 쓰지 않습니다.
+일반 설명은 [Saga 패턴](/docs/patterns/architecture-patterns/saga)을 봅니다.
 
 ## 예시: ID를 이름으로 변환하여 제공
 
-카드 정보에는 사용자 ID가 있고, 사용자 이름은 별도 사용자 모듈에서 관리한다고 가정합니다.
-화면에는 카드 정보와 사용자 이름을 함께 제공해야 합니다.
-
 ```text
-REST Controller 또는 gRPC Adapter
+REST Controller 또는 수신 Adapter
               ↓
-       카드 조회 Facade
-         ├─ 카드 Service → 카드 정보와 사용자 ID 조회
-         ├─ 사용자 조회 Port → 사용자 이름 조회
-         └─ 마스킹 정책 → 권한에 맞는 결과 제공
+       주문 조회 Facade (애플리케이션 진입점)
+         ├─ 주문 Port → JPA Adapter → 주문 정보와 고객 ID
+         ├─ 고객 조회 Port → Adapter → 고객 이름
+         └─ 마스킹 정책 → 권한에 맞는 결과
 ```
 
-업무 Facade는 카드 정보에서 필요한 사용자 ID를 모아 사용자 조회 Port에 전달합니다.
-조회한 이름을 카드 정보와 조합하고, 화면 노출 범위에 맞게 결과를 결정합니다.
-
-카드 Service는 사용자 이름의 조회 위치, 통신 방식과 마스킹 정책을 알지 않습니다.
-같은 카드 데이터를 다른 유스케이스에서도 사용할 수 있도록 데이터 접근 역할을 유지합니다.
-
-## Port의 역할
-
-Port는 유스케이스가 필요한 기능을 요청하기 위한 내부 계약입니다.
-인터페이스는 기술 이름보다 업무에서 필요한 기능을 중심으로 정의합니다.
-
-예를 들어 카드 조회 Facade에 필요한 계약은 "gRPC 연결"이 아니라 "사용자 ID에 해당하는 이름 조회"입니다.
-gRPC는 그 계약을 수행하는 구현 방법 중 하나입니다.
-
-| Port 예시 | 내부 계약 | 가능한 구현 |
-|---|---|---|
-| 사용자 조회 Port | 사용자 ID 목록에 해당하는 이름을 조회합니다. | 로컬 모듈 호출, REST, gRPC |
-| 계정 관리 Port | 사용자 계정 정보를 변경합니다. | Keycloak 연동 |
-| 암호화 Port | 정해진 용도의 데이터를 암호화하거나 복호화합니다. | Vault 또는 KMS 연동 |
-| 이벤트 발행 Port | 업무 결과에 따른 이벤트 발행을 요청합니다. | Outbox 기록 또는 메시지 브로커 연동 |
-
-Vault와 KMS처럼 서로 다른 제품을 같은 Port로 제공하려면 지원 기능과 실패 의미가 계약에 맞는지 확인해야 합니다.
-기능이 다르면 별도의 Port로 정의할 수 있습니다.
-
-## Facade와 Port 구현체의 책임
-
-| 구분 | 책임 |
-|---|---|
-| 업무 Facade | 필요한 기능, 실행 순서, 결과 조합과 업무 실패 정책을 결정합니다. |
-| Port | 입력, 결과와 실패 의미를 정의합니다. |
-| Port 구현체 | 연결, 인증, 직렬화, 프로토콜 변환과 실제 호출을 처리합니다. |
-| 구성 계층 | 사용할 구현체를 선택하고 주입합니다. |
-
-업무 Facade가 Port를 조립한다는 것은 주입받은 기능들을 유스케이스의 흐름으로 조합한다는 의미입니다.
-Facade 내부에서 연결 객체를 생성하거나 기술별 설정을 직접 구성한다는 의미는 아닙니다.
-
-Port는 내부 입력, 결과, 실패 의미를 정의합니다.
-Vault SDK, HTTP 응답, Protobuf 생성 타입은 Port 구현체 안에서 그 계약으로 변환합니다.
-같은 Port의 구현체를 바꿀 수 있는지는 그 구현체가 계약의 입력, 결과, 실패 의미를 충족하는지에 달립니다.
-제품 이름이 같다는 이유만으로 바꾸지 않습니다.
-
-## 로컬 호출에서 gRPC로 변경하는 경우
-
-처음에는 사용자 조회 Port의 구현체가 같은 애플리케이션 안의 사용자 모듈을 호출할 수 있습니다.
-사용자 모듈을 별도 서비스로 분리하면 gRPC 구현체로 교체할 수 있습니다.
-
-```text
-카드 조회 Facade → 사용자 조회 Port
-                       ├─ 로컬 구현체 → 사용자 모듈
-                       └─ gRPC 구현체 → 사용자 서비스
-```
-
-이때 Facade는 사용자 이름을 조회하고 결과를 조합하는 역할을 유지합니다.
-구현체의 교체가 가능하려면 두 구현체가 동일한 계약을 충족해야 합니다.
-
-원격 호출에는 시간 제한, 연결 실패와 부분 응답이 발생할 수 있습니다.
-구현체는 이러한 상황을 내부 계약의 실패로 변환합니다.
-Facade는 이름 조회 실패 시 전체 요청을 실패시킬지, 이름을 제외한 결과를 제공할지 결정합니다.
-
-재시도는 중복 실행 가능성과 전체 요청의 제한시간을 고려하여 정책으로 정의합니다.
-모든 외부 호출에 일괄 적용하지 않습니다.
-
-## REST와 gRPC로 유스케이스 제공
-
-외부에 유스케이스를 제공하는 경계와 외부 기능을 호출하는 경계를 구분합니다.
-
-| 방향 | 구성 |
-|---|---|
-| 들어오는 요청 | REST Controller 또는 gRPC Adapter가 업무 Facade를 호출합니다. |
-| 나가는 요청 | 업무 Facade가 Port를 호출하고 구현체가 외부 시스템에 접근합니다. |
-
-REST와 gRPC로 같은 카드 조회 기능을 제공해도 업무 Facade는 공통으로 사용합니다.
-각 진입 Adapter가 요청을 내부 입력으로 변환하고 결과를 해당 프로토콜로 반환합니다.
+주문 Adapter는 고객 이름 조회 위치와 마스킹 정책을 알지 않습니다.
 
 ## 테스트 경계
 
-Facade 단위 테스트에서는 사용자 조회 Port를 대체하여 결과 조합, 마스킹과 실패 정책을 검증합니다.
-Port 구현체의 통합 테스트에서는 실제 요청 변환, 응답 변환과 통신 실패 처리를 검증합니다.
-
-유스케이스 시나리오 테스트에서는 카드 조회부터 사용자 이름 조합까지 연결하여 최종 결과를 확인합니다.
-REST와 gRPC의 계약 테스트에서는 각 프로토콜이 동일한 업무 입력과 결과를 올바르게 표현하는지 확인합니다.
+애플리케이션 단위 테스트에서는 Port를 대체하여 조합, 마스킹, 실패 정책을 검증합니다.
+JPA Adapter 검증은 Repository와 DB 접근을 대상으로 합니다.
+Port 구현체(외부 HTTP 등)의 통합 테스트에서는 요청, 응답 변환과 통신 실패 처리를 검증합니다.
 
 ## Related
 
-- [Service의 책임과 분리 가능한 데이터 접근 경계](/docs/knowledge/backend/service/service-design)
+- [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
-- [Backend knowledge](/docs/knowledge/backend)
-- 테이블 파사드 코드 모양(저장소): `docs/harness/templates/backend/spring/facade/`
+- [CQRS](/docs/patterns/architecture-patterns/cqrs)
+- [ADR-0010](/docs/decisions/adr-0010)
+- 원셋 템플릿: `docs/harness/templates/backend/spring/`

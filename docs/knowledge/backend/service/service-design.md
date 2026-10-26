@@ -1,175 +1,147 @@
 ---
 id: service-design
-title: Service의 책임과 분리 가능한 데이터 접근 경계
-description: Service는 고정된 데이터 접근 계약을 제공하고, 조회와 Command는 분리할 수 있게 구성합니다
+title: 데이터 접근 경계 (Port와 Adapter)
+description: 기존 Service의 데이터 접근 책임이 Port와 JPA Adapter로 어떻게 이어지는지 설명합니다
 tags:
   - backend
   - service
+  - port
+  - adapter
 status: active
 slug: "/knowledge/backend/service/service-design"
 ---
-# Service의 책임과 분리 가능한 데이터 접근 경계
+# 데이터 접근 경계 (Port와 Adapter)
 
-> **개요:** Service는 고정된 데이터 접근 계약을 제공합니다.
-> 업무 Facade는 이 계약을 외부에 허용된 접근 경로로 제공합니다. 필요한 경우에만 유스케이스로 조합합니다.
-> 조회와 Command는 CQRS의 의도에 따라 구현과 저장소를 분리할 수 있도록 구성합니다.
+> **개요:** 현재 템플릿과 많은 저장소에서 `*Service`로 부르던 계층은 업무 로직 전체가 아니라 JPA 데이터 접근 영역입니다.
+> 이 책임을 Port(계약)와 Adapter(기술 구현)로 표현합니다.
+> DB 제약과 영속성 구현을 애플리케이션 영역으로 옮기라는 뜻은 아닙니다.
 
 ## 적용 상태
 
 공통 구현 기준으로 채택되었습니다.
-Backend Knowledge의 Controller, Facade, 테스트 구조와 함께 현재 기준입니다.
-테이블 Service의 코드 모양은 Spring 템플릿을 따릅니다.
+과거 문서의 "Service가 업무 규칙까지 담당한다"는 표현은 이 기준으로 정리합니다.
+관련 결정은 [ADR-0010](/docs/decisions/adr-0010)을 봅니다.
+코드 모양은 Spring 템플릿의 `port/`, `adapter/`를 따릅니다.
 
-## 설계 의도
+## 책임 재정의
 
-데이터 접근과 유스케이스 정책을 분리합니다.
-같은 데이터 접근 기능을 여러 업무에서 재사용하고, 업무가 추가될 때마다 Service의 책임이 확장되는 것을 방지합니다.
+| 구성 | 책임 |
+|---|---|
+| Port | 저장, 조회 기능의 계약. 애플리케이션이 의존하는 인터페이스 |
+| JPA Adapter | Repository 호출, 조회 조건 구성, 영속성 모델 변환, 저장, 수정, 삭제 구현 |
+| 애플리케이션 영역 | 업무상 허용 여부, 계산, 정책, 처리 순서와 상태 전이 결정, 이종 DTO 교환 |
 
-Service는 정해진 조회, 저장, 수정 등의 계약을 제공합니다.
-그 계약 안에 자기 데이터의 업무 규칙을 둡니다.
-업무 Facade는 필요한 Service와 Port를 조합하여 실행 순서, 화면 조합, 다른 모듈의 실패 정책을 결정합니다.
+Adapter에 남기는 그 데이터 자신의 규칙:
 
-Service에 남기는 업무 규칙:
-
-- 그 데이터의 존재 여부와 없을 때의 오류
+- 존재 여부와 없을 때의 오류
 - 그 데이터 자신의 상태 전이와 삭제 의미
 - 그 데이터 집합 안의 저장 제약과 정합성
-- 그 Service의 엔티티와 응답 DTO 사이 변환
+- 엔티티와 Port가 주고받는 DTO 사이 변환
 
-Facade가 조율하는 정책:
+애플리케이션이 조율하는 정책:
 
-- 어떤 Service와 Port를 어떤 순서로 호출하는지
-- 화면이나 유스케이스에 맞게 결과를 조합하고 노출 범위를 맞추는지
-- 다른 모듈의 조회가 실패했을 때 전체를 실패로 볼지, 일부만 반환할지
+- 어떤 Port를 어떤 순서로 호출하는지
+- 화면이나 BFF 계약에 맞게 결과를 조합하고 노출 범위를 맞추는지
+- 다른 모듈 조회 실패 시 전체 실패인지 일부만 반환할지
 - 한 프로세스 안에서 로컬 트랜잭션에 어떤 변경을 포함할지
 
 상태 변경을 허용하는 권한은 그 데이터를 소유한 백엔드 업무 경계에 둡니다.
-호출 경로가 GraphQL BFF로 바뀌어도 이 소유는 Service 쪽에 남습니다.
-자세한 확장안은 [Facade Design](/docs/knowledge/backend/facade/facade-design)에 있습니다.
 
-## Service의 안정성
+## 이름과 하위 호환
 
-이 구조에서 Service를 불변하게 유지한다는 것은 유스케이스마다 메서드와 정책을 임의로 추가하지 않는다는 의미입니다.
-객체 상태의 불변성이나 부작용 없는 순수 함수를 의미하지는 않습니다.
+기존 코드의 `*Service` 클래스는 대부분 JPA Adapter 역할입니다.
+새 템플릿과 문서는 `ExampleItemPort`와 `JpaExampleItemAdapter`처럼 역할을 이름에 드러냅니다.
+이미 `Service`인 저장소를 일괄 개명할 의무는 없습니다.
+역할을 Adapter로 이해하고, 신규, 리팩터 시 Port와 Adapter로 맞춥니다.
 
-계약은 메서드 이름뿐 아니라 입력, 반환값, 오류와 데이터 접근 의미를 포함합니다.
-계약 변경이 필요한 경우에는 기존 유스케이스에 미치는 영향을 검토합니다.
+RestClient 구현체도 동일합니다.
+계약이 Port이고 HTTP 호출 구현이 Adapter입니다.
 
-## 책임과 경계
+## Provider 교체 (캐시, 암호화 등)
 
-| 구성요소 | 책임 |
-|---|---|
-| 진입 Adapter | REST 또는 gRPC 요청과 내부 입력 및 결과를 변환합니다. |
-| 업무 Facade | 유스케이스 실행, Service와 Port 조합, 정책 및 작업 경계를 결정합니다. |
-| Service | 자기 데이터의 조회·저장과 그 데이터의 존재, 상태 전이, 정합성 규칙을 수행합니다. |
-| Repository | 조회 또는 Command에 필요한 영속성 접근을 수행합니다. |
-| 외부 Port 구현체 | 인증, 암호화, 외부 서비스 통신 등의 기술별 접근을 수행합니다. |
+JPA뿐 아니라 캐시, 암호화, 외부 IdP도 같은 층을 씁니다.
 
-Service에는 화면별 마스킹, ID에서 다른 모듈의 이름으로 바꾸는 조합, 외부 통신과 이벤트 발행 정책을 포함하지 않습니다.
-Service는 Facade를 참조하지 않습니다.
+```text
+CachePort     EncryptionPort    TokenPort / OAuthPort    MessagingPort
+    ↓               ↓                   ↓                      ↓
+CacheAdapter  EncryptionAdapter Token/OAuthAdapter     MessagingAdapter
+    ↓               ↓                   ↓                      ↓
+RedisProvider VaultProvider     KeycloakProvider       KafkaProvider
+(다른 캐시)      (KMS)              자체 JWT Provider      RabbitMqProvider
+                                                       RedisPubSubProvider
+                                                       StompProvider
+                                                       WebSocketProvider
+```
+
+- Port: 능력 계약. `CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`. 제품명(Redis, Vault, Keycloak, Kafka)을 Port에 넣지 않습니다.
+- Adapter: Port 구현. 직렬화, 키 규칙, 실패를 Port 의미로 변환하고 Provider를 고릅니다.
+- Provider: Redis, Vault, KMS, Keycloak, 자체 JWT, Kafka, RabbitMQ, STOMP, WebSocket 등 실제 호출.
+
+애플리케이션과 Port는 Provider 교체만으로 유지합니다.
+Vault, Keycloak, Kafka를 Port 이름으로 쓰지 않는 이유는 나중에 KMS, 자체 JWT, 다른 브로커로 바꿔도 계약을 바꾸지 않기 위함입니다.
+
+## 조회와 변경 (코드 수준 CQRS)
+
+**CQRS의 코드 수준 적용점은 JPA Adapter입니다.**
+애플리케이션(Facade 등)이 읽기 DB와 쓰기 DB를 고르지 않습니다.
+Adapter가 Provider로 Repository 접근을 나눕니다.
+
+처음부터 Query와 Command를 나누지 않아도 됩니다.
+하나의 Port와 Adapter, Repository로 시작하고 필요하면 분리합니다.
+
+분리할 때 예:
+
+```text
+Port
+  ↓
+JPA Adapter                         ← CQRS 적용점
+  ├─ Read Provider  → 조회용 Repository (리드 데이터소스)
+  └─ Command Provider → CRUD Repository
+       (JPA 수정은 조회가 필요하므로 Command 쪽에 조회 포함 CRUD를 둘 수 있음)
+```
+
+Port를 `UserQueryPort`와 `UserCommandPort`로 나누는 것도 같은 단계에서 허용합니다.
+애플리케이션은 여전히 Port만 호출합니다.
+물리적인 읽기 DB 분리는 그다음 단계입니다.
+자세한 내용은 [CQRS](/docs/patterns/architecture-patterns/cqrs)와 원셋 [adapter README](/docs/harness/templates/backend/spring/adapter/)를 봅니다.
+
+## 호출 관계
+
+```text
+Controller 또는 BFF 수신부
+        ↓
+공개 애플리케이션 진입점 (흔히 Facade)
+        ↓
+Port
+        ↓
+JPA Adapter  ← CQRS 적용점 (Provider로 Repository 분리)
+   ├─ Read Provider
+   └─ Command Provider
+        ↓
+Repository / 외부 시스템
+```
+
+애플리케이션은 Repository와 Adapter 구현체를 직접 참조하지 않습니다.
+Adapter는 Facade를 참조하지 않습니다.
 
 ## 현재 구현에 남은 결합
 
-현재 Service는 공유 모듈에서 여러 애플리케이션이 직접 의존하는 형태입니다.
-조회 메서드가 JPA `Specification`을 인자로 받아, 영속성 조건이 Service 밖으로 드러납니다.
-화면용 Facade가 그 `Specification`을 만들어 넘기는 호출이 있습니다.
+공유 모듈에 Service, 엔티티, Repository, DTO가 있고 여러 애플리케이션이 직접 의존하는 형태가 남아 있을 수 있습니다.
+조회가 JPA `Specification`을 인자로 받아 영속성 조건이 밖으로 드러나는 호출도 있습니다.
+MSA로 가려면 이런 결합을 먼저 줄입니다.
 
-MSA로 가려면 공유 모듈 의존과 Service 밖으로 드러난 `Specification`을 먼저 끊어야 합니다.
-프로세스를 나누는 것만으로 그 결합이 사라지지는 않습니다.
+## 테스트
 
-원격 서비스로 나누면 [Facade Design](/docs/knowledge/backend/facade/facade-design)의 로컬 트랜잭션을 그대로 유지할 수 없습니다.
-조회 조합에는 Saga가 필요 없고, 여러 서비스의 변경을 완수하는 유스케이스만 Saga의 대상입니다.
-
-업무 Facade는 Repository를 직접 사용하지 않고 Service의 계약을 통해 데이터에 접근합니다.
-Service 내부의 조회 조건과 영속성 구현을 업무 Facade로 이동하지 않습니다.
-
-## 예시: 카드 정보와 사용자 이름 제공
-
-카드 Service는 카드 정보와 사용자 ID를 조회합니다.
-사용자 이름을 추가하고 화면 노출 범위에 맞게 마스킹하는 작업은 카드 조회 Facade가 조율합니다.
-
-```text
-카드 조회 Facade
-    ├─ 카드 Service → 카드 정보와 사용자 ID 조회
-    ├─ 사용자 조회 Port → 사용자 이름 조회
-    └─ 노출 정책 → 결과 조합 및 마스킹
-```
-
-카드 Service는 결과가 관리자 화면, 일반 사용자 화면 또는 외부 연동에 제공되는지 알지 않습니다.
-같은 조회 계약을 각 유스케이스에서 재사용합니다.
-
-사용자 조회가 로컬 호출에서 gRPC로 변경되어도 카드 Service의 데이터 접근 책임은 유지됩니다.
-
-## 조회와 Command의 분리
-
-조회는 데이터를 읽는 책임을 가집니다.
-Command는 데이터를 저장하거나 변경하는 책임을 가집니다.
-
-두 책임은 하나의 배포 단위와 같은 DB 안에서도 논리적으로 구분할 수 있습니다.
-CQRS를 적용하기 위해 처음부터 DB를 물리적으로 분리할 필요는 없습니다.
-패턴 요약은 [CQRS](/docs/patterns/architecture-patterns/cqrs)를 봅니다.
-
-조합 정책이 Facade에 있고 데이터 접근과 그 데이터의 규칙이 Service에 유지되므로, 조회와 Command의 구현 및 저장소를 분리할 기반이 마련됩니다.
-
-```text
-업무 Facade
-    ├─ 조회 계약
-    │    └─ 조회 구현 → 조회 Repository → 읽기 DB
-    └─ Command 계약
-         └─ Command 구현 → Command Repository → 쓰기 DB
-```
-
-이 구조는 분리 가능한 경계를 정의합니다.
-이미 별도 DB로 분리하여 운영하고 있다는 의미는 아닙니다.
-
-실제 분리 시에는 구현 구성에 따라 데이터소스, 트랜잭션 관리자, Repository 연결과 데이터 동기화 방식을 설정해야 합니다.
-업무 Facade는 기존 계약을 조합하는 역할을 유지합니다.
-
-## 트랜잭션 경계
-
-업무 Facade는 유스케이스에 필요한 로컬 DB 작업의 트랜잭션 범위를 결정합니다.
-관련 Service는 지정된 트랜잭션에 참여합니다.
-
-모든 Facade 호출을 하나의 트랜잭션으로 묶는 것은 아닙니다.
-외부 시스템 호출과 로컬 DB 변경의 경계를 구분합니다.
-
-같은 DB의 같은 트랜잭션에서 자신의 변경 내용을 조회하는 경우와, 별도 읽기 DB에서 조회하는 경우는 보장이 다릅니다.
-로컬 트랜잭션만으로 별도 읽기 DB의 반영 시점까지 보장하지는 않습니다.
-
-## 물리적 분리 이후의 지연 정책
-
-조회와 Command DB를 물리적으로 분리하면 복제 또는 조회 모델 갱신에 지연이 발생할 수 있습니다.
-분리 설계 단계에서 유스케이스별 정책을 수립하고 운영 전에 검증합니다.
-
-| 정책 항목 | 결정할 내용 |
-|---|---|
-| 변경 결과 응답 | Command 결과를 반환할지, 다시 조회할지 결정합니다. |
-| 변경 직후 조회 | 자신의 변경을 즉시 확인해야 하는지 결정합니다. |
-| 조회 경로 | 최신 값이 필요한 경우 쓰기 DB를 사용할지 결정합니다. |
-| 지연 허용 범위 | 읽기 DB의 데이터가 얼마나 오래되어도 되는지 결정합니다. |
-| 반영 대기 | 필요한 버전까지 기다릴지, 제한시간 후 다른 경로를 사용할지 결정합니다. |
-| 진행 상태 | 비동기 작업의 접수, 진행, 완료 및 실패를 어떻게 표현할지 결정합니다. |
-
-업무 Facade는 유스케이스가 요구하는 일관성 수준을 선택합니다.
-조회 경로 선택과 반영 상태 확인 등의 기술적 처리는 해당 계약의 구현체에서 수행합니다.
-
-## 테스트 경계
-
-| 테스트 | 검증 대상 |
-|---|---|
-| Service 계약 테스트 | 입력, 반환값, 오류와 데이터 접근 의미 |
-| Service 통합 테스트 | 실제 조회, 저장, 제약조건과 트랜잭션 동작 |
-| Facade 단위 테스트 | Service와 Port 조합, 정책 선택, 분기와 실패 처리 |
-| 유스케이스 시나리오 테스트 | 전체 흐름의 최종 결과와 정합성 |
-| 분리 이후 통합 테스트 | 동기화 지연, 변경 직후 조회, 제한시간과 대체 조회 경로 |
-
-고정된 Service 계약과 Facade의 정책 경계를 함께 검증합니다.
-조회와 Command를 분리할 때는 기존 계약을 유지하는지와 새로 정의한 지연 정책을 충족하는지 확인합니다.
+| 대상 | 대체 | 확인 |
+|---|---|---|
+| 애플리케이션 (Facade 등) | Port | 조합, 정책, 분기, 실패 처리 |
+| JPA Adapter | Repository | 매핑, 스펙, 없는 자원, 부분 수정 |
+| 시나리오 | 실제 스택 | 유스케이스 결과 |
 
 ## Related
 
-- [Facade Design](/docs/knowledge/backend/facade/facade-design)
+- [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
-- [Backend knowledge](/docs/knowledge/backend)
-- [테스트 기본 구조](/docs/knowledge/backend/testing/test-structure)
-- 테이블 Service 코드 모양(저장소): `docs/harness/templates/backend/spring/service/`
+- [CQRS](/docs/patterns/architecture-patterns/cqrs)
+- [ADR-0010](/docs/decisions/adr-0010)
+- 템플릿: `docs/harness/templates/backend/spring/port/`, `adapter/`

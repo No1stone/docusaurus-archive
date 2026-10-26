@@ -20,12 +20,12 @@ This document is an **engineering concept**, not a Spring MVC tutorial. Framewor
 
 ## Intent
 
-Define what belongs at the HTTP/API edge and what must stay out of it. The controller is a **thin adapter**: it turns an HTTP request into a call on the application (Facade) and turns the result back into an HTTP response. Nothing it does should be interesting to a unit test; the interesting work is one layer down.
+Define what belongs at the HTTP/API edge and what must stay out of it. The controller is a **thin receiving adapter**: it turns an HTTP request into a call on a **published application entry** (usually a Facade) and turns the result back into an HTTP response. Nothing it does should be interesting to a unit test; the interesting work is one layer down.
 
-The table entrance controller lives in `entrance.{domain}` with no `controller` subpackage.
+The table-entrance controller in the oneset lives in `entrance.{domain}` with no `controller` subpackage.
 It is `@Hidden`.
-It is not the partner HTTP contract.
-A different contract gets its own controller and path.
+It exists mainly so boot and smoke checks are easy.
+Day-to-day product traffic usually enters through business-focused BFF controllers with their own paths and contracts.
 
 ## Responsibilities
 
@@ -42,21 +42,21 @@ Each endpoint is therefore one line of real code. If it is longer, something has
 
 | Must not | Where it goes instead |
 |----------|-----------------------|
-| Rules of one data set: existence, its own state transition, persistence consistency | Service. See [Service 설계](/docs/knowledge/backend/service/service-design) |
-| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | The Facade that owns that use case. See [Facade 설계](/docs/knowledge/backend/facade/facade-design) |
-| A stack of Facade layers on every request | Not required. A table Facade can delegate to one Service. A screen composition calls the Facade that owns it |
-| Transactions (`@Transactional`) | Inside one process, the use-case Facade decides the local transaction and Service joins it. After a remote split, that local transaction does not remain |
-| Calling a Repository or touching an entity | Service only |
-| Converting an enum string back onto the DTO | Facade, `of` / `ofNullable` then `getCode()` |
-| Mapping DTO ↔ entity and entity → response DTO | Service (`ModelMapperUtil.map` / `mapAll`) |
+| Rules of one data set: existence, its own state transition, persistence consistency | JPA Adapter behind a Port. See [데이터 접근 경계](/docs/knowledge/backend/service/service-design) |
+| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | The published application entry that owns that use case. See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) |
+| A stack of application classes on every request | Not required. A table Facade can delegate to one Port. A BFF composition calls the entry that owns it |
+| Transactions (`@Transactional`) | Inside one process, the use-case entry decides the local transaction and the JPA Adapter joins it. After a remote split, that local transaction does not remain |
+| Calling a Repository or touching an entity | JPA Adapter only |
+| Converting an enum string back onto the DTO | Application entry (Facade), `of` / `ofNullable` then `getCode()` |
+| Mapping DTO ↔ entity and entity → response DTO | JPA Adapter (`ModelMapperUtil.map` / `mapAll`) |
 | Translating exceptions to HTTP status | a global `@RestControllerAdvice`; controllers never `try/catch` business errors |
-| Logging business events, auditing | Service / infrastructure concerns |
+| Logging business events, auditing | Adapter / infrastructure concerns |
 
 The controller does not know that enums, `BizErrorException`, or JPA exist.
 
 ## Boundaries, stated as rules
 
-1. **Controller → Facade only.** Never Controller → Service, never Controller → Repository. Skipping the Facade is a `high` review finding even when the Facade method would be a one-liner. The Facade it calls is the one that owns the use case. The request does not pass through every Facade kind.
+1. **Controller → published application entry only** (usually Facade). Never Controller → Port, Adapter, Service, or Repository. Skipping the application entry is a `high` review finding even when the method would be a one-liner. Do not treat the name Facade alone as proof of publication.
 2. **Table entrance uses `Req` / `Res` directly.** Do not add a `Web*` DTO family for this set.
 3. **Uniform envelope.** Every response is `CommonResponse<T>`. Clients parse `code` / `message` / `data` the same way for every endpoint, including errors produced by the advice.
 4. **No state.** Controllers are stateless singletons with constructor injection.
@@ -64,7 +64,7 @@ The controller does not know that enums, `BizErrorException`, or JPA exist.
 
 ## Testing stance
 
-Controllers are **not** the primary unit test target. Behavior lives in Facade and Service. Follow tests the project already has. A `@WebMvcTest` slice is appropriate when the project already uses them; otherwise the HTTP contract is checked by [`playwright-e2e`](/docs/harness/tools/playwright-e2e) or an API-level test when such practice exists in the project.
+Controllers are **not** the primary unit test target. Behavior lives in the application entry and Port/Adapter. Follow tests the project already has. A `@WebMvcTest` slice is appropriate when the project already uses them; otherwise the HTTP contract is checked by [`playwright-e2e`](/docs/harness/tools/playwright-e2e) or an API-level test when such practice exists in the project.
 
 ## Common drift to watch for
 
