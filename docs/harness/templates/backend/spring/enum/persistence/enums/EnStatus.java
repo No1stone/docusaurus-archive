@@ -1,4 +1,4 @@
-package com.example.template.shared.enums;
+package com.example.template.exampleitem.persistence.enums;
 
 import com.example.template.support.CodeValue;
 import com.example.template.support.BizErrorException;

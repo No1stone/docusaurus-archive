@@ -1,14 +1,13 @@
-package com.example.template.exampleitem.adapter;
+package com.example.template.exampleitem.persistence;
 
 import com.example.template.support.BizErrorException;
 import com.example.template.support.BeanUtils;
 import com.example.template.support.ResponseType;
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.entity.ExampleItem;
-import com.example.template.exampleitem.port.ExampleItemPort;
-import com.example.template.exampleitem.repository.ExampleItemRepository;
-import com.example.template.exampleitem.spec.ExampleItemSpecs;
+import com.example.template.exampleitem.persistence.entity.ExampleItem;
+import com.example.template.exampleitem.persistence.repository.ExampleItemRepository;
+import com.example.template.exampleitem.persistence.spec.ExampleItemSpecs;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -32,7 +31,7 @@ import static com.example.template.support.ModelMapperUtil.mapAll;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class JpaExampleItemAdapter implements ExampleItemPort {
+public class ExampleItemAdapter implements ExampleItemPort {
 
     private final ExampleItemRepository exampleItemRepository;
 

@@ -1,7 +1,7 @@
-package com.example.template.exampleitem.adapter;
+package com.example.template.exampleitem.persistence;
 
 import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.repository.ExampleItemRepository;
+import com.example.template.exampleitem.persistence.repository.ExampleItemRepository;
 import com.example.template.support.BizErrorException;
 import com.example.template.support.ResponseType;
 import org.junit.jupiter.api.DisplayName;
@@ -36,12 +36,12 @@ class ExampleItemAdapterTest {
     private ExampleItemRepository exampleItemRepository;
 
     @InjectMocks
-    private JpaExampleItemAdapter jpaExampleItemAdapter;
+    private ExampleItemAdapter exampleItemAdapter;
 
     @Test
     @DisplayName("경계: findByIds에 null이면 조회하지 않고 빈 목록이다")
     void findByIdsNullSkipsQuery() {
-        List<ExampleItemRes.Item> actual = jpaExampleItemAdapter.findByIds(null);
+        List<ExampleItemRes.Item> actual = exampleItemAdapter.findByIds(null);
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).findAll(any(Specification.class));
@@ -50,7 +50,7 @@ class ExampleItemAdapterTest {
     @Test
     @DisplayName("경계: findByIds에 빈 목록이면 조회하지 않는다")
     void findByIdsEmptySkipsQuery() {
-        List<ExampleItemRes.Item> actual = jpaExampleItemAdapter.findByIds(List.of());
+        List<ExampleItemRes.Item> actual = exampleItemAdapter.findByIds(List.of());
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).findAll(any(Specification.class));
@@ -59,7 +59,7 @@ class ExampleItemAdapterTest {
     @Test
     @DisplayName("경계: saveAll에 빈 목록이면 저장하지 않고 빈 목록이다")
     void saveAllEmptySkipsSave() {
-        List<ExampleItemRes.Id> actual = jpaExampleItemAdapter.saveAll(List.of());
+        List<ExampleItemRes.Id> actual = exampleItemAdapter.saveAll(List.of());
 
         assertTrue(actual.isEmpty());
         verify(exampleItemRepository, never()).saveAll(any());
@@ -72,7 +72,7 @@ class ExampleItemAdapterTest {
 
         BizErrorException thrown = assertThrows(
                 BizErrorException.class,
-                () -> jpaExampleItemAdapter.findById(99L));
+                () -> exampleItemAdapter.findById(99L));
 
         assertEquals(ResponseType.NOT_FOUND_RESOURCE, thrown.getType());
     }

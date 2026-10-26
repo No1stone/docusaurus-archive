@@ -11,50 +11,43 @@
 
 공통 원셋 E2E는 내 서버 Controller API입니다.
 외부 스펙 더미와 RestClient 연동 검증은 원셋에 넣지 않습니다.
-외부 통신이 있을 때만 추가합니다.
 
-## 원셋 실행
+## 도메인 폴더 구조
 
-- 구현·테스트·Controller API E2E를 함께 가져오고, 이번 도메인의 차이만 채웁니다.
-- 예제명, 패키지, 필드, 경로, 계약, 기대 결과를 구현·테스트·E2E에 일관되게 맞춥니다.
-- 저장소 규칙과 충돌하지 않는 구조·메서드·공통 처리는 유지합니다.
-- 실패 원인을 확인한 뒤 관련 구현·설정·테스트 중 잘못된 부분만 수정합니다.
-  통과를 위해 기대 결과를 임의로 완화하거나 원셋 전체를 다시 생성하지 않습니다.
+실무(`application.{domain}`)와 같습니다. **ExampleItem** 이 예제 도메인 id 입니다.
+
+```text
+exampleitem/
+  controller/      # 원셋 확인용 (실무 entrance)
+  facade/
+  dto/
+  persistence/
+    ExampleItemPort.java
+    ExampleItemAdapter.java
+    entity/
+    repository/
+    spec/
+```
+
+- **Inbound Port 없음** — `Controller → Facade`
+- **Outbound만 Port·Adapter** — `persistence/` (영속), 통신은 `client/` (`*ClientPort` / `*ClientAdapter`)
 
 ## 그대로 복사 / 프로젝트별로 채움
 
 ### 그대로 가져와 유지
 
-- Controller → Facade → Port → JPA Adapter → Repository 계층과 메서드 골격
-- FacadeTest, AdapterTest, ScenarioTest 배치와 정상·경계·실패 골격
+- Controller → Facade → Port → Adapter → Repository 계층과 메서드 골격
+- FacadeTest, AdapterTest, ScenarioTest 배치
 - E2E 요청 순서: 등록 → 조회 → 수정 → 변경 조회 → 삭제 → 대표 입력 오류 → 없는 id
-- `runId`로 실행마다 고유 데이터를 쓰는 방식
-- 충돌하지 않는 support·공통 응답 유틸 (프로젝트에 이미 있으면 재사용)
+- `runId`로 실행마다 고유 데이터
 
-### 프로젝트별로 채움 (치환·계약)
+### 프로젝트별로 채움
 
 | 항목 | 예제 | 작업 시 |
 |------|------|---------|
 | 클래스·패키지·테이블 | `ExampleItem`, `le_example_item` | 도메인 규칙 |
 | 공개 경로 | `/example-items` | `@RequestMapping` |
 | Req/Res 필드 | `httpMethod`, `url`, … | 실제 컬럼·필터 |
-| 성공 `code` | `"OK"` | 프로젝트 응답 봉투 |
-| E2E `baseUrl`, 인증 | 로컬 주소, 헤더 없음 | 기동·인증 방식 |
-| E2E 06 입력 오류 | `NOT_A_VALID_METHOD` | 그 API의 대표 검증 실패 |
-
-HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
-
-### 확장 지점 (정책 강제 없음)
-
-공통 템플릿은 아래를 비워 두거나 느슨한 단언만 둡니다.
-저장소 계약에 맞게 채웁니다.
-특정 삭제 방식이나 오류 HTTP 상태를 원셋이 새로 강제하지 않습니다.
-
-| 지점 | 템플릿 상태 | 프로젝트에서 |
-|------|-------------|--------------|
-| `entity.delete()` | 본문 비움 | 하드 삭제, 소프트 삭제 등 저장소 정책 |
-| 없는 id 조회 | “성공 코드가 아님” 수준 | HTTP 상태·응답 형태는 저장소 계약 |
-| E2E 05 삭제·07 없는 id | 위 계약에 맞춘 기대 | 삭제 후 부재 단언 여부 포함 |
 
 ## 복사할 파일
 
@@ -62,22 +55,21 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 
 | 원본 | 대상 자리 (예) |
 |------|----------------|
-| `controller/ExampleItemController.java` | `entrance.{domain}/` |
-| `facade/ExampleItemFacade.java` | `{domain}.facade` |
-| `port/ExampleItemPort.java` | `{domain}.port` |
-| `adapter/JpaExampleItemAdapter.java` | `{domain}.adapter` |
-| `dto/ExampleItemReq.java` | `{domain}.dto` |
-| `dto/ExampleItemRes.java` | `{domain}.dto` |
-| `persistence/ExampleItem.java` | `{domain}.entity` |
-| `persistence/ExampleItemRepository.java` | `{domain}.repository` |
-| `persistence/ExampleItemSpecs.java` | `{domain}.spec` |
+| `exampleitem/controller/ExampleItemController.java` | `entrance.{domain}/` |
+| `exampleitem/facade/ExampleItemFacade.java` | `{domain}.facade` |
+| `exampleitem/dto/*` | `{domain}.dto` |
+| `exampleitem/persistence/ExampleItemPort.java` | `{domain}.persistence` |
+| `exampleitem/persistence/ExampleItemAdapter.java` | `{domain}.persistence` |
+| `exampleitem/persistence/entity/ExampleItem.java` | `{domain}.persistence.entity` |
+| `exampleitem/persistence/repository/ExampleItemRepository.java` | `{domain}.persistence.repository` |
+| `exampleitem/persistence/spec/ExampleItemSpecs.java` | `{domain}.persistence.spec` |
 
 ### 테스트 (필수)
 
 | 원본 | 대상 자리 |
 |------|-----------|
 | `testing/ExampleItemFacadeTest.java` | 파사드와 같은 패키지 |
-| `testing/ExampleItemAdapterTest.java` | 어댑터와 같은 패키지 |
+| `testing/ExampleItemAdapterTest.java` | persistence 패키지 |
 | `testing/ExampleItemScenarioTest.java` | `scenario/{domain}/` |
 
 ### Controller API E2E (필수)
@@ -91,19 +83,16 @@ HT·파트너 키·운영 주소·실토큰은 넣지 않습니다.
 
 | 원본 | 조건 |
 |------|------|
-| `enum/` 적용 예 | 컬럼에 `@BizEnum`을 쓸 때 |
-| `support/` 개별 파일 | 프로젝트에 동일 타입이 없을 때 |
-| 외부 연동 E2E | 외부 통신이 있을 때. 공통 원셋 밖 |
+| `enum/` 적용 예 | 컬럼에 `@BizEnum`을 쓸 때 (같은 폴더 구조) |
+| `support/` | 프로젝트에 동일 타입이 없을 때 |
 
 ## 실행 순서
 
 ```text
 1. 구현·테스트·E2E 복사 후 이름·필드·경로·계약 치환
-2. ./gradlew test  (FacadeTest, AdapterTest, ScenarioTest)
-3. 앱을 데모/로컬·테스트 DB로 기동
-4. Controller API 컬렉션 실행
-5. (선택) 외부 통신이 있으면 스펙 더미 → Client 연동 E2E
-6. 실패 시 원인 확인 후 관련 구현·설정·테스트만 수정
+2. ./gradlew test
+3. 앱 기동 후 Controller API 컬렉션 실행
+4. 실패 시 원인 확인 후 관련 부분만 수정
 ```
 
 ## 오케스트레이션

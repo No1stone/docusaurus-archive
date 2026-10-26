@@ -1,10 +1,10 @@
-package com.example.template.exampleitem.spec;
+package com.example.template.exampleitem.persistence.spec;
 
-import com.example.template.exampleitem.enums.EnHttpMethod;
+import com.example.template.exampleitem.persistence.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import com.example.template.support.PredicateBuilder;
 import com.example.template.exampleitem.dto.ExampleItemReq;
-import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.persistence.entity.ExampleItem;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ExampleItemSpecs {

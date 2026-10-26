@@ -1,4 +1,4 @@
-package com.example.template.exampleitem.port;
+package com.example.template.exampleitem.persistence;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;

@@ -1,4 +1,4 @@
-package com.example.template.shared.enums;
+package com.example.template.exampleitem.persistence.enums;
 
 import com.example.template.support.CodeValue;
 import com.example.template.support.BizErrorException;
@@ -14,10 +14,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @BizEnum
-public enum EnYn implements CodeValue {
+public enum EnHttpMethod implements CodeValue {
 
-    Y("Y", "Y"),
-    N("N", "N"),
+    GET("GET", "GET"),
+    HEAD("HEAD", "HEAD"),
+    POST("POST", "POST"),
+    PUT("PUT", "PUT"),
+    PATCH("PATCH", "PATCH"),
+    DELETE("DELETE", "DELETE"),
+    OPTIONS("OPTIONS", "OPTIONS"),
+    TRACE("TRACE", "TRACE"),
     ;
 
     final String code;
@@ -33,8 +39,8 @@ public enum EnYn implements CodeValue {
         return value;
     }
 
-    public static EnYn of(String code) {
-        return Arrays.stream(EnYn.values())
+    public static EnHttpMethod of(String code) {
+        return Arrays.stream(EnHttpMethod.values())
                 .filter(v -> v.getCode().equals(code))
                 .findAny()
                 .orElseThrow(() ->
@@ -44,7 +50,7 @@ public enum EnYn implements CodeValue {
                 );
     }
 
-    public static EnYn ofNullable(String code, EnYn... allowStatus) {
+    public static EnHttpMethod ofNullable(String code, EnHttpMethod... allowStatus) {
         if (code == null) {
             return null;
         }

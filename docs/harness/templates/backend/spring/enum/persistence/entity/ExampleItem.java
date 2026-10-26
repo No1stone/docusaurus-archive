@@ -1,5 +1,6 @@
-package com.example.template.exampleitem.entity;
+package com.example.template.exampleitem.persistence.entity;
 
+import com.example.template.exampleitem.persistence.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,7 +46,7 @@ public class ExampleItem extends CreatedEntity {
     private Long id;
 
     @Column(name = "http_method", nullable = false, length = 10)
-    private String httpMethod;
+    private EnHttpMethod httpMethod;
 
     @Column(name = "url", nullable = false, length = 255)
     private String url;

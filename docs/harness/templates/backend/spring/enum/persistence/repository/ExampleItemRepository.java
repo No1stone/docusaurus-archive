@@ -1,6 +1,6 @@
-package com.example.template.exampleitem.repository;
+package com.example.template.exampleitem.persistence.repository;
 
-import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.persistence.entity.ExampleItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;

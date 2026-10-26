@@ -1,4 +1,13 @@
-# Enum apply template
+# 이넘 적용 ExampleItem 원셋
+
+기본 원셋과 같은 폴더 구조입니다. `httpMethod` 등에 `@BizEnum`을 적용한 변형입니다.
+
+```text
+enum/
+  facade/ dto/ controller/
+  persistence/   # Port, Adapter, entity, repository, spec, enums
+```
+
 
 > **개요:** 테이블 세트의 컬럼 하나에 @BizEnum 열거형을 적용한 전체 예제와 주의점입니다.
 
@@ -6,7 +15,7 @@
 DTO는 문자열입니다.
 엔티티 필드만 열거형입니다.
 Port, JPA Adapter 메서드 목록은 테이블 템플릿과 같습니다.
-이 폴더의 Facade는 Port를 주입하고, Adapter는 [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java) 입니다.
+이 폴더의 Facade는 Port를 주입하고, Adapter는 [`ExampleItemAdapter.java`](./ExampleItemAdapter.java) 입니다.
 
 Adapter의 `map` / `mapAll`은 `ModelMapperUtil` 입니다.
 이넘 변환을 Adapter 메서드에 새로 넣지 않습니다.
@@ -124,7 +133,7 @@ public class _EnHttpMethod extends CodeValueConverter<EnHttpMethod> {
 - [`ExampleItemSpecs.java`](./ExampleItemSpecs.java)
 - [`ExampleItemReq.java`](./ExampleItemReq.java)
 - [`ExampleItemRes.java`](./ExampleItemRes.java)
-- [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java)
+- [`ExampleItemAdapter.java`](./ExampleItemAdapter.java)
 - [`ExampleItemRepository.java`](./ExampleItemRepository.java)
 - [`ExampleItemController.java`](./ExampleItemController.java)
 
@@ -663,9 +672,9 @@ public enum EnStatus implements CodeValue {
 ### `ExampleItem.java`
 
 ```java
-package com.example.template.exampleitem.entity;
+package com.example.template.exampleitem.persistence.entity;
 
-import com.example.template.exampleitem.enums.EnHttpMethod;
+import com.example.template.exampleitem.persistence.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -743,8 +752,7 @@ package com.example.template.exampleitem.facade;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.enums.EnHttpMethod;
-import com.example.template.exampleitem.port.ExampleItemPort;
+import com.example.template.exampleitem.persistence.enums.EnHttpMethod;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -840,13 +848,13 @@ public class ExampleItemFacade {
 ### `ExampleItemSpecs.java`
 
 ```java
-package com.example.template.exampleitem.spec;
+package com.example.template.exampleitem.persistence.spec;
 
-import com.example.template.exampleitem.enums.EnHttpMethod;
+import com.example.template.exampleitem.persistence.enums.EnHttpMethod;
 import com.example.template.support.CreatedEntity;
 import com.example.template.support.PredicateBuilder;
 import com.example.template.exampleitem.dto.ExampleItemReq;
-import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.persistence.entity.ExampleItem;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ExampleItemSpecs {
@@ -1034,22 +1042,21 @@ public class ExampleItemRes {
 }
 ```
 
-### `JpaExampleItemAdapter.java`
+### `ExampleItemAdapter.java`
 
-원본 파일 [`JpaExampleItemAdapter.java`](./JpaExampleItemAdapter.java)를 복사합니다.
+원본 파일 [`ExampleItemAdapter.java`](./ExampleItemAdapter.java)를 복사합니다.
 아래는 참고용 요약입니다.
 
 ```java
-package com.example.template.exampleitem.adapter;
+package com.example.template.exampleitem.persistence;
 
-import com.example.template.exampleitem.port.ExampleItemPort;
 // … dto, entity, repository, spec, ModelMapperUtil …
 
 @Component
 @Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true, transactionManager = "transactionManager")
-public class JpaExampleItemAdapter implements ExampleItemPort {
+public class ExampleItemAdapter implements ExampleItemPort {
 
     private final ExampleItemRepository exampleItemRepository;
 
@@ -1135,9 +1142,9 @@ public class JpaExampleItemAdapter implements ExampleItemPort {
 ### `ExampleItemRepository.java`
 
 ```java
-package com.example.template.exampleitem.repository;
+package com.example.template.exampleitem.persistence.repository;
 
-import com.example.template.exampleitem.entity.ExampleItem;
+import com.example.template.exampleitem.persistence.entity.ExampleItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -1270,4 +1277,3 @@ public class ExampleItemController {
     }
 }
 ```
-

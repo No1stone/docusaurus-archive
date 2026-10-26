@@ -2,7 +2,6 @@ package com.example.template.exampleitem.facade;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.port.ExampleItemPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

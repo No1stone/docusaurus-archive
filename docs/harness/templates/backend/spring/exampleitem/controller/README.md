@@ -122,3 +122,6 @@ public class ExampleItemController {
     }
 }
 ```
+
+
+원셋 기동 확인용입니다. 실무 inbound는 `Controller → Facade` (Inbound Port 없음).

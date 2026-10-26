@@ -1,55 +1,33 @@
 # Spring ExampleItem 원셋
 
 > **개요:** 테이블 한 세트의 구현, 단위·시나리오 테스트, API E2E입니다.
-> 옆에 `.java`와 E2E JSON이 있습니다.
-> 예제에서 메서드나 필드를 생략하지 않습니다.
-> 복사·치환·실행 순서는 [`ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다.
-
-## 목표
-
-검증된 구현·단위/시나리오 테스트·Controller API E2E를 원셋으로 템플릿화합니다.
-새 작업에서는 복사 후 달라지는 부분만 채웁니다.
-외부 스펙 더미와 RestClient 연동 E2E는 원셋에 넣지 않습니다.
+> 복사·치환·실행 순서는 [`ONESET.md`](./ONESET)입니다.
 
 ## 테이블 한 세트 (구현)
 
-컨트롤러, 파사드, Port, JPA Adapter, 리포지토리, DTO, 스펙, 엔티티입니다.
-이 세트의 컬럼은 문자열 샘플입니다.
-공개 경로는 `/example-items`입니다.
-과거 `service/` 이름은 [service/README](./service/)에 이관 안내만 둡니다.
+예제 도메인 id는 **ExampleItem** 입니다.
+폴더는 실무 애플리케이션 도메인과 같습니다.
 
 | Layer | Path |
 |-------|------|
-| Controller | [controller/](./controller/) |
-| Facade | [facade/](./facade/) |
-| Port | [port/](./port/) |
-| JPA Adapter | [adapter/](./adapter/) |
-| DTO | [dto/](./dto/) |
-| Entity, Repository, Spec | [persistence/](./persistence/) |
+| 도메인 원셋 | [exampleitem/](./exampleitem/) |
+| · Controller | [exampleitem/controller/](./exampleitem/controller/) |
+| · Facade | [exampleitem/facade/](./exampleitem/facade/) |
+| · DTO | [exampleitem/dto/](./exampleitem/dto/) |
+| · persistence (Port·Adapter·entity·repo·spec) | [exampleitem/persistence/](./exampleitem/persistence/) |
 | Support | [support/](./support/) |
 | Testing | [testing/](./testing/) |
 | API E2E | [e2e/](./e2e/) |
+| 이넘 적용 변형 | [enum/](./enum/) |
 
 ```text
-controller → facade → port → jpa adapter → repository
-                                      ↓
-                         CQRS 적용점: Read / Command Provider로 분리 가능
-                                      ↓
-                                 dto, spec, entity
+Controller → Facade → ExampleItemPort → ExampleItemAdapter → Repository
+                         persistence/
 tests: FacadeTest, AdapterTest, ScenarioTest
-e2e: Postman collection (create → get → put → get → delete → bad input → missing)
 ```
 
-원셋은 Repository 하나를 Adapter가 직접 씁니다.
-조회와 변경을 나눌 때는 [adapter README](./adapter/)에서 Provider로 Repository를 나눕니다.
+Inbound Port는 두지 않습니다. Outbound(영속·HTTP client)만 Port·Adapter입니다.
 
 ## 이넘 적용 한 세트
 
-[enum/](./enum/) 입니다.
-테이블 세트 전체에 `httpMethod` 열거형을 적용한 소스입니다.
-원셋 기본 경로에는 포함하지 않습니다.
-필요할 때만 복사합니다.
-
-Each folder README lists files and embeds sources where useful.
-Agents copy from the raw files or code blocks.
-Do not shorten a method when copying.
+[enum/](./enum/) — 같은 폴더 구조에 `@BizEnum` 적용 예입니다.

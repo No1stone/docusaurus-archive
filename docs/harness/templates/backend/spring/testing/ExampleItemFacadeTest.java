@@ -2,7 +2,6 @@ package com.example.template.exampleitem.facade;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
-import com.example.template.exampleitem.port.ExampleItemPort;
 import com.example.template.support.BizErrorException;
 import com.example.template.support.ResponseType;
 import org.junit.jupiter.api.DisplayName;
