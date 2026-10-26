@@ -1,7 +1,7 @@
 ---
 id: pattern-gateway-authorization-routing
 title: Gateway 권한 라우팅
-description: API Gateway에서 인증·허용 경로·하류 라우팅을 나누는 패턴. boot-base 코드와 아이컴시스 사례의 정책 저장 방식을 구분합니다.
+description: API Gateway에서 인증·허용 경로·하류 라우팅을 나누는 패턴. boot-base 코드와 포트폴리오 사례의 정책 저장 방식을 구분합니다.
 tags:
   - patterns
   - Spring Cloud Gateway
@@ -47,7 +47,7 @@ Config Server·Eureka는 Gateway 권한 로직과 역할이 다릅니다.
 4. 발급 측(`VaultJwtTokenProvider`)은 로그인 성공 시 Redis에 `access:` 키를 넣습니다.
 
 즉 현재 코드 기준으로 Gateway는 **액세스 토큰 존재(및 일부 검증 경로)** 와 **경로 라우팅**이 중심입니다.
-아이컴시스 사례처럼 “그룹 권한 정책을 Redis에 직렬화해 URL별로 분기”하는 로직은 이 커밋의 Gateway 필터에서 확인하지 못했습니다.
+포트폴리오 사례처럼 “그룹 권한 정책을 Redis에 직렬화해 URL별로 분기”하는 로직은 이 커밋의 Gateway 필터에서 확인하지 못했습니다.
 
 허용 경로 목록은 코드 상수이며, 주석에 Config Server로 뺄 수 있다는 메모가 있습니다.
 실제 Config Server 연동으로 바뀐 상태는 이 경로만으로 단정하지 않습니다.
@@ -60,13 +60,13 @@ Config Server·Eureka는 Gateway 권한 로직과 역할이 다릅니다.
 - `gateway/.../conf/dto/AuthServerAllowPath.java`
 - `api-auth/.../provider/VaultJwtTokenProvider.java`
 
-## 아이컴시스 사례와의 연결
+## 포트폴리오 사례와의 연결
 
 사례 본문은 Postmortems에 있습니다.
 
-- 로그인 후 그룹 권한 정책을 조회해 Redis에 두고, Gateway가 조회한 뒤 권한에 맞게 라우팅한다는 서술: [애플리케이션 서비스](../../postmortems/icomsys-msa-iam-portfolio/application-services.md)
-- 읽기(1)·수정(2) 수준으로 Gateway에서 URL을 라우팅한다는 서술: [권한·메뉴 개선](../../postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement.md)
-- 서버 다이어그램상 Gateway 뒤 Eureka·Config·Auth 등: [설계 개요와 비용](../../postmortems/icomsys-msa-iam-portfolio/design-and-runtime.md)
+- 로그인 후 그룹 권한 정책을 조회해 Redis에 두고, Gateway가 조회한 뒤 권한에 맞게 라우팅한다는 서술: [애플리케이션 서비스](/docs/postmortems/msa-iam-portfolio/application-services)
+- 읽기(1)·수정(2) 수준으로 Gateway에서 URL을 라우팅한다는 서술: [권한·메뉴 개선](/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement)
+- 서버 다이어그램상 Gateway 뒤 Eureka·Config·Auth 등: [설계 개요와 비용](/docs/postmortems/msa-iam-portfolio/design-and-runtime)
 
 사례의 정책 모델과 boot-base 현재 코드를 한 구현으로 합쳐 설명하지 않습니다.
 
@@ -81,7 +81,7 @@ Config Server·Eureka는 Gateway 권한 로직과 역할이 다릅니다.
 - [API GATEWAY](../../knowledge/backend/spring-cloud/api-gateway.md)
 - [Config Server](../../knowledge/backend/spring-cloud/config-server.md)
 - [Eureka](../../knowledge/backend/spring-cloud/eureka.md)
-- [아이컴시스 포트폴리오 개요](../../postmortems/icomsys-msa-iam-portfolio/overview.md)
+- [포트폴리오 포트폴리오 개요](/docs/postmortems/msa-iam-portfolio/overview)
 
 ## 참고
 

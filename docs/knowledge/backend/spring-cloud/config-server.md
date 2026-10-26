@@ -30,8 +30,8 @@ Config Server는 애플리케이션 설정을 Git 등 저장소에 두고, 서�
 
 ## 사례·관련
 
-- [애플리케이션 서비스 — ConfigServer](/docs/postmortems/icomsys-msa-iam-portfolio/application-services)
-- [설계 개요와 비용](/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime)
+- [애플리케이션 서비스 — ConfigServer](/docs/postmortems/msa-iam-portfolio/application-services)
+- [설계 개요와 비용](/docs/postmortems/msa-iam-portfolio/design-and-runtime)
 - [Eureka](/docs/knowledge/k-eureka)
 - [API GATEWAY](/docs/knowledge/k-api-gateway)
 

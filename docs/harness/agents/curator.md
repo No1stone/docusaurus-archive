@@ -135,4 +135,4 @@ Under `## Artifacts` include a short table: `source → target path → area →
 - Archive separation rules: [`/docs/knowledge/`](/docs/knowledge/), [`/docs/decisions/`](/docs/decisions/)
 - Template convention: [`../templates/README.md`](/docs/harness/templates/)
 - Asset maps: `index/INDEX.md`
-- Feedback path: [`/docs/postmortems/`](/docs/postmortems/index) → ADR → Knowledge → Template
+- Feedback path: [`/docs/postmortems/`](/docs/postmortems/) → ADR → Knowledge → Template

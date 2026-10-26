@@ -1,5 +1,5 @@
 ---
-id: icomsys-iam-and-menu-improvement
+id: msa-iam-and-menu-improvement
 title: 권한·메뉴 개선
 description: IAM 단순화, Enum·Query 코드화, 남은 문제
 tags:
@@ -7,7 +7,7 @@ tags:
   - eGovFrame
   - Spring Cloud Gateway
 status: active
-slug: "/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement"
+slug: "/postmortems/msa-iam-portfolio/iam-and-menu-improvement"
 ---
 # 권한·메뉴 개선
 
@@ -39,10 +39,10 @@ Enum으로 변경하여 개발한 경험을 풀어보려합니다.
 
 캡쳐가 잘안보일수도 있으시겠지만…
 
-![enum-convert-1.png](/img/icomsys-msa-iam-portfolio/enum-convert-1.png)
-![enum-convert-2.png](/img/icomsys-msa-iam-portfolio/enum-convert-2.png)
-![enum-convert-3.png](/img/icomsys-msa-iam-portfolio/enum-convert-3.png)
-![enum-convert-4.png](/img/icomsys-msa-iam-portfolio/enum-convert-4.png)
+![enum-convert-1.png](/img/msa-iam-portfolio/enum-convert-1.png)
+![enum-convert-2.png](/img/msa-iam-portfolio/enum-convert-2.png)
+![enum-convert-3.png](/img/msa-iam-portfolio/enum-convert-3.png)
+![enum-convert-4.png](/img/msa-iam-portfolio/enum-convert-4.png)
 
 전자정부에서의 Role을 Enum으로 사용하여 관리하였습니다.
 
@@ -66,8 +66,8 @@ Enum으로 변경하여 개발한 경험을 풀어보려합니다.
 
 전자정부 프레임워크의 메뉴 쿼리입니다.
 
-![query-code-1-1.png](/img/icomsys-msa-iam-portfolio/query-code-1-1.png)
-![query-code-1-2.png](/img/icomsys-msa-iam-portfolio/query-code-1-2.png)
+![query-code-1-1.png](/img/msa-iam-portfolio/query-code-1-1.png)
+![query-code-1-2.png](/img/msa-iam-portfolio/query-code-1-2.png)
 
 이때 테스트했을때 최소 1초이상걸리는 쿼리였습니다. 
 
@@ -91,8 +91,8 @@ Enum으로 변경하여 개발한 경험을 풀어보려합니다.
 
 100ms 이하로 나올정도로 개선되었습니다.
 
-![query-code-2-1.png](/img/icomsys-msa-iam-portfolio/query-code-2-1.png)
-![query-code-2-2.png](/img/icomsys-msa-iam-portfolio/query-code-2-2.png)
+![query-code-2-1.png](/img/msa-iam-portfolio/query-code-2-1.png)
+![query-code-2-2.png](/img/msa-iam-portfolio/query-code-2-2.png)
 
 이제 이 데이터로 메뉴를 그리는 작업이 남게 되었습니다.
 
@@ -112,11 +112,11 @@ Enum으로 변경하여 개발한 경험을 풀어보려합니다.
 
 변경 전
 
-![query-code-3-1.png](/img/icomsys-msa-iam-portfolio/query-code-3-1.png)
+![query-code-3-1.png](/img/msa-iam-portfolio/query-code-3-1.png)
 
 변경 후
 
-![query-code-3-2.png](/img/icomsys-msa-iam-portfolio/query-code-3-2.png)
+![query-code-3-2.png](/img/msa-iam-portfolio/query-code-3-2.png)
 
 ## 문제점
 
@@ -137,7 +137,7 @@ restfulAPI 규칙에 맞게 개발되었다고하면.
 Get권한인 Read(1)권한과
 
 나머지를 Modify(2)로 
-특별한기능들은  (3번등) 별도로 관리하면 
+특별한기능들은 (3번등) 별도로 관리하면 
 
 적은 데이터로 관리 할 수 있다 생각합니다.
 
@@ -151,5 +151,5 @@ Get권한인 Read(1)권한과
 
 ## 관련 글
 
-- [묶음 개요](/docs/postmortems/icomsys-msa-iam-portfolio/overview)
-- [애플리케이션 서비스](/docs/postmortems/icomsys-msa-iam-portfolio/application-services)
+- [묶음 개요](/docs/postmortems/msa-iam-portfolio/overview)
+- [애플리케이션 서비스](/docs/postmortems/msa-iam-portfolio/application-services)

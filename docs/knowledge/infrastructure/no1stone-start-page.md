@@ -38,5 +38,5 @@ slug: /knowledge/k-no1stone-start-page
 
 ## 포트폴리오
 
-- [아이컴시스 MSA·IAM 포트폴리오](../postmortems/icomsys-msa-iam-portfolio/overview.md)
-- [민팃 개선 사례](../postmortems/)
+- [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview)
+- [레거시 개선 사례](/docs/postmortems/legacy-improvement-cases)

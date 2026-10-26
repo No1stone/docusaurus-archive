@@ -43,7 +43,7 @@ unlisted: true
 
 ## 사례
 
-- [아이컴시스 MSA·IAM 포트폴리오](../../postmortems/icomsys-msa-iam-portfolio/overview.md)
+- [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview.md)
 
 ## Related
 

@@ -1,21 +1,21 @@
 ---
-id: mintit-improvement-cases
-title: 민팃 개선 사례
+id: legacy-improvement-cases
+title: 레거시 개선 사례
 description: 차세대 배경과 레거시 개선을 하나의 사례 묶음으로 정리
 tags:
   - legacy
   - operations
   - improvement
 status: active
-slug: "/postmortems/mintit-improvement-cases"
+slug: "/postmortems/legacy-improvement-cases"
 ---
-# 민팃 개선 사례
+# 레거시 개선 사례
 
 > **개요:** 레거시에서 겪은 문제와 개선을 한 묶음으로 정리합니다.
 
 운영 장애 대응 초안은 작성자 검토로 게시에서 제외하거나 보류 중이며, 이 목록에서 연결하지 않습니다.
 
-## 민팃 환경
+## 당시 조직·환경
 
 ### 개발팀
 
@@ -23,9 +23,9 @@ slug: "/postmortems/mintit-improvement-cases"
 
 ### 인프라
 
-인프라팀장님 1, 인프라 사원 1, 프리랜서 1, skc&c
+인프라팀장님 1, 인프라 사원 1, 프리랜서 1, 외주 인프라 업체
 
-인프라 오퍼레이션은 skc&c에서 주도합니다.
+인프라 오퍼레이션은 외주 인프라 업체에서 주도합니다.
 
 ### 어드민 시스템 업체 계약 유지보수
 
@@ -42,7 +42,7 @@ slug: "/postmortems/mintit-improvement-cases"
 5. 쿼리에서 공통코드를 참조해서 다시 변환하는 쿼리 다수
 6. 배치에 트랜잭션 처리가 안 되어 있어서 오류 발생
 7. 개발팀도 모르는 내부 접근 루트로 영업에서 운영 DB에 쿼리를 실행하는 일 등
-   - 선조치: DB 권한 재설계, 비밀번호 일괄 변경, 애플리케이션 접근 권한 일괄 변경
+  - 선조치: DB 권한 재설계, 비밀번호 일괄 변경, 애플리케이션 접근 권한 일괄 변경
 
 ## 레거시 시스템 개선 사례
 

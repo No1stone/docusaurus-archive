@@ -1,11 +1,11 @@
 ---
-id: icomsys-development-environment
+id: msa-development-environment
 title: 개발 환경
 description: 노트북, IDE 및 TOOL, PostMan
 tags:
   - development
 status: active
-slug: "/postmortems/icomsys-msa-iam-portfolio/development-environment"
+slug: "/postmortems/msa-iam-portfolio/development-environment"
 ---
 # 개발 환경
 
@@ -15,21 +15,21 @@ slug: "/postmortems/icomsys-msa-iam-portfolio/development-environment"
 
 인텔 8세대 i5
 
-![laptop-1.png](/img/icomsys-msa-iam-portfolio/laptop-1.png)
+![laptop-1.png](/img/msa-iam-portfolio/laptop-1.png)
 
 메모리 32기가 스왑 66기가
 
-![laptop-2.png](/img/icomsys-msa-iam-portfolio/laptop-2.png)
+![laptop-2.png](/img/msa-iam-portfolio/laptop-2.png)
 
 OS
 
 ubuntu 20.04.6 LTS
 
-![laptop-3.png](/img/icomsys-msa-iam-portfolio/laptop-3.png)
+![laptop-3.png](/img/msa-iam-portfolio/laptop-3.png)
 
 ## IDE 및 TOOL
 
-Spring FrameWork  / Intellij
+Spring FrameWork / Intellij
 
 DB TOOL / Intellij
 
@@ -49,8 +49,8 @@ container / docker , docker-compose
 
 ip, token
 
-![postman-1.png](/img/icomsys-msa-iam-portfolio/postman-1.png)
+![postman-1.png](/img/msa-iam-portfolio/postman-1.png)
 
 ## 관련 글
 
-- [묶음 개요](/docs/postmortems/icomsys-msa-iam-portfolio/overview)
+- [묶음 개요](/docs/postmortems/msa-iam-portfolio/overview)

@@ -3,7 +3,7 @@ id: postmortems
 title: Postmortems
 description: Failures, incidents, and design mistakes
 unlisted: true
-slug: "/postmortems/index"
+slug: /postmortems/
 ---
 # Postmortems
 
@@ -27,7 +27,7 @@ Not default context for routine implementation; load when investigating past les
 
 ### 프로젝트 개선 사례
 
-- [민팃 개선 사례](/docs/postmortems/mintit-improvement-cases) — 레거시 개선 묶음
-- [아이컴시스 MSA·IAM 포트폴리오](/docs/postmortems/icomsys-msa-iam-portfolio/overview) — 권한·MSA·AWS·데이터 경로 사례 묶음
+- [레거시 개선 사례](/docs/postmortems/legacy-improvement-cases) — 레거시 개선 묶음
+- [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview) — 권한·MSA·AWS·데이터 경로 사례 묶음
 
 운영 장애 대응 초안(CloudWatch·Redis)은 작성자 검토로 게시에서 제외하거나 보류 중이며, 프로덕션 빌드에 포함하지 않습니다.

@@ -45,7 +45,7 @@ slug: "/patterns/index"
 - [CQRS](/docs/patterns/architecture-patterns/cqrs)
 - [분산 락](/docs/patterns/architecture-patterns/distributed-lock)
 - [Gateway 권한 라우팅](/docs/patterns/architecture-patterns/gateway-authorization-routing)
-- 아이컴시스 MSA·IAM 사례: [Postmortems](../postmortems/icomsys-msa-iam-portfolio/overview.md)
+- MSA·IAM 사례: [Postmortems](/docs/postmortems/msa-iam-portfolio/overview)
 
 목록은 [Notion 이전 문서 목록](../harness/history/notion-import-catalog.md)의 patterns 절을 봅니다.
 
@@ -54,4 +54,4 @@ slug: "/patterns/index"
 - [Architecture](../architecture/)
 - [Knowledge](../knowledge/)
 - [Decisions](../decisions/)
-- [Postmortems](../postmortems/)
+- [Postmortems](/docs/postmortems/)

@@ -74,4 +74,4 @@ The feedback path is `Postmortem → ADR → Knowledge / Pattern → Template`.
 - Loading History "just in case"
 - Marking `PASS` because the symptom disappeared without understanding why
 
-Related: [`implement.md`](/docs/harness/workflows/implement), [`refactor.md`](/docs/harness/workflows/refactor), [Postmortems](/docs/postmortems/index)
+Related: [`implement.md`](/docs/harness/workflows/implement), [`refactor.md`](/docs/harness/workflows/refactor), [Postmortems](/docs/postmortems/)

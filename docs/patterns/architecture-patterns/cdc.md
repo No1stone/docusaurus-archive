@@ -57,9 +57,9 @@ Connector 등록은 Kafka Connect REST로 하는 경우가 많습니다.
 
 운영에서는 스키마 이력, 타임존, 스냅샷 모드, 권한(복제 계정)을 맞춰야 합니다.
 
-## 아이컴시스 사례와의 연결
+## 포트폴리오 사례와의 연결
 
-사례 본문의 경험·설정·이미지는 [서버 설정과 데이터 경로](../../postmortems/icomsys-msa-iam-portfolio/runtime-data-path.md)와 [설계 개요와 비용](../../postmortems/icomsys-msa-iam-portfolio/design-and-runtime.md)에 남겨 둡니다.
+사례 본문의 경험·설정·이미지는 [서버 설정과 데이터 경로](/docs/postmortems/msa-iam-portfolio/runtime-data-path)와 [설계 개요와 비용](/docs/postmortems/msa-iam-portfolio/design-and-runtime)에 남겨 둡니다.
 
 사례에서 확인되는 범위만 적습니다.
 
@@ -80,7 +80,7 @@ Connector 등록은 Kafka Connect REST로 하는 경우가 많습니다.
 
 - [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox) — CDC로 Outbox를 비우는 방식도 있음
 - [Fan-out](/docs/patterns/architecture-patterns/fan-out) — 토픽 이후 전달 토폴로지
-- [아이컴시스 런타임 데이터 경로](../../postmortems/icomsys-msa-iam-portfolio/runtime-data-path.md)
+- [런타임 데이터 경로](/docs/postmortems/msa-iam-portfolio/runtime-data-path)
 
 ## 참고
 

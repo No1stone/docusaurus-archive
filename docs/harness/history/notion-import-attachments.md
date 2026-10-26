@@ -30,8 +30,8 @@ unlisted: true
 
 | 문서 | 첨부 | 게시 |
 |---|---|---|
-| [아이컴시스 묶음](/docs/postmortems/icomsys-msa-iam-portfolio/overview) | `postmortems/img/icomsys-msa-iam-portfolio/` (Enum·Query·비용 포함) | 게시 |
-| [민팃 개선 사례](/docs/postmortems/mintit-improvement-cases) | 없음 | 게시 |
+| [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview) | `static/img/msa-iam-portfolio/` (Enum·Query·비용 포함) | 게시 |
+| [레거시 개선 사례](/docs/postmortems/legacy-improvement-cases) | 없음 | 게시 |
 | CloudWatch·Redis 장애 초안 2글 | 없음 | `draft` (게시 제외·보류) |
 
 ## 일괄 이전 첨부

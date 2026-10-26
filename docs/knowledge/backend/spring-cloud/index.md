@@ -18,4 +18,4 @@ slug: /knowledge/backend/spring-cloud
 ## 관련
 
 - [Gateway 권한 라우팅](/docs/patterns/architecture-patterns/gateway-authorization-routing)
-- [아이컴시스 설계 개요](/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime)
+- [설계 개요와 비용](/docs/postmortems/msa-iam-portfolio/design-and-runtime)

@@ -155,7 +155,7 @@ Mopl에 준 2xx 수신 응답과 HT 전달 성공은 별개입니다.
 - [CDC](/docs/patterns/architecture-patterns/cdc) — Outbox 릴레이를 CDC로 구현하는 방식도 있음
 - [Saga](/docs/patterns/architecture-patterns/saga) — 여러 서비스 변경의 보상 흐름
 - [분산 락](/docs/patterns/architecture-patterns/distributed-lock) — 동시 경합 제어
-- [아이컴시스 서버 설정과 데이터 경로](../../postmortems/icomsys-msa-iam-portfolio/runtime-data-path.md) — CDC 시도 사례 (Outbox와 별개)
+- [포트폴리오 서버 설정과 데이터 경로](/docs/postmortems/msa-iam-portfolio/runtime-data-path) — CDC 시도 사례 (Outbox와 별개)
 
 ## 참고
 

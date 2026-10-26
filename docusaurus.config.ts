@@ -79,36 +79,78 @@ const config: Config = {
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/overview',
+            to: '/docs/postmortems/msa-iam-portfolio/overview',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-application-services',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/application-services',
+            to: '/docs/postmortems/msa-iam-portfolio/application-services',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-aws-setting',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting',
+            to: '/docs/postmortems/msa-iam-portfolio/aws-setting',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-design-and-runtime',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime',
+            to: '/docs/postmortems/msa-iam-portfolio/design-and-runtime',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-development-environment',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/development-environment',
+            to: '/docs/postmortems/msa-iam-portfolio/development-environment',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-iam-and-menu-improvement',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement',
+            to: '/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-msa-iam-portfolio-overview',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/overview',
+            to: '/docs/postmortems/msa-iam-portfolio/overview',
           },
           {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-runtime-data-path',
-            to: '/docs/postmortems/icomsys-msa-iam-portfolio/runtime-data-path',
+            to: '/docs/postmortems/msa-iam-portfolio/runtime-data-path',
           },
+
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio',
+            to: '/docs/postmortems/msa-iam-portfolio/overview',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/overview',
+            to: '/docs/postmortems/msa-iam-portfolio/overview',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/application-services',
+            to: '/docs/postmortems/msa-iam-portfolio/application-services',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting',
+            to: '/docs/postmortems/msa-iam-portfolio/aws-setting',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime',
+            to: '/docs/postmortems/msa-iam-portfolio/design-and-runtime',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/development-environment',
+            to: '/docs/postmortems/msa-iam-portfolio/development-environment',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement',
+            to: '/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement',
+          },
+          {
+            from: '/docs/postmortems/icomsys-msa-iam-portfolio/runtime-data-path',
+            to: '/docs/postmortems/msa-iam-portfolio/runtime-data-path',
+          },
+          {
+            from: '/docs/postmortems/mintit-improvement-cases',
+            to: '/docs/postmortems/legacy-improvement-cases',
+          },
+          {
+            from: '/docs/postmortems/index',
+            to: '/docs/postmortems/',
+          },
+
           {
             from: '/docs/patterns/addinterceptors',
             to: '/docs/knowledge/k-addinterceptors',
@@ -2208,7 +2250,7 @@ const config: Config = {
             {label: 'Architecture', to: '/docs/architecture/'},
             {label: 'Patterns', to: '/docs/patterns/index'},
             {label: 'Decisions', to: '/docs/decisions/'},
-            {label: 'Postmortems', to: '/docs/postmortems/index'},
+            {label: 'Postmortems', to: '/docs/postmortems/'},
             {label: 'Blog', to: '/blog'},
             {label: 'Harness', to: '/docs/harness/'},
           ],

@@ -1,17 +1,17 @@
 ---
-id: icomsys-design-and-runtime
+id: msa-design-and-runtime
 title: 설계 개요와 비용
 description: AWS·서버 다이어그램, 도메인, ERD, 비용 수치
 tags:
   - AWS
   - postmortem
 status: active
-slug: "/postmortems/icomsys-msa-iam-portfolio/design-and-runtime"
+slug: "/postmortems/msa-iam-portfolio/design-and-runtime"
 ---
 # 설계 개요와 비용
 
 > **개요:** 「설계」 아래의 다이어그램·도메인·ERD와 「비용」 수치입니다.
-> AWS 콘솔 단계별 캡처는 [AWS 설정](/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting)에 있습니다.
+> AWS 콘솔 단계별 캡처는 [AWS 설정](/docs/postmortems/msa-iam-portfolio/aws-setting)에 있습니다.
 
 ## AWS diagram
 
@@ -25,7 +25,7 @@ private instance를 추가로 구성하도록 하려합니다.
 
 (그림은 계속 수정 될 예정입니다.)
 
-![aws-diagram-1.png](/img/icomsys-msa-iam-portfolio/aws-diagram-1.png)
+![aws-diagram-1.png](/img/msa-iam-portfolio/aws-diagram-1.png)
 
 추가를하게되는경우
 
@@ -43,15 +43,15 @@ nat instance는 20년부로 사용이종료되었지만
 
 사용한 기술스텍들 그림입니다.(그림은 계속 수정 될 예정입니다.)
 
-![server-diagram-1.png](/img/icomsys-msa-iam-portfolio/server-diagram-1.png)
+![server-diagram-1.png](/img/msa-iam-portfolio/server-diagram-1.png)
 
 Nginx로 APIGateway, jenkins, gitea를 라우팅하려하며
 
-apigateway 뒷단에는 Eureka, configserver, Authserver Customerserver,  
+apigateway 뒷단에는 Eureka, configserver, Authserver Customerserver, 
 
-프로메테우스 그라파나를  를 컨트롤하려합니다.
+프로메테우스 그라파나를 를 컨트롤하려합니다.
 
-API gateway는 microservice인  Spring서버를 제어하려합니다.
+API gateway는 microservice인 Spring서버를 제어하려합니다.
 
 간단한 하게 kafka로 Events driven 구조를 표현해해보려합니다.
 
@@ -61,11 +61,11 @@ Debezium으로 CDC(Change Data Capture) → Kafka
 
 SinkConnect → Mysql 데이터 저장을 구현하려합니다.
 
-RabbitMq는 Springconfig server의  Spring Bus를 사용하는 메세지큐입니다.
+RabbitMq는 Springconfig server의 Spring Bus를 사용하는 메세지큐입니다.
 
 Zipkin은 Spring sleuth 로 로그를 트렉킹 합니다.
 
-Redis는  Auth서버의 토큰과 IAM정보를 저장하며
+Redis는 Auth서버의 토큰과 IAM정보를 저장하며
 
 apigateway가 해당정보로 서버를 라우팅합니다.
 
@@ -125,7 +125,7 @@ origemite
 
 오리제마이트
 
-![domain-name-1.png](/img/icomsys-msa-iam-portfolio/domain-name-1.png)
+![domain-name-1.png](/img/msa-iam-portfolio/domain-name-1.png)
 
 사용이 가능하다.. 행복합니다.. ㅠㅠ
 
@@ -141,13 +141,13 @@ origemite
 
 [https://www.brandcrowd.com](https://www.brandcrowd.com/)
 
-![origemite2.bmp](/img/icomsys-msa-iam-portfolio/logo-1.png)
+![origemite2.bmp](/img/msa-iam-portfolio/logo-1.png)
 
 피그마로 비슷하게 만들어봐야겠습니다.
 
 약간 뒤틀린모습은 사실좀 별로라 정면으로 만들어보려합니다.
 
-![#615856_2.png](/img/icomsys-msa-iam-portfolio/logo-2.png)
+![#615856_2.png](/img/msa-iam-portfolio/logo-2.png)
 
 약간 부자연 스럽지만
 
@@ -165,7 +165,7 @@ origemite
 
 화면은.. simple is best!!
 
-![index-html-1.png](/img/icomsys-msa-iam-portfolio/index-html-1.png)
+![index-html-1.png](/img/msa-iam-portfolio/index-html-1.png)
 
 아무런 프레임워크없이 부트스트랩 html로만 단순하게 설명한페이지를
 
@@ -177,16 +177,16 @@ origemite
 
 ## ERD
 
-![ORIGEMITE-2024-01-31T11_00_20.png](/img/icomsys-msa-iam-portfolio/erd-1.png)
+![ORIGEMITE-2024-01-31T11_00_20.png](/img/msa-iam-portfolio/erd-1.png)
 
 ## 2024년 01월 aws비용
 
-![aws-cost-2024-01-1.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-1.png)
-![aws-cost-2024-01-2.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-2.png)
-![aws-cost-2024-01-3.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-3.png)
-![aws-cost-2024-01-4.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-4.png)
-![aws-cost-2024-01-5.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-5.png)
-![aws-cost-2024-01-6.png](/img/icomsys-msa-iam-portfolio/aws-cost-2024-01-6.png)
+![aws-cost-2024-01-1.png](/img/msa-iam-portfolio/aws-cost-2024-01-1.png)
+![aws-cost-2024-01-2.png](/img/msa-iam-portfolio/aws-cost-2024-01-2.png)
+![aws-cost-2024-01-3.png](/img/msa-iam-portfolio/aws-cost-2024-01-3.png)
+![aws-cost-2024-01-4.png](/img/msa-iam-portfolio/aws-cost-2024-01-4.png)
+![aws-cost-2024-01-5.png](/img/msa-iam-portfolio/aws-cost-2024-01-5.png)
+![aws-cost-2024-01-6.png](/img/msa-iam-portfolio/aws-cost-2024-01-6.png)
 
 19$ 입니다.
 
@@ -206,5 +206,5 @@ origemite
 
 ## 관련 글
 
-- [AWS 설정](/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting)
-- [서버 설정과 데이터 경로](/docs/postmortems/icomsys-msa-iam-portfolio/runtime-data-path)
+- [AWS 설정](/docs/postmortems/msa-iam-portfolio/aws-setting)
+- [서버 설정과 데이터 경로](/docs/postmortems/msa-iam-portfolio/runtime-data-path)

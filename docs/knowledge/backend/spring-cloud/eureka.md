@@ -31,7 +31,7 @@ Gateway가 `lb://api-auth`처럼 논리 이름으로 라우팅할 때 함께 씁
 
 ## 사례·관련
 
-- [애플리케이션 서비스 — EurekaServer](/docs/postmortems/icomsys-msa-iam-portfolio/application-services)
+- [애플리케이션 서비스 — EurekaServer](/docs/postmortems/msa-iam-portfolio/application-services)
 - [boot-base Gateway 라우팅 설명](/docs/patterns/architecture-patterns/gateway-authorization-routing)
 - [Config Server](/docs/knowledge/k-config-server)
 - [API GATEWAY](/docs/knowledge/k-api-gateway)

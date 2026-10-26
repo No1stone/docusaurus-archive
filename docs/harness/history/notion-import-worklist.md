@@ -104,14 +104,14 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 
 | 원본 | 영역 | 구성 | 결과 경로 | 배포 |
 |---|---|---|---|---|
-| 민팃의 개선 사례 | Postmortems | 개선 묶음. 장애 초안은 게시 제외·보류 | `mintit-improvement-cases.md` | 개선 게시. 장애 2초안은 `draft` |
-| 아이컴시스 개선사례 및 포트폴리오 | Postmortems | 개요 + 하위 6문서 | [overview](/docs/postmortems/icomsys-msa-iam-portfolio/overview) | 게시. Enum·Query·비용 화면 포함(공개 허용) |
+| 민팃의 개선 사례 | Postmortems | 개선 묶음. 장애 초안은 게시 제외·보류 | `legacy-improvement-cases.md` | 개선 게시. 장애 2초안은 `draft` |
+| 아이컴시스 개선사례 및 포트폴리오 | Postmortems | 개요 + 하위 6문서 | [overview](/docs/postmortems/msa-iam-portfolio/overview) | 게시. Enum·Query·비용 화면 포함(공개 허용) |
 
 ### 민팃 — 구성
 
 | 문서 | 내용 | 배포 |
 |---|---|---|
-| [mintit-improvement-cases.md](/docs/postmortems/mintit-improvement-cases) | 환경, 차세대 배경, 레거시 개선 | 게시 |
+| [mintit-improvement-cases.md](/docs/postmortems/legacy-improvement-cases) | 환경, 차세대 배경, 레거시 개선 | 게시 |
 | cloudwatch-log-integration-incident.md | CloudWatch 장애 초안 | `draft` (경험 불일치, 게시 제외·나중 재작성) |
 | redis-startup-race-incident.md | Redis 기동 장애 초안 | `draft` (문장 부자연, 재작성 없음) |
 
@@ -124,8 +124,8 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | 조직·벤더명 | 유지 | 민팃 환경 절 |
 | 민팃 개선·성과 수치 | 공개 허용 | 레거시 개선 절 |
 | 민팃 IAM·Redis 장애 | 분리 초안 작성 후 게시 제외·보류 | CloudWatch 제외, Redis `draft` 보류 |
-| Enum·Query 회사 화면 | 공개 허용 | [권한·메뉴 개선](/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement) |
-| AWS 비용 캡처 | 개인 자료·공개 허용 | [설계·비용](/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime#2024년-01월-aws비용) |
+| Enum·Query 회사 화면 | 공개 허용 | [권한·메뉴 개선](/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement) |
+| AWS 비용 캡처 | 개인 자료·공개 허용 | [설계·비용](/docs/postmortems/msa-iam-portfolio/design-and-runtime#2024년-01월-aws비용) |
 | R2dbcService password 리터럴 | 예제 값 확인 | 본문 유지 |
 
 ### 예제 비밀번호·인증정보 기준
@@ -143,15 +143,15 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | 원본 제목 | 상태 | 최종 문서 | 절 |
 |---|---|---|---|
 | 설계 | 제외 | - | 컨테이너만 |
-| Over view | 이전 | [overview.md](/docs/postmortems/icomsys-msa-iam-portfolio/overview) | ## Over view |
-| 서비스 개요 | 이전 | [overview.md](/docs/postmortems/icomsys-msa-iam-portfolio/overview) | ## 서비스 개요 |
-| IAM 구조를 표현한 이유 | 이전 | [iam-and-menu-improvement.md](/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement) | ## IAM 구조를 표현한 이유 |
-| Enum으로 변환 | 이전 | [iam-and-menu-improvement.md](/docs/postmortems/icomsys-msa-iam-portfolio/iam-and-menu-improvement) | ## Enum으로 변환 |
+| Over view | 이전 | [overview.md](/docs/postmortems/msa-iam-portfolio/overview) | ## Over view |
+| 서비스 개요 | 이전 | [overview.md](/docs/postmortems/msa-iam-portfolio/overview) | ## 서비스 개요 |
+| IAM 구조를 표현한 이유 | 이전 | [iam-and-menu-improvement.md](/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement) | ## IAM 구조를 표현한 이유 |
+| Enum으로 변환 | 이전 | [iam-and-menu-improvement.md](/docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement) | ## Enum으로 변환 |
 | Query의 코드화1 | 이전 | 동일 | ## Query의 코드화1 |
 | Query의 코드화2 | 이전 | 동일 | ## Query의 코드화2 |
 | Query의 코드화3 | 이전 | 동일 | ## Query의 코드화3 |
 | 문제점 | 이전 | 동일 | ## 문제점 |
-| AWS diagram | 이전 | [design-and-runtime.md](/docs/postmortems/icomsys-msa-iam-portfolio/design-and-runtime) | ## AWS diagram |
+| AWS diagram | 이전 | [design-and-runtime.md](/docs/postmortems/msa-iam-portfolio/design-and-runtime) | ## AWS diagram |
 | Server diagram | 이전 | 동일 | ## Server diagram |
 | Domain Name | 이전 | 동일 | ## Domain Name |
 | Logo | 이전 | 동일 | ## Logo |
@@ -160,7 +160,7 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | 비용 | 제외 | - | 컨테이너만 |
 | 2024년 01월 aws비용 | 이전 | 동일 | ## 2024년 01월 aws비용 |
 | AWS Setting | 제외 | - | 컨테이너만 |
-| route53 DNS | 이전 | [aws-setting.md](/docs/postmortems/icomsys-msa-iam-portfolio/aws-setting) | ## route53 DNS |
+| route53 DNS | 이전 | [aws-setting.md](/docs/postmortems/msa-iam-portfolio/aws-setting) | ## route53 DNS |
 | ACM | 이전 | 동일 | ## ACM |
 | cloudfront | 이전 | 동일 | ## cloudfront |
 | s3 | 이전 | 동일 | ## s3 |
@@ -170,7 +170,7 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | EC2 Instance | 이전 | 동일 | ## EC2 Instance |
 | Instance Schedlue | 이전 | 동일 | ## Instance Schedlue |
 | LoadBalance | 이전 | 동일 | ## LoadBalance |
-| Server Setting | 이전 | [runtime-data-path.md](/docs/postmortems/icomsys-msa-iam-portfolio/runtime-data-path) | ## Server Setting |
+| Server Setting | 이전 | [runtime-data-path.md](/docs/postmortems/msa-iam-portfolio/runtime-data-path) | ## Server Setting |
 | Nginx | 이전 | 동일 | ## Nginx |
 | Mysql | 이전 | 동일 | ## Mysql |
 | Gitea | 이전 | 동일 | ## Gitea |
@@ -179,7 +179,7 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | mysql 이중화 | 이전 | 동일 | ## mysql 이중화 |
 | Debezium | 이전 | 동일 | ## Debezium |
 | 통합 Docker-compose | 이전 | 동일 | ## 통합 Docker-compose |
-| Service | 이전 | [application-services.md](/docs/postmortems/icomsys-msa-iam-portfolio/application-services) | ## Service |
+| Service | 이전 | [application-services.md](/docs/postmortems/msa-iam-portfolio/application-services) | ## Service |
 | AuthService | 이전 | 동일 | ## AuthService |
 | 구조 (AuthService) | 이전 | 동일 | ## AuthService 구조 |
 | signin | 이전 | 동일 | ## signin |
@@ -192,7 +192,7 @@ Java·Spring·AWS·Kubernetes 같은 기술명으로 폴더를 나누지 않습�
 | Server Service | 이전 | 동일 | ## Server Service |
 | CmmService | 이전 | 동일 | ## CmmService |
 | 개발환경 | 제외 | - | 컨테이너만 |
-| 노트북 | 이전 | [development-environment.md](/docs/postmortems/icomsys-msa-iam-portfolio/development-environment) | ## 노트북 |
+| 노트북 | 이전 | [development-environment.md](/docs/postmortems/msa-iam-portfolio/development-environment) | ## 노트북 |
 | IDE 및 TOOL | 이전 | 동일 | ## IDE 및 TOOL |
 | PostMan | 이전 | 동일 | ## PostMan |
 | 제목 없음 (4) | 제외 | - | 빈 페이지 |

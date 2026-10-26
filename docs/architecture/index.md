@@ -19,8 +19,8 @@ Examples of future topics (not all created yet): layered architecture, MSA, API,
 
 Event-driven architecture belongs here; Kafka usage belongs under Knowledge / Messaging technology notes.
 
-아이컴시스 MSA·IAM 포트폴리오 사례 묶음은 [Postmortems](/docs/postmortems/icomsys-msa-iam-portfolio/overview)에 있습니다.
-민팃 레거시 개선도 [Postmortems](/docs/postmortems/index)에 있습니다.
+MSA·IAM 포트폴리오 사례 묶음은 [Postmortems](/docs/postmortems/msa-iam-portfolio/overview)에 있습니다.
+레거시 개선도 [Postmortems](/docs/postmortems/)에 있습니다.
 
 ## Related
 
