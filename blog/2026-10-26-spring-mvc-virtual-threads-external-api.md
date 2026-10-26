@@ -1,20 +1,19 @@
 ---
-slug: spring-mvc-virtual-threads-partner-gateway
+slug: spring-mvc-virtual-threads-external-api
 title: "외부 API 연동 서버에 Spring MVC와 Virtual Threads를 선택한 이유"
-description: "Partner Gateway에서 Spring MVC와 Virtual Threads를 선택한 판단"
+description: "내 서버에서 Spring MVC와 Virtual Threads를 선택한 판단"
 authors: []
 tags:
   - java
   - spring-mvc
   - virtual-threads
   - spring-boot
-  - partner-gateway
 date: 2026-10-26
 ---
 
 # 외부 API 연동 서버에 Spring MVC와 Virtual Threads를 선택한 이유
 
-Partner Gateway는 여러 시스템 사이에서 요청을 전달하고 응답을 변환하는 서버입니다.
+내 서버는 여러 시스템 사이에서 요청을 전달하고 응답을 변환하는 서버입니다.
 
 {/* truncate */}
 
@@ -43,10 +42,10 @@ Partner Gateway는 여러 시스템 사이에서 요청을 전달하고 응답�
 public CarsResponse findCars(CarsRequest request) {
     tokenChecker.check(request.accessToken());
 
-    PartnerCarsRequest partnerRequest = toPartnerRequest(request);
-    PartnerCarsResponse partnerResponse = partnerClient.findCars(partnerRequest);
+    ExternalCarsRequest externalRequest = toExternalRequest(request);
+    ExternalCarsResponse externalResponse = externalClient.findCars(externalRequest);
 
-    return toCarsResponse(partnerResponse);
+    return toCarsResponse(externalResponse);
 }
 ```
 
@@ -125,7 +124,7 @@ Netflix DGS 공식 문서도 Spring MVC·Tomcat에서 이 옵션을 사용하는
 | 재시도 | 장애 중 호출이 반복해서 늘어나는 상황을 제어 |
 | 대기 요청 | 대기 중에도 DTO·버퍼 등 메모리는 유지됨 |
 
-특히 Partner Gateway는 다른 서비스와 같은 장비에서 실행됩니다. 대기 요청을 가볍게 처리하는 것과, 요청을 제한 없이 받아들이는 것은 다른 문제입니다.
+특히 내 서버는 다른 서비스와 같은 장비에서 실행됩니다. 대기 요청을 가볍게 처리하는 것과, 요청을 제한 없이 받아들이는 것은 다른 문제입니다.
 
 현재 예상 요청량이 크지 않으므로 Virtual Threads를 대규모 처리량 확보의 근거로 삼지는 않았습니다. **기존 blocking 코드를 단순하게 유지하면서 외부 응답 대기를 다루는 수단**으로 활용합니다.
 
