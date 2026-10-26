@@ -22,7 +22,7 @@ Mysql 8.x
 ## 예제·코드
 
 ```bash
-create user 'smvuser'@'%' identified by 'Mintit1!';
+create user 'smvuser'@'%' identified by 'ChangeMe1!';
 GRANT ALL PRIVILEGES ON *.* TO 'smvuser'@'%';
 flush PRIVILEGES;
 ```

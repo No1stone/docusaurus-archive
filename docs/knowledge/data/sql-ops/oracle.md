@@ -26,7 +26,7 @@ chomd 0+w -R oradata
 ```
 
 ```sql
-docker exec -it {containerId} sqlplus sys/oracle@//localhost:1521/icomsys as sysdba
+docker exec -it {containerId} sqlplus sys/oracle@//localhost:1521/ORCL as sysdba
 ```
 
 ```bash
