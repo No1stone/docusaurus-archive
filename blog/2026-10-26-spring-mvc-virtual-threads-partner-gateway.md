@@ -16,7 +16,7 @@ date: 2026-10-26
 
 Partner Gateway는 여러 시스템 사이에서 요청을 전달하고 응답을 변환하는 서버입니다.
 
-<!-- truncate -->
+{/* truncate */}
 
 요청을 받으면 인증 정보를 확인하고, 외부 API를 호출하고, 필요한 데이터를 조회한 뒤 응답을 조립합니다. Java 25와 Spring Boot를 사용하며, 웹 요청은 Spring MVC로 처리합니다.
 
