@@ -20,19 +20,21 @@ This document is an **engineering concept**, not a Spring MVC tutorial. Framewor
 
 ## Intent
 
-Define what belongs at the HTTP/API edge and what must stay out of it. The controller is a **thin receiving adapter**: it turns an HTTP request into a call on a **published application entry** (usually a Facade) and turns the result back into an HTTP response. Nothing it does should be interesting to a unit test; the interesting work is one layer down.
+Define what belongs at the HTTP/API edge and what must stay out of it. The controller is a **thin receiving adapter**: it turns an HTTP request into a call on a **published application entry** (`{Domain}Facade` or `{Feature}BffFacade`) and turns the result back into an HTTP response. Nothing it does should be interesting to a unit test; the interesting work is one layer down.
 
-The table-entrance controller in the oneset lives in `entrance.{domain}` with no `controller` subpackage.
+The same rule applies to other edge adapters: **gRPC → `{Domain}Facade`**, **GraphQL Resolver → `{Feature}BffFacade`**. They bind and delegate only.
+
+The table-entrance controller in the oneset lives under `exampleitem/controller/` (host packages may use `entrance.{domain}`).
 It is `@Hidden`.
 It exists mainly so boot and smoke checks are easy.
-Day-to-day product traffic usually enters through business-focused BFF controllers with their own paths and contracts.
+Day-to-day product traffic usually enters through business-focused BFF controllers (or GraphQL) that call `{Feature}BffFacade`.
 
 ## Responsibilities
 
 | Responsibility | How it looks |
 |----------------|--------------|
 | **Bind** the request | `@RequestBody`, `@ModelAttribute`, `@PathVariable`, `@RequestParam` onto `ExampleItemReq` inner classes and `Pageable` |
-| **Delegate** | Exactly one Facade call per endpoint, same method name: `exampleItemFacade.save(create)` |
+| **Delegate** | Exactly one application-entry call per endpoint, same method name: `exampleItemFacade.save(create)` (domain) or one `{Feature}BffFacade` method (BFF) |
 | **Shape the response** | Wrap the Facade result in `CommonResponse<T>` via `CommonResponseUtils.responseSuccess(...)`; void writes return `responseSuccess()` |
 | **Own the route** | Class-level `@RequestMapping("/rest-out-logs")` and `@Hidden`; method paths match the template controller, including `/save-all`, `/find-all`, `/find-by-ids`, `/search-name`, `/find-all-name`, `/delete-by-ids` |
 
@@ -43,8 +45,8 @@ Each endpoint is therefore one line of real code. If it is longer, something has
 | Must not | Where it goes instead |
 |----------|-----------------------|
 | Rules of one data set: existence, its own state transition, persistence consistency | JPA Adapter behind a Port. See [데이터 접근 경계](/docs/knowledge/backend/service/service-design) |
-| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | The published application entry that owns that use case. See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) |
-| A stack of application classes on every request | Not required. A table Facade can delegate to one Port. A BFF composition calls the entry that owns it |
+| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | `{Feature}BffFacade` (or DomainFacade for one domain). See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) |
+| A stack of application classes on every request | Not required. DomainFacade delegates to one Port (+ DisplayNameResolver). BFF composition is `{Feature}BffFacade` |
 | Transactions (`@Transactional`) | Inside one process, the use-case entry decides the local transaction and the JPA Adapter joins it. After a remote split, that local transaction does not remain |
 | Calling a Repository or touching an entity | JPA Adapter only |
 | Converting an enum string back onto the DTO | Application entry (Facade), `of` / `ofNullable` then `getCode()` |
@@ -56,7 +58,7 @@ The controller does not know that enums, `BizErrorException`, or JPA exist.
 
 ## Boundaries, stated as rules
 
-1. **Controller → published application entry only** (usually Facade). Never Controller → Port, Adapter, Service, or Repository. Skipping the application entry is a `high` review finding even when the method would be a one-liner. Do not treat the name Facade alone as proof of publication.
+1. **Controller → published application entry only** (`{Domain}Facade` or `{Feature}BffFacade`). Never Controller → Port, Adapter, Service, or Repository. Skipping the application entry is a `high` review finding even when the method would be a one-liner. Do not treat the name Facade alone as proof of publication.
 2. **Table entrance uses `Req` / `Res` directly.** Do not add a `Web*` DTO family for this set.
 3. **Uniform envelope.** Every response is `CommonResponse<T>`. Clients parse `code` / `message` / `data` the same way for every endpoint, including errors produced by the advice.
 4. **No state.** Controllers are stateless singletons with constructor injection.
@@ -69,7 +71,7 @@ Controllers are **not** the primary unit test target. Behavior lives in the appl
 ## Common drift to watch for
 
 - `if (body.getStatus() == null) ...` inside a controller → business or validation logic leaking up
-- A controller method that calls two Facade methods → a missing use case in the Facade
+- A controller method that calls two Facade methods → a missing use case on DomainFacade or BffFacade
 - `ResponseEntity<...>` on some endpoints and `CommonResponse` on others → envelope inconsistency
 - `@Transactional` on a controller → boundary in the wrong layer
 - A controller `catch (BizErrorException e)` → bypassing the global advice

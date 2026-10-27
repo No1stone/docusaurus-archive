@@ -108,11 +108,11 @@ Port를 `UserQueryPort`와 `UserCommandPort`로 나누는 것도 같은 단계�
 ## 호출 관계
 
 ```text
-Controller 또는 BFF 수신부
+Controller / gRPC / GraphQL
         ↓
-공개 애플리케이션 진입점 (흔히 Facade)
+{Domain}Facade 또는 {Feature}BffFacade
         ↓
-Port
+Port                         ← BffFacade도 DomainPort만 본다
         ↓
 JPA Adapter  ← CQRS 적용점 (Provider로 Repository 분리)
    ├─ Read Provider
@@ -121,8 +121,8 @@ JPA Adapter  ← CQRS 적용점 (Provider로 Repository 분리)
 Repository / 외부 시스템
 ```
 
-애플리케이션은 Repository와 Adapter 구현체를 직접 참조하지 않습니다.
-Adapter는 Facade를 참조하지 않습니다.
+애플리케이션(DomainFacade·BffFacade)은 Repository와 Adapter 구현체를 직접 참조하지 않습니다.
+Adapter는 Facade·BffFacade를 참조하지 않습니다.
 
 ## 현재 구현에 남은 결합
 
@@ -134,7 +134,7 @@ MSA로 가려면 이런 결합을 먼저 줄입니다.
 
 | 대상 | 대체 | 확인 |
 |---|---|---|
-| 애플리케이션 (Facade 등) | Port | 조합, 정책, 분기, 실패 처리 |
+| DomainFacade / BffFacade | Port | 조합, 정책, 분기, 실패 처리, 표시명 |
 | JPA Adapter | Repository | 매핑, 스펙, 없는 자원, 부분 수정 |
 | 시나리오 | 실제 스택 | 유스케이스 결과 |
 
@@ -144,4 +144,4 @@ MSA로 가려면 이런 결합을 먼저 줄입니다.
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
 - [CQRS](/docs/patterns/architecture-patterns/cqrs)
 - [ADR-0010](/docs/decisions/adr-0010)
-- 템플릿: `docs/harness/templates/backend/spring/exampleitem/persistence/`, `adapter/`
+- 템플릿: `docs/harness/templates/backend/spring/exampleitem/persistence/`
