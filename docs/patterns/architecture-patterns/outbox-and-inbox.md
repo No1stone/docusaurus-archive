@@ -150,6 +150,11 @@ Mopl에 준 2xx 수신 응답과 HT 전달 성공은 별개입니다.
 - Inbox만 있고 전달 상태 기계가 없으면, “받아 두고 밖으로 못 보낸” 건을 재처리하기 어렵습니다.
 - partner-gateway처럼 수신 저장과 외부 전달을 나누면, 수신 성공과 전달 성공을 같은 의미로 쓰지 않습니다.
 
+## 우리 선택과의 관계
+
+업무 이벤트 버스에서는 **Outbox만** 쓰고 Inbox로 전 이력을 관리하지 않는다.  
+이유·흐름: [자기 이벤트와 Outbox 중앙 전달](/docs/patterns/architecture-patterns/own-events-outbox).
+
 ## 관련 글
 
 - [CDC](/docs/patterns/architecture-patterns/cdc) — Outbox 릴레이를 CDC로 구현하는 방식도 있음
