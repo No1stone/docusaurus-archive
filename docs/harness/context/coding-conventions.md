@@ -15,18 +15,17 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 자세한 기준은 [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design), [데이터 접근 경계](/docs/knowledge/backend/service/service-design), [ADR-0010](/docs/decisions/adr-0010)을 봅니다.
 
 ```text
-[api]  HTTP·gRPC 도메인 진입 ──→ {Domain}Facade ──→ DomainPort → Adapter → Spec
-[api]  GraphQL·HTTP BFF 진입 ──→ {Feature}BffFacade ──→ DomainAPort, DomainBPort
-                                         ↓                      ↓
-                              DisplayNameResolver      (model에 두는 도메인 계약)
+[api]  HTTP·gRPC 도메인 진입 ──→ 도메인 진입(Facade 등) ──→ Port → Adapter → Spec
+[api]  GraphQL·HTTP BFF 진입 ──→ BFF 진입 ──→ 도메인 진입(들) ──→ Port → …
+                                         (Port 직접 호출 없음)
 ```
 
 | Layer | Owns | Must not |
 |-------|------|----------|
 | 진입 (Controller / GraphQL Resolver / gRPC service) | 바인딩만. `CommonResponse` 등 프로토콜 응답 | Business rules, Repository, open transactions beyond Facade |
 | 도메인 애플리케이션 진입 | 한 도메인 Port CRUD·상태·정책. **기본 이름 Facade**. 책임이 분명할 때만 Manager, Checker, Handler, Processor, Resolver 등. 조회 직후 `DisplayNameResolver`. enum 시 `getCode()`를 String DTO에 되돌림 | Adapter·entity·Spec·Repository. 다른 도메인 Adapter |
-| BFF 애플리케이션 진입 | 여러 DomainPort로 화면·시나리오만 조립. 기본 예 `{Feature}BffFacade` (호스트 기존명 유지 가능) | Adapter·entity·Spec·Repository. 도메인 규칙을 BFF에 재구현. BFF 전용 Port 신설 |
-| Port | 영속·외부 능력 계약. BFF·다른 모듈이 보는 도메인 경계 | HTTP·JPA 타입 |
+| BFF 애플리케이션 진입 | 여러 **도메인 애플리케이션 진입**을 묶어 화면·시나리오만 조립. 기본 예 `{Feature}BffFacade` (호스트 기존명 유지 가능) | DomainPort·Adapter·entity·Spec·Repository. 도메인 규칙을 BFF에 재구현. BFF 전용 Port 신설 |
+| Port | 영속·외부 능력 계약. **도메인 진입만** 호출. BFF는 Port를 보지 않음 | HTTP·JPA 타입 |
 | JPA Adapter | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()`. **CQRS 적용점**: optional Read / Command Provider | HTTP, multi-Port 비즈니스 흐름 |
 | Provider | Adapter 아래 기술 접근 (`RedisProvider`, `VaultProvider`, …) | Port 이름에 제품명 |
 | Repository | `JpaRepository` + empty custom + `JpaSpecificationExecutor` | Derived query, business logic |
@@ -34,8 +33,9 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 Port names describe capability (`CachePort`, `EncryptionPort`, `TokenPort`, `LockPort`, …), not vendor.
 See [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/).
 
-진입은 도메인 애플리케이션 진입점 또는 BFF 애플리케이션 진입점만 호출합니다.
-도메인 진입은 자기 도메인 Port만, BFF 진입은 DomainPort와 `DisplayNameResolver`만 봅니다.
+진입(Controller·GraphQL·gRPC)은 도메인 또는 BFF 애플리케이션 진입점만 호출합니다.
+도메인 진입은 자기 도메인 Port만 봅니다.
+BFF 진입은 **도메인 애플리케이션 진입만** 호출합니다. DomainPort를 직접 주입·호출하지 않습니다.
 Skipping a layer is a Reviewer `high` finding.
 Legacy `*Service` that only wraps JPA → Adapter by role.
 
@@ -50,23 +50,24 @@ Legacy `*Service` that only wraps JPA → Adapter by role.
 - 이름만 보고 Facade를 Manager 등으로 일괄 변경하지 않습니다.
 - 표시명 헬퍼 예는 `DisplayNameResolver`입니다. `UserNameFacade`처럼 표시명 전용 Facade는 두지 않습니다.
 
-BFF 조립(여러 DomainPort)은 이름이 BFF임이 드러나게 두는 것이 좋습니다.
+BFF 조립(여러 도메인 진입)은 이름이 BFF임이 드러나게 두는 것이 좋습니다.
 기본 예는 `{Feature}BffFacade`이고, 호스트에 `*IntegrationFacade` 등이 있으면 호스트를 유지합니다.
 
 | | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스·정책 | 여러 DomainPort 조립(화면·시나리오) |
+| 책임 | 도메인 속성 유스케이스·정책 | 여러 도메인 진입을 묶어 화면·시나리오 조립 |
 | 이름 | 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
 | 모노리포 위치 | **model** | **api** |
 | 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱의 BFF·feature 패키지 |
-| 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
+| 의존 | 자기 Port + `DisplayNameResolver` | **도메인 애플리케이션 진입만** (Port 없음) |
 | 누가 호출 | HTTP 도메인 Controller, **gRPC** | **GraphQL**, HTTP BFF |
 | 원셋 | `ExampleItemFacade` | 코드 없음. 이 표만 |
 
 `DisplayNameResolver`는 도메인 진입과 같이 **model**(또는 모놀리식 도메인 `support/display`)에 둡니다.
+표시명 치환은 도메인 조회 Facade가 담당하고, BFF는 그 결과를 조합합니다.
 
-도메인이 바깥에 내주는 계약의 기본은 **Port**입니다.
-BFF 진입은 DomainPort를 주입받아 쓰고, BFF 전용 Port를 새로 만들지 않습니다.
+도메인 모듈이 영속으로 내주는 계약은 **Port**이고, **다른 앱·BFF가 호출하는 공개 표면은 도메인 애플리케이션 진입**입니다.
+BFF 전용 Port를 만들지 않으며, BFF가 DomainPort를 직접 보지 않습니다.
 api의 도메인 Controller·gRPC는 model의 도메인 진입을 호출합니다.
 
 Port / Adapter / Provider / Client는 계층 역할 어휘입니다.
@@ -81,7 +82,8 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 | HTTP 도메인 API | 도메인 애플리케이션 진입 (model) | ExampleItem 원셋 → Facade |
 | HTTP BFF API | BFF 애플리케이션 진입 | GraphQL과 같은 층 |
 
-나가는 gRPC는 `*ClientPort` / `*ClientAdapter`로 두고, 도메인·BFF 진입은 그 Port만 봅니다.
+다른 프로세스로 나가는 gRPC·HTTP는 도메인 쪽 `*ClientPort` / `*ClientAdapter`로 두고, **도메인 진입**이 그 Port를 봅니다.
+BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 API)만 호출합니다.
 원셋에 GraphQL·gRPC 코드는 두지 않습니다.
 
 ### Repository layout (모놀리식 vs 모노리포)
@@ -105,7 +107,7 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 
 - 클래스 이름은 `DisplayNameResolver`로 통일합니다. `UserNameFacade` / `FarmNameFacade`처럼 도메인 접두를 붙이지 않습니다.
 - 위치는 도메인 진입과 같이 model(모놀리식은 도메인 `support/display`)입니다.
-- 도메인 진입·BffFacade가 조회 직후 `applyCreatedByDisplayNames` / `applyAuditorDisplayNames`를 호출합니다.
+- 도메인 진입이 조회 직후 `applyCreatedByDisplayNames` / `applyAuditorDisplayNames`를 호출합니다. BFF는 그 결과를 조합합니다.
 - Name 맵은 Port Name 조회(`findAllName` + `Filter.ids`, 또는 동등한 ids Name 조회)로 채웁니다. Item `findByIds`로 대체하지 않습니다.
 
 ## Naming

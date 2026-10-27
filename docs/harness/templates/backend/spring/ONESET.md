@@ -19,7 +19,7 @@
 
 ```text
 [api]  도메인 HTTP·gRPC 진입  → 도메인 진입(model, 기본 Facade) → Port → Adapter → Spec
-[api]  GraphQL·HTTP BFF 진입 → BFF 진입(api) → 여러 DomainPort
+[api]  GraphQL·HTTP BFF 진입 → BFF 진입(api) → 도메인 진입(들) → …
 ```
 
 애플리케이션 이름은 **기본 Facade**입니다.
@@ -29,15 +29,15 @@ BFF 조립은 이름이 드러나게 두는 것이 좋고, 기본 예는 `{Featu
 
 | | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스 | 여러 DomainPort 조립 |
+| 책임 | 도메인 속성 유스케이스 | 여러 도메인 진입을 묶어 화면·시나리오 조립 |
 | 이름 | 기본 Facade | 기본 예 `BffFacade` |
 | 모노리포 | **model** | **api** |
 | 모놀리식 | 도메인 `facade/` 등 | 앱 BFF·feature 패키지 |
 | 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
-| 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
+| 의존 | 자기 Port + `DisplayNameResolver` | **도메인 진입만** (Port 없음) |
 
-바깥에 내주는 도메인 계약의 기본은 **Port**입니다.
-BffFacade는 DomainPort만 주입받고, BFF 전용 Port는 만들지 않습니다.
+영속 계약은 **Port**, BFF·다른 앱이 부르는 공개 표면은 **도메인 진입**입니다.
+BFF는 DomainPort를 직접 호출하지 않고, BFF 전용 Port도 만들지 않습니다.
 
 ```text
 저장소 유형
@@ -75,7 +75,7 @@ exampleitem/
 
 - **Inbound Port 없음** — 진입 → `{Domain}Facade` 또는 `{Feature}BffFacade`
 - **Outbound만 Port·Adapter** — `persistence/` (영속), 통신은 `client/` (`*ClientPort` / `*ClientAdapter`)
-- **표시명** — DomainFacade·BffFacade가 `DisplayNameResolver`로 Name 조회 결과를 붙임
+- **표시명** — 도메인 진입이 `DisplayNameResolver`로 Name 조회 결과를 붙임. BFF는 그 결과를 조합
 
 ## 그대로 복사 / 프로젝트별로 채움
 

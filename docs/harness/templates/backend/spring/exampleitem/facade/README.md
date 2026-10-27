@@ -6,7 +6,7 @@
 > Adapter, Repository, Spec, 엔티티를 직접 다루지 않습니다.
 
 화면·시나리오 조립은 api의 `{Feature}BffFacade`입니다 (GraphQL·HTTP BFF).
-BffFacade는 DomainPort만 보고, BFF 전용 Port는 만들지 않습니다.
+BffFacade는 **도메인 애플리케이션 진입만** 호출하고, DomainPort는 보지 않습니다.
 이름·위치 표는 [coding-conventions](/docs/harness/context/coding-conventions)와 [ONESET](../../ONESET)입니다.
 
 클래스 기본은 `@Transactional(readOnly = true, transactionManager = "transactionManager")` 이고, 쓰기만 `@Transactional` 입니다.
