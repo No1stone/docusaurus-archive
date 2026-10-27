@@ -1,15 +1,17 @@
 # persistence (ExampleItem)
 
 > **개요:** 도메인 영속 outbound입니다. `Port` + `Adapter` + `entity` / `repository` / `spec` 을 둡니다.
-> Facade·DTO는 밖에 둡니다. Inbound Port는 없습니다.
+> Inbound Port는 없습니다.
 
 실무 패키지 예: `application.{domain}.persistence`.
+모노리포에서는 persistence·dto·`{Domain}Facade`·`DisplayNameResolver`가 함께 **model**에 갑니다.
+api에는 진입과 `{Feature}BffFacade`만 둡니다.
 
 ```text
 exampleitem/
-  facade/
-  dto/
-  persistence/
+  facade/          # DomainFacade — 모노리포: model
+  dto/             # 모노리포: model
+  persistence/     # 모노리포: model
     ExampleItemPort.java
     ExampleItemAdapter.java
     entity/

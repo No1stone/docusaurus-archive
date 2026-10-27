@@ -12,25 +12,67 @@
 공통 원셋 E2E는 내 서버 Controller API입니다.
 외부 스펙 더미와 RestClient 연동 검증은 원셋에 넣지 않습니다.
 
-## 도메인 폴더 구조
+## 저장소 유형과 폴더
 
-실무(`application.{domain}`)와 같습니다. **ExampleItem** 이 예제 도메인 id 입니다.
+계층은 같습니다.
+갈라지는 것은 **Facade 종류**와 **모노리포에서 모듈 위치**입니다.
+
+```text
+[api]  도메인 HTTP·gRPC 진입  → {Domain}Facade (model) → Port → Adapter → Spec
+[api]  GraphQL·HTTP BFF 진입 → {Feature}BffFacade (api) → 여러 DomainPort
+```
+
+이름은 `Facade` / `BffFacade`만 씁니다.
+접미를 더 늘리지 않습니다.
+
+| | `{Domain}Facade` | `{Feature}BffFacade` |
+|--|------------------|----------------------|
+| 책임 | 도메인 속성 유스케이스 | 여러 DomainPort 조립 |
+| 모노리포 | **model** | **api** |
+| 모놀리식 | 도메인 `facade/` | 앱 BFF·feature 패키지 |
+| 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
+| 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
+
+바깥에 내주는 도메인 계약의 기본은 **Port**입니다.
+BffFacade는 DomainPort만 주입받고, BFF 전용 Port는 만들지 않습니다.
+
+```text
+저장소 유형
+├─ 모놀리식  → 아래 exampleitem/ 한 트리 (원셋 확인용 Controller 포함)
+│              + @BizEnum 생성물은 소스에 두지 않고 clean 후 재생성
+└─ 모노리포  → api: 진입(Controller·GraphQL·gRPC) + {Feature}BffFacade
+               model(lib-model): {Domain}Facade, DisplayNameResolver,
+                                 dto / Port / Adapter / entity / repository / spec
+               (모델은 패키지 도메인만, 모듈로 쪼개지 않음)
+               REST 연동은 별도 lib(이름 예: lib-rest) 가능
+```
+
+모놀리식은 이 원셋 트리를 그대로 복사합니다.
+모노리포는 `facade/`·`support/display/`·`dto/`·`persistence/`를 model로, `controller/`는 api 진입으로 옮깁니다.
+`BffFacade`·GraphQL·gRPC 코드 골격은 원셋에 없습니다.
+규칙은 [coding-conventions](/docs/harness/context/coding-conventions)와 위 표를 따릅니다.
+
+## 도메인 폴더 구조 (모놀리식·원셋)
+
+실무 도메인 패키지와 같습니다. **ExampleItem** 이 예제 도메인 id 입니다.
 
 ```text
 exampleitem/
-  controller/      # 원셋 확인용 (실무 entrance)
-  facade/
-  dto/
-  persistence/
+  controller/      # 원셋 확인용 진입 (모노리포: api)
+  facade/          # {Domain}Facade (모노리포: model)
+  dto/             # 모노리포: model
+  persistence/     # 모노리포: model
     ExampleItemPort.java
     ExampleItemAdapter.java
     entity/
     repository/
     spec/
+  support/display/ # DisplayNameResolver (모노리포: model)
 ```
 
-- **Inbound Port 없음** — `Controller → Facade`
+- **Inbound Port 없음** — 진입 → `{Domain}Facade` 또는 `{Feature}BffFacade`
 - **Outbound만 Port·Adapter** — `persistence/` (영속), 통신은 `client/` (`*ClientPort` / `*ClientAdapter`)
+- **표시명** — DomainFacade·BffFacade가 `DisplayNameResolver`로 Name 조회 결과를 붙임
 
 ## 그대로 복사 / 프로젝트별로 채움
 
@@ -63,6 +105,7 @@ exampleitem/
 | `exampleitem/persistence/entity/ExampleItem.java` | `{domain}.persistence.entity` |
 | `exampleitem/persistence/repository/ExampleItemRepository.java` | `{domain}.persistence.repository` |
 | `exampleitem/persistence/spec/ExampleItemSpecs.java` | `{domain}.persistence.spec` |
+| `exampleitem/support/display/DisplayNameResolver.java` | 앱 `support.display` (호스트 Port로 Name 맵 교체) |
 
 ### 테스트 (필수)
 

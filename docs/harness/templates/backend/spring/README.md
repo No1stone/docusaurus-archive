@@ -21,12 +21,17 @@
 | 이넘 적용 변형 | [enum/](./enum/) |
 
 ```text
-Controller → Facade → ExampleItemPort → ExampleItemAdapter → Repository
-                         persistence/
+Controller → ExampleItemFacade → ExampleItemPort → ExampleItemAdapter → Repository
+                ↓                     persistence/
+         DisplayNameResolver (조회 후 Name 표시명)
 tests: FacadeTest, AdapterTest, ScenarioTest
 ```
 
 Inbound Port는 두지 않습니다. Outbound(영속·HTTP client)만 Port·Adapter입니다.
+원셋 `{Domain}Facade`는 도메인 유스케이스이고, 모노리포에서는 **model**에 둡니다.
+`{Feature}BffFacade`는 api(GraphQL·HTTP BFF)에 둡니다. gRPC는 DomainFacade에 연결합니다.
+모놀리식은 한 트리, 모노리포는 api(진입·BffFacade) / model(DomainFacade·dto·persistence)입니다.
+안내는 [ONESET.md](./ONESET)입니다.
 
 ## 이넘 적용 한 세트
 
