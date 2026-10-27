@@ -62,7 +62,12 @@ dependencies {
 2. 모노리포면 모듈 이름 예: `lib-distributed-lock`. 락이 필요한 앱만 의존합니다.
 3. 컴포넌트 스캔에 `….lib.lock`(또는 호스트 패키지)을 넣습니다.
 
-적용 짧은 예(JWT sync): [lock/](../lock/). ExampleItem 락 원셋 실구현은 없습니다.
+## 다음에 (적용)
+
+이 모듈만으로는 유스케이스가 없다. 호스트에 올린 뒤 **구현체**에 `LockPort`를 주입한다.
+
+→ [lock/](../lock/) — 라이브러리 + JWT sync 구현체를 붙이는 복사 순서·체크리스트·예제 클래스.
+ExampleItem 락 원셋 실구현은 없다.
 
 ## 파일
 
