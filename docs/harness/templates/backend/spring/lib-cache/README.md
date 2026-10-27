@@ -1,4 +1,5 @@
 ---
+sidebar_position: 1
 format: md
 id: t-spring-lib-cache
 title: "lib-cache (CachePort 공유 모듈)"
@@ -33,7 +34,7 @@ cache/         ← 도메인마다 (facade + TTL)
 | `spring/CachePortCacheConfiguration` | `@EnableCaching`, default TTL, `@Primary` CacheManager |
 | `spring/CachePortTtlCustomizer` | 도메인이 이름별 TTL을 추가하는 SPI |
 
-Lock/Redisson은 여기에 넣지 않습니다.
+분산 락(Redisson)은 [lib-distributed-lock](../lib-distributed-lock/)입니다. 이 모듈에 넣지 않습니다.
 
 ## 의존 (Gradle 예)
 

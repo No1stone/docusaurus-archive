@@ -18,7 +18,7 @@ unlisted: true
 버전을 섞어 하나의 실행 예제처럼 쓰지 않았습니다.
 Outbox·Inbox 설명의 적용 범위는 partner-gateway, Gateway 권한 라우팅의 코드 확인은 boot-base입니다.
 `boot-base/event-saga`는 미구현이므로 Saga 적용 근거로 사용하지 않았습니다.
-Redisson 분산 락 코드는 두 저장소에서 확인되지 않아 설명용 예제로만 적었습니다.
+분산 락은 boot-base `lib-distributed-lock` + 하네스 [lib-distributed-lock](/docs/harness/templates/backend/spring/lib-distributed-lock/)·[lock 예](/docs/harness/templates/backend/spring/lock/)를 본다. (이전: 저장소에 없어 설명용만.)
 
 ## 확인한 코드 경로
 

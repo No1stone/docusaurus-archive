@@ -113,36 +113,43 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 
 ### Domain read cache (`@Cacheable` → CachePort)
 
-- 적용할 때만 [cache 템플릿](/docs/harness/templates/backend/spring/cache/)을 봅니다. 기본 ExampleItem 원셋에는 캐시 코드를 넣지 않습니다. (이넘 변형과 같은 방식)
-- 호스트에 CachePort 스택이 없으면 먼저 [lib-cache](/docs/harness/templates/backend/spring/lib-cache/)를 둡니다. (도메인·ExampleItem 없음) 도메인 facade·TTL은 [cache](/docs/harness/templates/backend/spring/cache/) 변형입니다.
-- 흐름은 `@Cacheable` / `@CacheEvict` → `CachePortCacheManager` → `CachePort` → Redis 입니다. aside를 Facade에 손으로 짜지 않습니다.
-- 값 직렬화는 `CacheValueCodec` 경계입니다. 기본은 JSON입니다. Java `Serializable` 직렬화는 쓰지 않습니다.
-- 공유 캐시 모듈(lib-cache 등)은 **default TTL만** 둡니다. 캐시 이름 상수와 추가 TTL(`CachePortTtlCustomizer`)은 **도메인(model)** 에 둡니다. BFF에는 두지 않습니다.
-- 앱에 남아 있는 예전 `RedisCacheManager` 빈은 제거합니다. `@Cacheable`은 CachePort 경로만 타게 합니다.
-- Gateway처럼 JWT 키로 Redis를 KV 조회만 하는 경우는 `@Cacheable` 변형이 아닙니다. `CachePort` 직접 호출만 씁니다.
-
-#### Redis 키
-
-- `@Cacheable`: `{CACHE_NAME}::{id}` (예: `member::42`). `CACHE_NAME`은 도메인 단위 짧은 이름(`member`, `exampleItem`).
-- 수동 KV(CachePort 직접): `{영역}:{용도}:…` 콜론 세그먼트 (예: `access:…`, `auth-sig:key:…`). `@Cacheable`과 겹치지 않게 `::`는 쓰지 않습니다.
-- env/앱 전역 접두는 같은 Redis를 여러 환경이 쓸 때만 맨 앞에 둡니다. 기본은 생략합니다.
+- 적용할 때만 [cache](/docs/harness/templates/backend/spring/cache/)를 봅니다. 기본 원셋에는 캐시 코드를 넣지 않습니다.
+- 호스트에 스택이 없으면 먼저 [lib-cache](/docs/harness/templates/backend/spring/lib-cache/) (도메인 없음). Facade·TTL은 cache 변형.
+- 흐름: `@Cacheable` / `@CacheEvict` → `CachePortCacheManager` → `CachePort` → Redis. aside 수동 금지.
+- 값 직렬화는 `CacheValueCodec`(JSON). `Serializable` 금지.
+- lib-cache는 **default TTL만**. 이름·추가 TTL은 model. BFF에는 두지 않음.
+- 앱의 `RedisCacheManager`는 제거. Gateway JWT KV는 `@Cacheable`이 아니라 `CachePort` 직접.
 
 #### 무효화
 
-- 단건 변경·삭제: `@CacheEvict(key = "#id")` (또는 `#result.id`).
-- 일괄·범위가 넓거나 키를 특정하기 어려우면 `allEntries = true` (구현상 `{CACHE_NAME}::` prefix 삭제).
-- Name IN·목록 검색 결과는 캐시하지 않습니다. 단건 `findById` 캐시와 섞지 않습니다.
+- 단건: `@CacheEvict(key = "#id")` (또는 `#result.id`).
+- 일괄·키 불명: `allEntries = true` (`{CACHE_NAME}::` prefix 삭제).
+- Name IN·목록 검색은 캐시하지 않음.
 
 #### 캐시 값 (약하게)
 
-- JSON으로 넣고 꺼내기 쉬운 응답 DTO(`Res.Item` 등)를 선호합니다.
-- JPA Entity·프록시·요청 객체를 캐시 값으로 두지 않는 것을 권장합니다.
+- 응답 DTO(`Res.Item` 등) 권장. Entity·프록시·요청 객체는 비권장.
 
-#### 호스트 Redis 체크리스트
+#### 호스트 Redis 체크리스트 (캐시)
 
-- `StringRedisTemplate` + `CachePort` 어댑터, `@Primary` `CachePortCacheManager`가 있다.
-- `RedisTemplate` 값을 쓰면 JSON(`RedisSerializer.json()` 등). JDK 직렬화는 쓰지 않는다.
-- 앱에 `RedisCacheManager` / 중복 `@EnableCaching` CacheManager를 두지 않는다.
+- `StringRedisTemplate` + `CachePort`, `@Primary` `CachePortCacheManager`.
+- `RedisTemplate` 값이면 JSON. JDK 직렬화 금지.
+- 앱에 `RedisCacheManager` / 중복 CacheManager 없음.
+
+### Distributed lock (`LockPort` / Redisson)
+
+- 공유 모듈: [lib-distributed-lock](/docs/harness/templates/backend/spring/lib-distributed-lock/). 캐시(lib-cache/Lettuce)와 **분리**.
+- 기본 **watchdog**. 고정 lease는 오버로드. `wait` 내 미획득 → 콜백 미실행.
+- 반환: `LockResult<T>(acquired, value)` (null hit과 missed 구분).
+- 수동 lock/unlock 금지. DB는 콜백 안 **커밋까지** 후 반환.
+- 짧은 예: [lock/](/docs/harness/templates/backend/spring/lock/) (JWT 키 sync). ExampleItem 락 원셋 실구현 없음.
+
+### Redis 키 (캐시·락·KV)
+
+- `@Cacheable`: `{CACHE_NAME}::{id}` (예: `member::42`).
+- 수동 KV: `{영역}:{용도}:…` (예: `access:…`). `::` 쓰지 않음.
+- 분산 락: `lock:{영역}:{리소스}` 또는 `…:{id}` — `LockKeys.of`만 (예: `lock:auth-sig:sync`).
+- env/앱 전역 접두는 공유 Redis일 때만. 기본 생략.
 
 ## Naming
 

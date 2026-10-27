@@ -130,10 +130,12 @@ exampleitem/
 
 | 원본 | 조건 |
 |------|------|
-| `enum/` 적용 예 | 컬럼에 `@BizEnum`을 쓸 때 (같은 폴더 구조) |
-| `lib-cache/` | `@Cacheable` → CachePort용 공유 모듈이 호스트에 없을 때 1회 (도메인 없음) |
-| `cache/` facade·config | 도메인 조회 캐시를 적용할 때 (`lib-cache` 전제) |
 | `support/` | 프로젝트에 동일 타입이 없을 때 |
+| `lib-cache/` | CachePort 스택이 호스트에 없을 때 1회 (Lettuce, 도메인 없음) |
+| `lib-distributed-lock/` | LockPort 스택이 호스트에 없을 때 1회 (Redisson, 도메인 없음) |
+| `enum/` | 컬럼에 `@BizEnum`을 쓸 때 |
+| `cache/` facade·config | 도메인 조회 `@Cacheable` (`lib-cache` 전제) |
+| `lock/` | 분산 락 짧은 예(JWT sync). ExampleItem 락 원셋 실구현 없음 |
 
 ## 실행 순서
 

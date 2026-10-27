@@ -16,14 +16,14 @@ Lives under `docs/harness/templates/`.
 
 ## Start here
 
-- [Spring ExampleItem 원셋](./backend/spring/) — 구현·testing·e2e. 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET). enum 적용 세트는 조건부.
+- [Spring ExampleItem 원셋](./backend/spring/) — 구현·testing·e2e. 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET).
 
 ```text
-controller → facade → service → repository
-                         ↓
-                    dto, spec, entity
-enum/ applies @BizEnum to one column of that set
-(+ support)
+exampleitem/     도메인 원셋
+support/         공통 타입
+lib-cache/       공유 캐시 (Lettuce)     → cache/ 변형
+lib-distributed-lock/  공유 분산락 (Redisson) → lock/ 짧은 예 (JWT)
+enum/            @BizEnum 변형
 ```
 
 Each layer folder:

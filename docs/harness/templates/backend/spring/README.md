@@ -3,24 +3,28 @@
 > **개요:** 테이블 한 세트의 구현, 단위·시나리오 테스트, API E2E입니다.
 > 복사·치환·실행 순서는 [`ONESET.md`](./ONESET)입니다.
 
-## 테이블 한 세트 (구현)
+## 맵
 
-예제 도메인 id는 **ExampleItem** 입니다.
-폴더는 실무 애플리케이션 도메인과 같습니다.
+| 구분 | Path | 설명 |
+|------|------|------|
+| 도메인 원셋 | [exampleitem/](./exampleitem/) | Controller·Facade·dto·persistence·display |
+| Support | [support/](./support/) | 공통 타입 (`BizEnum`, Entity 감사 등) |
+| Testing / E2E | [testing/](./testing/), [e2e/](./e2e/) | 단위·시나리오·API 컬렉션 |
+| **공유 라이브러리** | [lib-cache/](./lib-cache/) | CachePort(Lettuce). 도메인 없음 |
+| | [lib-distributed-lock/](./lib-distributed-lock/) | LockPort(Redisson). 도메인 없음 |
+| **적용 변형** | [enum/](./enum/) | `@BizEnum` (ExampleItem 전체 예) |
+| | [cache/](./cache/) | `@Cacheable` → CachePort (Facade·TTL) |
+| | [lock/](./lock/) | 분산 락 **짧은 예**(JWT sync). ExampleItem 실구현 없음 |
 
-| Layer | Path |
-|-------|------|
-| 도메인 원셋 | [exampleitem/](./exampleitem/) |
-| · Controller | [exampleitem/controller/](./exampleitem/controller/) |
-| · Facade | [exampleitem/facade/](./exampleitem/facade/) |
-| · DTO | [exampleitem/dto/](./exampleitem/dto/) |
-| · persistence (Port·Adapter·entity·repo·spec) | [exampleitem/persistence/](./exampleitem/persistence/) |
-| Support | [support/](./support/) |
-| 공유 캐시 모듈 | [lib-cache/](./lib-cache/) |
-| Testing | [testing/](./testing/) |
-| API E2E | [e2e/](./e2e/) |
-| 이넘 적용 변형 | [enum/](./enum/) |
-| 캐시 적용 변형 | [cache/](./cache/) |
+```text
+공유 라이브러리 (호스트 1회)     도메인/기능 변형 (필요할 때)
+─────────────────────────     ──────────────────────────
+lib-cache          ───예──→   cache/   (Member·ExampleItem)
+lib-distributed-lock ─예──→   lock/    (JWT sync 발췌만)
+support + BizEnumProcessor →  enum/
+```
+
+## 도메인 원셋
 
 ```text
 Controller → ExampleItemFacade → ExampleItemPort → ExampleItemAdapter → Repository
@@ -30,18 +34,26 @@ tests: FacadeTest, AdapterTest, ScenarioTest
 ```
 
 Inbound Port는 두지 않습니다. Outbound(영속·HTTP client)만 Port·Adapter입니다.
-원셋 `{Domain}Facade`는 도메인 유스케이스이고, 모노리포에서는 **model**에 둡니다.
-`{Feature}BffFacade`는 api(GraphQL·HTTP BFF)에 둡니다. gRPC는 DomainFacade에 연결합니다.
-모놀리식은 한 트리, 모노리포는 api(진입·BffFacade) / model(DomainFacade·dto·persistence)입니다.
+모노리포: model에 DomainFacade·dto·persistence, api에 진입·BffFacade.
 안내는 [ONESET.md](./ONESET)입니다.
 
-## 이넘 적용 한 세트
+## 공유 라이브러리
 
-[enum/](./enum/) — 같은 폴더 구조에 `@BizEnum` 적용 예입니다.
+도메인·ExampleItem과 무관합니다. 호스트에 동일 스택이 없으면 **한 번** 둡니다.
 
-## 캐시 적용 한 세트
+- [lib-cache/](./lib-cache/) — `@Cacheable` / CachePort / JSON. Redis는 **Lettuce**.
+- [lib-distributed-lock/](./lib-distributed-lock/) — `LockPort` / `LockResult` / watchdog. Redis 락은 **Redisson**.
 
-공유 모듈 [lib-cache/](./lib-cache/) — 도메인 없음. 호스트에 CachePort 스택이 없을 때 1회.
+캐시와 락 모듈을 섞지 않습니다.
 
-도메인 변형 [cache/](./cache/) — 이넘처럼 **필요할 때** 얹습니다. 기본 원셋에는 캐시 코드를 넣지 않습니다.
-TTL·캐시 이름은 도메인(model), BFF에는 두지 않습니다.
+## 적용 변형
+
+기본 원셋에는 이넘·캐시·락 코드를 넣지 않습니다. 필요할 때만 얹습니다.
+
+| 변형 | 전제 | 내용 |
+|------|------|------|
+| [enum/](./enum/) | support + 프로세서 | 컬럼 `@BizEnum` 전체 예 |
+| [cache/](./cache/) | [lib-cache/](./lib-cache/) | Facade `@Cacheable`·TTL. Name IN은 미캐시 |
+| [lock/](./lock/) | [lib-distributed-lock/](./lib-distributed-lock/) | JWT 키 sync 짧은 예만. ExampleItem 락 원셋 **없음** |
+
+키·무효화·호스트 체크리스트는 [coding-conventions](/docs/harness/context/coding-conventions)를 봅니다.

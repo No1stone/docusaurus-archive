@@ -1,4 +1,5 @@
 ---
+sidebar_position: 1
 format: md
 id: t-spring-cache
 title: "캐시 적용 ExampleItem 변형"
