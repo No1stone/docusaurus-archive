@@ -21,10 +21,10 @@ slug: "/decisions/adr-0010"
 계층은 클래스 접미사가 아니라 패키지, 책임, 의존 관계로 구분한다.
 
 - 애플리케이션 영역: 유스케이스, 정책, 조합. 공개 진입점의 **기본 이름은 Facade**이며 Manager, Checker, Handler, Processor, Resolver 등은 **역할이 분명할 때만** 쓴다. 예시는 닫힌 허용 목록이 아니다.
-- BFF 조립(여러 DomainPort)은 도메인 진입과 위치를 가르고, 이름이 BFF임이 드러나게 둘 수 있다(기본 예 `{Feature}BffFacade`. 호스트 기존명 유지 가능).
+- BFF 조립은 도메인 진입과 위치를 가르고, **도메인 애플리케이션 진입만** 호출한다. DomainPort를 직접 보지 않는다. 이름이 BFF임이 드러나게 둘 수 있다(기본 예 `{Feature}BffFacade`. 호스트 기존명 유지 가능).
 - 모노리포에서 도메인 진입과 `DisplayNameResolver`는 model, BFF 진입과 Controller·GraphQL·gRPC는 api에 둔다.
-- 진입 매핑: gRPC·HTTP 도메인 → 도메인 애플리케이션 진입, GraphQL·HTTP BFF → BFF 애플리케이션 진입.
-- Port: 저장과 외부 기능의 **능력** 계약. 제품명(Redis, Vault, Keycloak, Kafka)을 Port에 붙이지 않는다. 예: `CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`, `LockPort`. BFF는 DomainPort만 보고 BFF 전용 Port를 만들지 않는다.
+- 진입 매핑: gRPC·HTTP 도메인 → 도메인 애플리케이션 진입, GraphQL·HTTP BFF → BFF 애플리케이션 진입 → 도메인 진입.
+- Port: 저장과 외부 기능의 **능력** 계약. 제품명(Redis, Vault, Keycloak, Kafka)을 Port에 붙이지 않는다. 예: `CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`, `LockPort`. Port는 도메인 진입만 호출한다. BFF 전용 Port를 만들지 않는다.
 - Adapter: Port 구현. Provider를 고르고 기술 응답을 계약으로 변환한다.
 - Provider: Redis, Vault, KMS, Keycloak, 자체 JWT, Kafka, RabbitMQ, Redisson, STOMP, WebSocket, JPA Repository 등 제품·기술 접근. Provider 교체만으로 Port와 애플리케이션을 유지한다.
 - 기존 `*Service`(JPA)는 Adapter 역할로 이해하고, 신규 템플릿은 Port와 JPA Adapter로 보여 준다.
@@ -40,5 +40,5 @@ slug: "/decisions/adr-0010"
 - [데이터 접근 경계](/docs/knowledge/backend/service/service-design)
 - [coding-conventions](/docs/harness/context/coding-conventions)
 - Spring 원셋: `Controller → 도메인 진입(예: Facade) → Port → Adapter → Repository` (모노리포에서 도메인 진입은 model)
-- BFF: `GraphQL/HTTP BFF → BFF 애플리케이션 진입 → DomainPort…`
+- BFF: `GraphQL/HTTP BFF → BFF 애플리케이션 진입 → 도메인 애플리케이션 진입…`
 - 확장: `Port → Adapter → Provider` (캐시, 암호화, Token/OAuth, Lock, Messaging 포함)

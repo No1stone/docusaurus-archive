@@ -110,9 +110,11 @@ Port를 `UserQueryPort`와 `UserCommandPort`로 나누는 것도 같은 단계�
 ```text
 Controller / gRPC / GraphQL
         ↓
-{Domain}Facade 또는 {Feature}BffFacade
+도메인 진입 또는 BFF 진입
+        ↓                    ← BFF는 여기서 도메인 진입만 호출 (Port 없음)
+도메인 진입
         ↓
-Port                         ← BffFacade도 DomainPort만 본다
+Port
         ↓
 JPA Adapter  ← CQRS 적용점 (Provider로 Repository 분리)
    ├─ Read Provider
@@ -121,8 +123,9 @@ JPA Adapter  ← CQRS 적용점 (Provider로 Repository 분리)
 Repository / 외부 시스템
 ```
 
-애플리케이션(DomainFacade·BffFacade)은 Repository와 Adapter 구현체를 직접 참조하지 않습니다.
-Adapter는 Facade·BffFacade를 참조하지 않습니다.
+도메인 진입은 Repository와 Adapter 구현체를 직접 참조하지 않습니다.
+BFF 진입은 DomainPort를 직접 참조하지 않습니다.
+Adapter는 애플리케이션 진입을 참조하지 않습니다.
 
 ## 현재 구현에 남은 결합
 
@@ -134,7 +137,8 @@ MSA로 가려면 이런 결합을 먼저 줄입니다.
 
 | 대상 | 대체 | 확인 |
 |---|---|---|
-| DomainFacade / BffFacade | Port | 조합, 정책, 분기, 실패 처리, 표시명 |
+| 도메인 진입 | Port | 조합, 정책, 분기, 실패 처리, 표시명 |
+| BFF 진입 | 도메인 진입 | 화면·시나리오 조립, DTO 교환 |
 | JPA Adapter | Repository | 매핑, 스펙, 없는 자원, 부분 수정 |
 | 시나리오 | 실제 스택 | 유스케이스 결과 |
 

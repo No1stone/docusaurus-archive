@@ -40,19 +40,20 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 ## 호출 경계
 
 ```text
-[api] HTTP·gRPC 도메인 진입 ──→ 도메인 애플리케이션 진입 ──→ DomainPort → Adapter
-[api] GraphQL·HTTP BFF 진입 ──→ BFF 애플리케이션 진입 ──→ DomainAPort, DomainBPort
+[api] HTTP·gRPC 도메인 진입 ──→ 도메인 애플리케이션 진입 ──→ Port → Adapter
+[api] GraphQL·HTTP BFF 진입 ──→ BFF 애플리케이션 진입 ──→ 도메인 진입(들) ──→ Port → …
 ```
 
 | 진입 | 호출 |
 |------|------|
 | gRPC, HTTP 도메인 API | 도메인 애플리케이션 진입 (기본 Facade) |
-| GraphQL, HTTP BFF | BFF 애플리케이션 진입 (기본 예 `BffFacade`) |
+| GraphQL, HTTP BFF | BFF 애플리케이션 진입 → **도메인 진입만** (기본 예 `BffFacade`) |
 
 - 외부 진입부와 다른 도메인은 지정된 공개 애플리케이션 진입점만 참조합니다.
 - 공개 여부를 Facade라는 이름만으로 판단하지 않습니다.
-- 도메인 진입은 자기 도메인 Port만, BFF 진입은 DomainPort만 봅니다. Adapter·entity·Spec·Repository는 보지 않습니다.
-- BFF 전용 Port를 새로 만들지 않습니다. 도메인이 바깥에 주는 계약의 기본은 Port입니다.
+- 도메인 진입은 자기 도메인 Port만 봅니다.
+- BFF 진입은 도메인 애플리케이션 진입만 호출합니다. DomainPort·Adapter·entity·Spec·Repository를 직접 보지 않습니다.
+- BFF 전용 Port를 만들지 않습니다. 영속 계약은 Port이고, BFF·다른 앱이 부르는 공개 표면은 도메인 진입입니다.
 - Adapter는 기술 접근을 담당하며 여러 외부 기능을 묶는 업무 흐름을 소유하지 않습니다.
 - 도메인 간 공개 호출은 가능하지만 순환 의존은 만들지 않습니다.
 
@@ -92,12 +93,12 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 
 | | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스·정책 | 여러 DomainPort 조립 |
+| 책임 | 도메인 속성 유스케이스·정책 | 여러 도메인 진입을 묶어 화면·시나리오 조립 |
 | 이름 | 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
 | 모노리포 위치 | **model** | **api** |
 | 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱 BFF·feature 패키지 |
 | 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
-| 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
+| 의존 | 자기 Port + `DisplayNameResolver` | **도메인 애플리케이션 진입만** (Port 없음) |
 
 원셋(Controller와 Facade와 Port와 Adapter)은 기동, 동작 확인, 패턴 학습용 기본 골격입니다.
 실무에서는 테이블 CRUD보다 업무 BFF 진입이 주로 쓰입니다.
@@ -107,9 +108,9 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 받는 인터페이스(와이어 DTO)와 Port DTO가 다르면 **유즈케이스 진입**(도메인 또는 BFF)에서 교환합니다.
 Adapter는 와이어 DTO를 몰라도 됩니다.
 
-예를 들어 BFF가 화면 필드명의 Req를 받고, 도메인 Port는 도메인 Command만 받는다고 가정합니다.
-Controller는 Req만 넘기고, BFF 진입이 Port 계약으로 바꾼 뒤 호출합니다.
-응답도 BFF 진입이 Port 결과를 BFF 응답 DTO로 맞춥니다.
+예를 들어 BFF가 화면 필드명의 Req를 받고, 도메인 Facade는 도메인 유스케이스 DTO만 받는다고 가정합니다.
+Controller는 Req만 넘기고, BFF 진입이 도메인 진입 호출에 맞게 바꾼 뒤 조합합니다.
+응답도 BFF 진입이 도메인 진입 결과를 BFF 응답 DTO로 맞춥니다.
 
 배치·원셋 복사는 [coding-conventions](/docs/harness/context/coding-conventions)와 [ONESET](/docs/harness/templates/backend/spring/ONESET)입니다.
 
@@ -120,7 +121,7 @@ Controller는 Req만 넘기고, BFF 진입이 Port 계약으로 바꾼 뒤 호�
 | 책임 | 하는 일 | 호출 |
 |---|---|---|
 | 테이블 기능 제공 | 한 데이터의 입구를 연다 | 도메인 진입 → 해당 Port |
-| 업무 조합·화면 / BFF | 여러 Port를 시나리오 순서로 묶고 DTO를 교환한다 | BFF 진입 → DomainPort들 |
+| 업무 조합·화면 / BFF | 여러 도메인 진입을 시나리오 순서로 묶고 DTO를 교환한다 | BFF 진입 → 도메인 진입들 |
 | 도메인 공개 경계 | 그 도메인 밖이 호출할 기능을 공개한다 | Port(기본) 또는 도메인 진입 |
 
 없는 계층을 사이에 넣지 않습니다.
@@ -189,7 +190,7 @@ REST / gRPC 진입
          └─ DisplayNameResolver → 고객 Port Name 조회 → 표시명 치환
 ```
 
-화면에서 여러 도메인을 묶을 때는 GraphQL·HTTP BFF → BffFacade가 DomainPort들을 조합합니다.
+화면에서 여러 도메인을 묶을 때는 GraphQL·HTTP BFF → BFF 진입이 **도메인 진입들**을 조합합니다.
 주문 Adapter는 표시명 조회와 마스킹 정책을 알지 않습니다.
 
 ## 테스트 경계
