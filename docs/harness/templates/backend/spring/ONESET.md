@@ -75,7 +75,8 @@ exampleitem/
 
 - **Inbound Port 없음** — 진입 → `{Domain}Facade` 또는 `{Feature}BffFacade`
 - **Outbound만 Port·Adapter** — `persistence/` (영속), 통신은 `client/` (`*ClientPort` / `*ClientAdapter`)
-- **표시명** — 도메인 진입이 `DisplayNameResolver`로 Name 조회 결과를 붙임. BFF는 그 결과를 조합
+- **표시명** — 도메인 진입이 `DisplayNameResolver`로 Name 조회 결과를 붙임. BFF는 그 결과를 조합합니다.
+  Name 맵은 `findAllName` + `Filter.ids`(IN)만 사용합니다. Item `findByIds`는 쓰지 않습니다.
 
 ## 그대로 복사 / 프로젝트별로 채움
 
@@ -130,6 +131,8 @@ exampleitem/
 | 원본 | 조건 |
 |------|------|
 | `enum/` 적용 예 | 컬럼에 `@BizEnum`을 쓸 때 (같은 폴더 구조) |
+| `lib-cache/` | `@Cacheable` → CachePort용 공유 모듈이 호스트에 없을 때 1회 (도메인 없음) |
+| `cache/` facade·config | 도메인 조회 캐시를 적용할 때 (`lib-cache` 전제) |
 | `support/` | 프로젝트에 동일 타입이 없을 때 |
 
 ## 실행 순서

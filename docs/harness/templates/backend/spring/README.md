@@ -16,9 +16,11 @@
 | · DTO | [exampleitem/dto/](./exampleitem/dto/) |
 | · persistence (Port·Adapter·entity·repo·spec) | [exampleitem/persistence/](./exampleitem/persistence/) |
 | Support | [support/](./support/) |
+| 공유 캐시 모듈 | [lib-cache/](./lib-cache/) |
 | Testing | [testing/](./testing/) |
 | API E2E | [e2e/](./e2e/) |
 | 이넘 적용 변형 | [enum/](./enum/) |
+| 캐시 적용 변형 | [cache/](./cache/) |
 
 ```text
 Controller → ExampleItemFacade → ExampleItemPort → ExampleItemAdapter → Repository
@@ -36,3 +38,10 @@ Inbound Port는 두지 않습니다. Outbound(영속·HTTP client)만 Port·Adap
 ## 이넘 적용 한 세트
 
 [enum/](./enum/) — 같은 폴더 구조에 `@BizEnum` 적용 예입니다.
+
+## 캐시 적용 한 세트
+
+공유 모듈 [lib-cache/](./lib-cache/) — 도메인 없음. 호스트에 CachePort 스택이 없을 때 1회.
+
+도메인 변형 [cache/](./cache/) — 이넘처럼 **필요할 때** 얹습니다. 기본 원셋에는 캐시 코드를 넣지 않습니다.
+TTL·캐시 이름은 도메인(model), BFF에는 두지 않습니다.

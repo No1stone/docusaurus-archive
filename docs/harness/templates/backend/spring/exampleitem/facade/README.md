@@ -11,8 +11,11 @@ BffFacade는 **도메인 애플리케이션 진입만** 호출하고, DomainPort
 
 클래스 기본은 `@Transactional(readOnly = true, transactionManager = "transactionManager")` 이고, 쓰기만 `@Transactional` 입니다.
 목록·단건 조회 뒤에는 `DisplayNameResolver.applyCreatedByDisplayNames`로 감사 PK를 표시명으로 바꿉니다.
-Resolver의 Name 맵은 Port `findAllName` + `Filter.ids`(또는 동등한 ids Name 조회)로 채웁니다.
-열거형 코드 재설정은 이 파일이 아니라 [enum 템플릿](../../enum/) 입니다.
+Resolver의 Name 맵은 Port `findAllName` + `Filter.ids`(IN)로만 채웁니다.
+Item `findByIds`로 대체하지 않습니다.
+자세한 규칙은 [support/display/README](../support/display/)입니다.
+열거형 코드 재설정은 [enum 템플릿](../../enum/) 입니다.
+조회 캐시(`@Cacheable` → CachePort)는 [cache 템플릿](../../cache/) 입니다.
 
 ## Files
 

@@ -1,0 +1,110 @@
+package com.example.template.exampleitem.facade;
+
+import com.example.template.exampleitem.dto.ExampleItemReq;
+import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.persistence.ExampleItemPort;
+import com.example.template.exampleitem.support.display.DisplayNameResolver;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 캐시 적용 변형: 기본 원셋 Facade에 @Cacheable / @CacheEvict만 더한 예입니다.
+ * CacheManager는 lib-cache의 CachePortCacheManager(CachePort→Redis)를 씁니다.
+ */
+@Slf4j
+@Component
+@RequiredArgsConstructor
+@Transactional(readOnly = true, transactionManager = "transactionManager")
+public class ExampleItemFacade {
+
+    public static final String CACHE_NAME = "exampleItem";
+
+    private final ExampleItemPort exampleItemPort;
+    private final DisplayNameResolver displayNameResolver;
+
+    public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
+        Page<ExampleItemRes.Item> page = exampleItemPort.search(filter, pageable);
+        displayNameResolver.applyCreatedByDisplayNames(
+                page.getContent(),
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return page;
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = CACHE_NAME, key = "#result.id")
+    public ExampleItemRes.Id save(ExampleItemReq.Create create) {
+        return exampleItemPort.save(create);
+    }
+
+    @Transactional
+    public List<ExampleItemRes.Id> saveAll(List<ExampleItemReq.Create> createList) {
+        return exampleItemPort.saveAll(createList);
+    }
+
+    @Cacheable(cacheNames = CACHE_NAME, key = "#id")
+    public ExampleItemRes.Item findById(Long id) {
+        ExampleItemRes.Item item = exampleItemPort.findById(id);
+        displayNameResolver.applyCreatedByDisplayNames(
+                List.of(item),
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return item;
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = CACHE_NAME, key = "#id")
+    public ExampleItemRes.Id saveById(Long id, ExampleItemReq.Update update) {
+        return exampleItemPort.saveById(id, update);
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = CACHE_NAME, key = "#id")
+    public void deleteById(Long id) {
+        exampleItemPort.deleteById(id);
+    }
+
+    public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
+        List<ExampleItemRes.Item> items = exampleItemPort.findAll(filter);
+        displayNameResolver.applyCreatedByDisplayNames(
+                items,
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return items;
+    }
+
+    public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
+        List<ExampleItemRes.Item> items = exampleItemPort.findByIds(ids);
+        displayNameResolver.applyCreatedByDisplayNames(
+                items,
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return items;
+    }
+
+    public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {
+        return exampleItemPort.searchName(filter, pageable);
+    }
+
+    public List<ExampleItemRes.Name> findAllName(ExampleItemReq.Filter filter) {
+        return exampleItemPort.findAllName(filter);
+    }
+
+    @Transactional
+    @CacheEvict(cacheNames = CACHE_NAME, allEntries = true)
+    public void deleteByIds(List<Long> ids) {
+        exampleItemPort.deleteByIds(ids);
+    }
+}

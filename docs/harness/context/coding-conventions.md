@@ -108,7 +108,41 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 - 클래스 이름은 `DisplayNameResolver`로 통일합니다. `UserNameFacade` / `FarmNameFacade`처럼 도메인 접두를 붙이지 않습니다.
 - 위치는 도메인 진입과 같이 model(모놀리식은 도메인 `support/display`)입니다.
 - 도메인 진입이 조회 직후 `applyCreatedByDisplayNames` / `applyAuditorDisplayNames`를 호출합니다. BFF는 그 결과를 조합합니다.
-- Name 맵은 Port Name 조회(`findAllName` + `Filter.ids`, 또는 동등한 ids Name 조회)로 채웁니다. Item `findByIds`로 대체하지 않습니다.
+- Name 맵은 Port **`findAllName` + `Filter.ids`(IN)** 로만 채웁니다. Item `findByIds`로 대체하지 않습니다. (연관·무거운 컬럼이 끌려옵니다.)
+- IN으로 묶은 Name 목록 전체를 캐시하지 않습니다. 단건 `@Cacheable`과는 별개입니다. 원셋 안내는 [exampleitem/support/display](/docs/harness/templates/backend/spring/exampleitem/support/display/)입니다.
+
+### Domain read cache (`@Cacheable` → CachePort)
+
+- 적용할 때만 [cache 템플릿](/docs/harness/templates/backend/spring/cache/)을 봅니다. 기본 ExampleItem 원셋에는 캐시 코드를 넣지 않습니다. (이넘 변형과 같은 방식)
+- 호스트에 CachePort 스택이 없으면 먼저 [lib-cache](/docs/harness/templates/backend/spring/lib-cache/)를 둡니다. (도메인·ExampleItem 없음) 도메인 facade·TTL은 [cache](/docs/harness/templates/backend/spring/cache/) 변형입니다.
+- 흐름은 `@Cacheable` / `@CacheEvict` → `CachePortCacheManager` → `CachePort` → Redis 입니다. aside를 Facade에 손으로 짜지 않습니다.
+- 값 직렬화는 `CacheValueCodec` 경계입니다. 기본은 JSON입니다. Java `Serializable` 직렬화는 쓰지 않습니다.
+- 공유 캐시 모듈(lib-cache 등)은 **default TTL만** 둡니다. 캐시 이름 상수와 추가 TTL(`CachePortTtlCustomizer`)은 **도메인(model)** 에 둡니다. BFF에는 두지 않습니다.
+- 앱에 남아 있는 예전 `RedisCacheManager` 빈은 제거합니다. `@Cacheable`은 CachePort 경로만 타게 합니다.
+- Gateway처럼 JWT 키로 Redis를 KV 조회만 하는 경우는 `@Cacheable` 변형이 아닙니다. `CachePort` 직접 호출만 씁니다.
+
+#### Redis 키
+
+- `@Cacheable`: `{CACHE_NAME}::{id}` (예: `member::42`). `CACHE_NAME`은 도메인 단위 짧은 이름(`member`, `exampleItem`).
+- 수동 KV(CachePort 직접): `{영역}:{용도}:…` 콜론 세그먼트 (예: `access:…`, `auth-sig:key:…`). `@Cacheable`과 겹치지 않게 `::`는 쓰지 않습니다.
+- env/앱 전역 접두는 같은 Redis를 여러 환경이 쓸 때만 맨 앞에 둡니다. 기본은 생략합니다.
+
+#### 무효화
+
+- 단건 변경·삭제: `@CacheEvict(key = "#id")` (또는 `#result.id`).
+- 일괄·범위가 넓거나 키를 특정하기 어려우면 `allEntries = true` (구현상 `{CACHE_NAME}::` prefix 삭제).
+- Name IN·목록 검색 결과는 캐시하지 않습니다. 단건 `findById` 캐시와 섞지 않습니다.
+
+#### 캐시 값 (약하게)
+
+- JSON으로 넣고 꺼내기 쉬운 응답 DTO(`Res.Item` 등)를 선호합니다.
+- JPA Entity·프록시·요청 객체를 캐시 값으로 두지 않는 것을 권장합니다.
+
+#### 호스트 Redis 체크리스트
+
+- `StringRedisTemplate` + `CachePort` 어댑터, `@Primary` `CachePortCacheManager`가 있다.
+- `RedisTemplate` 값을 쓰면 JSON(`RedisSerializer.json()` 등). JDK 직렬화는 쓰지 않는다.
+- 앱에 `RedisCacheManager` / 중복 `@EnableCaching` CacheManager를 두지 않는다.
 
 ## Naming
 
