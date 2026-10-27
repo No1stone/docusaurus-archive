@@ -152,8 +152,9 @@ Mopl에 준 2xx 수신 응답과 HT 전달 성공은 별개입니다.
 
 ## 우리 선택과의 관계
 
-업무 이벤트 버스에서는 **Outbox만** 쓰고 Inbox로 전 이력을 관리하지 않는다.  
-이유·흐름: [자기 이벤트와 Outbox 중앙 전달](/docs/patterns/architecture-patterns/own-events-outbox).
+업무 이벤트 버스에서는 **Outbox**로 발행을 모으고, Saga는 **오케스트레이션**(소비→결정→발행)한다.  
+Inbox로 전 이력을 쌓지 않는다.  
+이유·흐름: [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox).
 
 ## 관련 글
 

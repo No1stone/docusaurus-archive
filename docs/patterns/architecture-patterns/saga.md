@@ -104,7 +104,7 @@ Backend Knowledge의 Facade·Service 설계에는 원격 분리 이후 Saga를 �
 - [Service 설계](../../knowledge/backend/service/service-design.md) — 조회 조합과 Saga 대상 구분
 - [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox) — 이벤트 저장·전달 신뢰성
 - [분산 락](/docs/patterns/architecture-patterns/distributed-lock) — 동시 경합 제어 (Saga와 역할이 다름)
-- [자기 이벤트와 Outbox 중앙 전달](/docs/patterns/architecture-patterns/own-events-outbox) — **왜 중앙 발행이어도 이벤트 관리를 안 하는지**
+- [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox) — **우리 선택: 전통 지휘 + Outbox**
 - [lib-message-saga](/docs/harness/templates/backend/spring/lib-message-saga/) — 앱: gRPC 발행 + Kafka 컨슘
 
 ## 참고

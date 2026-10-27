@@ -24,7 +24,7 @@ unlisted: true
 
 ### 메시지·전달 신뢰성
 
-- [자기 이벤트와 Outbox 중앙 전달](/docs/patterns/architecture-patterns/own-events-outbox) — **이벤트 지옥 회피 · 현행 원칙**
+- [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox) — **전통 Saga 지휘 + Outbox 전달**
 - [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox)
 - [CDC](/docs/patterns/architecture-patterns/cdc)
 - [Fan-out](/docs/patterns/architecture-patterns/fan-out)

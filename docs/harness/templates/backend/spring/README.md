@@ -13,7 +13,7 @@
 | **공유 라이브러리** | [lib-cache/](./lib-cache/) | CachePort(Lettuce). 도메인 없음 |
 | | [lib-distributed-lock/](./lib-distributed-lock/) | LockPort(Redisson). 도메인 없음 |
 | | [lib-message-routing/](./lib-message-routing/) | Rabbit 실시간·명령 |
-| | [lib-message-saga/](./lib-message-saga/) | Kafka · gRPC 발행 + 컨슘 (event-saga Outbox) |
+| | [lib-message-saga/](./lib-message-saga/) | 오케스트레이션 Saga · gRPC 발행 + 컨슘 (event-saga) |
 | **적용 변형** | [enum/](./enum/) | `@BizEnum` (ExampleItem 전체 예) |
 | | [cache/](./cache/) | `@Cacheable` → CachePort (Facade·TTL) |
 | | [lock/](./lock/) | `lib-distributed-lock` + JWT sync **구현체** 예. ExampleItem 락 원셋 없음 |
@@ -48,7 +48,7 @@ Inbound Port는 두지 않습니다. Outbound(영속·HTTP client)만 Port·Adap
 - [lib-cache/](./lib-cache/) — `@Cacheable` / CachePort / JSON. Redis는 **Lettuce**.
 - [lib-distributed-lock/](./lib-distributed-lock/) — `LockPort` / `LockResult` / watchdog. Redis 락은 **Redisson**.
 - [lib-message-routing/](./lib-message-routing/) — Rabbit 실시간·명령.
-- [lib-message-saga/](./lib-message-saga/) — 자기 이벤트: 앱은 gRPC 발행 + Kafka 컨슘, Outbox는 event-saga. 원칙: [own-events-outbox](/docs/patterns/architecture-patterns/own-events-outbox).
+- [lib-message-saga/](./lib-message-saga/) — 전통 오케스트레이션: 앱은 gRPC 발행 + Kafka 컨슘, event-saga는 Outbox+지휘. [own-events-outbox](/docs/patterns/architecture-patterns/own-events-outbox).
 
 캐시와 락, 라우팅(Rabbit)과 자기 이벤트(Kafka) 모듈을 서로 섞지 않습니다.
 

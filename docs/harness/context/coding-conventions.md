@@ -153,9 +153,9 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 
 ### Messaging
 
-- **원칙:** [자기 이벤트와 Outbox 중앙 전달](/docs/patterns/architecture-patterns/own-events-outbox) — 이벤트 지옥 회피. 중앙은 **전달만**. 자기 이벤트만 발행. 보상 이벤트 → **소비 측** 보상. (중앙 이벤트 관리 = 두번째 지옥)
+- **원칙:** [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox) — **전통 Saga**(소비→결정→발행). Outbox로 발행 경로 중앙화. 전 이력 방송으로 이벤트 지옥 만들지 않음.
 - **라우팅(실시간·명령):** [lib-message-routing](/docs/harness/templates/backend/spring/lib-message-routing/) — Rabbit.
-- **lib-message-saga:** 앱 Gradle → **gRPC 발행 + Kafka 컨슘**. Outbox/producer는 **event-saga**만. ([ADR-0004](/docs/decisions/adr-0004) MVC+VT)
+- **lib-message-saga:** 앱 → gRPC **결과/시작 발행** + Kafka **요청/보상 컨슘**. event-saga = Outbox + 오케스트레이션. ([ADR-0004](/docs/decisions/adr-0004) MVC+VT)
 - 라우팅(Rabbit)과 섞지 않는다.
 
 ## Naming
