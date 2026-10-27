@@ -18,18 +18,19 @@
 갈라지는 것은 **Facade 종류**와 **모노리포에서 모듈 위치**입니다.
 
 ```text
-[api]  도메인 HTTP·gRPC 진입  → 도메인 진입(model, 예: Facade) → Port → Adapter → Spec
-[api]  GraphQL·HTTP BFF 진입 → {Feature}BffFacade (api) → 여러 DomainPort
+[api]  도메인 HTTP·gRPC 진입  → 도메인 진입(model, 기본 Facade) → Port → Adapter → Spec
+[api]  GraphQL·HTTP BFF 진입 → BFF 진입(api) → 여러 DomainPort
 ```
 
-BFF·Port·Adapter 이름은 계층이 보이게 둡니다.
-도메인 애플리케이션은 `Facade`, `Manager`, `Checker`, `Handler`, `Processor`, `Resolver` 중 역할에 맞게 고릅니다.
+애플리케이션 이름은 **기본 Facade**입니다.
+예시는 닫힌 허용 목록이 아니며, 책임이 분명할 때만 Manager, Checker, Handler, Processor, Resolver 등을 씁니다.
 원셋 예는 `ExampleItemFacade`입니다.
+BFF 조립은 이름이 드러나게 두는 것이 좋고, 기본 예는 `{Feature}BffFacade`입니다.
 
-| | 도메인 애플리케이션 진입 | `{Feature}BffFacade` |
+| | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
 | 책임 | 도메인 속성 유스케이스 | 여러 DomainPort 조립 |
-| 이름 | 역할명 자유 (원셋은 Facade) | `BffFacade` |
+| 이름 | 기본 Facade | 기본 예 `BffFacade` |
 | 모노리포 | **model** | **api** |
 | 모놀리식 | 도메인 `facade/` 등 | 앱 BFF·feature 패키지 |
 | 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
