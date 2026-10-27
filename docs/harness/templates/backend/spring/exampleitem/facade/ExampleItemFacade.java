@@ -2,6 +2,8 @@ package com.example.template.exampleitem.facade;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.persistence.ExampleItemPort;
+import com.example.template.exampleitem.support.display.DisplayNameResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -18,9 +20,16 @@ import java.util.List;
 public class ExampleItemFacade {
 
     private final ExampleItemPort exampleItemPort;
+    private final DisplayNameResolver displayNameResolver;
 
     public Page<ExampleItemRes.Item> search(ExampleItemReq.Filter filter, Pageable pageable) {
-        return exampleItemPort.search(filter, pageable);
+        Page<ExampleItemRes.Item> page = exampleItemPort.search(filter, pageable);
+        displayNameResolver.applyCreatedByDisplayNames(
+                page.getContent(),
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return page;
     }
 
     @Transactional
@@ -34,7 +43,13 @@ public class ExampleItemFacade {
     }
 
     public ExampleItemRes.Item findById(Long id) {
-        return exampleItemPort.findById(id);
+        ExampleItemRes.Item item = exampleItemPort.findById(id);
+        displayNameResolver.applyCreatedByDisplayNames(
+                List.of(item),
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return item;
     }
 
     @Transactional
@@ -48,11 +63,23 @@ public class ExampleItemFacade {
     }
 
     public List<ExampleItemRes.Item> findAll(ExampleItemReq.Filter filter) {
-        return exampleItemPort.findAll(filter);
+        List<ExampleItemRes.Item> items = exampleItemPort.findAll(filter);
+        displayNameResolver.applyCreatedByDisplayNames(
+                items,
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return items;
     }
 
     public List<ExampleItemRes.Item> findByIds(List<Long> ids) {
-        return exampleItemPort.findByIds(ids);
+        List<ExampleItemRes.Item> items = exampleItemPort.findByIds(ids);
+        displayNameResolver.applyCreatedByDisplayNames(
+                items,
+                ExampleItemRes.Item::getCreatedBy,
+                ExampleItemRes.Item::setCreatedBy
+        );
+        return items;
     }
 
     public Page<ExampleItemRes.Name> searchName(ExampleItemReq.Filter filter, Pageable pageable) {

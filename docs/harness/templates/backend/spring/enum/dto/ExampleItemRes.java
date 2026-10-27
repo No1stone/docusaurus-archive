@@ -23,7 +23,8 @@ public class ExampleItemRes {
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Name extends Id {
-        // 변수 없음
+        @Schema(description = "표시명(요청 URI)")
+        private String url;
     }
 
     @Schema(description = "ExampleItemRes.Single DTO")
@@ -37,8 +38,6 @@ public class ExampleItemRes {
         private String createdBy;
         @Schema(description = "HTTP METHOD")
         private String httpMethod;
-        @Schema(description = "요청 URI")
-        private String url;
         @Schema(description = "파라미터")
         private String parameter;
         @Schema(description = "본문")
