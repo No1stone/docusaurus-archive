@@ -3,8 +3,11 @@
 > **개요:** 테이블 세트와 이넘 세트가 호출하는 지원 타입 전체입니다.
 
 호스트에 같은 역할의 클래스가 있으면 호스트 클래스를 씁니다.
-`BaseEntity`는 감사 리스너만 등록합니다.
-호스트는 여기에 `BaseEntityListener`를 더 등록할 수 있습니다.
+`BaseEntity`는 `AuditingEntityListener`와 `BaseEntityListener`를 함께 등록합니다.
+등록·수정 감사 컬럼은 `CreatedEntity` / `UpdatedEntity`입니다.
+`IdGeneratable`·`ServiceProviderble`을 구현한 엔티티만 `BaseEntityListener`가 id·서비스 id를 채웁니다.
+서비스 id는 호스트 `WebUtils.getServiceId()` 등으로 채웁니다.
+표시명 치환(`DisplayNameResolver`)은 [exampleitem/support/display](../exampleitem/support/display/DisplayNameResolver.java)에 둡니다.
 `CodeValueConverter.convertToEntityAttribute`의 예외는 호스트의 열거형 오류 예외로 바꿉니다.
 
 ## Files
@@ -14,7 +17,12 @@
 - [`BizErrorException.java`](./BizErrorException.java)
 - [`ResponseType.java`](./ResponseType.java)
 - [`CreatedEntity.java`](./CreatedEntity.java)
+- [`UpdatedEntity.java`](./UpdatedEntity.java)
 - [`BaseEntity.java`](./BaseEntity.java)
+- [`BaseEntityListener.java`](./BaseEntityListener.java)
+- [`IdGeneratable.java`](./IdGeneratable.java)
+- [`ServiceProviderble.java`](./ServiceProviderble.java)
+- [`UuidUtils.java`](./UuidUtils.java)
 - [`PredicateBuilder.java`](./PredicateBuilder.java)
 - [`BeanUtils.java`](./BeanUtils.java)
 - [`ModelMapperUtil.java`](./ModelMapperUtil.java)
@@ -155,6 +163,46 @@ public abstract class CreatedEntity extends BaseEntity {
 }
 ```
 
+### `UpdatedEntity.java`
+
+```java
+package com.example.template.support;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Version;
+import lombok.Getter;
+import lombok.experimental.FieldNameConstants;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
+
+@Getter
+@MappedSuperclass
+@FieldNameConstants
+public abstract class UpdatedEntity extends CreatedEntity {
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "updated_at", nullable = false)
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+
+    @Column(name = "updated_by", nullable = false, length = 255)
+    @LastModifiedBy
+    private String updatedBy;
+
+    @Version
+    @Column(name = "version", nullable = false)
+    private Integer version;
+
+}
+```
+
+원셋 `ExampleItem`은 `CreatedEntity`만 상속합니다.
+수정 감사가 필요하면 `UpdatedEntity`로 바꾸고 테이블에 `updated_at` / `updated_by` / `version`을 둡니다.
+
 ### `BaseEntity.java`
 
 ```java
@@ -165,10 +213,39 @@ import jakarta.persistence.MappedSuperclass;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners({AuditingEntityListener.class, BaseEntityListener.class})
 public abstract class BaseEntity {
 }
 ```
+
+### `BaseEntityListener.java`
+
+```java
+package com.example.template.support;
+
+import jakarta.persistence.PrePersist;
+
+import java.util.UUID;
+
+public class BaseEntityListener {
+
+    @PrePersist
+    public void prePersist(Object o) {
+        if (o instanceof ServiceProviderble) {
+            // Host: ((ServiceProviderble) o).setServiceId(WebUtils.getServiceId());
+        }
+
+        if (o instanceof IdGeneratable obj) {
+            obj.setId(UuidUtils.uuidToBase64(UUID.randomUUID()));
+        }
+    }
+}
+```
+
+### `IdGeneratable.java` / `ServiceProviderble.java` / `UuidUtils.java`
+
+소스는 같은 폴더의 `.java` 파일을 봅니다.
+`IdGeneratable`은 String PK 자동 생성, `ServiceProviderble`은 서비스 id 주입 훅입니다.
 
 ### `PredicateBuilder.java`
 
