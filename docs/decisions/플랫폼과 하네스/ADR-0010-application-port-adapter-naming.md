@@ -20,13 +20,15 @@ slug: "/decisions/adr-0010"
 
 계층은 클래스 접미사가 아니라 패키지, 책임, 의존 관계로 구분한다.
 
-- 애플리케이션 영역: 유스케이스, 정책, 조합. 공개 진입점의 기본 이름은 Facade이며 Manager, Checker, Handler, Processor 등은 역할이 분명할 때만 쓴다.
-- Port: 저장과 외부 기능의 **능력** 계약. 제품명(Redis, Vault, Keycloak, Kafka)을 Port에 붙이지 않는다. 예: `CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`.
+- 애플리케이션 영역: 유스케이스, 정책, 조합. 공개 진입점은 `{Domain}Facade`(도메인)와 `{Feature}BffFacade`(화면·시나리오 조립)로 가른다. Manager, Checker, Handler, Processor 등은 역할이 분명할 때만 쓴다.
+- 모노리포에서 `{Domain}Facade`와 `DisplayNameResolver`는 model, `{Feature}BffFacade`와 진입(Controller·GraphQL·gRPC)은 api에 둔다.
+- 진입 매핑: gRPC·HTTP 도메인 → DomainFacade, GraphQL·HTTP BFF → BffFacade.
+- Port: 저장과 외부 기능의 **능력** 계약. 제품명(Redis, Vault, Keycloak, Kafka)을 Port에 붙이지 않는다. 예: `CachePort`, `EncryptionPort`, `TokenPort`, `OAuthPort`, `MessagingPort`, `LockPort`. BFF는 DomainPort만 보고 BFF 전용 Port를 만들지 않는다.
 - Adapter: Port 구현. Provider를 고르고 기술 응답을 계약으로 변환한다.
-- Provider: Redis, Vault, KMS, Keycloak, 자체 JWT, Kafka, RabbitMQ, STOMP, WebSocket, JPA Repository 등 제품·기술 접근. Provider 교체만으로 Port와 애플리케이션을 유지한다.
+- Provider: Redis, Vault, KMS, Keycloak, 자체 JWT, Kafka, RabbitMQ, Redisson, STOMP, WebSocket, JPA Repository 등 제품·기술 접근. Provider 교체만으로 Port와 애플리케이션을 유지한다.
 - 기존 `*Service`(JPA)는 Adapter 역할로 이해하고, 신규 템플릿은 Port와 JPA Adapter로 보여 준다.
 - 코드 수준 CQRS 적용점은 JPA Adapter이다. 필요할 때 Read Provider와 Command Provider로 Repository를 나누며, 처음부터 강제하지 않는다.
-- 원셋 Controller는 기동과 확인용으로 유지하고, 실무 진입의 전형은 업무 BFF Controller로 설명한다.
+- 원셋 Controller는 기동과 확인용으로 유지하고, 실무 진입의 전형은 업무 BFF(Controller 또는 GraphQL)로 설명한다.
 
 문서와 Spring 원셋 템플릿에 반영한다.
 참조 저장소의 기존 코드는 이 ADR만으로 일괄 개명하지 않는다.
@@ -36,5 +38,6 @@ slug: "/decisions/adr-0010"
 - [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
 - [데이터 접근 경계](/docs/knowledge/backend/service/service-design)
 - [coding-conventions](/docs/harness/context/coding-conventions)
-- Spring 원셋: `Controller → Facade → Port → Adapter → Repository`
-- 확장: `Port → Adapter → Provider` (캐시, 암호화, Token/OAuth, Messaging 포함. 예: `MessagingPort` → MessagingAdapter → KafkaProvider / RabbitMqProvider / RedisPubSubProvider / StompProvider / WebSocketProvider)
+- Spring 원셋: `Controller → {Domain}Facade → Port → Adapter → Repository` (모노리포에서 DomainFacade는 model)
+- BFF: `GraphQL/HTTP BFF → {Feature}BffFacade → DomainPort…`
+- 확장: `Port → Adapter → Provider` (캐시, 암호화, Token/OAuth, Lock, Messaging 포함)
