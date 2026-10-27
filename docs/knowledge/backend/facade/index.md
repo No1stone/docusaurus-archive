@@ -6,9 +6,9 @@ slug: "/knowledge/backend/facade/index"
 ---
 # Facade
 
-> **개요:** 애플리케이션 영역의 책임과 이름 선택, 공개 진입점으로서의 Facade를 다룹니다.
+> **개요:** 애플리케이션 영역의 책임과 이름 선택, 공개 진입점(`{Domain}Facade` / `{Feature}BffFacade`)을 다룹니다.
 > 공개 여부는 이름만으로 판단하지 않습니다.
 
 - [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
 
-원셋 코드 모양은 저장소 `docs/harness/templates/backend/spring/facade/` 입니다.
+원셋 DomainFacade 코드 모양은 `docs/harness/templates/backend/spring/exampleitem/facade/` 입니다.
