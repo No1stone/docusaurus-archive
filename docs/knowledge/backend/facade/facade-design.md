@@ -40,18 +40,18 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 ## 호출 경계
 
 ```text
-[api] HTTP·gRPC 도메인 진입 ──→ {Domain}Facade ──→ DomainPort → Adapter
+[api] HTTP·gRPC 도메인 진입 ──→ 도메인 진입(Facade/Manager/…) ──→ DomainPort → Adapter
 [api] GraphQL·HTTP BFF 진입 ──→ {Feature}BffFacade ──→ DomainAPort, DomainBPort
 ```
 
 | 진입 | 호출 |
 |------|------|
-| gRPC, HTTP 도메인 API | `{Domain}Facade` |
+| gRPC, HTTP 도메인 API | 도메인 애플리케이션 진입 (이름 자유) |
 | GraphQL, HTTP BFF | `{Feature}BffFacade` |
 
 - 외부 진입부와 다른 도메인은 지정된 공개 애플리케이션 진입점만 참조합니다.
-- 공개 여부를 Facade라는 이름만으로 판단하지 않습니다.
-- `{Domain}Facade`는 자기 도메인 Port만, `{Feature}BffFacade`는 DomainPort만 봅니다. Adapter·entity·Spec·Repository는 보지 않습니다.
+- 공개 여부를 특정 접미사만으로 판단하지 않습니다. 이름에 역할이 드러나게 고릅니다.
+- 도메인 진입은 자기 도메인 Port만, `{Feature}BffFacade`는 DomainPort만 봅니다. Adapter·entity·Spec·Repository는 보지 않습니다.
 - BFF 전용 Port를 새로 만들지 않습니다. 도메인이 바깥에 주는 계약의 기본은 Port입니다.
 - Adapter는 기술 접근만 담당하며 여러 외부 기능을 묶는 업무 흐름을 소유하지 않습니다.
 - 도메인 간 공개 호출은 가능하지만 순환 의존은 만들지 않습니다.
@@ -61,31 +61,35 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 
 ## 애플리케이션 이름 선택
 
-같은 애플리케이션 영역 안에서도 역할이 다르면 이름을 나눕니다.
-기본 접미는 `Facade`와 `BffFacade`입니다.
-`UseCase`·`Orchestrator` 등 접미를 더 늘리지 않습니다.
+같은 애플리케이션 영역 안에서도 역할이 다르면 **이름을 달리 써서** 인덱스만 보고도 구분되게 합니다.
+도메인 쪽 접미는 자유입니다: `Facade`, `Manager`, `Checker`, `Handler`, `Processor`, `Resolver`.
+BFF 조립은 `{Feature}BffFacade`로 드러내는 편이 좋습니다.
+이름만 보고 일괄 개명하지 않습니다.
 호스트에 이미 다른 이름이 있으면 호스트를 따릅니다.
-이름만 보고 Facade를 Manager, Handler로 일괄 변경하지 않습니다.
 
 | 이름 | 고를 때 | 이 레포·템플릿에서의 예 |
 |---|---|---|
-| `{Domain}Facade` | 한 도메인 Port CRUD·상태 유스케이스 | 원셋 `ExampleItemFacade` |
-| `{Feature}BffFacade` | 여러 DomainPort 조립(화면·시나리오) | GraphQL·HTTP BFF (원셋 코드 없음) |
+| Facade | 한 도메인 Port CRUD·상태 유스케이스(기본 예) | 원셋 `ExampleItemFacade` |
 | Manager | 토큰, 세션처럼 수명주기와 상태 갱신을 소유 | TokenManager |
 | Checker | 통과 또는 거절만 담당하고 흐름을 소유하지 않음 | TokenChecker |
 | Handler | 이벤트, 메시지, 단일 유스케이스 처리에 가깝을 때 | (필요 시) |
 | Processor | 단계적 변환, 파이프라인 성격이 강할 때 | (필요 시) |
+| Resolver | 조회 결과를 표시·해석용으로 바꾸는 헬퍼 | `DisplayNameResolver` |
+| `{Feature}BffFacade` | 여러 DomainPort 조립(화면·시나리오) | GraphQL·HTTP BFF (원셋 코드 없음) |
 
 표시명만 담당하는 `UserNameFacade` / `FarmNameFacade`는 두지 않습니다.
-`DisplayNameResolver`를 DomainFacade와 같이 model(모놀리식은 도메인 `support/display`)에 두고, 조회 직후 Name 조회(`findAllName` + `Filter.ids` 등)로 맵을 채웁니다.
+`DisplayNameResolver`를 도메인 진입과 같이 model(모놀리식은 도메인 `support/display`)에 두고, 조회 직후 Name 조회(`findAllName` + `Filter.ids` 등)로 맵을 채웁니다.
 
-### DomainFacade와 BffFacade
+기술 쪽은 역할 어휘를 고정합니다: `Port`, `Adapter`, `Provider`, `ClientPort` / `ClientAdapter`.
 
-| | `{Domain}Facade` | `{Feature}BffFacade` |
-|--|------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스 | 여러 DomainPort 조립 |
+### 도메인 진입과 BffFacade
+
+| | 도메인 애플리케이션 진입 | `{Feature}BffFacade` |
+|--|-------------------------|----------------------|
+| 책임 | 도메인 속성 유스케이스·정책 | 여러 DomainPort 조립 |
+| 이름 | 역할명 자유 (위 표) | `BffFacade`로 BFF 드러냄 |
 | 모노리포 위치 | **model** | **api** |
-| 모놀리식 위치 | 도메인 `facade/` | 앱 BFF·feature 패키지 |
+| 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱 BFF·feature 패키지 |
 | 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
 | 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
 

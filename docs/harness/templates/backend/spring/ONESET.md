@@ -18,18 +18,20 @@
 갈라지는 것은 **Facade 종류**와 **모노리포에서 모듈 위치**입니다.
 
 ```text
-[api]  도메인 HTTP·gRPC 진입  → {Domain}Facade (model) → Port → Adapter → Spec
+[api]  도메인 HTTP·gRPC 진입  → 도메인 진입(model, 예: Facade) → Port → Adapter → Spec
 [api]  GraphQL·HTTP BFF 진입 → {Feature}BffFacade (api) → 여러 DomainPort
 ```
 
-이름은 `Facade` / `BffFacade`만 씁니다.
-접미를 더 늘리지 않습니다.
+BFF·Port·Adapter 이름은 계층이 보이게 둡니다.
+도메인 애플리케이션은 `Facade`, `Manager`, `Checker`, `Handler`, `Processor`, `Resolver` 중 역할에 맞게 고릅니다.
+원셋 예는 `ExampleItemFacade`입니다.
 
-| | `{Domain}Facade` | `{Feature}BffFacade` |
-|--|------------------|----------------------|
+| | 도메인 애플리케이션 진입 | `{Feature}BffFacade` |
+|--|-------------------------|----------------------|
 | 책임 | 도메인 속성 유스케이스 | 여러 DomainPort 조립 |
+| 이름 | 역할명 자유 (원셋은 Facade) | `BffFacade` |
 | 모노리포 | **model** | **api** |
-| 모놀리식 | 도메인 `facade/` | 앱 BFF·feature 패키지 |
+| 모놀리식 | 도메인 `facade/` 등 | 앱 BFF·feature 패키지 |
 | 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
 | 의존 | 자기 Port + `DisplayNameResolver` | DomainPort들 + `DisplayNameResolver` |
 
@@ -41,7 +43,7 @@ BffFacade는 DomainPort만 주입받고, BFF 전용 Port는 만들지 않습니�
 ├─ 모놀리식  → 아래 exampleitem/ 한 트리 (원셋 확인용 Controller 포함)
 │              + @BizEnum 생성물은 소스에 두지 않고 clean 후 재생성
 └─ 모노리포  → api: 진입(Controller·GraphQL·gRPC) + {Feature}BffFacade
-               model(lib-model): {Domain}Facade, DisplayNameResolver,
+               model(lib-model): 도메인 진입(Facade 등), DisplayNameResolver,
                                  dto / Port / Adapter / entity / repository / spec
                (모델은 패키지 도메인만, 모듈로 쪼개지 않음)
                REST 연동은 별도 lib(이름 예: lib-rest) 가능
