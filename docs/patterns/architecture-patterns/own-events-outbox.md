@@ -62,7 +62,7 @@ Saga가 결과를 소비 → 진행 또는 보상 결정 → 발행
 | **주문 등 시작 서비스** | 시작 이벤트 발행 (lib → event-saga Outbox) |
 | **event-saga** | **Kafka 컨슈머(Saga)** + Outbox 전달. 결과 소비 → 다음/보상 발행 |
 | **참여자 서비스 + lib** | 업무 실행 · **결과 발행** · Saga가 보낸 **요청/보상 소비** |
-| **lib-message-saga** | 앱용 gRPC 발행 클라이언트 + Kafka 컨슘 API |
+| **lib-message-saga** | 앱용 REST(기본)/gRPC 발행 + 선택 Kafka 컨슘. 도메인은 ApplicationEvent→@Async 브리지 권장 |
 
 성공 경로: 시작 → (요청→결과)×N → 완료.  
 실패 시: Saga가 보상 지시 발행 → 해당 서비스가 보상 수행.
