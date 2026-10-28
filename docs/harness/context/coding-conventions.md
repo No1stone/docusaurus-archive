@@ -95,7 +95,7 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 |--|----------|----------|
 | api / 앱 | 진입(Controller 등) + 필요 시 BFF 애플리케이션 진입. 원셋은 확인용 Controller를 도메인 트리에 둠 | 진입 + BFF 애플리케이션 진입 |
 | model | (같은 앱 안 도메인 폴더) 도메인 진입(`Facade` 등), `DisplayNameResolver`, dto, Port, Adapter, entity, repository, spec | 동일 구성을 `lib-model`에. 패키지 도메인만, 모듈 쪼개지 않음 |
-| REST 연동 | 앱 `client/` 등 | 별도 lib(이름 예: `lib-rest`) |
+| REST 연동 | 앱 `client/` 등 | 복사 예 `outbound-rest/` (공유 lib 아님, 승격은 나중에) |
 | `@BizEnum` 생성물 | 소스에 두지 않음. `clean` 후 재생성 | 동일. 모듈 경계와 별개 |
 ### Audit
 

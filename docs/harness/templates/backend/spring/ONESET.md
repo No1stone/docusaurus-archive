@@ -10,7 +10,8 @@
 검증된 구현·단위/통합(시나리오)·내 서버 Controller API E2E를 함께 가져오고, 도메인 차이만 채웁니다.
 
 공통 원셋 E2E는 내 서버 Controller API입니다.
-외부 스펙 더미와 RestClient 연동 검증은 원셋에 넣지 않습니다.
+외부 스펙 더미와 RestClient 연동은 원셋에 넣지 않습니다.  
+원셋 API를 **서버투서버로 치는** 예는 [outbound-rest/](./outbound-rest/) (복사 예제 · 공유 lib 아님).
 
 ## 저장소 유형과 폴더
 
@@ -47,7 +48,7 @@ BFF는 DomainPort를 직접 호출하지 않고, BFF 전용 Port도 만들지 �
                model(lib-model): 도메인 진입(Facade 등), DisplayNameResolver,
                                  dto / Port / Adapter / entity / repository / spec
                (모델은 패키지 도메인만, 모듈로 쪼개지 않음)
-               REST 연동은 별도 lib(이름 예: lib-rest) 가능
+               REST 연동은 복사 예 [outbound-rest/](./outbound-rest/) (필요 시 나중에 lib 승격)
 ```
 
 모놀리식은 이 원셋 트리를 그대로 복사합니다.

@@ -42,6 +42,10 @@ unlisted: true
 
 - [Gateway 권한 라우팅](/docs/patterns/architecture-patterns/gateway-authorization-routing)
 
+### 관측
+
+- [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c) — MSA 디폴트. 시크릿/Vault는 예정
+
 ## 사례
 
 - [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview.md)
