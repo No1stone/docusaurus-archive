@@ -8,12 +8,16 @@ export default function DocItemMetadata(): ReactNode {
   const {metadata, frontMatter} = useDoc();
   const {siteConfig} = useDocusaurusContext();
 
-  if (!metadata.source.startsWith('@site/docs/knowledge/data/mysql/')) {
+  const database = [
+    {name: 'mariadb', source: '@site/docs/knowledge/data/mysql/mariadb/'},
+    {name: 'mysql', source: '@site/docs/knowledge/data/mysql/'},
+  ].find(({source}) => metadata.source.startsWith(source))?.name;
+  if (!database) {
     return <OriginalMetadata />;
   }
 
   const url = new URL(metadata.permalink, siteConfig.url).href;
-  const collectionUrl = new URL('/docs/knowledge/data/mysql', siteConfig.url).href;
+  const collectionUrl = new URL(`/docs/knowledge/data/${database}`, siteConfig.url).href;
   const isCollection = url === collectionUrl;
   const referenceValue = (frontMatter as typeof frontMatter & {references?: unknown}).references;
   const references = Array.isArray(referenceValue)
@@ -28,7 +32,11 @@ export default function DocItemMetadata(): ReactNode {
     url,
     inLanguage: 'ko',
     mainEntityOfPage: {'@type': 'WebPage', '@id': url},
-    ...(isCollection ? {} : {isPartOf: {'@type': 'CollectionPage', '@id': `${collectionUrl}#collection`}}),
+    ...(isCollection
+      ? database === 'mariadb'
+        ? {isPartOf: {'@type': 'CollectionPage', '@id': `${new URL('/docs/knowledge/data/mysql', siteConfig.url).href}#collection`}}
+        : {}
+      : {isPartOf: {'@type': 'CollectionPage', '@id': `${collectionUrl}#collection`}}),
     ...(frontMatter.keywords?.length ? {keywords: frontMatter.keywords} : {}),
     ...(references.length ? {citation: references} : {}),
   };
@@ -39,7 +47,7 @@ export default function DocItemMetadata(): ReactNode {
       <Head>
         <html lang="ko" />
         <meta property="og:locale" content="ko_KR" />
-        <script type="application/ld+json" id="mysql-technical-document">
+        <script type="application/ld+json" id={`${database}-technical-document`}>
           {JSON.stringify(structuredData).replace(/</g, '\\u003c')}
         </script>
       </Head>
