@@ -77,6 +77,10 @@ origemite.message.saga:
     enabled: true
     transport: rest          # 기본. grpc 도 가능
     base-url: http://localhost:8095
+    # transport: grpc 일 때
+    # target: localhost:9095
+    # connect-timeout: 5s   # 채널 연결
+    # deadline: 3s          # 호출당 (REST read 대응)
   consume:
     enabled: false
 ```
