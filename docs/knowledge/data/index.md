@@ -14,6 +14,6 @@ slug: /knowledge/data
 - [JPA / ORM](/docs/knowledge/data/jpa)
 - [R2DBC](/docs/knowledge/data/r2dbc-stack)
 - [SQL / Ops](/docs/knowledge/data/sql-ops)
-- [MySQL](/docs/knowledge/data/mysql)
+- [MySQL & MariaDB](/docs/knowledge/data/mysql)
 - [PostgreSQL](/docs/knowledge/data/postgresql)
 - [Redis](/docs/knowledge/data/redis)

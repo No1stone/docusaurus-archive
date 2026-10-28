@@ -27,6 +27,8 @@ references:
 이 글의 기준 자료는 [외래키 제약의 공식 동작](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)입니다.
 공식 문서의 동작을 이 글의 실습 테이블에 맞춰 재구성한 SQL이며, 원문의 테이블명과 데이터를 그대로 옮긴 예제는 아닙니다.
 
+PK의 INT, BIGINT와 UUID 선택 및 사용자에게 노출하는 ID는 [PK 타입과 공개 ID](/docs/knowledge/data/mysql/design/primary-key-types-and-public-id)에서 크기와 예제로 비교합니다.
+
 ## 자연키와 대리키를 구분합니다
 
 자연키는 이메일이나 업무 번호처럼 업무에서 의미를 가진 값입니다.
@@ -78,6 +80,8 @@ ROLLBACK;
 외래키를 사용하지 않는 구조라면 고아 데이터 확인과 정리 책임을 별도로 정해야 합니다.
 
 ## 이어서 읽기
+
+- [MySQL 테이블 수정과 마이그레이션](/docs/knowledge/data/mysql/design/alter-table-and-migration)
 
 - [파티셔닝과 PK 구성](/docs/knowledge/data/mysql/operations/partitioning): 날짜 파티셔닝의 복합 키 제약과 ID 파티셔닝의 단일 키 구성을 비교합니다.
 

@@ -27,6 +27,10 @@ references:
 
 이 글의 기준 자료는 [MySQL 공식 이미지의 초기화와 볼륨 사용법](https://hub.docker.com/_/mysql)입니다.
 
+
+물리 파일을 사용하는 온라인 백업은 [온라인 물리 백업](/docs/knowledge/data/mysql/operations/online-physical-backup)에서 별도로 설명합니다.
+
+
 ## Compose로 실행합니다
 
 ```yaml
@@ -61,6 +65,46 @@ docker compose exec mysql mysql -u notes_user -p mysql_notes
 서비스가 접속을 받을 준비가 되었는지 로그와 실제 연결로 확인합니다.
 `mysql:8.0`은 같은 계열의 새 이미지로 바뀔 수 있는 태그입니다.
 운영에서는 검증한 패치 버전이나 digest로 고정하고 업데이트 절차를 둡니다.
+
+## 시작 옵션을 추가하는 예제
+
+`command`는 MySQL 서버에 전달하는 시작 옵션입니다.
+다음 블록은 앞 Compose의 `mysql` 서비스에 추가하는 예제이며, 데이터 디렉터리를 처음 초기화하기 전에 대소문자 정책을 정합니다.
+
+```yaml
+    command:
+      - mysqld
+      - --bind-address=0.0.0.0
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --skip-name-resolve=ON
+      - --lower-case-table-names=1
+      - --default-time-zone=+09:00
+```
+
+| 옵션 | 의미 |
+|---|---|
+| `bind-address` | 컨테이너 내부의 수신 인터페이스입니다. Docker의 포트 공개와 계정 권한은 별도입니다. |
+| `character-set-server` | 새 DB가 상속할 문자셋 기본값입니다. 기존 컬럼을 자동 변환하지 않습니다. |
+| `collation-server` | 새 DB가 상속할 문자열 비교와 정렬 규칙입니다. |
+| `skip-name-resolve` | 계정 접속 판정 시 호스트 이름을 DNS로 조회하지 않습니다. 계정 Host에 IP나 `%` 등을 사용합니다. |
+| `lower-case-table-names=1` | DB와 테이블 이름을 소문자로 저장하고 대소문자를 구분하지 않고 비교합니다. 데이터 초기화 전에 지정합니다. |
+| `default-time-zone=+09:00` | 새 세션의 기본 타임존을 지정합니다. 컨테이너 OS의 `TZ`와는 구분합니다. |
+
+MySQL 8.0의 기본 인증은 `caching_sha2_password`입니다.
+기존 클라이언트와의 호환 때문에 `--default-authentication-plugin=mysql_native_password`를 쓰던 경우가 있지만, 새 예제에서는 기본으로 넣지 않습니다.
+`mysql_native_password`는 8.0.34부터 deprecated이며, 8.4에서는 기본 비활성화되고 9.0에서는 제거되었습니다.
+[MySQL 인증 플러그인 문서](https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/native-pluggable-authentication.html)를 기준으로 버전과 클라이언트를 확인합니다.
+
+```sql
+SELECT @@lower_case_table_names, @@time_zone;
+SELECT @@character_set_server, @@collation_server;
+```
+
+서버 `command`를 바꾼 뒤에는 `docker compose up -d`로 컨테이너 구성을 반영합니다.
+기존 데이터의 대소문자 정책을 옵션만 바꾸어 변경하지 않습니다.
+MariaDB는 서버 실행 파일과 초기화 환경변수가 다르므로 [MariaDB Docker 실행과 서버 설정](/docs/knowledge/data/mariadb/docker-and-settings)의 별도 예제를 사용합니다.
+덤프, 함수 생성 제한 완화와 복제 옵션의 역할은 [백업과 복제 설정](/docs/knowledge/data/mariadb/backup-and-replication)에서 구분하며, 해당 글의 명령은 MariaDB 기준입니다.
 
 ## 초기화 SQL이 다시 실행되지 않는 이유와 데이터 볼륨
 

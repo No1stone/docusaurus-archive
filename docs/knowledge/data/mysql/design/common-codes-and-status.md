@@ -36,6 +36,8 @@ references:
 | Java 또는 Kotlin Enum | 코드 분기와 허용된 상태 전이를 애플리케이션에서 표현합니다. |
 | MySQL ENUM 컬럼 | 컬럼에 허용할 문자열 집합을 스키마로 제한합니다. |
 
+DB ENUM 대신 VARCHAR와 Java enum을 사용하는 선택은 [ENUM과 문자열 저장](/docs/knowledge/data/mysql/basics/enum-and-varchar)에서 설명합니다.
+
 애플리케이션 Enum과 코드 테이블을 함께 사용한다면 같은 코드의 의미와 변경 절차를 맞춥니다.
 운영자가 코드 한 건을 추가했다고 새 업무 동작이 자동으로 구현되는 것은 아닙니다.
 
@@ -93,7 +95,7 @@ SELECT 101, 'READY', 'PAID', NOW(6) WHERE @changed = 1;
 ROLLBACK;
 ```
 
-状態와 이력은 같은 트랜잭션에서 기록합니다.
+상태와 이력은 같은 트랜잭션에서 기록합니다.
 실제 애플리케이션에서는 변경 건수를 확인한 뒤 이력을 저장하고, 예제의 세션 변수를 공유 상태로 사용하지 않습니다.
 
 ## 이어서 읽기

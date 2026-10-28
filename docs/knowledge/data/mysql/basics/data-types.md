@@ -15,12 +15,14 @@ keywords:
   - "SIGNED UNSIGNED 차이"
   - "BIGINT UNSIGNED PK"
   - "DATETIME TIMESTAMP 차이"
+  - "DATETIME(6) 소수 초 정밀도"
   - "utf8mb4 Collation"
 references:
   - "https://dev.mysql.com/doc/refman/8.0/en/integer-types.html"
   - "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html"
   - "https://dev.mysql.com/doc/connector-j/en/connector-j-reference-type-conversions.html"
   - "https://dev.mysql.com/doc/refman/8.0/en/datetime.html"
+  - "https://dev.mysql.com/doc/refman/8.0/en/fractional-seconds.html"
   - "https://dev.mysql.com/doc/refman/8.0/en/data-types.html"
   - "https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html"
 ---
@@ -118,6 +120,17 @@ Connector/J의 BIGINT UNSIGNED 기본 객체 매핑은 BigInteger이며, 실제 
 이 글들의 공통 주문 테이블은 Long 기반 예제를 위해 기존 BIGINT를 유지합니다.
 양수 제한만 필요하면 SIGNED 컬럼에 CHECK 제약을 두는 설계도 가능하며, 기존 PK 변경은 연결된 FK까지 포함한 별도 마이그레이션 작업입니다.
 
+## 문자열 선언 길이와 실제 저장 공간
+
+VARCHAR는 실제 길이에 따라 저장하므로 최대 길이를 모두 미리 점유하지 않습니다.
+CHAR의 고정 길이와 TEXT 및 BLOB의 가변 길이, 문자 수와 바이트 수 및 InnoDB의 페이지 저장은 [문자열과 바이너리 저장 공간](/docs/knowledge/data/mysql/basics/string-types-and-storage)에서 비교합니다.
+
+## ENUM은 DB 타입과 애플리케이션 타입을 구분합니다
+
+업무 상태는 Java enum으로 사용하면서 DB에는 VARCHAR로 저장할 수 있습니다.
+운영 DB의 DDL 권한과 배포 일정이 분리된 환경에서는 새 허용 값을 추가할 때마다 스키마를 변경해야 하는 부담을 줄이려는 선택입니다.
+구체적인 SQL과 Spring JPA 매핑은 [ENUM과 문자열 저장](/docs/knowledge/data/mysql/basics/enum-and-varchar)에서 설명합니다.
+
 ## DATETIME과 TIMESTAMP
 
 TIMESTAMP는 저장과 조회 시 세션 시간대에 따른 변환을 수행합니다.
@@ -132,6 +145,72 @@ SELECT NOW(6), UTC_TIMESTAMP(6);
 
 위 SET은 현재 세션에만 적용됩니다.
 DATETIME 컬럼이 자동으로 UTC로 바뀌는 설정은 아닙니다.
+
+## DATETIME(6)의 괄호는 소수 초 자릿수입니다
+
+`DATETIME(6)`의 6은 전체 날짜 길이나 저장 바이트 수가 아니라 소수점 이하 초의 정밀도입니다.
+`DATETIME`, `TIMESTAMP`, `TIME`은 0부터 6까지 지정할 수 있으며, 생략하면 0으로 초 단위까지만 저장합니다.
+`DATE`는 날짜만 저장하므로 이 소수 초 정밀도를 지정하지 않습니다.
+
+| 선언 예시 | 소수 초 자릿수 | 표현 예시 |
+|---|---|---|
+| `DATETIME` 또는 `DATETIME(0)` | 0자리, 초 단위 | `2026-10-28 12:34:56` |
+| `DATETIME(1)` | 1자리, 0.1초 단위 | `2026-10-28 12:34:56.1` |
+| `DATETIME(2)` | 2자리, 0.01초 단위 | `2026-10-28 12:34:56.12` |
+| `DATETIME(3)` | 3자리, 밀리초 단위 | `2026-10-28 12:34:56.123` |
+| `DATETIME(4)` | 4자리, 0.0001초 단위 | `2026-10-28 12:34:56.1234` |
+| `DATETIME(5)` | 5자리, 0.00001초 단위 | `2026-10-28 12:34:56.12345` |
+| `DATETIME(6)` | 6자리, 마이크로초 단위 | `2026-10-28 12:34:56.123456` |
+
+위 표는 각 정밀도의 표현 예시이며, 같은 값을 변환한 결과표는 아닙니다.
+`TIME(3)`은 `12:34:56.123`처럼 표현하고, `TIMESTAMP(6)`도 소수 초 6자리를 저장할 수 있습니다.
+클라이언트와 화면의 출력 형식에 따라 뒤쪽 0이나 소수 초가 생략될 수 있으므로 컬럼 정의와 표시 형식을 구분합니다.
+
+```sql
+USE mysql_notes;
+DROP TABLE IF EXISTS time_precision_example;
+CREATE TABLE time_precision_example (
+  id INT PRIMARY KEY,
+  dt_seconds DATETIME(0),
+  dt_millis DATETIME(3),
+  dt_micros DATETIME(6),
+  ts_micros TIMESTAMP(6) NULL,
+  time_millis TIME(3)
+);
+
+INSERT INTO time_precision_example VALUES (
+  1,
+  '2026-10-28 12:34:56.123456',
+  '2026-10-28 12:34:56.123456',
+  '2026-10-28 12:34:56.123456',
+  '2026-10-28 12:34:56.123456',
+  '12:34:56.123456'
+);
+SELECT * FROM time_precision_example;
+SELECT NOW(), NOW(3), NOW(6);
+```
+
+같은 세션에서 조회하면 `dt_seconds`는 `12:34:56`, `dt_millis`는 `12:34:56.123`, `dt_micros`는 `12:34:56.123456`에 해당하는 시각을 보관합니다.
+컬럼을 `(6)`으로 정의했더라도 입력부터 초 단위이면 사라진 소수 초가 복원되지는 않습니다.
+현재 시각을 생성할 때도 `NOW(6)`이나 `CURRENT_TIMESTAMP(6)`처럼 필요한 정밀도를 지정합니다.
+
+### 자릿수를 줄이면 반올림될 수 있습니다
+
+MySQL은 기본적으로 컬럼 정밀도보다 긴 소수 초를 반올림합니다.
+예를 들어 `.123789`를 `DATETIME(3)`에 저장하면 `.124`가 됩니다.
+`TIME_TRUNCATE_FRACTIONAL` SQL 모드를 사용하면 반올림 대신 잘라내므로 세션 설정도 확인합니다.
+
+```sql
+SELECT @@SESSION.sql_mode;
+UPDATE time_precision_example
+SET dt_millis = '2026-10-28 12:34:56.123789'
+WHERE id = 1;
+SELECT dt_millis FROM time_precision_example;
+```
+
+`(6)`은 저장할 수 있는 정밀도이며 시스템 시계의 정확도나 이벤트 순서를 보장하지 않습니다.
+같은 마이크로초 값도 중복될 수 있으므로 정렬과 페이지 조회에서 유일한 순서가 필요하면 ID 등을 함께 사용합니다.
+정밀도 범위와 반올림 동작은 [MySQL 소수 초 공식 문서](https://dev.mysql.com/doc/refman/8.0/en/fractional-seconds.html)를 기준으로 설명합니다.
 
 ## 문자셋과 Collation
 
@@ -168,6 +247,7 @@ SELECT
 
 - [데이터 타입](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
 - [날짜와 시각 타입](https://dev.mysql.com/doc/refman/8.0/en/datetime.html)
+- [소수 초 정밀도](https://dev.mysql.com/doc/refman/8.0/en/fractional-seconds.html)
 - [utf8mb4](https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-utf8mb4.html)
 
 </details>
