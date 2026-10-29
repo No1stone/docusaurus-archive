@@ -1,27 +1,28 @@
 ---
 id: archive-home
 title: Archive
-description: Entry point for the Origemite Engineering Archive
+description: 직접 개발하고 운영하며 쌓아 온 기술 지식, 설계와 선택, 문제 해결 경험을 정리하는 공간입니다.
 slug: /
 sidebar_position: 1
 ---
-# Origemite Archive
+# 개발하며 쌓아 온 기록
 
-> **개요:** Archive 홈. 본문이 있는 Backend, Decisions, Harness로 들어갑니다.
+직접 개발하고 운영하면서 배운 것들을 모아 두는 공간입니다.  
+Java와 Spring 기반의 백엔드 개발부터 데이터베이스, 인프라와 배포까지, 실제로 사용해 본 기술과 그 과정에서 내린 선택을 정리합니다.
 
-Personal engineering archive. Markdown and Git are the source of truth; Docusaurus is the reading UI.
+기술의 사용법뿐 아니라 왜 그 방식을 선택했는지, 어디서 어려움을 겪었고 어떻게 해결했는지도 함께 남기려 합니다.  
+프로젝트마다 반복해서 사용한 구조와 코드 작성 기준, AI와 함께 개발하는 방식도 이곳에서 다룹니다.
 
-## Explore
+> **문서 정리 안내**
+>
+> 예전에 작성한 노션 자료를 AI의 도움으로 일괄 이전한 글과 새로 정리하는 글이 함께 있습니다.  
+> 아직 표현이 어색하거나 설명이 부족한 글은 하나씩 확인하며 다듬고 있습니다.
+
+## 둘러보기
 
 | 영역 | 내용 |
-|------|------|
-| [Backend](./knowledge/backend/index.md) | Controller, Facade, Service, 테스트 구조 |
-| [Decisions](./decisions/index.md) | Markdown 원본, Docusaurus 화면, 블로킹 업무의 Spring MVC |
-| [Harness](/docs/harness/) | 에이전트, 오케스트레이션, 템플릿, 구현 흐름 |
-
-## How to use this archive
-
-- **Humans:** browse and search through this site.
-- **AI agents:** resolve context via repo paths `index/` and `docs/harness/` (see root `AGENTS.md`); do not load the entire archive.
-
-Write once. Consume by humans and AI.
+|---|---|
+| [기술 노트](./knowledge/index.md) | 직접 사용한 기술의 개념, 설정과 구현 방법 |
+| [설계와 결정](./decisions/index.md) | 개발 과정에서 검토한 대안과 선택 이유 |
+| [개발 도구와 작업 방식](/docs/harness/) | 코드 작성 기준, 템플릿과 AI 활용 방식 |
+| [경험과 회고](./postmortems/index.md) | 프로젝트 개선과 장애 대응 과정에서 배운 점 |
