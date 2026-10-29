@@ -1,0 +1,9 @@
+{
+  "label": "트랜잭션",
+  "position": 7,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/transaction/spring-transaction-index"
+  }
+}

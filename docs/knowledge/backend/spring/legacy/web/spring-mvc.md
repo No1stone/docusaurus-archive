@@ -19,7 +19,7 @@ Spring MVC 주제 메모를 모아 둔 허브입니다.
 
 - Model View Controller
 - [RequestMapping](/docs/knowledge/k-requestmapping)
-- [Http Request Method](../../../networking/http-stack/http-request-method.md)
+- [Http Request Method](../../../../networking/http-stack/http-request-method.md)
 - [HandlerIntercepter](/docs/knowledge/k-handlerintercepter)
 - [LocaleResolver](/docs/knowledge/k-localeresolver)
 - [configureContentNegotiation](/docs/knowledge/k-configurecontentnegotiation)

@@ -1,0 +1,9 @@
+{
+  "label": "Web",
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/spring-web/spring-spring-web-index"
+  }
+}

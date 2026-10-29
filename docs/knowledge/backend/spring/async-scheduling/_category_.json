@@ -1,0 +1,9 @@
+{
+  "label": "비동기와 스케줄링",
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/async-scheduling/spring-async-scheduling-index"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "테스트",
+  "position": 10,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/spring-testing/spring-spring-testing-index"
+  }
+}

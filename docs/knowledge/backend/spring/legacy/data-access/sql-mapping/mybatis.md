@@ -17,5 +17,5 @@ Spring Mybatis 관련 메모를 모아 둔 허브입니다.
 
 ## 하위 메모
 
-- [TypeException](../../../infrastructure/typeexception.md)
+- [TypeException](/docs/knowledge/k-typeexception)
 - [Config](/docs/knowledge/k-config)

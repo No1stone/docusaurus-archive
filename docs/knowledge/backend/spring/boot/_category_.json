@@ -1,0 +1,9 @@
+{
+  "label": "Spring Boot",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/boot/spring-boot-index"
+  }
+}

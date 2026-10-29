@@ -1,0 +1,9 @@
+{
+  "label": "Spring Batch",
+  "position": 9,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/batch/spring-batch-index"
+  }
+}

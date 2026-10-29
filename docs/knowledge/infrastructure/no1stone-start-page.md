@@ -28,7 +28,7 @@ slug: /knowledge/k-no1stone-start-page
 - [UTIL](./tooling/util.md)
 - [Docker-Compose](./infrastructure/docker/docker-compose.md)
 - [Linux](./infrastructure/linux/distro/linux.md)
-- [Spring](./backend/spring/web/spring-mvc.md)
+- [Spring](/docs/knowledge/k-spring-mvc)
 - [AWS](./infrastructure/aws/aws.md)
 - [Gof design pattern](../architecture/patterns/gof/gof-design-pattern.md)
 - [DATABASE](./data/index.md)

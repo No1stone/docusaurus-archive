@@ -37,8 +37,8 @@ unlisted: true
 | 경로 |
 |------|
 | `docs/knowledge/backend/java/json-utils/javax-json-se-ee.md` |
-| `docs/knowledge/backend/spring/reactive-web/reactive-streame-api.md` |
-| `docs/knowledge/backend/spring/reactive-web/webflux.md` |
+| `docs/knowledge/backend/spring/legacy/reactive-web/reactive-streame-api.md` |
+| `docs/knowledge/backend/spring/legacy/reactive-web/webflux.md` |
 | `docs/knowledge/infrastructure/aws/network/vpc-creation-order.md` |
 | `docs/knowledge/infrastructure/misc/workspace/self-hosted-messenger-candidates.md` |
 | `docs/knowledge/messaging/brokers/mq-memo.md` |

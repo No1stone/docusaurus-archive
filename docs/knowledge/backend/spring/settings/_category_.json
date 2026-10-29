@@ -1,0 +1,9 @@
+{
+  "label": "설정과 환경",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/spring/settings/spring-settings-index"
+  }
+}
