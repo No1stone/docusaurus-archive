@@ -61,7 +61,7 @@ Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`
 
 | Tool | Rung / scope | Required | Evidence QA expects |
 |------|--------------|----------|---------------------|
-| `backend-unit-test` | unit → slice. Layout: `docs/knowledge/backend/testing/test-structure.md` | yes / no | command + pass/fail counts |
+| `backend-unit-test` | unit → slice. Layout: `docs/knowledge/backend/design/testing/test-structure.md` | yes / no | command + pass/fail counts |
 | `playwright-e2e` | flows: … | yes / no | spec file + run result |
 | `browser-manual` | smoke only | yes / no | steps + screenshot (labelled manual) |
 

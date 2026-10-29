@@ -50,7 +50,7 @@
 | `docs/harness/templates/backend/spring/README.md` | 원셋 범위 |
 | `docs/harness/workflows/acceptance.md` | 통과 기준 |
 | `docs/harness/context/coding-conventions.md` | 계층 규칙이 필요할 때 |
-| `docs/knowledge/backend/testing/test-structure.md` | 테스트 배치 |
+| `docs/knowledge/backend/design/testing/test-structure.md` | 테스트 배치 |
 | `docs/harness/templates/backend/spring/controller/ExampleItemController.java` | Controller |
 | `docs/harness/templates/backend/spring/facade/ExampleItemFacade.java` | Facade |
 | `docs/harness/templates/backend/spring/exampleitem/persistence/ExampleItemPort.java` | Port |

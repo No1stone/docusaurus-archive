@@ -7,9 +7,11 @@ slug: "/knowledge/backend/"
 # Backend
 
 > **개요:** 백엔드 지식 입구입니다.
-> 레이어 개념을 먼저 두고, Java·Spring 등 기술 메모는 그다음에 둡니다.
+> Design(레이어 경계)을 먼저 두고, Java·Spring 등 기술 메모는 그다음에 둡니다.
 
-## Concepts
+## Design
+
+레이어 경계와 설계입니다. 메뉴·폴더는 `design/` 아래입니다. 공개 URL(slug)은 하위 호환을 위해 기존 경로를 유지합니다.
 
 - [Controller](/docs/knowledge/backend/controller/index) — HTTP 등 수신 경계
 - [Facade](/docs/knowledge/backend/facade/index) — 애플리케이션 영역과 공개 진입점

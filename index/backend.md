@@ -8,10 +8,10 @@ Map of backend-related engineering assets.
 
 ### Knowledge
 
-- [controller-design](../docs/knowledge/backend/controller/controller-design.md)
-- [facade-design](../docs/knowledge/backend/facade/facade-design.md)
-- [service-design](../docs/knowledge/backend/service/service-design.md)
-- [test-structure](../docs/knowledge/backend/testing/test-structure.md)
+- [controller-design](../docs/knowledge/backend/design/controller/controller-design.md)
+- [facade-design](../docs/knowledge/backend/design/facade/facade-design.md)
+- [service-design](../docs/knowledge/backend/design/service/service-design.md)
+- [test-structure](../docs/knowledge/backend/design/testing/test-structure.md)
 
 ### Technology
 
