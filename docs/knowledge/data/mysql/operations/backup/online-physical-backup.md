@@ -1,11 +1,11 @@
 ---
 format: md
 id: mysql-online-physical-backup
-title: "MySQL과 MariaDB 온라인 물리 백업: XtraBackup과 mariadb-backup"
-sidebar_label: "온라인 물리 백업"
-description: "SQL 덤프와 물리 백업의 차이를 설명하고, 실행 중인 DB에서 데이터 파일을 백업하는 XtraBackup과 mariadb-backup의 backup, prepare 및 복원 과정을 정리합니다."
+title: "XtraBackup과 mariadb-backup: 물리 백업과 복원 방법"
+sidebar_label: "XtraBackup과 mariadb-backup"
+description: "XtraBackup과 mariadb-backup의 파일 기반 물리 백업, 스레드와 I/O 옵션, prepare 및 Docker 복원 예제를 설명합니다."
 slug: /knowledge/data/mysql/operations/online-physical-backup
-sidebar_position: 5
+sidebar_position: 1
 tags:
   - MySQL
   - MariaDB
@@ -17,6 +17,8 @@ keywords:
   - "Percona XtraBackup"
   - "mariadb-backup prepare 복원"
 references:
+  - "https://mariadb.com/docs/server/server-usage/backup-and-restore/mariadb-backup/mariadb-backup-options"
+  - "https://docs.percona.com/percona-xtrabackup/8.0/xtrabackup-option-reference.html"
   - "https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html"
   - "https://docs.percona.com/percona-xtrabackup/8.0/prepare-full-backup.html"
   - "https://docs.percona.com/percona-xtrabackup/8.0/restore-a-backup.html"
@@ -25,57 +27,66 @@ references:
   - "https://mariadb.com/docs/server/server-usage/backup-and-restore/mariadb-backup/full-backup-and-restore-with-mariadb-backup"
   - "https://mariadb.com/docs/server/server-usage/backup-and-restore/mariadb-backup/mariadb-backup-overview"
 ---
-# MySQL과 MariaDB 온라인 물리 백업
+# XtraBackup과 mariadb-backup
 
-SQL을 내보내는 덤프 외에, DB를 실행한 상태에서 데이터 파일을 백업하는 온라인 물리 백업이 있습니다.
-호스트의 데이터 디렉터리를 단순 복사하는 방식과 달리 전용 도구가 파일과 복구에 필요한 로그를 함께 수집합니다.
-흔히 핫백업이라고 부르며, 바이너리 로그만 보관하는 작업과는 구분합니다.
+[운영 백업 구성](/docs/knowledge/data/mysql/operations/backup)에서 전체, 증분, 스냅샷과 로그의 관계를 먼저 살펴볼 수 있습니다.\
+이 글은 파일 기반 물리 백업 도구의 실행 방법을 다룹니다.
 
-## 덤프, 물리 백업과 바이너리 로그의 차이
+## XtraBackup과 mariadb-backup이란?
 
-| 방식 | 보관하는 것과 용도 |
-|---|---|
-| 논리 덤프 | 스키마와 데이터를 SQL 등으로 내보냅니다. 다른 구조나 환경으로 옮기는 작업에도 사용할 수 있습니다. |
-| 물리 백업 | 데이터 파일과 복구에 필요한 로그 등을 보관합니다. 파일 형식과 서버 버전의 호환성을 확인합니다. |
-| 바이너리 로그 보관 | 백업 이후의 변경을 기록합니다. 기준 백업과 연결해 시점 복구에 사용할 수 있습니다. |
-| 단순 파일 복사 | 실행 중인 파일의 일관성을 보장하지 않습니다. 온라인 물리 백업과 같은 방법이 아닙니다. |
+**XtraBackup은 Percona에서 제공하는 MySQL용 물리 백업 도구입니다.**\
+SQL을 생성하는 대신 데이터 파일과 복구에 필요한 로그를 백업합니다.\
+MariaDB에서는 같은 목적의 도구인 `mariadb-backup`을 사용합니다.
 
-InnoDB의 논리 덤프도 `--single-transaction`으로 서버를 중지하지 않고 수행할 수 있습니다.
-물리 백업만 온라인 백업이 가능한 것은 아닙니다.
-물리 백업은 대량 데이터를 SQL로 다시 INSERT하는 복원 과정과 다른 경로를 사용하지만, 실제 백업과 복구 시간은 데이터와 장비에서 확인합니다.
+| 대상 | SQL 덤프 도구 | 이 글에서 사용할 물리 백업 도구 |
+|---|---|---|
+| MySQL 8.0 | mysqldump | Percona XtraBackup 8.0 |
+| MariaDB | mariadb-dump | mariadb-backup |
 
-## 제품에 맞는 도구를 사용합니다
-
-| 대상 | 이 글에서 설명하는 도구 |
-|---|---|
-| 지원되는 MySQL 8.0 환경 | Percona XtraBackup 8.0 |
-| MariaDB | 서버 버전에 호환되는 mariadb-backup |
-
-MySQL과 MariaDB의 데이터 파일을 서로 교환하거나 두 백업 도구를 임의로 바꾸어 사용하지 않습니다.
-서버와 백업 도구의 버전이 같은 계열이라는 이유만으로 모든 패치 조합이 지원된다고 가정하지 않습니다.
-먼저 [XtraBackup 지원 버전](https://docs.percona.com/percona-xtrabackup/8.0/supported-versions.html)과 MariaDB 도구의 호환 조건을 확인합니다.
-
-```sql
-SELECT VERSION(), @@version_comment, @@datadir;
-SHOW VARIABLES LIKE 'innodb_page_size';
-```
-
-## 무중단은 잠금과 부하가 없다는 뜻이 아닙니다
-
-InnoDB를 실행한 상태에서 백업할 수 있지만, DDL이나 비트랜잭션 테이블 및 도구가 사용하는 백업 단계에 따라 잠금과 대기가 발생할 수 있습니다.
-백업 파일을 읽고 쓰는 디스크 부하와 로그 수집 비용도 있습니다.
-백업 중 스키마 변경을 피하고, 긴 트랜잭션과 남은 공간을 확인합니다.
-[MariaDB 백업 개요](https://mariadb.com/docs/server/server-usage/backup-and-restore/mariadb-backup/mariadb-backup-overview)에서도 엔진과 백업 단계에 따른 동작을 구분합니다.
+두 물리 백업 도구의 기본 흐름은 `backup → prepare → copy-back`입니다.\
+백업과 prepare는 원본 DB를 실행한 상태에서 수행하고, copy-back은 복원 대상 DB를 정지한 상태에서 수행합니다.
 
 ```text
-실행 중인 DB → backup → 데이터 파일과 로그
-                         ↓
-                       prepare
-                         ↓
-              정지된 복원 대상에 copy-back
-                         ↓
-                  DB 시작과 데이터 검증
+backup       데이터 파일과 로그 수집
+   ↓
+prepare      수집한 로그를 백업 파일에 적용
+   ↓
+copy-back    복원 대상의 데이터 디렉터리에 복사
+   ↓
+DB 실행      데이터와 애플리케이션 조회 확인
 ```
+
+## 백업 부하 조절
+
+InnoDB의 SQL 덤프는 `--single-transaction`, 물리 백업은 전용 도구를 사용해 서버를 실행한 상태에서 수행할 수 있습니다.\
+백업 중에는 조회, 파일 복사, 압축 작업이 CPU와 디스크 자원을 사용합니다.\
+운영 서비스와 자원을 공유하므로 병렬 처리 수와 I/O 속도를 조절합니다.
+
+### XtraBackup 옵션
+
+| 옵션 예시 | 적용 작업 | 역할 |
+|---|---|---|
+| `--parallel=2` | backup의 파일 복사 | 동시에 복사할 파일의 작업 스레드 수 |
+| `--throttle=20` | backup | 초당 복사 청크 수 제한, MB/s와는 다른 단위 |
+| `--compress=zstd` | backup | 백업 파일 압축 |
+| `--compress-threads=2` | 압축 사용 시 | 압축 작업 스레드 수, 파일 복사 스레드와 별도 |
+| `--use-memory=512M` | prepare | 복구 작업에 사용할 메모리 설정, 프로세스 전체 메모리 상한과는 구분 |
+
+`--parallel`을 높이면 파일 복사 병렬성이 늘어나지만 CPU와 디스크 부하도 증가할 수 있습니다.\
+XtraBackup 8.0.35-33부터는 증분 prepare의 delta 파일 적용에도 `--parallel`을 사용할 수 있습니다.\
+전체 백업 예제에서는 파일 복사 수를 조절하는 용도로 사용합니다.
+
+### mariadb-backup 옵션
+
+| 옵션 예시 | 적용 작업 | 역할 |
+|---|---|---|
+| `--parallel=2` | backup의 파일 복사 | 데이터 파일 전송 스레드 수 |
+| `--throttle=20` | backup | 초당 백업 I/O 작업 수 제한, MB/s와는 다른 단위 |
+| `--use-memory=512M` | prepare | prepare 단계의 버퍼 풀 크기 설정 |
+
+`--parallel`은 CPU 사용률을 직접 제한하는 옵션이 아닙니다.\
+두 도구 모두 복사 병렬 수를 작게 시작하고, 운영 응답 시간과 디스크 사용량을 보며 조절합니다.\
+아래 예제의 `2`, `20`, `512M`은 옵션 적용을 보여주기 위한 값입니다.
 
 ## MySQL: XtraBackup 기본 흐름
 
@@ -87,9 +98,11 @@ DB 백업 계정의 권한과 운영체제 파일 접근 권한을 [공식 권�
 ```bash
 xtrabackup --backup --datadir=/var/lib/mysql \
   --target-dir=/srv/backups/full-20261028 \
+  --parallel=2 --throttle=20 \
   --user=backup --password=example-only
 
-xtrabackup --prepare --target-dir=/srv/backups/full-20261028
+xtrabackup --prepare --target-dir=/srv/backups/full-20261028 \
+  --use-memory=512M
 ```
 
 전체 백업의 대상 디렉터리는 새 경로이거나 비어 있어야 합니다.
@@ -125,10 +138,12 @@ docker exec mariadb mariadb-backup --version
 ```bash
 docker exec mariadb mariadb-backup --backup \
   --target-dir=/tmp/full-20261028 \
+  --parallel=2 --throttle=20 \
   --user=root --password=pass1234
 
 docker exec mariadb mariadb-backup --prepare \
-  --target-dir=/tmp/full-20261028
+  --target-dir=/tmp/full-20261028 \
+  --use-memory=512M
 
 mkdir -p backups
 docker cp mariadb:/tmp/full-20261028 ./backups/full-20261028
@@ -198,17 +213,17 @@ docker rm mariadb-restore-check
 
 이 명령은 바인드 마운트에 남은 복원 데이터를 삭제하지 않습니다.
 
-## 증분 백업과 시점 복구는 이어지는 별도 단계입니다
+## 증분 백업과 시점 복구로 연결
 
-전체 백업 뒤 변경분을 보관하는 증분 백업도 가능하지만, 기준 백업과 증분의 연결 및 적용 순서를 관리해야 합니다.
-물리 백업 도구가 복구에 사용한 redo 로그와, 이후 시점 복구에 사용하는 바이너리 로그는 같은 것이 아닙니다.
-원하는 시점까지 복구하려면 기준 백업의 로그 위치 또는 GTID 정보와 이후 바이너리 로그를 함께 보관하고 복구 절차를 검증합니다.
-
-이 글의 명령은 전체 물리 백업과 복원 실습이며 증분 병합과 시점 복구를 수행하지 않습니다.
-암호화된 DB라면 복원에 필요한 키와 설정도 별도로 보관합니다.
-복제 서버와 백업은 서로 대체하지 않습니다.
+이 글의 실행 예제는 전체 물리 백업과 복원을 다룹니다.\
+증분을 생성해 전체 백업에 계속 합치는 방법은 [증분 백업 생성과 병합](/docs/knowledge/data/mysql/operations/incremental-backup-merge)에서 별도로 설명합니다.\
+증분 백업과 레플리카에서 백업하는 구성은 [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup), 백업 이후 변경 적용은 [바이너리 로그와 시점 복구](/docs/knowledge/data/mysql/operations/binary-log-recovery)에서 설명합니다.
 
 ## 이어서 읽기
+
+- [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup)
+- [스토리지 스냅샷](/docs/knowledge/data/mysql/operations/storage-snapshots)
+- [바이너리 로그와 시점 복구](/docs/knowledge/data/mysql/operations/binary-log-recovery)
 
 - [MySQL CLI와 덤프 백업](/docs/knowledge/k-mysql-cli)
 - [MariaDB 덤프와 복제 설정](/docs/knowledge/data/mariadb/backup-and-replication)
@@ -216,6 +231,10 @@ docker rm mariadb-restore-check
 
 <details>
 <summary>공식 참고 자료</summary>
+
+
+- [XtraBackup 옵션](https://docs.percona.com/percona-xtrabackup/8.0/xtrabackup-option-reference.html)
+- [mariadb-backup 옵션](https://mariadb.com/docs/server/server-usage/backup-and-restore/mariadb-backup/mariadb-backup-options)
 
 - [XtraBackup 전체 백업](https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html)
 - [XtraBackup prepare](https://docs.percona.com/percona-xtrabackup/8.0/prepare-full-backup.html)

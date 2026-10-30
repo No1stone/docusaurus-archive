@@ -124,7 +124,8 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 | [MariaDB 안내](/docs/knowledge/data/mariadb) | 제품별 설정과 예제의 기준을 설명합니다. |
 | [Docker 실행과 서버 설정](/docs/knowledge/data/mariadb/docker-and-settings) | 볼륨, 포트, 문자셋, 대소문자와 타임존을 설정합니다. |
 | [덤프 백업과 복제 설정](/docs/knowledge/data/mariadb/backup-and-replication) | SQL 백업과 복제 준비 옵션을 구분합니다. |
-| [온라인 물리 백업](/docs/knowledge/data/mysql/operations/online-physical-backup) | XtraBackup과 mariadb-backup의 백업 및 복원 과정을 설명합니다. |
+| [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup) | 물리 백업, 스냅샷, 전체와 증분 및 레플리카의 관계 |
+| [XtraBackup과 mariadb-backup](/docs/knowledge/data/mysql/operations/online-physical-backup) | 백업 옵션과 prepare 및 복원 과정 |
 
 ## 기본 사용
 
@@ -174,4 +175,7 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 | [파티셔닝과 pmax 관리](/docs/knowledge/data/mysql/operations/partitioning) | 날짜와 ID 분할, 단일 PK 제약과 파티션 단위 삭제를 설명합니다. |
 | [느린 쿼리와 운영 진단](/docs/knowledge/data/mysql/operations/diagnostics) | 연결 수, 누적 쿼리 비용과 잠금 대기를 확인합니다. |
 | [Docker 배포와 데이터 보존](/docs/knowledge/data/mysql/operations/docker-and-persistence) | Compose, 데이터 볼륨과 초기화 및 복구를 설명합니다. |
-| [온라인 물리 백업](/docs/knowledge/data/mysql/operations/online-physical-backup) | 실행 중 데이터 파일을 백업하고 prepare와 별도 복원을 수행합니다. |
+| [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup) | 전체, 증분, 스냅샷, 로그와 레플리카 백업의 관계 |
+| [XtraBackup과 mariadb-backup](/docs/knowledge/data/mysql/operations/online-physical-backup) | 파일 백업 옵션, prepare와 별도 복원 |
+| [스토리지 스냅샷](/docs/knowledge/data/mysql/operations/storage-snapshots) | 볼륨과 파일시스템의 시점 상태, 트랜잭션 복구 |
+| [바이너리 로그와 시점 복구](/docs/knowledge/data/mysql/operations/binary-log-recovery) | 로그 경로, 백업 이후 변경 적용과 복제 연결 |
