@@ -29,6 +29,7 @@ MySQL의 시작 옵션을 MariaDB에 그대로 옮기기보다 필요한 설정�
 
 | 글 | 설명 |
 |---|---|
+| [MySQL과 MariaDB Compose 예제](/docs/knowledge/data/mysql/operations/docker-compose-examples) | 전체 설정 예제, 볼륨과 역할별 옵션 및 추가 설정 |
 | [Docker 실행과 서버 설정](/docs/knowledge/data/mariadb/docker-and-settings) | Compose, 볼륨, 포트, 문자셋, 대소문자와 타임존을 설정합니다. |
 | [덤프 백업과 복제 설정](/docs/knowledge/data/mariadb/backup-and-replication) | 덤프와 복제의 차이, 바이너리 로그와 함수 생성 옵션을 설명합니다. |
 | [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup) | 전체, 증분, 스냅샷과 로그 및 레플리카 백업의 관계 |

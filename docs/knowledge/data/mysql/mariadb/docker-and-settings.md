@@ -26,6 +26,9 @@ references:
 ---
 # MariaDB Docker 실행과 서버 설정
 
+네트워크, 로그와 읽기 전용 설정을 함께 보는 전체 예제는 [MySQL과 MariaDB Compose 예제](/docs/knowledge/data/mysql/operations/docker-compose-examples)에 정리했습니다.
+
+
 Docker Compose에서 이미지와 접속 포트, 저장 위치를 정하고 `command`로 DB 서버 옵션을 전달할 수 있습니다.
 다음 비밀번호는 실제 시스템에서 사용하지 않는 공개 실습용 값입니다.
 

@@ -21,6 +21,9 @@ references:
 ---
 # MySQL Docker 배포와 데이터 보존
 
+네트워크, 로그와 읽기 전용 설정을 함께 보는 전체 예제는 [MySQL과 MariaDB Compose 예제](/docs/knowledge/data/mysql/operations/docker-compose-examples)에 정리했습니다.
+
+
 컨테이너는 교체할 수 있어도 DB 데이터는 유지되어야 합니다.
 실행 설정과 데이터 저장 위치를 구분하고, 이미지 업데이트 전에 백업과 복원 가능 여부를 확인합니다.
 아래는 개인 실습 환경이며 운영용 이중화와 접근 제어 구성은 포함하지 않습니다.
