@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/gof-design-pattern.md",
+  "before": "GoF 디자인 패턴 목록과 하위 문서 진입점",
+  "after": "개요: GoF 패턴은 구현을 돕는 예시입니다. 정답이 아니라 문제에 맞게 변형해 씁니다.",
+  "bodyHash": "3ac2ca47766fb247a8d2408bfb5c760dfa60249309525449f4ef214ca58b8681",
+  "guarded": {
+    "slug": "/patterns/pattern-gof-design-pattern",
+    "id": "pattern-gof-design-pattern",
+    "title": "Gof design pattern"
+  },
+  "savedAt": "2026-11-02T03:49:07.007Z"
+}

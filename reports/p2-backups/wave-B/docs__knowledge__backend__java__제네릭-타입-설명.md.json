@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/제네릭-타입-설명.md",
+  "before": "Java 제네릭 타입을 그림으로 정리한 메모",
+  "after": "제네릭 타입 설명: 제네릭 타입 설명 개요: Java 제네릭 타입을 다이어그램으로 남겨 둔 메모입니다. 타입 파라미터와 구체 타입의 관계를 그림으로 확인할 때 참고합니다.",
+  "bodyHash": "064cd69134a5dec08b6e84f0c1f784b44df5378f10d5b274af77c734f8fc2656",
+  "guarded": {
+    "slug": "/knowledge/k-제네릭-타입-설명",
+    "id": "k-제네릭-타입-설명",
+    "title": "제네릭 타입 설명"
+  },
+  "savedAt": "2026-11-02T03:49:07.009Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/bean-factory-and-application-context.md",
+  "before": "BeanFactory와 ApplicationContext (작성 예정)",
+  "after": "BeanFactory와 ApplicationContext — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "c5906e155bd6184b774dbe8fb54e2bb7e4c6246fbb467229ea014df61a4dcc94",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/bean-factory-and-application-context",
+    "id": "spring-spring-core-bean-factory-and-application-context",
+    "title": "BeanFactory와 ApplicationContext"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

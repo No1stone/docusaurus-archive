@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/redis/index.md",
+  "before": "redis notes",
+  "after": "redis(redis) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "63f3d0f7b8f9301a1e9fe891bf4b54a212a6933b8cd922ce7f9d55bcfd0997e3",
+  "guarded": {
+    "slug": "/knowledge/data/redis",
+    "id": "data-redis",
+    "title": "redis"
+  },
+  "savedAt": "2026-11-02T03:50:21.934Z"
+}

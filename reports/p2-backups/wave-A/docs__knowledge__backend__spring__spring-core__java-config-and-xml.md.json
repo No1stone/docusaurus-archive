@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/java-config-and-xml.md",
+  "before": "Java Config와 XML 설정 (작성 예정)",
+  "after": "Java Config와 XML 설정 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "a617525db3275d3efce12e160e1d99a912bc388c4265953b2f74843f06fa964e",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/java-config-and-xml",
+    "id": "spring-spring-core-java-config-and-xml",
+    "title": "Java Config와 XML 설정"
+  },
+  "savedAt": "2026-11-02T03:49:04.308Z"
+}

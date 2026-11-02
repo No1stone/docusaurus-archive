@@ -1,0 +1,110 @@
+{
+  "wave": "B",
+  "doApply": true,
+  "modes": [
+    "auto",
+    "review"
+  ],
+  "considered": 16,
+  "applied": 16,
+  "failed": 0,
+  "generatedAt": "2026-11-02T03:50:21.937Z",
+  "results": [
+    {
+      "file": "docs/knowledge/backend/spring/batch/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__batch__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__boot__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__jdbc__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/core/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__legacy__core__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__legacy__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__spring__settings__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/data/jpa/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__data__jpa__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__data__postgresql__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/data/r2dbc-stack/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__data__r2dbc-stack__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/data/redis/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__data__redis__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__data__sql-ops__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/delivery/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__messaging__delivery__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__messaging__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/webex-stack/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__messaging__webex-stack__index.md.json"
+    },
+    {
+      "file": "docs/patterns/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__patterns__index.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/index.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-B/docs__knowledge__backend__java__json-utils__index.md.json"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/spring-jdbc.md",
+  "before": "Spring JDBC (작성 예정)",
+  "after": "Spring JDBC — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "e8a3b93f56954450365ee6add58244267c5cee09d0897b0b95362500a3c7792c",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/spring-jdbc",
+    "id": "spring-jdbc-spring-jdbc",
+    "title": "Spring JDBC"
+  },
+  "savedAt": "2026-11-02T03:49:04.305Z"
+}

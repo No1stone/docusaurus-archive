@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/dateutils.md",
+  "before": "DATEUtils",
+  "after": "import java.text.ParseException; import java.text.SimpleDateFormat; import java.util.Calendar; import java.util.Date;",
+  "bodyHash": "1966fb1b321e10062c00169fb8a8630b259ff3c5f0ee13a137a12ac4adb4bd65",
+  "guarded": {
+    "slug": "/knowledge/k-dateutils",
+    "id": "k-dateutils",
+    "title": "DATEUtils"
+  },
+  "savedAt": "2026-11-02T03:49:28.992Z"
+}

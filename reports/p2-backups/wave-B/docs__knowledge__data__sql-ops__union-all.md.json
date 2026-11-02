@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/union-all.md",
+  "before": "Union All",
+  "after": "CREATE OR REPLACE VIEW view partner studio uinon AS SELECT 'studio'::text AS type, aa.profile id, aa.studio id AS",
+  "bodyHash": "06b58a45fbb8109860ec3e6be0140c1186c3bfdfdd58d4b390dcd427ec677cc0",
+  "guarded": {
+    "slug": "/knowledge/k-union-all",
+    "id": "k-union-all",
+    "title": "Union All"
+  },
+  "savedAt": "2026-11-02T03:49:28.990Z"
+}

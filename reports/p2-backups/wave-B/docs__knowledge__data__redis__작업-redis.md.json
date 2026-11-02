@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/redis/작업-redis.md",
+  "before": "작업 redis 관련 원문 링크 범위 안내",
+  "after": "작업 redis 개요 작업 redis 관련 원문 링크 범위 안내입니다. 상세 절차와 최신 옵션은 위 링크의 원문을 확인합니다. 이 글은 링크 보관과 범위 안내만 하며, 특정 환경의 실측 수치를 주장하지 않습니다.",
+  "bodyHash": "33b12cc632bed6924cba77fec6f03dc5489d33348cccd88544bdfdf975c9b136",
+  "guarded": {
+    "slug": "/knowledge/k-작업-redis",
+    "id": "k-작업-redis",
+    "title": "작업 redis"
+  },
+  "savedAt": "2026-11-02T03:49:07.001Z"
+}

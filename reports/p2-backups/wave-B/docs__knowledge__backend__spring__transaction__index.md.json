@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/transaction/index.md",
+  "before": "트랜잭션 목차",
+  "after": "Spring transaction 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "53134c3cd878bede6c4172a40ce4772bf321367e01e5216a731814fc0b3da3cc",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/transaction",
+    "id": "spring-transaction-index",
+    "title": "트랜잭션"
+  },
+  "savedAt": "2026-11-02T03:49:06.998Z"
+}

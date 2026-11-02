@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/transaction/rollback-and-exceptions.md",
+  "before": "롤백과 예외 처리 (작성 예정)",
+  "after": "롤백과 예외 처리 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "95ee0525a4e549213bb00661aa1fb5238a851150b2f728e6a928645c0dd44e03",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/transaction/rollback-and-exceptions",
+    "id": "spring-transaction-rollback-and-exceptions",
+    "title": "롤백과 예외 처리"
+  },
+  "savedAt": "2026-11-02T03:49:04.313Z"
+}

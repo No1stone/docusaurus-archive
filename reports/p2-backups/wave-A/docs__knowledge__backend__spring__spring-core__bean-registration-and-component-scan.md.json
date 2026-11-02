@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/bean-registration-and-component-scan.md",
+  "before": "Bean 등록과 컴포넌트 스캔 (작성 예정)",
+  "after": "Bean 등록과 컴포넌트 스캔 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "47563ff3e33cd2ad5470d76df4742b441e94e49fc1b7869d90c2ed5a07ba3209",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/bean-registration-and-component-scan",
+    "id": "spring-spring-core-bean-registration-and-component-scan",
+    "title": "Bean 등록과 컴포넌트 스캔"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

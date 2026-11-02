@@ -1,0 +1,370 @@
+{
+  "wave": "B",
+  "doApply": false,
+  "modes": [
+    "auto"
+  ],
+  "considered": 51,
+  "applied": 51,
+  "failed": 0,
+  "generatedAt": "2026-11-02T03:49:06.936Z",
+  "results": [
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "비동기와 스케줄링 목차",
+      "after": "Spring async-scheduling 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/configuration/application-properties.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "application properties",
+      "after": "spring.first.datasource.jdbc url= spring.first.datasource.username= spring.first.datasource.password="
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/configuration/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "properties·yml·외부 리소스·메시지 소스 설정 메모입니다.",
+      "after": "Spring configuration 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/configuration/resourcebundlemessagesource.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "ResourceBundleMessageSource",
+      "after": "ResourceBundleMessageSource: ResourceBundleMessageSource 다국어를 지원하는 어플리케이션을 만들때 주로 사용 message en US.properties 주의사항 messageSource라고 이름을 지어야 애플리케이션콘텍스트가 감지함"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/core/aop.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "@AoP",
+      "after": "@AoP 관점지향 프로그래밍 Aspect Oriented Programming IoC di는 (new) 인스턴스 의존성 주입이라고한다면 AoP는 인스턴스의 기능을 주입시킨다. 인터셉터같이 실행시킬때 중간중간 채가서"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/core/spring.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring",
+      "after": "Spring Spring Git MultiDataBase Mybatis 스프링5 레시피4판 Security Exame/Boot,Security,Jwt,RestAPI Log4Jdbc RestAPI Spring"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/scheduling/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Schedule·@Scheduled·배치성 작업 메모입니다.",
+      "after": "Spring scheduling 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring Core 목차",
+      "after": "Spring spring-core 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "테스트 목차",
+      "after": "Spring spring-testing 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Web 목차",
+      "after": "Spring spring-web 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "트랜잭션 목차",
+      "after": "Spring transaction 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/data/jpa/dynamicquery.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "DynamicQuery",
+      "after": "DynamicQuery: DynamicQuery 다이나믹 쿼리 수동으로 트랜잭셔널 처리를해줘야해서 AOP처리를 해줘야함 (트랜잭션위치는 쿼리단위로 하던 인터페이스단위로하던...) 클래스 다중상속이 안되니 인터페이스 다중상속하고 클래스 별로 구현 업데이트 동적쿼리"
+    },
+    {
+      "file": "docs/knowledge/data/jpa/log4jdbc.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Log4Jdbc",
+      "after": "log4jdbc.log4j2.properties logback.xml Lazy proxy"
+    },
+    {
+      "file": "docs/knowledge/data/jpa/연관관계.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "연관관계",
+      "after": "팜프로(partner gateway)와 부트베이스 api auth 모두 JPAQueryFactory 빈을 둡니다."
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/postgresql-info.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "PostgreSQL 관련 메모 진입점",
+      "after": "Postgresql info: Postgresql info 개요: PostgreSQL 관련 메모의 진입점입니다. 관련 메모 : 데이터 타입 문서, 스크린샷 타입 선택과 제약부터 위 글을 보면 됩니다."
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/작업-postgresql-3.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "작업 postgreSQL 3",
+      "after": "mkdir p /home/app2 user/dockerdir/postgres primary mkdir p /home/app2 user/dockerdir/postgres standby"
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/작업-postgresql-작업2.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "작업 postgresql 작업2",
+      "after": "작업 postgresql 작업2: 작업 postgresql 작업2 개요 작업 postgresql 작업2입니다. private 연결후 프라이빗 복제설정 예제·코드 <details <summary 참고 자료</summary </details"
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/작업-postgresql.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "작업 postgreSQL",
+      "after": "작업 postgreSQL: 작업 postgreSQL 개요 작업 postgreSQL입니다. private 연결후 프라이빗 복제설정 예제·코드 <details <summary 참고 자료</summary </details"
+    },
+    {
+      "file": "docs/knowledge/data/redis/r2dbc-redis.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "R2dbc Redis",
+      "after": "R2dbc Redis 개요 R2dbc Redis에 대한 메모입니다. reactive web reactivceRedis userEntity 등록필요 Redis 연결 부트베이스 게이트웨이는 Lettuce로"
+    },
+    {
+      "file": "docs/knowledge/data/redis/redis.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Redis 관련 메모 진입점 (캐시, 애너테이션, Pub/Sub)",
+      "after": "Redis: Redis 개요: Redis 관련 메모의 진입점입니다. 관련 메모 : 캐시 읽기, 수정 흐름 : Spring Cache 애너테이션 : Redis Pub/Sub 캐시 사용 패턴과 Spring 연동, 메시징을 위 순서로 보면 됩니다."
+    },
+    {
+      "file": "docs/knowledge/data/redis/작업-redis.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "작업 redis 관련 원문 링크 범위 안내",
+      "after": "작업 redis 개요 작업 redis 관련 원문 링크 범위 안내입니다. 상세 절차와 최신 옵션은 위 링크의 원문을 확인합니다. 이 글은 링크 보관과 범위 안내만 하며, 특정 환경의 실측 수치를 주장하지 않습니다."
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/database.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "데이터베이스 관련 메모 모음 진입점",
+      "after": "DATABASE: DATABASE 개요: 데이터베이스 관련 메모를 모아 둔 진입점입니다. 관련 메모 SQL 문법, 캐시, 마이그레이션, 복제, 연동까지 위 목록에서 골라 보면 됩니다."
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/dblink.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "dblink 관련 원문 링크 범위 안내",
+      "after": "dblink 개요 dblink 관련 원문 링크 범위 안내입니다. [[ PostgreSql ] 서로 다른 곳의 DB dblink로 연결하기]( — 아마 이런 일은 드물겠지만 연구과제 프로젝트 개발 중 연구과제를 같이"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/federated.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "FEDERATED 관련 원문 링크 범위 안내",
+      "after": "FEDERATED: FEDERATED 개요 FEDERATED 관련 원문 링크 범위 안내입니다. 상세 절차와 최신 옵션은 위 링크의 원문을 확인합니다. 이 글은 링크 보관과 범위 안내만 하며, 특정 환경의 실측"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/grant.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "grant",
+      "after": "create user 'smvuser'@'%' identified by 'ChangeMe1!'; GRANT ALL PRIVILEGES ON . TO 'smvuser'@'%'; flush PRIVILEGES;"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/index-15fb78.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "MySQL 인덱스 확인, 생성, 삭제, 복합 SQL 메모",
+      "after": "개요: MySQL에서 인덱스를 확인하고 만들고 지우는 SQL을 모아 둔 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/oracle.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "oracle",
+      "after": "oracle 개요 oracle에 대한 메모입니다. 도커에서 볼륨 접속할수 있게 필수로 줘야함 접속 커널은 공식문서참조 예제·코드 <details <summary 참고 자료</summary — Official"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/partition-3b84e6.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "partition",
+      "after": "partition 개요 partition에 대한 메모입니다. 우선 같은 리전에 ebs블록 생성후 인스턴스연결 생성한 마운트 포멧 예제·코드 <details <summary 참고 자료</summary [[Linux]"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/partition.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "테이블 파티셔닝 안내는 MySQL·MariaDB 문서로 이어집니다.",
+      "after": "PARTITION: PARTITION 테이블(ROW) 파티셔닝 안내는 아래로 이어집니다. — RANGE, PK 제약, pmax, DROP — created at 파티션과 JPA @Id 매핑 디스크 파티션(EBS/"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/mq-memo.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "MQ 원본 메모 보존",
+      "after": "개요: 원본 Notion 메모를 그대로 보존한 작성본입니다. 내용을 임의로 보완하지 않았습니다. 작성자 재검토 대기입니다."
+    },
+    {
+      "file": "docs/knowledge/messaging/delivery/aws-ses.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Amazon SES 관련 메모 진입점 (용어, 프로그램 발송)",
+      "after": "개요: Amazon Simple Email Service(SES) 관련 메모의 진입점입니다."
+    },
+    {
+      "file": "docs/knowledge/messaging/delivery/webflux-websocket.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "WebFlux WebSocket",
+      "after": "WebFlux WebSocket: WebFlux WebSocket 개요 WebFlux WebSocket에 대한 메모입니다. @Configuration Implements WebSocketHandler"
+    },
+    {
+      "file": "docs/knowledge/messaging/dialogflow/dialogflow-setting.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "DialogFlow Setting",
+      "after": "DialogFlow Setting GCP와 Dialogflow 프로잭트가 일치해야하며 접속 Json 파일은 아래에서 받는다 IAM 및 관리자 → 서비스계정 → 키 다이알로그 플로어 Agen 생성할때 해당 프로잭트"
+    },
+    {
+      "file": "docs/knowledge/messaging/dialogflow/dialogflowhandler.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "DialogFlowHandler",
+      "after": "DialogFlowHandler: DialogFlowHandler 개요 DialogFlowHandler에 대한 메모입니다. 예제·코드 <details <summary 참고 자료</summary </details"
+    },
+    {
+      "file": "docs/knowledge/messaging/dialogflow/index.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Dialogflow·봇 연동 메모입니다.",
+      "after": "Dialogflow / Bot 하위 문서 목차와 진입 경로를 제공합니다."
+    },
+    {
+      "file": "docs/knowledge/messaging/webex-stack/webex-json-library-사용.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Webex Json library 사용",
+      "after": "Webex Json library 사용: Webex Json library 사용 개요 Webex Json library 사용입니다. Json RestAPI Send Bean설정 예제·코드 <details <summary 참고 자료</summary </details"
+    },
+    {
+      "file": "docs/patterns/gof/behavioral/방문자visitor-pattenr.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "방문자(Visitor Pattenr)",
+      "after": "방문자(Visitor Pattenr): 방문자(Visitor Pattenr) 공장에 복사할수있는 물체가있다고 하자. 방문자가 그복사할수 있는 물체를 복사해서 더할수있다. 공장인터페이스(비짓) 공장"
+    },
+    {
+      "file": "docs/patterns/gof/behavioral/스트래티지-패턴strategy-pattern.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "인터페이스로 동작을 교체하는 스트래티지 패턴 메모",
+      "after": "개요: 인터페이스를 통해 원하는 구현(전략)에 접근하는 패턴입니다. MyBatis 매퍼 인터페이스를 떠올리면 이해하기 쉽다는 메모입니다."
+    },
+    {
+      "file": "docs/patterns/gof/behavioral/템플릿메서드template-method.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "템플릿메서드(Template Method)",
+      "after": "템플릿메서드(Template Method): 템플릿메서드(Template Method) 템플릿메서드는 하위클래스만 사용해서 재정의 해야하기때문에 프로텍티드(protected O) 사용 외부 호출 X ( private X) 추상클래스에서 구현체에 접근하는걸 통제함."
+    },
+    {
+      "file": "docs/patterns/gof/creational/빌드패턴1build-pattern.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "VO와 Builder 클래스로 객체를 조립하는 빌더 패턴 메모",
+      "after": "개요: VO를 만들고, 그 VO를 세팅하는 Builder 클래스로 인스턴스를 조립하는 빌더 패턴 메모입니다."
+    },
+    {
+      "file": "docs/patterns/gof/creational/추상팩토리abstract-factory.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "추상팩토리(Abstract Factory)",
+      "after": "추상팩토리(Abstract Factory): 추상팩토리(Abstract Factory) 인터페이스들별 기능을 나열 Factoty 라는 하나의 인터페이스로 모으고 인스턴스를 생성하는 클래스를 만들어 사용 인스턴스"
+    },
+    {
+      "file": "docs/patterns/gof/creational/프로토타입prototype-pattern.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "프로토타입(Prototype Pattern)",
+      "after": "프로토타입(Prototype Pattern): 프로토타입(Prototype Pattern) 원형을 놔두고 복사하는 기능이다 Interface CloneAble 사용 프로토타입은 여러가시 사용방법이 있는듯하다."
+    },
+    {
+      "file": "docs/patterns/gof/gof-design-pattern.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "GoF 디자인 패턴 목록과 하위 문서 진입점",
+      "after": "개요: GoF 패턴은 구현을 돕는 예시입니다. 정답이 아니라 문제에 맞게 변형해 씁니다."
+    },
+    {
+      "file": "docs/patterns/gof/structural/브릿지패턴bridge-patter.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "브릿지패턴(Bridge Patter)",
+      "after": "브릿지패턴(Bridge Patter) 핵심: 구현되있는 기능들만 교체해서 사용한다. 인스턴스화되서 출력되는 부분은 변하지않는다. 인터페이스 생성 클래스로 인터페이스 기능을 델리게이트시킴 프린트해주는 클래스에"
+    },
+    {
+      "file": "docs/patterns/gof/structural/컴포지트composite-pattern.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "컴포지트(composite pattern)",
+      "after": "컴포지트(composite pattern): 컴포지트(composite pattern) 리눅스 경로와 비슷한 패턴을 만드는 구조. 컴포지트 클래스생성 폴더와 파일이 상속받고. 슈퍼클래스로 이름을 올려줌. 폴더와 파일은 배열을줘서 여러개를 보관할수있게 만든다."
+    },
+    {
+      "file": "docs/knowledge/backend/java/java.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Java 관련 메모 진입점 (제네릭, JDK 이슈, Sun Java)",
+      "after": "Java: Java 개요: Java 관련 메모의 진입점입니다. 관련 메모 : \"tree.meth.type\" is null (JDK 8262095) 원 노트에는 java time error 항목도 있었습니다. 제목만 있어 아카이브에 이전되지 않았으므로, 위 문서부터 보면 됩니다."
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/gson-to-json.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Gson 의존성을 Maven과 Gradle로 추가하는 메모입니다.",
+      "after": "Google Gson으로 JSON을 다룰 때 쓰는 의존성 메모입니다. DI로 주입해 쓰고, Maven과 Gradle 예시 버전을 남겨 두었습니다."
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/javax-json-se-ee.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Javax.Json 임포트와 SE/EE 범위에 대한 원본 메모 보존",
+      "after": "개요: 원본 Notion 메모를 그대로 보존한 작성본입니다. 내용을 임의로 보완하지 않았습니다. 작성자 재검토 대기입니다. (javax-json-se-ee)"
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/json-build-attachmentscard.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Json Build (attachmentsCard)",
+      "after": "Json Build (attachmentsCard) 기존에 개발되어있는카드는 Actions[Action.Submit] 을 사용했다. 액션스는 버튼이 5개밖에 셋팅이 안된다. !json build"
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/jsonsimple.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "JsonSimple",
+      "after": "1.json simple은 내부적으로 JSON 데이터를 처리하기 위해 Map과 List를 사용."
+    },
+    {
+      "file": "docs/knowledge/backend/java/제네릭-타입-설명.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Java 제네릭 타입을 그림으로 정리한 메모",
+      "after": "제네릭 타입 설명: 제네릭 타입 설명 개요: Java 제네릭 타입을 다이어그램으로 남겨 둔 메모입니다. 타입 파라미터와 구체 타입의 관계를 그림으로 확인할 때 참고합니다."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/async-scheduling/index.md",
+  "before": "비동기와 스케줄링 목차",
+  "after": "Spring async-scheduling 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "81091af353bdfdc89e76b1eca6616080aa2c6315bc083522e767d3c4700516fd",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/async-scheduling",
+    "id": "spring-async-scheduling-index",
+    "title": "비동기와 스케줄링"
+  },
+  "savedAt": "2026-11-02T03:49:06.993Z"
+}

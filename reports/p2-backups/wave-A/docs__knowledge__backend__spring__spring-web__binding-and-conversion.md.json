@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/binding-and-conversion.md",
+  "before": "요청 바인딩과 응답 변환 (작성 예정)",
+  "after": "요청 바인딩과 응답 변환 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "f9278607045a6ce6f00f7e52f47c48a3e348271e2744004fc79bae109dffba66",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/binding-and-conversion",
+    "id": "spring-spring-web-binding-and-conversion",
+    "title": "요청 바인딩과 응답 변환"
+  },
+  "savedAt": "2026-11-02T03:49:04.309Z"
+}

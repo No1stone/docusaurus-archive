@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/spring-application.md",
+  "before": "SpringApplication과 실행 과정 (작성 예정)",
+  "after": "SpringApplication과 실행 과정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "948b3b1e887bc2aba9e8ba11c301eb117615108ba69e16747a1927ebe1308dc5",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot/spring-application",
+    "id": "spring-boot-spring-application",
+    "title": "SpringApplication과 실행 과정"
+  },
+  "savedAt": "2026-11-02T03:49:04.302Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/index.md",
+  "before": "메시징·채널·이벤트 전달 메모",
+  "after": "Messaging(Messaging) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "8ff4553dc9be05f145ba186d95e31e10e4fee0bade3d1387bd61a82b06160efe",
+  "guarded": {
+    "slug": "/knowledge/messaging",
+    "id": "messaging",
+    "title": "Messaging"
+  },
+  "savedAt": "2026-11-02T03:50:21.935Z"
+}

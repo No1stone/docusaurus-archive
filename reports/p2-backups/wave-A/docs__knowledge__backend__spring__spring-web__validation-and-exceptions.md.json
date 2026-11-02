@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/validation-and-exceptions.md",
+  "before": "입력 검증과 예외 처리 (작성 예정)",
+  "after": "입력 검증과 예외 처리 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "0473e81d5cfcaec92c8d965b2843a8c8753dd52f561b7b4c08f3e60876086f94",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/validation-and-exceptions",
+    "id": "spring-spring-web-validation-and-exceptions",
+    "title": "입력 검증과 예외 처리"
+  },
+  "savedAt": "2026-11-02T03:49:04.311Z"
+}

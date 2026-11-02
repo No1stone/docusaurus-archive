@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/dblink.md",
+  "before": "dblink 관련 원문 링크 범위 안내",
+  "after": "dblink 개요 dblink 관련 원문 링크 범위 안내입니다. [[ PostgreSql ] 서로 다른 곳의 DB dblink로 연결하기]( — 아마 이런 일은 드물겠지만 연구과제 프로젝트 개발 중 연구과제를 같이",
+  "bodyHash": "2784594a008bb902dcb5af8356b3c88a402990a200f1627482cc7029ba3f45db",
+  "guarded": {
+    "slug": "/knowledge/k-dblink",
+    "id": "k-dblink",
+    "title": "dblink"
+  },
+  "savedAt": "2026-11-02T03:49:07.001Z"
+}

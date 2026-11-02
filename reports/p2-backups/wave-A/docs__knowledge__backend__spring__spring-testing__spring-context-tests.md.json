@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-testing/spring-context-tests.md",
+  "before": "Spring Context 테스트 (작성 예정)",
+  "after": "Spring Context 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "a813caf344dee62d011a96ce3f7d18e31c52159abee422aac2db4b7a68de757f",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-testing/spring-context-tests",
+    "id": "spring-spring-testing-spring-context-tests",
+    "title": "Spring Context 테스트"
+  },
+  "savedAt": "2026-11-02T03:49:04.309Z"
+}

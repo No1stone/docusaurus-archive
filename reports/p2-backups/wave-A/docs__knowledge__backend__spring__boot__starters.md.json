@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/starters.md",
+  "before": "Starter와 의존성 관리 (작성 예정)",
+  "after": "Starter와 의존성 관리 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "e3f5dc50c665ae9bcd1600c1b53304c1ec251542c6a033ff4c73495758c7f359",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot/starters",
+    "id": "spring-boot-starters",
+    "title": "Starter와 의존성 관리"
+  },
+  "savedAt": "2026-11-02T03:49:04.302Z"
+}

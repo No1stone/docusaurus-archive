@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/json-build-attachmentscard.md",
+  "before": "Json Build (attachmentsCard)",
+  "after": "Json Build (attachmentsCard) 기존에 개발되어있는카드는 Actions[Action.Submit] 을 사용했다. 액션스는 버튼이 5개밖에 셋팅이 안된다. !json build",
+  "bodyHash": "375b46ea011c60c925489abff10fef09d12c3cd440f1bc94b885315f58a81f8b",
+  "guarded": {
+    "slug": "/knowledge/k-json-build-attachmentscard",
+    "id": "k-json-build-attachmentscard",
+    "title": "Json Build (attachmentsCard)"
+  },
+  "savedAt": "2026-11-02T03:49:07.009Z"
+}

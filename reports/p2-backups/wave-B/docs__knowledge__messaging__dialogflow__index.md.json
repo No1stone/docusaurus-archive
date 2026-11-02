@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/dialogflow/index.md",
+  "before": "Dialogflow·봇 연동 메모입니다.",
+  "after": "Dialogflow / Bot 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "14e7131fddcfdd8e46ea7aa6afa7bbdead02b6c7e61ba42599734837292a9dc8",
+  "guarded": {
+    "slug": "/knowledge/messaging/dialogflow",
+    "id": "messaging-dialogflow",
+    "title": "Dialogflow / Bot"
+  },
+  "savedAt": "2026-11-02T03:49:07.004Z"
+}

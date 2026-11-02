@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/grant.md",
+  "before": "grant",
+  "after": "create user 'smvuser'@'%' identified by 'ChangeMe1!'; GRANT ALL PRIVILEGES ON . TO 'smvuser'@'%'; flush PRIVILEGES;",
+  "bodyHash": "8fb2787af67989909e85db13e1a3ceb6b1fedeb5639b2bdef9482aad69f49839",
+  "guarded": {
+    "slug": "/knowledge/k-grant",
+    "id": "k-grant",
+    "title": "grant"
+  },
+  "savedAt": "2026-11-02T03:49:07.001Z"
+}

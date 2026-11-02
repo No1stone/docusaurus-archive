@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/core/spring.md",
+  "before": "Spring",
+  "after": "Spring Spring Git MultiDataBase Mybatis 스프링5 레시피4판 Security Exame/Boot,Security,Jwt,RestAPI Log4Jdbc RestAPI Spring",
+  "bodyHash": "f853bc5fbbca5667504b95d8295bea36fd4a2c4eb425477d4d77962f8da37618",
+  "guarded": {
+    "slug": "/knowledge/k-spring",
+    "id": "k-spring",
+    "title": "Spring"
+  },
+  "savedAt": "2026-11-02T03:49:06.997Z"
+}

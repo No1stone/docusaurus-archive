@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/environment-and-precedence.md",
+  "before": "Environment와 설정 우선순위 (작성 예정)",
+  "after": "Environment와 설정 우선순위 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "0131d2524e70d4f3a74aed4944858e6782076965769a3a9658d67c1b66ff0044",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/environment-and-precedence",
+    "id": "spring-settings-environment-and-precedence",
+    "title": "Environment와 설정 우선순위"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

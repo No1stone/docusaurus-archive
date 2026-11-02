@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/core/작업-spring.md",
+  "before": "작업 spring",
+  "after": "작업 spring 주제의 핵심 개념과 실무 메모를 짧게 정리한 문서입니다.",
+  "bodyHash": "fe40969b53e24d623a7e6305c13af221e14b83374f5d64a9d3531a12d09bb217",
+  "guarded": {
+    "slug": "/knowledge/k-작업-spring",
+    "id": "k-작업-spring",
+    "title": "작업 spring"
+  },
+  "savedAt": "2026-11-02T03:49:28.985Z"
+}

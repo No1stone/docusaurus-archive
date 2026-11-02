@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/core/aop.md",
+  "before": "@AoP",
+  "after": "@AoP 관점지향 프로그래밍 Aspect Oriented Programming IoC di는 (new) 인스턴스 의존성 주입이라고한다면 AoP는 인스턴스의 기능을 주입시킨다. 인터셉터같이 실행시킬때 중간중간 채가서",
+  "bodyHash": "2deebef504d266375b7fbba8e0b7a5332655f5e8b46fbf86ac05e8675baf041a",
+  "guarded": {
+    "slug": "/knowledge/k-aop",
+    "id": "k-aop",
+    "title": "@AoP"
+  },
+  "savedAt": "2026-11-02T03:49:06.996Z"
+}

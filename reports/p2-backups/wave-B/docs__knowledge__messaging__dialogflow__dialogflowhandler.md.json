@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/dialogflow/dialogflowhandler.md",
+  "before": "DialogFlowHandler",
+  "after": "DialogFlowHandler: DialogFlowHandler 개요 DialogFlowHandler에 대한 메모입니다. 예제·코드 <details <summary 참고 자료</summary </details",
+  "bodyHash": "6966d187af47db7e18ecd6a0cf04a094c1f9153a341628e5b5b00a6559f87726",
+  "guarded": {
+    "slug": "/knowledge/k-dialogflowhandler",
+    "id": "k-dialogflowhandler",
+    "title": "DialogFlowHandler"
+  },
+  "savedAt": "2026-11-02T03:49:07.004Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/virtual-threads.md",
+  "before": "Virtual Threads (작성 예정)",
+  "after": "Virtual Threads — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "62735dbea28a6d52ba3e6ab1add1ce20f13af141053d8bb88ff322f6ff45ce18",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/virtual-threads",
+    "id": "spring-spring-web-virtual-threads",
+    "title": "Virtual Threads"
+  },
+  "savedAt": "2026-11-02T03:49:04.312Z"
+}

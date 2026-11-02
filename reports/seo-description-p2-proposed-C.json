@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-11-02T03:49:10.409Z",
+  "waves": [
+    "C"
+  ],
+  "totals": {
+    "considered": 4,
+    "proposed": 4,
+    "skipped": 0
+  },
+  "proposals": [
+    {
+      "file": "docs/knowledge/messaging/brokers/pub-38b647.md",
+      "wave": "C",
+      "mode": "review",
+      "skip": false,
+      "reason": "duplicate description pair — differentiate or defer merge",
+      "before": "Pub",
+      "after": "Pub: Redis Pub 캐시·ConnectionFactory 설정 (slug /knowledge/k-pub-38b647)",
+      "strategy": "templateD",
+      "length": 69,
+      "guarded": {
+        "slug": "/knowledge/k-pub-38b647",
+        "id": "k-pub-38b647",
+        "title": "Pub"
+      },
+      "bodyHash": "7332deb9740e650f77c2eab3d8da38d3596051a41db39dec793a03c1a484a93c"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/pub.md",
+      "wave": "C",
+      "mode": "review",
+      "skip": false,
+      "reason": "duplicate description pair — differentiate or defer merge",
+      "before": "Pub",
+      "after": "Pub: Redis Pub 캐시·ConnectionFactory 설정 (slug /knowledge/k-pub)",
+      "strategy": "templateD",
+      "length": 62,
+      "guarded": {
+        "slug": "/knowledge/k-pub",
+        "id": "k-pub",
+        "title": "Pub"
+      },
+      "bodyHash": "7332deb9740e650f77c2eab3d8da38d3596051a41db39dec793a03c1a484a93c"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/subscriber-7da2e1.md",
+      "wave": "C",
+      "mode": "review",
+      "skip": false,
+      "reason": "duplicate description pair — differentiate or defer merge",
+      "before": "Subscriber",
+      "after": "Subscriber: Redis 구독·리스너 설정 (slug /knowledge/k-subscriber-7da2e1)",
+      "strategy": "templateD",
+      "length": 65,
+      "guarded": {
+        "slug": "/knowledge/k-subscriber-7da2e1",
+        "id": "k-subscriber-7da2e1",
+        "title": "Subscriber"
+      },
+      "bodyHash": "baf2cbafa7e89a27b335e8dcad4082477e5a32c76d341a896a48f7ba51cebec9"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/subscriber.md",
+      "wave": "C",
+      "mode": "review",
+      "skip": false,
+      "reason": "duplicate description pair — differentiate or defer merge",
+      "before": "Subscriber",
+      "after": "Subscriber: Redis 구독·리스너 설정 (slug /knowledge/k-subscriber)",
+      "strategy": "templateD",
+      "length": 58,
+      "guarded": {
+        "slug": "/knowledge/k-subscriber",
+        "id": "k-subscriber",
+        "title": "Subscriber"
+      },
+      "bodyHash": "baf2cbafa7e89a27b335e8dcad4082477e5a32c76d341a896a48f7ba51cebec9"
+    }
+  ]
+}

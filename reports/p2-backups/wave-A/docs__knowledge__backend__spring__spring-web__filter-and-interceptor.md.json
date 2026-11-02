@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/filter-and-interceptor.md",
+  "before": "Filter와 Interceptor (작성 예정)",
+  "after": "Filter와 Interceptor — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "73dea90f353ca45ce043acc908aa091fb00dbbdc30e3d94db395335ef0056286",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/filter-and-interceptor",
+    "id": "spring-spring-web-filter-and-interceptor",
+    "title": "Filter와 Interceptor"
+  },
+  "savedAt": "2026-11-02T03:49:04.310Z"
+}

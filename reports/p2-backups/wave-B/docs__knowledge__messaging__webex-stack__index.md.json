@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/webex-stack/index.md",
+  "before": "Webex API·채널 연동 메모입니다.",
+  "after": "Webex(Webex) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "7a2864fe9fa5c273c0048ba9498aebdb761433e4a3274c28b23a9247b7607080",
+  "guarded": {
+    "slug": "/knowledge/messaging/webex-stack",
+    "id": "messaging-webex-stack",
+    "title": "Webex"
+  },
+  "savedAt": "2026-11-02T03:50:21.935Z"
+}

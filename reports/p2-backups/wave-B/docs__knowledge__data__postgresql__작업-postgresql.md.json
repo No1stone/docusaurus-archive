@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/postgresql/작업-postgresql.md",
+  "before": "작업 postgreSQL",
+  "after": "작업 postgreSQL: 작업 postgreSQL 개요 작업 postgreSQL입니다. private 연결후 프라이빗 복제설정 예제·코드 <details <summary 참고 자료</summary </details",
+  "bodyHash": "7538106eca714defdf90265c1faede0c3109f322237fb6a09c058fef9d1381aa",
+  "guarded": {
+    "slug": "/knowledge/k-작업-postgresql",
+    "id": "k-작업-postgresql",
+    "title": "작업 postgreSQL"
+  },
+  "savedAt": "2026-11-02T03:49:07.000Z"
+}

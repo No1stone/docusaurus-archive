@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/async-scheduling/scheduled.md",
+  "before": "Scheduled (작성 예정)",
+  "after": "Scheduled — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "47c52e04da547f5261811d8a7f33822b80bd3141be14292f0ddb98cfdd7a2f84",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/async-scheduling/scheduled",
+    "id": "spring-async-scheduling-scheduled",
+    "title": "Scheduled"
+  },
+  "savedAt": "2026-11-02T03:49:04.299Z"
+}

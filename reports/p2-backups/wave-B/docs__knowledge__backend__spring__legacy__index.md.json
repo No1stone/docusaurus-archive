@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/index.md",
+  "before": "이전 Spring 메모. 새 목차로 옮긴 뒤 정리합니다.",
+  "after": "Spring legacy(Legacy) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "fad5782de3876270d729a863f31eb800f268dc5fa7cf042225a6f4144718673c",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/legacy",
+    "id": "spring-legacy-index",
+    "title": "Legacy"
+  },
+  "savedAt": "2026-11-02T03:50:21.933Z"
+}

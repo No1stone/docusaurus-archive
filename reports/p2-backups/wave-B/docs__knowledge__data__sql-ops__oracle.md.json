@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/oracle.md",
+  "before": "oracle",
+  "after": "oracle 개요 oracle에 대한 메모입니다. 도커에서 볼륨 접속할수 있게 필수로 줘야함 접속 커널은 공식문서참조 예제·코드 <details <summary 참고 자료</summary — Official",
+  "bodyHash": "7325ec5dc116d6479fce835cfba9d78da15aa195b681da9b401cfd4cbcc7cb20",
+  "guarded": {
+    "slug": "/knowledge/k-oracle",
+    "id": "k-oracle",
+    "title": "oracle"
+  },
+  "savedAt": "2026-11-02T03:49:07.002Z"
+}

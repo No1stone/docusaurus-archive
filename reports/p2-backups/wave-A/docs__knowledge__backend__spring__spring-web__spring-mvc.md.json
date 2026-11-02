@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/spring-mvc.md",
+  "before": "Spring MVC (작성 예정)",
+  "after": "Spring MVC — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "ab6055d1e57a3636b4387e90c4cfd6f4ac9c6a4e2007e09045d12c29a167203a",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/spring-mvc",
+    "id": "spring-spring-web-spring-mvc",
+    "title": "Spring MVC"
+  },
+  "savedAt": "2026-11-02T03:49:04.311Z"
+}

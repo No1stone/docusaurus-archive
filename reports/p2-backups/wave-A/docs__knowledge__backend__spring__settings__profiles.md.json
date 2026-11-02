@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/profiles.md",
+  "before": "Profile과 환경별 설정 (작성 예정)",
+  "after": "Profile과 환경별 설정 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "ac28c1700980709187197d7749cf2afa74c6919b3c5efa44fa58b631cd106671",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/profiles",
+    "id": "spring-settings-profiles",
+    "title": "Profile과 환경별 설정"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

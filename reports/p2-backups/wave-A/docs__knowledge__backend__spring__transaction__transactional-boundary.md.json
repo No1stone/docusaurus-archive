@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/transaction/transactional-boundary.md",
+  "before": "Transactional과 적용 경계 (작성 예정)",
+  "after": "Transactional과 적용 경계 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "48dc9a15e8aaa69fc5a2c77fc19dcf63c1ef5622b27be183be3454d5a1e3696b",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/transaction/transactional-boundary",
+    "id": "spring-transaction-transactional-boundary",
+    "title": "Transactional과 적용 경계"
+  },
+  "savedAt": "2026-11-02T03:49:04.314Z"
+}

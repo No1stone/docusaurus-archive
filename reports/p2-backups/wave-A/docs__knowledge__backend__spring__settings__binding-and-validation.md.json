@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/binding-and-validation.md",
+  "before": "설정값 바인딩과 검증 (작성 예정)",
+  "after": "설정값 바인딩과 검증 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "e56746f1980b4bb7066f5dc05d7d59f4c918e3ddaf88a0e2e77cea03370ce4f1",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/binding-and-validation",
+    "id": "spring-settings-binding-and-validation",
+    "title": "설정값 바인딩과 검증"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

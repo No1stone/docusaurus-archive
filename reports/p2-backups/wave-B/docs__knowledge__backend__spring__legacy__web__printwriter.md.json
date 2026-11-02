@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/web/printwriter.md",
+  "before": "PrintWriter",
+  "after": "private final HttpServletRequest httpServletRequest; private final HttpServletResponse httpServletResponse;",
+  "bodyHash": "018cce834636a1d33ca9fc2125cce5d28ec02c8146a293b30d457243e50ed592",
+  "guarded": {
+    "slug": "/knowledge/k-printwriter",
+    "id": "k-printwriter",
+    "title": "PrintWriter"
+  },
+  "savedAt": "2026-11-02T03:49:28.988Z"
+}

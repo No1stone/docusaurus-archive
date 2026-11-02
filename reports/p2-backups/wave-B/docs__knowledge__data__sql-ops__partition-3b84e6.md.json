@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/partition-3b84e6.md",
+  "before": "partition",
+  "after": "partition 개요 partition에 대한 메모입니다. 우선 같은 리전에 ebs블록 생성후 인스턴스연결 생성한 마운트 포멧 예제·코드 <details <summary 참고 자료</summary [[Linux]",
+  "bodyHash": "f4da609e94c6624d1dede9fe8c99ecea38f75f882e01d304d2c112170c840146",
+  "guarded": {
+    "slug": "/knowledge/k-partition-3b84e6",
+    "id": "k-partition-3b84e6",
+    "title": "partition"
+  },
+  "savedAt": "2026-11-02T03:49:07.002Z"
+}

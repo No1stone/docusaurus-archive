@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/jpa/log4jdbc.md",
+  "before": "Log4Jdbc",
+  "after": "log4jdbc.log4j2.properties logback.xml Lazy proxy",
+  "bodyHash": "d26cf2ece752752b85f31b7ea394146885e3272908d86de1451601bfae99bbcf",
+  "guarded": {
+    "slug": "/knowledge/k-log4jdbc",
+    "id": "k-log4jdbc",
+    "title": "Log4Jdbc"
+  },
+  "savedAt": "2026-11-02T03:49:06.999Z"
+}

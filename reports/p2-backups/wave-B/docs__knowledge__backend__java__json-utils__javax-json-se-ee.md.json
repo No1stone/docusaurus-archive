@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/javax-json-se-ee.md",
+  "before": "Javax.Json 임포트와 SE/EE 범위에 대한 원본 메모 보존",
+  "after": "개요: 원본 Notion 메모를 그대로 보존한 작성본입니다. 내용을 임의로 보완하지 않았습니다. 작성자 재검토 대기입니다. (javax-json-se-ee)",
+  "bodyHash": "30de1d1731ced7ae63ac4ba40437a38320b92791f4ec9d7e0f0605716b9f60e0",
+  "guarded": {
+    "slug": "/knowledge/k-javax-json-se-ee",
+    "id": "k-javax-json-se-ee",
+    "title": "Javax"
+  },
+  "savedAt": "2026-11-02T03:49:07.009Z"
+}

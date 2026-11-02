@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/index.md",
+  "before": "JDBC와 데이터 접근 목차",
+  "after": "Spring jdbc(JDBC와 데이터 접근) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "0c20e32aea6340ad664aee116d97ceb5148bb44d6d0aa2a58e8afe81af59105b",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc",
+    "id": "spring-jdbc-index",
+    "title": "JDBC와 데이터 접근"
+  },
+  "savedAt": "2026-11-02T03:50:21.932Z"
+}

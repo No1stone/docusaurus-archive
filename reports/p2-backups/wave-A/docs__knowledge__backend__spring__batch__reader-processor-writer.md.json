@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/batch/reader-processor-writer.md",
+  "before": "Reader, Processor, Writer (작성 예정)",
+  "after": "Reader, Processor, Writer — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "ce7d998edbb0ce38c8e985b31e6b01ca8d4b2cc714e12cea21d9bd03647ff4c0",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/batch/reader-processor-writer",
+    "id": "spring-batch-reader-processor-writer",
+    "title": "Reader, Processor, Writer"
+  },
+  "savedAt": "2026-11-02T03:49:04.300Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/datasource-and-pool.md",
+  "before": "DataSource와 커넥션 풀 (작성 예정)",
+  "after": "DataSource와 커넥션 풀 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "59783f9f13b0e912913744d33eb4dbde737d3dbfbb349bb57018640fb5c45215",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/datasource-and-pool",
+    "id": "spring-jdbc-datasource-and-pool",
+    "title": "DataSource와 커넥션 풀"
+  },
+  "savedAt": "2026-11-02T03:49:04.303Z"
+}

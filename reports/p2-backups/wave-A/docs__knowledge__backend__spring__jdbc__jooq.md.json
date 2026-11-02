@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/jooq.md",
+  "before": "jOOQ (작성 예정)",
+  "after": "jOOQ — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "a8f953e411a607957795b005a2c0011f835635d2af3cebff086b158555611f21",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/jooq",
+    "id": "spring-jdbc-jooq",
+    "title": "jOOQ"
+  },
+  "savedAt": "2026-11-02T03:49:04.304Z"
+}

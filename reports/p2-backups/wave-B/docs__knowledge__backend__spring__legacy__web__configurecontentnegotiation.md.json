@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/web/configurecontentnegotiation.md",
+  "before": "configureContentNegotiation",
+  "after": "configureContentNegotiation: configureContentNegotiation 파일의 확장자 타입을 결정해주는 역할이다.",
+  "bodyHash": "05b325cc4b2dd0cfabeeb48f06056112dddd700ea2648c17eb987e8dce0eb08f",
+  "guarded": {
+    "slug": "/knowledge/k-configurecontentnegotiation",
+    "id": "k-configurecontentnegotiation",
+    "title": "configureContentNegotiation"
+  },
+  "savedAt": "2026-11-02T03:49:28.987Z"
+}

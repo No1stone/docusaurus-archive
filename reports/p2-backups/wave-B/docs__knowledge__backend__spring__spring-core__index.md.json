@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/index.md",
+  "before": "Spring Core 목차",
+  "after": "Spring spring-core 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "bceef3a4b04761a7287733481a9f7cc1dd6c44212e4134076a9f6f21ad11e4cb",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core",
+    "id": "spring-spring-core-index",
+    "title": "Spring Core"
+  },
+  "savedAt": "2026-11-02T03:49:06.998Z"
+}

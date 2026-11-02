@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/jpa/index.md",
+  "before": "JPA·Spring Data JPA·매핑·QueryDSL 메모입니다.",
+  "after": "jpa(JPA / ORM) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "b3a238f64e140f57be7fc4dcec5e8b2e0d624b3eb583eaf562c2f80593a60018",
+  "guarded": {
+    "slug": "/knowledge/data/jpa",
+    "id": "data-jpa",
+    "title": "JPA / ORM"
+  },
+  "savedAt": "2026-11-02T03:50:21.934Z"
+}

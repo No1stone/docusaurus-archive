@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/ibatis-and-mybatis.md",
+  "before": "iBATIS와 MyBatis (작성 예정)",
+  "after": "iBATIS와 MyBatis — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "f703fb60e6e8683b3cecff10306a2069a2e4f0e716f4f98c4b3db417ea1c2dfe",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/ibatis-and-mybatis",
+    "id": "spring-jdbc-ibatis-and-mybatis",
+    "title": "iBATIS와 MyBatis"
+  },
+  "savedAt": "2026-11-02T03:49:04.303Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/webflux.md",
+  "before": "WebFlux (작성 예정)",
+  "after": "WebFlux — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "9c8419b0e11e96d1fe6c75f75d4c37f5f7733415b6d8ecd399ebac5564720b4e",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/webflux",
+    "id": "spring-spring-web-webflux",
+    "title": "WebFlux"
+  },
+  "savedAt": "2026-11-02T03:49:04.312Z"
+}

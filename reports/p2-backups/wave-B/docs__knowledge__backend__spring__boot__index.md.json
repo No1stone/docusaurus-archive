@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/index.md",
+  "before": "Spring Boot 목차",
+  "after": "Spring boot(Spring Boot) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "899462a56ba6d29f1fc5631ec0e06a615e4fa0f082e6113fa4f192f1b55a0231",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot",
+    "id": "spring-boot-index",
+    "title": "Spring Boot"
+  },
+  "savedAt": "2026-11-02T03:50:21.932Z"
+}

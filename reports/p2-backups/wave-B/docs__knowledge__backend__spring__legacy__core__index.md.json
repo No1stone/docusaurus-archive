@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/core/index.md",
+  "before": "DI, Bean, AOP, 생명주기 등 Spring 핵심 메모입니다.",
+  "after": "Spring core(Core) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "7556355446287041938af92a9cdc13d6d499386bfb90ebfe5dc0498634783053",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/core",
+    "id": "backend-spring-core",
+    "title": "Core"
+  },
+  "savedAt": "2026-11-02T03:50:21.932Z"
+}

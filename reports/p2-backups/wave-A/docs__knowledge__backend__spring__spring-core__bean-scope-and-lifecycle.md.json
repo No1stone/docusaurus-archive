@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle.md",
+  "before": "Bean Scope와 생명주기 (작성 예정)",
+  "after": "Bean Scope와 생명주기 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "f141bb7d7f1cb9b6440cd4443bff1e89665c4ebe0bb15fc9a5bb38ce61173c28",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle",
+    "id": "spring-spring-core-bean-scope-and-lifecycle",
+    "title": "Bean Scope와 생명주기"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

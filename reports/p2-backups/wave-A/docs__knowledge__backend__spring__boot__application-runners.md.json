@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/application-runners.md",
+  "before": "ApplicationRunner와 CommandLineRunner (작성 예정)",
+  "after": "ApplicationRunner와 CommandLineRunner — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "bb71909bab6b041a8c5cc154dd82a0c88120e58bf873ba9c05d826f371f1cb46",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot/application-runners",
+    "id": "spring-boot-application-runners",
+    "title": "ApplicationRunner와 CommandLineRunner"
+  },
+  "savedAt": "2026-11-02T03:49:04.300Z"
+}

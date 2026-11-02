@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/delivery/webflux-websocket.md",
+  "before": "WebFlux WebSocket",
+  "after": "WebFlux WebSocket: WebFlux WebSocket 개요 WebFlux WebSocket에 대한 메모입니다. @Configuration Implements WebSocketHandler",
+  "bodyHash": "f0904663ae88435a156127927e8b3c8f55fe8b797bba9b1791c7c04361659f21",
+  "guarded": {
+    "slug": "/knowledge/k-webflux-websocket",
+    "id": "k-webflux-websocket",
+    "title": "WebFlux WebSocket"
+  },
+  "savedAt": "2026-11-02T03:49:07.004Z"
+}

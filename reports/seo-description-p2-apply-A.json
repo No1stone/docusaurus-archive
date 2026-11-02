@@ -1,0 +1,332 @@
+{
+  "wave": "A",
+  "doApply": true,
+  "modes": [
+    "review",
+    "auto"
+  ],
+  "considered": 53,
+  "applied": 53,
+  "failed": 0,
+  "generatedAt": "2026-11-02T03:49:04.314Z",
+  "results": [
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/async-and-executor.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__async-scheduling__async-and-executor.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/concurrency-control.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__async-scheduling__concurrency-control.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/scheduled.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__async-scheduling__scheduled.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/chunk-and-tasklet.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__batch__chunk-and-tasklet.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/job-and-step.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__batch__job-and-step.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/reader-processor-writer.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__batch__reader-processor-writer.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/restart-and-failure.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__batch__restart-and-failure.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/application-runners.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__application-runners.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/auto-configuration.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__auto-configuration.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/conditional-beans.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__conditional-beans.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/graceful-shutdown.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__graceful-shutdown.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/spring-application.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__spring-application.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/starters.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__boot__starters.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/datasource-and-pool.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__datasource-and-pool.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/ibatis-and-mybatis.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__ibatis-and-mybatis.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jdbc-basics.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__jdbc-basics.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jooq.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__jooq.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jpa-and-hibernate.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__jpa-and-hibernate.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/querydsl.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__querydsl.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-data-jpa.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__spring-data-jpa.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-jdbc.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__jdbc__spring-jdbc.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/overview/composition-and-flow.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__overview__composition-and-flow.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/application-yml-and-properties.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__application-yml-and-properties.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/binding-and-validation.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__binding-and-validation.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/environment-and-precedence.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__environment-and-precedence.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/external-config-and-resources.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__external-config-and-resources.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/profiles.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__profiles.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/value-and-configuration-properties.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__settings__value-and-configuration-properties.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/aop-and-proxy.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__aop-and-proxy.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-factory-and-application-context.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__bean-factory-and-application-context.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-registration-and-component-scan.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__bean-registration-and-component-scan.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__bean-scope-and-lifecycle.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/dependency-injection.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__dependency-injection.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/events-and-listeners.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__events-and-listeners.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/ioc-and-di.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__ioc-and-di.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/java-config-and-xml.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__java-config-and-xml.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/lazy-initialization.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-core__lazy-initialization.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/integration-and-testcontainers.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-testing__integration-and-testcontainers.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/spring-context-tests.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-testing__spring-context-tests.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/test-slices.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-testing__test-slices.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/unit-tests.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-testing__unit-tests.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/binding-and-conversion.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__binding-and-conversion.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/controller-and-mapping.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__controller-and-mapping.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/filter-and-interceptor.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__filter-and-interceptor.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/outbound-http.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__outbound-http.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/spring-mvc.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__spring-mvc.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/validation-and-exceptions.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__validation-and-exceptions.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/virtual-threads.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__virtual-threads.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/webflux.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__spring-web__webflux.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/programmatic-transactions.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__transaction__programmatic-transactions.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/propagation-and-isolation.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__transaction__propagation-and-isolation.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/rollback-and-exceptions.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__transaction__rollback-and-exceptions.md.json"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/transactional-boundary.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-A/docs__knowledge__backend__spring__transaction__transactional-boundary.md.json"
+    }
+  ]
+}

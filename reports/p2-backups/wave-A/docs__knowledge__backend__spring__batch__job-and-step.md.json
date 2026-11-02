@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/batch/job-and-step.md",
+  "before": "Job과 Step (작성 예정)",
+  "after": "Job과 Step — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "24ce9513f57051a8611eb16fd57c1e3a74eaadb5dc0893ed07dd0549736e2169",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/batch/job-and-step",
+    "id": "spring-batch-job-and-step",
+    "title": "Job과 Step"
+  },
+  "savedAt": "2026-11-02T03:49:04.300Z"
+}

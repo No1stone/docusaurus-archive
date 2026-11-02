@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/redis/r2dbc-redis.md",
+  "before": "R2dbc Redis",
+  "after": "R2dbc Redis 개요 R2dbc Redis에 대한 메모입니다. reactive web reactivceRedis userEntity 등록필요 Redis 연결 부트베이스 게이트웨이는 Lettuce로",
+  "bodyHash": "787421e919110ff3ca134f3db96aaeb45427c3c5ef17848ad3b3e3f9be7c073a",
+  "guarded": {
+    "slug": "/knowledge/k-r2dbc-redis",
+    "id": "k-r2dbc-redis",
+    "title": "R2dbc Redis"
+  },
+  "savedAt": "2026-11-02T03:49:07.000Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/brokers/subscriber-7da2e1.md",
+  "before": "Subscriber",
+  "after": "Subscriber: Redis 구독·리스너 설정 (slug /knowledge/k-subscriber-7da2e1)",
+  "bodyHash": "baf2cbafa7e89a27b335e8dcad4082477e5a32c76d341a896a48f7ba51cebec9",
+  "guarded": {
+    "slug": "/knowledge/k-subscriber-7da2e1",
+    "id": "k-subscriber-7da2e1",
+    "title": "Subscriber"
+  },
+  "savedAt": "2026-11-02T03:49:10.463Z"
+}

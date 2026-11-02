@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/ioc-and-di.md",
+  "before": "IoC와 DI (작성 예정)",
+  "after": "IoC와 DI — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "8f091eb01959d2da811888aa589496d5d438b89033da8cda51c6437696e0107a",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/ioc-and-di",
+    "id": "spring-spring-core-ioc-and-di",
+    "title": "IoC와 DI"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

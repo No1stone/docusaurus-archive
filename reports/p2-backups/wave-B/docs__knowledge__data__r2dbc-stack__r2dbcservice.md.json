@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/r2dbc-stack/r2dbcservice.md",
+  "before": "R2dbcService",
+  "after": "import java.lang.reflect.Field; import java.util.ArrayList; import java.util.List; import java.util.Map;",
+  "bodyHash": "b79040571324b3d306e55c0ad6767be882f523a448d62a4c937f6a4f7fe789cb",
+  "guarded": {
+    "slug": "/knowledge/k-r2dbcservice",
+    "id": "k-r2dbcservice",
+    "title": "R2dbcService"
+  },
+  "savedAt": "2026-11-02T03:49:28.990Z"
+}

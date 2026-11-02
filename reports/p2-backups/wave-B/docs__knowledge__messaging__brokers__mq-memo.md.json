@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/brokers/mq-memo.md",
+  "before": "MQ 원본 메모 보존",
+  "after": "개요: 원본 Notion 메모를 그대로 보존한 작성본입니다. 내용을 임의로 보완하지 않았습니다. 작성자 재검토 대기입니다.",
+  "bodyHash": "7ba8f8438605892aacd3b850f7ec1ed3af116aca0c123b6300649be53edc9467",
+  "guarded": {
+    "slug": "/knowledge/k-mq-memo",
+    "id": "k-mq-memo",
+    "title": "MQ"
+  },
+  "savedAt": "2026-11-02T03:49:07.003Z"
+}

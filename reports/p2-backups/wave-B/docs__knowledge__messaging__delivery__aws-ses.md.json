@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/delivery/aws-ses.md",
+  "before": "Amazon SES 관련 메모 진입점 (용어, 프로그램 발송)",
+  "after": "개요: Amazon Simple Email Service(SES) 관련 메모의 진입점입니다.",
+  "bodyHash": "21f3a1d5222ef7f37991f78929970ae1566b9a44331d88e88b63d126ab91a1e8",
+  "guarded": {
+    "slug": "/knowledge/k-aws-ses",
+    "id": "k-aws-ses",
+    "title": "Aws SES"
+  },
+  "savedAt": "2026-11-02T03:49:07.004Z"
+}

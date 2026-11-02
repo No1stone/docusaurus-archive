@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/creational/싱글톤-패턴singletone-pattern.md",
+  "before": "싱글톤 패턴(singletone Pattern)",
+  "after": "싱글톤 패턴(singletone Pattern): 싱글톤 패턴(singletone Pattern) 인스턴스를 하나만 생성을해 다른곳에서 사용할때 동일한 주소값을 사용하게해서 같은결과를 얻는것.",
+  "bodyHash": "5bb1fdac69eb5c2e6bfb45f5c4f7f4b78708267722207e990ec80660cd840397",
+  "guarded": {
+    "slug": "/patterns/pattern-싱글톤-패턴singletone-pattern",
+    "id": "pattern-싱글톤-패턴singletone-pattern",
+    "title": "싱글톤 패턴(singletone Pattern)"
+  },
+  "savedAt": "2026-11-02T03:49:28.991Z"
+}

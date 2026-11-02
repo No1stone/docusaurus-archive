@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/jsonsimple.md",
+  "before": "JsonSimple",
+  "after": "1.json simple은 내부적으로 JSON 데이터를 처리하기 위해 Map과 List를 사용.",
+  "bodyHash": "bd47e1b97a4e59f94bf54ee9ddd7412e0d999a6fffb8d0098fde4cf0c02517af",
+  "guarded": {
+    "slug": "/knowledge/k-jsonsimple",
+    "id": "k-jsonsimple",
+    "title": "JsonSimple"
+  },
+  "savedAt": "2026-11-02T03:49:07.009Z"
+}

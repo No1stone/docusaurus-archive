@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/postgresql/index.md",
+  "before": "postgresql notes",
+  "after": "postgresql(postgresql) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "620c125509848ea2a2badcf6ecdd8dd899fa0ad51d11cf88c2acd5d14ec0568c",
+  "guarded": {
+    "slug": "/knowledge/data/postgresql",
+    "id": "data-postgresql",
+    "title": "postgresql"
+  },
+  "savedAt": "2026-11-02T03:50:21.934Z"
+}

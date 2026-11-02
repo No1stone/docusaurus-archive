@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/async-scheduling/concurrency-control.md",
+  "before": "동시 실행과 중복 실행 제어 (작성 예정)",
+  "after": "동시 실행과 중복 실행 제어 — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "4dbb54a1bde5d92fba2ab8046846224e9a7109d332f01ecca7cc5cd87e73e97a",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/async-scheduling/concurrency-control",
+    "id": "spring-async-scheduling-concurrency-control",
+    "title": "동시 실행과 중복 실행 제어"
+  },
+  "savedAt": "2026-11-02T03:49:04.299Z"
+}

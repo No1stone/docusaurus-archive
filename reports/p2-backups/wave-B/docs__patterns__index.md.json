@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/index.md",
+  "before": "Reusable engineering patterns",
+  "after": "Patterns(Patterns) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "1a43e91acfb3b96d01951a998eba4d6029007bb059588113ca99db5f86809414",
+  "guarded": {
+    "slug": "/patterns/index",
+    "id": "patterns",
+    "title": "Patterns"
+  },
+  "savedAt": "2026-11-02T03:50:21.936Z"
+}

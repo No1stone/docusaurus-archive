@@ -1,0 +1,1138 @@
+{
+  "generatedAt": "2026-11-02T03:50:30.059Z",
+  "root": "/Users/wonseok/Documents/workspace/docusaurus-archive",
+  "includeBlog": false,
+  "totals": {
+    "filesScanned": 565,
+    "issues": 197,
+    "byCode": {
+      "SHORT": 138,
+      "MISSING": 59
+    }
+  },
+  "issues": [
+    {
+      "file": "docs/harness/agents/curator.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/implementer.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/master.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/qa.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/reviewer.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/scout.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/agents/tester.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/bundles/index.md",
+      "code": "MISSING",
+      "detail": "no description key"
+    },
+    {
+      "file": "docs/harness/context/coding-conventions.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/engineering-principles.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/git.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/identity.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/precedence.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/context/writing-conventions.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/CURRENT.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/entrypoints/claude-code.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/entrypoints/codex.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/entrypoints/cursor.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/entrypoints/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/history/2026-10.md",
+      "code": "MISSING",
+      "detail": "no description key"
+    },
+    {
+      "file": "docs/harness/history/index.md",
+      "code": "MISSING",
+      "detail": "no description key"
+    },
+    {
+      "file": "docs/harness/index.md",
+      "code": "MISSING",
+      "detail": "no description key"
+    },
+    {
+      "file": "docs/harness/orchestration.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/api-collection-e2e.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/archive-promote-pattern.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/docs-field-manual.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-api-one-set.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-bugfix.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-external-contract.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-refactor-layer.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/orchestrations/template.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/profiles/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/profiles/spring-api.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/e2e/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/enum/persistence/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/enum/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/controller/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/dto/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/facade/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/persistence/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/ONESET.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/service/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/support/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/testing/README.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/templates/README.md",
+      "code": "MISSING",
+      "detail": "no description key"
+    },
+    {
+      "file": "docs/harness/tools/backend-unit-test.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/tools/browser-manual.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/tools/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/tools/playwright-e2e.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/workflows/bugfix.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/workflows/implement.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/workflows/index.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/workflows/refactor.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/harness/workflows/review.md",
+      "code": "MISSING",
+      "detail": "no front matter"
+    },
+    {
+      "file": "docs/architecture/작업-도커.md",
+      "code": "SHORT",
+      "detail": "length=11",
+      "description": "작업 도커"
+    },
+    {
+      "file": "docs/decisions/index.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "Architecture Decision Records"
+    },
+    {
+      "file": "docs/harness/history/home-continue-next.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "사무실에서 중단한 아카이브 작업. 집에서 이어서 할 일만 적습니다."
+    },
+    {
+      "file": "docs/harness/history/notion-import-attachments.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "이미지·스크린샷·다이어그램 첨부 조사와 배치"
+    },
+    {
+      "file": "docs/harness/history/notion-import-catalog.md",
+      "code": "SHORT",
+      "detail": "length=18",
+      "description": "대량 이전된 학습·메모 문서 목록"
+    },
+    {
+      "file": "docs/harness/history/notion-import-final-status.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "원본 344건을 중복 없이 최종 상태로 집계"
+    },
+    {
+      "file": "docs/harness/history/notion-import-inventory.md",
+      "code": "SHORT",
+      "detail": "length=33",
+      "description": "_imports/notion 원본 344건의 분류 후보 목록"
+    },
+    {
+      "file": "docs/harness/history/notion-import-link-rewrite-worklist.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "링크 보완 재구성 결과. 보류·원문 접근 불가·예제 부재 구분"
+    },
+    {
+      "file": "docs/harness/history/notion-import-unclear-holds.md",
+      "code": "SHORT",
+      "detail": "length=33",
+      "description": "게시 보류·제외·재검토 대기 항목. 임의 보완·공개하지 않음"
+    },
+    {
+      "file": "docs/harness/history/notion-import-worklist.md",
+      "code": "SHORT",
+      "detail": "length=28",
+      "description": "분류 기준, 원본 목록 요약, 시범·사례 작성 추적"
+    },
+    {
+      "file": "docs/harness/history/pattern-knowledge-supplement-refs.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "참조 저장소 커밋과 코드 경로. 원본 저장소는 수정하지 않음."
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/support/display/README.md",
+      "code": "SHORT",
+      "detail": "length=31",
+      "description": "감사·FK PK를 Name 조회로 표시명에 치환하는 규칙"
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/lib-distributed-lock/README.md",
+      "code": "SHORT",
+      "detail": "length=32",
+      "description": "분산 락 공유 모듈. Redisson. 도메인 코드 없음."
+    },
+    {
+      "file": "docs/harness/workflows/acceptance.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "구현 전에 기대 결과와 완료 기준을 정합니다"
+    },
+    {
+      "file": "docs/history/index.md",
+      "code": "SHORT",
+      "detail": "length=36",
+      "description": "How the engineering approach evolved"
+    },
+    {
+      "file": "docs/knowledge/backend/design/controller/index.md",
+      "code": "SHORT",
+      "detail": "length=26",
+      "description": "Controller layer knowledge"
+    },
+    {
+      "file": "docs/knowledge/backend/design/facade/index.md",
+      "code": "SHORT",
+      "detail": "length=17",
+      "description": "애플리케이션 영역과 공개 진입점"
+    },
+    {
+      "file": "docs/knowledge/backend/design/service/index.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "데이터 접근 경계. Port와 Adapter"
+    },
+    {
+      "file": "docs/knowledge/backend/design/testing/index.md",
+      "code": "SHORT",
+      "detail": "length=22",
+      "description": "Backend test structure"
+    },
+    {
+      "file": "docs/knowledge/backend/design/testing/test-structure.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "Spring 테스트의 경계, 배치, 명명과 실행 기준"
+    },
+    {
+      "file": "docs/knowledge/backend/index.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "Backend engineering knowledge"
+    },
+    {
+      "file": "docs/knowledge/client/index.md",
+      "code": "SHORT",
+      "detail": "length=21",
+      "description": "브라우저·모바일·실시간 클라이언트 메모"
+    },
+    {
+      "file": "docs/knowledge/client/mdmmobile-device-managerment.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "(MDM)Mobile Device Managerment"
+    },
+    {
+      "file": "docs/knowledge/client/web-browser-request-flow.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "주소창 입력부터 서버 응답과 화면 렌더링까지 일반적인 요청 흐름"
+    },
+    {
+      "file": "docs/knowledge/client/webrtc-012ba8.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "WebRTC 저지연 스트리밍과 시그널링과 렌더링을 다룬 참고 링크 요약"
+    },
+    {
+      "file": "docs/knowledge/index.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "Current engineering knowledge by domain"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aaa.md",
+      "code": "SHORT",
+      "detail": "length=3",
+      "description": "aaa"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/amazone-java-sdk-meven.md",
+      "code": "SHORT",
+      "detail": "length=22",
+      "description": "Amazone Java Sdk Meven"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-eks.md",
+      "code": "SHORT",
+      "detail": "length=22",
+      "description": "AWS EKS 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-kendra.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "Amazon Kendra와 Elasticsearch 기능 비교 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-regexp-schedule.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "AWS REGEXP Schedule 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-ses-info-용어.md",
+      "code": "SHORT",
+      "detail": "length=19",
+      "description": "Aws SES Info, 용어"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws.md",
+      "code": "SHORT",
+      "detail": "length=3",
+      "description": "AWS"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/amazone-linux.md",
+      "code": "SHORT",
+      "detail": "length=13",
+      "description": "amazone linux"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/aws-lambda-for-intelij.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "AWS Lambda For Intelij 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/index.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "EC2·EKS·Lambda·운영 서버 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/작업-ec2-2.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "작업 ec2 2"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/작업-ec2.md",
+      "code": "SHORT",
+      "detail": "length=10",
+      "description": "작업 ec2"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/index.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "AWS compute, storage, and network notes"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/aws-cloudfront-info-용어.md",
+      "code": "SHORT",
+      "detail": "length=25",
+      "description": "AWS CloudFront Info 용어"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/aws-cloudfront.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "Amazon CloudFront CDN 개요와 용어 메모 진입점"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/index.md",
+      "code": "SHORT",
+      "detail": "length=21",
+      "description": "VPC·CloudFront 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/vpc-creation-order.md",
+      "code": "SHORT",
+      "detail": "length=36",
+      "description": "일괄 생성 UI 이전에 수동으로 VPC를 구성하던 때의 순서 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/vpc.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "AWS VPC 개념, 생성 순서, NAT 관련 참고 링크 모음"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3-구조.md",
+      "code": "SHORT",
+      "detail": "length=11",
+      "description": "Aws S3 구조"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "Amazon S3 관련 메모 진입점 (SDK, 구조, API 참조)"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3simple-storage-service.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "Aws s3(simple storage service)"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/index.md",
+      "code": "SHORT",
+      "detail": "length=16",
+      "description": "S3 구조·API 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-compose.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "Docker-Compose 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-create.md",
+      "code": "SHORT",
+      "detail": "length=13",
+      "description": "Docker Create"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-배포-로그.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "docker-compose로 서비스 배포하고 logs로 확인하는 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-설치.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "docker 설치"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/dockerfile.md",
+      "code": "SHORT",
+      "detail": "length=10",
+      "description": "dockerFile"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/index.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "docker notes"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/컨테이너-라이징-만들기.md",
+      "code": "SHORT",
+      "detail": "length=26",
+      "description": "컨테이너 라이징 만들기"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/echo.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "echo로 bashrc, sshd_config에 설정을 추가하는 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/envvarialbe.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "Linux 공통, 사용자 환경변수 위치와 export 적용 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/filename-date.md",
+      "code": "SHORT",
+      "detail": "length=31",
+      "description": "date 포맷과 타임스탬프를 붙인 JAR 이름 변경 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/hangul.md",
+      "code": "SHORT",
+      "detail": "length=6",
+      "description": "hangul"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/index.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "클라우드·컨테이너·OS·관측 실행 환경 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/centos.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "CentOS에서 LISTEN 포트 확인과 iptables로 포트 개방"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/index.md",
+      "code": "SHORT",
+      "detail": "length=28",
+      "description": "Ubuntu·CentOS·apt 패키지 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-d3b87a.md",
+      "code": "SHORT",
+      "detail": "length=6",
+      "description": "Ubuntu"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-fire-wall.md",
+      "code": "SHORT",
+      "detail": "length=16",
+      "description": "ubuntu fire wall"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-package.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "ubuntu package 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/bashrcalias.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "~/.bashrc에 alias를 추가하고 source로 적용하는 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/group-add.md",
+      "code": "SHORT",
+      "detail": "length=9",
+      "description": "group add"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/index.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "사용자·권한·심볼릭 링크·systemctl 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/static.md",
+      "code": "SHORT",
+      "detail": "length=6",
+      "description": "static"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/symbolic-link.md",
+      "code": "SHORT",
+      "detail": "length=13",
+      "description": "symbolic link"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/user-add.md",
+      "code": "SHORT",
+      "detail": "length=8",
+      "description": "user add"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/소유권-수정.md",
+      "code": "SHORT",
+      "detail": "length=13",
+      "description": "소유권 수정"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/접속정보생성.md",
+      "code": "SHORT",
+      "detail": "length=31",
+      "description": "EC2 접속용 키 페어, 접속 정보를 생성하는 화면 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/no1stone-start-page.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "No1Stone 아카이브 시작 페이지입니다. 주제 허브로 이어집니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/index.md",
+      "code": "SHORT",
+      "detail": "length=19",
+      "description": "observability notes"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/open-search.md",
+      "code": "SHORT",
+      "detail": "length=26",
+      "description": "open search 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/springboot-logstash.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "springboot logstash 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/pg-admin.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "docker-compose로 pgAdmin4를 띄우는 서비스 정의 메모"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/sam.md",
+      "code": "SHORT",
+      "detail": "length=18",
+      "description": "sam 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/index.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "작업 공간·로컬 작업·참고 링크 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/old-info.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "예전 Docker, EC2 운영 메모 모음 진입점"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/자격증.md",
+      "code": "SHORT",
+      "detail": "length=18",
+      "description": "자격증 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/작업-local.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "작업 local"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http-is-all.md",
+      "code": "SHORT",
+      "detail": "length=32",
+      "description": "HTTP가 다루는 데이터와 버전(0.9~3.0) 요약 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http-message.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "HTTP 요청, 응답 메시지 구조 예시 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http.md",
+      "code": "SHORT",
+      "detail": "length=33",
+      "description": "HTTP, 네트워크, URI, WebRTC 관련 메모 진입점"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/httputils.md",
+      "code": "SHORT",
+      "detail": "length=9",
+      "description": "HTTPUtils"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/index.md",
+      "code": "SHORT",
+      "detail": "length=28",
+      "description": "HTTP 메시지·메서드·URI·CORS 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uri.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "URI, URL, URN 구분과 통일 자원 식별자 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uricomponent.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "UriComponent"
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uri브라우저-흐름.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "URI와 웹 브라우저 요청 흐름 메모 진입점"
+    },
+    {
+      "file": "docs/knowledge/networking/index.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "HTTP·DNS·프록시·HTTPS 경로 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/index.md",
+      "code": "SHORT",
+      "detail": "length=36",
+      "description": "Nginx·upstream·rewrite·로컬 프록시 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/local-nginx.md",
+      "code": "SHORT",
+      "detail": "length=11",
+      "description": "local nginx"
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/nginx-7dd0ec.md",
+      "code": "SHORT",
+      "detail": "length=5",
+      "description": "nginx"
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/nginx.md",
+      "code": "SHORT",
+      "detail": "length=5",
+      "description": "NGINX"
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/upstream.md",
+      "code": "SHORT",
+      "detail": "length=8",
+      "description": "upstream"
+    },
+    {
+      "file": "docs/knowledge/networking/tls/index.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "HTTPS·로컬 인증서·ALB ACM 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/networking/tls/local-https-mkcert.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "로컬 HTTPS용 인증서와 mkcert.org 링크를 정리한 글"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/cidr-계산기.md",
+      "code": "SHORT",
+      "detail": "length=23",
+      "description": "Cidr 계산기 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/dns-memo.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "DNS 원본 메모 보존"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/index.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "IP·DNS·포트·TCP/UDP·터널 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/networking/transport/ip.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "IP의 비연결성, 비신뢰성과 패킷에 실리는 정보 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/network.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "네트워크 기초(IP, TCP, UDP, port, DNS) 메모 진입점"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/ngrok.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "ngrok으로 로컬 서버에 공개 HTTPS 터널을 여는 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/networking/transport/port-a7e4b3.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "Linux 포트, 방화벽 메모 진입점 (CentOS, Ubuntu)"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/port.md",
+      "code": "SHORT",
+      "detail": "length=34",
+      "description": "포트 번호 범위와 잘 알려진 포트(FTP, HTTP 등) 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/tcp.md",
+      "code": "SHORT",
+      "detail": "length=38",
+      "description": "TCP 연결 지향, 순서, 신뢰성과 3-way handshake 메모"
+    },
+    {
+      "file": "docs/knowledge/networking/transport/udp-memo.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "UDP 원본 메모 보존"
+    },
+    {
+      "file": "docs/knowledge/security/auth256utils.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "AUTH256Utils"
+    },
+    {
+      "file": "docs/knowledge/security/authtokeninterceptor.md",
+      "code": "SHORT",
+      "detail": "length=20",
+      "description": "AuthTokenInterceptor"
+    },
+    {
+      "file": "docs/knowledge/security/index.md",
+      "code": "SHORT",
+      "detail": "length=22",
+      "description": "인증·인가·암호·토큰 등 보안 관련 메모"
+    },
+    {
+      "file": "docs/knowledge/security/openssl-base64.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "openssl로 base64 난수를 생성하는 명령 메모"
+    },
+    {
+      "file": "docs/knowledge/security/security-info.md",
+      "code": "SHORT",
+      "detail": "length=13",
+      "description": "Security Info"
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/deploy-index.md",
+      "code": "SHORT",
+      "detail": "length=26",
+      "description": "배포 전략·JAR·로드밸런스 컨트롤 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/index.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "Jenkins·GitHub Actions 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/로드밸런스-컨트롤만들기.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "로드밸런스 컨트롤만들기"
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/배포만들기.md",
+      "code": "SHORT",
+      "detail": "length=12",
+      "description": "배포만들기"
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/배포전략.md",
+      "code": "SHORT",
+      "detail": "length=19",
+      "description": "배포전략 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/젠킨스-이클립스-에디터.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "젠킨스 이클립스 에디터 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/젠킨스.md",
+      "code": "SHORT",
+      "detail": "length=8",
+      "description": "젠킨스"
+    },
+    {
+      "file": "docs/knowledge/tooling/client-server-struct.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "요청, 응답 기반 클라이언트-서버 구조와 분리의 이유"
+    },
+    {
+      "file": "docs/knowledge/tooling/git/git-alias.md",
+      "code": "SHORT",
+      "detail": "length=9",
+      "description": "git alias"
+    },
+    {
+      "file": "docs/knowledge/tooling/gitea.md",
+      "code": "SHORT",
+      "detail": "length=5",
+      "description": "gitea"
+    },
+    {
+      "file": "docs/knowledge/tooling/index.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "Git, CI, SSH, SDK, 유틸 등 개발·운영 도구 메모"
+    },
+    {
+      "file": "docs/knowledge/tooling/ollama.md",
+      "code": "SHORT",
+      "detail": "length=6",
+      "description": "ollama"
+    },
+    {
+      "file": "docs/knowledge/tooling/plan.md",
+      "code": "SHORT",
+      "detail": "length=39",
+      "description": "MySQL EXPLAIN과 profiling으로 실행 계획을 보는 메모"
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/index.md",
+      "code": "SHORT",
+      "detail": "length=27",
+      "description": "SSH·SCP·CLI·셸·SDKMAN 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/scp-file-down.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "PEM 키로 원격 파일을 scp로 내려받는 명령 메모"
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/sdkman.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "SDKMAN으로 JDK 등 SDK 버전을 설치·전환하는 메모입니다."
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/sh.md",
+      "code": "SHORT",
+      "detail": "length=26",
+      "description": "셸 스크립트 생성, 실행 권한, 실행 방법 메모"
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/ssh.md",
+      "code": "SHORT",
+      "detail": "length=37",
+      "description": "Jenkins SSH 플러그인으로 원격 접속을 추가, 검증하는 메모"
+    },
+    {
+      "file": "docs/knowledge/tooling/wiki-js.md",
+      "code": "SHORT",
+      "detail": "length=22",
+      "description": "wiki js 관련 원문 링크 범위 안내"
+    },
+    {
+      "file": "docs/knowledge/로컬 클러스터/k3d.md",
+      "code": "SHORT",
+      "detail": "length=35",
+      "description": "Docker 위에서 K3s 클러스터를 빠르게 실행하는 경량 래퍼"
+    },
+    {
+      "file": "docs/postmortems/legacy-improvement-cases.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "차세대 배경과 레거시 개선을 하나의 사례 묶음으로 정리"
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/design-and-runtime.md",
+      "code": "SHORT",
+      "detail": "length=29",
+      "description": "AWS·서버 다이어그램, 도메인, ERD, 비용 수치"
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/development-environment.md",
+      "code": "SHORT",
+      "detail": "length=24",
+      "description": "노트북, IDE 및 TOOL, PostMan"
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement.md",
+      "code": "SHORT",
+      "detail": "length=30",
+      "description": "IAM 단순화, Enum·Query 코드화, 남은 문제"
+    }
+  ]
+}

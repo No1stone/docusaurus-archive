@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/auto-configuration.md",
+  "before": "SpringBootApplication과 자동 설정 (작성 예정)",
+  "after": "SpringBootApplication과 자동 설정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "d245a6851a10550150cdab3f2a17e016ea8aaece7a37187b0108228ec3d5ca0c",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot/auto-configuration",
+    "id": "spring-boot-auto-configuration",
+    "title": "SpringBootApplication과 자동 설정"
+  },
+  "savedAt": "2026-11-02T03:49:04.300Z"
+}

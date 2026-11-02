@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/behavioral/스트래티지-패턴strategy-pattern.md",
+  "before": "인터페이스로 동작을 교체하는 스트래티지 패턴 메모",
+  "after": "개요: 인터페이스를 통해 원하는 구현(전략)에 접근하는 패턴입니다. MyBatis 매퍼 인터페이스를 떠올리면 이해하기 쉽다는 메모입니다.",
+  "bodyHash": "07ac3952df53a4efe9658c48d907615a69005d1f6303bdfd2369440146362dd5",
+  "guarded": {
+    "slug": "/patterns/pattern-스트래티지-패턴strategy-pattern",
+    "id": "pattern-스트래티지-패턴strategy-pattern",
+    "title": "스트래티지 패턴(Strategy Pattern)"
+  },
+  "savedAt": "2026-11-02T03:49:07.006Z"
+}

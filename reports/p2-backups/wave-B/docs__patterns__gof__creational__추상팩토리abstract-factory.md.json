@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/creational/추상팩토리abstract-factory.md",
+  "before": "추상팩토리(Abstract Factory)",
+  "after": "추상팩토리(Abstract Factory): 추상팩토리(Abstract Factory) 인터페이스들별 기능을 나열 Factoty 라는 하나의 인터페이스로 모으고 인스턴스를 생성하는 클래스를 만들어 사용 인스턴스",
+  "bodyHash": "284b1ecf53fcb9fcec39155e9087cbadbcf2c783f32e5f052e6c4a9927fa6eab",
+  "guarded": {
+    "slug": "/patterns/pattern-추상팩토리abstract-factory",
+    "id": "pattern-추상팩토리abstract-factory",
+    "title": "추상팩토리(Abstract Factory)"
+  },
+  "savedAt": "2026-11-02T03:49:07.006Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/async-scheduling/async-and-executor.md",
+  "before": "Async와 Executor (작성 예정)",
+  "after": "Async와 Executor — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "7dc799466e1140ff3d98769f5393c7ec09cbeb62c41075f155ced2ac62afd456",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/async-scheduling/async-and-executor",
+    "id": "spring-async-scheduling-async-and-executor",
+    "title": "Async와 Executor"
+  },
+  "savedAt": "2026-11-02T03:49:04.297Z"
+}

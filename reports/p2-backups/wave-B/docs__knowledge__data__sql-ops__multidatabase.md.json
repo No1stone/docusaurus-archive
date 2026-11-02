@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/multidatabase.md",
+  "before": "MultiDataBase",
+  "after": "MultiDataBase 관련 메모를 정리합니다. MultiDataBase application.properties",
+  "bodyHash": "9092eeed1ea02213220dfdbec5b4888c50408a7c10698c7ae596cc54f03117da",
+  "guarded": {
+    "slug": "/knowledge/k-multidatabase",
+    "id": "k-multidatabase",
+    "title": "MultiDataBase"
+  },
+  "savedAt": "2026-11-02T03:49:28.990Z"
+}

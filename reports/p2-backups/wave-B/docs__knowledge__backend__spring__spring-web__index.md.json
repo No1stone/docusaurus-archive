@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/index.md",
+  "before": "Web 목차",
+  "after": "Spring spring-web 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "b4570ac4c9133d4a4cad7dcee8832ae54f1b5e593f18e98934a8613c04323e57",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web",
+    "id": "spring-spring-web-index",
+    "title": "Web"
+  },
+  "savedAt": "2026-11-02T03:49:06.998Z"
+}

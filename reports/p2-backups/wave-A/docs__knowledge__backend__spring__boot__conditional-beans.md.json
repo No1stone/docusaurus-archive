@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/boot/conditional-beans.md",
+  "before": "조건부 Bean 등록 (작성 예정)",
+  "after": "조건부 Bean 등록 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "a310252e0e1134b2c48f49d243a315e7e3acef278c90b94799797a12450c538f",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/boot/conditional-beans",
+    "id": "spring-boot-conditional-beans",
+    "title": "조건부 Bean 등록"
+  },
+  "savedAt": "2026-11-02T03:49:04.301Z"
+}

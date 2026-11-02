@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/brokers/stomp.md",
+  "before": "Stomp",
+  "after": "dependencies { implementation 'org.springframework.boot:spring boot starter data redis'",
+  "bodyHash": "ba5ce16ed098cde92fd1bb12b7f34ed6219ae180863a472c484dea28b5916229",
+  "guarded": {
+    "slug": "/knowledge/k-stomp",
+    "id": "k-stomp",
+    "title": "Stomp"
+  },
+  "savedAt": "2026-11-02T03:49:28.990Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/delivery/index.md",
+  "before": "메일·웹훅·WebSocket 전달 메모입니다.",
+  "after": "Email / Webhook(Email / Webhook) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "251d302f439deb678a9aadd321a58970fb47d0afa3e7ef87c42dc6cc85897913",
+  "guarded": {
+    "slug": "/knowledge/messaging/delivery",
+    "id": "messaging-delivery",
+    "title": "Email / Webhook"
+  },
+  "savedAt": "2026-11-02T03:50:21.935Z"
+}

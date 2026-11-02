@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/gson-to-json.md",
+  "before": "Gson 의존성을 Maven과 Gradle로 추가하는 메모입니다.",
+  "after": "Google Gson으로 JSON을 다룰 때 쓰는 의존성 메모입니다. DI로 주입해 쓰고, Maven과 Gradle 예시 버전을 남겨 두었습니다.",
+  "bodyHash": "7bb01079881f797a66e8d0f9cc48b40815d21b144f30fdc68751e6c11eb06076",
+  "guarded": {
+    "slug": "/knowledge/k-gson-to-json",
+    "id": "k-gson-to-json",
+    "title": "Gson To Json"
+  },
+  "savedAt": "2026-11-02T03:49:07.008Z"
+}

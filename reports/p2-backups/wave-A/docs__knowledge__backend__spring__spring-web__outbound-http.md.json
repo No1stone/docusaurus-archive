@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/outbound-http.md",
+  "before": "외부 HTTP 호출 (작성 예정)",
+  "after": "외부 HTTP 호출 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "e9b381ce63323ca7238f5b8c04aa09ff452c3a7d4b35382216e72d343cbeba79",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/outbound-http",
+    "id": "spring-spring-web-outbound-http",
+    "title": "외부 HTTP 호출"
+  },
+  "savedAt": "2026-11-02T03:49:04.311Z"
+}

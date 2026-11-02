@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/external-config-and-resources.md",
+  "before": "외부 설정과 리소스 로딩 (작성 예정)",
+  "after": "외부 설정과 리소스 로딩 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "47bfd6aa7beba17fb8ac494d78e6c6da86bcfd2ec2412fffef8ed5dac843883d",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/external-config-and-resources",
+    "id": "spring-settings-external-config-and-resources",
+    "title": "외부 설정과 리소스 로딩"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

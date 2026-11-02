@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-testing/integration-and-testcontainers.md",
+  "before": "통합 테스트와 Testcontainers (작성 예정)",
+  "after": "통합 테스트와 Testcontainers — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "9002f3985511915234aabb7e6876f38330d79640bf88ec1b58d348b26355b41a",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-testing/integration-and-testcontainers",
+    "id": "spring-spring-testing-integration-and-testcontainers",
+    "title": "통합 테스트와 Testcontainers"
+  },
+  "savedAt": "2026-11-02T03:49:04.308Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/structural/어탭터-패턴adapter-pattern.md",
+  "before": "어탭터 패턴(adapter Pattern)",
+  "after": "어탭터 패턴(adapter Pattern): 어탭터 패턴(adapter Pattern) 인터페이스로 할당된 타입이나 파라미터들을 변환해서 연결시켜주는 패턴 오버로딩과비슷",
+  "bodyHash": "8e3a10a53b9b15d64df9a8afb4d12e2f5a2ca3a66cf86a869147bc2b5f1fcaad",
+  "guarded": {
+    "slug": "/patterns/pattern-어탭터-패턴adapter-pattern",
+    "id": "pattern-어탭터-패턴adapter-pattern",
+    "title": "어탭터 패턴(adapter Pattern)"
+  },
+  "savedAt": "2026-11-02T03:49:28.991Z"
+}

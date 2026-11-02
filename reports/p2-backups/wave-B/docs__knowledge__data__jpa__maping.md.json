@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/jpa/maping.md",
+  "before": "Maping",
+  "after": "import lombok.Builder; import lombok.Getter; import lombok.NoArgsConstructor;",
+  "bodyHash": "ac4dac3247729385c74874c32d0064d8aca4041b29053d78fbbecb7c9072a153",
+  "guarded": {
+    "slug": "/knowledge/k-maping",
+    "id": "k-maping",
+    "title": "Maping"
+  },
+  "savedAt": "2026-11-02T03:49:28.989Z"
+}

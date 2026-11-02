@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/behavioral/방문자visitor-pattenr.md",
+  "before": "방문자(Visitor Pattenr)",
+  "after": "방문자(Visitor Pattenr): 방문자(Visitor Pattenr) 공장에 복사할수있는 물체가있다고 하자. 방문자가 그복사할수 있는 물체를 복사해서 더할수있다. 공장인터페이스(비짓) 공장",
+  "bodyHash": "1ea631660cb3c475cc23e6d8585c0dfd1f21413ed41ff1d3a9a97f30ec8ad1b7",
+  "guarded": {
+    "slug": "/patterns/pattern-방문자visitor-pattenr",
+    "id": "pattern-방문자visitor-pattenr",
+    "title": "방문자(Visitor Pattenr)"
+  },
+  "savedAt": "2026-11-02T03:49:07.005Z"
+}

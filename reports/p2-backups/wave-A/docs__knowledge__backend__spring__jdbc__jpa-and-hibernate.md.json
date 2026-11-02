@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/jpa-and-hibernate.md",
+  "before": "JPA와 Hibernate (작성 예정)",
+  "after": "JPA와 Hibernate — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "b0fd94271ada090e934fc6cacc27e36cc981b6f69104d29286c803fe7e6ee706",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/jpa-and-hibernate",
+    "id": "spring-jdbc-jpa-and-hibernate",
+    "title": "JPA와 Hibernate"
+  },
+  "savedAt": "2026-11-02T03:49:04.304Z"
+}

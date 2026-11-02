@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/batch/index.md",
+  "before": "Spring Batch 목차",
+  "after": "Spring batch(Spring Batch) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "ad490fe34e9599251f381474f290147b54700c5ba05c9ceb9a98f575a7bda7fd",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/batch",
+    "id": "spring-batch-index",
+    "title": "Spring Batch"
+  },
+  "savedAt": "2026-11-02T03:50:21.931Z"
+}

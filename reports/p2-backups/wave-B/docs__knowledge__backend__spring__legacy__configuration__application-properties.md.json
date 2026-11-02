@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/configuration/application-properties.md",
+  "before": "application properties",
+  "after": "spring.first.datasource.jdbc url= spring.first.datasource.username= spring.first.datasource.password=",
+  "bodyHash": "51a062ff6b9013e23122248879438ee9d4c772968101a822e04e61f3b5e645c4",
+  "guarded": {
+    "slug": "/knowledge/k-application-properties",
+    "id": "k-application-properties",
+    "title": "application properties"
+  },
+  "savedAt": "2026-11-02T03:49:06.994Z"
+}

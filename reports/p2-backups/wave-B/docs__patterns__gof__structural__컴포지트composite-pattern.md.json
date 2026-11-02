@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/structural/컴포지트composite-pattern.md",
+  "before": "컴포지트(composite pattern)",
+  "after": "컴포지트(composite pattern): 컴포지트(composite pattern) 리눅스 경로와 비슷한 패턴을 만드는 구조. 컴포지트 클래스생성 폴더와 파일이 상속받고. 슈퍼클래스로 이름을 올려줌. 폴더와 파일은 배열을줘서 여러개를 보관할수있게 만든다.",
+  "bodyHash": "a634b0cf7c738901f294188a5599b36b452599543c29e93bf094c940687b6aa4",
+  "guarded": {
+    "slug": "/patterns/pattern-컴포지트composite-pattern",
+    "id": "pattern-컴포지트composite-pattern",
+    "title": "컴포지트(composite pattern)"
+  },
+  "savedAt": "2026-11-02T03:49:07.008Z"
+}

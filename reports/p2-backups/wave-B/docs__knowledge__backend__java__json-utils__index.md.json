@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/index.md",
+  "before": "JSON 직렬화·파싱·응답 변환 메모입니다.",
+  "after": "Java(JSON) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "2d7c93859e8cffe0584f76c252af8f8fa5c124216329ff51d24bc103d02b7ef8",
+  "guarded": {
+    "slug": "/knowledge/backend/java/json-utils",
+    "id": "backend-java-json-utils",
+    "title": "JSON"
+  },
+  "savedAt": "2026-11-02T03:50:21.936Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/partition.md",
+  "before": "테이블 파티셔닝 안내는 MySQL·MariaDB 문서로 이어집니다.",
+  "after": "PARTITION: PARTITION 테이블(ROW) 파티셔닝 안내는 아래로 이어집니다. — RANGE, PK 제약, pmax, DROP — created at 파티션과 JPA @Id 매핑 디스크 파티션(EBS/",
+  "bodyHash": "d601ee4535a50301e7942ce88ed153fc93209f478b20bd3b5370dcbd5373bd36",
+  "guarded": {
+    "slug": "/knowledge/k-partition",
+    "id": "k-partition",
+    "title": "PARTITION"
+  },
+  "savedAt": "2026-11-02T03:49:07.002Z"
+}

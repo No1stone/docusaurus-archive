@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/web/sseemitter.md",
+  "before": "SseEmitter",
+  "after": "@GetMapping(path = \"/test37/{seq}\", produces = MediaType.TEXT EVENT STREAM VALUE) public SseEmitter",
+  "bodyHash": "530aafe0768d4a491fa315a75b9a32212f99f9e4c9f9787c63849612ca21c3a5",
+  "guarded": {
+    "slug": "/knowledge/k-sseemitter",
+    "id": "k-sseemitter",
+    "title": "SseEmitter"
+  },
+  "savedAt": "2026-11-02T03:49:28.989Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/jpa/연관관계.md",
+  "before": "연관관계",
+  "after": "팜프로(partner gateway)와 부트베이스 api auth 모두 JPAQueryFactory 빈을 둡니다.",
+  "bodyHash": "f2381b66aa4c359aaff1d921edd4c1d9ac16ee6f24cffae73817f51c37df81b9",
+  "guarded": {
+    "slug": "/knowledge/k-연관관계",
+    "id": "k-연관관계",
+    "title": "연관관계"
+  },
+  "savedAt": "2026-11-02T03:49:06.999Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-testing/index.md",
+  "before": "테스트 목차",
+  "after": "Spring spring-testing 하위 문서 목차와 진입 경로를 제공합니다.",
+  "bodyHash": "4af37b6525869dc99e4875e5f0fc77347adcd49b9f93665dd2beb5bdc40ae0cb",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-testing",
+    "id": "spring-spring-testing-index",
+    "title": "테스트"
+  },
+  "savedAt": "2026-11-02T03:49:06.998Z"
+}

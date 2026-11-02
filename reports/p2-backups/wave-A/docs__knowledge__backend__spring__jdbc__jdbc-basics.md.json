@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/jdbc-basics.md",
+  "before": "JDBC 기본 (작성 예정)",
+  "after": "JDBC 기본 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "55d253cb51c5878d703fe750de52d7b9684e499dadc4bc8a480060fc6e4fdef9",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/jdbc-basics",
+    "id": "spring-jdbc-jdbc-basics",
+    "title": "JDBC 기본"
+  },
+  "savedAt": "2026-11-02T03:49:04.303Z"
+}

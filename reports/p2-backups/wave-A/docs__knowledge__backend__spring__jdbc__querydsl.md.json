@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/jdbc/querydsl.md",
+  "before": "QueryDSL (작성 예정)",
+  "after": "QueryDSL — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "0a4440041ef4ec7273c42159cc62a4d13ef22c13dba921ff075076c83199c9b1",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/jdbc/querydsl",
+    "id": "spring-jdbc-querydsl",
+    "title": "QueryDSL"
+  },
+  "savedAt": "2026-11-02T03:49:04.304Z"
+}

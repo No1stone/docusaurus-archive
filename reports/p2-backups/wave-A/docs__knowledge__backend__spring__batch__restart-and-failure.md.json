@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/batch/restart-and-failure.md",
+  "before": "재시작과 실패 처리 (작성 예정)",
+  "after": "재시작과 실패 처리 — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "084553c763ffcfebf4e7c95a7599e83c8b179bdfaaa9a388f1686d692426578d",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/batch/restart-and-failure",
+    "id": "spring-batch-restart-and-failure",
+    "title": "재시작과 실패 처리"
+  },
+  "savedAt": "2026-11-02T03:49:04.300Z"
+}

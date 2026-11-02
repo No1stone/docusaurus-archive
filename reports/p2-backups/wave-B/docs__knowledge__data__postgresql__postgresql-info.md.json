@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/postgresql/postgresql-info.md",
+  "before": "PostgreSQL 관련 메모 진입점",
+  "after": "Postgresql info: Postgresql info 개요: PostgreSQL 관련 메모의 진입점입니다. 관련 메모 : 데이터 타입 문서, 스크린샷 타입 선택과 제약부터 위 글을 보면 됩니다.",
+  "bodyHash": "50d937dd0a098355a41a519d9d8c658a2fb5d719f7caddbc6c4e0f2ca10f74bf",
+  "guarded": {
+    "slug": "/knowledge/k-postgresql-info",
+    "id": "k-postgresql-info",
+    "title": "Postgresql info"
+  },
+  "savedAt": "2026-11-02T03:49:06.999Z"
+}

@@ -1,0 +1,914 @@
+{
+  "generatedAt": "2026-11-02T03:49:04.204Z",
+  "waves": [
+    "A"
+  ],
+  "totals": {
+    "considered": 53,
+    "proposed": 53,
+    "skipped": 0
+  },
+  "proposals": [
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/async-and-executor.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Async와 Executor (작성 예정)",
+      "after": "Async와 Executor — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 79,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/async-scheduling/async-and-executor",
+        "id": "spring-async-scheduling-async-and-executor",
+        "title": "Async와 Executor"
+      },
+      "bodyHash": "7dc799466e1140ff3d98769f5393c7ec09cbeb62c41075f155ced2ac62afd456"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/concurrency-control.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "동시 실행과 중복 실행 제어 (작성 예정)",
+      "after": "동시 실행과 중복 실행 제어 — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 79,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/async-scheduling/concurrency-control",
+        "id": "spring-async-scheduling-concurrency-control",
+        "title": "동시 실행과 중복 실행 제어"
+      },
+      "bodyHash": "4dbb54a1bde5d92fba2ab8046846224e9a7109d332f01ecca7cc5cd87e73e97a"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/scheduled.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Scheduled (작성 예정)",
+      "after": "Scheduled — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 73,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/async-scheduling/scheduled",
+        "id": "spring-async-scheduling-scheduled",
+        "title": "Scheduled"
+      },
+      "bodyHash": "47c52e04da547f5261811d8a7f33822b80bd3141be14292f0ddb98cfdd7a2f84"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/chunk-and-tasklet.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Chunk와 Tasklet (작성 예정)",
+      "after": "Chunk와 Tasklet — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/batch/chunk-and-tasklet",
+        "id": "spring-batch-chunk-and-tasklet",
+        "title": "Chunk와 Tasklet"
+      },
+      "bodyHash": "a90e23fda46684756e3a74f4724aa1fb44bc1e2a3e3a6686af75b5902a065f6b"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/job-and-step.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Job과 Step (작성 예정)",
+      "after": "Job과 Step — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 62,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/batch/job-and-step",
+        "id": "spring-batch-job-and-step",
+        "title": "Job과 Step"
+      },
+      "bodyHash": "24ce9513f57051a8611eb16fd57c1e3a74eaadb5dc0893ed07dd0549736e2169"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/reader-processor-writer.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Reader, Processor, Writer (작성 예정)",
+      "after": "Reader, Processor, Writer — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 78,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/batch/reader-processor-writer",
+        "id": "spring-batch-reader-processor-writer",
+        "title": "Reader, Processor, Writer"
+      },
+      "bodyHash": "ce7d998edbb0ce38c8e985b31e6b01ca8d4b2cc714e12cea21d9bd03647ff4c0"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/restart-and-failure.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "재시작과 실패 처리 (작성 예정)",
+      "after": "재시작과 실패 처리 — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 63,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/batch/restart-and-failure",
+        "id": "spring-batch-restart-and-failure",
+        "title": "재시작과 실패 처리"
+      },
+      "bodyHash": "084553c763ffcfebf4e7c95a7599e83c8b179bdfaaa9a388f1686d692426578d"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/application-runners.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "ApplicationRunner와 CommandLineRunner (작성 예정)",
+      "after": "ApplicationRunner와 CommandLineRunner — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 88,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/application-runners",
+        "id": "spring-boot-application-runners",
+        "title": "ApplicationRunner와 CommandLineRunner"
+      },
+      "bodyHash": "bb71909bab6b041a8c5cc154dd82a0c88120e58bf873ba9c05d826f371f1cb46"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/auto-configuration.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "SpringBootApplication과 자동 설정 (작성 예정)",
+      "after": "SpringBootApplication과 자동 설정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 80,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/auto-configuration",
+        "id": "spring-boot-auto-configuration",
+        "title": "SpringBootApplication과 자동 설정"
+      },
+      "bodyHash": "d245a6851a10550150cdab3f2a17e016ea8aaece7a37187b0108228ec3d5ca0c"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/conditional-beans.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "조건부 Bean 등록 (작성 예정)",
+      "after": "조건부 Bean 등록 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 63,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/conditional-beans",
+        "id": "spring-boot-conditional-beans",
+        "title": "조건부 Bean 등록"
+      },
+      "bodyHash": "a310252e0e1134b2c48f49d243a315e7e3acef278c90b94799797a12450c538f"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/graceful-shutdown.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "종료와 Graceful Shutdown (작성 예정)",
+      "after": "종료와 Graceful Shutdown — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 73,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/graceful-shutdown",
+        "id": "spring-boot-graceful-shutdown",
+        "title": "종료와 Graceful Shutdown"
+      },
+      "bodyHash": "7f7f44c8e176154aaaa6b2f3dffb3927906cf9057211059be50399435ea5584b"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/spring-application.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "SpringApplication과 실행 과정 (작성 예정)",
+      "after": "SpringApplication과 실행 과정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 76,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/spring-application",
+        "id": "spring-boot-spring-application",
+        "title": "SpringApplication과 실행 과정"
+      },
+      "bodyHash": "948b3b1e887bc2aba9e8ba11c301eb117615108ba69e16747a1927ebe1308dc5"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/starters.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Starter와 의존성 관리 (작성 예정)",
+      "after": "Starter와 의존성 관리 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot/starters",
+        "id": "spring-boot-starters",
+        "title": "Starter와 의존성 관리"
+      },
+      "bodyHash": "e3f5dc50c665ae9bcd1600c1b53304c1ec251542c6a033ff4c73495758c7f359"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/datasource-and-pool.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "DataSource와 커넥션 풀 (작성 예정)",
+      "after": "DataSource와 커넥션 풀 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 69,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/datasource-and-pool",
+        "id": "spring-jdbc-datasource-and-pool",
+        "title": "DataSource와 커넥션 풀"
+      },
+      "bodyHash": "59783f9f13b0e912913744d33eb4dbde737d3dbfbb349bb57018640fb5c45215"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/ibatis-and-mybatis.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "iBATIS와 MyBatis (작성 예정)",
+      "after": "iBATIS와 MyBatis — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/ibatis-and-mybatis",
+        "id": "spring-jdbc-ibatis-and-mybatis",
+        "title": "iBATIS와 MyBatis"
+      },
+      "bodyHash": "f703fb60e6e8683b3cecff10306a2069a2e4f0e716f4f98c4b3db417ea1c2dfe"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jdbc-basics.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "JDBC 기본 (작성 예정)",
+      "after": "JDBC 기본 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 59,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/jdbc-basics",
+        "id": "spring-jdbc-jdbc-basics",
+        "title": "JDBC 기본"
+      },
+      "bodyHash": "55d253cb51c5878d703fe750de52d7b9684e499dadc4bc8a480060fc6e4fdef9"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jooq.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "jOOQ (작성 예정)",
+      "after": "jOOQ — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 56,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/jooq",
+        "id": "spring-jdbc-jooq",
+        "title": "jOOQ"
+      },
+      "bodyHash": "a8f953e411a607957795b005a2c0011f835635d2af3cebff086b158555611f21"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jpa-and-hibernate.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "JPA와 Hibernate (작성 예정)",
+      "after": "JPA와 Hibernate — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 66,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/jpa-and-hibernate",
+        "id": "spring-jdbc-jpa-and-hibernate",
+        "title": "JPA와 Hibernate"
+      },
+      "bodyHash": "b0fd94271ada090e934fc6cacc27e36cc981b6f69104d29286c803fe7e6ee706"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/querydsl.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "QueryDSL (작성 예정)",
+      "after": "QueryDSL — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 60,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/querydsl",
+        "id": "spring-jdbc-querydsl",
+        "title": "QueryDSL"
+      },
+      "bodyHash": "0a4440041ef4ec7273c42159cc62a4d13ef22c13dba921ff075076c83199c9b1"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-data-jpa.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Spring Data JPA (작성 예정)",
+      "after": "Spring Data JPA — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/spring-data-jpa",
+        "id": "spring-jdbc-spring-data-jpa",
+        "title": "Spring Data JPA"
+      },
+      "bodyHash": "c0dad39b322d24e802965a831ed875ac9ef51ab3eec76b8b5eb4e6d095074835"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-jdbc.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Spring JDBC (작성 예정)",
+      "after": "Spring JDBC — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 63,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc/spring-jdbc",
+        "id": "spring-jdbc-spring-jdbc",
+        "title": "Spring JDBC"
+      },
+      "bodyHash": "e8a3b93f56954450365ee6add58244267c5cee09d0897b0b95362500a3c7792c"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/overview/composition-and-flow.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Spring의 구성과 전체 동작 흐름 (작성 예정)",
+      "after": "Spring의 구성과 전체 동작 흐름 — Spring overview 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 76,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/overview/composition-and-flow",
+        "id": "spring-overview-composition-and-flow",
+        "title": "Spring의 구성과 전체 동작 흐름"
+      },
+      "bodyHash": "97d69849e7e2bbe2a6086d9d62964e3c7ea87c9f1a20c9410c86c46ef5a52496"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/application-yml-and-properties.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "application.yml과 properties (작성 예정)",
+      "after": "application.yml과 properties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 83,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/application-yml-and-properties",
+        "id": "spring-settings-application-yml-and-properties",
+        "title": "application.yml과 properties"
+      },
+      "bodyHash": "63a4b3e1e33abc6f899f6be623aa3374545a42e198192693395747fa2f90f1a9"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/binding-and-validation.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "설정값 바인딩과 검증 (작성 예정)",
+      "after": "설정값 바인딩과 검증 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/binding-and-validation",
+        "id": "spring-settings-binding-and-validation",
+        "title": "설정값 바인딩과 검증"
+      },
+      "bodyHash": "e56746f1980b4bb7066f5dc05d7d59f4c918e3ddaf88a0e2e77cea03370ce4f1"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/environment-and-precedence.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Environment와 설정 우선순위 (작성 예정)",
+      "after": "Environment와 설정 우선순위 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 76,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/environment-and-precedence",
+        "id": "spring-settings-environment-and-precedence",
+        "title": "Environment와 설정 우선순위"
+      },
+      "bodyHash": "0131d2524e70d4f3a74aed4944858e6782076965769a3a9658d67c1b66ff0044"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/external-config-and-resources.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "외부 설정과 리소스 로딩 (작성 예정)",
+      "after": "외부 설정과 리소스 로딩 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 69,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/external-config-and-resources",
+        "id": "spring-settings-external-config-and-resources",
+        "title": "외부 설정과 리소스 로딩"
+      },
+      "bodyHash": "47bfd6aa7beba17fb8ac494d78e6c6da86bcfd2ec2412fffef8ed5dac843883d"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/profiles.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Profile과 환경별 설정 (작성 예정)",
+      "after": "Profile과 환경별 설정 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 71,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/profiles",
+        "id": "spring-settings-profiles",
+        "title": "Profile과 환경별 설정"
+      },
+      "bodyHash": "ac28c1700980709187197d7749cf2afa74c6919b3c5efa44fa58b631cd106671"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/value-and-configuration-properties.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Value와 ConfigurationProperties (작성 예정)",
+      "after": "Value와 ConfigurationProperties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 86,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings/value-and-configuration-properties",
+        "id": "spring-settings-value-and-configuration-properties",
+        "title": "Value와 ConfigurationProperties"
+      },
+      "bodyHash": "04816e700e47db4daba460cb82d5ebbd27c9155c6c157156c7b9fa3453dadab8"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/aop-and-proxy.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "AOP와 프록시 (작성 예정)",
+      "after": "AOP와 프록시 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/aop-and-proxy",
+        "id": "spring-spring-core-aop-and-proxy",
+        "title": "AOP와 프록시"
+      },
+      "bodyHash": "e6a9bcc4f6b1459973ec0e026ffc67eed75c170777b15322bc69c21200a921bd"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-factory-and-application-context.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "BeanFactory와 ApplicationContext (작성 예정)",
+      "after": "BeanFactory와 ApplicationContext — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 90,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/bean-factory-and-application-context",
+        "id": "spring-spring-core-bean-factory-and-application-context",
+        "title": "BeanFactory와 ApplicationContext"
+      },
+      "bodyHash": "c5906e155bd6184b774dbe8fb54e2bb7e4c6246fbb467229ea014df61a4dcc94"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-registration-and-component-scan.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Bean 등록과 컴포넌트 스캔 (작성 예정)",
+      "after": "Bean 등록과 컴포넌트 스캔 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 75,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/bean-registration-and-component-scan",
+        "id": "spring-spring-core-bean-registration-and-component-scan",
+        "title": "Bean 등록과 컴포넌트 스캔"
+      },
+      "bodyHash": "47563ff3e33cd2ad5470d76df4742b441e94e49fc1b7869d90c2ed5a07ba3209"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Bean Scope와 생명주기 (작성 예정)",
+      "after": "Bean Scope와 생명주기 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 75,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle",
+        "id": "spring-spring-core-bean-scope-and-lifecycle",
+        "title": "Bean Scope와 생명주기"
+      },
+      "bodyHash": "f141bb7d7f1cb9b6440cd4443bff1e89665c4ebe0bb15fc9a5bb38ce61173c28"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/dependency-injection.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "의존성 주입과 주입 대상 선택 (작성 예정)",
+      "after": "의존성 주입과 주입 대상 선택 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 75,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/dependency-injection",
+        "id": "spring-spring-core-dependency-injection",
+        "title": "의존성 주입과 주입 대상 선택"
+      },
+      "bodyHash": "92e94abf3c33493501a623358d226b84434de6efeaca90d491c9ae688b745b2e"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/events-and-listeners.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "이벤트 발행과 리스너 (작성 예정)",
+      "after": "이벤트 발행과 리스너 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 70,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/events-and-listeners",
+        "id": "spring-spring-core-events-and-listeners",
+        "title": "이벤트 발행과 리스너"
+      },
+      "bodyHash": "2abcb02d5df71e8aceeeffce26d52947484c6516cf56a28e3353cc7b589d914c"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/ioc-and-di.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "IoC와 DI (작성 예정)",
+      "after": "IoC와 DI — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 66,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/ioc-and-di",
+        "id": "spring-spring-core-ioc-and-di",
+        "title": "IoC와 DI"
+      },
+      "bodyHash": "8f091eb01959d2da811888aa589496d5d438b89033da8cda51c6437696e0107a"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/java-config-and-xml.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Java Config와 XML 설정 (작성 예정)",
+      "after": "Java Config와 XML 설정 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 78,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/java-config-and-xml",
+        "id": "spring-spring-core-java-config-and-xml",
+        "title": "Java Config와 XML 설정"
+      },
+      "bodyHash": "a617525db3275d3efce12e160e1d99a912bc388c4265953b2f74843f06fa964e"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/lazy-initialization.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Lazy 초기화 (작성 예정)",
+      "after": "Lazy 초기화 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 67,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-core/lazy-initialization",
+        "id": "spring-spring-core-lazy-initialization",
+        "title": "Lazy 초기화"
+      },
+      "bodyHash": "6a7ef37458d0314454d18cde93910fbb7a6f06a536090a58c94b0bae505a36f9"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/integration-and-testcontainers.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "통합 테스트와 Testcontainers (작성 예정)",
+      "after": "통합 테스트와 Testcontainers — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 84,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-testing/integration-and-testcontainers",
+        "id": "spring-spring-testing-integration-and-testcontainers",
+        "title": "통합 테스트와 Testcontainers"
+      },
+      "bodyHash": "9002f3985511915234aabb7e6876f38330d79640bf88ec1b58d348b26355b41a"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/spring-context-tests.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Spring Context 테스트 (작성 예정)",
+      "after": "Spring Context 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 80,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-testing/spring-context-tests",
+        "id": "spring-spring-testing-spring-context-tests",
+        "title": "Spring Context 테스트"
+      },
+      "bodyHash": "a813caf344dee62d011a96ce3f7d18e31c52159abee422aac2db4b7a68de757f"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/test-slices.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "테스트 슬라이스 (작성 예정)",
+      "after": "테스트 슬라이스 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 70,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-testing/test-slices",
+        "id": "spring-spring-testing-test-slices",
+        "title": "테스트 슬라이스"
+      },
+      "bodyHash": "b8992d5e18a1bdc5e847607fc69910170b7b746fa98f4cad11309c9e779ef155"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/unit-tests.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "단위 테스트 (작성 예정)",
+      "after": "단위 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 68,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-testing/unit-tests",
+        "id": "spring-spring-testing-unit-tests",
+        "title": "단위 테스트"
+      },
+      "bodyHash": "751f09a72423b91d1c2a7bfff31fb50fc6de852f9bf5d0c228ce02b83ab62666"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/binding-and-conversion.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "요청 바인딩과 응답 변환 (작성 예정)",
+      "after": "요청 바인딩과 응답 변환 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 71,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/binding-and-conversion",
+        "id": "spring-spring-web-binding-and-conversion",
+        "title": "요청 바인딩과 응답 변환"
+      },
+      "bodyHash": "f9278607045a6ce6f00f7e52f47c48a3e348271e2744004fc79bae109dffba66"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/controller-and-mapping.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Controller와 요청 매핑 (작성 예정)",
+      "after": "Controller와 요청 매핑 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 75,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/controller-and-mapping",
+        "id": "spring-spring-web-controller-and-mapping",
+        "title": "Controller와 요청 매핑"
+      },
+      "bodyHash": "ebbac348ddd581f8d0f16a2ad1bc4a62a91a3e0a70676d33a64a8f4dd194dc3a"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/filter-and-interceptor.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Filter와 Interceptor (작성 예정)",
+      "after": "Filter와 Interceptor — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 77,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/filter-and-interceptor",
+        "id": "spring-spring-web-filter-and-interceptor",
+        "title": "Filter와 Interceptor"
+      },
+      "bodyHash": "73dea90f353ca45ce043acc908aa091fb00dbbdc30e3d94db395335ef0056286"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/outbound-http.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "외부 HTTP 호출 (작성 예정)",
+      "after": "외부 HTTP 호출 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 68,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/outbound-http",
+        "id": "spring-spring-web-outbound-http",
+        "title": "외부 HTTP 호출"
+      },
+      "bodyHash": "e9b381ce63323ca7238f5b8c04aa09ff452c3a7d4b35382216e72d343cbeba79"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/spring-mvc.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Spring MVC (작성 예정)",
+      "after": "Spring MVC — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 68,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/spring-mvc",
+        "id": "spring-spring-web-spring-mvc",
+        "title": "Spring MVC"
+      },
+      "bodyHash": "ab6055d1e57a3636b4387e90c4cfd6f4ac9c6a4e2007e09045d12c29a167203a"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/validation-and-exceptions.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "입력 검증과 예외 처리 (작성 예정)",
+      "after": "입력 검증과 예외 처리 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 70,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/validation-and-exceptions",
+        "id": "spring-spring-web-validation-and-exceptions",
+        "title": "입력 검증과 예외 처리"
+      },
+      "bodyHash": "0473e81d5cfcaec92c8d965b2843a8c8753dd52f561b7b4c08f3e60876086f94"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/virtual-threads.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Virtual Threads (작성 예정)",
+      "after": "Virtual Threads — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 73,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/virtual-threads",
+        "id": "spring-spring-web-virtual-threads",
+        "title": "Virtual Threads"
+      },
+      "bodyHash": "62735dbea28a6d52ba3e6ab1add1ce20f13af141053d8bb88ff322f6ff45ce18"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/webflux.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "WebFlux (작성 예정)",
+      "after": "WebFlux — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 65,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/spring-web/webflux",
+        "id": "spring-spring-web-webflux",
+        "title": "WebFlux"
+      },
+      "bodyHash": "9c8419b0e11e96d1fe6c75f75d4c37f5f7733415b6d8ecd399ebac5564720b4e"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/programmatic-transactions.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "프로그래밍 방식의 트랜잭션 (작성 예정)",
+      "after": "프로그래밍 방식의 트랜잭션 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 73,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/transaction/programmatic-transactions",
+        "id": "spring-transaction-programmatic-transactions",
+        "title": "프로그래밍 방식의 트랜잭션"
+      },
+      "bodyHash": "06f7b685a62bbb5aa1baafbe57ac1c29a4acd4ea29f2e3092c26689ba4fe5e43"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/propagation-and-isolation.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "전파와 격리 수준 (작성 예정)",
+      "after": "전파와 격리 수준 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 68,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/transaction/propagation-and-isolation",
+        "id": "spring-transaction-propagation-and-isolation",
+        "title": "전파와 격리 수준"
+      },
+      "bodyHash": "06f1792a5eda6d03c16a309626eb44820c14db028273244a6b479c6184293193"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/rollback-and-exceptions.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "롤백과 예외 처리 (작성 예정)",
+      "after": "롤백과 예외 처리 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 68,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/transaction/rollback-and-exceptions",
+        "id": "spring-transaction-rollback-and-exceptions",
+        "title": "롤백과 예외 처리"
+      },
+      "bodyHash": "95ee0525a4e549213bb00661aa1fb5238a851150b2f728e6a928645c0dd44e03"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/transactional-boundary.md",
+      "wave": "A",
+      "mode": "review",
+      "skip": false,
+      "reason": "stub body — template B + human review",
+      "before": "Transactional과 적용 경계 (작성 예정)",
+      "after": "Transactional과 적용 경계 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+      "strategy": "templateB",
+      "length": 79,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/transaction/transactional-boundary",
+        "id": "spring-transaction-transactional-boundary",
+        "title": "Transactional과 적용 경계"
+      },
+      "bodyHash": "48dc9a15e8aaa69fc5a2c77fc19dcf63c1ef5622b27be183be3454d5a1e3696b"
+    }
+  ]
+}

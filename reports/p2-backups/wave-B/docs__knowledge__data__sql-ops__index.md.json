@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/index.md",
+  "before": "스키마·권한·파티션·복제·멀티 DB·SQL 메모입니다.",
+  "after": "sql-ops(SQL / Ops) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "88e51d6a20ee786f9538ad5f85d8cb6132e3d40843f20ab17d5290d4564b0e12",
+  "guarded": {
+    "slug": "/knowledge/data/sql-ops",
+    "id": "data-sql-ops",
+    "title": "SQL / Ops"
+  },
+  "savedAt": "2026-11-02T03:50:21.935Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/configuration/resourcebundlemessagesource.md",
+  "before": "ResourceBundleMessageSource",
+  "after": "ResourceBundleMessageSource: ResourceBundleMessageSource 다국어를 지원하는 어플리케이션을 만들때 주로 사용 message en US.properties 주의사항 messageSource라고 이름을 지어야 애플리케이션콘텍스트가 감지함",
+  "bodyHash": "429f15429d7789bbf18fd8194c872a0edb51fa51dc8070b784155cc863b20994",
+  "guarded": {
+    "slug": "/knowledge/k-resourcebundlemessagesource",
+    "id": "k-resourcebundlemessagesource",
+    "title": "ResourceBundleMessageSource"
+  },
+  "savedAt": "2026-11-02T03:49:06.996Z"
+}

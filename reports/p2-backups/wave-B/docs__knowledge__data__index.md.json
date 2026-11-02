@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/index.md",
+  "before": "저장·ORM·캐시·마이그레이션 메모",
+  "after": "데이터(Data) 영역 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "4771de0e4f7921ba1fc611a8fb7c52837c3720b9aadc0fa088ea3e143a7cdeb9",
+  "guarded": {
+    "slug": "/knowledge/data",
+    "id": "data",
+    "title": "Data"
+  },
+  "savedAt": "2026-11-02T03:50:29.910658+00:00"
+}

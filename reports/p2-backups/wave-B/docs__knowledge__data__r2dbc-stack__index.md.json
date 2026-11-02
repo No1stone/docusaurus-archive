@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/r2dbc-stack/index.md",
+  "before": "R2DBC 설정·서비스·Mongo 연동 메모입니다.",
+  "after": "r2dbc-stack(R2DBC) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "51ec171aa854d1c8d70b06664a27ea4a700afdece11ee5a541544a67e9834a55",
+  "guarded": {
+    "slug": "/knowledge/data/r2dbc-stack",
+    "id": "data-r2dbc-stack",
+    "title": "R2DBC"
+  },
+  "savedAt": "2026-11-02T03:50:21.934Z"
+}

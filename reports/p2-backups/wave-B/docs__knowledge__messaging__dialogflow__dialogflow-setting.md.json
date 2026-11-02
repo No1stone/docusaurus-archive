@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/dialogflow/dialogflow-setting.md",
+  "before": "DialogFlow Setting",
+  "after": "DialogFlow Setting GCP와 Dialogflow 프로잭트가 일치해야하며 접속 Json 파일은 아래에서 받는다 IAM 및 관리자 → 서비스계정 → 키 다이알로그 플로어 Agen 생성할때 해당 프로잭트",
+  "bodyHash": "c405a50a94735576a0a684e824b6433d9a5fe84deb262c6d1846d14215b17982",
+  "guarded": {
+    "slug": "/knowledge/k-dialogflow-setting",
+    "id": "k-dialogflow-setting",
+    "title": "DialogFlow Setting"
+  },
+  "savedAt": "2026-11-02T03:49:07.004Z"
+}

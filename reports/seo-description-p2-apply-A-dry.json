@@ -1,0 +1,385 @@
+{
+  "wave": "A",
+  "doApply": false,
+  "modes": [
+    "review",
+    "auto"
+  ],
+  "considered": 53,
+  "applied": 53,
+  "failed": 0,
+  "generatedAt": "2026-11-02T03:49:04.255Z",
+  "results": [
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/async-and-executor.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Async와 Executor (작성 예정)",
+      "after": "Async와 Executor — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/concurrency-control.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "동시 실행과 중복 실행 제어 (작성 예정)",
+      "after": "동시 실행과 중복 실행 제어 — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/async-scheduling/scheduled.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Scheduled (작성 예정)",
+      "after": "Scheduled — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/chunk-and-tasklet.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Chunk와 Tasklet (작성 예정)",
+      "after": "Chunk와 Tasklet — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/job-and-step.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Job과 Step (작성 예정)",
+      "after": "Job과 Step — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/reader-processor-writer.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Reader, Processor, Writer (작성 예정)",
+      "after": "Reader, Processor, Writer — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/batch/restart-and-failure.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "재시작과 실패 처리 (작성 예정)",
+      "after": "재시작과 실패 처리 — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/application-runners.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "ApplicationRunner와 CommandLineRunner (작성 예정)",
+      "after": "ApplicationRunner와 CommandLineRunner — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/auto-configuration.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "SpringBootApplication과 자동 설정 (작성 예정)",
+      "after": "SpringBootApplication과 자동 설정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/conditional-beans.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "조건부 Bean 등록 (작성 예정)",
+      "after": "조건부 Bean 등록 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/graceful-shutdown.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "종료와 Graceful Shutdown (작성 예정)",
+      "after": "종료와 Graceful Shutdown — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/spring-application.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "SpringApplication과 실행 과정 (작성 예정)",
+      "after": "SpringApplication과 실행 과정 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/starters.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Starter와 의존성 관리 (작성 예정)",
+      "after": "Starter와 의존성 관리 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/datasource-and-pool.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "DataSource와 커넥션 풀 (작성 예정)",
+      "after": "DataSource와 커넥션 풀 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/ibatis-and-mybatis.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "iBATIS와 MyBatis (작성 예정)",
+      "after": "iBATIS와 MyBatis — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jdbc-basics.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "JDBC 기본 (작성 예정)",
+      "after": "JDBC 기본 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jooq.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "jOOQ (작성 예정)",
+      "after": "jOOQ — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/jpa-and-hibernate.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "JPA와 Hibernate (작성 예정)",
+      "after": "JPA와 Hibernate — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/querydsl.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "QueryDSL (작성 예정)",
+      "after": "QueryDSL — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-data-jpa.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring Data JPA (작성 예정)",
+      "after": "Spring Data JPA — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/spring-jdbc.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring JDBC (작성 예정)",
+      "after": "Spring JDBC — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/overview/composition-and-flow.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring의 구성과 전체 동작 흐름 (작성 예정)",
+      "after": "Spring의 구성과 전체 동작 흐름 — Spring overview 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/application-yml-and-properties.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "application.yml과 properties (작성 예정)",
+      "after": "application.yml과 properties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/binding-and-validation.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "설정값 바인딩과 검증 (작성 예정)",
+      "after": "설정값 바인딩과 검증 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/environment-and-precedence.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Environment와 설정 우선순위 (작성 예정)",
+      "after": "Environment와 설정 우선순위 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/external-config-and-resources.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "외부 설정과 리소스 로딩 (작성 예정)",
+      "after": "외부 설정과 리소스 로딩 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/profiles.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Profile과 환경별 설정 (작성 예정)",
+      "after": "Profile과 환경별 설정 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/value-and-configuration-properties.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Value와 ConfigurationProperties (작성 예정)",
+      "after": "Value와 ConfigurationProperties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/aop-and-proxy.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "AOP와 프록시 (작성 예정)",
+      "after": "AOP와 프록시 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-factory-and-application-context.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "BeanFactory와 ApplicationContext (작성 예정)",
+      "after": "BeanFactory와 ApplicationContext — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-registration-and-component-scan.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Bean 등록과 컴포넌트 스캔 (작성 예정)",
+      "after": "Bean 등록과 컴포넌트 스캔 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/bean-scope-and-lifecycle.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Bean Scope와 생명주기 (작성 예정)",
+      "after": "Bean Scope와 생명주기 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/dependency-injection.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "의존성 주입과 주입 대상 선택 (작성 예정)",
+      "after": "의존성 주입과 주입 대상 선택 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/events-and-listeners.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "이벤트 발행과 리스너 (작성 예정)",
+      "after": "이벤트 발행과 리스너 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/ioc-and-di.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "IoC와 DI (작성 예정)",
+      "after": "IoC와 DI — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/java-config-and-xml.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Java Config와 XML 설정 (작성 예정)",
+      "after": "Java Config와 XML 설정 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-core/lazy-initialization.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Lazy 초기화 (작성 예정)",
+      "after": "Lazy 초기화 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/integration-and-testcontainers.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "통합 테스트와 Testcontainers (작성 예정)",
+      "after": "통합 테스트와 Testcontainers — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/spring-context-tests.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring Context 테스트 (작성 예정)",
+      "after": "Spring Context 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/test-slices.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "테스트 슬라이스 (작성 예정)",
+      "after": "테스트 슬라이스 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-testing/unit-tests.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "단위 테스트 (작성 예정)",
+      "after": "단위 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/binding-and-conversion.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "요청 바인딩과 응답 변환 (작성 예정)",
+      "after": "요청 바인딩과 응답 변환 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/controller-and-mapping.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Controller와 요청 매핑 (작성 예정)",
+      "after": "Controller와 요청 매핑 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/filter-and-interceptor.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Filter와 Interceptor (작성 예정)",
+      "after": "Filter와 Interceptor — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/outbound-http.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "외부 HTTP 호출 (작성 예정)",
+      "after": "외부 HTTP 호출 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/spring-mvc.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Spring MVC (작성 예정)",
+      "after": "Spring MVC — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/validation-and-exceptions.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "입력 검증과 예외 처리 (작성 예정)",
+      "after": "입력 검증과 예외 처리 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/virtual-threads.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Virtual Threads (작성 예정)",
+      "after": "Virtual Threads — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/spring-web/webflux.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "WebFlux (작성 예정)",
+      "after": "WebFlux — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/programmatic-transactions.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "프로그래밍 방식의 트랜잭션 (작성 예정)",
+      "after": "프로그래밍 방식의 트랜잭션 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/propagation-and-isolation.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "전파와 격리 수준 (작성 예정)",
+      "after": "전파와 격리 수준 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/rollback-and-exceptions.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "롤백과 예외 처리 (작성 예정)",
+      "after": "롤백과 예외 처리 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    },
+    {
+      "file": "docs/knowledge/backend/spring/transaction/transactional-boundary.md",
+      "ok": true,
+      "dryRun": true,
+      "before": "Transactional과 적용 경계 (작성 예정)",
+      "after": "Transactional과 적용 경계 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
+    }
+  ]
+}

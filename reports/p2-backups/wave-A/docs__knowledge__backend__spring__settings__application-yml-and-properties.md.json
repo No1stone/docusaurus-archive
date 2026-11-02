@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/application-yml-and-properties.md",
+  "before": "application.yml과 properties (작성 예정)",
+  "after": "application.yml과 properties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "63a4b3e1e33abc6f899f6be623aa3374545a42e198192693395747fa2f90f1a9",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/application-yml-and-properties",
+    "id": "spring-settings-application-yml-and-properties",
+    "title": "application.yml과 properties"
+  },
+  "savedAt": "2026-11-02T03:49:04.305Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/creational/프로토타입prototype-pattern.md",
+  "before": "프로토타입(Prototype Pattern)",
+  "after": "프로토타입(Prototype Pattern): 프로토타입(Prototype Pattern) 원형을 놔두고 복사하는 기능이다 Interface CloneAble 사용 프로토타입은 여러가시 사용방법이 있는듯하다.",
+  "bodyHash": "0a3f792f5c396f98f301496ea2391176dc8eac036b9045918f588fe34d0a4452",
+  "guarded": {
+    "slug": "/patterns/pattern-프로토타입prototype-pattern",
+    "id": "pattern-프로토타입prototype-pattern",
+    "title": "프로토타입(Prototype Pattern)"
+  },
+  "savedAt": "2026-11-02T03:49:07.007Z"
+}

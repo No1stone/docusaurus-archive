@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/reactive-web/webflux-97c022.md",
+  "before": "Webflux",
+  "after": "@RestController @Slf4j public class CustomerController {",
+  "bodyHash": "cedec1e53e810035601de266b9cf38607725fd431ffb1eb263da0b83ef81aed2",
+  "guarded": {
+    "slug": "/knowledge/k-webflux-97c022",
+    "id": "k-webflux-97c022",
+    "title": "Webflux"
+  },
+  "savedAt": "2026-11-02T03:49:28.986Z"
+}

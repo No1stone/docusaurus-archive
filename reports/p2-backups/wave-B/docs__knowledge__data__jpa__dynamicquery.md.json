@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/jpa/dynamicquery.md",
+  "before": "DynamicQuery",
+  "after": "DynamicQuery: DynamicQuery 다이나믹 쿼리 수동으로 트랜잭셔널 처리를해줘야해서 AOP처리를 해줘야함 (트랜잭션위치는 쿼리단위로 하던 인터페이스단위로하던...) 클래스 다중상속이 안되니 인터페이스 다중상속하고 클래스 별로 구현 업데이트 동적쿼리",
+  "bodyHash": "4d93f46c2a05b4cd3cb622514b0b6aefe9b8c4bd2079e70fba8042e4a9fc79b1",
+  "guarded": {
+    "slug": "/knowledge/k-dynamicquery",
+    "id": "k-dynamicquery",
+    "title": "DynamicQuery"
+  },
+  "savedAt": "2026-11-02T03:49:06.998Z"
+}

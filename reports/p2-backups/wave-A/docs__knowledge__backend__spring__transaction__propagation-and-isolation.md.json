@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/transaction/propagation-and-isolation.md",
+  "before": "전파와 격리 수준 (작성 예정)",
+  "after": "전파와 격리 수준 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "06f1792a5eda6d03c16a309626eb44820c14db028273244a6b479c6184293193",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/transaction/propagation-and-isolation",
+    "id": "spring-transaction-propagation-and-isolation",
+    "title": "전파와 격리 수준"
+  },
+  "savedAt": "2026-11-02T03:49:04.313Z"
+}

@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-testing/unit-tests.md",
+  "before": "단위 테스트 (작성 예정)",
+  "after": "단위 테스트 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "751f09a72423b91d1c2a7bfff31fb50fc6de852f9bf5d0c228ce02b83ab62666",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-testing/unit-tests",
+    "id": "spring-spring-testing-unit-tests",
+    "title": "단위 테스트"
+  },
+  "savedAt": "2026-11-02T03:49:04.309Z"
+}

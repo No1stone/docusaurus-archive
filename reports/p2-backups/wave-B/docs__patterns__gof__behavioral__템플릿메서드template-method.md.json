@@ -1,0 +1,12 @@
+{
+  "file": "docs/patterns/gof/behavioral/템플릿메서드template-method.md",
+  "before": "템플릿메서드(Template Method)",
+  "after": "템플릿메서드(Template Method): 템플릿메서드(Template Method) 템플릿메서드는 하위클래스만 사용해서 재정의 해야하기때문에 프로텍티드(protected O) 사용 외부 호출 X ( private X) 추상클래스에서 구현체에 접근하는걸 통제함.",
+  "bodyHash": "6b07434b207a2d7f31f719656e7293988a5483a7ed13197dc60038bd836e9b03",
+  "guarded": {
+    "slug": "/patterns/pattern-템플릿메서드template-method",
+    "id": "pattern-템플릿메서드template-method",
+    "title": "템플릿메서드(Template Method)"
+  },
+  "savedAt": "2026-11-02T03:49:07.006Z"
+}

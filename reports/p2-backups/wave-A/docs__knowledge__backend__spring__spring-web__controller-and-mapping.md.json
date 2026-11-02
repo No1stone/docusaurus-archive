@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-web/controller-and-mapping.md",
+  "before": "Controller와 요청 매핑 (작성 예정)",
+  "after": "Controller와 요청 매핑 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "ebbac348ddd581f8d0f16a2ad1bc4a62a91a3e0a70676d33a64a8f4dd194dc3a",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-web/controller-and-mapping",
+    "id": "spring-spring-web-controller-and-mapping",
+    "title": "Controller와 요청 매핑"
+  },
+  "savedAt": "2026-11-02T03:49:04.310Z"
+}

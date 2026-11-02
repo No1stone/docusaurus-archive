@@ -1,0 +1,285 @@
+{
+  "generatedAt": "2026-11-02T03:50:21.821Z",
+  "waves": [
+    "B"
+  ],
+  "totals": {
+    "considered": 16,
+    "proposed": 16,
+    "skipped": 0
+  },
+  "proposals": [
+    {
+      "file": "docs/knowledge/backend/spring/batch/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "Spring Batch 목차",
+      "after": "Spring batch(Spring Batch) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 56,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/batch",
+        "id": "spring-batch-index",
+        "title": "Spring Batch"
+      },
+      "bodyHash": "ad490fe34e9599251f381474f290147b54700c5ba05c9ceb9a98f575a7bda7fd"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/boot/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "Spring Boot 목차",
+      "after": "Spring boot(Spring Boot) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 54,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/boot",
+        "id": "spring-boot-index",
+        "title": "Spring Boot"
+      },
+      "bodyHash": "899462a56ba6d29f1fc5631ec0e06a615e4fa0f082e6113fa4f192f1b55a0231"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/jdbc/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "JDBC와 데이터 접근 목차",
+      "after": "Spring jdbc(JDBC와 데이터 접근) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 55,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/jdbc",
+        "id": "spring-jdbc-index",
+        "title": "JDBC와 데이터 접근"
+      },
+      "bodyHash": "0c20e32aea6340ad664aee116d97ceb5148bb44d6d0aa2a58e8afe81af59105b"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/core/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "DI, Bean, AOP, 생명주기 등 Spring 핵심 메모입니다.",
+      "after": "Spring core(Core) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 47,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/core",
+        "id": "backend-spring-core",
+        "title": "Core"
+      },
+      "bodyHash": "7556355446287041938af92a9cdc13d6d499386bfb90ebfe5dc0498634783053"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/legacy/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "이전 Spring 메모. 새 목차로 옮긴 뒤 정리합니다.",
+      "after": "Spring legacy(Legacy) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 51,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/legacy",
+        "id": "spring-legacy-index",
+        "title": "Legacy"
+      },
+      "bodyHash": "fad5782de3876270d729a863f31eb800f268dc5fa7cf042225a6f4144718673c"
+    },
+    {
+      "file": "docs/knowledge/backend/spring/settings/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "설정과 환경 목차",
+      "after": "Spring settings(설정과 환경) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 53,
+      "guarded": {
+        "slug": "/knowledge/backend/spring/settings",
+        "id": "spring-settings-index",
+        "title": "설정과 환경"
+      },
+      "bodyHash": "aec57e706fa105e1074b2ad2015398f180667c564daacbece17219034af73c40"
+    },
+    {
+      "file": "docs/knowledge/data/jpa/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "JPA·Spring Data JPA·매핑·QueryDSL 메모입니다.",
+      "after": "jpa(JPA / ORM) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 44,
+      "guarded": {
+        "slug": "/knowledge/data/jpa",
+        "id": "data-jpa",
+        "title": "JPA / ORM"
+      },
+      "bodyHash": "b3a238f64e140f57be7fc4dcec5e8b2e0d624b3eb583eaf562c2f80593a60018"
+    },
+    {
+      "file": "docs/knowledge/data/postgresql/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "postgresql notes",
+      "after": "postgresql(postgresql) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 52,
+      "guarded": {
+        "slug": "/knowledge/data/postgresql",
+        "id": "data-postgresql",
+        "title": "postgresql"
+      },
+      "bodyHash": "620c125509848ea2a2badcf6ecdd8dd899fa0ad51d11cf88c2acd5d14ec0568c"
+    },
+    {
+      "file": "docs/knowledge/data/r2dbc-stack/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "R2DBC 설정·서비스·Mongo 연동 메모입니다.",
+      "after": "r2dbc-stack(R2DBC) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 48,
+      "guarded": {
+        "slug": "/knowledge/data/r2dbc-stack",
+        "id": "data-r2dbc-stack",
+        "title": "R2DBC"
+      },
+      "bodyHash": "51ec171aa854d1c8d70b06664a27ea4a700afdece11ee5a541544a67e9834a55"
+    },
+    {
+      "file": "docs/knowledge/data/redis/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "redis notes",
+      "after": "redis(redis) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 42,
+      "guarded": {
+        "slug": "/knowledge/data/redis",
+        "id": "data-redis",
+        "title": "redis"
+      },
+      "bodyHash": "63f3d0f7b8f9301a1e9fe891bf4b54a212a6933b8cd922ce7f9d55bcfd0997e3"
+    },
+    {
+      "file": "docs/knowledge/data/sql-ops/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "스키마·권한·파티션·복제·멀티 DB·SQL 메모입니다.",
+      "after": "sql-ops(SQL / Ops) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 48,
+      "guarded": {
+        "slug": "/knowledge/data/sql-ops",
+        "id": "data-sql-ops",
+        "title": "SQL / Ops"
+      },
+      "bodyHash": "88e51d6a20ee786f9538ad5f85d8cb6132e3d40843f20ab17d5290d4564b0e12"
+    },
+    {
+      "file": "docs/knowledge/messaging/delivery/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "메일·웹훅·WebSocket 전달 메모입니다.",
+      "after": "Email / Webhook(Email / Webhook) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 62,
+      "guarded": {
+        "slug": "/knowledge/messaging/delivery",
+        "id": "messaging-delivery",
+        "title": "Email / Webhook"
+      },
+      "bodyHash": "251d302f439deb678a9aadd321a58970fb47d0afa3e7ef87c42dc6cc85897913"
+    },
+    {
+      "file": "docs/knowledge/messaging/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "메시징·채널·이벤트 전달 메모",
+      "after": "Messaging(Messaging) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 50,
+      "guarded": {
+        "slug": "/knowledge/messaging",
+        "id": "messaging",
+        "title": "Messaging"
+      },
+      "bodyHash": "8ff4553dc9be05f145ba186d95e31e10e4fee0bade3d1387bd61a82b06160efe"
+    },
+    {
+      "file": "docs/knowledge/messaging/webex-stack/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "Webex API·채널 연동 메모입니다.",
+      "after": "Webex(Webex) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 42,
+      "guarded": {
+        "slug": "/knowledge/messaging/webex-stack",
+        "id": "messaging-webex-stack",
+        "title": "Webex"
+      },
+      "bodyHash": "7a2864fe9fa5c273c0048ba9498aebdb761433e4a3274c28b23a9247b7607080"
+    },
+    {
+      "file": "docs/patterns/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "Reusable engineering patterns",
+      "after": "Patterns(Patterns) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 48,
+      "guarded": {
+        "slug": "/patterns/index",
+        "id": "patterns",
+        "title": "Patterns"
+      },
+      "bodyHash": "1a43e91acfb3b96d01951a998eba4d6029007bb059588113ca99db5f86809414"
+    },
+    {
+      "file": "docs/knowledge/backend/java/json-utils/index.md",
+      "wave": "B",
+      "mode": "auto",
+      "skip": false,
+      "reason": "index — template C",
+      "before": "JSON 직렬화·파싱·응답 변환 메모입니다.",
+      "after": "Java(JSON) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+      "strategy": "templateC",
+      "length": 40,
+      "guarded": {
+        "slug": "/knowledge/backend/java/json-utils",
+        "id": "backend-java-json-utils",
+        "title": "JSON"
+      },
+      "bodyHash": "2d7c93859e8cffe0584f76c252af8f8fa5c124216329ff51d24bc103d02b7ef8"
+    }
+  ]
+}

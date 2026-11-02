@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/lazy-initialization.md",
+  "before": "Lazy 초기화 (작성 예정)",
+  "after": "Lazy 초기화 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "6a7ef37458d0314454d18cde93910fbb7a6f06a536090a58c94b0bae505a36f9",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/lazy-initialization",
+    "id": "spring-spring-core-lazy-initialization",
+    "title": "Lazy 초기화"
+  },
+  "savedAt": "2026-11-02T03:49:04.308Z"
+}

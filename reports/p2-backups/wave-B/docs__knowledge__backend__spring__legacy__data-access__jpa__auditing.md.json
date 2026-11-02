@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/data-access/jpa/auditing.md",
+  "before": "Auditing",
+  "after": "import org.springframework.data.annotation.CreatedBy; import org.springframework.data.annotation.CreatedDate; import",
+  "bodyHash": "9b59bfc7e28614d6c80bdfa9c5b0599810b9d6835d0bf610986179f598b39b0f",
+  "guarded": {
+    "slug": "/knowledge/k-auditing",
+    "id": "k-auditing",
+    "title": "Auditing"
+  },
+  "savedAt": "2026-11-02T03:49:28.985Z"
+}

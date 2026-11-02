@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/value-and-configuration-properties.md",
+  "before": "Value와 ConfigurationProperties (작성 예정)",
+  "after": "Value와 ConfigurationProperties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "04816e700e47db4daba460cb82d5ebbd27c9155c6c157156c7b9fa3453dadab8",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings/value-and-configuration-properties",
+    "id": "spring-settings-value-and-configuration-properties",
+    "title": "Value와 ConfigurationProperties"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

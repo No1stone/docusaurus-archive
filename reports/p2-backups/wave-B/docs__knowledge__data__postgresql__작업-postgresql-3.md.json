@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/postgresql/작업-postgresql-3.md",
+  "before": "작업 postgreSQL 3",
+  "after": "mkdir p /home/app2 user/dockerdir/postgres primary mkdir p /home/app2 user/dockerdir/postgres standby",
+  "bodyHash": "f17ff16f356419151c3a2873664b71961b5304fbde4017e074c0d3e97fc0c9ad",
+  "guarded": {
+    "slug": "/knowledge/k-작업-postgresql-3",
+    "id": "k-작업-postgresql-3",
+    "title": "작업 postgreSQL 3"
+  },
+  "savedAt": "2026-11-02T03:49:07.000Z"
+}

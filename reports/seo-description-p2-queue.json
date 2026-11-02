@@ -1,0 +1,2578 @@
+{
+  "generatedAt": "2026-11-02T03:50:46.643Z",
+  "summary": {
+    "total": 197,
+    "byWave": {
+      "D": 126,
+      "E": 71
+    },
+    "byMode": {
+      "auto": 50,
+      "review": 71,
+      "skip": 76
+    }
+  },
+  "rows": [
+    {
+      "file": "docs/decisions/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 216,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/history/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 236,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/design/controller/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 203,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/design/testing/test-structure.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 1564,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 427,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/client/mdmmobile-device-managerment.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 377,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/client/web-browser-request-flow.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 645,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/client/webrtc-012ba8.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 842,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 472,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-eks.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 436,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-kendra.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 480,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-regexp-schedule.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 431,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws-ses-info-용어.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 724,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/aws.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 211,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/amazone-linux.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 541,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/aws-lambda-for-intelij.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 351,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/aws-cloudfront-info-용어.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 690,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/aws-cloudfront.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 230,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/vpc-creation-order.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 265,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/vpc.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 424,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3-구조.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 631,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3simple-storage-service.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 571,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-compose.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 660,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-설치.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 328,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/컨테이너-라이징-만들기.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 213,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/echo.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 200,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/envvarialbe.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 255,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/springboot-logstash.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 421,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/sam.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 748,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/자격증.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 497,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http-is-all.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 214,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uri.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 314,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/nginx.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 214,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/tls/local-https-mkcert.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 706,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/ip.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 252,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/ngrok.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 242,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/tcp.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 272,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/로드밸런스-컨트롤만들기.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 257,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/배포전략.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 373,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/젠킨스-이클립스-에디터.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 445,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/젠킨스.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 316,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/client-server-struct.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 225,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/plan.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 230,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/sdkman.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 246,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/wiki-js.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 300,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/로컬 클러스터/k3d.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 217,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/postmortems/legacy-improvement-cases.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 1128,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/design-and-runtime.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 1856,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/development-environment.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 308,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/postmortems/msa-iam-portfolio/iam-and-menu-improvement.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "auto",
+      "reason": "remaining SHORT with body",
+      "plainLen": 1562,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/design/facade/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 195,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/design/service/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 193,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/backend/design/testing/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 124,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/client/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 98,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/amazone-java-sdk-meven.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 108,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 35,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 104,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/network/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 29,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/aws-s3.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 158,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/storage/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 24,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-create.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 40,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/docker-배포-로그.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 174,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/dockerfile.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 83,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/docker/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 37,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/filename-date.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 137,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/hangul.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 6,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 167,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/centos.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 125,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 41,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-d3b87a.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 25,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-fire-wall.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 96,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/distro/ubuntu-package.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 173,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/bashrcalias.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 143,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/group-add.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 68,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 45,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/static.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 76,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/symbolic-link.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 63,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/user-add.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 30,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/소유권-수정.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 66,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/linux/system/접속정보생성.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 183,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/no1stone-start-page.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 78,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 51,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/observability/open-search.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 167,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/pg-admin.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 186,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 34,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/old-info.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 165,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http-message.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 184,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/http.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 112,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/httputils.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 9,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 33,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uricomponent.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 12,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/http-stack/uri브라우저-흐름.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 161,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 166,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 50,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/local-nginx.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 86,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/nginx-7dd0ec.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 84,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/proxy/upstream.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 80,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/tls/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 39,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/cidr-계산기.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 161,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/dns-memo.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 161,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 37,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/network.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 122,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/port-a7e4b3.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 116,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/port.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 140,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/networking/transport/udp-memo.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 155,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/security/auth256utils.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 12,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/security/authtokeninterceptor.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 20,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/security/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 130,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/security/openssl-base64.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 119,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/security/security-info.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 78,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/deploy-index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 33,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 32,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ci/배포만들기.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 99,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/git/git-alias.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 9,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/gitea.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 145,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 163,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/ollama.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 164,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/index.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 42,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/scp-file-down.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 146,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/sh.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 141,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/tooling/remote/ssh.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "review",
+      "reason": "remaining SHORT thin/scratch-like",
+      "plainLen": 123,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/architecture/작업-도커.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "skip",
+      "reason": "scratch / low search value",
+      "plainLen": 5,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aaa.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "skip",
+      "reason": "scratch / low search value",
+      "plainLen": 20,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/작업-ec2-2.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "skip",
+      "reason": "scratch / low search value",
+      "plainLen": 122,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/aws/compute/작업-ec2.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "skip",
+      "reason": "scratch / low search value",
+      "plainLen": 118,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/knowledge/infrastructure/workspace/작업-local.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "D",
+      "mode": "skip",
+      "reason": "scratch / low search value",
+      "plainLen": 21,
+      "stub": true,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/curator.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/implementer.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/master.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/qa.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/reviewer.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/scout.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/agents/tester.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/bundles/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 424,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/coding-conventions.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/engineering-principles.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/git.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/identity.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/precedence.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/context/writing-conventions.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/CURRENT.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/entrypoints/claude-code.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/entrypoints/codex.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/entrypoints/cursor.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/entrypoints/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/2026-10.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 17534,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/home-continue-next.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 1118,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 207,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-attachments.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 357,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-catalog.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 954,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-final-status.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 195,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-inventory.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 226,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-link-rewrite-worklist.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 1342,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-unclear-holds.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 258,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/notion-import-worklist.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 2171,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/history/pattern-knowledge-supplement-refs.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 951,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 764,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestration.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/api-collection-e2e.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/archive-promote-pattern.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/docs-field-manual.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-api-one-set.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-bugfix.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-external-contract.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/spring-refactor-layer.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/orchestrations/template.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/profiles/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/profiles/spring-api.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/e2e/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/enum/persistence/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/enum/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/controller/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/dto/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/facade/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/persistence/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/exampleitem/support/display/README.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 476,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/lib-distributed-lock/README.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 605,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/ONESET.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/service/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/support/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/backend/spring/testing/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/templates/README.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 417,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/tools/backend-unit-test.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/tools/browser-manual.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/tools/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/tools/playwright-e2e.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/acceptance.md",
+      "codes": [
+        "SHORT"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 695,
+      "stub": false,
+      "hasFm": true,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/bugfix.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/implement.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/index.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/refactor.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    },
+    {
+      "file": "docs/harness/workflows/review.md",
+      "codes": [
+        "MISSING"
+      ],
+      "wave": "E",
+      "mode": "skip",
+      "reason": "harness/internal — out of P2 success metrics",
+      "plainLen": 0,
+      "stub": false,
+      "hasFm": false,
+      "waveBOrder": 999
+    }
+  ]
+}

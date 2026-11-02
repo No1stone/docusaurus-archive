@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/dependency-injection.md",
+  "before": "의존성 주입과 주입 대상 선택 (작성 예정)",
+  "after": "의존성 주입과 주입 대상 선택 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "92e94abf3c33493501a623358d226b84434de6efeaca90d491c9ae688b745b2e",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/dependency-injection",
+    "id": "spring-spring-core-dependency-injection",
+    "title": "의존성 주입과 주입 대상 선택"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

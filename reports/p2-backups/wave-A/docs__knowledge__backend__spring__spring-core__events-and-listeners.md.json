@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/events-and-listeners.md",
+  "before": "이벤트 발행과 리스너 (작성 예정)",
+  "after": "이벤트 발행과 리스너 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "2abcb02d5df71e8aceeeffce26d52947484c6516cf56a28e3353cc7b589d914c",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/events-and-listeners",
+    "id": "spring-spring-core-events-and-listeners",
+    "title": "이벤트 발행과 리스너"
+  },
+  "savedAt": "2026-11-02T03:49:04.307Z"
+}

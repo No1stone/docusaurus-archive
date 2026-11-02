@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/reactive-web/webflux-thymeleaf-config.md",
+  "before": "Webflux Thymeleaf Config",
+  "after": "@Configuration public class RoutsConfig implements ApplicationContextAware, WebFluxConfigurer {",
+  "bodyHash": "de58634884194ec5ec25d8883cef2b42de34f9c9166ef4ba1ad57cbb24bfbe8d",
+  "guarded": {
+    "slug": "/knowledge/k-webflux-thymeleaf-config",
+    "id": "k-webflux-thymeleaf-config",
+    "title": "Webflux Thymeleaf Config"
+  },
+  "savedAt": "2026-11-02T03:49:28.987Z"
+}

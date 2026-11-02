@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/settings/index.md",
+  "before": "설정과 환경 목차",
+  "after": "Spring settings(설정과 환경) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다.",
+  "bodyHash": "aec57e706fa105e1074b2ad2015398f180667c564daacbece17219034af73c40",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/settings",
+    "id": "spring-settings-index",
+    "title": "설정과 환경"
+  },
+  "savedAt": "2026-11-02T03:50:21.933Z"
+}

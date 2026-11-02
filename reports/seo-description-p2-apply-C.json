@@ -1,0 +1,37 @@
+{
+  "wave": "C",
+  "doApply": true,
+  "modes": [
+    "review"
+  ],
+  "considered": 4,
+  "applied": 4,
+  "failed": 0,
+  "generatedAt": "2026-11-02T03:49:10.465Z",
+  "results": [
+    {
+      "file": "docs/knowledge/messaging/brokers/pub-38b647.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-C/docs__knowledge__messaging__brokers__pub-38b647.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/pub.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-C/docs__knowledge__messaging__brokers__pub.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/subscriber-7da2e1.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-C/docs__knowledge__messaging__brokers__subscriber-7da2e1.md.json"
+    },
+    {
+      "file": "docs/knowledge/messaging/brokers/subscriber.md",
+      "ok": true,
+      "applied": true,
+      "backup": "reports/p2-backups/wave-C/docs__knowledge__messaging__brokers__subscriber.md.json"
+    }
+  ]
+}

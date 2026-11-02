@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/spring-core/aop-and-proxy.md",
+  "before": "AOP와 프록시 (작성 예정)",
+  "after": "AOP와 프록시 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "e6a9bcc4f6b1459973ec0e026ffc67eed75c170777b15322bc69c21200a921bd",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/spring-core/aop-and-proxy",
+    "id": "spring-spring-core-aop-and-proxy",
+    "title": "AOP와 프록시"
+  },
+  "savedAt": "2026-11-02T03:49:04.306Z"
+}

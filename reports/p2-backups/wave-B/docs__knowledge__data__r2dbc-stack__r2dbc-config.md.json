@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/r2dbc-stack/r2dbc-config.md",
+  "before": "R2dbc config",
+  "after": "R2dbc config 주제의 핵심 개념과 실무 메모를 짧게 정리한 문서입니다.",
+  "bodyHash": "c97007f3317587a3df8e0bc250de3a039279bcd25b574f43c208edb3afe6cca5",
+  "guarded": {
+    "slug": "/knowledge/k-r2dbc-config",
+    "id": "k-r2dbc-config",
+    "title": "R2dbc config"
+  },
+  "savedAt": "2026-11-02T03:49:28.989Z"
+}

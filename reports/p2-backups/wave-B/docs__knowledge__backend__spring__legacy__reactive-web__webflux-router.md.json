@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/reactive-web/webflux-router.md",
+  "before": "WebFlux Router",
+  "after": "// thymeleaf page lender @Bean public RouterFunction<ServerResponse index() { // /요청에 대한 페이지 정의 return",
+  "bodyHash": "e5d2b0a3a568dccd65eb72574d0bbcab747733ec3414b3711609916ae832b1a3",
+  "guarded": {
+    "slug": "/knowledge/k-webflux-router",
+    "id": "k-webflux-router",
+    "title": "WebFlux Router"
+  },
+  "savedAt": "2026-11-02T03:49:28.987Z"
+}

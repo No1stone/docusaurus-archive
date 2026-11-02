@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/batch/chunk-and-tasklet.md",
+  "before": "Chunk와 Tasklet (작성 예정)",
+  "after": "Chunk와 Tasklet — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "a90e23fda46684756e3a74f4724aa1fb44bc1e2a3e3a6686af75b5902a065f6b",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/batch/chunk-and-tasklet",
+    "id": "spring-batch-chunk-and-tasklet",
+    "title": "Chunk와 Tasklet"
+  },
+  "savedAt": "2026-11-02T03:49:04.299Z"
+}

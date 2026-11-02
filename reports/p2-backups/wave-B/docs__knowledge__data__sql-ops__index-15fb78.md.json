@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/index-15fb78.md",
+  "before": "MySQL 인덱스 확인, 생성, 삭제, 복합 SQL 메모",
+  "after": "개요: MySQL에서 인덱스를 확인하고 만들고 지우는 SQL을 모아 둔 메모입니다.",
+  "bodyHash": "64184f066bcc6c5dfaae7c9eb9a9ae998ac96b24129e882e452f767df9604db7",
+  "guarded": {
+    "slug": "/knowledge/k-index-15fb78",
+    "id": "k-index-15fb78",
+    "title": "index"
+  },
+  "savedAt": "2026-11-02T03:49:07.001Z"
+}

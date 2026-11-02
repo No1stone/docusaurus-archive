@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/messaging/brokers/pub.md",
+  "before": "Pub",
+  "after": "Pub: Redis Pub 캐시·ConnectionFactory 설정 (slug /knowledge/k-pub)",
+  "bodyHash": "7332deb9740e650f77c2eab3d8da38d3596051a41db39dec793a03c1a484a93c",
+  "guarded": {
+    "slug": "/knowledge/k-pub",
+    "id": "k-pub",
+    "title": "Pub"
+  },
+  "savedAt": "2026-11-02T03:49:10.462Z"
+}

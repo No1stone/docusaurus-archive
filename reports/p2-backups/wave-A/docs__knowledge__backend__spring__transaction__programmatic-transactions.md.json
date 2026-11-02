@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/transaction/programmatic-transactions.md",
+  "before": "프로그래밍 방식의 트랜잭션 (작성 예정)",
+  "after": "프로그래밍 방식의 트랜잭션 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요.",
+  "bodyHash": "06f7b685a62bbb5aa1baafbe57ac1c29a4acd4ea29f2e3092c26689ba4fe5e43",
+  "guarded": {
+    "slug": "/knowledge/backend/spring/transaction/programmatic-transactions",
+    "id": "spring-transaction-programmatic-transactions",
+    "title": "프로그래밍 방식의 트랜잭션"
+  },
+  "savedAt": "2026-11-02T03:49:04.313Z"
+}

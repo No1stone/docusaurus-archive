@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/data/sql-ops/federated.md",
+  "before": "FEDERATED 관련 원문 링크 범위 안내",
+  "after": "FEDERATED: FEDERATED 개요 FEDERATED 관련 원문 링크 범위 안내입니다. 상세 절차와 최신 옵션은 위 링크의 원문을 확인합니다. 이 글은 링크 보관과 범위 안내만 하며, 특정 환경의 실측",
+  "bodyHash": "0763282605919047bf902e3e144171b17d1ad8aa630c55efc6ca8d0ef7fa67a4",
+  "guarded": {
+    "slug": "/knowledge/k-federated",
+    "id": "k-federated",
+    "title": "FEDERATED"
+  },
+  "savedAt": "2026-11-02T03:49:07.001Z"
+}

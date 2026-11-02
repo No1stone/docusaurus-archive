@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/configuration/config.md",
+  "before": "Config",
+  "after": "@Configuration @MapperScan(value = \"com.costlab.msgbot.mybatis.mapper.first\", sqlSessionFactoryRef =",
+  "bodyHash": "97f2d9c3e4305c2971e65715d1283ab9c14e903728e7aecb09b1a1fb88525e0a",
+  "guarded": {
+    "slug": "/knowledge/k-config",
+    "id": "k-config",
+    "title": "Config"
+  },
+  "savedAt": "2026-11-02T03:49:28.983Z"
+}

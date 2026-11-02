@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/spring/legacy/web/requestmapping.md",
+  "before": "RequestMapping",
+  "after": "//member/ 이뒤에는 다통과 @Controller @RequestMapping(\"member/ \") public class MemberController{",
+  "bodyHash": "2c4c6a208a9273d039988242bd3b70e7f6da69fd3cf6d205df38fd3f5ac3ecab",
+  "guarded": {
+    "slug": "/knowledge/k-requestmapping",
+    "id": "k-requestmapping",
+    "title": "RequestMapping"
+  },
+  "savedAt": "2026-11-02T03:49:28.988Z"
+}

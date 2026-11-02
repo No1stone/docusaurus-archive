@@ -1,0 +1,12 @@
+{
+  "file": "docs/knowledge/backend/java/json-utils/responsebody-to-json.md",
+  "before": "@ResponseBody To Json",
+  "after": "@Controller public class RestMemberController{",
+  "bodyHash": "a42ee68e196507fe80d03932dc6a989d6a61201b1f5c165b8170dc322f1255ec",
+  "guarded": {
+    "slug": "/knowledge/k-responsebody-to-json",
+    "id": "k-responsebody-to-json",
+    "title": "@ResponseBody To Json"
+  },
+  "savedAt": "2026-11-02T03:49:28.992Z"
+}
