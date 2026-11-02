@@ -2,7 +2,7 @@
 format: md
 id: k-aws-ses
 title: "Aws SES"
-description: "Amazon SES 관련 메모 진입점 (용어, 프로그램 발송)"
+description: "개요: Amazon Simple Email Service(SES) 관련 메모의 진입점입니다."
 tags:
   - AWS
 status: active

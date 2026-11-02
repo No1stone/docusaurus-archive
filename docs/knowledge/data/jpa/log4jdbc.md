@@ -2,7 +2,7 @@
 format: md
 id: k-log4jdbc
 title: "Log4Jdbc"
-description: "Log4Jdbc"
+description: "log4jdbc.log4j2.properties logback.xml Lazy proxy"
 tags:
   - AWS
   - HTTP

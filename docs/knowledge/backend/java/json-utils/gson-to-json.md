@@ -2,7 +2,7 @@
 format: md
 id: k-gson-to-json
 title: "Gson To Json"
-description: "Gson 의존성을 Maven과 Gradle로 추가하는 메모입니다."
+description: "Google Gson으로 JSON을 다룰 때 쓰는 의존성 메모입니다. DI로 주입해 쓰고, Maven과 Gradle 예시 버전을 남겨 두었습니다."
 tags:
   - Spring
 status: active

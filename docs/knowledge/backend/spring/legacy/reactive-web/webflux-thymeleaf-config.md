@@ -2,7 +2,7 @@
 format: md
 id: k-webflux-thymeleaf-config
 title: "Webflux Thymeleaf Config"
-description: "Webflux Thymeleaf Config"
+description: "@Configuration public class RoutsConfig implements ApplicationContextAware, WebFluxConfigurer {"
 tags:
   - Java
   - Spring

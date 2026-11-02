@@ -2,7 +2,7 @@
 format: md
 id: spring-batch-job-and-step
 title: "Job과 Step"
-description: "Job과 Step (작성 예정)"
+description: "Job과 Step — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/batch/job-and-step
 sidebar_position: 1
 status: draft

@@ -1,7 +1,7 @@
 ---
 id: messaging
 title: Messaging
-description: 메시징·채널·이벤트 전달 메모
+description: "Messaging(Messaging) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/messaging
 ---
 # Messaging

@@ -2,7 +2,7 @@
 format: md
 id: k-json-build-attachmentscard
 title: "Json Build (attachmentsCard)"
-description: "Json Build (attachmentsCard)"
+description: "Json Build (attachmentsCard) 기존에 개발되어있는카드는 Actions[Action.Submit] 을 사용했다. 액션스는 버튼이 5개밖에 셋팅이 안된다. !json build"
 tags:
   - Java
 status: active

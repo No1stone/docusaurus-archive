@@ -2,7 +2,7 @@
 format: md
 id: pattern-추상팩토리abstract-factory
 title: "추상팩토리(Abstract Factory)"
-description: "추상팩토리(Abstract Factory)"
+description: "추상팩토리(Abstract Factory): 추상팩토리(Abstract Factory) 인터페이스들별 기능을 나열 Factoty 라는 하나의 인터페이스로 모으고 인스턴스를 생성하는 클래스를 만들어 사용 인스턴스"
 tags:
   - GoF
   - HTTP

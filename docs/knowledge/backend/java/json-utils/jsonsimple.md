@@ -2,7 +2,7 @@
 format: md
 id: k-jsonsimple
 title: "JsonSimple"
-description: "JsonSimple"
+description: "1.json simple은 내부적으로 JSON 데이터를 처리하기 위해 Map과 List를 사용."
 tags:
   - Java
   - Spring

@@ -2,7 +2,7 @@
 format: md
 id: k-configurecontentnegotiation
 title: "configureContentNegotiation"
-description: "configureContentNegotiation"
+description: "configureContentNegotiation: configureContentNegotiation 파일의 확장자 타입을 결정해주는 역할이다."
 tags:
   - Java
   - Spring

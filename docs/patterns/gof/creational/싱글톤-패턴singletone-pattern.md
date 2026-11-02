@@ -2,7 +2,7 @@
 format: md
 id: pattern-싱글톤-패턴singletone-pattern
 title: "싱글톤 패턴(singletone Pattern)"
-description: "싱글톤 패턴(singletone Pattern)"
+description: "싱글톤 패턴(singletone Pattern): 싱글톤 패턴(singletone Pattern) 인스턴스를 하나만 생성을해 다른곳에서 사용할때 동일한 주소값을 사용하게해서 같은결과를 얻는것."
 tags:
   - GoF
   - Java

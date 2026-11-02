@@ -2,7 +2,7 @@
 format: md
 id: k-작업-postgresql-3
 title: "작업 postgreSQL 3"
-description: "작업 postgreSQL 3"
+description: "mkdir p /home/app2 user/dockerdir/postgres primary mkdir p /home/app2 user/dockerdir/postgres standby"
 tags:
   - AWS
   - Docker

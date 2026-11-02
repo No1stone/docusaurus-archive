@@ -2,7 +2,7 @@
 format: md
 id: pattern-gof-design-pattern
 title: "Gof design pattern"
-description: "GoF 디자인 패턴 목록과 하위 문서 진입점"
+description: "개요: GoF 패턴은 구현을 돕는 예시입니다. 정답이 아니라 문제에 맞게 변형해 씁니다."
 tags:
   - GoF
 status: active

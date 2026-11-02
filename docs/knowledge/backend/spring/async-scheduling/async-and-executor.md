@@ -2,7 +2,7 @@
 format: md
 id: spring-async-scheduling-async-and-executor
 title: "Async와 Executor"
-description: "Async와 Executor (작성 예정)"
+description: "Async와 Executor — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/async-scheduling/async-and-executor
 sidebar_position: 1
 status: draft

@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-web-index
 title: "Web"
-description: "Web 목차"
+description: "Spring spring-web 하위 문서 목차와 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/spring-web
 sidebar_position: 0
 status: draft

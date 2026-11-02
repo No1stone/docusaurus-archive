@@ -2,7 +2,7 @@
 format: md
 id: k-multidatabase
 title: "MultiDataBase"
-description: "MultiDataBase"
+description: "MultiDataBase 관련 메모를 정리합니다. MultiDataBase application.properties"
 tags:
   - GoF
   - Java

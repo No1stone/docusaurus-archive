@@ -2,7 +2,7 @@
 format: md
 id: k-dblink
 title: "dblink"
-description: "dblink 관련 원문 링크 범위 안내"
+description: "dblink 개요 dblink 관련 원문 링크 범위 안내입니다. [[ PostgreSql ] 서로 다른 곳의 DB dblink로 연결하기]( — 아마 이런 일은 드물겠지만 연구과제 프로젝트 개발 중 연구과제를 같이"
 tags:
   - PostgreSQL
   - Database

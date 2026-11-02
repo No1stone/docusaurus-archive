@@ -2,7 +2,7 @@
 format: md
 id: k-dialogflow-setting
 title: "DialogFlow Setting"
-description: "DialogFlow Setting"
+description: "DialogFlow Setting GCP와 Dialogflow 프로잭트가 일치해야하며 접속 Json 파일은 아래에서 받는다 IAM 및 관리자 → 서비스계정 → 키 다이알로그 플로어 Agen 생성할때 해당 프로잭트"
 tags:
   - Spring
 status: active

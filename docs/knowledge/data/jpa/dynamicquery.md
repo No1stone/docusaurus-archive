@@ -2,7 +2,7 @@
 format: md
 id: k-dynamicquery
 title: "DynamicQuery"
-description: "DynamicQuery"
+description: "DynamicQuery: DynamicQuery 다이나믹 쿼리 수동으로 트랜잭셔널 처리를해줘야해서 AOP처리를 해줘야함 (트랜잭션위치는 쿼리단위로 하던 인터페이스단위로하던...) 클래스 다중상속이 안되니 인터페이스 다중상속하고 클래스 별로 구현 업데이트 동적쿼리"
 tags:
   - GoF
   - JPA

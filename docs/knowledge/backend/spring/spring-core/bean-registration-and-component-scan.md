@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-bean-registration-and-component-scan
 title: "Bean 등록과 컴포넌트 스캔"
-description: "Bean 등록과 컴포넌트 스캔 (작성 예정)"
+description: "Bean 등록과 컴포넌트 스캔 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-core/bean-registration-and-component-scan
 sidebar_position: 3
 status: draft

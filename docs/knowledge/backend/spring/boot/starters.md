@@ -2,7 +2,7 @@
 format: md
 id: spring-boot-starters
 title: "Starter와 의존성 관리"
-description: "Starter와 의존성 관리 (작성 예정)"
+description: "Starter와 의존성 관리 — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/boot/starters
 sidebar_position: 4
 status: draft

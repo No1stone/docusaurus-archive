@@ -2,7 +2,7 @@
 format: md
 id: spring-batch-index
 title: "Spring Batch"
-description: "Spring Batch 목차"
+description: "Spring batch(Spring Batch) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/batch
 sidebar_position: 0
 status: draft

@@ -2,7 +2,7 @@
 format: md
 id: pattern-컴포지트composite-pattern
 title: "컴포지트(composite pattern)"
-description: "컴포지트(composite pattern)"
+description: "컴포지트(composite pattern): 컴포지트(composite pattern) 리눅스 경로와 비슷한 패턴을 만드는 구조. 컴포지트 클래스생성 폴더와 파일이 상속받고. 슈퍼클래스로 이름을 올려줌. 폴더와 파일은 배열을줘서 여러개를 보관할수있게 만든다."
 tags:
   - GoF
   - Java

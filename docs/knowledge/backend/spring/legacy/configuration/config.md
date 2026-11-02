@@ -2,7 +2,7 @@
 format: md
 id: k-config
 title: "Config"
-description: "Config"
+description: "@Configuration @MapperScan(value = \"com.costlab.msgbot.mybatis.mapper.first\", sqlSessionFactoryRef ="
 tags:
   - GoF
   - Java

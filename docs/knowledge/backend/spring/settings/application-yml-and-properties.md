@@ -2,7 +2,7 @@
 format: md
 id: spring-settings-application-yml-and-properties
 title: "application.yml과 properties"
-description: "application.yml과 properties (작성 예정)"
+description: "application.yml과 properties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/settings/application-yml-and-properties
 sidebar_position: 1
 status: draft

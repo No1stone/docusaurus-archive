@@ -2,7 +2,7 @@
 format: md
 id: k-requestmapping
 title: "RequestMapping"
-description: "RequestMapping"
+description: "//member/ 이뒤에는 다통과 @Controller @RequestMapping(\"member/ \") public class MemberController{"
 tags:
   - Java
   - Spring

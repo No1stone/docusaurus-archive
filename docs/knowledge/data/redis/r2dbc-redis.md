@@ -2,7 +2,7 @@
 format: md
 id: k-r2dbc-redis
 title: "R2dbc Redis"
-description: "R2dbc Redis"
+description: "R2dbc Redis 개요 R2dbc Redis에 대한 메모입니다. reactive web reactivceRedis userEntity 등록필요 Redis 연결 부트베이스 게이트웨이는 Lettuce로"
 tags:
   - HTTP
   - Java

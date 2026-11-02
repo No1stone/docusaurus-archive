@@ -2,7 +2,7 @@
 format: md
 id: spring-transaction-propagation-and-isolation
 title: "전파와 격리 수준"
-description: "전파와 격리 수준 (작성 예정)"
+description: "전파와 격리 수준 — Spring transaction 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/transaction/propagation-and-isolation
 sidebar_position: 2
 status: draft

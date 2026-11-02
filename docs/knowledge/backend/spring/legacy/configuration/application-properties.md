@@ -2,7 +2,7 @@
 format: md
 id: k-application-properties
 title: "application properties"
-description: "application properties"
+description: "spring.first.datasource.jdbc url= spring.first.datasource.username= spring.first.datasource.password="
 tags:
   - Spring
 status: active

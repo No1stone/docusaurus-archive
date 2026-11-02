@@ -2,7 +2,7 @@
 format: md
 id: k-redis
 title: "Redis"
-description: "Redis 관련 메모 진입점 (캐시, 애너테이션, Pub/Sub)"
+description: "Redis: Redis 개요: Redis 관련 메모의 진입점입니다. 관련 메모 : 캐시 읽기, 수정 흐름 : Spring Cache 애너테이션 : Redis Pub/Sub 캐시 사용 패턴과 Spring 연동, 메시징을 위 순서로 보면 됩니다."
 tags:
   - Redis
 status: active

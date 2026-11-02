@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-bean-factory-and-application-context
 title: "BeanFactory와 ApplicationContext"
-description: "BeanFactory와 ApplicationContext (작성 예정)"
+description: "BeanFactory와 ApplicationContext — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-core/bean-factory-and-application-context
 sidebar_position: 2
 status: draft

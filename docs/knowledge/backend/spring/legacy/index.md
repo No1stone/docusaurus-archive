@@ -2,7 +2,7 @@
 format: md
 id: spring-legacy-index
 title: "Legacy"
-description: "이전 Spring 메모. 새 목차로 옮긴 뒤 정리합니다."
+description: "Spring legacy(Legacy) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/legacy
 sidebar_position: 0
 tags:

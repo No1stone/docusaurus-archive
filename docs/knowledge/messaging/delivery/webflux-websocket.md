@@ -2,7 +2,7 @@
 format: md
 id: k-webflux-websocket
 title: "WebFlux WebSocket"
-description: "WebFlux WebSocket"
+description: "WebFlux WebSocket: WebFlux WebSocket 개요 WebFlux WebSocket에 대한 메모입니다. @Configuration Implements WebSocketHandler"
 tags:
   - GoF
   - Java

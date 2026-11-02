@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-index
 title: "Spring Core"
-description: "Spring Core 목차"
+description: "Spring spring-core 하위 문서 목차와 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/spring-core
 sidebar_position: 0
 status: draft

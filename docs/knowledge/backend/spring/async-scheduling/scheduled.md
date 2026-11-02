@@ -2,7 +2,7 @@
 format: md
 id: spring-async-scheduling-scheduled
 title: "Scheduled"
-description: "Scheduled (작성 예정)"
+description: "Scheduled — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/async-scheduling/scheduled
 sidebar_position: 2
 status: draft

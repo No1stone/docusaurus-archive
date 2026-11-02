@@ -2,7 +2,7 @@
 format: md
 id: spring-settings-index
 title: "설정과 환경"
-description: "설정과 환경 목차"
+description: "Spring settings(설정과 환경) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/settings
 sidebar_position: 0
 status: draft

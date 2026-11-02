@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-web-spring-mvc
 title: "Spring MVC"
-description: "Spring MVC (작성 예정)"
+description: "Spring MVC — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-web/spring-mvc
 sidebar_position: 1
 status: draft

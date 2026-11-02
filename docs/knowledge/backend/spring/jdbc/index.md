@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-index
 title: "JDBC와 데이터 접근"
-description: "JDBC와 데이터 접근 목차"
+description: "Spring jdbc(JDBC와 데이터 접근) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/jdbc
 sidebar_position: 0
 status: draft

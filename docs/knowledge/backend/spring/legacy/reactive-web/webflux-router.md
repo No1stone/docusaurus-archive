@@ -2,7 +2,7 @@
 format: md
 id: k-webflux-router
 title: "WebFlux Router"
-description: "WebFlux Router"
+description: "// thymeleaf page lender @Bean public RouterFunction<ServerResponse index() { // /요청에 대한 페이지 정의 return"
 tags:
   - HTTP
   - Java

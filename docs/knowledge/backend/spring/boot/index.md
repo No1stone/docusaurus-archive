@@ -2,7 +2,7 @@
 format: md
 id: spring-boot-index
 title: "Spring Boot"
-description: "Spring Boot 목차"
+description: "Spring boot(Spring Boot) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/boot
 sidebar_position: 0
 status: draft

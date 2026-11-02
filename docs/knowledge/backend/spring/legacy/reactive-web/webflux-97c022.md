@@ -2,7 +2,7 @@
 format: md
 id: k-webflux-97c022
 title: "Webflux"
-description: "Webflux"
+description: "@RestController @Slf4j public class CustomerController {"
 tags:
   - Java
   - Spring

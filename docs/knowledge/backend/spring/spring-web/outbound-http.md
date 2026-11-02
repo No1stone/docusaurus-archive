@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-web-outbound-http
 title: "외부 HTTP 호출"
-description: "외부 HTTP 호출 (작성 예정)"
+description: "외부 HTTP 호출 — Spring spring-web 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-web/outbound-http
 sidebar_position: 6
 status: draft

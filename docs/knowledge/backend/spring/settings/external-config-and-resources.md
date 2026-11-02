@@ -2,7 +2,7 @@
 format: md
 id: spring-settings-external-config-and-resources
 title: "외부 설정과 리소스 로딩"
-description: "외부 설정과 리소스 로딩 (작성 예정)"
+description: "외부 설정과 리소스 로딩 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/settings/external-config-and-resources
 sidebar_position: 6
 status: draft

@@ -2,7 +2,7 @@
 format: md
 id: spring-transaction-index
 title: "트랜잭션"
-description: "트랜잭션 목차"
+description: "Spring transaction 하위 문서 목차와 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/transaction
 sidebar_position: 0
 status: draft

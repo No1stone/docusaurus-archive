@@ -2,7 +2,7 @@
 format: md
 id: k-javax-json-se-ee
 title: Javax
-description: Javax.Json 임포트와 SE/EE 범위에 대한 원본 메모 보존
+description: "개요: 원본 Notion 메모를 그대로 보존한 작성본입니다. 내용을 임의로 보완하지 않았습니다. 작성자 재검토 대기입니다. (javax-json-se-ee)"
 tags:
   - Java
   - JSON

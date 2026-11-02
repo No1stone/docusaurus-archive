@@ -2,7 +2,7 @@
 format: md
 id: k-auditing
 title: "Auditing"
-description: "Auditing"
+description: "import org.springframework.data.annotation.CreatedBy; import org.springframework.data.annotation.CreatedDate; import"
 tags:
   - JPA
   - Java

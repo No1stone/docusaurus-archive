@@ -2,7 +2,7 @@
 format: md
 id: pattern-프로토타입prototype-pattern
 title: "프로토타입(Prototype Pattern)"
-description: "프로토타입(Prototype Pattern)"
+description: "프로토타입(Prototype Pattern): 프로토타입(Prototype Pattern) 원형을 놔두고 복사하는 기능이다 Interface CloneAble 사용 프로토타입은 여러가시 사용방법이 있는듯하다."
 tags:
   - GoF
   - Java

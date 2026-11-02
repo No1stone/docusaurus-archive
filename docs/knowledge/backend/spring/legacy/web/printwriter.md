@@ -2,7 +2,7 @@
 format: md
 id: k-printwriter
 title: "PrintWriter"
-description: "PrintWriter"
+description: "private final HttpServletRequest httpServletRequest; private final HttpServletResponse httpServletResponse;"
 tags:
   - HTTP
   - Java

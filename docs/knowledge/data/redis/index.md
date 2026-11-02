@@ -1,7 +1,7 @@
 ---
 id: data-redis
 title: "redis"
-description: "redis notes"
+description: "redis(redis) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/data/redis
 ---
 # redis

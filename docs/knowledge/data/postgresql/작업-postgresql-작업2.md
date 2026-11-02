@@ -2,7 +2,7 @@
 format: md
 id: k-작업-postgresql-작업2
 title: "작업 postgresql 작업2"
-description: "작업 postgresql 작업2"
+description: "작업 postgresql 작업2: 작업 postgresql 작업2 개요 작업 postgresql 작업2입니다. private 연결후 프라이빗 복제설정 예제·코드 <details <summary 참고 자료</summary </details"
 tags:
   - AWS
   - Docker

@@ -2,7 +2,7 @@
 format: md
 id: pattern-빌드패턴1build-pattern
 title: "빌드패턴1(build pattern)"
-description: "VO와 Builder 클래스로 객체를 조립하는 빌더 패턴 메모"
+description: "개요: VO를 만들고, 그 VO를 세팅하는 Builder 클래스로 인스턴스를 조립하는 빌더 패턴 메모입니다."
 tags:
   - GoF
 status: active

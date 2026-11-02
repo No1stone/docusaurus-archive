@@ -1,7 +1,7 @@
 ---
 id: patterns
 title: Patterns
-description: Reusable engineering patterns
+description: "Patterns(Patterns) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 unlisted: true
 slug: "/patterns/index"
 ---

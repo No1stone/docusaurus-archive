@@ -2,7 +2,7 @@
 format: md
 id: spring-overview-composition-and-flow
 title: "Spring의 구성과 전체 동작 흐름"
-description: "Spring의 구성과 전체 동작 흐름 (작성 예정)"
+description: "Spring의 구성과 전체 동작 흐름 — Spring overview 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/overview/composition-and-flow
 sidebar_position: 1
 status: draft

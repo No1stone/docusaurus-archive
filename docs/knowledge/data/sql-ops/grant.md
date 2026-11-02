@@ -2,7 +2,7 @@
 format: md
 id: k-grant
 title: "grant"
-description: "grant"
+description: "create user 'smvuser'@'%' identified by 'ChangeMe1!'; GRANT ALL PRIVILEGES ON . TO 'smvuser'@'%'; flush PRIVILEGES;"
 tags:
   - HTTP
 status: active

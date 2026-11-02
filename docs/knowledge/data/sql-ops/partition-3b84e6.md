@@ -2,7 +2,7 @@
 format: md
 id: k-partition-3b84e6
 title: "partition"
-description: "partition"
+description: "partition 개요 partition에 대한 메모입니다. 우선 같은 리전에 ebs블록 생성후 인스턴스연결 생성한 마운트 포멧 예제·코드 <details <summary 참고 자료</summary [[Linux]"
 tags:
   - HTTP
   - Linux

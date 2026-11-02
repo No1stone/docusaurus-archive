@@ -2,7 +2,7 @@
 format: md
 id: k-maping
 title: "Maping"
-description: "Maping"
+description: "import lombok.Builder; import lombok.Getter; import lombok.NoArgsConstructor;"
 tags:
   - GoF
   - JPA

@@ -2,7 +2,7 @@
 format: md
 id: k-index-15fb78
 title: "index"
-description: "MySQL 인덱스 확인, 생성, 삭제, 복합 SQL 메모"
+description: "개요: MySQL에서 인덱스를 확인하고 만들고 지우는 SQL을 모아 둔 메모입니다."
 tags:
   - notes
 status: active

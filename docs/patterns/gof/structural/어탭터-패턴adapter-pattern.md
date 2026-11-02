@@ -2,7 +2,7 @@
 format: md
 id: pattern-어탭터-패턴adapter-pattern
 title: "어탭터 패턴(adapter Pattern)"
-description: "어탭터 패턴(adapter Pattern)"
+description: "어탭터 패턴(adapter Pattern): 어탭터 패턴(adapter Pattern) 인터페이스로 할당된 타입이나 파라미터들을 변환해서 연결시켜주는 패턴 오버로딩과비슷"
 tags:
   - GoF
   - Java

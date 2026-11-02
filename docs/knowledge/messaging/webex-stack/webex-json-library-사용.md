@@ -2,7 +2,7 @@
 format: md
 id: k-webex-json-library-사용
 title: "Webex Json library 사용"
-description: "Webex Json library 사용"
+description: "Webex Json library 사용: Webex Json library 사용 개요 Webex Json library 사용입니다. Json RestAPI Send Bean설정 예제·코드 <details <summary 참고 자료</summary </details"
 tags:
   - HTTP
   - Java

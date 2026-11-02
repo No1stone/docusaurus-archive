@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-testing-index
 title: "테스트"
-description: "테스트 목차"
+description: "Spring spring-testing 하위 문서 목차와 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/spring-testing
 sidebar_position: 0
 status: draft

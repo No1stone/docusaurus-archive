@@ -2,7 +2,7 @@
 format: md
 id: k-spring
 title: "Spring"
-description: "Spring"
+description: "Spring Spring Git MultiDataBase Mybatis 스프링5 레시피4판 Security Exame/Boot,Security,Jwt,RestAPI Log4Jdbc RestAPI Spring"
 tags:
   - Git
   - JPA

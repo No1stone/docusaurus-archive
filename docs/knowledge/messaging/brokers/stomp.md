@@ -2,7 +2,7 @@
 format: md
 id: k-stomp
 title: "Stomp"
-description: "Stomp"
+description: "dependencies { implementation 'org.springframework.boot:spring boot starter data redis'"
 tags:
   - AWS
   - HTTP

@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-ioc-and-di
 title: "IoC와 DI"
-description: "IoC와 DI (작성 예정)"
+description: "IoC와 DI — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-core/ioc-and-di
 sidebar_position: 1
 status: draft

@@ -2,7 +2,7 @@
 format: md
 id: spring-batch-reader-processor-writer
 title: "Reader, Processor, Writer"
-description: "Reader, Processor, Writer (작성 예정)"
+description: "Reader, Processor, Writer — Spring batch 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/batch/reader-processor-writer
 sidebar_position: 3
 status: draft

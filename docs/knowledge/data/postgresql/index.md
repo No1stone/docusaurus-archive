@@ -1,7 +1,7 @@
 ---
 id: data-postgresql
 title: "postgresql"
-description: "postgresql notes"
+description: "postgresql(postgresql) 하위 문서 목차와 학습·실무 진입 경로를 제공합니다."
 slug: /knowledge/data/postgresql
 ---
 # postgresql

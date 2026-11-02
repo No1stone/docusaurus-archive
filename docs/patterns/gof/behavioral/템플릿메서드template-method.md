@@ -2,7 +2,7 @@
 format: md
 id: pattern-템플릿메서드template-method
 title: "템플릿메서드(Template Method)"
-description: "템플릿메서드(Template Method)"
+description: "템플릿메서드(Template Method): 템플릿메서드(Template Method) 템플릿메서드는 하위클래스만 사용해서 재정의 해야하기때문에 프로텍티드(protected O) 사용 외부 호출 X ( private X) 추상클래스에서 구현체에 접근하는걸 통제함."
 tags:
   - GoF
   - Java

@@ -2,7 +2,7 @@
 format: md
 id: pattern-브릿지패턴bridge-patter
 title: "브릿지패턴(Bridge Patter)"
-description: "브릿지패턴(Bridge Patter)"
+description: "브릿지패턴(Bridge Patter) 핵심: 구현되있는 기능들만 교체해서 사용한다. 인스턴스화되서 출력되는 부분은 변하지않는다. 인터페이스 생성 클래스로 인터페이스 기능을 델리게이트시킴 프린트해주는 클래스에"
 tags:
   - GoF
   - Java

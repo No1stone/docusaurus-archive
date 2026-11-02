@@ -2,7 +2,7 @@
 format: md
 id: spring-settings-binding-and-validation
 title: "설정값 바인딩과 검증"
-description: "설정값 바인딩과 검증 (작성 예정)"
+description: "설정값 바인딩과 검증 — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/settings/binding-and-validation
 sidebar_position: 4
 status: draft

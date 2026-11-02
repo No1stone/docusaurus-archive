@@ -2,7 +2,7 @@
 format: md
 id: k-subscriber-7da2e1
 title: "Subscriber"
-description: "Subscriber"
+description: "Subscriber: Redis 구독·리스너 설정 (slug /knowledge/k-subscriber-7da2e1)"
 tags:
   - GoF
   - Java

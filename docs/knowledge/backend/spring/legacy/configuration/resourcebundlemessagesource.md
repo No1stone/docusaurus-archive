@@ -2,7 +2,7 @@
 format: md
 id: k-resourcebundlemessagesource
 title: "ResourceBundleMessageSource"
-description: "ResourceBundleMessageSource"
+description: "ResourceBundleMessageSource: ResourceBundleMessageSource 다국어를 지원하는 어플리케이션을 만들때 주로 사용 message en US.properties 주의사항 messageSource라고 이름을 지어야 애플리케이션콘텍스트가 감지함"
 tags:
   - Java
   - Spring

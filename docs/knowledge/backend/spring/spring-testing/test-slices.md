@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-testing-test-slices
 title: "테스트 슬라이스"
-description: "테스트 슬라이스 (작성 예정)"
+description: "테스트 슬라이스 — Spring spring-testing 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-testing/test-slices
 sidebar_position: 3
 status: draft

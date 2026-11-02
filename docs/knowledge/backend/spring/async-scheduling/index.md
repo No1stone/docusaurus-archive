@@ -2,7 +2,7 @@
 format: md
 id: spring-async-scheduling-index
 title: "비동기와 스케줄링"
-description: "비동기와 스케줄링 목차"
+description: "Spring async-scheduling 하위 문서 목차와 진입 경로를 제공합니다."
 slug: /knowledge/backend/spring/async-scheduling
 sidebar_position: 0
 status: draft

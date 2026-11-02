@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-jooq
 title: "jOOQ"
-description: "jOOQ (작성 예정)"
+description: "jOOQ — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/jdbc/jooq
 sidebar_position: 8
 status: draft

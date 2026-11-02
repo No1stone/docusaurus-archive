@@ -2,7 +2,7 @@
 format: md
 id: k-r2dbcservice
 title: "R2dbcService"
-description: "R2dbcService"
+description: "import java.lang.reflect.Field; import java.util.ArrayList; import java.util.List; import java.util.Map;"
 tags:
   - GoF
   - Java

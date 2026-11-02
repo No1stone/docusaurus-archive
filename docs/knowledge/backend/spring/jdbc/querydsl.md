@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-querydsl
 title: "QueryDSL"
-description: "QueryDSL (작성 예정)"
+description: "QueryDSL — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/jdbc/querydsl
 sidebar_position: 7
 status: draft

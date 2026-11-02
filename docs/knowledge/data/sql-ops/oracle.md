@@ -2,7 +2,7 @@
 format: md
 id: k-oracle
 title: "oracle"
-description: "oracle"
+description: "oracle 개요 oracle에 대한 메모입니다. 도커에서 볼륨 접속할수 있게 필수로 줘야함 접속 커널은 공식문서참조 예제·코드 <details <summary 참고 자료</summary — Official"
 tags:
   - Docker
   - Git

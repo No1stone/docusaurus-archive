@@ -2,7 +2,7 @@
 format: md
 id: k-union-all
 title: "Union All"
-description: "Union All"
+description: "CREATE OR REPLACE VIEW view partner studio uinon AS SELECT 'studio'::text AS type, aa.profile id, aa.studio id AS"
 tags:
   - notes
 status: active

@@ -2,7 +2,7 @@
 format: md
 id: spring-settings-value-and-configuration-properties
 title: "Value와 ConfigurationProperties"
-description: "Value와 ConfigurationProperties (작성 예정)"
+description: "Value와 ConfigurationProperties — Spring settings 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/settings/value-and-configuration-properties
 sidebar_position: 3
 status: draft

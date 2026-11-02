@@ -2,7 +2,7 @@
 format: md
 id: k-pub
 title: "Pub"
-description: "Pub"
+description: "Pub: Redis Pub 캐시·ConnectionFactory 설정 (slug /knowledge/k-pub)"
 tags:
   - GoF
   - Java

@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-java-config-and-xml
 title: "Java Config와 XML 설정"
-description: "Java Config와 XML 설정 (작성 예정)"
+description: "Java Config와 XML 설정 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-core/java-config-and-xml
 sidebar_position: 7
 status: draft

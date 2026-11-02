@@ -2,7 +2,7 @@
 format: md
 id: k-responsebody-to-json
 title: "@ResponseBody To Json"
-description: "@ResponseBody To Json"
+description: "@Controller public class RestMemberController{"
 tags:
   - Java
   - Spring

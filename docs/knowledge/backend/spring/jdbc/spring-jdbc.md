@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-spring-jdbc
 title: "Spring JDBC"
-description: "Spring JDBC (작성 예정)"
+description: "Spring JDBC — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/jdbc/spring-jdbc
 sidebar_position: 3
 status: draft

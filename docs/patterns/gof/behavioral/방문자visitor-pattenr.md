@@ -2,7 +2,7 @@
 format: md
 id: pattern-방문자visitor-pattenr
 title: "방문자(Visitor Pattenr)"
-description: "방문자(Visitor Pattenr)"
+description: "방문자(Visitor Pattenr): 방문자(Visitor Pattenr) 공장에 복사할수있는 물체가있다고 하자. 방문자가 그복사할수 있는 물체를 복사해서 더할수있다. 공장인터페이스(비짓) 공장"
 tags:
   - GoF
   - Java

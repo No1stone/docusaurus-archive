@@ -2,7 +2,7 @@
 format: md
 id: k-작업-spring
 title: "작업 spring"
-description: "작업 spring"
+description: "작업 spring 주제의 핵심 개념과 실무 메모를 짧게 정리한 문서입니다."
 tags:
   - AWS
   - Java

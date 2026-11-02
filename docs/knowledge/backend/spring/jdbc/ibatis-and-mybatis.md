@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-ibatis-and-mybatis
 title: "iBATIS와 MyBatis"
-description: "iBATIS와 MyBatis (작성 예정)"
+description: "iBATIS와 MyBatis — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/jdbc/ibatis-and-mybatis
 sidebar_position: 4
 status: draft

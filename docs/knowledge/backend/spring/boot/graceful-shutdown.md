@@ -2,7 +2,7 @@
 format: md
 id: spring-boot-graceful-shutdown
 title: "종료와 Graceful Shutdown"
-description: "종료와 Graceful Shutdown (작성 예정)"
+description: "종료와 Graceful Shutdown — Spring boot 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/boot/graceful-shutdown
 sidebar_position: 6
 status: draft

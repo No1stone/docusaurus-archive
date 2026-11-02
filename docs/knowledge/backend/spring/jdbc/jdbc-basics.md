@@ -2,7 +2,7 @@
 format: md
 id: spring-jdbc-jdbc-basics
 title: "JDBC 기본"
-description: "JDBC 기본 (작성 예정)"
+description: "JDBC 기본 — Spring jdbc 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/jdbc/jdbc-basics
 sidebar_position: 1
 status: draft

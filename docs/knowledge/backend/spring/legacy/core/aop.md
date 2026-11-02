@@ -2,7 +2,7 @@
 format: md
 id: k-aop
 title: "@AoP"
-description: "@AoP"
+description: "@AoP 관점지향 프로그래밍 Aspect Oriented Programming IoC di는 (new) 인스턴스 의존성 주입이라고한다면 AoP는 인스턴스의 기능을 주입시킨다. 인터셉터같이 실행시킬때 중간중간 채가서"
 tags:
   - Spring
 status: active

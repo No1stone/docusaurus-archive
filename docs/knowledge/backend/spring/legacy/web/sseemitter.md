@@ -2,7 +2,7 @@
 format: md
 id: k-sseemitter
 title: "SseEmitter"
-description: "SseEmitter"
+description: "@GetMapping(path = \"/test37/{seq}\", produces = MediaType.TEXT EVENT STREAM VALUE) public SseEmitter"
 tags:
   - HTTP
   - Java

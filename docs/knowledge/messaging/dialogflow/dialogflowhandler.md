@@ -2,7 +2,7 @@
 format: md
 id: k-dialogflowhandler
 title: "DialogFlowHandler"
-description: "DialogFlowHandler"
+description: "DialogFlowHandler: DialogFlowHandler 개요 DialogFlowHandler에 대한 메모입니다. 예제·코드 <details <summary 참고 자료</summary </details"
 tags:
   - Git
   - GoF

@@ -2,7 +2,7 @@
 format: md
 id: spring-async-scheduling-concurrency-control
 title: "동시 실행과 중복 실행 제어"
-description: "동시 실행과 중복 실행 제어 (작성 예정)"
+description: "동시 실행과 중복 실행 제어 — Spring async-scheduling 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/async-scheduling/concurrency-control
 sidebar_position: 3
 status: draft

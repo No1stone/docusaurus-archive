@@ -2,7 +2,7 @@
 format: md
 id: k-dateutils
 title: "DATEUtils"
-description: "DATEUtils"
+description: "import java.text.ParseException; import java.text.SimpleDateFormat; import java.util.Calendar; import java.util.Date;"
 tags:
   - Java
 status: active

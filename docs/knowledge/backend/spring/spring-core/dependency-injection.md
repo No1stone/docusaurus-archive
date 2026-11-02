@@ -2,7 +2,7 @@
 format: md
 id: spring-spring-core-dependency-injection
 title: "의존성 주입과 주입 대상 선택"
-description: "의존성 주입과 주입 대상 선택 (작성 예정)"
+description: "의존성 주입과 주입 대상 선택 — Spring spring-core 문서 초안입니다. 본문 작성 전이며 Legacy 메모를 참고하세요."
 slug: /knowledge/backend/spring/spring-core/dependency-injection
 sidebar_position: 4
 status: draft

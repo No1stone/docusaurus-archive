@@ -2,7 +2,7 @@
 format: md
 id: k-r2dbc-config
 title: "R2dbc config"
-description: "R2dbc config"
+description: "R2dbc config 주제의 핵심 개념과 실무 메모를 짧게 정리한 문서입니다."
 tags:
   - GoF
   - Java
