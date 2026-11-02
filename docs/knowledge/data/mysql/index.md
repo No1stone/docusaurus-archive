@@ -173,6 +173,7 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 |---|---|
 | [벌크 처리와 청크](/docs/knowledge/data/mysql/operations/bulk-and-chunks) | INSERT와 UPDATE를 묶는 방식과 실패 경계를 정리합니다. |
 | [파티셔닝과 pmax 관리](/docs/knowledge/data/mysql/operations/partitioning) | 날짜와 ID 분할, 단일 PK 제약과 파티션 단위 삭제를 설명합니다. |
+| [Spring JPA와 파티션 테이블](/docs/knowledge/data/mysql/operations/spring-jpa-partitioned-tables) | created_at RANGE와 DB 복합 PK, JPA에서 id만 @Id로 두는 시계열 패턴입니다. |
 | [느린 쿼리와 운영 진단](/docs/knowledge/data/mysql/operations/diagnostics) | 연결 수, 누적 쿼리 비용과 잠금 대기를 확인합니다. |
 | [MySQL과 MariaDB Compose 예제](/docs/knowledge/data/mysql/operations/docker-compose-examples) | 전체 설정 예제, 볼륨과 역할별 옵션 및 추가 설정 |
 | [Docker 배포와 데이터 보존](/docs/knowledge/data/mysql/operations/docker-and-persistence) | Compose, 데이터 볼륨과 초기화 및 복구를 설명합니다. |

@@ -2,7 +2,7 @@
 format: md
 id: k-partition
 title: "PARTITION"
-description: "PARTITION 관련 원문 링크 범위 안내"
+description: "MySQL 테이블 파티셔닝과 Spring JPA 시계열 문서로 안내하고, 디스크 파티션 문서는 별도로 연결합니다."
 tags:
   - MySQL
   - Database
@@ -12,17 +12,11 @@ slug: /knowledge/k-partition
 ---
 # PARTITION
 
-## 개요
+테이블(ROW) 파티셔닝 안내는 아래로 이어집니다.
 
-PARTITION 관련 원문 링크 범위 안내입니다.
+- [파티셔닝과 pmax 관리](/docs/knowledge/data/mysql/operations/partitioning) — RANGE, PK 제약, pmax, DROP
+- [Spring JPA와 시계열 파티션 테이블](/docs/knowledge/data/mysql/operations/spring-jpa-partitioned-tables) — `created_at` 파티션과 JPA `@Id` 매핑
 
-정리잘된 블로그
-- [[MySQL] 사용자 로그 테이블 - (3) 자동화된 파티션 관리]( — [MySQL] 사용자 로그 테이블 - (1) Primary Key가 필요한가? [MySQL] 사용자 로그 테이블 - (2) 파티션 관리 [MySQL] 사용자 로그 테이블 - (3) 자동화된 파티션 관리 이전 글들에서 사용자 로그 테이블을 설계할 때 Key에 대해 고려할 점과 파티션...
-상세 절차와 최신 옵션은 위 링크의 원문을 확인합니다.
-이 글은 링크 보관과 범위 안내만 하며, 특정 환경의 실측 수치를 주장하지 않습니다.
+디스크 파티션(EBS/`fdisk`)은 [partition (디스크)](/docs/knowledge/k-partition-3b84e6)을 봅니다.
 
-<details>
-<summary>참고 자료</summary>
-
-- (원문 링크 없음)
-</details>
+이 페이지의 slug(`/knowledge/k-partition`)는 하위 호환을 위해 유지합니다.

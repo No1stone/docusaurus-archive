@@ -119,7 +119,7 @@ ROLLBACK;
 |---|---|
 | API와 업무 식별자 | 외부에 ID 하나만 전달하는 인터페이스는 유지할 수 있습니다. |
 | DB의 기본키 | 날짜 파티셔닝에서는 날짜를 포함한 복합 키 제약을 따라야 합니다. |
-| ORM의 식별자 | 실제 복합 PK를 정확히 매핑하려면 JPA의 EmbeddedId나 IdClass 등도 검토합니다. |
+| ORM의 식별자 | DB는 복합 PK, 앱은 `id`만 `@Id`로 두는 패턴은 [Spring JPA와 시계열 파티션 테이블](/docs/knowledge/data/mysql/operations/spring-jpa-partitioned-tables)을 봅니다. |
 | ID 단독 유일성 | 애플리케이션의 ID 발급 정책과 중복 방지 책임을 별도로 확인합니다. |
 
 애플리케이션에서 ID 하나를 쓴다고 DB의 키 제약이 사라지는 것은 아닙니다.
@@ -246,6 +246,7 @@ ID 900 조회는 p_id_0001로 제한할 수 있고, DB PK도 ID 하나입니다.
 
 ## 이어서 읽기
 
+- [Spring JPA와 시계열 파티션 테이블](/docs/knowledge/data/mysql/operations/spring-jpa-partitioned-tables)
 - [기본키와 관계 설계](/docs/knowledge/data/mysql/design/keys-and-relations)
 - [인덱스와 실행 계획](/docs/knowledge/k-mysql-optimization)
 - [벌크 처리와 청크](/docs/knowledge/data/mysql/operations/bulk-and-chunks)
