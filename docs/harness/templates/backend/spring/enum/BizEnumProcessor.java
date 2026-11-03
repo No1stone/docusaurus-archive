@@ -103,7 +103,6 @@ public class BizEnumProcessor extends AbstractProcessor {
 
 
                     .add("$T.modelMapper.addConverter(new $T<$T, $T>() {",
-//                            ClassName.get("ai.farmpro.drp.lib.common.util", "ModelMapperUtil"),
                             ClassName.get("com.example.template.support", "ModelMapperUtil"),
                             ClassName.get("org.modelmapper", "AbstractConverter"),
                             ClassName.get(String.class),
@@ -132,8 +131,6 @@ public class BizEnumProcessor extends AbstractProcessor {
                         .addAnnotation(AnnotationSpec.builder(ClassName.get("jakarta.persistence", "Converter"))
                                 .addMember("autoApply", "$L", true)
                                 .build())
-//                        .superclass(ParameterizedTypeName.get(ClassName.get("ai.mintit.drp.lib.common.converter", "CodeValueConverter"),
-//                                ClassName.get("", simpleName.toString())))
                         .superclass(ParameterizedTypeName.get(ClassName.get("com.example.template.support", "CodeValueConverter"),
                                 ClassName.get("", simpleName.toString())))
                         .addMethod(MethodSpec.methodBuilder("support")
