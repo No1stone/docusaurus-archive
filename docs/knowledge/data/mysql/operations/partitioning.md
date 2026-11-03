@@ -28,6 +28,8 @@ references:
 
 파티셔닝은 애플리케이션에서 하나의 테이블로 다루는 데이터를 DB 내부의 여러 파티션으로 나누는 기능입니다.
 날짜나 ID 범위로 데이터를 구분하고, 조건에 맞는 파티션만 조회하거나 오래된 파티션을 통째로 제거할 때 사용합니다.
+
+프로젝트에서 이력은 `created_at`, 통계는 `stat_*`를 쓰는 선택과 배치 운영 기준은 [DB 설계 하네스 · 파티셔닝](/docs/harness/templates/backend/spring/db-design/partitioning), [파티션 운영](/docs/harness/templates/backend/spring/db-design/partition-ops)을 봅니다.
 모든 테이블에 필요한 기본 설정은 아니며, 조회와 보존 정책에 분할 기준이 맞을 때 검토합니다.
 
 이 글은 [MySQL RANGE COLUMNS](https://dev.mysql.com/doc/refman/8.0/en/partitioning-columns-range.html)와 [파티션 관리](https://dev.mysql.com/doc/refman/8.0/en/partitioning-management-range-list.html)를 바탕으로 날짜별 이력 테이블을 구성했습니다.

@@ -26,6 +26,8 @@ references:
 # MySQL PK 선택: INT, BIGINT와 UUID, 공개 ID 분리
 
 PK는 행을 식별하는 키이며, API에 노출하는 사용자 ID와 반드시 같은 값일 필요는 없습니다.
+
+프로젝트의 도메인별 대리키 타입·공통코드 자연키 예외는 [DB 설계 하네스 · 식별자](/docs/harness/templates/backend/spring/db-design/identifiers)를 봅니다.
 DB 내부에서는 작은 숫자 키로 관계를 연결하고, 외부에서는 예측하기 어려운 UUID를 사용하는 방식도 가능합니다.
 저장 크기, 예상 발급량, 외부 노출과 생성 방식을 나누어 선택합니다.
 

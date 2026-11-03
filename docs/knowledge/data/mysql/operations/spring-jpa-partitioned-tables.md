@@ -31,6 +31,8 @@ references:
 
 RANGE·pmax·DROP 등 운영 SQL의 일반 설명은 [파티셔닝과 pmax 관리](/docs/knowledge/data/mysql/operations/partitioning)를 봅니다.
 
+프로젝트 규범(통계 `stat_*` PK, Quartz 배치 방향)은 [DB 설계 하네스](/docs/harness/templates/backend/spring/db-design/)를 봅니다.
+
 ## 설계 원칙
 
 | 항목 | 선택 |

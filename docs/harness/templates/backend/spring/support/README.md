@@ -5,6 +5,7 @@
 호스트에 같은 역할의 클래스가 있으면 호스트 클래스를 씁니다.
 `BaseEntity`는 `AuditingEntityListener`와 `BaseEntityListener`를 함께 등록합니다.
 등록·수정 감사 컬럼은 `CreatedEntity` / `UpdatedEntity`입니다.
+프로젝트 테이블 설계에서 언제 Created만 쓰는지 등은 [DB 설계 하네스 · Audit](/docs/harness/templates/backend/spring/db-design/audit)을 봅니다.
 `IdGeneratable`·`ServiceProviderble`을 구현한 엔티티만 `BaseEntityListener`가 id·서비스 id를 채웁니다.
 서비스 id는 호스트 `WebUtils.getServiceId()` 등으로 채웁니다.
 표시명 치환(`DisplayNameResolver`)은 [exampleitem/support/display](../exampleitem/support/display/DisplayNameResolver.java)에 둡니다.

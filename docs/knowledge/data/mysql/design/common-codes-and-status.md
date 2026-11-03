@@ -38,6 +38,8 @@ references:
 
 DB ENUM 대신 VARCHAR와 Java enum을 사용하는 선택은 [ENUM과 문자열 저장](/docs/knowledge/data/mysql/basics/enum-and-varchar)에서 설명합니다.
 
+프로젝트의 10자 업무 코드, 원자적 코드, `common_code_type_id` 그룹핑은 [DB 설계 하네스 · 공통코드](/docs/harness/templates/backend/spring/db-design/common-codes)를 봅니다.
+
 애플리케이션 Enum과 코드 테이블을 함께 사용한다면 같은 코드의 의미와 변경 절차를 맞춥니다.
 운영자가 코드 한 건을 추가했다고 새 업무 동작이 자동으로 구현되는 것은 아닙니다.
 

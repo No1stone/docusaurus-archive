@@ -29,6 +29,9 @@ references:
 
 PK의 INT, BIGINT와 UUID 선택 및 사용자에게 노출하는 ID는 [PK 타입과 공개 ID](/docs/knowledge/data/mysql/design/primary-key-types-and-public-id)에서 크기와 예제로 비교합니다.
 
+프로젝트(FarmPro 계열)에서 대리키·물리 FK 비사용·Item DTO 등 **선택 기준**은 [DB 설계 하네스](/docs/harness/templates/backend/spring/db-design/)를 봅니다.
+이 글은 일반 MySQL 관계 설계용이며, 프로젝트 규칙을 여기서 덮어쓰지 않습니다.
+
 ## 자연키와 대리키를 구분합니다
 
 자연키는 이메일이나 업무 번호처럼 업무에서 의미를 가진 값입니다.

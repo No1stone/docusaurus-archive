@@ -151,3 +151,8 @@ exampleitem/
 
 - 원셋 전체: [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
 - Controller API E2E만: [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)
+
+## DB 설계
+
+테이블 접두사, Audit, 파티션, 공통코드 등 **프로젝트 선택 기준**은 [DB 설계 하네스](/docs/harness/templates/backend/spring/db-design/)를 봅니다.
+MySQL 일반론은 Knowledge 글을 보고, 이 원셋 폴더의 규칙을 일반 기술 글로 옮기지 않습니다.
