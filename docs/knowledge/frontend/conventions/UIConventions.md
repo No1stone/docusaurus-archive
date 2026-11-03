@@ -109,6 +109,15 @@ title: UIConventions
 - **라이브러리**: `sonner`. `import { toast } from 'sonner'`
 - **사용**: `toast.success('메시지')`, `toast.error('메시지')`. mutation 성공/실패 시 훅에서 호출.
 - **전역**: `App` 에 `<Toaster richColors closeButton position="top-right" />` 있음.
+- 짧은 연속 동일 성공 토스트는 피합니다. 자세한 규칙은 [loading-action-ux](/docs/knowledge/frontend/design/loading-action-ux).
+
+### 2.9b Pending 버튼·Skeleton·재조회
+
+- **PendingButton**: `src/components/molecules/PendingButton.tsx`. mutation `isPending`과 연결, `aria-busy`, 크기 유지.
+- **AppSlidingPanel**: `savePending`으로 저장 버튼 pending.
+- **Skeleton**: `motion-safe:animate-pulse` (모션 감소 시 고정).
+- **ListRefreshBanner**: 재조회 시 목록 유지 + 상단 갱신 표시.
+- **카탈로그**: `InteractionFeedbackCatalogPage` (`ops-ui-interaction`).
 
 ### 2.10 아이콘
 

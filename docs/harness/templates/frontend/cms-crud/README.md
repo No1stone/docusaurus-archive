@@ -19,8 +19,9 @@ description: 관리 CRUD 본진 원셋. 경량 헥사 가이드
 | list | `ManagementPageLayout` **list**. 서버 페이징, Badge. 표는 `ManagementTableShell` |
 | detail | 행 클릭 Sheet/Card |
 | form | 등록/수정 스키마 폼 |
-| loading / empty / error | Skeleton·빈·실패 |
-| action pending | 저장/비활성 중복 제출 방지 |
+| loading / empty / error | 최초 Skeleton, 빈+다음 행동, 실패+재시도. [loading-action-ux](/docs/knowledge/frontend/design/loading-action-ux) |
+| action pending | `PendingButton` / `savePending`. 중복 제출 방지, 버튼 크기 유지 |
+| refresh / page | 재조회는 목록 유지+`ListRefreshBanner`, 추가 페이지는 하단 로딩 |
 | dark / responsive | 하드 계약 |
 
 ### 기능 있을 때
@@ -67,9 +68,11 @@ ManagementPageLayout
 
 - [ ] 필터 조회 후 목록 갱신
 - [ ] Chip/Badge raw code 없음 (공통코드 있을 때)
-- [ ] 상세·저장 pending
+- [ ] 상세·저장 pending (더블클릭 1회 요청)
+- [ ] 최초 Skeleton vs 재조회 배너 구분
 - [ ] (export) applied 필터, 페이징 순회, xlsx
-- [ ] 빈·에러·다크·768px
+- [ ] 빈·에러·재시도·다크·768px
+- [ ] (선택) `ops-ui-interaction` 카탈로그에서 피드백 확인
 
 ## 오케스트레이션
 

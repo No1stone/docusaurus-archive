@@ -83,7 +83,7 @@ Flutter도 같은 경량 헥사 책임입니다. 화면 연결 이름만 ViewMod
 | [console-crud-base-set](./integration/console-crud-base-set) | CRUD 기본셋 진입 |
 | [console-management-crud-set](./integration/console-management-crud-set) | FE CRUD 마스터 상세 |
 | [error-timeout-policy](./integration/error-timeout-policy) | 타임아웃, suppress |
-| [dark-mode](./design/dark-mode) / [responsive](./design/responsive) / [loading-action-ux](./design/loading-action-ux) | 디자인 계약 |
+| [dark-mode](./design/dark-mode) / [responsive](./design/responsive) / [loading-action-ux](./design/loading-action-ux) | 디자인 계약 (클릭·pending·Skeleton·Toast, 웹+Flutter) |
 | [Tasks](./tasks/) | CMS CRUD 마이크로 태스크 (해당 작업 시) |
 | [Conventions](./conventions/) | 코딩·UI 컨벤션 |
 | [Operations](./operations/) | 빌드 환경, 모노레포 런북, [fe-v1-findings](./operations/fe-v1-findings) |
