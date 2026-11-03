@@ -2,12 +2,9 @@
 title: session handoff 2026 06 farm livestock
 ---
 
-> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
-> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
-> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
-
-> **범위:** 도메인 예시입니다. CMS 업무 백오피스 공통 표준이 아닙니다.
-> 공통 표준은 Frontend 하드 규칙, cms-crud 원셋, cms-backoffice-fe 프로필을 봅니다.
+> **이력 (과거 세션).** 2026-06 Farm Livestock 핸드오프입니다.
+> **신규 작업 지시가 아닙니다.** 공통 표준은 [Frontend](/docs/knowledge/frontend/), [cms-crud](/docs/harness/templates/frontend/cms-crud/), [cms-backoffice-fe](/docs/harness/profiles/cms-backoffice-fe)입니다.
+> 범위: 도메인 예시. ExampleItem 경로 예: `nutech/fe-v1`.
 
 # Session Handoff: Farm Livestock (2026-06)
 
@@ -56,8 +53,8 @@ title: session handoff 2026 06 farm livestock
 
 - [x] 알람 탭 감지 토글 + `PUT /web/farm-livestocks/{id}` (즉시 저장)
 - [x] 가축 수정 폼 `FarmLivestockFormSheet` + `LivestockInfoManagePage` onEdit
-- [x] **운영 DDL 정리** — `be-v1/docs/knowledge/frontend/development/farm-livestock-1n-log-migration.md`  
-  - 마스터: `sql/farm-livestock-master-create.sql`  
+- [x] **운영 DDL 정리** — `be-v1/docs/knowledge/frontend/development/farm-livestock-1n-log-migration.md`
+  - 마스터: `sql/farm-livestock-master-create.sql`
   - 이력 7종: `sql/farm-livestock-log-tables-create.sql`
 
 ### 미완 (중요)

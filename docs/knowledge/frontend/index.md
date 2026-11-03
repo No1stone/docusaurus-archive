@@ -26,15 +26,33 @@ description: CMS 업무 백오피스 FE 하네스 지식 입구. 하드 규칙, 
 
 | 규칙 | 요약 |
 |------|------|
-| 가벼운 헥사 폴더 | `api` / `hooks` / `stores` / `components` 경계를 유지합니다. 앱 진입은 조립만 합니다. |
-| 유스케이스 조립 | 페이지는 훅과 슬롯을 조립합니다. API 호출을 페이지에 직접 두지 않습니다. |
-| 다크 모드 | 라이트와 다크 모두에서 대비와 테두리가 읽혀야 합니다. |
-| 반응형 | 관리 화면은 좁은 폭에서도 필터, 표, 시트가 깨지지 않아야 합니다. |
-| 공통코드 UI | Chip, Select+nameMaps, 상태 Badge를 사용합니다. raw code를 노출하지 않습니다. |
-| CMS 필수 슬롯 | 필터, 스키마 폼, 로딩, 빈, 에러, Skeleton, 액션 pending |
-| 엑셀 다운로드 | 목록 export 시 FE가 `fetch*ForDownload`(100건 순회) 후 `downloadAdvancedExcel`. [excel-download 원셋](/docs/harness/templates/frontend/excel-download/) |
-| 데모와 wired 분리 | 퍼블/데모 화면과 API 연결 구현 화면을 나눕니다. 데모에 API를 장기 혼입하지 않습니다. |
-| 상태 라이브러리 | 특정 lib를 강제하지 않습니다. 소유권 분리만 지킵니다. |
+| 경량 헥사 | Page → `useXxx` → 개별 기능 또는 Flow → 계약 ← Http·Demo. [application-structure](./architecture/application-structure) |
+| 유스케이스 진입 | 단일 기능은 직접 호출 가능. 조합이 필요하면 Flow 등. BE처럼 전 화면 Facade 강제 없음 |
+| 화면 연결 | React `useXxx`. Application은 훅을 호출하지 않음 |
+| 레이아웃 슬롯 | `filter` / `list` / `sheets` (`table` prop 아님) |
+| 서버 vs UI 상태 | 응답 원본=캐시 SoT. Store에 목록 복제 금지. [state-ownership](./state/state-ownership-model) |
+| 다크·반응형 | 대비·좁은 폭에서 필터·표·시트 조작 가능 |
+| CMS 슬롯 | 필터, 폼, 로딩, 빈, 에러, Skeleton, pending. Chip·다운로드는 **기능 있을 때** |
+| 엑셀 export | `useXxx` → Export 기능 → 계약 → Http (+ `downloadAdvancedExcel`). Page 직접 fetch는 이력. [excel-download](/docs/harness/templates/frontend/excel-download/) |
+| 데모·wired | 같은 계약에 Demo/Http 구현. wired에서 실패를 성공으로 바꾸지 않음 |
+| 상태 lib | 비강제. 로컬 state로 충분하면 Store 생략 |
+| 런타임 보안 | 패치된 React/Node ([ADR-0011](/docs/decisions/adr-0011)) |
+
+Flutter도 같은 경량 헥사 책임입니다. 화면 연결 이름만 ViewModel·Controller 등으로 맞춥니다. 본 트리 수정 범위는 웹입니다.
+
+## 프로젝트별 교체 항목 (기본값 ≠ 만능)
+
+대상 API·요구에 맞게 바꿉니다.
+
+| 항목 | ExampleItem에서 본 기본 예 |
+|------|---------------------------|
+| 포털 구성 | console / partner / member |
+| 공통코드 | 10자리·BizEnum 등 |
+| 성공 code·응답 봉투 | 프로젝트 계약 |
+| 비활성 | DELETE 경로 등 |
+| download page size | 100 |
+| 인증 | 쿠키·Bearer·refresh |
+| TZ·농장 스코프 | 도메인 정책 |
 
 ## 옵셔널
 
@@ -51,12 +69,13 @@ description: CMS 업무 백오피스 FE 하네스 지식 입구. 하드 규칙, 
 
 | 문서 | 역할 |
 |------|------|
-| [folder-structure](./folder-structure) | 폴더 역할과 호출 방향 |
+| [application-structure](./architecture/application-structure) | 경량 헥사·FE 네이밍·LoginFlow |
+| [folder-structure](./folder-structure) | 기능별 폴더 예시·이력 매핑 |
 | [runtime-architecture](./architecture/runtime-architecture) | 부트스트랩과 인증 상태 |
 | [navigation-contract](./architecture/navigation-contract) | 메뉴 key와 라우트 |
 | [management-filter-kit](./architecture/management-filter-kit) | 필터 molecule |
 | [ui-composition-rules](./architecture/ui-composition-rules) | 계층 조립, 카드 섹션 |
-| [demo-vs-wired](./architecture/demo-vs-wired) | 데모와 구현 화면 분리 |
+| [demo-vs-wired](./architecture/demo-vs-wired) | Demo·Http 구현 교체 |
 | [state-ownership-model](./state/state-ownership-model) | 서버/UI 상태 |
 | [query-cache-rules](./state/query-cache-rules) | query key와 무효화 |
 | [api-integration-contract](./integration/api-integration-contract) | 인증 fetch |
@@ -67,7 +86,8 @@ description: CMS 업무 백오피스 FE 하네스 지식 입구. 하드 규칙, 
 | [dark-mode](./design/dark-mode) / [responsive](./design/responsive) / [loading-action-ux](./design/loading-action-ux) | 디자인 계약 |
 | [Tasks](./tasks/) | CMS CRUD 마이크로 태스크 (해당 작업 시) |
 | [Conventions](./conventions/) | 코딩·UI 컨벤션 |
-| [Operations](./operations/) | 빌드 환경, 모노레포 런북 등 |
+| [Operations](./operations/) | 빌드 환경, 모노레포 런북, [fe-v1-findings](./operations/fe-v1-findings) |
+| [ADR-0011](/docs/decisions/adr-0011) | React/Node 패치 런타임 |
 
 ### 도메인 예시 (표준 필수 아님)
 

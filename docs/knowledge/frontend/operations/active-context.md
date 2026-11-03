@@ -2,14 +2,14 @@
 title: active context
 ---
 
-> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
-> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
-> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+> **이력 (과거 세션).** 2026-06 Farm Livestock 작업 스냅샷입니다.
+> **신규 CMS 백오피스 작업 지시가 아닙니다.** 현재 진입은 [Frontend index](/docs/knowledge/frontend/), [cms-crud](/docs/harness/templates/frontend/cms-crud/), [cms-backoffice-fe](/docs/harness/profiles/cms-backoffice-fe)입니다.
+> ExampleItem 경로 예: `nutech/fe-v1` (참고용).
 
-# 📍 Active Session Context: Farm Livestock 포털
+# Active Session Context: Farm Livestock 포털 (이력)
 
-이 문서는 현재 FE 작업 컨텍스트를 복구하기 위한 스냅샷입니다.  
-다음 세션 시작 시 이 파일과 [session-handoff-2026-06-farm-livestock.md](./session-handoff-2026-06-farm-livestock.md)를 먼저 읽고 시작합니다.
+가축 포털 작업 복구용 **과거** 스냅샷입니다.
+도메인 예시가 필요할 때만 [session-handoff-2026-06-farm-livestock.md](./session-handoff-2026-06-farm-livestock.md)와 함께 봅니다.
 
 ## 1. 현재 완료된 작업 (Accomplished)
 

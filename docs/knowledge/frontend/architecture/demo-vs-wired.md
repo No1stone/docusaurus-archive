@@ -1,69 +1,49 @@
 ---
 title: Demo vs wired screens
-description: 퍼블/데모 UI와 API 연결 구현 화면을 분리하는 규칙
+description: 같은 계약에 Demo·Http 구현. 오류 은폐 금지
 ---
 
 # Demo vs wired screens
 
-> **개요:** 디자인(퍼블, 데모) 화면과 API가 붙은 구현 화면을 나눕니다.
-> CMS 업무 백오피스 FE에서 데모에 API를 입힌 뒤, 디자인 변경과 실구현이 한 파일에서 충돌했던 경험을 아카이브 규칙으로 고정합니다.
-> fe-v1 앱을 이 문서 때문에 수정할 필요는 없습니다.
+> **채택 기준.** UI·개별 기능은 공유하고, **계약의 구현**만 Demo와 Http로 나눕니다.
 
 ## 결론
 
-**나누는 편이 낫습니다.**
-디자인 반복과 API 계약 안정화는 주기가 다릅니다.
-한 페이지에 둘을 섞으면 나중에 디자인만 바꾸거나 API만 바꿀 때 비용이 커집니다.
+데모와 실연동(wired)을 나눕니다.
+화면·위젯·SignIn 같은 개별 기능을 불필요하게 두 벌로 복제하지 않습니다.
+같은 `AuthRepository` 등에 `Demo…` / `Http…` 구현을 `app/composition`에서 연결합니다.
 
 ## 두 트랙
 
-| 트랙 | 목적 | 데이터 | 이름/위치 관례 (예) |
-|------|------|--------|---------------------|
-| Demo / publishing | 레이아웃, 슬롯, Chip, 다크, 반응형 확정 | mock, 고정 fixture | `*DemoPage`, `*ReportDemo*`, `data/*Mocks` |
-| Wired / implement | 실서비스 동작 | `api/` + hooks 캐시 | `*ManagePage`, 도메인 정식 페이지 |
+| 트랙 | 목적 | 데이터 |
+|------|------|--------|
+| Demo | 레이아웃·슬롯·다크·반응형 | Demo 구현, fixture, **명시적** UI-only 설정 |
+| Wired | 실서비스 | Http 구현. 네트워크 오류를 성공으로 바꾸지 않음 |
 
-작업 순서는 보통 **데모로 슬롯을 맞춘 뒤**, 별도 wired 페이지(또는 명확한 분기)에 API를 연결합니다.
+슬롯(`ManagementPageLayout`의 filter/list/sheets 등)과 Chip·Card 규칙은 공유합니다.
+경량 헥사 호출은 [application-structure](./application-structure)입니다.
 
-## 하지 말 것
+## 채택 규칙
 
-1. 데모 페이지에 API 훅을 장기적으로 섞어 “중간 상태” 페이지를 만들지 않습니다.
-2. mock과 실응답을 같은 컴포넌트 안에서 플래그로만 계속 분기하지 않습니다. 분기가 필요하면 **어댑터 경계**를 둡니다.
-3. 디자인 변경을 wired 페이지에서 직접 시험하다가 API 회귀를 감수하지 않습니다. 데모에서 맞춘 뒤 이식합니다.
+1. wired에서 네트워크 실패를 **성공·빈 배열로 변환하지 않습니다.**
+2. mock/Demo는 **명시 env·조립 경계**에서만 켭니다. DEV만으로 전 구간 폴백하지 않는 것을 권고합니다.
+3. 실패와 빈 결과를 구분해 확인합니다.
+4. 데이터 진입(구현 교체)만 나눕니다. 화면 전체 복제는 피합니다.
 
-## 해도 되는 공유
+## 이력·관찰 (ExampleItem)
 
-슬롯 계약과 프리젠테이션은 공유합니다.
+일부 ExampleItem client는 DEV·preview에서 네트워크 오류를 mock 성공으로 바꿉니다.
+이는 데모 편의이며 **신규 wired 계약이 아닙니다.** [fe-v1-findings](../operations/fe-v1-findings).
+`hooks → api/` 직접 연결도 이력입니다. 신규는 계약←구현입니다.
 
-- `ManagementPageLayout`, 필터 kit, Chip, Card 섹션 규칙
-- [ui-composition-rules](./ui-composition-rules), [loading-action-ux](../design/loading-action-ux)
+## 스모크
 
-데이터 진입만 다릅니다.
-
-```text
-DemoPage  -> mocks / demo helpers
-WiredPage -> hooks -> api
-둘 다     -> 같은 molecules/templates 슬롯
-```
-
-## 승격
-
-데모가 확정되면 wired로 **복사 또는 치환**하고, 데모는 퍼블 참고로 남기거나 제거합니다.
-데모에 API를 “임시로” 붙인 채 방치하지 않습니다.
-
-## 원셋과의 대응
-
-| 원셋 | 기본 트랙 |
-|------|-----------|
-| [report-readonly](/docs/harness/templates/frontend/report-readonly/) | 데모로 시작하기 쉬움. README에 mock/API를 슬롯상 동등하게 두되 페이지는 분리 |
-| [cms-crud](/docs/harness/templates/frontend/cms-crud/) | ExampleItem은 wired (`*ManagePage`). 신규는 데모 먼저 가능 |
-
-## 스모크 구분
-
-- 데모: 필터, 표, 상세, 다크, 반응형 (네트워크 불필요)
-- wired: 위 + 실 API 성공/빈/에러, mutation pending
+- 데모: 필터·표·상세·다크 (Demo 구현)
+- wired: 성공 / 빈 / **에러** 각각, mutation pending
 
 ## 관련
 
 - [folder-structure](../folder-structure)
-- [query-cache-rules](../state/query-cache-rules)
-- [console-crud-base-set](../integration/console-crud-base-set)
+- [application-structure](./application-structure)
+- [error-timeout-policy](../integration/error-timeout-policy)
+- [cms-crud](/docs/harness/templates/frontend/cms-crud/)
