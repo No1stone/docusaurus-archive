@@ -8,3 +8,4 @@ Usual asset combo for a *kind* of stack. Not the same as a per-task orchestratio
 |---------|-----|
 | Spring API | [spring-api.md](/docs/harness/profiles/spring-api) |
 | CMS 업무 백오피스 FE | [cms-backoffice-fe.md](/docs/harness/profiles/cms-backoffice-fe) |
+| Flutter 모바일 셸 | [mobile-flutter.md](/docs/harness/profiles/mobile-flutter) |

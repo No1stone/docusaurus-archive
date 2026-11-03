@@ -9,7 +9,7 @@ description: FE 경량 헥사. 화면 연결, Flow, 개별 기능, 계약, Http�
 > 기능별로 묶어 수정 위치를 찾고, 공개 조각·원셋을 조합하기 쉽게 둡니다.
 > 백엔드와 구조는 같고, **유스케이스(개별 기능) 진입만 FE에서 완화**합니다.
 > ExampleItem(`nutech/fe-v1`) 폴더는 이력 매핑입니다. 즉시 이사·빈 폴더 강제가 아닙니다.
-> Flutter도 같은 책임. 화면 연결 이름만 상태관리에 맞춥니다. 이번 문서 범위는 웹.
+> Flutter도 같은 책임. 화면 연결 이름만 상태관리에 맞춥니다. Flutter 입구·원셋: [Client Flutter](/docs/knowledge/client/flutter-harness/).
 
 ## 왜
 
