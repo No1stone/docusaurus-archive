@@ -30,7 +30,8 @@ CMS/인증/레이아웃 등 화면 유형별로 슬롯을 맞춘 뒤, 도메인 
 ## 하드 슬롯 (CMS)
 
 필터, 폼, 로딩, 빈, 에러, Skeleton, 액션 pending, Chip/Select/Badge, 다크, 반응형.
-상세는 [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set)과 [cms-crud](./cms-crud/).
+목록 엑셀 export가 있으면 **FE 페이징 다운로드**(`fetch*ForDownload` + `downloadAdvancedExcel`)도 슬롯에 넣습니다.
+상세는 [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set), [cms-crud](./cms-crud/), [excel-download](./excel-download/).
 
 ## 데모와 wired
 

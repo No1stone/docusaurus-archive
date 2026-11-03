@@ -32,6 +32,7 @@ description: CMS 업무 백오피스 FE 하네스 지식 입구. 하드 규칙, 
 | 반응형 | 관리 화면은 좁은 폭에서도 필터, 표, 시트가 깨지지 않아야 합니다. |
 | 공통코드 UI | Chip, Select+nameMaps, 상태 Badge를 사용합니다. raw code를 노출하지 않습니다. |
 | CMS 필수 슬롯 | 필터, 스키마 폼, 로딩, 빈, 에러, Skeleton, 액션 pending |
+| 엑셀 다운로드 | 목록 export 시 FE가 `fetch*ForDownload`(100건 순회) 후 `downloadAdvancedExcel`. [excel-download 원셋](/docs/harness/templates/frontend/excel-download/) |
 | 데모와 wired 분리 | 퍼블/데모 화면과 API 연결 구현 화면을 나눕니다. 데모에 API를 장기 혼입하지 않습니다. |
 | 상태 라이브러리 | 특정 lib를 강제하지 않습니다. 소유권 분리만 지킵니다. |
 

@@ -39,6 +39,7 @@ Each Spring layer folder:
 
 ```text
 cms-crud/        관리 CRUD 본진
+excel-download/  목록 엑셀 (FE 처리)
 layout-shell/    Admin 셸
 auth-login/      로그인
 …                ONESET.md 맵 참고

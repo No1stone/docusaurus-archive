@@ -41,6 +41,7 @@ description: CMS CRUD 원셋 작업 레시피
 | Path | 역할 |
 |------|------|
 | `docs/harness/templates/frontend/cms-crud/README.md` | 슬롯과 경로 |
+| `docs/harness/templates/frontend/excel-download/README.md` | 목록 엑셀 (FE 처리) |
 | `docs/harness/templates/frontend/ONESET.md` | ExampleItem 규칙 |
 | `docs/knowledge/frontend/integration/console-crud-base-set.md` | 기본셋 |
 | `docs/knowledge/frontend/integration/common-code-fe-harness.md` | Chip/Select |
@@ -52,14 +53,15 @@ description: CMS CRUD 원셋 작업 레시피
 1. 메뉴 key, RouteTemplate, 사이드바를 맞춥니다.
 2. api, hooks, store, page 골격을 folder-structure에 맞게 둡니다.
 3. cms-crud 슬롯을 채웁니다 (필터, 표, 시트, pending).
-4. 공통코드 nameMaps와 Chip/Badge를 연결합니다.
-5. typecheck 또는 프로젝트 build를 실행합니다.
-6. Chrome smoke로 원셋 체크리스트를 확인합니다.
-7. 필요 시 Playwright 스펙을 추가합니다.
+4. 목록 export가 있으면 excel-download 슬롯을 붙입니다 (`DownloadModal`, 100건 순회).
+5. 공통코드 nameMaps와 Chip/Badge를 연결합니다.
+6. typecheck 또는 프로젝트 build를 실행합니다.
+7. Chrome smoke로 원셋 체크리스트를 확인합니다 (다운로드 포함).
+8. 필요 시 Playwright 스펙을 추가합니다.
 
 ## DoD
 
-- 슬롯 표 전 항목 충족
+- 슬롯 표 전 항목 충족 (export 있으면 엑셀 순회·저장 포함)
 - raw code UI 없음
 - 다크와 기본 반응형 스모크 통과
 - browser-manual 증거(스냅샷 또는 체크 목록) 기록

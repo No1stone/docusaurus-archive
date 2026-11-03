@@ -22,6 +22,7 @@ description: CMS 업무 백오피스 FE 원셋 맵. ExampleItem 경로 예 nutec
 | [auth-recovery](./auth-recovery/) | 비밀번호 재설정 등 |
 | [workspace-select](./workspace-select/) | 워크스페이스, 포털 스코프 |
 | [cms-crud](./cms-crud/) | **본진** 관리 CRUD |
+| [excel-download](./excel-download/) | 목록 엑셀 (FE 페이징 + xlsx) |
 | [dashboard](./dashboard/) | 요약 카드, 위젯 |
 | [report-readonly](./report-readonly/) | 읽기 전용 보고 |
 | [wizard-register](./wizard-register/) | 다단계 등록 |

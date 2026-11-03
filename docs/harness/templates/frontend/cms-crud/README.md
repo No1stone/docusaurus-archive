@@ -22,6 +22,7 @@ description: 관리 CRUD 본진 원셋. DeviceProduction ExampleItem
 | empty | 빈 안내 |
 | error | 로드 실패 UI/토스트 |
 | action pending | 저장/비활성 중복 제출 방지 |
+| excel download | 목록 export 시 필수. FE 페이징 조회 + `downloadAdvancedExcel` ([excel-download](../excel-download/)) |
 | dark / responsive | 하드 계약 |
 
 ## 짧은 조립 스케치
@@ -34,25 +35,27 @@ Page
   ManagementPageLayout
     filter: *SearchForm
     table: ManagementTableShell + Chip columns
-    sheets: DetailSheet, FormSheet (mutation.isPending)
+    sheets: DetailSheet, FormSheet (mutation.isPending), DownloadModal
 ```
 
-## fe-v1 경로
+## ExampleItem 경로
 
 | 역할 | 경로 |
 |------|------|
 | 골드 페이지 | `src/components/pages/DeviceProductionManagePage.tsx` |
-| 가축 페이지 | `src/components/pages/LivestockInfoManagePage.tsx` |
 | 레이아웃 | `src/components/templates/ManagementPageLayout.tsx` |
 | 필터 kit | `src/components/molecules/filters/` |
 | 공통코드 훅 | `src/hooks/useCommonCodes.ts` |
-| Knowledge | [/docs/knowledge/frontend/integration/console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set) |
+| DownloadModal | `src/components/organisms/DownloadModal.tsx` |
+| Excel util | `src/utils/excel.ts` |
+| Knowledge | [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set), [excel-download](../excel-download/) |
 
 ## 스모크
 
 - [ ] 필터 조회 후 목록 갱신
 - [ ] Chip/Badge에 raw code 없음
 - [ ] 상세 열기, 수정 저장 pending
+- [ ] 다운로드: applied 필터 반영, 100건 초과 순회, xlsx 저장
 - [ ] 빈 결과와 에러 상태 확인
 - [ ] 다크 모드와 768px 폭에서 조작 가능
 
