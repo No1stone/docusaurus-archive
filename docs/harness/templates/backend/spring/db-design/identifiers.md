@@ -23,6 +23,13 @@ description: 대리키와 자연키, 도메인별 PK 타입, UUID 앱 발급을 
 별도 `public_id` 컬럼을 두는 패턴은 현재 프로젝트 기본이 아닙니다.
 노출 방식은 숫자 `id` 또는 opaque 문자열 PK 중 도메인 정책으로 정합니다.
 
-기존 구현 예(확인분): 농장·가축 등은 `Long` + IDENTITY, 회원·파트너·파일 등은 22자 Base64 UUID를 앱에서 발급합니다.
+기존 구현 예(확인분):
+
+| 계열 | 형태 |
+|------|------|
+| FarmPro형 일부 마스터 | `Long` + IDENTITY |
+| 회원·파트너·파일·암호키 등 | 앱 발급 22자 Base64(URL) UUID 문자열 |
+| 상태·로그·일별통계 자식 행 | `INT` IDENTITY 대리키 + 부모 `*_id` |
+| 공통코드 | 코드 문자열 자연키 (업무성 길이 관례 10, type id는 더 길 수 있음) |
 
 일반론: [PK 타입과 공개 ID](/docs/knowledge/data/mysql/design/primary-key-types-and-public-id)

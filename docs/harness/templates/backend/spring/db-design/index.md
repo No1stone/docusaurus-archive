@@ -9,6 +9,10 @@ description: FarmPro형 프로젝트의 테이블 설계 선택 기준, 예외, 
 > **개요:** 이 프로젝트(FarmPro 계열)에서 테이블을 설계할 때 따르는 선택 기준과 예외, 이상적 스케치를 둡니다.
 > MySQL·MariaDB·JPA의 일반 기술 설명은 Knowledge 글을 보고, 여기는 프로젝트 규칙만 적습니다.
 > 대상 저장소 규칙이 이 안내보다 우선합니다.
+>
+> **예제 출처:** 네이밍·JPA/DTO 사용 예는 기존 서비스 구현을 비식별해 옮깁니다.
+> **공통코드 FM**은 [공통코드](./common-codes)입니다. 기존 서비스가 원본이고, FarmPro는 그걸 보고 맞춘 파생입니다.
+> 파티션 DDL·운영 예는 Partner Gateway에서 정리한 흐름을 따릅니다.
 
 ## 이 문서가 하는 일
 
@@ -45,11 +49,12 @@ description: FarmPro형 프로젝트의 테이블 설계 선택 기준, 예외, 
 | [네이밍](./naming) | 접두사, 접미사, snake_case |
 | [식별자](./identifiers) | 대리키, 자연키, UUID |
 | [Audit](./audit) | CreatedEntity, UpdatedEntity |
-| [관계와 조회](./relations-and-dto) | 물리 FK 없음, JPA, Item DTO |
+| [관계와 조회](./relations-and-dto) | 물리 FK 없음, JPA(열림), Item DTO |
+| [유스케이스와 DTO](./usecase-dto) | Facade·Res 사다리·Item 채우기 사용 예 |
 | [NULL과 UNIQUE](./null-unique) | 화면 단계, 통계 정합성 |
-| [공통코드](./common-codes) | 원자성, 업무성 10자, parent–child |
+| [공통코드](./common-codes) | **FM** — 자연키, 업무성 10자, parent–child, BizEnum |
 | [인덱스](./indexes) | 공통코드 축, 카디널리티 |
-| [파티셔닝](./partitioning) | created_at, stat_*, PK |
+| [파티셔닝](./partitioning) | created_at, (드묾) stat_* 버킷, PK |
 | [파티션 운영](./partition-ops) | 스케줄러 기준, 신규 항목 |
 | [삭제와 보관](./delete-retention) | 논리 삭제, 보관 기간 |
 | [개인정보와 비밀번호](./pii-and-password) | SHA·Salt·AES와 로그인 해시 구분 |
