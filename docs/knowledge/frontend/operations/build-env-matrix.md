@@ -11,8 +11,12 @@ title: build env matrix
 ## Toolchain
 
 - Build: Vite (`vite.config.ts`)
-- UI Runtime: React 18
+- UI Runtime: React (ExampleItem은 18대였음. **패치된 라인**을 씁니다 — [ADR-0011](/docs/decisions/adr-0011))
+- Node: 지원 LTS의 보안 패치 버전 ([ADR-0011](/docs/decisions/adr-0011))
 - Language: TypeScript (`tsconfig.json`, path alias `@/*`)
+
+`vite build` 성공만으로 타입 검사 통과로 보지 않습니다.
+타입 검사는 프로젝트의 `tsc` / typecheck 스크립트를 따로 확인합니다.
 
 ## 배포 프로필 (`VITE_DEPLOY_PROFILE`)
 

@@ -23,6 +23,7 @@ Track why Architecture, Templates, and Harness took a particular shape.
 | ADR-0008 | [AI Harness — 참고 자료와 적용 원칙](./ADR-0008-ai-harness-references-and-operating-principles.md) — 외부 참고와 프로젝트 운영 방식을 구분하고, 행동 단위로 하네스를 평가·개선한다 | 채택 |
 | ADR-0009 | [PHP 보안 취약점 대응을 위한 런타임 및 애플리케이션 업그레이드](./ADR-0009-php-security-runtime-upgrade.md) — PHP 단독 교체 대신 Nextcloud 공식 이미지 기반 메이저 순차 업그레이드를 선택합니다 | 채택 |
 | ADR-0010 | [애플리케이션, Port, Adapter로 계층 이름을 정리한다](./플랫폼과%20하네스/ADR-0010-application-port-adapter-naming.md) — 계층은 접미사가 아니라 책임으로 구분하고, 기존 JPA Service는 Port와 Adapter로 표현합니다 | 채택 |
+| ADR-0011 | [FE는 취약점이 해결된 React와 Node 패치 라인을 쓴다](./런타임과%20보안/ADR-0011-fe-react-node-patched-runtime.md) — RSC 등 공개 취약점 대응으로 패치된 런타임·의존성을 기본으로 둡니다 | 채택 |
 
 번호는 파일명과 `id`에만 둡니다.
 다른 문서에서 가리킬 때는 "ADR-0002"처럼 번호로 부르고, 제목 자체에는 번호를 붙이지 않습니다.
