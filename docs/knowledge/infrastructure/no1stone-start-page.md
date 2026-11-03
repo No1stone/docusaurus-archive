@@ -34,7 +34,7 @@ slug: /knowledge/k-no1stone-start-page
 - [DATABASE](./data/index.md)
 - [HTTP](./networking/index.md)
 - [Java](./backend/java/java.md)
-- [flutter](./client/flutter.md)
+- [flutter](/docs/knowledge/flutter/legacy/flutter-brew-install)
 
 ## 포트폴리오
 

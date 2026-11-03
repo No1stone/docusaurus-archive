@@ -17,7 +17,7 @@ Flutter 앱에 보통 어떤 골격·원셋·검증을 쓰는가?
 
 ### Knowledge
 
-- [Flutter index](/docs/knowledge/client/flutter-harness/)
+- [Flutter index](/docs/knowledge/flutter/)
 - [application-structure](/docs/knowledge/frontend/architecture/application-structure) (경량 헥사 공유)
 - [demo-vs-wired](/docs/knowledge/frontend/architecture/demo-vs-wired) (계약←Demo/Http)
 
@@ -28,7 +28,7 @@ Flutter 앱에 보통 어떤 골격·원셋·검증을 쓰는가?
 
 ### Verification
 
-실행 기록의 단일 출처: [oneset-demo-runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook).
+실행 기록의 단일 출처: [oneset-demo-runbook](/docs/knowledge/flutter/oneset-demo-runbook).
 
 | 검사 | 기록 |
 |------|------|

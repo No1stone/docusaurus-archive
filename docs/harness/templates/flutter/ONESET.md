@@ -9,8 +9,8 @@ description: Flutter 셸, 공통 원셋. 경량 헥사 ExampleItem
 > **상태: Demo 구현.** 검증된 제품 예제가 아니라 ExampleItem 기준 데모입니다.
 > ExampleItem: `nutech/nutag_app_v1`
 > 데모 진입: `lib/main_oneset_demo.dart`, 코드: `lib/oneset_demo/`
-> 실행과 검증: [oneset-demo-runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
-> 경량 헥사: [application-structure](/docs/knowledge/frontend/architecture/application-structure), [Flutter](/docs/knowledge/client/flutter-harness/)
+> 실행과 검증: [oneset-demo-runbook](/docs/knowledge/flutter/oneset-demo-runbook)
+> 경량 헥사: [application-structure](/docs/knowledge/frontend/architecture/application-structure), [Flutter](/docs/knowledge/flutter/)
 
 ## 목표
 
@@ -45,7 +45,7 @@ Page → ViewModel → UseCase | Flow → Port ← Demo / (Http 계약 후)
 ## 검증 구분
 
 포맷, `flutter analyze`, 테스트, 빌드, 시뮬 스모크는 각각 실행/미실행을 기록합니다.
-현재 기록은 [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)입니다.
+현재 기록은 [runbook](/docs/knowledge/flutter/oneset-demo-runbook)입니다.
 
 ## 복사 방식
 

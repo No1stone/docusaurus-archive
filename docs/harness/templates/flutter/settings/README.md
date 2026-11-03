@@ -6,7 +6,7 @@ description: 테마, 언어, 알림 설정 원셋
 # Settings
 
 > **상태: 구현 완료, Demo.**
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 

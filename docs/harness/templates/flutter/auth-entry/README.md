@@ -6,7 +6,7 @@ description: 시작, 세션 복원, 로그인 LoginFlow
 # Auth entry
 
 > **상태: 구현 완료, Demo.**
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 조립
 

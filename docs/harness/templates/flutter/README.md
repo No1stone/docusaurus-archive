@@ -9,7 +9,7 @@ description: Flutter 셸, 공통 원셋 맵. ExampleItem nutag_app_v1
 > **개요:** 모바일 Flutter ExampleItem 원셋입니다.
 > ExampleItem: `nutech/nutag_app_v1`, 데모: `lib/main_oneset_demo.dart`
 > 안내는 [ONESET.md](./ONESET)입니다.
-> 실행, 코드 맵, 검증: [oneset-demo-runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> 실행, 코드 맵, 검증: [oneset-demo-runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 | 원셋 | 용도 | 상태 |
 |------|------|------|

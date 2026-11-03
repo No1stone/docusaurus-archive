@@ -6,7 +6,7 @@ description: 채팅 목록→대화방 Demo 골격
 # Chat
 
 > **상태: Demo 골격.** 실시간 전송·수신은 미연동입니다.
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 

@@ -6,7 +6,7 @@ description: 목록→상세→등록·수정·삭제 Demo 원셋
 # Item CRUD
 
 > **상태: 구현 완료, Demo(메모리).** Http 미연동.
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 슬롯
 

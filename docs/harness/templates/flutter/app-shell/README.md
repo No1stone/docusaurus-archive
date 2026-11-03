@@ -6,7 +6,7 @@ description: Flutter 메인 셸, 하단 탭 원셋
 # App shell
 
 > **상태: 구현 완료, Demo.**
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 슬롯
 

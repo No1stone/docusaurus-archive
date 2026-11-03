@@ -6,7 +6,7 @@ description: 공통 UI, 인터랙션·로딩, 원셋 진입 카탈로그
 # UI catalog
 
 > **상태: 구현 완료.**
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 > 공통 기준: [loading-action-ux](/docs/knowledge/frontend/design/loading-action-ux)
 
 ## 코드

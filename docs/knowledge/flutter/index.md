@@ -81,5 +81,6 @@ LoginPage
 
 ## 관련
 
-- [Client](/docs/knowledge/client/)
-- 설치 메모(이력): [flutter 설치](/docs/knowledge/k-flutter)
+- 웹 CMS FE: [Frontend](/docs/knowledge/frontend/)
+- 구 메모: [Legacy](./legacy/)
+- 설치 메모(이력): [flutter-brew-install](./legacy/flutter-brew-install)

@@ -104,7 +104,10 @@ Flutter도 같은 경량 헥사 책임입니다. 화면 연결 이름만 ViewMod
 - Profile: [cms-backoffice-fe](/docs/harness/profiles/cms-backoffice-fe)
 - Orchestration: [frontend-cms-one-set](/docs/harness/orchestrations/frontend-cms-one-set), [frontend-auth-shell](/docs/harness/orchestrations/frontend-auth-shell)
 
-## Client와의 구분
+## 앱 축 구분
 
-[Client](/docs/knowledge/client/)는 브라우저 일반, Flutter, WebRTC 메모입니다.
-CMS 업무 백오피스 FE 하네스는 본 Frontend 트리를 씁니다.
+| 축 | 역할 |
+|----|------|
+| 본 Frontend | 웹 CMS 백오피스 하네스 |
+| [Flutter](/docs/knowledge/flutter/) | 모바일 Flutter 경량 헥사·원셋 |
+| [Legacy](./legacy/) | 브라우저·WebRTC 등 구 메모 |

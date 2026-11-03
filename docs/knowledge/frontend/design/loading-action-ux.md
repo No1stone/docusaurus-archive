@@ -80,5 +80,5 @@ description: 클릭, pending, Toast, Skeleton, 재조회. 웹과 Flutter 공통
 
 ## 관련
 
-- Flutter: [oneset-demo-runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook), [ui-catalog](/docs/harness/templates/flutter/ui-catalog/)
+- Flutter: [oneset-demo-runbook](/docs/knowledge/flutter/oneset-demo-runbook), [ui-catalog](/docs/harness/templates/flutter/ui-catalog/)
 - CMS: [cms-crud](/docs/harness/templates/frontend/cms-crud/), [UIConventions](/docs/knowledge/frontend/conventions/UIConventions)

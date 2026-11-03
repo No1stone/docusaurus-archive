@@ -552,6 +552,18 @@ const config: Config = {
             to: '/docs/knowledge/k-browser-guid',
           },
           {
+            from: '/docs/knowledge/client',
+            to: '/docs/knowledge/frontend',
+          },
+          {
+            from: '/docs/knowledge/client/flutter-harness',
+            to: '/docs/knowledge/flutter',
+          },
+          {
+            from: '/docs/knowledge/client/flutter-harness/oneset-demo-runbook',
+            to: '/docs/knowledge/flutter/oneset-demo-runbook',
+          },
+          {
             from: '/docs/knowledge/data/redis/caching-annotation',
             to: '/docs/knowledge/k-caching-annotation',
           },

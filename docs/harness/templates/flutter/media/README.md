@@ -6,7 +6,7 @@ description: 미디어 목록→미리보기 Demo 골격
 # Media
 
 > **상태: Demo 골격.** 업로드, 카메라, 클라우드는 미연동입니다.
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 

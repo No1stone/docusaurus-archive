@@ -6,7 +6,7 @@ description: 위치 목록→선택·상세 Demo 골격
 # Map
 
 > **상태: Demo 골격.** 지도 SDK, 길찾기는 미연동입니다.
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 

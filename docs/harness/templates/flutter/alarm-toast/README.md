@@ -6,7 +6,7 @@ description: 인앱 알림 목록과 토스트. OS 푸시와 구분
 # Alarm toast
 
 > **상태: 구현 완료, Demo.** OS 푸시 미연동.
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 

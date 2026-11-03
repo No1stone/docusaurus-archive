@@ -6,7 +6,7 @@ description: 빈, 오류, 재시도
 # Empty error
 
 > **상태: 구현 완료.**
-> [runbook](/docs/knowledge/client/flutter-harness/oneset-demo-runbook)
+> [runbook](/docs/knowledge/flutter/oneset-demo-runbook)
 
 ## 코드
 
