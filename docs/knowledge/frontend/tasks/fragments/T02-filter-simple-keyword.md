@@ -25,7 +25,7 @@ title: T02 filter simple keyword
 ## 코드 근거
 
 - `AlarmMessageManagePage.tsx`, `AlarmHistoryManagePage.tsx`
-- `src/components/molecules/filters/README.md`
+- [management-filter-kit](/docs/knowledge/frontend/architecture/management-filter-kit)
 
 ## 검수
 

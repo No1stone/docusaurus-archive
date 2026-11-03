@@ -7,8 +7,8 @@ description: FarmPro FE 하네스 지식 입구. 하드 규칙, 원셋, guidelin
 # Frontend
 
 > **개요:** 콘솔형 FE 하네스의 현재 지식 입구입니다.
-> ExampleItem 원본은 FarmPro FE 저장소 `nutech/fe-v1`입니다.
-> fe-v1 `docs/guidelines`와 `src/guidelines`를 아카이브로 승격한 본문을 포함합니다.
+> **공통 원본은 이 아카이브 Frontend 트리입니다.** fe-v1 로컬 guidelines는 더 이상 쓰지 않습니다.
+> ExampleItem 코드 경로는 FarmPro FE 저장소 `nutech/fe-v1`을 가리킵니다.
 > 구현 원셋은 [Frontend templates](/docs/harness/templates/frontend/)를 봅니다.
 
 ## 하드 규칙
@@ -45,7 +45,7 @@ description: FarmPro FE 하네스 지식 입구. 하드 규칙, 원셋, guidelin
 | [folder-structure](./folder-structure) | 폴더 역할과 호출 방향 |
 | [runtime-architecture](./architecture/runtime-architecture) | 부트스트랩과 인증 상태 |
 | [navigation-contract](./architecture/navigation-contract) | 메뉴 key와 라우트 |
-| [management-filter-kit](./architecture/management-filter-kit) | 필터 molecule |
+| [management-filter-kit](./architecture/management-filter-kit) | 필터 molecule (표준 UI·export 본문) |
 | [ui-composition-rules](./architecture/ui-composition-rules) | 계층 조립, 카드 섹션 |
 | [demo-vs-wired](./architecture/demo-vs-wired) | 데모와 구현 화면 분리 |
 
@@ -82,7 +82,7 @@ description: FarmPro FE 하네스 지식 입구. 하드 규칙, 원셋, guidelin
 | 문서 | 역할 |
 |------|------|
 | [Tasks](./tasks/) | 파이프라인, fragments, pages |
-| [Operations](./operations/) | 빌드 환경, 백로그, 핸드오프 |
+| [Operations](./operations/) | 빌드 환경, 모노레포 런북, 백로그, 핸드오프 |
 | [Conventions](./conventions/) | Code/UI 컨벤션, 프롬프트 |
 
 ## 원셋과 프로필

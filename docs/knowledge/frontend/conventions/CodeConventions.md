@@ -129,7 +129,7 @@ src/
 
 - 목록+검색+시트 구조인 페이지는 전부 `ManagementPageLayout` 사용.
 - 전달 props: `filter`, `list`, `sheets`, `error`, `errorMessage`, `pagination` 등 (`filter` / `list` 슬롯).
-- 필터 공통 UI: `components/molecules/filters/` (`FilterDateRangeField`, `ManagementFilterPanel`) + `FilterSearchButtons`. 상세는 `filters/README.md`, 하네스 `docs/knowledge/frontend/architecture/management-filter-kit.md`.
+- 필터 공통 UI: `components/molecules/filters/` (`FilterDateRangeField`, `ManagementFilterPanel`) + `FilterSearchButtons`. 상세는 [management-filter-kit](/docs/knowledge/frontend/architecture/management-filter-kit).
 
 ### 3.3 페이지 키 (라우팅)
 
