@@ -35,13 +35,12 @@ Page·Component
 LoginPage
   → useLogin
       → LoginFlow
-          1. SignIn
-          2. LoadProfile
-          3. (선택) RegisterDeviceToken
-      → 각 Repository 등 인터페이스
-          → Http… / Demo… 구현체
+          SignIn                    → AuthRepository         → Http / Demo
+          LoadProfile               → ProfileRepository      → Http / Demo
+          (선택) RegisterDeviceToken → DeviceTokenRepository  → Http / Demo
 ```
 
+각 개별 기능(UseCase)이 **자기 계약(Repository 등)** 을 쓰고, Flow는 그 기능들을 순서·조건으로 조합합니다.
 ## 책임과 네이밍 (FE 감각 · 닫힌 목록 아님)
 
 | 역할 | 책임 | 이름 감각 | 예 |
