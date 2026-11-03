@@ -15,6 +15,7 @@ title: README
 ## 원칙
 
 - 세션마다 **파이프라인 문서 1개만** 연다 (BE-03, FE-04 등).
+- FE 구현은 **경량 헥사** (개별 기능·Flow·Repository·Http). `api/`·`hooks` 직결은 이력. [application-structure](/docs/knowledge/frontend/architecture/application-structure)
 - Card·Chip·오딧·BFF는 해당 태스크 문서 안에만 적혀 있음.
 - 상위 문서·인덱스·마스터는 막혔을 때만.
 

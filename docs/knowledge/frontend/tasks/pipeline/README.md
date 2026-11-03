@@ -53,7 +53,9 @@ title: README
 | # | 문서 |
 |---|------|
 | FE-01a/b | [FE-01a](./FE-01a-filter-portal.md) · [FE-01b](./FE-01b-filter-simple.md) |
-| FE-08 | [FE-08-mutations-download.md](./FE-08-mutations-download.md) |
+| FE-02 | [FE-02](./FE-02-api-list.md) — 목록 Repository + Http |
+| FE-03 | [FE-03](./FE-03-hooks-list.md) — List 기능 + 화면 연결 훅 |
+| FE-08 | [FE-08](./FE-08-mutations-download.md) — CUD·Export 기능·훅 |
 | FE-10 | [FE-10-i18n.md](./FE-10-i18n.md) |
 
 ### QA (구현 직후 1:1)

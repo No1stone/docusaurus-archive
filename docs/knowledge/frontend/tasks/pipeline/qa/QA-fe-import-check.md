@@ -30,8 +30,10 @@ title: QA fe import check
 | `JpaAuditInfoSection` | `components/...` |
 | `formatFarmDt` / `formatFarmAuditDt` | `utils/farmLivestockDisplay` 등 |
 | `useTranslation` + namespace | `react-i18next` + `i18n` 키 파일 |
-| React Query hooks | `hooks/use*` |
-| shadcn/ui | `components/ui/*` |
+| 화면 연결 훅 | `presentation/hooks` 또는 이력 `hooks/use*` |
+| 개별 기능 / Flow | `application/…` |
+| Repository · Http | `ports/…`, `adapters/http/…` |
+| shadcn/ui | `components/ui/*` 또는 `shared/ui` |
 
 ### 3. 빌드 (권장 — import 누락 조기 발견)
 

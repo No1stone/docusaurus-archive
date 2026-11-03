@@ -120,15 +120,15 @@ title: CRUD IMPLEMENTATION RUNBOOK
 | [BE-05](./BE-05-controller-write.md) | POST/PUT/DELETE |
 | [FE-01a](./FE-01a-filter-portal.md) | 포털 필터 |
 | [FE-01b](./FE-01b-filter-simple.md) | 단순 필터 |
-| [FE-02](./FE-02-api-list.md) | `api/*.ts` 목록 |
-| [FE-03](./FE-03-hooks-list.md) | `use*List` |
+| [FE-02](./FE-02-api-list.md) | 목록 Repository + Http Adapter |
+| [FE-03](./FE-03-hooks-list.md) | `List…` 개별 기능 + 화면 연결 훅 |
 | [FE-04](./FE-04-page-list.md) | Layout·Table·Badge |
 | [FE-09](./FE-09-id-display-labels.md) | 목록·상세 **id 숨김·이름 표시** |
 | [FE-05](./FE-05-list-chip.md) | 목록 Chip (공통코드) |
 | [FE-06](./FE-06-detail-audit.md) | Card 상세 본문 |
 | [FE-06b](./FE-06b-audit-jpa.md) | **JpaAuditInfoSection** + TZ |
 | [FE-07](./FE-07-form-crud.md) | FormSheet |
-| [FE-08](./FE-08-mutations-download.md) | mutation·비활성·XLS |
+| [FE-08](./FE-08-mutations-download.md) | Create/Update/Deactivate/Export 기능·훅·(선택) Flow |
 | [FE-10](./FE-10-i18n.md) | **i18n** ko/en |
 | [qa/README.md](./qa/README.md) | **항목별 QA** (`QA-after-*`) |
 | [qa/QA-signoff.md](./qa/QA-signoff.md) | 마감 체크 (선택) |
