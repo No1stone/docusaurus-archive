@@ -1,63 +1,75 @@
 ---
 title: CMS CRUD
-description: 관리 CRUD 본진 원셋. DeviceProduction ExampleItem
+description: 관리 CRUD 본진 원셋. 경량 헥사 가이드
 ---
 
 # CMS CRUD
 
-> **개요:** 콘솔 관리 CRUD 본진 원셋입니다.
-> ExampleItem: `DeviceProductionManagePage` (보조: `LivestockInfoManagePage`).
-> 본진 ExampleItem은 **wired** 트랙입니다. 신규 메뉴는 데모로 슬롯을 맞춘 뒤 wired로 승격할 수 있습니다.
-> [demo-vs-wired](/docs/knowledge/frontend/architecture/demo-vs-wired)
+> **상태: 가이드.** 슬롯·경량 헥사 조립 기준으로 씁니다.
+> ExampleItem `DeviceProductionManagePage`는 이력 참고. download `f.*` 미선언 → 검증된 예제 아님.
+> [fe-v1-findings](/docs/knowledge/frontend/operations/fe-v1-findings) · [application-structure](/docs/knowledge/frontend/architecture/application-structure)
 
-## 슬롯 (전부 필수)
+## 슬롯
+
+### 필수
 
 | 슬롯 | 요구 |
 |------|------|
 | filter | 포털 Select 또는 keyword+status. 공통코드는 Select+nameMaps |
-| table | 서버 페이징, 상태 Badge, 공통코드 Chip |
+| list | `ManagementPageLayout` **list**. 서버 페이징, Badge. 표는 `ManagementTableShell` |
 | detail | 행 클릭 Sheet/Card |
 | form | 등록/수정 스키마 폼 |
-| loading | Skeleton 또는 테이블 placeholder |
-| empty | 빈 안내 |
-| error | 로드 실패 UI/토스트 |
+| loading / empty / error | Skeleton·빈·실패 |
 | action pending | 저장/비활성 중복 제출 방지 |
-| excel download | 목록 export 시 필수. FE 페이징 조회 + `downloadAdvancedExcel` ([excel-download](../excel-download/)) |
 | dark / responsive | 하드 계약 |
 
-## 짧은 조립 스케치
+### 기능 있을 때
+
+| 슬롯 | 요구 |
+|------|------|
+| Chip / Select+nameMaps | 공통코드 있을 때 |
+| excel download | export 있을 때. [excel-download](../excel-download/) |
+
+## 경량 헥사 조립 스케치
 
 ```text
-Page
-  useFiltersStore (draft -> applied)
-  useDomainListQuery(applied)
-  useDomainCodeLabels() -> nameMaps
-  ManagementPageLayout
-    filter: *SearchForm
-    table: ManagementTableShell + Chip columns
-    sheets: DetailSheet, FormSheet (mutation.isPending), DownloadModal
+presentation/
+  XxxManagePage
+  useXxxManage          # 화면 연결: 필터 UI, 캐시, Flow/기능 호출
+application/
+  ListXxx / LoadXxxDetail / SaveXxx / DeactivateXxx   # 개별 (직접 호출 가능)
+  XxxManageFlow                                       # 필요할 때만 조합
+ports/
+  XxxRepository                                       # 계약
+adapters/
+  http/HttpXxxRepository
+  demo/DemoXxxRepository
+app/composition/                                      # 계약 ← 구현 연결
+
+ManagementPageLayout
+  filter / list / sheets
 ```
 
-## ExampleItem 경로
+단일 목록 조회는 `useXxxManage` → `ListXxx` 직접 호출로 충분할 수 있습니다.
+등록+후속 처리처럼 조합이 있으면 Flow를 둡니다.
+
+## ExampleItem 경로 (이력)
 
 | 역할 | 경로 |
 |------|------|
-| 골드 페이지 | `src/components/pages/DeviceProductionManagePage.tsx` |
+| 페이지 | `src/components/pages/DeviceProductionManagePage.tsx` |
 | 레이아웃 | `src/components/templates/ManagementPageLayout.tsx` |
-| 필터 kit | `src/components/molecules/filters/` |
-| 공통코드 훅 | `src/hooks/useCommonCodes.ts` |
+| 훅·api | `src/hooks/useDeviceProductions.ts`, `src/api/deviceProductions.ts` |
 | DownloadModal | `src/components/organisms/DownloadModal.tsx` |
-| Excel util | `src/utils/excel.ts` |
-| Knowledge | [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set), [excel-download](../excel-download/) |
+| Knowledge | [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set) |
 
 ## 스모크
 
 - [ ] 필터 조회 후 목록 갱신
-- [ ] Chip/Badge에 raw code 없음
-- [ ] 상세 열기, 수정 저장 pending
-- [ ] 다운로드: applied 필터 반영, 100건 초과 순회, xlsx 저장
-- [ ] 빈 결과와 에러 상태 확인
-- [ ] 다크 모드와 768px 폭에서 조작 가능
+- [ ] Chip/Badge raw code 없음 (공통코드 있을 때)
+- [ ] 상세·저장 pending
+- [ ] (export) applied 필터, 페이징 순회, xlsx
+- [ ] 빈·에러·다크·768px
 
 ## 오케스트레이션
 

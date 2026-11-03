@@ -27,7 +27,7 @@ description: 읽기 전용 보고 원셋. fe-v1 데모에서 쓰인 패턴을 �
 | 슬롯 | 요구 |
 |------|------|
 | filter | 포털 스코프, 기간, keyword 등. 공통 kit 또는 `MenuFilterPanel` 계열 |
-| readonly table | `ManagementTableShell` + 행 클릭 시 읽기 상세 |
+| list (읽기) | `ManagementPageLayout` **list** prop. `ManagementTableShell` + 행 클릭 시 읽기 상세 |
 | detail readonly | Card 섹션 조립 ([ui-composition-rules](/docs/knowledge/frontend/architecture/ui-composition-rules)) |
 | loading / empty / error | CMS와 동일 계열 ([loading-action-ux](/docs/knowledge/frontend/design/loading-action-ux), [error-timeout-policy](/docs/knowledge/frontend/integration/error-timeout-policy)) |
 | cache | 목록/상세 키 분리, 조회 파라미터를 key에 포함 ([query-cache-rules](/docs/knowledge/frontend/state/query-cache-rules)) |
@@ -43,8 +43,8 @@ ReportPage
   codeLabels -> nameMaps
   ManagementPageLayout
     filter: MenuFilterPanel | *SearchForm
-    table: ManagementTableShell (읽기)
-    detail: *DetailSheet (Card 섹션, 감사 정보 블록)
+    list: ManagementTableShell (읽기)
+    sheets: *DetailSheet (Card 섹션, 감사 정보 블록)
 ```
 
 데모: `data/*Mocks` + 동일 슬롯.

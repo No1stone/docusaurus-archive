@@ -1,60 +1,51 @@
 ---
 title: Excel download
-description: CMS 목록 엑셀 다운로드 원셋. FE에서 페이징 조회 후 파일 생성
+description: 목록 엑셀. 화면 연결 → Export 기능 → 계약 → Http
 ---
 
 # Excel download
 
-> **개요:** CMS 업무 백오피스에서 목록을 엑셀로보낼 때 쓰는 FE 원셋입니다.
-> 서버가 파일을 직접 주는 방식이 아니라, **FE가 `fetch*ForDownload`로 페이지를 순회한 뒤 `downloadAdvancedExcel`로 xlsx를 만듭니다.**
-> ExampleItem 경로 예: `nutech/fe-v1`.
-
-CMS CRUD와 같이 쓰는 경우가 많습니다. 단독 리포트 export에도 동일 슬롯을 씁니다.
+> **상태: 가이드.** applied 필터·pending·실패 처리가 기준입니다.
+> 신규: **FE가 Export 기능으로 페이지를 순회한 뒤** `downloadAdvancedExcel`로 xlsx를 만듭니다.
+> Page에서 `fetch*ForDownload` 직접 호출은 ExampleItem **이력**입니다.
+> [application-structure](/docs/knowledge/frontend/architecture/application-structure) · [fe-v1-findings](/docs/knowledge/frontend/operations/fe-v1-findings)
 
 ## 슬롯
 
 | 슬롯 | 요구 |
 |------|------|
 | open trigger | 목록 툴바 다운로드 버튼 |
-| DownloadModal | 우측 Sheet. 필터 + 진행 상태 + 저장 |
-| DownloadSearchForm | 목록과 같은 keyword/status(또는 동등 필터) |
-| fetchForDownload | page 0..n, **size=100**, progress 콜백 |
-| excel write | `downloadAdvancedExcel` (컬럼 정의, filename, sheetName) |
-| pending / error | 조회 중·실패 토스트. 저장 중 중복 클릭 방지 |
-| filter seed | 모달 오픈 시 목록 **applied** 필터를 initial로 |
+| DownloadModal | 우측 Sheet. 필터 + 진행 + 저장 |
+| DownloadSearchForm | 목록과 동등 필터 |
+| Export 기능 | page 순회, size 기본 예 100, progress 콜백. 계약→Http |
+| excel write | `downloadAdvancedExcel` |
+| pending / error | 조회 중·실패 토스트. 중복 클릭 방지 |
+| filter seed | 모달 오픈 시 목록 **applied** 필터 |
 
 ## 조립 스케치
 
 ```text
 ManagePage
-  appliedFilters
-  openDownload -> DownloadModal
-    initialFilters = appliedFilters
-    load: fetch*ForDownload(filters, onProgress)  # 100건씩
-    save: downloadAdvancedExcel(rows, columns, filename, sheetName)
+  useXxxManage / useXxxExport     # 화면 연결
+    → ExportXxxList (개별 기능)
+        → XxxRepository.listForExport…
+            → HttpXxxRepository
+    → downloadAdvancedExcel(rows, columns, filename, sheetName)
+  DownloadModal (applied 시드, pending)
 ```
 
-JSON 통짜 컬럼은 엑셀에서 기본 제외합니다. 필요하면 별도 컬럼 설계합니다.
-
-## ExampleItem 경로
+## ExampleItem 경로 (이력)
 
 | 역할 | 경로 |
 |------|------|
 | Modal | `src/components/organisms/DownloadModal.tsx` |
-| Excel util | `src/utils/excel.ts` (`downloadAdvancedExcel`) |
-| API 패턴 | `fetch*ForDownload` (예: deviceProductions, sigungus) |
+| Excel util | `src/utils/excel.ts` |
+| API 패턴 | `fetch*ForDownload` in `src/api/*.ts` |
 | 페이지 연결 | `DeviceProductionManagePage` DownloadModal 블록 |
-| Knowledge | [T06](/docs/knowledge/frontend/tasks/fragments/T06-crud-mutations-download), [FE-08](/docs/knowledge/frontend/tasks/pipeline/FE-08-mutations-download), [console-management-crud-set §6](/docs/knowledge/frontend/integration/console-management-crud-set) |
 
 ## 스모크
 
-- [ ] 목록 필터가 다운로드 모달 initial에 반영됨
-- [ ] 100건 초과 시 페이지 순회(progress 표시)
-- [ ] xlsx 저장 후 토스트
-- [ ] 실패 시 사용자 메시지, pending 해제
-- [ ] 다크 모드에서 Sheet 대비
-
-## 관련 원셋
-
-- [cms-crud](/docs/harness/templates/frontend/cms-crud/) — sheets에 DownloadModal 포함
-- [report-readonly](/docs/harness/templates/frontend/report-readonly/) — 읽기 목록 export 시 동일 패턴
+- [ ] applied 필터가 모달 initial에 반영
+- [ ] size 초과 시 순회·progress
+- [ ] 실패 토스트, pending 중 중복 클릭 방지
+- [ ] 언마운트 시 늦은 결과 무시

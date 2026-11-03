@@ -5,8 +5,8 @@ description: 요약 카드와 위젯 조립 화면입니다.
 
 # Dashboard
 
-> **개요:** 요약 카드와 위젯 조립 화면입니다.
-> ExampleItem 저장소: `nutech/fe-v1`.
+> **상태: 가이드.** 복사 대상 경로 **미지정**.
+> 슬롯만 맞춥니다. 검증된 예제가 아닙니다.
 
 ## 슬롯
 
@@ -20,7 +20,7 @@ description: 요약 카드와 위젯 조립 화면입니다.
 
 | 역할 | 경로 |
 |------|------|
-| 라우트 | `src/components/templates/RouteTemplate.tsx (대시보드 case)` |
+| 참고 | **미지정** — 대시보드 case가 있으면 그때 경로를 적습니다 |
 
 ## 스모크
 

@@ -1,13 +1,12 @@
 ---
 title: Orchestration frontend-cms-one-set
-description: CMS CRUD 원셋 작업 레시피
+description: CMS CRUD 경량 헥사 원셋 레시피
 ---
 
 # Orchestration: `frontend-cms-one-set`
 
-> **개요:** CMS 관리 CRUD 원셋을 맞춘 뒤 도메인만 채웁니다.
-> 안내는 [`templates/frontend/ONESET.md`](/docs/harness/templates/frontend/ONESET)와 [`cms-crud`](/docs/harness/templates/frontend/cms-crud/)입니다.
-> 기본은 단일 에이전트입니다.
+> **개요:** CMS 관리 CRUD를 경량 헥사 원셋에 맞춘 뒤 도메인만 채웁니다.
+> [ONESET](/docs/harness/templates/frontend/ONESET) · [cms-crud](/docs/harness/templates/frontend/cms-crud/) · [application-structure](/docs/knowledge/frontend/architecture/application-structure)
 
 | Field | Value |
 |-------|--------|
@@ -17,51 +16,43 @@ description: CMS CRUD 원셋 작업 레시피
 
 ## 적용 조건
 
-**적용합니다.**
+**적용합니다.** 관리 메뉴에 필터·목록·상세·등록/수정/비활성 골격을 추가·정비할 때.
 
-- 관리 메뉴에 필터, 목록, 상세, 등록/수정/비활성 골격을 추가하거나 정비할 때
-- CMS 업무 백오피스 FE 또는 동일 슬롯 계약을 쓰기로 한 콘솔 FE
-
-**적용하지 않습니다.**
-
-- 로그인/레이아웃만 → [`frontend-auth-shell`](/docs/harness/orchestrations/frontend-auth-shell)
-- 읽기 전용 리포트만 → `report-readonly` 원셋 README
-- 백엔드 API만 → [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
+**적용하지 않습니다.** 로그인/레이아웃만 → `frontend-auth-shell`. 읽기 전용만 → `report-readonly`. BE만 → `spring-api-one-set`.
 
 ## 입력
 
-- 도메인명, 메뉴 key, API 목록/단건/CUD 경로
-- 필터 필드, 공통코드 typeId 목록
-- 로컬 기동 URL과 빌드 명령
+- 도메인명, 메뉴 key, API 경로, export·비활성·공통코드 여부
+- 타입 검사 / 번들 빌드 명령
 
 ## 읽을 문서
 
-폴더 전체를 읽지 않습니다.
-
 | Path | 역할 |
 |------|------|
-| `docs/harness/templates/frontend/cms-crud/README.md` | 슬롯과 경로 |
-| `docs/harness/templates/frontend/excel-download/README.md` | 목록 엑셀 (FE 처리) |
-| `docs/harness/templates/frontend/ONESET.md` | ExampleItem 규칙 |
+| `docs/knowledge/frontend/architecture/application-structure.md` | 경량 헥사·네이밍 |
+| `docs/knowledge/frontend/folder-structure.md` | 폴더 예시 |
+| `docs/harness/templates/frontend/cms-crud/README.md` | 슬롯 |
+| `docs/harness/templates/frontend/excel-download/README.md` | export 있을 때 |
 | `docs/knowledge/frontend/integration/console-crud-base-set.md` | 기본셋 |
-| `docs/knowledge/frontend/integration/common-code-fe-harness.md` | Chip/Select |
+| `docs/knowledge/frontend/integration/common-code-fe-harness.md` | Chip 있을 때 |
 | `docs/knowledge/frontend/design/loading-action-ux.md` | Skeleton, pending |
 | `docs/harness/workflows/acceptance.md` | 통과 기준 |
 
 ## 작업 순서
 
-1. 메뉴 key, RouteTemplate, 사이드바를 맞춥니다.
-2. api, hooks, store, page 골격을 folder-structure에 맞게 둡니다.
-3. cms-crud 슬롯을 채웁니다 (필터, 표, 시트, pending).
-4. 목록 export가 있으면 excel-download 슬롯을 붙입니다 (`DownloadModal`, 100건 순회).
-5. 공통코드 nameMaps와 Chip/Badge를 연결합니다.
-6. typecheck 또는 프로젝트 build를 실행합니다.
-7. Chrome smoke로 원셋 체크리스트를 확인합니다 (다운로드 포함).
-8. 필요 시 Playwright 스펙을 추가합니다.
+1. 메뉴 key, RouteTemplate, 사이드바.
+2. feature 골격: presentation / application / ports / adapters. Store는 필요할 때만. composition에서 계약←구현.
+3. 화면 연결 `useXxx` + 개별 기능(목록·저장 등). 조합이 필요하면 Flow.
+4. cms-crud 필수 슬롯 `filter` / `list` / `sheets`.
+5. 공통코드 있으면 nameMaps·Chip. 없으면 건너뜀.
+6. export 있으면 Export 기능→계약→Http + DownloadModal.
+7. 타입 검사 → 번들 빌드 → 브라우저. 미실행은 이유 기록.
+8. 필요 시 Playwright.
 
 ## DoD
 
-- 슬롯 표 전 항목 충족 (export 있으면 엑셀 순회·저장 포함)
-- raw code UI 없음
-- 다크와 기본 반응형 스모크 통과
-- browser-manual 증거(스냅샷 또는 체크 목록) 기록
+- 있는 슬롯만 충족 (Chip·export·비활성은 조건부)
+- Page·훅의 Http 직접 호출 없음
+- 타입 / 번들 / 브라우저 각각 실행 또는 미실행 이유
+- Vite 빌드 ≠ 타입 통과
+- 다크·반응형 스모크(브라우저 했을 때)
