@@ -20,6 +20,9 @@ status: active
 - Name 맵은 Port **`findAllName` + `Filter.ids`(IN 조회)** 로만 채웁니다.
 - **Item / `findByIds`로 대체하지 않습니다.** 연관과 무거운 컬럼이 끌려옵니다.
 - Spec의 `ids` IN(`PredicateBuilder.in`)과 맞춥니다.
+- 원셋 기본은 문자열 필드 치환(`applyCreatedByDisplayNames`)입니다.
+  `Item.createdByName`처럼 **Name 객체를 필드에 두는 확장**은
+  [유스케이스와 DTO](/docs/harness/templates/backend/spring/db-design/usecase-dto)로 갑니다.
 
 ## 캐시와의 관계
 

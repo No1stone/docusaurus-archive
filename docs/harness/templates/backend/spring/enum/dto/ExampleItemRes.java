@@ -53,6 +53,5 @@ public class ExampleItemRes {
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Item extends Single {
-        // 변수 없음
     }
 }

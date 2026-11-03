@@ -2,6 +2,8 @@ package com.example.template.exampleitem.facade;
 
 import com.example.template.exampleitem.dto.ExampleItemReq;
 import com.example.template.exampleitem.dto.ExampleItemRes;
+import com.example.template.exampleitem.persistence.ExampleItemPort;
+import com.example.template.exampleitem.support.display.DisplayNameResolver;
 import com.example.template.support.BizErrorException;
 import com.example.template.support.ResponseType;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +18,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -29,6 +33,9 @@ class ExampleItemFacadeTest {
 
     @Mock
     private ExampleItemPort exampleItemPort;
+
+    @Mock
+    private DisplayNameResolver displayNameResolver;
 
     @InjectMocks
     private ExampleItemFacade exampleItemFacade;
@@ -50,7 +57,7 @@ class ExampleItemFacadeTest {
     }
 
     @Test
-    @DisplayName("정상: 단건 조회는 Port Item을 그대로 반환한다")
+    @DisplayName("정상: 단건 조회는 Port Item을 반환하고 표시명 resolver를 호출한다")
     void findByIdReturnsItem() {
         ExampleItemRes.Item item = new ExampleItemRes.Item();
         item.setId(10L);
@@ -63,6 +70,7 @@ class ExampleItemFacadeTest {
         assertEquals(10L, actual.getId());
         assertEquals("GET", actual.getHttpMethod());
         assertEquals("/demo", actual.getUrl());
+        verify(displayNameResolver).applyCreatedByDisplayNames(anyList(), any(), any());
     }
 
     @Test
@@ -73,6 +81,7 @@ class ExampleItemFacadeTest {
         List<ExampleItemRes.Item> actual = exampleItemFacade.findByIds(List.of());
 
         assertTrue(actual.isEmpty());
+        verify(displayNameResolver).applyCreatedByDisplayNames(anyList(), any(), any());
     }
 
     @Test

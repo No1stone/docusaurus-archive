@@ -48,11 +48,14 @@ public class ExampleItemRes {
         private String response;
     }
 
+    /**
+     * 목록·상세 기본. 원셋은 연동 로그라 연관 필드 없음.
+     * Item에 Name·타 도메인을 붙이는 확장 예 → db-design/usecase-dto
+     */
     @Schema(description = "ExampleItemRes.Item DTO")
     @Data
     @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public static class Item extends Single {
-        // 변수 없음
     }
 }

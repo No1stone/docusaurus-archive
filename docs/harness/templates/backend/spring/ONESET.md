@@ -78,6 +78,7 @@ exampleitem/
 - **Outbound만 Port·Adapter** — `persistence/` (영속), 통신은 `client/` (`*ClientPort` / `*ClientAdapter`)
 - **표시명** — 도메인 진입이 `DisplayNameResolver`로 Name 조회 결과를 붙임. BFF는 그 결과를 조합합니다.
   Name 맵은 `findAllName` + `Filter.ids`(IN)만 사용합니다. Item `findByIds`는 쓰지 않습니다.
+- **Item 확장** — 원셋 `Item`은 얇게 유지합니다. Name 객체·타 도메인 조립 예는 [유스케이스와 DTO](./db-design/usecase-dto)로 갑니다.
 
 ## 그대로 복사 / 프로젝트별로 채움
 

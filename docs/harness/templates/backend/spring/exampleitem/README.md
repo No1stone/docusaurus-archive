@@ -12,7 +12,9 @@ exampleitem/
 ```
 
 Outbound 영속만 Port·Adapter를 둡니다. Inbound Port는 두지 않습니다.
-DomainFacade는 조회 후 `DisplayNameResolver`로 Name 표시명을 채웁니다.
+DomainFacade는 조회 후 `DisplayNameResolver`로 감사 표시명 문자열을 보정합니다.
+원셋 `Item`은 얇게 유지합니다. **Item 확장·연관 조립 예**는
+[유스케이스와 DTO](/docs/harness/templates/backend/spring/db-design/usecase-dto)로 갑니다.
 
 모노리포: 진입만 api, DomainFacade·Resolver·dto·persistence는 model.
 BffFacade·GraphQL은 api (원셋 코드 없음).
