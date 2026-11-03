@@ -99,7 +99,7 @@ packages/
 | partner.farmpro.me | `/home/ubuntu/fe/partner` |
 | farm.farmpro.me | `/home/ubuntu/fe/farm` |
 
-빌드 산출물: `dist/console`, `dist/partner`, `dist/farm`.  
+빌드 산출물: `dist/console`, `dist/partner`, `dist/farm`.
 SPA: `try_files $uri $uri/ /index.html` 대응.
 
 ---

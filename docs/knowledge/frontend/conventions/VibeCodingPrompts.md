@@ -8,66 +8,65 @@ title: VibeCodingPrompts
 
 # 바이브코딩용 프롬프트 (규칙 적용)
 
-AI에게 작업을 맡길 때 **먼저 프로젝트 규칙을 적용하라고** 안내하면, 네이밍·구조·UI가 기존 코드와 맞습니다.  
-아래는 이 레포의 `CodeConventions.md`, `UIConventions.md` 를 전제로 한 **추천 프롬프트** 예시입니다.  
-복사해서 채워 쓰거나, 상황에 맞게 수정해서 쓰면 됩니다.
+AI에게 작업을 맡길 때 **먼저 프로젝트 규칙을 적용하라고** 안내하면, 네이밍·구조·UI가 기존 코드와 맞습니다.
+아래는 아카이브 Frontend conventions를 전제로 한 **추천 프롬프트** 예시입니다.
+옛 `src/guidelines` 경로는 쓰지 않습니다.
 
 ---
 
-## 📌 공통 전제 (거의 모든 요청에 붙이기)
-
-작업 전에 규칙을 읽으라고 한 줄 넣어 두면 효과적입니다.
+## 공통 전제 (거의 모든 요청에 붙이기)
 
 ```
-이 프로젝트의 코드·UI 규칙을 따르면서 해줘. 
-규칙은 src/guidelines/CodeConventions.md(네이밍·구조), src/guidelines/UIConventions.md(UI·스타일) 에 정리돼 있어. 
-먼저 두 문서를 참고한 다음 작업해줘.
+이 프로젝트의 코드·UI 규칙을 따르면서 해줘.
+경량 헥사: docs/knowledge/frontend/architecture/application-structure.md,
+folder-structure.md, state/state-ownership-model.md.
+네이밍·UI: conventions/CodeConventions.md(Legacy §3.6 제외), UIConventions.md.
+Page → useXxx → 개별 기능|Flow → Repository 등 ← Http/Demo. BE Facade 강제 없음.
+먼저 참고한 다음 작업해줘.
 ```
 
-짧게 쓰고 싶을 때:
+짧게:
 
 ```
-src/guidelines/CodeConventions.md, UIConventions.md 규칙 따라서 해줘.
+application-structure(경량 헥사) + conventions 따라줘. Legacy §3.6·api 직접 호출 금지.
 ```
 
 ---
 
 ## 1. 새 CRUD 관리 화면 추가 (관리 콘솔 Web BFF 1세트)
 
-**CMS 백오피스 관리 콘솔 + api-console Web API** 는 아래 하네스 2개를 **한 세트**로 따른다.
+한 세트 진입:
 
-- FE: `docs/knowledge/frontend/integration/console-management-crud-set.md`
-- BE: `be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md`
-- 레퍼런스 구현: `DeviceProduction` / `DeviceProductionManagePage`
+- FE: `docs/knowledge/frontend/integration/console-management-crud-set.md` (복사용 프롬프트·교체 항목 포함)
+- Profile: `docs/harness/profiles/cms-backoffice-fe.md`
+- BE: 대상 계약 (예: `be-v1/.../console-web-bff-management-crud-set.md`)
+- 레퍼런스: `DeviceProduction` (가이드. download 이슈는 fe-v1-findings)
 
 ```
-[도메인명] 관리 콘솔 화면 1세트(BE Web BFF + FE)를 추가해줘.
+[도메인명] 관리 콘솔 화면 1세트(BE Web BFF + FE)를 경량 헥사로 추가해줘.
 
 먼저 읽을 문서:
+- docs/knowledge/frontend/architecture/application-structure.md
 - docs/knowledge/frontend/integration/console-management-crud-set.md
-- be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md
-- src/guidelines/CodeConventions.md, UIConventions.md
-- 루트 AGENTS.md
+- docs/harness/templates/frontend/cms-crud/README.md
+- docs/harness/profiles/cms-backoffice-fe.md
+- (BE 있을 때) 대상 Web BFF 문서
+- conventions + 대상 AGENTS.md
 
-BE: WebListQuery/WebCreate/WebUpdate, Specs.forWebList, Facade 4종, DELETE delete-by-ids → status D
-FE: ManagementPageLayout, 서버 페이징, 등록(A 고정)/수정, 비활성 버튼, DownloadModal 100건 페이징 조회
+구조: useXxx · List/Save/Export… · (필요 시) Flow · Repository ← Http/Demo · composition
+Layout filter/list/sheets. Chip·다운로드는 기능 있을 때만.
+ExampleItem api/hooks 경로·A/D·DELETE·size 100·i18n은 교체 가능한 기본값.
 
-DeviceProduction 코드를 복제·치환하는 방식으로 진행해줘.
+검증: 타입 / 번들 / 브라우저 구분. Vite ≠ 타입 통과.
 ```
 
-레거시 Zustand 풀스택 CRUD(파트너·서비스 등)만 필요하면 아래 구버전 프롬프트 사용:
+레거시 Store 복사 CRUD만 손댈 때(신규 금지, 이력 유지용):
 
 ```
-[도메인명] 에 대한 새 CRUD 관리 화면을 추가해줘.
-
-- CodeConventions.md, UIConventions.md 규칙을 따르고,
-- api/ hooks/ stores/ types/ molecules/ organisms/ pages/ 전부 기존 패턴대로 만들어줘.
-- ManagementPageLayout 쓰고, 검색 폼 + 테이블 + 등록/상세/수정 시트 구조로.
-- CodeConventions.md 의 **3.6 목록 페이지 화면 동작 규칙** 그대로 따라줘.
-- App.tsx / RouteTemplate 라우팅 추가.
+[도메인명] 기존 화면만 최소 수정해줘. 신규 패턴으로 바꾸지 마.
+- conventions CodeConventions/UIConventions 네이밍만 맞춤.
+- §3.6 Legacy는 기존 화면에만 유지. 신규 화면에는 쓰지 마.
 ```
-
-도메인만 바꿔서 쓰면 됨: `[파트너]` → `[서비스]`, `[약관]` 등.
 
 ---
 
@@ -122,9 +121,10 @@ DeviceProduction 코드를 복제·치환하는 방식으로 진행해줘.
 ## 6. 버그 수정·기능 수정 (규칙 유지)
 
 ```
-[버그 설명 또는 수정할 기능]. 
+[버그 설명 또는 수정할 기능].
 
-- 수정할 때 기존 코드 스타일과 규칙을 유지해줘. src/guidelines/CodeConventions.md, UIConventions.md 참고해줘.
+- 수정할 때 기존 코드 스타일과 규칙을 유지해줘.
+  docs/knowledge/frontend/conventions/CodeConventions.md, UIConventions.md 참고해줘.
 ```
 
 ---
@@ -132,10 +132,11 @@ DeviceProduction 코드를 복제·치환하는 방식으로 진행해줘.
 ## 7. 문서만 참고하라고 할 때
 
 ```
-다음 작업 할 때: 
-1) src/guidelines/CodeConventions.md 로 네이밍·폴더·api/hooks/stores/페이지 구조 확인하고,
-2) src/guidelines/UIConventions.md 로 색상·Button/Card/Sheet/Form/Table 사용법 확인한 다음,
-그 규칙대로 구현해줘.
+다음 작업 할 때:
+1) docs/knowledge/frontend/folder-structure.md + state/state-ownership-model.md 로 책임·상태 확인하고,
+2) conventions/CodeConventions.md (Legacy §3.6 제외) 로 네이밍 확인하고,
+3) conventions/UIConventions.md 로 Button/Card/Sheet/Form/Table 확인한 다음,
+그 규칙대로 구현해줘. 타입 검사·번들 빌드·브라우저는 구분해서 보고해줘.
 ```
 
 ---
@@ -144,8 +145,8 @@ DeviceProduction 코드를 복제·치환하는 방식으로 진행해줘.
 
 | 하고 싶은 일 | 프롬프트에 넣을 말 |
 |--------------|--------------------|
-| 규칙 적용 공통 | “CodeConventions.md, UIConventions.md 참고해서/따라서 해줘” |
-| 새 CRUD 화면 | 도메인명 + ManagementPageLayout + api/hooks/stores/pages/RouteTemplate/handleNavigate |
+| 규칙 적용 공통 | “Frontend conventions + folder-structure / state-ownership 따라줘” |
+| 새 CRUD 화면 | console-management-crud-set 복사용 프롬프트 + cms-crud 슬롯 (조건부 포함) |
 | 새 시트/모달 | Sheet(또는 Dialog) 구조 + Form + Zod + Button variant + 필수 * 표시 |
 | UI/스타일만 | 시맨틱 토큰 + ui 컴포넌트 + variant, 인라인/hex 자제 |
 | 리팩터링 | “두 문서 규칙에 맞게 리팩터링해줘” |

@@ -42,7 +42,7 @@ title: device production
 | FE-06b | [FE-06b](../FE-06b-audit-jpa.md) | [x] |
 | FE-07 | [FE-07](../FE-07-form-crud.md) | [x] |
 | FE-08 | [FE-08](../FE-08-mutations-download.md) | [x] |
-| QA-01 | [QA-01](../QA-01-verify-menu.md) | [x] |
+| QA-after | [qa/README](../qa/README.md) · [QA-signoff](../qa/QA-signoff.md) | [x] | (구 QA-01) |
 
 ## 파일맵
 

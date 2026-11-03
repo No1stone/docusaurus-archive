@@ -8,7 +8,7 @@ title: BE 02 facade list
 
 # BE-02 — Facade `searchForWeb`
 
-> **선행:** BE-01 · **다음:** BE-03  
+> **선행:** BE-01 · **다음:** BE-03
 > **레퍼런스:** `DeviceProductionFacade.searchForWeb`
 
 ## 이 태스크에서 할 것

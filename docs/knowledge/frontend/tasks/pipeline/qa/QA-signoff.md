@@ -8,7 +8,7 @@ title: QA signoff
 
 # QA-signoff — 메뉴 릴리즈 체크 (선택)
 
-> **선행:** 해당 메뉴의 `QA-after-*` 전부 통과 + **[QA-fe-import-check](./QA-fe-import-check.md)**  
+> **선행:** 해당 메뉴의 `QA-after-*` 전부 통과 + **[QA-fe-import-check](./QA-fe-import-check.md)**
 > **역할:** 통합 테스트 아님 — **체크리스트 마감**만
 
 - pageId: ________

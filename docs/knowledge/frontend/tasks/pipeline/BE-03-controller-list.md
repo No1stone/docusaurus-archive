@@ -8,7 +8,7 @@ title: BE 03 controller list
 
 # BE-03 — Controller `GET` 목록
 
-> **선행:** BE-02 · **다음:** FE-02 또는 BE-04  
+> **선행:** BE-02 · **다음:** FE-02 또는 BE-04
 > **레퍼런스:** `DeviceProductionWebController` `GET`
 
 ## 이 태스크에서 할 것

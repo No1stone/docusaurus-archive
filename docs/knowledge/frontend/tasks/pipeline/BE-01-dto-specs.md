@@ -8,7 +8,7 @@ title: BE 01 dto specs
 
 # BE-01 — Web DTO + Specs `forWebList`
 
-> **선행:** 없음 · **다음:** BE-02  
+> **선행:** 없음 · **다음:** BE-02
 > **레퍼런스:** `DeviceProductionReq.java`, `FarmLivestockRes.java`, `AlarmMessageRes.WebDetail`
 
 ## 이 태스크에서 할 것

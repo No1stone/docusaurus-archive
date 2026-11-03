@@ -8,9 +8,9 @@ title: console management crud set
 
 # [지침] 관리 콘솔 CRUD 화면 1세트 (목록·등록·수정·비활성·다운로드)
 
-> **상태:** `active`  
-> **기준 구현(레퍼런스):** `DeviceProductionManagePage` (디바이스 생산 정보)  
-> **백엔드 짝:** `be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md`  
+> **상태:** `active`
+> **기준 구현(레퍼런스):** `DeviceProductionManagePage` (디바이스 생산 정보)
+> **백엔드 짝:** `be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md`
 > **관련:** [API Integration Contract](./api-integration-contract.md), [Management Filter Kit](./../architecture/management-filter-kit.md)
 
 관리 콘솔(admin)에서 **필터 + 서버 페이징 목록 + 슬라이딩 시트(상세/등록/수정) + 비활성 + 엑셀 다운로드** 를 한 세트로 맞출 때 쓰는 패턴이다.
@@ -21,78 +21,96 @@ title: console management crud set
 
 ## AI 에이전트용 프롬프트 (복사해서 사용)
 
+아래는 **경량 헥사** + ExampleItem 기본값이 섞인 복사용 문구입니다.
+**범용 규칙**과 **교체 항목**을 구분합니다. BE Facade 강제·BE 용어 이식을 하지 않습니다.
+
 ```
-CMS 백오피스 ExampleItem(fe-v1) 관리 콘솔 화면 1세트를 구현해줘.
+CMS 업무 백오피스 관리 콘솔 화면 1세트를 경량 헥사로 구현해줘.
 
 반드시 먼저 읽을 문서:
+- docs/knowledge/frontend/index.md
+- docs/knowledge/frontend/architecture/application-structure.md
+- docs/knowledge/frontend/folder-structure.md
+- docs/knowledge/frontend/state/state-ownership-model.md
 - docs/knowledge/frontend/integration/console-management-crud-set.md (본 문서)
 - docs/knowledge/frontend/integration/api-integration-contract.md
 - docs/knowledge/frontend/architecture/management-filter-kit.md
-- docs/knowledge/frontend/integration/common-code-fe-harness.md (공통코드 필터·Chip·폼 Select 시)
-- be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md (BE Web API)
-- src/guidelines/CodeConventions.md, UIConventions.md
-- 루트 AGENTS.md
+- docs/harness/templates/frontend/cms-crud/README.md
+- docs/harness/profiles/cms-backoffice-fe.md
+- (공통코드 있을 때만) common-code-fe-harness.md
+- (export 있을 때만) excel-download/README.md
+- (BE 있을 때) 대상 Web BFF 문서
+- conventions/CodeConventions.md, UIConventions.md (Legacy §3.6 신규 금지)
+- 대상 저장소 AGENTS.md
 
 도메인: [예: deviceProduction]
-API 베이스: API_CONFIG.BASE_URL + /web/[resource]  (예: /web/device-productions)
-i18n 네임스페이스: [예: deviceProduction]
+API 베이스 / i18n: [대상 계약. 없으면 생략]
 
-요구사항:
-1. ManagementPageLayout + ManagementFilterPanel + ManagementTableShell
-2. 목록: React Query, 서버 page/size, keyword·status 필터(조회 버튼으로 applied 반영)
-3. status UI: 전체/활성/비활성 — (A)/(D) 문구 노출 금지
-4. 등록: POST WebCreate, status 항상 A, 등록 폼에 status·JPA 감사 필드 숨김
-5. 수정: PUT /{id}, status A/D 선택 가능
-6. 비활성: DELETE /delete-by-ids?ids=, 버튼 라벨 "비활성"(deleteLabel), 물리 삭제 아님
-7. 다운로드: DownloadModal(슬라이딩 Sheet), fetchXxxForDownload 100건씩 페이지 순회, downloadAdvancedExcel
-8. 목록 컬럼은 필요 최소만 (예: id, 이름, 상태, 등록일시, 등록자 — 수정자/버전은 목록 제외 가능)
-9. api/, hooks/, types/, pages/, organisms/ 패턴 — DeviceProduction 레퍼런스 복제 후 도메인 치환
+경량 헥사 (하드):
+1. Page → useXxx → 개별 기능(List/Save…) 또는 Flow → Repository 등 계약 ← Http/Demo
+2. 단일 동작은 개별 기능 직접 호출. 조합이 있을 때만 Flow. 전 화면 Flow 강제 없음
+3. Application(Flow·개별 기능)은 React 훅을 호출하지 않음. 캐시는 화면 연결·서버 상태 계층
+4. ManagementPageLayout: filter / list / sheets. loading/empty/error/pending
+5. Store는 로컬 state로 부족할 때만. 서버 목록 Store 복제 금지
+6. Page·훅에서 Http 모듈 직접 호출 금지. export도 useXxx → ExportXxx → 계약 → Http
+7. 같은 계약에 Demo/Http. wired에서 실패를 성공으로 바꾸지 않음
+8. 다크·좁은 폭 조작 가능
 
-완료 기준: 목록 조회·등록·수정·비활성·다운로드 E2E, i18n ko/en 최소, SUCCESS_CODES 처리.
+ExampleItem 기본값 — 대상 계약으로 교체:
+- 캐시 lib 예 React Query, 상태 A/D UI, DELETE 경로, download size 100, SUCCESS_CODES, i18n ko/en
+- DeviceProduction의 api/hooks/pages 경로는 이력 매핑. 신규는 features/*/presentation|application|ports|adapters
+
+완료 기준: 있는 기능만. 타입 검사 / 번들 빌드 / 브라우저 구분. Vite ≠ 타입 통과. 미실행은 이유.
 ```
 
 ---
 
 ## 1. 범위 (1세트)
 
-| 기능 | UI | API |
+| 기능 | UI | API (ExampleItem 기본 예 · 교체 가능) |
 |------|-----|-----|
-| 목록 | `ManagementTableShell` + 테이블 | `GET ?page&size&keyword&status` |
+| 목록 | `list` 슬롯 + `ManagementTableShell` | `GET ?page&size&keyword&status` |
 | 등록 | `*FormSheet` mode=create | `POST` body camelCase |
 | 수정 | `*FormSheet` mode=edit | `PUT /{id}` |
-| 상세 | `*DetailSheet` (행 클릭) | 목록 row 데이터 (단건 GET 없으면) |
-| 비활성 | 툴바 버튼 `deleteLabel="비활성"` | `DELETE /delete-by-ids?ids=` |
-| 다운로드 | `DownloadModal` | `fetch*ForDownload` 100건/페이지 |
+| 상세 | `*DetailSheet` (행 클릭) | 목록 row 또는 단건 GET |
+| 비활성 (있을 때) | 툴바 `deleteLabel` 예: "비활성" | 예: `DELETE /delete-by-ids?ids=` |
+| 다운로드 (있을 때) | `DownloadModal` | `fetch*ForDownload` (size 기본 예 100) |
 
 ---
 
-## 2. 디렉터리·파일 (신규 도메인)
+## 2. 디렉터리·파일
+
+### 신규 (경량 헥사 예시)
 
 ```
-fe-v1/src/
-  api/{domainPlural}.ts          # fetchList, create, update, deactivateByIds, fetchForDownload
-  hooks/use{DomainPlural}.ts     # list query keys, mutations
-  types/{domain}.ts              # Row, Status
-  data/{domain}FormConfig.ts     # status filter options (i18n)
-  components/pages/{Domain}ManagePage.tsx
-  components/organisms/{Domain}DetailSheet.tsx
-  components/organisms/{Domain}FormSheet.tsx
-  components/molecules/{Domain}DownloadSearchForm.tsx  # 다운로드 필터
-  constants/api.ts               # ENDPOINTS.{DOMAIN}
-  i18n/locales/*.json            # deviceProduction.* 네임스페이스
+src/features/{domain}/
+  presentation/pages/{Domain}ManagePage.tsx
+  presentation/hooks/use{Domain}Manage.ts
+  presentation/components/…Sheet, …SearchForm
+  application/… List{Domain}, Save{Domain}, Export{Domain}List, (필요 시) {Domain}ManageFlow
+  ports/{Domain}Repository.ts
+  adapters/http/Http{Domain}Repository.ts
+  adapters/demo/Demo{Domain}Repository.ts
+src/app/composition/…  # 계약 ← 구현
 ```
 
-**레퍼런스 트리:** `deviceProduction*` 파일 grep.
+### ExampleItem 이력 트리 (참고만)
+
+```
+fe-v1/src/api/, hooks/, components/pages|organisms|molecules/, types/, …
+```
+
+**레퍼런스 grep:** `deviceProduction*` (이력).
 
 ---
 
 ## 3. API 레이어 (`api/deviceProductions.ts` 패턴)
 
-### 3.1 공통
+### 3.1 공통 (ExampleItem 기본 예 · 교체 가능)
 
-- `fetchWithAuth`, `API_CONFIG.BASE_URL`, `API_ENDPOINTS`
-- 성공 코드: `["0000CM0000", "SSPAPIC000", "0000"]`
-- 목록 max size: `DEVICE_PRODUCTION_MAX_PAGE_SIZE = 100` (BE `PageQuery.MAX_SIZE` 와 동일)
+- `fetchWithAuth`, `API_CONFIG.BASE_URL`, `API_ENDPOINTS` — 인증·베이스는 프로젝트 계약
+- 성공 코드 예: `["0000CM0000", "SSOBIC000", "0000"]` → 대상 SUCCESS_CODES/응답 봉투로 교체
+- 목록·다운로드 max size 예: `100` (BE `PageQuery.MAX_SIZE`와 맞출 것). 서버 제한에 따라 교체
 
 ### 3.2 목록
 
@@ -114,7 +132,9 @@ fetchDeviceProductionsForDownload(filters, onProgress?)
 
 ---
 
-## 4. React Query (`hooks/useDeviceProductions.ts`)
+## 4. 목록 훅 예 — React Query (`hooks/useDeviceProductions.ts`)
+
+> ExampleItem 기본 예입니다. 캐시 lib는 강제하지 않습니다. [state-ownership-model](../state/state-ownership-model), [query-cache-rules](../state/query-cache-rules).
 
 ```ts
 deviceProductionKeys = { all, list(params) }
@@ -147,7 +167,7 @@ useDeactivateDeviceProductions()
 />
 ```
 
-**주의:** `ManagementTableShell` 에 `deleteLabel` 을 destructuring 해야 함 (`deleteLabel is not defined` 버그 방지).  
+**주의:** `ManagementTableShell` 에 `deleteLabel` 을 destructuring 해야 함 (`deleteLabel is not defined` 버그 방지).
 `deleteDisabled` 가 `false` 이면 `??` 로 선택 개수 체크가 무시되므로, 명시 시 `deleteDisabled !== undefined ? deleteDisabled : selectedCount === 0` 패턴 사용.
 
 ### 5.3 시트
@@ -219,25 +239,37 @@ UI 문구(i18n ns)와 **코드 값 라벨**은 분리한다.
 
 ## 9. 체크리스트
 
-- [ ] `api.ts` → `API_ENDPOINTS.WEB.*` + `api/*.ts` CRUD + download fetch
-- [ ] `hooks/use*.ts` + invalidate on mutation
-- [ ] `ManagePage` 필터 draft/applied
-- [ ] 공통코드 사용 시: Page `nameMaps` 1회 로드 · 하위 중복 fetch 최소 ([common-code-fe-harness](./common-code-fe-harness.md))
-- [ ] `ManagementTableShell` deleteLabel / deleteDisabled
-- [ ] FormSheet + DetailSheet
-- [ ] DownloadModal + DownloadSearchForm
-- [ ] i18n 5언어 또는 ko/en
+필수에 가깝게:
+
+- [ ] `api/*.ts` + 목록/mutation 훅. 캐시는 프로젝트 선택 (예: React Query)
+- [ ] `ManagePage` 필터 draft/applied, Layout `filter` / `list` / `sheets`
+- [ ] FormSheet + DetailSheet (CUD·상세가 있을 때)
+- [ ] mutation 후 관련 list/detail invalidate
 - [ ] RouteTemplate / App lazy page (기존 라우팅 규칙)
+
+기능이 있을 때만:
+
+- [ ] 공통코드: Page `nameMaps` 1회 · Chip/Select ([common-code-fe-harness](./common-code-fe-harness.md))
+- [ ] 비활성: `deleteLabel` / `deleteDisabled` (경로·의미는 계약)
+- [ ] 다운로드: DownloadModal + DownloadSearchForm + applied 시드
+- [ ] i18n (저장소가 쓸 때. ko/en·다국어는 프로젝트 정책)
+
+검증 기록:
+
+- [ ] 타입 검사 실행 또는 미실행 이유
+- [ ] 번들 빌드 실행 또는 미실행 이유
+- [ ] 브라우저 동작 확인 또는 미실행 이유
 
 ---
 
 ## 10. 하지 말 것
 
-- 목록에 mock 데이터만 사용 (API 연동 후 mock 제거)
-- 비활성 버튼에 "삭제" 라벨 (도메인 합의 시 `deleteLabel` 만 변경)
-- `deleteDisabled={false}` 로 선택 0건일 때 버튼 활성화
-- 다운로드 시 단일 페이지만 조회 (100건 limit 무시)
-- BE 에 없는 필드를 목록에 표시만 추가 (API 확장 먼저)
+- 목록에 mock만 두고 wired로 위장 (데모와 분리)
+- 비활성 버튼에 "삭제" 라벨 (도메인 합의 시 `deleteLabel`만 변경)
+- `deleteDisabled={false}`로 선택 0건일 때 버튼 활성화
+- export가 있는데 단일 페이지만 조회 (page size·순회는 계약·예제 기본값 따름)
+- BE에 없는 필드를 목록에만 추가 (API 확장 먼저)
+- Vite 빌드 성공을 타입 검사 통과로 보고
 
 ---
 
@@ -325,5 +357,5 @@ api/{domain}Analysis.ts                        # 서브리소스 (선택)
 | 단건 상세 GET | ○ | `fetchFarmLivestockById` |
 | 분석 탭 API | ○ 확장 | `farmLivestockAnalysis.ts` |
 
-상세·갭·테스트 데이터: [farm-livestock-portal.md](./farm-livestock-portal.md)  
+상세·갭·테스트 데이터: [farm-livestock-portal.md](./farm-livestock-portal.md)
 BE Web API: console-web-bff-management-crud-set.md (`be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md`) §12

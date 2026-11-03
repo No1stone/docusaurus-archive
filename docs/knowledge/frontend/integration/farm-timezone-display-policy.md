@@ -11,8 +11,8 @@ title: farm timezone display policy
 
 # 농장 타임존 — FE 표시 정책
 
-> **상태:** `active`  
-> **관련 패턴:** [console-management-crud-set.md](./console-management-crud-set.md) §8 UI 규칙 (`JpaAuditInfoSection`), §13 포털 농장 스코프  
+> **상태:** `active`
+> **관련 패턴:** [console-management-crud-set.md](./console-management-crud-set.md) §8 UI 규칙 (`JpaAuditInfoSection`), §13 포털 농장 스코프
 > **결정:** 2026-06 — BE는 브라우저 로케일·농장 작업 TZ를 알 수 없으므로 **표시 변환은 FE**, **저장은 UTC** 유지.
 
 ## 1. 원칙

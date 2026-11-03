@@ -11,10 +11,10 @@ title: farm livestock portal
 
 # [레퍼런스] Farm Livestock — CRUD 1세트 + 포털·탭 확장
 
-> **상태:** `active`  
-> **위치:** [기본셋 vs 도메인 조회](./console-crud-base-set.md#6-도메인-diff-시-기본셋-이후--조회-특화) — 가축 **조회·탭**은 도메인 특화 구간(UI 수시 변경). **CUD·주 목록**은 1세트 파이프라인 대상.  
-> **태스크 카드:** [tasks/pages/livestock-info.md](../tasks/pages/livestock-info.md)  
-> **타임존:** [farm-timezone-display-policy.md](./farm-timezone-display-policy.md)  
+> **상태:** `active`
+> **위치:** [기본셋 vs 도메인 조회](./console-crud-base-set.md#6-도메인-diff-시-기본셋-이후--조회-특화) — 가축 **조회·탭**은 도메인 특화 구간(UI 수시 변경). **CUD·주 목록**은 1세트 파이프라인 대상.
+> **태스크 카드:** [tasks/pages/livestock-info.md](../tasks/pages/livestock-info.md)
+> **타임존:** [farm-timezone-display-policy.md](./farm-timezone-display-policy.md)
 > **분석 BFF:** farm-livestock-analysis-bff.md (`be-v1/docs/knowledge/frontend/development/farm-livestock-analysis-bff.md`)
 
 본 문서는 **조회·탭·BFF 확장** 인스턴스이다. 신규 메뉴는 [console-crud-base-set](./console-crud-base-set.md) 1세트를 먼저 맞춘 뒤, 하위·세부 조회는 **별도 구현**으로 갭만 채운다.
@@ -27,19 +27,22 @@ title: farm livestock portal
 도메인 예시(Farm Livestock) 포털 화면·BFF를 수정/확장해줘.
 
 반드시 먼저 읽을 문서 (순서):
-1. docs/knowledge/frontend/integration/console-management-crud-set.md
-2. be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md
-3. docs/knowledge/frontend/integration/farm-livestock-portal.md (본 문서)
+1. docs/knowledge/frontend/index.md (하드 규칙·교체 항목)
+2. docs/knowledge/frontend/integration/console-management-crud-set.md
+3. docs/knowledge/frontend/integration/farm-livestock-portal.md (본 문서 · 도메인 예시)
 4. docs/knowledge/frontend/integration/farm-timezone-display-policy.md
-5. docs/knowledge/frontend/integration/common-code-fe-harness.md (공통코드 필터·Chip·폼)
-6. 루트 AGENTS.md
+5. docs/knowledge/frontend/integration/common-code-fe-harness.md (공통코드 필터·Chip·폼이 있을 때)
+6. (BE 있을 때) be-v1/.../console-web-bff-management-crud-set.md 또는 대상 계약
+7. 대상 저장소 AGENTS.md
 
 규칙:
-- 신규 화면은 DeviceProduction 1세트에서 시작; Farm Livestock 은 포털·탭 변형(§13·§14)만 참고
+- 본 문서는 도메인 예시. CMS 공통 표준 필수가 아님
+- 신규 화면은 cms-crud 1세트에서 시작; Farm Livestock은 포털·탭 변형만 참고
+- ExampleItem 기본값(상태 코드, DELETE, page size, i18n)은 대상 계약으로 교체
 - 통계 st_* / stat_local_hour 는 FE TZ 변환 금지
 - JPA 오딧만 formatFarmAuditDt / JpaAuditInfoSection auditTimeZone
 - 분석 API 는 FarmLivestockAnalysisFacade 패턴(별 Facade, readOnly)
-- Req/Res 별도 파일·Mapper 클래스 금지 (BE 마스터 가이드 동일)
+- 검증: 타입 검사 / 번들 빌드 / 브라우저 구분. 미실행은 이유 기록
 ```
 
 ---
@@ -140,7 +143,7 @@ be-v1/lib-model/.../farm/
 | EUI | `70B3D517C3011989` |
 | 기간 | 2026-04-01 ~ 2026-06-19 |
 
-SQL: `be-v1/docs/knowledge/frontend/development/sql/farm-livestock-analysis-export-farm220-*.sql`  
+SQL: `be-v1/docs/knowledge/frontend/development/sql/farm-livestock-analysis-export-farm220-*.sql`
 `fa_farm_livestock.device_id` ↔ `de_sensor.id` 연결 필수.
 
 ---

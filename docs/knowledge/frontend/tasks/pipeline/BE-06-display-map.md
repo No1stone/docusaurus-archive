@@ -8,7 +8,7 @@ title: BE 06 display map
 
 # BE-06 — 표시명 MAP (id → 도메인 이름)
 
-> **선행:** BE-02 · **다음:** BE-03 또는 FE-02  
+> **선행:** BE-02 · **다음:** BE-03 또는 FE-02
 > **원칙:** `*_id` / UUID 는 **화면에 raw 노출 금지**. Facade에서 **일괄 조회 → Map → DTO 치환** 후 내려준다.
 
 ## 공통 Facade (api-console)

@@ -8,10 +8,10 @@ title: README
 
 # CRUD 마이크로 태스크 파이프라인
 
-> **상태:** `active`  
-> **구현 런북:** [CRUD-IMPLEMENTATION-RUNBOOK.md](./CRUD-IMPLEMENTATION-RUNBOOK.md) ← **CRUD 나갈 때 여기서 시작**  
-> **범위:** 메뉴 공통 **필터·리스트·조회·수정·삭제** 만. 도메인 특화(납품·초대메일·가축 탭 등)는 **본 파이프라인에 없음** → [기본셋 §0](../../integration/console-crud-base-set.md#0-포함--제외-한눈에)  
-> **원칙:** 세션 1회 = **태스크 문서 1개** + (선택) `domains/{pageId}.md` 진행 체크  
+> **상태:** `active`
+> **구현 런북:** [CRUD-IMPLEMENTATION-RUNBOOK.md](./CRUD-IMPLEMENTATION-RUNBOOK.md) ← **CRUD 나갈 때 여기서 시작**
+> **범위:** 메뉴 공통 **필터·리스트·조회·수정·삭제** 만. 도메인 특화(납품·초대메일·가축 탭 등)는 **본 파이프라인에 없음** → [기본셋 §0](../../integration/console-crud-base-set.md#0-포함--제외-한눈에)
+> **원칙:** 세션 1회 = **태스크 문서 1개** + (선택) `domains/{pageId}.md` 진행 체크
 > **디스패치·모델 티어:** [SESSION-DISPATCH.md](./SESSION-DISPATCH.md) — 목적 보고 태스크 1개만 넘기면 작은 모델도 가능
 
 ---

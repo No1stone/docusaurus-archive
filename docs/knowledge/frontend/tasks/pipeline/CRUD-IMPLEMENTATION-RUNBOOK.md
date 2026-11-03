@@ -8,7 +8,7 @@ title: CRUD IMPLEMENTATION RUNBOOK
 
 # CRUD 구현 런북 (테이블 → 메뉴 → 태스크 → 검수)
 
-> **상태:** `active`  
+> **상태:** `active`
 > **목표:** 태스크 1개 구현 → **짝 QA 1개** → (마지막) Signoff. 통합 QA 없음.
 
 ---
@@ -23,7 +23,7 @@ title: CRUD IMPLEMENTATION RUNBOOK
 ④ QA-signoff (체크만)
 ```
 
-**검수:** [qa/README.md](./qa/README.md) — 구현 태스크마다 `QA-after-*` **1개 세션**.  
+**검수:** [qa/README.md](./qa/README.md) — 구현 태스크마다 `QA-after-*` **1개 세션**.
 **세션·모델:** [SESSION-DISPATCH.md](./SESSION-DISPATCH.md)
 
 ---
@@ -53,7 +53,7 @@ title: CRUD IMPLEMENTATION RUNBOOK
 
 ### A. 생산관리형 — full CRUD (골드)
 
-**예:** 디바이스 생산 정보  
+**예:** 디바이스 생산 정보
 **도메인 시트:** [domains/device-production.md](./domains/device-production.md)
 
 | 태스크 | 실행 |
@@ -63,11 +63,11 @@ title: CRUD IMPLEMENTATION RUNBOOK
 | FE-02 ~ FE-04 | ○ |
 | FE-05 | — (공통코드 Chip 없음) |
 | FE-06 ~ FE-08 | ○ |
-| QA-01 | ○ |
+| QA-after (항목별) | ○ — [qa/README](./qa/README.md) |
 
 ### B. 포털 + 공통코드 Chip
 
-**예:** 가축(개체) 정보  
+**예:** 가축(개체) 정보
 **도메인 시트:** [domains/livestock-info.md](./domains/livestock-info.md)
 
 | 태스크 | 실행 |
@@ -78,11 +78,11 @@ title: CRUD IMPLEMENTATION RUNBOOK
 | FE-02 ~ FE-05 | ○ |
 | FE-06 | ○ (+ farm TZ 오딧) |
 | FE-07 ~ FE-08 | △ |
-| QA-01 | ○ |
+| QA-after (항목별) | ○ — [qa/README](./qa/README.md) |
 
 ### C. 사용자관리형 — full CRUD (커스텀 Table)
 
-**예:** 관리자 유저  
+**예:** 관리자 유저
 **도메인 시트:** [domains/admin-user-manage.md](./domains/admin-user-manage.md)
 
 | 태스크 | 실행 |
@@ -92,7 +92,7 @@ title: CRUD IMPLEMENTATION RUNBOOK
 | FE-02 ~ FE-04 | ○ (AdminTable 변형) |
 | FE-05 | — |
 | FE-06 ~ FE-08 | ○ |
-| QA-01 | ○ |
+| QA-after (항목별) | ○ — [qa/README](./qa/README.md) |
 
 ### D. 조회 전용
 
@@ -104,7 +104,7 @@ title: CRUD IMPLEMENTATION RUNBOOK
 | FE-01a | ○ |
 | FE-02 ~ FE-04, FE-06 | ○ |
 | FE-05, FE-07, FE-08 | — |
-| QA-01 | ○ |
+| QA-after (항목별) | ○ — [qa/README](./qa/README.md) |
 
 ---
 

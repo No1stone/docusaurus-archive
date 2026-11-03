@@ -8,11 +8,11 @@ title: console crud page index
 
 # Console CRUD — 보조 인덱스 (레퍼런스·갭 메모)
 
-> **상태:** `active`  
-> **진입점은 아님.** 공통 작업은 [console-crud-base-set.md](./console-crud-base-set.md) 만 본다.  
+> **상태:** `active`
+> **진입점은 아님.** 공통 작업은 [console-crud-base-set.md](./console-crud-base-set.md) 만 본다.
 > **1세트** = 주 테이블 L/C/U/D. **세부·하위·연관 조회** = 별도 구현 (가축 탭·분석 등).
 
-**범례:** ○ · △ · ✗ · —  
+**범례:** ○ · △ · ✗ · —
 **CRUD:** L C U D X
 
 ---

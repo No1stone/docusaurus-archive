@@ -8,7 +8,7 @@ title: QA fe import check
 
 # QA — FE import·빌드 검수 (마지막 필수)
 
-> **시점:** FE 태스크 직후 **또는** 메뉴 [QA-signoff](./QA-signoff.md) 직전 — **반드시 1회**  
+> **시점:** FE 태스크 직후 **또는** 메뉴 [QA-signoff](./QA-signoff.md) 직전 — **반드시 1회**
 > **배경:** `ReferenceError` (심볼 미정의) 다수가 **import 누락** — 런타임·빌드 전까지 안 잡히는 경우 많음.
 
 ## 체크리스트

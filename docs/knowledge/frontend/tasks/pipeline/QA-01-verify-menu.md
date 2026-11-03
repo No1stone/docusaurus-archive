@@ -8,7 +8,7 @@ title: QA 01 verify menu
 
 # QA-01 — (deprecated) 메뉴 통합 검수
 
-> **대체:** [qa/README.md](./qa/README.md) — 구현 태스크마다 `QA-after-*` 실행.  
+> **대체:** [qa/README.md](./qa/README.md) — 구현 태스크마다 `QA-after-*` 실행.
 > 마감만 필요하면 [QA-signoff](./qa/QA-signoff.md).
 
 통합 QA는 세션 비대화를 유발하므로 **사용하지 않는다**.

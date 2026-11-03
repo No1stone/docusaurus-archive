@@ -6,7 +6,7 @@
 > 모든 요청에 새 파일을 만들지 않습니다.
 > 기본 흐름은 `docs/harness/workflows/implement.md`입니다.
 
-> Situation recipe. Master selects this file when the situation matches.  
+> Situation recipe. Master selects this file when the situation matches.
 > Workers load **only** Knowledge assembly paths below.
 
 ## Situation
@@ -47,7 +47,7 @@
 확인 방법은 `docs/harness/workflows/acceptance.md`입니다.
 테스트를 삭제하거나 기대 결과를 약화하지 않습니다.
 
-Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`  
+Contracts + `model_candidates` + `## Freedom`: `docs/harness/agents/<role>.md`
 
 **Model pool column:** usually `role default`. To override, put an **ordered list** (2–4), not one forced slug — e.g. `kimi-k2.7-code → composer-2.5-fast → haiku`. Pick first available at runtime. Avoid K3/K3-max for routine workers.
 

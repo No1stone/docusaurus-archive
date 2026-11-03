@@ -32,7 +32,7 @@ title: admin user manage
 | FE-04 | [FE-04](../FE-04-page-list.md) | [x] △ AdminTable |
 | FE-05 | — | — |
 | FE-06 ~ FE-08 | | [x] △ download ✗ |
-| QA-01 | | [ ] |
+| QA-after | [qa/README](../qa/README.md) | [ ] |
 
 ## 파일맵
 

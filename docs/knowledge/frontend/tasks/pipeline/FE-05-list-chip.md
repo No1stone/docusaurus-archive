@@ -8,8 +8,8 @@ title: FE 05 list chip
 
 # FE-05 — 목록 Chip (공통코드)
 
-> **선행:** FE-04 · **다음:** FE-06  
-> **선택:** 공통코드 컬럼이 **있을 때만** 실행  
+> **선행:** FE-04 · **다음:** FE-06
+> **선택:** 공통코드 컬럼이 **있을 때만** 실행
 > **레퍼런스:** `FarmLivestockCommonCodeChip`, `LivestockInfoManagePage`
 
 ## 이 태스크에서 할 것

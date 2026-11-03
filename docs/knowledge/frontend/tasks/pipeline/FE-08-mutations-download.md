@@ -8,8 +8,9 @@ title: FE 08 mutations download
 
 # FE-08 — mutation · 비활성 · 다운로드
 
-> **선행:** BE-05, FE-07 · **다음:** QA-01  
+> **선행:** BE-05, FE-07 · **다음:** [QA-after-FE-08-crud](./qa/QA-after-FE-08-crud.md) ([qa/README](./qa/README.md))
 > **레퍼런스:** `useDeviceProductions.ts`, `DownloadModal`
+> ~~QA-01~~ deprecated — [QA-01-verify-menu](./QA-01-verify-menu.md)
 
 ## 이 태스크에서 할 것
 

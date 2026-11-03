@@ -8,7 +8,7 @@ title: FE 06b audit jpa
 
 # FE-06b — JPA 오딧 표시 (공통)
 
-> **선행:** FE-06 (상세 Sheet) · **다음:** FE-07  
+> **선행:** FE-06 (상세 Sheet) · **다음:** FE-07
 > **관련:** [farm-timezone-display-policy.md](../../integration/farm-timezone-display-policy.md) (포털 농장 TZ)
 
 ## 이 태스크에서 할 것

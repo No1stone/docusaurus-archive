@@ -8,7 +8,7 @@ title: FE 01b filter simple
 
 # FE-01b — 필터 (단순 keyword)
 
-> **선행:** 없음 · **다음:** FE-04  
+> **선행:** 없음 · **다음:** FE-04
 > **레퍼런스:** `AlarmMessageManagePage`
 
 ## 이 태스크에서 할 것

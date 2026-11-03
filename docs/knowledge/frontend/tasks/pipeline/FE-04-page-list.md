@@ -8,7 +8,7 @@ title: FE 04 page list
 
 # FE-04 — 페이지 목록 셸
 
-> **선행:** FE-01a/b, FE-03 · **다음:** FE-05 또는 FE-06  
+> **선행:** FE-01a/b, FE-03 · **다음:** FE-05 또는 FE-06
 > **레퍼런스:** `DeviceProductionManagePage`
 
 ## 이 태스크에서 할 것

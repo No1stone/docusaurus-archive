@@ -8,12 +8,12 @@ title: common code fe harness
 
 # [하네스] FE 공통코드 — 최소 로드·캐시·i18n
 
-> **상태:** `active`  
-> **BE 대응:** common-code-system-harness.md (`be-v1/docs/knowledge/frontend/development/common-code-system-harness.md`)  
-> **CRUD 1세트:** [console-crud-base-set.md](./console-crud-base-set.md) §2.1 · [console-management-crud-set.md](./console-management-crud-set.md) §7.1  
+> **상태:** `active`
+> **BE 대응:** common-code-system-harness.md (`be-v1/docs/knowledge/frontend/development/common-code-system-harness.md`)
+> **CRUD 1세트:** [console-crud-base-set.md](./console-crud-base-set.md) §2.1 · [console-management-crud-set.md](./console-management-crud-set.md) §7.1
 > **관련:** [FE-10 i18n](../tasks/pipeline/FE-10-i18n.md), [T04 Chip](../tasks/fragments/T04-list-common-code-chip.md)
 
-콘솔·포털 화면에서 BizEnum 공통코드(셀렉트·Chip·라벨)를 다룰 때의 **FE 단일 규칙**이다.  
+콘솔·포털 화면에서 BizEnum 공통코드(셀렉트·Chip·라벨)를 다룰 때의 **FE 단일 규칙**이다.
 풀스캔·일괄 리팩터 없이, **신규·수정 화면부터** 본 문서를 따른다.
 
 ---
@@ -30,7 +30,7 @@ title: common code fe harness
 
 **운영 DB는 자동 sync하지 않는다.** 스테이징·운영은 검토된 SQL 수동 적용 (BE §12.1 (`be-v1/docs/knowledge/frontend/development/common-code-system-harness.md#121-운영-정책-필수`)).
 
-**code 목록 원천:** BE `@BizEnum` — `lib-model/.../enums/livestock/` (`EnLivestockSpecies` 등).  
+**code 목록 원천:** BE `@BizEnum` — `lib-model/.../enums/livestock/` (`EnLivestockSpecies` 등).
 i18n 키: `farmLivestock.{group}.{CODE}` (10자리 code).
 
 | 단계 | 내용 |

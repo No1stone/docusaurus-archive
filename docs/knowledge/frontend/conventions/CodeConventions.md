@@ -8,8 +8,11 @@ title: CodeConventions
 
 # 코드 규칙 역추출 (네이밍 · 구조)
 
-아래는 **실제 코드베이스에서 역으로 추출한** 네이밍 규칙과 구조 규칙입니다.  
-“이렇게 하자”가 아니라 “지금 이렇게 되어 있다”는 관찰 결과입니다.
+아래는 ExampleItem 코드베이스에서 **역으로 추출한 관찰**입니다.
+네이밍 참고로만 씁니다.
+
+**신규 채택:** [application-structure](/docs/knowledge/frontend/architecture/application-structure)(경량 헥사·FE 네이밍), [folder-structure](/docs/knowledge/frontend/folder-structure), [state-ownership-model](/docs/knowledge/frontend/state/state-ownership-model).
+관찰된 `api/`·`hooks/` 일체형과 §3.6 API→Store는 **Legacy**입니다.
 
 ---
 
@@ -147,29 +150,20 @@ src/
 - 대부분 **상대 경로** 사용 (예: `../../hooks/usePartners`, `../../stores/partnerStore`, `../../api/partners`).
 - `@/` path alias는 tsconfig에 있으나 사용처는 소수.
 
-### 3.6 목록(CRUD) 페이지 화면 동작 규칙 (역추출)
+### 3.6 Legacy — 목록 진입 관찰 (신규 금지)
 
-관리 페이지(ManagementPageLayout 쓰는 목록 화면)는 **진입 시** 아래 순서로 동작해야 기존 화면과 동일하게 동작함.
+> **이력.** ExampleItem 일부 화면에 있던 패턴입니다.
+> **신규 구현에 필수·권장으로 쓰지 않습니다.**
+> 서버 목록은 캐시 SoT입니다. Store 복사는 [state-ownership-model](/docs/knowledge/frontend/state/state-ownership-model) 위반입니다.
 
-1. **마운트 시 1회** (useEffect, 의존성: queryClient, resetFilters)
-   - `skipFilterEffect.current = true` 로 설정.
-   - `queryClient.invalidateQueries({ queryKey: ['도메인키'] })` (예: `['partners']`).
-   - 스토어 `resetFilters()` 호출.
-   - `setCurrentPage(0)`, `setSorting(초기값)`.
-   - `setIsFiltersInitialized(true)`, `isInitialMount.current = false`.
-   - 짧은 뒤 `setTimeout` 으로 `skipFilterEffect.current = false` (예: 100ms).
-   - **cleanup**: return () => {'{'} isInitialMount.current = true; setIsFiltersInitialized(false); {'}'}.
-2. **useXxx(목록) 활성화 조건**
-   - `enabled = isFiltersInitialized || (!isInitialMount.current && !skipFilterEffect.current)`.
-   - 이렇게 해야 진입 시 필터 초기화 후에만 첫 API 호출이 나감.
-3. **API 응답 → 스토어**
-   - `useEffect` 로 `data`(또는 response) 가 오면 `setXxx(response.data)` 호출. 실패 시 빈 배열 등으로 정리.
-4. **페이지 lazy 로딩**
-   - `RouteTemplate` 에서 페이지는 `createLazyPage(() => import("../pages/XxxManagePage"), 'XxxManagePage')` 형태로 등록.
-5. **라우팅 케이스**
-   - `RouteTemplate` 의 switch 에는 `'메뉴-하위메뉴'`(예: `'파트너-파트너 관리'`) 와, 필요 시 `'하위메뉴'`(예: `'파트너 관리'`) 둘 다 같은 페이지로 매핑하는 패턴 있음.
+관찰된 옛 순서(요약):
 
-이 순서를 지키면 “다른 메뉴 갔다 와도 필터/페이지 초기화되고, 캐시 안 남고, 첫 요청만 깔끔히 나가는” 기존 화면 규칙이 유지됨.
+1. 마운트 시 ref(`skipFilterEffect`)·`setTimeout`·`isFiltersInitialized`로 첫 fetch 타이밍 조절
+2. 복잡한 `enabled` 조건
+3. `useEffect`로 쿼리 `data` → `setXxx` Store 복사
+
+신규는 필터 UI state + 조회 훅(캐시) + 단순한 초기화로 맞춥니다.
+lazy `RouteTemplate` 등록 자체는 라우팅 계약으로 유지해도 됩니다.
 
 ---
 

@@ -8,7 +8,7 @@ title: FE 06 detail audit
 
 # FE-06 — 상세 Sheet + Card (본문)
 
-> **선행:** FE-04 · **다음:** [FE-06b](./FE-06b-audit-jpa.md) · [FE-09](./FE-09-id-display-labels.md)  
+> **선행:** FE-04 · **다음:** [FE-06b](./FE-06b-audit-jpa.md) · [FE-09](./FE-09-id-display-labels.md)
 > **레퍼런스:** `DeviceProductionDetailSheet`
 
 ## 이 태스크에서 할 것

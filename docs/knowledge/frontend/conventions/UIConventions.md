@@ -8,8 +8,8 @@ title: UIConventions
 
 # UI 규칙 역추출 (디자인·컴포넌트)
 
-코드베이스에서 **실제로 쓰이는** UI/스타일 규칙을 역으로 정리한 문서입니다.  
-바이브코딩 시 `src/guidelines/UIConventions.md` 를 참고하라고 하면 이 규칙을 따르게 할 수 있습니다.
+코드베이스에서 **실제로 쓰이는** UI/스타일 규칙을 역으로 정리한 문서입니다.
+바이브코딩 시 이 문서(`docs/knowledge/frontend/conventions/UIConventions.md`)를 참고하라고 하면 됩니다.
 
 ---
 
@@ -29,7 +29,7 @@ title: UIConventions
 | `--card` / `--card-foreground` | 카드 배경/글자 | #ffffff / 진한 글자 |
 | `--input` / `--input-background` | 입력 필드 | transparent / #f3f3f5 |
 
-- **Tailwind 사용**: `bg-primary`, `text-muted-foreground`, `border-border`, `bg-destructive` 등 시맨틱 클래스 사용.  
+- **Tailwind 사용**: `bg-primary`, `text-muted-foreground`, `border-border`, `bg-destructive` 등 시맨틱 클래스 사용.
 - **직접 hex 남발 금지**: 새 색은 가능하면 토큰 추가 후 `@theme` 에 매핑.
 
 ### 1.2 간격·타이포
@@ -41,7 +41,7 @@ title: UIConventions
 
 ### 1.3 다크 모드
 
-- `.dark` 클래스로 `:root` 오버라이드.  
+- `.dark` 클래스로 `:root` 오버라이드.
 - 색은 `--background`, `--foreground`, `--primary` 등 동일 토큰명으로 다크 값 정의.
 
 ---
@@ -55,10 +55,10 @@ title: UIConventions
 
 - **variant**: `default`(primary), `destructive`, `outline`, `secondary`, `ghost`, `link`
 - **size**: `default`, `sm`, `lg`, `icon`
-- **관례**:  
-  - 메인 액션: `variant="default"`  
-  - 취소/보조: `variant="outline"`  
-  - 테이블 행 액션·아이콘만: `variant="ghost"` + `size="sm"` 또는 `size="icon"`  
+- **관례**:
+  - 메인 액션: `variant="default"`
+  - 취소/보조: `variant="outline"`
+  - 테이블 행 액션·아이콘만: `variant="ghost"` + `size="sm"` 또는 `size="icon"`
   - 삭제: `variant="destructive"` 또는 `variant="outline"` + `className="... text-destructive"`
 
 ### 2.2 Card

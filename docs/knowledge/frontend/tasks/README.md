@@ -9,7 +9,7 @@ title: README
 
 # Console CRUD — 태스크·조각(Fragment) 워크플로
 
-> **상태:** `active`  
+> **상태:** `active`
 > **실행 진입점:** [pipeline/README.md](./pipeline/README.md) — **마이크로 태스크 1개 = 세션 1개**
 
 ## 원칙

@@ -8,7 +8,7 @@ title: FE 02 api list
 
 # FE-02 — API 목록 fetch
 
-> **선행:** BE-03 (URL 확정) · **다음:** FE-03  
+> **선행:** BE-03 (URL 확정) · **다음:** FE-03
 > **레퍼런스:** `api/deviceProductions.ts`
 
 ## 이 태스크에서 할 것

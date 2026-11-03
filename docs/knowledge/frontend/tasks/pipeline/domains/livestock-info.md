@@ -53,13 +53,13 @@ title: livestock info
 | FE-06b | [FE-06b](../FE-06b-audit-jpa.md) | [x] | farm TZ |
 | FE-07 | [FE-07](../FE-07-form-crud.md) | [ ] | **설계요청** |
 | FE-08 | [FE-08](../FE-08-mutations-download.md) | [ ] | |
-| QA-01 | [QA-01](../QA-01-verify-menu.md) | [ ] | CUD 후 |
+| QA-after | [qa/README](../qa/README.md) | [ ] | CUD 후 항목별 QA |
 
 ## 다음 세션 추천
 
 1. `BE-04`~`BE-05` full CUD Web 노출 여부 결정
 2. `FE-07` FormSheet vs 모달 유지 결정 후 태스크 실행
-3. `QA-01`
+3. 해당 `QA-after-*` ([qa/README](../qa/README.md))
 
 ## 파일맵
 

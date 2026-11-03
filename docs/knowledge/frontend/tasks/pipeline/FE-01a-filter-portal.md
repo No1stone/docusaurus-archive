@@ -8,7 +8,7 @@ title: FE 01a filter portal
 
 # FE-01a — 필터 (포털 레지스트리)
 
-> **선행:** 없음 · **다음:** FE-04 (또는 BE-03과 병렬)  
+> **선행:** 없음 · **다음:** FE-04 (또는 BE-03과 병렬)
 > **레퍼런스:** `portalMenuFilterRegistry`, `PortalMenuFilterPanel`
 
 ## 이 태스크에서 할 것

@@ -8,7 +8,7 @@ title: BE 04 facade write
 
 # BE-04 — Facade 등록·수정·비활성
 
-> **선행:** BE-01 · **다음:** BE-05  
+> **선행:** BE-01 · **다음:** BE-05
 > **레퍼런스:** `DeviceProductionFacade` create/update/deactivate
 
 ## 이 태스크에서 할 것
