@@ -6,7 +6,7 @@ description: console/partner/farm 독립 앱 분리 단계 런북. 아카이브 
 # React 모노레포 리팩토링 런북
 
 > **아카이브 원본:** 이 문서가 모노레포 분리 작업의 단일 소스입니다.
-> FarmPro FE `docs/MONOREPO_REFACTOR_RUNBOOK.md`에서 승격했습니다.
+> CMS 업무 백오피스 FE `docs/MONOREPO_REFACTOR_RUNBOOK.md`에서 승격했습니다.
 > FE 가이드·계약은 [Frontend knowledge](/docs/knowledge/frontend/)를 봅니다. fe-v1 로컬 guidelines는 쓰지 않습니다.
 
 세션을 나눠도 여기만 최신으로 두면 이어서 진행할 수 있습니다.

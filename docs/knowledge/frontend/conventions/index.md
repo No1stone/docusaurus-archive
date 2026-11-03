@@ -7,7 +7,7 @@ description: fe-v1 src/guidelines에서 승격한 코딩·UI 컨벤션
 # Conventions
 
 > **개요:** `nutech/fe-v1/src/guidelines`에 있던 컨벤션 문서입니다.
-> 아카이브 공통 글쓰기·코딩 규칙보다 **FarmPro FE 저장소 관례**가 앞섭니다.
+> 대상 앱 저장소 규칙이 있으면 그것이 앞섭니다. 없으면 본 Conventions와 Frontend 하드 규칙을 씁니다.
 
 | 문서 | 역할 |
 |------|------|

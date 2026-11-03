@@ -11,7 +11,7 @@ description: 로그인과 레이아웃 셸 얇은 레시피
 |-------|--------|
 | ID | `frontend-auth-shell` |
 | Status | active |
-| Profile hint | `docs/harness/profiles/farmpro-fe.md` |
+| Profile hint | `docs/harness/profiles/cms-backoffice-fe.md` |
 
 ## 적용 조건
 

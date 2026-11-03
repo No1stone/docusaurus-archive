@@ -5,7 +5,7 @@ description: 서버 상태와 UI 상태 소유권. 라이브러리는 비강제
 
 # State ownership model
 
-> **출처:** FarmPro FE state-ownership-model 승격.
+> **출처:** CMS 업무 백오피스 FE state-ownership-model 승격.
 > 라이브러리 강제 없음: 소유권 분리만 하드입니다.
 
 ## 책임 분리

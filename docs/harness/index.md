@@ -25,7 +25,7 @@ Helps coding agents (Cursor, Codex, Claude Code, …) reuse the same Markdown kn
 | [`workflows/implement.md`](/docs/harness/workflows/implement) | 기본 개발 흐름·요청 모드·검증·보고 허브. 매번 모든 역할을 실행하지 않습니다 |
 | [`CURRENT.md`](/docs/harness/CURRENT) | 현재 상태. 작업 로그 전체가 아닙니다 |
 | [`history/`](/docs/harness/history/harness-work-history) | 작업 기록. 필요할 때만 해당 월을 읽습니다 |
-| [`profiles/`](/docs/harness/profiles/) | Usual asset combo for a *kind* of stack. Spring API + [farmpro-fe](/docs/harness/profiles/farmpro-fe) |
+| [`profiles/`](/docs/harness/profiles/) | Usual asset combo for a *kind* of stack. Spring API + [cms-backoffice-fe](/docs/harness/profiles/cms-backoffice-fe) |
 | [`bundles/`](/docs/harness/bundles/) | Optional read-list helper (subset of a task orchestration) |
 | [`templates/`](./templates/) | Implementation reference assets (code + README). Backend Spring + [Frontend](./templates/frontend/) |
 

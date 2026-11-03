@@ -8,7 +8,8 @@ description: Frontend 원셋 복사 규칙과 ExampleItem
 
 > **개요:** 검증된 화면 골격과 스모크 기준을 한 세트로 둡니다.
 > 대상 저장소 규칙이 이 안내보다 우선합니다.
-> ExampleItem 저장소: FarmPro FE `nutech/fe-v1`.
+> CMS 업무 백오피스 공통 원셋입니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
 
 ## 목표
 
@@ -19,11 +20,12 @@ CMS/인증/레이아웃 등 화면 유형별로 슬롯을 맞춘 뒤, 도메인 
 
 | 항목 | 값 |
 |------|------|
-| 앱 루트 | `nutech/fe-v1` |
-| CMS 골드 | `DeviceProductionManagePage` |
-| CMS 보조 | `LivestockInfoManagePage` |
+| 앱 루트 예 | `nutech/fe-v1` |
+| CMS 골드 | `DeviceProductionManagePage` (wired 관리 CRUD) |
 | 레이아웃 | `AdminLayout`, `ManagementPageLayout` |
 | 검증 기본 | typecheck 또는 프로젝트 build → [browser-manual](/docs/harness/tools/browser-manual) → 필요 시 [playwright-e2e](/docs/harness/tools/playwright-e2e) |
+
+가축 등 도메인 페이지는 표준 필수가 아닙니다. 필요할 때만 domains/portal 예시를 봅니다.
 
 ## 하드 슬롯 (CMS)
 

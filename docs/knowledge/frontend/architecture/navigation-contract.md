@@ -5,7 +5,7 @@ description: 사이드바 메뉴 key와 RouteTemplate 대응
 
 # Navigation contract
 
-> **출처:** FarmPro FE navigation-contract 승격 요약.
+> **출처:** CMS 업무 백오피스 FE navigation-contract 승격 요약.
 
 ## 포털 가정
 

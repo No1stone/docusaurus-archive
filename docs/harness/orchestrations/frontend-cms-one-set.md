@@ -13,14 +13,14 @@ description: CMS CRUD 원셋 작업 레시피
 |-------|--------|
 | ID | `frontend-cms-one-set` |
 | Status | active |
-| Profile hint | `docs/harness/profiles/farmpro-fe.md` |
+| Profile hint | `docs/harness/profiles/cms-backoffice-fe.md` |
 
 ## 적용 조건
 
 **적용합니다.**
 
 - 관리 메뉴에 필터, 목록, 상세, 등록/수정/비활성 골격을 추가하거나 정비할 때
-- FarmPro FE 또는 동일 슬롯 계약을 쓰기로 한 콘솔 FE
+- CMS 업무 백오피스 FE 또는 동일 슬롯 계약을 쓰기로 한 콘솔 FE
 
 **적용하지 않습니다.**
 

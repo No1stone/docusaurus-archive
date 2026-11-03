@@ -2,9 +2,9 @@
 title: VibeCodingPrompts
 ---
 
-> **아카이브:** FarmPro FE(`nutech/fe-v1`) guidelines에서 승격했습니다.
-> ExampleItem 코드 경로는 여전히 `nutech/fe-v1`을 가리킵니다.
-> BE 문서는 이 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
+> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
 
 # 바이브코딩용 프롬프트 (규칙 적용)
 
@@ -34,7 +34,7 @@ src/guidelines/CodeConventions.md, UIConventions.md 규칙 따라서 해줘.
 
 ## 1. 새 CRUD 관리 화면 추가 (관리 콘솔 Web BFF 1세트)
 
-**FarmPro 관리 콘솔 + api-console Web API** 는 아래 하네스 2개를 **한 세트**로 따른다.
+**CMS 백오피스 관리 콘솔 + api-console Web API** 는 아래 하네스 2개를 **한 세트**로 따른다.
 
 - FE: `docs/knowledge/frontend/integration/console-management-crud-set.md`
 - BE: `be-v1/docs/knowledge/frontend/development/console-web-bff-management-crud-set.md`

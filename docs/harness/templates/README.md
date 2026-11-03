@@ -17,7 +17,7 @@ Lives under `docs/harness/templates/`.
 ## Start here
 
 - [Spring ExampleItem 원셋](./backend/spring/) — 구현, testing, e2e. 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET).
-- [Frontend 원셋](./frontend/) — CMS, auth, layout 등. 안내는 [ONESET.md](/docs/harness/templates/frontend/ONESET). ExampleItem은 FarmPro `fe-v1`.
+- [Frontend 원셋](./frontend/) — CMS, auth, layout 등. 안내는 [ONESET.md](/docs/harness/templates/frontend/ONESET). ExampleItem은 CMS 백오피스 `fe-v1`.
 
 ### Backend (Spring)
 

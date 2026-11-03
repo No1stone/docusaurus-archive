@@ -6,7 +6,7 @@ description: 전역 suppress, ErrorBoundary, 요청 레이어 타임아웃 방�
 # Error and timeout policy
 
 > **개요:** 타임아웃과 네트워크 오류를 어떻게 숨기거나 드러낼지에 대한 정책입니다.
-> FarmPro FE `error-timeout-policy`(review-needed)와 `App.tsx` 전역 처리를 아카이브용으로 정리했습니다.
+> CMS 업무 백오피스 FE `error-timeout-policy`(review-needed)와 `App.tsx` 전역 처리를 아카이브용으로 정리했습니다.
 > 앱의 suppress 코드를 이 문서만으로 바꾸지 않습니다. 새 작업의 기준선으로 씁니다.
 
 ## fe-v1에서 관찰된 상태

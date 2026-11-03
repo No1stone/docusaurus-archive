@@ -25,7 +25,7 @@ description: Current engineering knowledge by domain
 | 분야 | 역할 |
 |------|------|
 | [Backend](./backend/) | 앱 계층 개념, Java·Spring·Spring Cloud |
-| [Frontend](./frontend/) | 콘솔 FE 하네스 (FarmPro fe-v1 ExampleItem) |
+| [Frontend](./frontend/) | CMS 업무 백오피스 FE 하네스 |
 | [Messaging](./messaging/) | 브로커, 채널·봇, 메일·웹훅 전달 |
 | [Data](./data/) | DB, ORM, 캐시, 마이그레이션 |
 | [Networking](./networking/) | HTTP, DNS, 프록시, 전송 경로 |

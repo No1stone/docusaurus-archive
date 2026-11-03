@@ -1,16 +1,17 @@
 ---
-title: Profile farmpro-fe
-description: FarmPro 콘솔 FE 작업용 Profile
+title: Profile cms-backoffice-fe
+description: CMS 업무 백오피스 FE 작업용 Profile
 ---
 
-# Profile: farmpro-fe
+# Profile: cms-backoffice-fe
 
-> **개요:** FarmPro 콘솔 FE(React, Vite) 작업용 Profile입니다.
-> ExampleItem 루트: `nutech/fe-v1`.
+> **개요:** CMS 업무 백오피스 FE(React 콘솔) 작업용 Profile입니다.
+> 제품명에 묶이지 않은 공통 표준입니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
 
 ## Question
 
-이 종류의 FE 시스템에 보통 어떤 자산을 쓰는가?
+관리 콘솔형 FE에 보통 어떤 자산을 쓰는가?
 
 ## Asset map
 
@@ -21,8 +22,9 @@ description: FarmPro 콘솔 FE 작업용 Profile
 - [console-crud-base-set](/docs/knowledge/frontend/integration/console-crud-base-set)
 - [console-management-crud-set](/docs/knowledge/frontend/integration/console-management-crud-set)
 - [common-code-fe-harness](/docs/knowledge/frontend/integration/common-code-fe-harness)
+- [management-filter-kit](/docs/knowledge/frontend/architecture/management-filter-kit)
 - [demo-vs-wired](/docs/knowledge/frontend/architecture/demo-vs-wired)
-- [Tasks pipeline](/docs/knowledge/frontend/tasks/)
+- [Tasks pipeline](/docs/knowledge/frontend/tasks/) (CMS CRUD 작업 시)
 - [Conventions](/docs/knowledge/frontend/conventions/)
 - [dark-mode](/docs/knowledge/frontend/design/dark-mode)
 - [loading-action-ux](/docs/knowledge/frontend/design/loading-action-ux)
@@ -41,15 +43,16 @@ description: FarmPro 콘솔 FE 작업용 Profile
 
 | Tool | Default |
 |------|---------|
-| 프로젝트 typecheck / `build:console` 등 | 변경 범위 최소 명령 |
+| 프로젝트 typecheck / build | 변경 범위 최소 명령 |
 | [browser-manual](/docs/harness/tools/browser-manual) | Chrome 스모크 (DoD) |
 | [playwright-e2e](/docs/harness/tools/playwright-e2e) | 회귀가 필요할 때 |
 
 순서: typecheck(또는 동등) → Chrome smoke → 필요 시 Playwright.
 
-## Stack notes (fe-v1)
+## Stack notes
 
-- React + Vite
-- 상태 예: React Query + zustand (다른 저장소는 소유권 규칙만 동일)
-- 스타일: Tailwind, dark class
-- i18n, TZ: 옵셔널 하드 아님
+- 전형 예: React + Vite
+- 상태 lib는 강제하지 않음. 소유권 분리만 하드. 예: React Query + zustand
+- 스타일 예: Tailwind, dark class
+- i18n, TZ: 옵셔널
+- 가축·농장 등 도메인 문서는 예시일 뿐 표준 필수 아님

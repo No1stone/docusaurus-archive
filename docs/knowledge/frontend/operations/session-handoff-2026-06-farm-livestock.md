@@ -2,9 +2,12 @@
 title: session handoff 2026 06 farm livestock
 ---
 
-> **아카이브:** FarmPro FE(`nutech/fe-v1`) guidelines에서 승격했습니다.
-> ExampleItem 코드 경로는 여전히 `nutech/fe-v1`을 가리킵니다.
-> BE 문서는 이 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
+> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+
+> **범위:** 도메인 예시입니다. CMS 업무 백오피스 공통 표준이 아닙니다.
+> 공통 표준은 Frontend 하드 규칙, cms-crud 원셋, cms-backoffice-fe 프로필을 봅니다.
 
 # Session Handoff: Farm Livestock (2026-06)
 

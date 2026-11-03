@@ -2,9 +2,9 @@
 title: FE 07 form crud
 ---
 
-> **아카이브:** FarmPro FE(`nutech/fe-v1`) guidelines에서 승격했습니다.
-> ExampleItem 코드 경로는 여전히 `nutech/fe-v1`을 가리킵니다.
-> BE 문서는 이 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
+> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
 
 # FE-07 — FormSheet 등록·수정
 

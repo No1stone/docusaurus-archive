@@ -6,7 +6,7 @@ description: ManagementPageLayout filter 슬롯 공통 molecule. 표준 UI와 ex
 # Management filter kit
 
 > **아카이브 원본:** 이 문서가 FE 필터 킷의 공통 기준입니다.
-> FarmPro FE `src/components/molecules/filters/README.md`와 guidelines 요약을 합쳐 승격했습니다.
+> CMS 업무 백오피스 FE `src/components/molecules/filters/README.md`와 guidelines 요약을 합쳐 승격했습니다.
 > ExampleItem 코드 경로는 `nutech/fe-v1/src/components/molecules/filters/` 입니다.
 
 ## 위치

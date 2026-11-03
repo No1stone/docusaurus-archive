@@ -5,7 +5,7 @@ description: 부트스트랩부터 인증 상태별 렌더링까지
 
 # Runtime architecture
 
-> **출처:** FarmPro FE `docs/guidelines/architecture/runtime-architecture.md` 승격 요약.
+> **출처:** CMS 업무 백오피스 FE `docs/guidelines/architecture/runtime-architecture.md` 승격 요약.
 > 코드 근거는 `nutech/fe-v1`.
 
 ## 목적

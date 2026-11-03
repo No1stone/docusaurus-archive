@@ -6,7 +6,7 @@ description: 목록/상세 query key 패턴과 mutation 후 무효화
 # Query key and cache rules
 
 > **개요:** 서버 상태 캐시 키와 무효화 규칙입니다.
-> FarmPro FE draft(`query-cache-rules`)와 `useDeviceProductions` 등 실제 훅 패턴을 아카이브용으로 정리했습니다.
+> CMS 업무 백오피스 FE draft(`query-cache-rules`)와 `useDeviceProductions` 등 실제 훅 패턴을 아카이브용으로 정리했습니다.
 > 특정 라이브러리(React Query)를 강제하지 않습니다. 키 모양과 무효화 우선순위만 맞춥니다.
 
 ## 기본 키 패턴

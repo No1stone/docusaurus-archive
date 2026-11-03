@@ -2,9 +2,9 @@
 title: console management crud set
 ---
 
-> **아카이브:** FarmPro FE(`nutech/fe-v1`) guidelines에서 승격했습니다.
-> ExampleItem 코드 경로는 여전히 `nutech/fe-v1`을 가리킵니다.
-> BE 문서는 이 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
+> **아카이브:** CMS 업무 백오피스 FE 표준으로 승격했습니다.
+> ExampleItem 코드 경로 예: `nutech/fe-v1` (참고용).
+> BE 짝 문서는 아카이브에 없을 수 있어 `be-v1/...` 경로로만 표기합니다.
 
 # [지침] 관리 콘솔 CRUD 화면 1세트 (목록·등록·수정·비활성·다운로드)
 
@@ -22,7 +22,7 @@ title: console management crud set
 ## AI 에이전트용 프롬프트 (복사해서 사용)
 
 ```
-FarmPro fe-v1 관리 콘솔 화면 1세트를 구현해줘.
+CMS 백오피스 ExampleItem(fe-v1) 관리 콘솔 화면 1세트를 구현해줘.
 
 반드시 먼저 읽을 문서:
 - docs/knowledge/frontend/integration/console-management-crud-set.md (본 문서)

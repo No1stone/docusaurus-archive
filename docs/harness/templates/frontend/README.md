@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Frontend templates
-description: FE 원셋 맵. ExampleItem은 FarmPro fe-v1
+description: CMS 업무 백오피스 FE 원셋 맵. ExampleItem 경로 예 nutech/fe-v1
 ---
 
 # Frontend templates
@@ -29,4 +29,4 @@ description: FE 원셋 맵. ExampleItem은 FarmPro fe-v1
 | [content-static](./content-static/) | 정적 안내 |
 | [bulk-upload](./bulk-upload/) | 대량 업로드 |
 
-Profile: [farmpro-fe](/docs/harness/profiles/farmpro-fe).
+Profile: [cms-backoffice-fe](/docs/harness/profiles/cms-backoffice-fe).

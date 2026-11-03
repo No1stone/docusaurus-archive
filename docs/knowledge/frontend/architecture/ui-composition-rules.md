@@ -6,7 +6,7 @@ description: ui부터 pages까지의 조립 규칙. 카드 섹션과 필터 슬�
 # UI composition rules
 
 > **개요:** 컴포넌트 계층 조립 규칙입니다.
-> FarmPro FE `docs/guidelines/architecture/ui-composition-rules.md`와 데모/관리 UI에서 쓰던 패턴을 아카이브용으로 정리했습니다.
+> CMS 업무 백오피스 FE `docs/guidelines/architecture/ui-composition-rules.md`와 데모/관리 UI에서 쓰던 패턴을 아카이브용으로 정리했습니다.
 > 앱 코드를 이 문서 때문에 수정할 필요는 없습니다.
 
 ## 계층 범위
