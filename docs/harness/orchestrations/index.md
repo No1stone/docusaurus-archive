@@ -12,6 +12,8 @@
 
 | ID | 적용할 때 | 적용하지 않을 때 |
 |----|-----------|------------------|
+| [frontend-cms-one-set](/docs/harness/orchestrations/frontend-cms-one-set) | **FE CMS 원셋.** 필터, 목록, 상세, CUD 슬롯을 맞춘 뒤 도메인만 채움 | 로그인/셸만, API만 |
+| [frontend-auth-shell](/docs/harness/orchestrations/frontend-auth-shell) | **FE 인증+셸.** 로그인, Admin 레이아웃, 다크 토글 | CMS CRUD 전체 |
 | [spring-api-one-set](/docs/harness/orchestrations/spring-api-one-set) | **공통 원셋.** 구현·단위/시나리오·API E2E를 복사 후 도메인만 채움 | 버그, 리팩터, E2E만 |
 | [api-collection-e2e](/docs/harness/orchestrations/api-collection-e2e) | **원셋 E2E.** 컬렉션만 수정·실행 | 구현부터 추가, UI-only E2E |
 | [spring-bugfix](/docs/harness/orchestrations/spring-bugfix) | 재현이 고정된 결함을 최소 수정 | 재현 불가, 새 기능 |

@@ -7,3 +7,4 @@ Usual asset combo for a *kind* of stack. Not the same as a per-task orchestratio
 | Profile | Doc |
 |---------|-----|
 | Spring API | [spring-api.md](/docs/harness/profiles/spring-api) |
+| FarmPro FE | [farmpro-fe.md](/docs/harness/profiles/farmpro-fe) |
