@@ -1,7 +1,7 @@
 ---
 id: facade-design
 title: 애플리케이션 영역과 Facade
-description: 애플리케이션 영역의 책임, 공개 진입점, 이름 선택, Port 호출 경계를 정합니다
+description: Facade Knowledge 허브입니다. GoF 이름, 경량 헥사 유스케이스, 앱 동작 단위, BFF와 도메인 분리를 하위 글로 나눕니다.
 tags:
   - backend
   - facade
@@ -9,200 +9,55 @@ tags:
 status: active
 slug: "/knowledge/backend/facade/facade-design"
 ---
+
 # 애플리케이션 영역과 Facade
 
-> **개요:** 애플리케이션 영역은 유스케이스 진행, 정책, 계산, 검증, 상태 관리, 기능 조합을 담당합니다.
-> Facade는 그 안의 역할 중 하나로, 공개 진입점으로 자주 쓰입니다.
-> 계층은 클래스 접미사가 아니라 패키지, 책임, 의존 관계로 구분합니다.
+> **개요:** 애플리케이션 영역의 공개 진입점 Knowledge 입구입니다.
+> 이름은 GoF Facade에서 왔고, 이 아카이브에서는 경량 헥사의 유스케이스 조립 층입니다.
+> 구현 복사·검증은 원셋과 coding-conventions입니다 ([ADR-0010](/docs/decisions/adr-0010)).
+> **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.** 깊이 필요할 때만 읽습니다.
+> 세부 서사는 아래 하위 글에 둡니다.
 
-## 적용 상태
-
-공통 구현 기준으로 채택되었습니다.
-Backend Knowledge의 Controller, 데이터 접근(Port와 Adapter), 테스트 구조와 함께 현재 기준입니다.
-테이블 입구의 코드 모양은 Spring 템플릿을 따릅니다.
-관련 결정은 [ADR-0010](/docs/decisions/adr-0010)을 봅니다.
-
-## 계층 구분
-
-| 영역 | 책임 | 이름 예시 |
-|---|---|---|
-| 애플리케이션 | 업무 규칙, 계산, 검증, 상태 관리, 유즈케이스 진행과 기능 조합 | Facade, Handler, Manager, Checker, Processor, Resolver |
-| Port | 도메인이 요구하는 저장소, 외부 기능의 계약 | UserPort, UserQueryPort, ExampleItemPort |
-| Adapter | Port를 구현하여 저장소, 외부 시스템에 접근하고 기술별 데이터를 변환 | ExampleItemAdapter, RestClient 구현체, Provider |
-
-위 예시는 닫힌 허용 목록이 아닙니다.
-특정 접미사를 일률적으로 강제하지 않습니다.
-이름은 역할을 가장 잘 설명하도록 고릅니다.
-
-Manager나 Processor도 애플리케이션 영역에 속할 수 있습니다.
-Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
-
-## 호출 경계
-
-```text
-[api] HTTP·gRPC 도메인 진입 ──→ 도메인 애플리케이션 진입 ──→ Port → Adapter
-[api] GraphQL·HTTP BFF 진입 ──→ BFF 애플리케이션 진입 ──→ 도메인 진입(들) ──→ Port → …
+```mermaid
+flowchart TD
+  entry[Controller_gRPC_GraphQL]
+  bff[BffFacade]
+  domain[DomainFacade]
+  port[Port]
+  adapter[Adapter]
+  db[(DB)]
+  entry --> bff
+  entry --> domain
+  bff --> domain
+  domain --> port
+  port --> adapter
+  adapter --> db
 ```
 
-| 진입 | 호출 |
-|------|------|
-| gRPC, HTTP 도메인 API | 도메인 애플리케이션 진입 (기본 Facade) |
-| GraphQL, HTTP BFF | BFF 애플리케이션 진입 → **도메인 진입만** (기본 예 `BffFacade`) |
+## 한 줄로
 
-- 외부 진입부와 다른 도메인은 지정된 공개 애플리케이션 진입점만 참조합니다.
-- 공개 여부를 Facade라는 이름만으로 판단하지 않습니다.
-- 도메인 진입은 자기 도메인 Port만 봅니다.
-- BFF 진입은 도메인 애플리케이션 진입만 호출합니다. DomainPort·Adapter·entity·Spec·Repository를 직접 보지 않습니다.
-- BFF 전용 Port를 만들지 않습니다. 영속 계약은 Port이고, BFF·다른 앱이 부르는 공개 표면은 도메인 진입입니다.
-- Adapter는 기술 접근을 담당하며 여러 외부 기능을 묶는 업무 흐름을 소유하지 않습니다.
-- 도메인 간 공개 호출은 가능하지만 순환 의존은 만들지 않습니다.
+| 질문 | 답 |
+|------|-----|
+| 왜 이름이 Facade인가 | GoF Facade: 하위 복잡함을 가린 공개 면 |
+| 헥사에서 어디인가 | 라이트 헥사 **UseCase와 같은 층** (이름만 Facade) |
+| BFF와 도메인을 왜 나누나 | **애플리케이션 동작 단위**가 다르기 때문 (DB `@Transactional`이 정의가 아님) |
+| DTO 연관은 | Facade가 Item 계약만큼만 조립. 전 그래프를 밖으로 안 흘림 |
 
-예를 들어 주문 도메인은 인증 도메인의 공개 기능(Port 또는 도메인 진입)을 호출합니다.
-인증 도메인 내부의 Vault, Keycloak Adapter를 직접 사용하지 않습니다.
+Port·Adapter·Provider 세부는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)로 갑니다.
 
-## 애플리케이션 이름 선택
+## 하위 글
 
-같은 애플리케이션 영역 안에서도 역할이 다르면 이름을 나눌 수 있습니다.
-**기본값은 Facade**입니다.
-이름만 보고 Facade를 Manager, Handler로 일괄 변경하지 않습니다.
-실제 책임이 분명할 때만 바꿉니다.
+| 글 | 다루는 것 |
+|----|-----------|
+| [진입과 이름 (GoF·경량 헥사·연관 끊기)](/docs/knowledge/backend/facade/facade-entry-and-naming) | 이름 유래, UseCase 동치, Item 조립, api/model, DisplayNameResolver |
+| [앱 동작 단위와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) | 앱 TX ≠ DB TX, BFF vs 도메인, `@Transactional` 구현·안티패턴 |
+| [테스트와 실패 정책](/docs/knowledge/backend/facade/facade-testing-and-failures) | Port 스텁, 부분 실패, Saga 경계 |
 
-| 이름 | 고를 때 | 이 레포·템플릿에서의 예 |
-|---|---|---|
-| Facade | 공개 진입점의 기본. Port 조합, DTO 교환, 유즈케이스 순서 | 원셋 `ExampleItemFacade` |
-| Manager | 토큰, 세션처럼 수명주기와 상태 갱신을 소유 | TokenManager |
-| Checker | 통과 또는 거절만 담당하고 흐름을 소유하지 않음 | TokenChecker |
-| Handler | 이벤트, 메시지, 단일 유스케이스 처리에 가깝을 때 | (필요 시) |
-| Processor | 단계적 변환, 파이프라인 성격이 강할 때 | (필요 시) |
-| Resolver | 조회 결과를 표시·해석용으로 바꾸는 헬퍼에 가깝을 때 | `DisplayNameResolver` |
+## 관련
 
-위 예시는 닫힌 허용 목록이 아닙니다.
-특정 접미사를 일률적으로 강제하지 않습니다.
-이름은 역할을 가장 잘 설명하도록 고릅니다.
-
-표시명만 담당하는 `UserNameFacade` / `FarmNameFacade`는 두지 않습니다.
-`DisplayNameResolver`를 도메인 진입과 같이 model(모놀리식은 도메인 `support/display`)에 두고, 조회 직후 Name 조회(`findAllName` + `Filter.ids` 등)로 맵을 채웁니다.
-
-Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
-
-### 도메인 진입과 BFF 진입
-
-책임·위치로 BFF 조립을 도메인 유스케이스와 가릅니다.
-이름 기본은 위 표를 따르고, BFF 조립임이 드러나면 `{Feature}BffFacade`처럼 써도 됩니다.
-호스트에 이미 `*IntegrationFacade` 등이 있으면 호스트를 유지합니다.
-
-| | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
-|--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스·정책 | 여러 도메인 진입을 묶어 화면·시나리오 조립 |
-| 이름 | 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
-| 모노리포 위치 | **model** | **api** |
-| 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱 BFF·feature 패키지 |
-| 호출 | gRPC, HTTP 도메인 | GraphQL, HTTP BFF |
-| 의존 | 자기 Port + `DisplayNameResolver` | **도메인 애플리케이션 진입만** (Port 없음) |
-
-원셋(Controller와 Facade와 Port와 Adapter)은 기동, 동작 확인, 패턴 학습용 기본 골격입니다.
-실무에서는 테이블 CRUD보다 업무 BFF 진입이 주로 쓰입니다.
-원셋 Controller는 없어도 애플리케이션은 동작하지만, 최초 확인이 어려워 템플릿에 남겨 둡니다.
-
-단순 원셋에서는 외부 계약과 Port DTO가 같거나 거의 같아 Port DTO를 그대로 써도 됩니다.
-받는 인터페이스(와이어 DTO)와 Port DTO가 다르면 **유즈케이스 진입**(도메인 또는 BFF)에서 교환합니다.
-Adapter는 와이어 DTO를 몰라도 됩니다.
-
-예를 들어 BFF가 화면 필드명의 Req를 받고, 도메인 Facade는 도메인 유스케이스 DTO만 받는다고 가정합니다.
-Controller는 Req만 넘기고, BFF 진입이 도메인 진입 호출에 맞게 바꾼 뒤 조합합니다.
-응답도 BFF 진입이 도메인 진입 결과를 BFF 응답 DTO로 맞춥니다.
-
-배치·원셋 복사는 [coding-conventions](/docs/harness/context/coding-conventions)와 [ONESET](/docs/harness/templates/backend/spring/ONESET)입니다.
-
-## 애플리케이션이 맡을 수 있는 책임
-
-한 요청이 아래를 모두 통과해야 하는 것은 아닙니다.
-
-| 책임 | 하는 일 | 호출 |
-|---|---|---|
-| 테이블 기능 제공 | 한 데이터의 입구를 연다 | 도메인 진입 → 해당 Port |
-| 업무 조합·화면 / BFF | 여러 도메인 진입을 시나리오 순서로 묶고 DTO를 교환한다 | BFF 진입 → 도메인 진입들 |
-| 도메인 공개 경계 | 그 도메인 밖이 호출할 기능을 공개한다 | Port(기본) 또는 도메인 진입 |
-
-없는 계층을 사이에 넣지 않습니다.
-
-## Port와 Adapter와 Provider
-
-Port는 유스케이스가 필요한 기능을 요청하기 위한 내부 계약입니다.
-인터페이스는 제품 이름보다 **필요한 능력**을 중심으로 정의합니다.
-
-```text
-{Domain}Facade / {Feature}BffFacade
-        ↓
-Port                         ← 계약 (능력). Redis, Vault 이름을 붙이지 않는다
-        ↓
-Adapter                      ← Port 구현. 어떤 Provider를 쓸지 고른다
-        ↓
-Provider                     ← 제품·기술 접근 (Redis, Vault, JPA Repository 등)
-```
-
-Provider만 바꾸면 Port와 애플리케이션 코드는 그대로 둡니다.
-
-| Port 예시 (능력) | Adapter | Provider 예 (교체 가능) |
-|---|---|---|
-| 데이터 접근 Port | ExampleItemAdapter | Read / Command Provider → Repository |
-| CachePort | CacheAdapter | RedisProvider, 로컬 캐시 Provider |
-| EncryptionPort | EncryptionAdapter | VaultProvider, KMS Provider |
-| TokenPort / OAuthPort | TokenAdapter / OAuthAdapter | KeycloakProvider, 자체 JWT Provider, 기타 IdP Provider |
-| MessagingPort | MessagingAdapter | KafkaProvider, RabbitMqProvider, RedisPubSubProvider, StompProvider, WebSocketProvider |
-| 사용자 조회 Port | UserLookupAdapter | 로컬, REST, gRPC Provider |
-| 계정 관리 Port | AccountAdapter | KeycloakProvider |
-
-토큰 발급·검증, OAuth, 메시징도 제품명을 Port에 두지 않습니다.
-`KeycloakPort`, `KafkaPort`가 아니라 `TokenPort`, `OAuthPort`, `MessagingPort`처럼 능력을 쓰고, Keycloak, Kafka, RabbitMQ, Redis, STOMP, WebSocket 등은 Provider로 둡니다.
-
-암호화는 Port 이름을 `VaultPort`로 두지 않습니다.
-능력은 암호화·복호화이므로 `EncryptionPort`(또는 프로젝트에서 쓰는 동등한 능력명)가 낫습니다.
-Vault는 Provider입니다.
-
-캐시도 같습니다.
-`CachePort` → `CacheAdapter` → `RedisProvider`로 두고, Redis를 다른 캐시 구현으로 바꿀 때 Port는 유지합니다.
-데이터 조회 Port를 캐시로 감싸는 경우에도 애플리케이션이 보는 계약은 Port이고, 캐시 적재·무효화는 Adapter와 Provider 쪽에 둡니다.
-
-RestClient 구현체, JPA 구현체(과거 템플릿의 Service)도 Adapter입니다.
-그 아래 HTTP 클라이언트나 Repository 접근을 Provider로 두면 같은 교체 규칙을 씁니다.
-
-조회와 변경을 나눌 때의 **적용점은 JPA Adapter**입니다.
-Adapter가 Read Provider와 Command Provider로 Repository를 나눕니다.
-자세한 내용은 [CQRS](/docs/patterns/architecture-patterns/cqrs)와 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)를 봅니다.
-
-## 트랜잭션과 실패 정책
-
-같은 프로세스에서는 공개 애플리케이션 진입점이 로컬 트랜잭션 범위를 정하고, JPA Adapter가 그 트랜잭션에 참여합니다.
-다른 모듈 조회가 실패하면 전체 실패인지 일부 결과 반환인지는 애플리케이션이 정합니다.
-
-원격으로 나눈 뒤의 여러 서비스 변경 완수는 Saga 대상입니다.
-조회 조합에는 Saga를 쓰지 않습니다.
-일반 설명은 [Saga 패턴](/docs/patterns/architecture-patterns/saga)을 봅니다.
-
-## 예시: ID를 이름으로 변환하여 제공
-
-```text
-REST / gRPC 진입
-              ↓
-       주문 DomainFacade
-         ├─ 주문 Port → JPA Adapter → 주문 정보와 고객 ID
-         └─ DisplayNameResolver → 고객 Port Name 조회 → 표시명 치환
-```
-
-화면에서 여러 도메인을 묶을 때는 GraphQL·HTTP BFF → BFF 진입이 **도메인 진입들**을 조합합니다.
-주문 Adapter는 표시명 조회와 마스킹 정책을 알지 않습니다.
-
-## 테스트 경계
-
-애플리케이션 단위 테스트에서는 Port를 대체하여 조합, 마스킹, 실패 정책을 검증합니다.
-JPA Adapter 검증은 Repository와 DB 접근을 대상으로 합니다.
-Port 구현체(외부 HTTP 등)의 통합 테스트에서는 요청, 응답 변환과 통신 실패 처리를 검증합니다.
-
-## Related
-
-- [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
+- [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
+- [유스케이스와 DTO](/docs/harness/templates/backend/spring/db-design/usecase-dto)
 - [CQRS](/docs/patterns/architecture-patterns/cqrs)
 - [ADR-0010](/docs/decisions/adr-0010)
-- 원셋 템플릿: `docs/harness/templates/backend/spring/`
+- 원셋: `docs/harness/templates/backend/spring/exampleitem/facade/`
