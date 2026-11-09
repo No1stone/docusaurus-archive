@@ -49,6 +49,19 @@ ID 발급 방식을 점검하고, 수동 적재나 데이터 이전에서도 그
 기간 검색이 중요한 경로에서는 생성 시각 조건과 실행 계획을 함께 확인합니다.
 [원셋 파티션 설계](/docs/harness/templates/backend/spring/db-design/partitioning) / [엔티티를 작게 유지하는 이유](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
 
+## 같은 ID가 다른 달에 들어가는 예
+
+`(id, created_at)`이 DB 기본 키라면 ID가 42인 1월 행과 2월 행을 모두 넣을 수 있습니다.<br />
+JPA가 `id`만 식별자로 사용하면 두 행을 서로 다른 예약으로 다루기 어렵습니다.
+
+| 데이터 | 복합 PK가 구분하는 값 | JPA에서 단일 ID로 보이는 값 |
+|---|---|---|
+| 1월 예약 | 42와 1월 생성 시각 | 42 |
+| 2월 예약 | 42와 2월 생성 시각 | 42 |
+
+마이그레이션이나 수동 적재를 할 때는 ID 중복을 전체 파티션 기준으로 점검합니다.<br />
+단일 ID의 유일성을 보장할 수 없다면 조회 쿼리만 수정하기보다 엔티티 식별자 설계를 먼저 검토합니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 기본 키와 엔티티 식별자](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

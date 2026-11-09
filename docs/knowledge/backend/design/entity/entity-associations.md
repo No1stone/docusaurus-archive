@@ -55,6 +55,17 @@ DB 외래 키를 둘지는 같은 관계를 DB 제약으로도 보호할지에 �
 조회에 연관이 필요하다는 사실만으로 저장이나 삭제의 수명주기까지 묶을 필요는 없습니다.
 [EntityGraph로 조회 범위 지정하기](/docs/knowledge/backend/entity/entity-entitygraph) / [엔티티 설계](/docs/knowledge/backend/entity/entity-design)
 
+## 같은 세대를 여러 예약이 가리킬 때 확인할 것
+
+예약 20건 중 절반이 같은 세대를 가리킨다면, 각 예약이 세대에 접근해도 영속성 컨텍스트가 같은 세대를 재사용할 수 있습니다.<br />
+조회가 실제로 몇 번 발생하는지 보려면 서로 다른 세대가 섞인 데이터로 목록을 테스트해야 합니다.
+
+예를 들어 예약 등록은 `householdId`만 받아 저장하고, 상세 화면은 세대 이름만 읽는다고 가정합니다.<br />
+이 경우 관계 ID로 저장한 뒤 상세 조회에서 필요한 이름만 조립할 수 있습니다.<br />
+세대를 저장하거나 삭제할 때 예약도 함께 바뀌어야 한다면, 그 수명주기는 별도 업무 규칙으로 확인합니다.
+
+연관을 탐색하는 코드와 연관 변경을 전파하는 설정을 구분하면, 조회 편의를 위해 추가한 매핑이 삭제 범위까지 넓히는 일을 줄일 수 있습니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 관계 매핑과 cascade](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

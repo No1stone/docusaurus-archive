@@ -61,6 +61,15 @@ DB에서 채운 기본값이 같은 Java 객체에 언제 보이는지도 따로
 낙관적 동시성은 버전 필드와 함께 검토합니다.
 [더티 체킹](/docs/knowledge/backend/entity/entity-dirty-checking) / [JPA 버전과 잠금](/docs/knowledge/backend/repository/repository-locking)
 
+## 기본값이 들어갔는지 저장 직후 확인하기
+
+예제의 `status`를 설정하지 않은 채 저장하면, Hibernate가 INSERT에서 그 컬럼을 생략했을 때 DB가 기본값을 채웁니다.<br />
+저장 직후 메모리의 엔티티 필드에는 여전히 `null`이 남을 수 있습니다.
+
+통합 테스트에서는 INSERT 로그에 `status`가 없는지 확인하고, flush 뒤 컨텍스트를 비워 다시 조회한 결과가 `PENDING`인지 확인합니다.<br />
+쓰기 응답에 상태를 즉시 내려줘야 한다면 생성값 매핑을 쓰거나 저장 뒤 실제 값을 읽어 응답을 구성합니다.<br />
+DB 기본값을 설정하는 일과 그 값을 응답에 쓰는 시점은 함께 검토해야 합니다.
+
 ## 참고 자료
 
 - [Hibernate ORM의 매핑 애노테이션 설명](https://docs.hibernate.org/orm/5.1/userguide/html_single/appendices/Annotations.html)

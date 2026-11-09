@@ -46,6 +46,15 @@ UNIQUE (household_id, reservation_code);
 실제 데이터를 확인한 뒤 마이그레이션을 적용하고, 충돌 시 API에 돌려줄 오류를 테스트합니다.
 [엔티티 식별자](/docs/knowledge/backend/entity/entity-identifiers) / [동시 수정과 버전](/docs/knowledge/backend/repository/repository-locking)
 
+## 화면의 중복 확인을 통과한 요청 두 건
+
+두 사용자가 같은 세대에 동일한 예약 코드를 동시에 등록하면, 두 요청이 모두 사전 조회에서 빈 결과를 볼 수 있습니다.<br />
+유일성 제약이 있다면 먼저 커밋한 요청만 성공하고, 나머지 요청은 DB 제약 위반으로 실패할 수 있습니다.
+
+통합 테스트는 커밋 시점의 결과를 보도록 요청을 별도 트랜잭션으로 실행합니다.<br />
+최종 저장 건수가 한 건인지와 실패한 요청이 약속한 업무 코드로 변환됐는지 확인합니다.<br />
+반대로 예약 코드가 아직 배정되지 않은 상태를 허용한다면, 어떤 값에 제약을 적용할지 먼저 정해야 합니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 관계형 매핑과 스키마 생성](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

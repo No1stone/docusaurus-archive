@@ -52,6 +52,22 @@ Adapter는 Port가 받은 변경 정보를 관리 중인 엔티티에 적용합�
 업데이트 SQL에 어떤 컬럼이 포함되는지는 더티 체킹과 별도로 확인합니다.
 [Hibernate의 DynamicInsert와 DynamicUpdate](/docs/knowledge/backend/entity/entity-dynamic-insert-update) / [Repository의 트랜잭션 기본값](/docs/knowledge/backend/repository/repository-transactionality)
 
+## flush 전 메모리와 flush 후 DB를 구분하는 테스트
+
+테스트에서 `reservation.changeVisitHour(15)`를 호출한 직후 같은 객체를 검사하면 15가 보입니다.<br />
+그 결과는 Java 객체의 변경을 보여줍니다.
+
+```java
+entityManager.flush();
+entityManager.clear();
+Reservation reloaded = entityManager.find(Reservation.class, id);
+assertThat(reloaded.getVisitHour()).isEqualTo(15);
+```
+
+위 코드는 변경 결과가 SQL을 거쳐 다시 읽히는지 확인하는 테스트의 일부입니다.<br />
+커밋까지 확인하려면 쓰기 트랜잭션을 끝낸 뒤 새 트랜잭션에서 조회합니다.<br />
+롤백이 필요한 테스트에서는 변경된 값이 새 트랜잭션에서 보이지 않는지 확인합니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 엔티티 상태와 DB 동기화](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

@@ -31,6 +31,16 @@ slug: "/knowledge/backend/entity/entity-annotations-catalog"
 연관 조회나 버전 필드는 해당 업무가 요구할 때 선택합니다.
 [식별자](/docs/knowledge/backend/entity/entity-identifiers) / [관계 매핑](/docs/knowledge/backend/entity/entity-associations) / [enum 변환](/docs/knowledge/backend/entity/entity-enum-converter) / [동적 SQL](/docs/knowledge/backend/entity/entity-dynamic-insert-update) / [Auditing](/docs/knowledge/backend/repository/repository-auditing)
 
+## 감사 컬럼 하나를 추가할 때 확인할 매핑
+
+예약 테이블에 `updated_by`를 추가한다고 가정합니다.<br />
+컬럼이 DB에 생겼는지 확인한 뒤, 엔티티가 그 컬럼을 읽고 쓰는지와 현재 사용자를 어떤 방식으로 넣는지 나눠 봅니다.
+
+`@Column`은 컬럼 이름을 연결하고, `@LastModifiedBy`는 감사 값이 들어갈 필드를 표시합니다.<br />
+이미 공통 상위 타입을 상속한다면 같은 필드를 자식 엔티티에 다시 선언할 필요가 없습니다.<br />
+수정 두 건을 연달아 실행해 생성자는 유지되고 수정자만 바뀌는지 확인합니다.<br />
+낙관적 락이 필요하다면 `@Version`의 검증은 별도 케이스로 둡니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 매핑 애노테이션](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 268" role="img" aria-labelledby="title">
+<title id="title">ExampleItem 결과 조립</title>
+<rect width="480" height="268" rx="14" fill="#edf4fa"/>
+<rect x="18" y="16" width="444" height="46" rx="8" fill="white" stroke="#93adbf"/>
+<text x="240" y="45" text-anchor="middle" font-family="system-ui,sans-serif" font-size="19" fill="#142d40">검색 입력을 Filter로 받음</text>
+<path d="M240 63 v13 m-5 -5 l5 5 l5 -5" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="18" y="79" width="444" height="46" rx="8" fill="white" stroke="#93adbf"/>
+<text x="240" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="19" fill="#142d40">JPA Adapter가 조건과 페이지를 적용</text>
+<path d="M240 126 v13 m-5 -5 l5 5 l5 -5" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="18" y="142" width="444" height="46" rx="8" fill="white" stroke="#93adbf"/>
+<text x="240" y="171" text-anchor="middle" font-family="system-ui,sans-serif" font-size="19" fill="#142d40">엔티티 조회 결과를 Item으로 변환</text>
+<path d="M240 189 v13 m-5 -5 l5 5 l5 -5" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="18" y="205" width="444" height="46" rx="8" fill="white" stroke="#93adbf"/>
+<text x="240" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="19" fill="#142d40">Facade가 표시 이름을 일괄 조회해 조립</text>
+</svg>

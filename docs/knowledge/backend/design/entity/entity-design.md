@@ -24,6 +24,17 @@ slug: "/knowledge/backend/entity/entity-design"
 
 목록은 [Entity index](/docs/knowledge/backend/entity/index)와 같습니다.
 
+## 엔티티를 손볼 때 SQL부터 확인하는 경우
+
+예약 시간이 바뀌지 않거나 동시 수정에서 이전 값이 덮이는 문제라면 변경 추적과 버전 필드를 먼저 봅니다.<br />
+목록을 열었을 때 SQL이 반복되면 변경 모델보다 연관 로딩과 결과 타입을 확인합니다.
+
+| 문제 | 이어서 볼 글 |
+|---|---|
+| 수정 메서드가 DB에 언제 반영되는지 궁금함 | [더티 체킹](/docs/knowledge/backend/entity/entity-dirty-checking) |
+| 상세에서만 연관을 함께 읽고 싶음 | [EntityGraph](/docs/knowledge/backend/entity/entity-entitygraph) |
+| 파티션 때문에 DB 키가 복합임 | [엔티티 식별자](/docs/knowledge/backend/entity/entity-identifiers) |
+
 ## 관련
 
 - [Repository](/docs/knowledge/backend/repository/index)

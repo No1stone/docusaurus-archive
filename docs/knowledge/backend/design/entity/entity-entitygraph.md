@@ -44,6 +44,20 @@ Optional<Reservation> findDetailById(@Param("id") Long id);
 그런 경로는 필요한 ID를 모아 별도 조회하고 결과를 조립합니다.
 [LAZY와 EAGER](/docs/knowledge/backend/entity/entity-fetch-lazy-eager) / [엔티티와 조회 모델](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
 
+## 상세 조회 최적화를 목록에 그대로 적용하면
+
+예약 상세 한 건에 첨부 파일을 표시하려고 컬렉션을 함께 가져온다고 가정합니다.<br />
+같은 조회 계획을 목록에 붙이면 예약 하나의 첨부가 세 건일 때 SQL 결과가 여러 행으로 펼쳐질 수 있습니다.
+
+| 조회 | 결과에서 확인할 것 |
+|---|---|
+| 예약 상세 한 건 | 필요한 첨부가 모두 포함되는지 |
+| 예약 목록 20건 | 예약 중복 없이 페이지가 채워지는지 |
+| 다음 페이지 | 같은 예약이 앞 페이지와 중복되지 않는지 |
+
+그래프를 쓴 뒤에는 SQL뿐 아니라 화면 계약의 결과도 봅니다.<br />
+목록에 파일 개수만 필요하다면 상세 그래프 대신 개수만 집계하는 조회도 비교할 수 있습니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 Entity Graph 동작](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

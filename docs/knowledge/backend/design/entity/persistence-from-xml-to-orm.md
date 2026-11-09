@@ -33,3 +33,14 @@ SQL 매퍼에서도 타입이 있는 결과 객체를 사용할 수 있습니다
 
 원셋에서는 기본 저장은 JPA로 처리하고, 조회는 필요한 조건과 결과 형태에 맞춰 Specification이나 커스텀 쿼리를 사용합니다.
 [VO, DTO, 엔티티 구분](/docs/knowledge/backend/entity/persistence-vo-dto-entity) / [SQL 중심 조회 선택](/docs/knowledge/backend/repository/repository-jooq-and-sql-builders)
+
+## 같은 예약 취소를 SQL 매퍼와 ORM에서 읽기
+
+SQL 매퍼를 사용하면 취소 쿼리의 WHERE와 SET을 먼저 확인할 수 있습니다.<br />
+예를 들어 취소 가능한 상태일 때만 UPDATE가 실행되도록 조건을 넣고, 영향받은 행 수로 결과를 확인합니다.
+
+ORM에서 관리 중인 엔티티를 쓰면 예약을 읽고 `cancel()`에서 상태 전이를 판단한 뒤 flush에서 UPDATE가 나갑니다.<br />
+두 경로 모두 동시 변경을 허용할지 결정해야 합니다.<br />
+SQL 매퍼에서는 상태나 버전을 WHERE에 포함할 수 있고, JPA에서는 버전 매핑을 사용해 충돌을 감지할 수 있습니다.
+
+목록에는 쿼리를 명시하고 변경에는 상태 추적을 쓰는 식으로 같은 프로젝트에서 두 접근의 장점을 선택할 수도 있습니다.

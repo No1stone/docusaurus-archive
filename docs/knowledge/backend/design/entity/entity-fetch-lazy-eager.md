@@ -43,6 +43,24 @@ JPA의 대표 기본값은 `@ManyToOne`과 `@OneToOne`이 EAGER, 컬렉션 연�
 기존 연관 매핑을 통해 상세 조회를 만들 때는 필요한 관계만 조회 계획에 추가합니다.
 [연관 매핑](/docs/knowledge/backend/entity/entity-associations) / [EntityGraph](/docs/knowledge/backend/entity/entity-entitygraph)
 
+## 같은 예약 목록을 세 가지 방법으로 읽어 보기
+
+예약 세 건이 세대 `101`, `101`, `102`에 속한다고 가정합니다.<br />
+화면에는 예약 시간과 세대 이름만 보여줍니다.
+
+| 방법 | 실행 흐름 | 확인할 점 |
+|---|---|---|
+| 조회 뒤 지연 연관에 접근 | 예약 목록을 읽고, 로드되지 않은 세대가 필요할 때 추가 조회 | 같은 세대를 재사용할 수 있지만, 서로 다른 세대가 늘면 쿼리도 늘 수 있음 |
+| 목록과 세대 이름을 한 쿼리에서 읽기 | 필요한 열을 JOIN으로 선택해 목록 결과 생성 | 연관으로 행이 늘어나는 경우 페이지와 count가 의도대로 동작하는지 확인 |
+| ID로 별도 일괄 조회 | 예약 목록을 읽고, 세대 ID `101`, `102`를 모아 이름을 읽은 뒤 조립 | 이름 조회 범위를 해당 페이지로 제한할 수 있고 빈 ID 목록에서는 호출 생략 가능 |
+
+측정할 때는 SQL 로그에서 실제로 나간 조회를 셉니다.<br />
+테스트 데이터가 같은 세대만 반복하면 영속성 컨텍스트의 재사용 때문에 문제가 잘 드러나지 않습니다.<br />
+여러 세대를 섞고 조회 전에 컨텍스트를 비운 상태에서 비교합니다.
+
+원셋의 `DisplayNameResolver`는 세 번째 방식의 작은 예제입니다.<br />
+목록과 상세를 서로 다른 결과 타입으로 설계하는 경우에는 [VO, DTO, 엔티티와 Item](/docs/knowledge/backend/entity/persistence-vo-dto-entity)에서 이어집니다.
+
 ## 참고 자료
 
 - [Jakarta Persistence의 FetchType과 연관 매핑](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)
