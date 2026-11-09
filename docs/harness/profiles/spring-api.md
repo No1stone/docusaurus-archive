@@ -17,10 +17,12 @@ Skeleton profile for Spring-style HTTP API work.
 - [데이터 접근 경계 (Port와 Adapter)](/docs/knowledge/backend/service/service-design)
 - [ADR-0010](/docs/decisions/adr-0010)
 - [테스트 기본 구조](/docs/knowledge/backend/testing/test-structure)
+- [MySQL & MariaDB](/docs/knowledge/data/mysql/)
+- [JPA](/docs/knowledge/data/jpa/)
 
 ### Technology
 
-- Spring MVC / Spring Data JPA — TODO when written
+- Spring MVC / Spring Data JPA — 원셋·Knowledge 참고
 
 ### Architecture
 
@@ -28,12 +30,16 @@ Skeleton profile for Spring-style HTTP API work.
 
 ### Patterns
 
-- Pagination, idempotency — TODO when written
+- [Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox)
+- [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c)
+- [RestClient와 Istio 재시도](/docs/patterns/architecture-patterns/restclient-vs-istio-retries)
 
 ### Templates
 
 - Site: [/docs/harness/templates/backend/spring/](/docs/harness/templates/backend/spring/)
 - Repo: `docs/harness/templates/backend/spring/` — ExampleItem 원셋 (구현 + [testing/](../templates/backend/spring/testing/) + [e2e/](../templates/backend/spring/e2e/)). 복사 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET). enum은 조건부.
+- [DB 설계](/docs/harness/templates/backend/spring/db-design/) · [Database 입구](/docs/harness/database/)
+- [PageQuery](/docs/harness/templates/backend/spring/support/)
 
 ### Decisions
 

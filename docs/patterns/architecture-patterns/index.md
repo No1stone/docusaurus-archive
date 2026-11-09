@@ -28,6 +28,7 @@ unlisted: true
 - [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox)
 - [CDC](/docs/patterns/architecture-patterns/cdc)
 - [Fan-out](/docs/patterns/architecture-patterns/fan-out)
+- 알림 best-effort vs outbox: [ADR-0012](/docs/decisions/adr-0012)
 
 ### 분산 업무·동시성
 
@@ -42,9 +43,10 @@ unlisted: true
 
 - [Gateway 권한 라우팅](/docs/patterns/architecture-patterns/gateway-authorization-routing)
 
-### 관측
+### 관측·나가기
 
-- [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c) — MSA 디폴트. 시크릿/Vault는 예정
+- [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c) — MSA 디폴트 ([ADR-0014](/docs/decisions/adr-0014))
+- [RestClient와 Istio 재시도·타임아웃](/docs/patterns/architecture-patterns/restclient-vs-istio-retries)
 
 ## 사례
 

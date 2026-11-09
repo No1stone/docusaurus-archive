@@ -46,6 +46,8 @@
 | `docs/knowledge/backend/design/testing/test-structure.md` | Client·계약 테스트 배치 |
 | `docs/harness/context/coding-conventions.md` | 계층 경계가 헷갈릴 때 |
 | `docs/architecture/adr/ADR-0004-blocking-flow-uses-mvc.md` | 블로킹 RestClient와 MVC 전제를 확인할 때 |
+| [RestClient와 Istio 재시도](/docs/patterns/architecture-patterns/restclient-vs-istio-retries) | 앱 vs 메시 재시도·타임아웃 이중화 방지 |
+| [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c) | 나가는 호출에 traceparent |
 
 구현 템플릿 폴더는 이 상황의 기본 입력이 아닙니다.
 대상 저장소의 기존 Client, fixture, WireMock·MockWebServer 패턴을 재사용합니다.

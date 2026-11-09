@@ -10,9 +10,9 @@ This is not the Docusaurus sidebar. Agents should start here (or a domain file) 
 ## Domains
 
 - [Backend](./backend.md)
-- Frontend — TODO
-- Data — TODO
-- Infrastructure — TODO
+- [Frontend](./frontend.md) (웹 CMS + Flutter)
+- [Data](./data.md)
+- [Infrastructure](./infrastructure.md)
 - [AI / Harness](./ai.md)
 
 ## Archive areas (`docs/`)
@@ -40,5 +40,8 @@ This is not the Docusaurus sidebar. Agents should start here (or a domain file) 
 ```text
 Index → selected domain map → documents → templates / ADRs → history if needed
 ```
+
+기본 작업 시작은 [`docs/harness/CURRENT.md`](../docs/harness/CURRENT.md)와 이번 작업 문서입니다.
+Index는 자산 위치 확인용입니다.
 
 Agent orchestration (Master + roles): [`../docs/harness/orchestration.md`](../docs/harness/orchestration.md)

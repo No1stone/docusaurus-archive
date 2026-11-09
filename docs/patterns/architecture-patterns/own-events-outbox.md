@@ -69,6 +69,12 @@ Saga가 결과를 소비 → 진행 또는 보상 결정 → 발행
 
 ---
 
+## 경계
+
+알림(메일·문자·카톡 등)처럼 놓쳐도 되는 전달은 outbox 기본이 아닙니다.
+[ADR-0012](/docs/decisions/adr-0012).
+유스케이스에 Saga·Outbox가 필요하면 [`spring-messaging-saga`](/docs/harness/orchestrations/spring-messaging-saga).
+
 ## 관련
 
 - [Saga](/docs/patterns/architecture-patterns/saga) — 패턴 일반론

@@ -153,7 +153,20 @@ exampleitem/
 - 원셋 전체: [`spring-api-one-set`](/docs/harness/orchestrations/spring-api-one-set)
 - Controller API E2E만: [`api-collection-e2e`](/docs/harness/orchestrations/api-collection-e2e)
 
+## 튜닝된 원셋 (전제)
+
+**기본·DB 원셋 CRUD는 튜닝이 끝난 형태입니다.**
+테이블 한 세트를 뽑은 CRUD는 사실상 확장이 필요 없는 구조로 둡니다.
+
+- 단건은 id, 목록은 스펙 필터 + [`PageQuery`](./support/) (기본 size 20, 상한 100, 서버 clamp)
+- 공통코드 축 인덱스·카디널리티는 [DB 설계 · 인덱스](./db-design/indexes) 기본 관례
+- 원셋 목록 경로에 비제약 `unpaged` 전체를 두지 않습니다 (`find-all` 등은 특수 용도)
+- 이 경로에서는 **슬로우 쿼리가 발생할 수 없습니다**
+
+**BFF·유스케이스 조립**으로 여러 도메인 조회를 묶으면 슬로우는 그쪽에서 생길 수 있습니다.
+그것을 원셋 CRUD 본체가 빈약한 신호로 보지 않습니다.
+
 ## DB 설계
 
-테이블 접두사, Audit, 파티션, 공통코드 등 **프로젝트 선택 기준**은 [DB 설계 하네스](/docs/harness/templates/backend/spring/db-design/)를 봅니다.
+테이블 접두사, Audit, 파티션, 공통코드 등 **프로젝트 선택 기준**은 [DB 설계 하네스](/docs/harness/templates/backend/spring/db-design/)와 [Database 입구](/docs/harness/database/)를 봅니다.
 MySQL 일반론은 Knowledge 글을 보고, 이 원셋 폴더의 규칙을 일반 기술 글로 옮기지 않습니다.

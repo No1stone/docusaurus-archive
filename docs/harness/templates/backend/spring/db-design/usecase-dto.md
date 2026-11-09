@@ -25,6 +25,20 @@ description: Item 종류별로 나가는 연관이 다르고, 그에 맞춰 로�
 
 생성·수정은 보통 `Res.Id`, 콤보는 `Res.Name`입니다.
 
+## 목록 페이징 (PageQuery)
+
+목록 Req의 `Filter`(또는 `WebListQuery`)는 [`PageQuery`](/docs/harness/templates/backend/spring/support/)를 확장합니다.
+
+| 항목 | 값 |
+|------|-----|
+| 기본 size | 20 |
+| 상한 | 100 (`MAX_SIZE`, 서버 `resolvedSize`로 clamp) |
+| 기본 정렬 | 숫자 PK면 `id DESC` (`toPageable()`). 그 외는 Facade에서 `toPageable(Sort)` |
+
+컨트롤러는 Spring `Pageable`을 따로 받지 않고 `filter.toPageable()`을 Facade에 넘깁니다.
+원셋 목록 경로에 비제약 전체 조회를 두지 않습니다.
+공통코드 인덱스 관례는 [인덱스](./indexes)를 봅니다.
+
 ## 사다리와 DB 대응
 
 ```text

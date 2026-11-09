@@ -20,6 +20,7 @@
 | [spring-refactor-layer](/docs/harness/orchestrations/spring-refactor-layer) | 동작 유지 구조 변경 | 공개 API·동작 변경 |
 | [archive-promote-pattern](/docs/harness/orchestrations/archive-promote-pattern) | 반복된 구현을 아카이브 기준으로 올릴지 제안 | 한 번 쓴 코드, 구현 중 기능 |
 | [spring-external-contract](/docs/harness/orchestrations/spring-external-contract) | (원셋 범위 밖) OpenAPI·RestClient 계약 | 내부 CRUD 원셋 |
+| [spring-messaging-saga](/docs/harness/orchestrations/spring-messaging-saga) | 유스케이스에 Outbox·Saga·자기 이벤트 버스 | CRUD 원셋만, 알림 best-effort, Rabbit만 |
 | [docs-field-manual](/docs/harness/orchestrations/docs-field-manual) | (원셋 범위 밖) 관리자·현장 매뉴얼 | Knowledge 승격, API 구현만 |
 
 ## 레시피와 에이전트

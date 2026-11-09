@@ -154,8 +154,10 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 ### Messaging
 
 - **원칙:** [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox) — **전통 Saga**(소비→결정→발행). Outbox로 발행 경로 중앙화. 전 이력 방송으로 이벤트 지옥 만들지 않음.
+- **알림 ≠ outbox.** 메일·문자·카톡 등 놓쳐도 되는 알림은 AFTER_COMMIT / best-effort. outbox는 재처리·감사가 요구사항일 때만 ([ADR-0012](/docs/decisions/adr-0012)).
 - **라우팅(실시간·명령):** [lib-message-routing](/docs/harness/templates/backend/spring/lib-message-routing/) — Rabbit.
-- **lib-message-saga:** 앱 → gRPC **결과/시작 발행** + Kafka **요청/보상 컨슘**. event-saga = Outbox + 오케스트레이션. ([ADR-0004](/docs/decisions/adr-0004) MVC+VT)
+- **lib-message-saga:** 앱 → REST/gRPC **결과/시작 발행** + Kafka **요청/보상 컨슘**. event-saga = Outbox + 오케스트레이션.
+- 유스케이스에 사가·신뢰 전달이 필요하면 [`spring-messaging-saga`](/docs/harness/orchestrations/spring-messaging-saga) 레시피를 고른다. CRUD 원셋 기본 경로에 비동기를 강제하지 않는다.
 - 라우팅(Rabbit)과 섞지 않는다.
 
 ## Naming
@@ -183,7 +185,8 @@ One holder class per domain per direction. Do not scatter `CreateExampleItemRequ
 - `Name` holds the display field used by `DisplayNameResolver` / `searchName` (ExampleItem은 `url`).
 - `Filter` has `id`, then `ids`, then the column filters, then `startAt` and `endAt`.
 - Enum columns stay `String` on every DTO. Do not store `enum.name()`.
-- Paging is Spring `Pageable` on the controller. Do not add a `PageQuery` type.
+- 목록 페이징은 [`PageQuery`](/docs/harness/templates/backend/spring/support/) (`DEFAULT_SIZE` 20, `MAX_SIZE` 100, `resolvedSize` 클램프). `Filter`(또는 `WebListQuery`)가 `PageQuery`를 확장하고, 컨트롤러는 `filter.toPageable()`을 Facade에 넘깁니다.
+- 게이트웨이처럼 DB 목록이 없고 Spring `Pageable`만 쓰는 호스트는 `PageQuery`를 강제하지 않습니다.
 
 ## Transactions
 

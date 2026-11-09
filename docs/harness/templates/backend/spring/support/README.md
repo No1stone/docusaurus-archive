@@ -30,6 +30,7 @@
 - [`CodeValue.java`](./CodeValue.java)
 - [`BizEnum.java`](./BizEnum.java)
 - [`CodeValueConverter.java`](./CodeValueConverter.java)
+- [`PageQuery.java`](./PageQuery.java) — 목록 기본 size 20, 상한 100. 사용은 [유스케이스와 DTO](/docs/harness/templates/backend/spring/db-design/usecase-dto)
 
 ## Source
 

@@ -24,9 +24,11 @@ description: FarmPro형 프로젝트의 테이블 설계 선택 기준, 예외, 
 
 | 층 | 역할 |
 |----|------|
-| 이 하네스 | 프로젝트 선택 기준, 예외, 스케치 |
+| [하네스 Database 입구](/docs/harness/database/) | AI 나침반, 링크 |
+| 이 하네스 (db-design) | 프로젝트 선택 기준, 예외, 스케치 |
 | [Knowledge MySQL 테이블 설계](/docs/knowledge/data/mysql/design/keys-and-relations) 등 | 제품·SQL 일반론 |
 | 대상 저장소 코드 | 기존 구현 근거 |
+| [PageQuery](/docs/harness/templates/backend/spring/support/) | 목록 기본 size 20, 상한 100 |
 
 ## 본문에서 구분하는 세 가지
 

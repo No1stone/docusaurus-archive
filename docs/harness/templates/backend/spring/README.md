@@ -8,7 +8,8 @@
 | 구분 | Path | 설명 |
 |------|------|------|
 | 도메인 원셋 | [exampleitem/](./exampleitem/) | Controller·Facade·dto·persistence·display |
-| Support | [support/](./support/) | 공통 타입 (`BizEnum`, Entity 감사 등) |
+| DB 설계 | [db-design/](./db-design/) | 프로젝트 테이블 선택 기준 (하네스 [Database 입구](/docs/harness/database/)) |
+| Support | [support/](./support/) | 공통 타입 (`BizEnum`, Entity 감사, `PageQuery` 등) |
 | Testing / E2E | [testing/](./testing/), [e2e/](./e2e/) | 단위·시나리오·API 컬렉션 |
 | **공유 라이브러리** | [lib-cache/](./lib-cache/) | CachePort(Lettuce). 도메인 없음 |
 | | [lib-distributed-lock/](./lib-distributed-lock/) | LockPort(Redisson). 도메인 없음 |

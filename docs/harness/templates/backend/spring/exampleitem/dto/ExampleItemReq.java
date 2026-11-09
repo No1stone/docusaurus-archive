@@ -1,8 +1,10 @@
 package com.example.template.exampleitem.dto;
 
+import com.example.template.support.PageQuery;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.FieldNameConstants;
 
@@ -19,11 +21,12 @@ public class ExampleItemReq {
         private List<Long> ids;
     }
 
-    @Schema(description = "ExampleItemReq.Filter DTO")
+    @Schema(description = "ExampleItemReq.Filter DTO (PageQuery: page/size)")
     @Data
+    @EqualsAndHashCode(callSuper = true)
     @FieldDefaults(level = AccessLevel.PRIVATE)
     @FieldNameConstants
-    public static class Filter {
+    public static class Filter extends PageQuery {
         @Schema(description = "아이디")
         private Long id;
         @Schema(description = "아이디 목록")

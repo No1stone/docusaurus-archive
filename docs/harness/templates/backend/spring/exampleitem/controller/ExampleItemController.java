@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,8 +37,8 @@ public class ExampleItemController {
 
     @Operation(summary = "목록 조회")
     @GetMapping
-    public CommonResponse<Page<ExampleItemRes.Item>> search(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.search(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Item>> search(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.search(filter, filter.toPageable()));
     }
 
     @Operation(summary = "생성")
@@ -87,8 +86,8 @@ public class ExampleItemController {
 
     @Operation(summary = "이름 검색")
     @GetMapping("/search-name")
-    public CommonResponse<Page<ExampleItemRes.Name>> searchName(@ModelAttribute ExampleItemReq.Filter filter, Pageable pageable) {
-        return CommonResponseUtils.responseSuccess(exampleItemFacade.searchName(filter, pageable));
+    public CommonResponse<Page<ExampleItemRes.Name>> searchName(@ModelAttribute ExampleItemReq.Filter filter) {
+        return CommonResponseUtils.responseSuccess(exampleItemFacade.searchName(filter, filter.toPageable()));
     }
 
     @Operation(summary = "이름 전체 조회")

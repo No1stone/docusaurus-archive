@@ -55,7 +55,9 @@ logging:
 ```
 
 **트레이스:** `RestClient.Builder` 빈(Boot 자동구성)을 주입해 클라이언트를 만든다.  
-`RestClient.builder()` 직접 생성하면 W3C `traceparent`·스팬이 안 붙는다.  
+`RestClient.builder()` 직접 생성하면 W3C `traceparent`·스팬이 안 붙습니다.
+전파: [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c).
+재시도·타임아웃을 Istio와 겹치지 않게: [RestClient와 Istio](/docs/patterns/architecture-patterns/restclient-vs-istio-retries).  
 한 줄 로그의 `traceId=`는 MDC에서 읽는다.
 
 ## 파일

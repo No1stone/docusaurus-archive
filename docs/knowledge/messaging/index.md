@@ -16,8 +16,12 @@ slug: /knowledge/messaging
 - [Webex](/docs/knowledge/messaging/webex-stack)
 - [Email / Webhook](/docs/knowledge/messaging/delivery)
 
-## 관련 패턴
+## 관련 패턴·하네스
 
+- [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox)
+- [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox)
 - [CDC](/docs/patterns/architecture-patterns/cdc)
 - [Fan-out](/docs/patterns/architecture-patterns/fan-out)
-- [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox)
+- [알림 vs outbox (ADR-0012)](/docs/decisions/adr-0012)
+- 유스케이스에 사가·Outbox가 필요하면 [`spring-messaging-saga`](/docs/harness/orchestrations/spring-messaging-saga)
+- [lib-message-saga](/docs/harness/templates/backend/spring/lib-message-saga/) · [lib-message-routing](/docs/harness/templates/backend/spring/lib-message-routing/)

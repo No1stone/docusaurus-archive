@@ -24,6 +24,9 @@ Track why Architecture, Templates, and Harness took a particular shape.
 | ADR-0009 | [PHP 보안 취약점 대응을 위한 런타임 및 애플리케이션 업그레이드](./ADR-0009-php-security-runtime-upgrade.md) — PHP 단독 교체 대신 Nextcloud 공식 이미지 기반 메이저 순차 업그레이드를 선택합니다 | 채택 |
 | ADR-0010 | [애플리케이션, Port, Adapter로 계층 이름을 정리한다](./플랫폼과%20하네스/ADR-0010-application-port-adapter-naming.md) — 계층은 접미사가 아니라 책임으로 구분하고, 기존 JPA Service는 Port와 Adapter로 표현합니다 | 채택 |
 | ADR-0011 | [FE는 취약점이 해결된 React와 Node 패치 라인을 쓴다](./런타임과%20보안/ADR-0011-fe-react-node-patched-runtime.md) — RSC 등 공개 취약점 대응으로 패치된 런타임·의존성을 기본으로 둡니다 | 채택 |
+| ADR-0012 | [알림은 outbox 없이 두고, 재처리가 필요한 전달만 outbox를 쓴다](./플랫폼과%20하네스/ADR-0012-alerts-without-outbox.md) — 메일·문자·카톡은 best-effort, 웹훅·확정·Saga 발행은 outbox | 채택 |
+| ADR-0013 | [Flyway를 하네스 기본 마이그레이션으로 두지 않는다](./플랫폼과%20하네스/ADR-0013-no-flyway-as-default.md) — 동일 스키마 다중 Flyway·가시성 문제로 기본 강제하지 않음 | 채택 |
+| ADR-0014 | [서비스 간 트레이스 전파는 W3C Trace Context를 디폴트로 둔다](./플랫폼과%20하네스/ADR-0014-trace-propagation-w3c-default.md) — Actuator·Micrometer Tracing, B3는 레거시만 | 채택 |
 
 번호는 파일명과 `id`에만 둡니다.
 다른 문서에서 가리킬 때는 "ADR-0002"처럼 번호로 부르고, 제목 자체에는 번호를 붙이지 않습니다.
