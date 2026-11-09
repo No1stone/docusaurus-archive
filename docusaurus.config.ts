@@ -2226,6 +2226,14 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
+    metadata: [
+      {
+        name: 'description',
+        content:
+          'ADR, SSOT, Knowledge — engineering archive in Markdown and Git (Origemite).',
+      },
+      {property: 'og:type', content: 'website'},
+    ],
     colorMode: {
       respectPrefersColorScheme: true,
     },

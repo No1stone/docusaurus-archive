@@ -3,6 +3,12 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import OriginalMetadata from '@theme-original/DocItem/Metadata';
+import {
+  absoluteUrl,
+  organizationNode,
+  serializeJsonLd,
+  type JsonLd,
+} from '@site/src/seo/schema';
 
 type DocFrontMatter = {
   keywords?: string[];
@@ -29,15 +35,25 @@ function resolveDatabase(source: string): 'mysql' | 'mariadb' | undefined {
   ].find(({source: prefix}) => source.startsWith(prefix))?.name;
 }
 
+function knowledgeCollectionUrl(
+  permalink: string,
+  siteUrl: string,
+): string | undefined {
+  if (!permalink.startsWith('/docs/knowledge/')) {
+    return undefined;
+  }
+  return absoluteUrl(siteUrl, '/docs/knowledge/');
+}
+
 export default function DocItemMetadata(): ReactNode {
   const {metadata, frontMatter} = useDoc();
   const {siteConfig} = useDocusaurusContext();
   const fm = frontMatter as typeof frontMatter & DocFrontMatter;
   const database = resolveDatabase(metadata.source);
 
-  const url = new URL(metadata.permalink, siteConfig.url).href;
+  const url = absoluteUrl(siteConfig.url, metadata.permalink);
   const collectionUrl = database
-    ? new URL(`/docs/knowledge/data/${database}`, siteConfig.url).href
+    ? absoluteUrl(siteConfig.url, `/docs/knowledge/data/${database}`)
     : undefined;
   const isCollection = Boolean(collectionUrl && url === collectionUrl);
   const draftish =
@@ -67,7 +83,10 @@ export default function DocItemMetadata(): ReactNode {
     ? referenceValue.filter((value: unknown): value is string => typeof value === 'string')
     : [];
 
-  const structuredData: Record<string, unknown> = {
+  const org = organizationNode(siteConfig.url, siteConfig.title);
+  const lastUpdatedAt = (metadata as {lastUpdatedAt?: number | null}).lastUpdatedAt;
+
+  const structuredData: JsonLd = {
     '@context': 'https://schema.org',
     '@type': schemaType,
     '@id': `${url}#${idFragment}`,
@@ -78,6 +97,10 @@ export default function DocItemMetadata(): ReactNode {
     url,
     inLanguage: 'ko',
     mainEntityOfPage: {'@type': 'WebPage', '@id': url},
+    publisher: {'@id': org['@id'] as string},
+    ...(typeof lastUpdatedAt === 'number'
+      ? {dateModified: new Date(lastUpdatedAt).toISOString()}
+      : {}),
   };
 
   if (database && collectionUrl) {
@@ -85,7 +108,7 @@ export default function DocItemMetadata(): ReactNode {
       if (database === 'mariadb') {
         structuredData.isPartOf = {
           '@type': 'CollectionPage',
-          '@id': `${new URL('/docs/knowledge/data/mysql', siteConfig.url).href}#collection`,
+          '@id': `${absoluteUrl(siteConfig.url, '/docs/knowledge/data/mysql')}#collection`,
         };
       }
     } else {
@@ -100,19 +123,37 @@ export default function DocItemMetadata(): ReactNode {
     if (references.length) {
       structuredData.citation = references;
     }
+  } else {
+    const knowledgeHub = knowledgeCollectionUrl(metadata.permalink, siteConfig.url);
+    if (knowledgeHub && url !== knowledgeHub) {
+      structuredData.isPartOf = {
+        '@type': 'CollectionPage',
+        '@id': `${knowledgeHub}#collection`,
+        name: 'Knowledge',
+      };
+    }
   }
 
   const scriptId = database
     ? `${database}-technical-document`
     : 'archive-doc-jsonld';
 
+  // Compact Organization node referenced by publisher @id (site Layout also emits full graph).
+  const publisherNode: JsonLd = {
+    '@context': 'https://schema.org',
+    ...org,
+  };
+
   return (
     <>
       <OriginalMetadata />
       <Head>
         <meta property="og:locale" content="ko_KR" />
+        <script type="application/ld+json" id={`${scriptId}-publisher`}>
+          {serializeJsonLd(publisherNode)}
+        </script>
         <script type="application/ld+json" id={scriptId}>
-          {JSON.stringify(structuredData).replace(/</g, '\\u003c')}
+          {serializeJsonLd(structuredData)}
         </script>
       </Head>
     </>
