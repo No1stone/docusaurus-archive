@@ -1,7 +1,7 @@
 ---
 id: entity-identifiers
 title: 엔티티 식별자
-description: Id GeneratedValue IdClass EmbeddedId와 파티션 원셋의 단일 Id 선택을 정리합니다.
+description: 단일 식별자, 복합 키, 월별 파티션 테이블에서 애플리케이션 ID를 사용할 조건을 설명합니다.
 tags:
   - backend
   - jpa
@@ -9,31 +9,46 @@ status: active
 slug: "/knowledge/backend/entity/entity-identifiers"
 ---
 
-# 엔티티 식별자
+# JPA 엔티티 식별자와 파티션 테이블의 기본 키
 
-> **개요:** JPA는 단일 `@Id`, `@IdClass`, `@EmbeddedId`를 제공합니다.
-> 파티션 원셋은 DB 복합 PK여도 엔티티는 **id만 `@Id`** ([partitioning](/docs/harness/templates/backend/spring/db-design/partitioning.md)).
+예약 상세를 읽을 때 애플리케이션은 보통 예약 ID 하나로 대상을 찾습니다.<br />
+반면 DB에서 생성 시각으로 월별 파티션을 나누면, 테이블의 기본 키에 파티션 컬럼이 함께 들어갈 수 있습니다.
 
-| 방식 | 언제 |
-|------|------|
-| `@Id` + 생성 전략 | 기본 |
-| `@IdClass` | 복합키를 별도 클래스로 |
-| `@EmbeddedId` / `@Embeddable` | 임베디드 키 타입 |
+이때 애플리케이션의 식별자와 테이블이 실제로 보장하는 유일성을 함께 확인해야 합니다.
 
-원셋 기본은 단일 id입니다.
-복합키 옵션은 문서화하되 파티션·일반 CRUD 기본 경로에 강제하지 않습니다.
+## 엔티티가 같은 행을 알아보는 기준
 
-```mermaid
-flowchart TD
-  dbPK["DB_PK_id_created_at"]
-  entId["Entity_@Id_id_만"]
-  dbPK -.->|파티션_원셋| entId
+영속성 컨텍스트는 엔티티 타입과 식별자로 객체를 구분합니다.<br />
+`Reservation`의 식별자 42를 두 번 읽으면 같은 영속성 컨텍스트에서는 같은 엔티티를 가리킵니다.
+
+| 매핑 | 맞는 상황 |
+|---|---|
+| `@Id` | 하나의 값으로 대상 행을 식별 |
+| `@GeneratedValue` | ID 생성 전략을 영속성 제공자나 DB에 위임 |
+| `@IdClass` | 엔티티에 식별자 필드를 각각 두고 별도 키 클래스와 연결 |
+| `@EmbeddedId` | 식별자 컬럼 여러 개를 한 키 값으로 묶어 사용 |
+
+문자열 UUID를 애플리케이션에서 생성하는 원셋은 저장 전 ID를 정할 수 있습니다.<br />
+DB 생성 정수 키를 쓰는 모델이라면 생성 방식과 ID를 사용할 수 있는 시점을 따로 확인합니다.
+
+## 파티션 테이블에서 ID 하나만 매핑한다면
+
+이 아카이브의 파티션 예제에서는 DB 키를 `(id, created_at)`으로 구성하고, 애플리케이션은 ID 하나를 사용합니다.<br />
+이 선택은 **전체 파티션에서 ID 하나가 실제로 한 행을 가리킨다**는 전제가 필요합니다.
+
+```sql
+PRIMARY KEY (id, created_at)
 ```
 
-원셋 결론: [최소 사용과 CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs).
+이 제약만으로는 서로 다른 `created_at`에 같은 `id`를 넣는 것을 막을 수 없습니다.<br />
+같은 ID가 두 파티션에 존재한다면 JPA는 두 행을 별개 엔티티로 표현할 수 없습니다.<br />
+ID 발급 방식을 점검하고, 수동 적재나 데이터 이전에서도 그 유일성이 지켜지는지 확인합니다.
 
----
+생성 시각이 업무상 식별의 일부이거나 ID 중복을 허용해야 한다면 두 필드를 포함한 키 매핑을 검토합니다.<br />
+또한 ID로 한 건을 읽는 것과 파티션 범위를 줄이는 것은 별개입니다.<br />
+기간 검색이 중요한 경로에서는 생성 시각 조건과 실행 계획을 함께 확인합니다.
+[원셋 파티션 설계](/docs/harness/templates/backend/spring/db-design/partitioning) / [엔티티를 작게 유지하는 이유](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
 
-## 관련
+## 참고 자료
 
-- [어노테이션 목록](/docs/knowledge/backend/entity/entity-annotations-catalog)
+- [Jakarta Persistence의 기본 키와 엔티티 식별자](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

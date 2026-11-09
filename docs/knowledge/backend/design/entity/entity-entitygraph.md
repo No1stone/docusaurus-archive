@@ -1,7 +1,7 @@
 ---
 id: entity-entitygraph
 title: EntityGraph
-description: EntityGraph로 조회 단위 연관 로딩을 고르는 시도와 원셋 최소 사용을 정리합니다.
+description: 예약 상세 조회로 EntityGraph의 FETCH, LOAD와 페이징 주의점을 설명합니다.
 tags:
   - backend
   - jpa
@@ -9,26 +9,41 @@ status: active
 slug: "/knowledge/backend/entity/entity-entitygraph"
 ---
 
-# EntityGraph
+# EntityGraph로 상세 조회에 필요한 연관만 가져오기
 
-> **개요:** `@EntityGraph` / NamedEntityGraph는 연관 fetch를 **엔티티 필드 기본값에 박지 않고** 조회 메서드 단위로 고릅니다.
-> 유용하지만, 원셋은 Spec·스칼라·Facade 조립을 기본으로 두고 그래프 ORM에 기대지 않습니다.
+예약 목록에는 예약 ID와 방문 시간만 필요합니다.<br />
+예약 상세에서는 세대 이름까지 표시해야 합니다.<br />
+두 화면을 위해 기본 엔티티 매핑을 바꾸면, 상세 화면의 필요가 목록 조회에도 영향을 줄 수 있습니다.
 
-```mermaid
-flowchart LR
-  repo[Repository_메서드]
-  graph[EntityGraph]
-  ent[Entity_부분_그래프]
-  repo --> graph
-  graph --> ent
+EntityGraph는 어떤 연관을 함께 읽을지 **조회 경로에서** 지정할 때 씁니다.
+
+```java
+@EntityGraph(attributePaths = "household")
+@Query("select r from Reservation r where r.id = :id")
+Optional<Reservation> findDetailById(@Param("id") Long id);
 ```
 
-상세 화면에만 깊은 그래프가 필요하면 EntityGraph·fetch join을 검토할 수 있습니다.
-목록 기본 경로에 NamedEntityGraph를 잔뜩 올리면 다시 “한 엔티티에 모든 조회”가 됩니다.
-원셋 결론: [최소 사용과 CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs).
+예제는 `Reservation.household` 연관이 매핑된 경우입니다.<br />
+상세 조회에서 이 메서드를 호출하고, 읽은 데이터를 상세 DTO로 조립합니다.
 
----
+## FETCH와 LOAD의 차이
 
-## 관련
+| 그래프 유형 | 그래프에 포함된 속성 | 그래프에 없는 속성 |
+|---|---|---|
+| `FETCH` | EAGER로 취급 | LAZY로 취급 |
+| `LOAD` | EAGER로 취급 | 기존 매핑의 fetch 설정 적용 |
 
-- [LAZY와 EAGER](/docs/knowledge/backend/entity/entity-fetch-lazy-eager)
+영속성 제공자는 지정된 범위 밖의 상태를 추가로 가져올 수도 있습니다.<br />
+그래프를 지정했다고 해서 SQL이 항상 한 번만 실행되거나 정확히 한 가지 조인 형태가 나온다고 가정하지 않습니다.
+
+컬렉션을 함께 읽으면 SQL 결과에서 부모가 여러 행으로 펼쳐질 수 있습니다.<br />
+페이지 조회와 함께 쓸 때는 결과 목록, 전체 건수, 실행 SQL을 확인합니다.<br />
+목록에 필요한 값이 몇 개뿐이라면 Projection이나 별도 목록 쿼리도 비교할 수 있습니다.
+
+원셋처럼 스칼라 ID를 우선하는 모델에는 EntityGraph를 붙일 연관 자체가 없을 수 있습니다.<br />
+그런 경로는 필요한 ID를 모아 별도 조회하고 결과를 조립합니다.
+[LAZY와 EAGER](/docs/knowledge/backend/entity/entity-fetch-lazy-eager) / [엔티티와 조회 모델](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
+
+## 참고 자료
+
+- [Jakarta Persistence의 Entity Graph 동작](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)

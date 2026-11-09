@@ -10,50 +10,33 @@ status: active
 slug: "/knowledge/backend/entity/entity-minimal-and-cqrs"
 ---
 
-# 엔티티 최소 사용과 CQRS
+# 엔티티를 작게 유지하고 필요한 조회만 분리하기
 
-> **개요:** cascade·EntityGraph·더티체킹을 다 쓸 수 있습니다.
-> 원셋은 그 유혹을 지나 **엔티티·JPA 기능을 최소로** 두고, 조회/변경을 Adapter의 CQRS 관점으로 정리합니다.
-> 허브는 [엔티티 설계](/docs/knowledge/backend/entity/entity-design)입니다.
+예약 등록에는 세대 ID와 방문 시간, 상태가 필요합니다.<br />
+운영 목록에는 세대 이름과 최근 입차 건수까지 표시할 수 있습니다.<br />
+두 화면을 같은 객체 그래프로 표현하면 목록 요구가 늘 때마다 저장 모델도 함께 커지기 쉽습니다.
 
----
+## 쓰기에 필요한 상태와 화면 결과를 나눕니다
 
-## 유혹과 비용
+| 변경 경로 | 조회 경로 |
+|---|---|
+| 예약 상태 전이에 필요한 값 조회 | 화면에서 필요한 조건과 열 조회 |
+| 업무 규칙에 따라 상태 변경 | 여러 결과를 화면용 Item으로 조립 |
+| 같은 트랜잭션 안에서 변경 반영 | 필요할 때 전용 조회 구현으로 확장 |
 
-```mermaid
-flowchart TD
-  full[풀_ORM_그래프]
-  cost[N+1_락_TX_비대화]
-  min[엔티티_최소]
-  cqrs[Adapter_CQRS_Spec]
-  full --> cost
-  cost --> min
-  min --> cqrs
+원셋에서는 엔티티에 관계 ID를 두고, 목록에서 이름이 필요하면 ID를 모아 별도로 조회할 수 있습니다.<br />
+Controller와 BFF에는 필요한 필드가 담긴 결과를 반환합니다.
+
+## 어디까지 나눌지 결정하기
+
+초기에는 한 Adapter와 한 DB에서 조회와 변경을 처리해도 충분합니다.<br />
+집계나 조회용 데이터소스가 독립적으로 커지면 Query와 Command 구현을 분리할 수 있습니다.
+
+```text
+예약 조회 → Filter와 Specification → 예약 목록 Item
+예약 변경 → 업무 규칙 확인 → JPA 엔티티 상태 변경
 ```
 
-연관·cascade·EntityGraph를 엔티티에 잔뜩 올리면 “한 번에 다 가져오기”가 쉬워 보입니다.
-목록·상세·안전 조회가 한 그래프에 묶이고, Facade가 연관을 끊기도 어렵습니다.
-
----
-
-## 원셋 선택
-
-| 한다 | 하지 않는다 (기본) |
-|------|-------------------|
-| 스칼라 FK, Spec/`Filter` 조회 | 엔티티에 전 연관 EAGER |
-| Adapter에서 map·부분수정 | Controller에 entity |
-| 필요 시 Read/Command Provider | Facade가 데이터소스 선택 |
-| DynamicInsert로 DEFAULT | 복합키를 파티션 기본으로 |
-
-CQRS 적용점은 **JPA Adapter**입니다 ([CQRS](/docs/patterns/architecture-patterns/cqrs), [Provider와 CQRS](/docs/knowledge/backend/service/service-provider-and-cqrs)).
-Facade는 Port만 봅니다.
-
-기능별 글(연관, EntityGraph, 더티…) 말미의 “원셋 기본은 최소”가 이 글을 가리킵니다.
-
----
-
-## 관련
-
-- [엔티티 설계](/docs/knowledge/backend/entity/entity-design)
-- [Facade — 진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming)
-- [Repository 세 인터페이스](/docs/knowledge/backend/repository/repository-three-interfaces)
+이렇게 코드 책임을 나누는 것과 별도 읽기 모델이나 DB를 운영하는 것은 결정 범위가 다릅니다.<br />
+별도 모델로 옮길 때는 조회 결과가 갱신되기까지 걸리는 시간과 실패 복구 방식도 함께 정합니다.
+[엔티티 설계](/docs/knowledge/backend/entity/entity-design) / [Provider와 조회 분리](/docs/knowledge/backend/service/service-provider-and-cqrs) / [CQRS 패턴](/docs/patterns/architecture-patterns/cqrs)

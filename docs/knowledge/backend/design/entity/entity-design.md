@@ -12,28 +12,11 @@ slug: "/knowledge/backend/entity/entity-design"
 
 # 엔티티 설계
 
-> **개요:** 엔티티는 DB 행에 가까운 영속 모델입니다.
-> Facade·API 밖으로 객체 그래프를 흘리지 않습니다.
-> JPA 기능을 많이 쓸 수 있지만, 원셋 결론은 [최소 사용과 CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)입니다.
-> 구현 복사는 원셋 entity입니다. **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.**
+예약을 저장하는 엔티티에는 식별자와 상태가 들어갑니다.<br />
+관리 화면에서 세대 이름이나 집계가 필요해지면, 그 값은 조회 결과에서 조립할 수 있습니다.
 
-```mermaid
-flowchart TD
-  facade[DomainFacade]
-  adapter[Adapter]
-  entity[Entity]
-  table[(Table)]
-  facade --> adapter
-  adapter --> entity
-  entity --> table
-```
-
-## 책임
-
-- 테이블 컬럼과 식별자
-- soft delete 등 행 수준 상태 (호스트 관례)
-- 감사 필드·DynamicInsert로 DEFAULT 존중
-- Adapter 안에서만 다루기. Controller·BFF가 entity를 보지 않음
+이 시리즈는 식별자, 연관 로딩, 변경 추적을 각각 확인합니다.<br />
+원셋은 Adapter 안에서 엔티티를 다루고 호출부에는 필요한 데이터만 돌려줍니다.
 
 ## 하위 글
 

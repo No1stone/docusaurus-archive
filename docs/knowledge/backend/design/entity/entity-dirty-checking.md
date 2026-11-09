@@ -1,7 +1,7 @@
 ---
 id: entity-dirty-checking
 title: 더티 체킹
-description: 영속 컨텍스트의 더티 체킹과 부분 수정 BeanUtils.map의 관계를 정리합니다.
+description: 방문 예약 수정 예제로 JPA 더티 체킹과 flush, 커밋의 차이를 설명합니다.
 tags:
   - backend
   - jpa
@@ -9,30 +9,49 @@ status: active
 slug: "/knowledge/backend/entity/entity-dirty-checking"
 ---
 
-# 더티 체킹
+# JPA 더티 체킹, save를 호출하지 않아도 UPDATE가 나가는 이유
 
-> **개요:** 영속 상태 엔티티의 필드가 바뀌면 플러시 시 UPDATE가 나갑니다.
-> “항상 update 메서드를 호출해야 한다”는 오해와, 원셋 `BeanUtils.map` 부분 수정을 맞춥니다.
+예약 상세 화면에서 방문 시간을 오후 2시에서 오후 3시로 바꿉니다.<br />
+코드에는 예약을 읽고 시간을 바꾸는 메서드만 있습니다.
 
-```mermaid
-flowchart TD
-  load[find_영속]
-  change[필드_변경]
-  flush[flush]
-  sql[UPDATE]
-  load --> change
-  change --> flush
-  flush --> sql
+```java
+@Transactional
+public void reschedule(Long id, int visitHour) {
+    Reservation reservation = repository.findById(id).orElseThrow();
+    reservation.changeVisitHour(visitHour);
+}
 ```
 
-원셋 `saveById`는 로드 후 `BeanUtils.map(update, entity)`로 null/blank가 아닌 값만 반영합니다.
-TX 안에서 영속이면 더티 체킹이 UPDATE를 만듭니다.
-Adapter가 Facade TX에 join하는 전제는 [Service — TX join](/docs/knowledge/backend/service/service-tx-join-facade)입니다.
+조회한 객체가 현재 영속성 컨텍스트에 관리되고 있다면, JPA 구현체는 변경된 상태를 flush할 때 DB에 반영합니다.<br />
+이 과정이 더티 체킹입니다.<br />
+여기서 `changeVisitHour`는 예시 엔티티의 변경 메서드입니다.
 
-원셋 결론: [최소 사용과 CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs).
+![관리 중인 예약의 변경이 SQL로 반영되는 과정](/img/backend-design/jpa-dirty-checking.svg)
 
----
+## UPDATE를 보내는 시점과 확정하는 시점
 
-## 관련
+flush는 영속성 컨텍스트의 변경을 SQL로 반영하는 과정입니다.<br />
+트랜잭션이 커밋될 때 주로 일어나지만, 실행할 쿼리나 flush 모드에 따라 더 일찍 일어날 수도 있습니다.<br />
+flush 뒤에 트랜잭션을 롤백하면 해당 UPDATE도 함께 취소됩니다.
 
-- [DynamicInsert·Update](/docs/knowledge/backend/entity/entity-dynamic-insert-update)
+| 객체 상태 | 필드를 바꾼 뒤의 동작 |
+|---|---|
+| 현재 영속성 컨텍스트가 관리 중 | flush 과정에서 변경 확인 |
+| 컨텍스트에서 분리됨 | 그 객체를 바꾸는 것만으로 DB에 반영되지 않음 |
+| DTO | 조회 결과나 요청 데이터만 보관 |
+
+## 원셋에서 부분 수정을 검증하는 방법
+
+Facade는 어떤 변경이 허용되는지 판단합니다.<br />
+Adapter는 Port가 받은 변경 정보를 관리 중인 엔티티에 적용합니다.<br />
+요청에서 빠진 필드를 기존 값으로 유지하는 정책은 그 수정 흐름에서 명시합니다.
+
+테스트에서는 방문 시간만 변경한 뒤 flush하고 영속성 컨텍스트를 비운 다음 DB에서 다시 읽습니다.<br />
+변경한 시간과 유지돼야 할 다른 컬럼을 함께 확인하면, 메모리에서만 객체가 바뀐 경우와 실제 반영을 구별할 수 있습니다.
+
+업데이트 SQL에 어떤 컬럼이 포함되는지는 더티 체킹과 별도로 확인합니다.
+[Hibernate의 DynamicInsert와 DynamicUpdate](/docs/knowledge/backend/entity/entity-dynamic-insert-update) / [Repository의 트랜잭션 기본값](/docs/knowledge/backend/repository/repository-transactionality)
+
+## 참고 자료
+
+- [Jakarta Persistence의 엔티티 상태와 DB 동기화](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)
