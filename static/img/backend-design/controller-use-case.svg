@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 296" role="img" aria-labelledby="title">
+<title id="title">HTTP 요청이 애플리케이션 유즈케이스로 전달되는 과정</title>
+<rect width="720" height="100%" rx="12" fill="#edf4fa"/>
+<rect x="32" y="16" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">Controller가 URL과 요청 본문을 해석</text>
+<path d="M360 58 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="77" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">도메인 Facade가 예약 유즈케이스 처리</text>
+<path d="M360 119 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="138" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">Controller가 성공 응답 반환</text>
+<path d="M360 180 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="199" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="225" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">실패 시 Advice가 상태 코드와 오류 본문 구성</text>
+</svg>

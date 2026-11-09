@@ -1,88 +1,55 @@
 ---
 id: controller-design
 title: Controller Design
-description: Controller layer responsibilities and boundaries
+description: 예약 등록 예제로 Controller의 HTTP 바인딩, 유즈케이스 호출, 응답과 테스트 경계를 설명합니다.
 tags:
   - backend
   - api
 status: active
 slug: "/knowledge/backend/controller/controller-design"
 ---
-# Controller Design
 
-> **개요:** Controller를 어떻게 설계하는지(책임, 경계)입니다.
-> Spring MVC 사용법 문서가 아닙니다.
-> 짝이 되는 코드 모양은 템플릿 `ExampleItemController`입니다.
+# Controller에서 HTTP 요청을 유즈케이스로 넘기는 방법
 
-How the controller layer is designed: responsibilities and boundaries.
+방문 예약 등록 요청을 받는 Controller를 열었을 때, 어떤 URL이 어떤 유즈케이스를 부르는지 바로 보여야 합니다.<br />
+예약할 수 있는 차량인지 판단하는 로직과 JPA 조회 조건까지 같이 들어가면, 요청 규격을 바꾸려는 사람도 저장 흐름을 읽어야 합니다.
 
-This document is an **engineering concept**, not a Spring MVC tutorial. Framework-specific usage belongs in technology notes when those exist. The concrete code shape is in the template: [`templates/backend/spring/controller/`](/docs/harness/templates/backend/spring/controller/).
+원셋의 Controller는 요청을 바인딩하고, 공개된 애플리케이션 진입점을 호출하고, 정해진 응답 형식으로 결과를 반환합니다.
 
-## Intent
+![HTTP 요청이 애플리케이션 유즈케이스로 전달되는 과정](/img/backend-design/controller-use-case.svg)
 
-Define what belongs at the HTTP/API edge and what must stay out of it. The controller is a **thin receiving adapter**: it turns an HTTP request into a call on a **published application entry** (`{Domain}Facade` or `{Feature}BffFacade`) and turns the result back into an HTTP response. Nothing it does should be interesting to a unit test; the interesting work is one layer down.
+```java
+@PostMapping
+public CommonResponse<ReservationReceipt> reserve(@Valid @RequestBody ReserveVisit request) {
+    return CommonResponseUtils.responseSuccess(reservationFacade.reserve(request));
+}
+```
 
-The same rule applies to other edge adapters: **gRPC → `{Domain}Facade`**, **GraphQL Resolver → `{Feature}BffFacade`**. They bind and delegate only.
+예제는 방문 예약 요청 DTO와 공개 Facade가 준비돼 있다고 가정합니다.<br />
+URL, HTTP 메서드, 바인딩 방식, 응답 형태를 Controller에서 확인할 수 있습니다.<br />
+예약 가능 여부와 처리 순서는 Facade에서 판단합니다.
 
-The table-entrance controller in the oneset lives under `exampleitem/controller/` (host packages may use `entrance.{domain}`).
-It is `@Hidden`.
-It exists mainly so boot and smoke checks are easy.
-Day-to-day product traffic usually enters through business-focused BFF controllers (or GraphQL) that call `{Feature}BffFacade`.
+## 화면용 API와 도메인 API의 연결
 
-## Responsibilities
+| 진입 방식 | 원셋의 연결 예시 |
+|---|---|
+| 도메인 HTTP API, gRPC 수신 | 도메인 Facade 호출 |
+| 화면용 HTTP API, GraphQL Resolver | BFF Facade 호출 |
+| 원셋의 테이블 단위 점검 API | `ExampleItemController`의 도메인 진입 호출 |
 
-| Responsibility | How it looks |
-|----------------|--------------|
-| **Bind** the request | `@RequestBody`, `@ModelAttribute`, `@PathVariable`, `@RequestParam` onto `ExampleItemReq` inner classes and `Pageable` |
-| **Delegate** | Exactly one application-entry call per endpoint, same method name: `exampleItemFacade.save(create)` (domain) or one `{Feature}BffFacade` method (BFF) |
-| **Shape the response** | Wrap the Facade result in `CommonResponse<T>` via `CommonResponseUtils.responseSuccess(...)`; void writes return `responseSuccess()` |
-| **Own the route** | Class-level `@RequestMapping("/rest-out-logs")` and `@Hidden`; method paths match the template controller, including `/save-all`, `/find-all`, `/find-by-ids`, `/search-name`, `/find-all-name`, `/delete-by-ids` |
+원셋의 테이블 단위 Controller는 `@Hidden`으로 두며 기동과 기본 동작 확인에 사용할 수 있습니다.<br />
+기존 원셋을 복사할 때는 단건, 목록, 일괄 저장과 삭제 같은 메서드가 누락되지 않았는지 확인합니다.<br />
+제품 화면에서 여러 기능을 조합한다면 그 흐름을 공개 BFF 메서드에 둡니다.
 
-Each endpoint is therefore one line of real code. If it is longer, something has leaked in.
+## 실패 응답과 테스트
 
-## Non-responsibilities
+요청 형식이 잘못됐거나 예약 규칙에 걸리면, 해당 예외를 Controller Advice가 HTTP 상태와 본문으로 변환합니다.<br />
+Controller마다 같은 오류를 변환하지 않아도 호출부가 공통 응답의 `code`, `message`, `data`를 읽을 수 있습니다.
 
-| Must not | Where it goes instead |
-|----------|-----------------------|
-| Rules of one data set: existence, its own state transition, persistence consistency | JPA Adapter behind a Port. See [데이터 접근 경계](/docs/knowledge/backend/service/service-design) |
-| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | `{Feature}BffFacade` (or DomainFacade for one domain). See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) (optional Knowledge; oneset has the shape) |
-| A stack of application classes on every request | Not required. DomainFacade delegates to one Port (+ DisplayNameResolver). BFF composition is `{Feature}BffFacade` |
-| Transactions (`@Transactional`) | Inside one process, the use-case entry decides the local transaction and the JPA Adapter joins it. After a remote split, that local transaction does not remain |
-| Calling a Repository or touching an entity | JPA Adapter only |
-| Converting an enum string back onto the DTO | Application entry (Facade), `of` / `ofNullable` then `getCode()` |
-| Mapping DTO ↔ entity and entity → response DTO | JPA Adapter (`ModelMapperUtil.map` / `mapAll`) |
-| Translating exceptions to HTTP status | a global `@RestControllerAdvice`; controllers never `try/catch` business errors. Details: [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) (optional Knowledge) |
-| Logging business events, auditing | Adapter / infrastructure concerns |
+HTTP 테스트는 경로, 바인딩, 응답 형식, 오류 상태를 확인합니다.<br />
+예약 정책은 Facade 테스트에서, 실제 저장 결과는 Adapter를 포함한 테스트에서 확인합니다.
+[Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) / [Facade 테스트](/docs/knowledge/backend/facade/facade-testing-and-failures) / [Controller 템플릿](/docs/harness/templates/backend/spring/exampleitem/controller/) / [Spring 원셋](/docs/harness/templates/backend/spring/ONESET)
 
-The controller does not know that enums, `BizErrorException`, or JPA exist.
+## 참고 자료
 
-## Boundaries, stated as rules
-
-1. **Controller → published application entry only** (`{Domain}Facade` or `{Feature}BffFacade`). Never Controller → Port, Adapter, Service, or Repository. Skipping the application entry is a `high` review finding even when the method would be a one-liner. Do not treat the name Facade alone as proof of publication.
-2. **Table entrance uses `Req` / `Res` directly.** Do not add a `Web*` DTO family for this set.
-3. **Uniform envelope.** Every response is `CommonResponse<T>`. Clients parse `code` / `message` / `data` the same way for every endpoint, including errors produced by the advice.
-4. **No state.** Controllers are stateless singletons with constructor injection.
-5. **Copy the template controller in full.** Do not drop `saveAll`, `findAll`, `findByIds`, `searchName`, `findAllName`, or `deleteByIds`.
-
-## Testing stance
-
-Controllers are **not** the primary unit test target. Behavior lives in the application entry and Port/Adapter. Follow tests the project already has. A `@WebMvcTest` slice is appropriate when the project already uses them; otherwise the HTTP contract is checked by [`playwright-e2e`](/docs/harness/tools/playwright-e2e) or an API-level test when such practice exists in the project.
-
-## Common drift to watch for
-
-- `if (body.getStatus() == null) ...` inside a controller → business or validation logic leaking up
-- A controller method that calls two Facade methods → a missing use case on DomainFacade or BffFacade
-- `ResponseEntity<...>` on some endpoints and `CommonResponse` on others → envelope inconsistency
-- `@Transactional` on a controller → boundary in the wrong layer
-- A controller `catch (BizErrorException e)` → bypassing the global advice
-
-## Related
-
-- [Backend knowledge](/docs/knowledge/backend)
-- [ADR-0001](/docs/decisions/adr-0001)
-- Coding conventions (repo): `docs/harness/context/coding-conventions.md`
-- Profile (repo): `docs/harness/profiles/spring-api.md`
-
-## Templates
-
-Knowledge answers *why / what / responsibility*. Templates show *concrete code shape*. Keep them linked, not duplicated: when this page and `ExampleItemController` disagree, one of them is wrong — report it rather than following either silently.
+- [Spring MVC의 애노테이션 기반 Controller](https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller.html)

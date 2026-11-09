@@ -11,27 +11,24 @@ status: active
 slug: "/knowledge/backend/controller/advice-adjacent-boundaries"
 ---
 
-# Advice — 인접 경계 (Filter, 비동기, 아웃바운드)
+# Controller Advice 밖에서 발생한 실패는 어디서 처리할까
 
-> **개요:** `@RestControllerAdvice`가 닿지 않거나, 닿기 전에 응답이 끝나는 경계를 적습니다.
-> 허브는 [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages)입니다.
-> **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.**
+예약 API가 401을 반환했는데 Advice 로그가 남지 않았다고 가정합니다.<br />
+인증 필터가 요청을 먼저 막았다면 MVC Controller까지 도착하지 않았을 수 있습니다.
 
-이 글의 기본 전제는 동기 Spring MVC입니다.
-WebFlux의 `@ControllerAdvice`는 다른 실행 모델입니다.
+반대로 Controller가 처리한 요청이라도, 응답을 보낸 뒤 별도 스레드에서 외부 API 호출이 실패하면 기록 위치가 달라집니다.<br />
+오류가 발생한 경계를 찾으면 어느 코드에서 상태와 로그를 확인할지 결정할 수 있습니다.
 
----
+## 실패가 발생한 요청 경계
 
-## Filter, Interceptor, Advice가 겹칠 때
-
-로그인 실패는 Spring Security 필터에서 끝나 Advice에 오지 않을 수 있습니다.
+로그인 실패는 Spring Security 필터에서 끝나 Advice에 오지 않을 수 있습니다.<br />
 필터가 직접 JSON을 쓰면, 그 모양이 `CommonResponse`와 다른지 먼저 봅니다.
 
-Interceptor에서 예외를 던지는 설정이라면 Advice 도달 여부를 한 번 확인합니다.
+Interceptor에서 예외를 던지는 설정이라면 Advice 도달 여부를 한 번 확인합니다.<br />
 서블릿 필터 체인 바깥에서 쓴 응답은 DispatcherServlet의 `@ExceptionHandler` 경로를 타지 않습니다.
 
-권한·테넌트 규칙 자체는 이 글의 범위가 아닙니다.
-다만 “실패 응답 모양”이 API 전체와 어긋나면 FE가 분기 지옥에 빠집니다.
+권한·테넌트 규칙 자체는 이 글의 범위가 아닙니다.<br />
+다만 “실패 응답 모양”이 API 전체와 어긋나면 FE가 분기 지옥에 빠집니다.<br />
 필터 응답과 Advice 응답의 키 이름(`code`, `message`, `data`)을 맞춰 두는 것이 최소 위생입니다.
 
 실무에서 도움이 됐던 점검은 다음과 같습니다.
@@ -46,7 +43,7 @@ Interceptor에서 예외를 던지는 설정이라면 Advice 도달 여부를 �
 
 ## 비동기 스레드에서는 Advice가 안 보인다
 
-요청을 처리하던 스레드에서 난 예외는 DispatcherServlet이 Advice로 보냅니다.
+요청을 처리하던 스레드에서 난 예외는 DispatcherServlet이 Advice로 보냅니다.<br />
 `@Async`로 떠난 작업에서 난 예외는 **그 요청의 Advice 경로에 들어오지 않습니다.**
 
 여기에는 두 가지가 같이 옵니다.
@@ -56,9 +53,9 @@ Interceptor에서 예외를 던지는 설정이라면 Advice 도달 여부를 �
 
 ### void `@Async`와 기본 핸들러
 
-반환 타입이 `void`인 `@Async`에서 예외가 나면 Spring은 `AsyncUncaughtExceptionHandler`를 호출합니다.
-기본 `SimpleAsyncUncaughtExceptionHandler`는 로그만 남깁니다.
-로그 레벨·설정이 어긋나면 사실상 삼킨 것과 같습니다.
+반환 타입이 `void`인 `@Async`에서 예외가 나면 Spring은 `AsyncUncaughtExceptionHandler`를 호출합니다.<br />
+기본 `SimpleAsyncUncaughtExceptionHandler`는 로그만 남깁니다.<br />
+로그 레벨·설정이 어긋나면 사실상 삼킨 것과 같습니다.<br />
 알림·메트릭·재시도 훅이 필요하면 `AsyncConfigurer#getAsyncUncaughtExceptionHandler`로 교체합니다.
 
 ```java
@@ -74,18 +71,18 @@ public class AsyncConfig implements AsyncConfigurer {
 }
 ```
 
-`CompletableFuture` / `Future`를 반환하면 예외가 future에 담깁니다.
-호출부가 `join`/`get` 하지 않으면 역시 관측이 늦습니다.
+`CompletableFuture` / `Future`를 반환하면 예외가 future에 담깁니다.<br />
+호출부가 `join`/`get` 하지 않으면 역시 관측이 늦습니다.<br />
 Fire-and-forget이면 Uncaught handler 쪽이 맞습니다.
 
 비동기에서 예외를 삼키면 알림 best-effort와 비슷하게 “실패가 관측되지 않습니다.”
-알림 전달 정책은 [ADR-0012](/docs/decisions/adr-0012)를 보고, 이 절은 **관측 구멍**만 지적합니다.
+알림 전달 정책은 [ADR-0012](/docs/decisions/adr-0012)를 보고, 이 절은 **관측 구멍**만 지적합니다.<br />
 게이트웨이 제품의 `@Async`·pcs 인프로세스 outbox는 제품 로컬이며 이 Knowledge의 필독 대상이 아닙니다.
 
 ### MDC와 TaskDecorator
 
-MDC는 ThreadLocal입니다.
-웹 스레드에 넣은 `traceId`는 풀 스레드에 자동으로 복사되지 않습니다.
+MDC는 ThreadLocal입니다.<br />
+웹 스레드에 넣은 `traceId`는 풀 스레드에 자동으로 복사되지 않습니다.<br />
 풀에 이전 작업의 MDC가 남아 있으면 **잘못된 ID가 붙는** 사고도 납니다.
 
 Spring 4.3부터 `TaskDecorator`로 제출 시점의 맵을 복사하고, 실행 후 정리하는 패턴이 널리 쓰입니다.
@@ -117,26 +114,26 @@ public class MdcTaskDecorator implements TaskDecorator {
 }
 ```
 
-`ThreadPoolTaskExecutor#setTaskDecorator`에 등록합니다.
+`ThreadPoolTaskExecutor#setTaskDecorator`에 등록합니다.<br />
 `finally`에서 clear/restore를 빼면 스레드 재사용 시 오염이 남습니다.
 
-Micrometer context-propagation과 Boot의 `spring.task.execution.propagate-context`를 쓰면, MDC뿐 아니라 트레이스·보안 컨텍스트까지 묶어서 전파하는 방향으로 갈 수 있습니다.
-버전과 의존이 맞는지 호스트에서 확인합니다.
+Micrometer context-propagation과 Boot의 `spring.task.execution.propagate-context`를 쓰면, MDC뿐 아니라 트레이스·보안 컨텍스트까지 묶어서 전파하는 방향으로 갈 수 있습니다.<br />
+버전과 의존이 맞는지 호스트에서 확인합니다.<br />
 원리(제출 스레드 스냅샷 → 워커 복원 → 종료 시 원복)는 TaskDecorator와 같습니다.
 
-`AsyncUncaughtExceptionHandler`는 **워커 스레드**에서 돕니다.
-MDC를 전파해 두었다면 그 핸들러 로그에도 같은 traceId가 찍힙니다.
+`AsyncUncaughtExceptionHandler`는 **워커 스레드**에서 돕니다.<br />
+MDC를 전파해 두었다면 그 핸들러 로그에도 같은 traceId가 찍힙니다.<br />
 전파를 안 했으면 “Advice가 아니라서”만이 아니라 “로그를 못 잇는” 문제가 겹칩니다.
 
-트랜잭션도 스레드에 묶입니다.
-`@Async` 안에서 새 트랜잭션이 필요하면 `@Transactional` 전파와 프록시 경계를 따로 설계합니다.
+트랜잭션도 스레드에 묶입니다.<br />
+`@Async` 안에서 새 트랜잭션이 필요하면 `@Transactional` 전파와 프록시 경계를 따로 설계합니다.<br />
 이 글은 예외·MDC에 초점을 둡니다.
 
 ---
 
 ## 나가는 RestClient·Feign과 로그 중앙화
 
-클라이언트에 로깅 인터셉터, 재시도, 에러 디코더, 헤더 주입이 겹쌓이면 “어디에 커스텀을 넣어야 하는지”가 흐려집니다.
+클라이언트에 로깅 인터셉터, 재시도, 에러 디코더, 헤더 주입이 겹쌓이면 “어디에 커스텀을 넣어야 하는지”가 흐려집니다.<br />
 예외 타입도 라이브러리마다 달라 Advice에 바로 매핑하기 어렵습니다.
 
 실무에서 도움이 됐던 방향은 다음입니다.
@@ -155,21 +152,21 @@ catch (ResourceAccessException e) {
 }
 ```
 
-Feign의 `RetryableException`처럼 “재시도하다 실패한 연결”을 전용 코드로 두는 것도 같은 맥락입니다.
-에러 디코더에서 문자열만 던지면 messages·엔벨로프와 어긋납니다.
+Feign의 `RetryableException`처럼 “재시도하다 실패한 연결”을 전용 코드로 두는 것도 같은 맥락입니다.<br />
+에러 디코더에서 문자열만 던지면 messages·엔벨로프와 어긋납니다.<br />
 가능하면 응답 코드 이넘(또는 동등)을 싣는 업무 예외로 바꿉니다.
 
-아웃바운드 호출이 `@Async` 안이라면, 위에서 말한 Uncaught handler와 MDC 전파가 다시 필요합니다.
+아웃바운드 호출이 `@Async` 안이라면, 위에서 말한 Uncaught handler와 MDC 전파가 다시 필요합니다.<br />
 동기 Facade 안에서 RestClient를 호출하면 Advice 경로로 자연스럽게 올라옵니다.
 
 ---
 
 ## 상관 ID
 
-실패 로그에 traceId가 없으면 FE 스크린샷과 서버 로그를 못 잇습니다.
+실패 로그에 traceId가 없으면 FE 스크린샷과 서버 로그를 못 잇습니다.<br />
 전파 설정은 [W3C 트레이스](/docs/patterns/architecture-patterns/trace-propagation-w3c)와 [ADR-0014](/docs/decisions/adr-0014)를 따릅니다.
 
-필터에서 MDC에 넣고, Advice·서비스 로그가 같은 키를 쓰며, 아웃바운드 클라이언트가 헤더로 넘기면 한 줄기가 됩니다.
+필터에서 MDC에 넣고, Advice·서비스 로그가 같은 키를 쓰며, 아웃바운드 클라이언트가 헤더로 넘기면 한 줄기가 됩니다.<br />
 비동기 전파를 빼먹으면 줄기만 웹 구간에서 끊깁니다.
 
 응답 body나 헤더에 traceId를 실을지는 보안·계약상 호스트가 정합니다.
@@ -209,3 +206,7 @@ Feign의 `RetryableException`처럼 “재시도하다 실패한 연결”을 �
 - [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c)
 - [ADR-0012](/docs/decisions/adr-0012)
 - [ADR-0014](/docs/decisions/adr-0014)
+
+## 참고 자료
+
+- [Spring MVC의 Filter 안내](https://docs.spring.io/spring-framework/reference/web/webmvc/filters.html)
