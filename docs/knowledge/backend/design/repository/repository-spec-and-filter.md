@@ -1,7 +1,7 @@
 ---
 id: repository-spec-and-filter
 title: Spec과 Filter
-description: HTTP 호출 이력의 검색 예제로 Filter, JPA Specification, 페이징을 연결합니다.
+description: "HTTP 호출 이력 화면의 Filter가 Specs.of를 거쳐 JPA Specification·페이징으로 이어지는 한곳 관리 방식을 설명합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-spec-and-filter"
 ---
-
 # JPA Specification으로 화면 검색 조건을 한곳에서 관리하기
 
 HTTP 호출 이력 화면에는 URL, HTTP 메서드, 발생 기간이 있습니다.<br />

@@ -1,7 +1,7 @@
 ---
 id: knowledge-backend-service
 title: Service
-description: 데이터 접근 경계. Port와 Adapter, DI·TX
+description: "Port·Adapter·DI·트랜잭션 join 글을 모읍니다. Facade 아래 데이터·연동 경계가 어디에 남는지 역할별로 찾아갑니다."
 slug: "/knowledge/backend/service/index"
 ---
 # Service

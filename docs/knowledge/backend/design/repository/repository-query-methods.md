@@ -1,7 +1,7 @@
 ---
 id: repository-query-methods
 title: Repository — Query Methods
-description: HTTP 호출 이력 검색을 예로 파생 쿼리, JPQL, Specification의 역할을 비교합니다.
+description: "HTTP 호출 이력 검색에서 조건이 늘 때 파생 쿼리·@Query·Specification 중 어디에 둘지 비교합니다. 원셋은 Spec을 기본으로 둡니다."
 tags:
   - backend
   - spring-data
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-query-methods"
 ---
-
 # Spring Data JPA 쿼리 메서드, 검색 조건이 늘면 어디에 둘까
 
 운영 화면에서 HTTP 호출 이력을 찾는다고 가정합니다.<br />

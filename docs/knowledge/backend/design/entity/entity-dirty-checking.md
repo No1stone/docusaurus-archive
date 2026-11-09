@@ -1,14 +1,13 @@
 ---
 id: entity-dirty-checking
 title: 더티 체킹
-description: 방문 예약 수정 예제로 JPA 더티 체킹과 flush, 커밋의 차이를 설명합니다.
+description: "관리 중인 예약을 필드만 바꿔도 flush·커밋 때 UPDATE가 나가는 더티 체킹을 설명합니다. save 호출과의 차이를 구분합니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-dirty-checking"
 ---
-
 # JPA 더티 체킹, save를 호출하지 않아도 UPDATE가 나가는 이유
 
 예약 상세 화면에서 방문 시간을 오후 2시에서 오후 3시로 바꿉니다.<br />

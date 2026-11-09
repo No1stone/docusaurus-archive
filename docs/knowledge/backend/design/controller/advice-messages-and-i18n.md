@@ -1,7 +1,7 @@
 ---
 id: advice-messages-and-i18n
 title: Advice — messages와 i18n
-description: MessageSource로 업무·검증 문구를 중앙화하고, 키 작성 단위와 로케일 경계를 정리합니다. 하네스 필독이 아닙니다.
+description: "오류 코드를 MessageSource 키로 두고 사용자 문구를 분리합니다. 검증·업무 예외가 같은 메시지 체계를 쓰는지 연결합니다."
 tags:
   - backend
   - api
@@ -10,7 +10,6 @@ tags:
 status: active
 slug: "/knowledge/backend/controller/advice-messages-and-i18n"
 ---
-
 # Spring MessageSource로 오류 코드와 사용자 문구를 연결하기
 
 같은 예약 충돌이 관리자 화면과 외부 API에서 발생할 수 있습니다.<br />

@@ -1,7 +1,7 @@
 ---
 id: facade-entry-and-naming
 title: Facade — 진입과 이름
-description: 공개 도메인 진입점, 화면 조합, DTO 교환의 책임을 방문 예약 조회 예제로 설명합니다.
+description: "관리 화면이 예약 도메인 Facade만 부르게 두는 이유를 설명합니다. 화면 조합·DTO 교환과 인프라 직접 호출을 구분합니다."
 tags:
   - backend
   - facade
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/facade/facade-entry-and-naming"
 ---
-
 # 도메인 Facade를 공개 진입점으로 둔 이유
 
 방문 예약 조회를 HTTP API와 관리자 화면에서 함께 쓴다고 가정합니다.<br />

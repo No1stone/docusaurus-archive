@@ -1,7 +1,7 @@
 ---
 id: test-structure
 title: 테스트 기본 구조
-description: Spring 테스트의 경계, 배치, 명명과 실행 기준
+description: "Spring 테스트에서 단위·슬라이스·통합 경계를 나누고, 테스트 배치·명명·실행 기준을 팀에 맞게 고정하는 방법을 설명합니다."
 tags:
   - backend
   - testing

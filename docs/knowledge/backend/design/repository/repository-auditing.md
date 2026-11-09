@@ -1,7 +1,7 @@
 ---
 id: repository-auditing
 title: Repository — Auditing
-description: 현재 사용자가 생성자와 수정자로 기록되는 과정을 따라가고 원셋의 감사 상속을 설명합니다.
+description: "로그인한 사용자가 생성자·수정자로 채워지는 Auditing 흐름을 따라가고, 원셋 CreatedEntity·UpdatedEntity 상속과 연결합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-auditing"
 ---
-
 # JPA Auditing으로 생성자와 수정자 기록하기
 
 방문 예약을 등록한 사람과, 나중에 방문 시간을 바꾼 사람이 다를 수 있습니다.

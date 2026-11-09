@@ -1,7 +1,7 @@
 ---
 id: service-provider-and-cqrs
 title: Service — Provider와 CQRS
-description: Port·Adapter·Provider 교체와 코드 수준 CQRS 적용점(JPA Adapter)을 정리합니다.
+description: "조회와 변경 구현을 Adapter·Provider로 나누는 이유를 설명합니다. 목록과 상세가 다른 로딩을 쓸 때 코드 수준 CQRS 자리를 둡니다."
 tags:
   - backend
   - cqrs
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/service/service-provider-and-cqrs"
 ---
-
 # 조회 구현과 변경 구현을 따로 키우는 방법
 
 예약 등록은 JPA로 충분하지만, 예약 조회 화면이 커지면서 여러 테이블의 집계를 같은 응답에 보여줘야 할 수 있습니다.<br />

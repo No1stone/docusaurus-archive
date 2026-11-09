@@ -1,7 +1,7 @@
 ---
 id: facade-testing-and-failures
 title: Facade — 테스트와 실패 정책
-description: 예약 정책 위반과 화면의 부분 실패를 예로 Facade 단위 테스트와 트랜잭션 검증 범위를 설명합니다.
+description: "예약 정책 위반과 세대 조회 타임아웃을 예로, Facade 단위 테스트가 업무 판단과 부분 실패 경계를 어떻게 고정하는지 설명합니다."
 tags:
   - backend
   - facade
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/facade/facade-testing-and-failures"
 ---
-
 # Facade 테스트에서 업무 판단과 실패 경계 확인하기
 
 예약 등록에는 저장 성공뿐 아니라 예약이 불가능할 때의 판단도 들어갑니다.<br />

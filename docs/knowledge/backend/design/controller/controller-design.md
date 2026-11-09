@@ -1,14 +1,13 @@
 ---
 id: controller-design
 title: Controller Design
-description: 예약 등록 예제로 Controller의 HTTP 바인딩, 유즈케이스 호출, 응답과 테스트 경계를 설명합니다.
+description: "예약 등록 요청이 Controller에서 DTO로 묶여 Facade 유즈케이스로 넘어가고, 응답과 테스트 경계가 어디서 갈리는지 설명합니다."
 tags:
   - backend
   - api
 status: active
 slug: "/knowledge/backend/controller/controller-design"
 ---
-
 # Controller에서 HTTP 요청을 유즈케이스로 넘기는 방법
 
 방문 예약 등록 요청을 받는 Controller를 열었을 때, 어떤 URL이 어떤 유즈케이스를 부르는지 바로 보여야 합니다.<br />

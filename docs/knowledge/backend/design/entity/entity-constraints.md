@@ -1,14 +1,13 @@
 ---
 id: entity-constraints
 title: 엔티티 제약
-description: 예약 코드 예제로 DTO 검증, JPA 컬럼 설정, 데이터베이스 제약을 비교합니다.
+description: "예약 코드 유일성을 DTO 검증, JPA 컬럼, DB 제약 어디에 둘지 비교합니다. 계층마다 막히는 시점이 다름을 보여 줍니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-constraints"
 ---
-
 # JPA 컬럼 설정과 DB 제약조건은 어디서 보장할까
 
 방문 예약 화면에 차량번호를 필수로 넣고, 같은 세대에서 동일한 예약 코드를 두 번 만들지 않도록 한다고 가정합니다.<br />

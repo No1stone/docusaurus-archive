@@ -1,14 +1,13 @@
 ---
 id: entity-identifiers
 title: 엔티티 식별자
-description: 단일 식별자, 복합 키, 월별 파티션 테이블에서 애플리케이션 ID를 사용할 조건을 설명합니다.
+description: "단일·복합 식별자와 월별 파티션 테이블에서 애플리케이션 ID를 기본 키로 쓸 조건을 설명합니다. 원셋 식별자 관례와 맞춥니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-identifiers"
 ---
-
 # JPA 엔티티 식별자와 파티션 테이블의 기본 키
 
 예약 상세를 읽을 때 애플리케이션은 보통 예약 ID 하나로 대상을 찾습니다.<br />

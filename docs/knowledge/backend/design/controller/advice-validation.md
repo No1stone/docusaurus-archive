@@ -1,7 +1,7 @@
 ---
 id: advice-validation
 title: Advice — 검증 (Bean Validation과 Spring)
-description: Jakarta Bean Validation과 Spring 실행 경로, MethodArgumentNotValidException과 HandlerMethodValidationException, 메시지 키 튜닝을 정리합니다. 하네스 필독이 아닙니다.
+description: "차량번호 JSON 검증과 페이지 크기 인자 검증처럼 실패 지점이 다를 때, Advice가 어떤 예외로 필드 오류를 응답에 담는지 설명합니다."
 tags:
   - backend
   - api
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/controller/advice-validation"
 ---
-
 # Spring MVC 입력 검증, 실패한 필드는 어떻게 응답에 담길까
 
 예약 등록에서 차량번호를 비우면 본문 DTO 검증에서 실패합니다.<br />

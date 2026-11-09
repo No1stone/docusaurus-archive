@@ -1,7 +1,7 @@
 ---
 id: entity-minimal-and-cqrs
 title: 엔티티 최소 사용과 CQRS
-description: JPA 기능을 펼친 뒤 원셋이 엔티티를 최소로 두고 Adapter CQRS로 정리한 이유를 적습니다.
+description: "JPA 기능을 익힌 뒤에도 원셋이 엔티티를 작게 두고 Adapter에서 조회를 나누는 이유를 설명합니다. 목록·상세 분리와 연결합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/entity/entity-minimal-and-cqrs"
 ---
-
 # 엔티티를 작게 유지하고 필요한 조회만 분리하기
 
 예약 등록에는 세대 ID와 방문 시간, 상태가 필요합니다.<br />

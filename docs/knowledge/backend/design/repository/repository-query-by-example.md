@@ -1,7 +1,7 @@
 ---
 id: repository-query-by-example
 title: Repository — Query by Example
-description: URL과 HTTP 메서드 검색을 예로 Query by Example의 매칭과 적용 범위를 설명합니다.
+description: "URL·HTTP 메서드처럼 채운 필드만 조건으로 쓰는 Query by Example을 설명합니다. Spec·Filter가 기본인 원셋과의 경계를 둡니다."
 tags:
   - backend
   - spring-data
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-query-by-example"
 ---
-
 # Query by Example, 채운 필드만 검색 조건으로 쓰기
 
 호출 이력 화면에서 URL을 정확히 아는 운영자가 기록을 찾는다고 가정합니다.<br />

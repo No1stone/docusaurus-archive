@@ -1,7 +1,7 @@
 ---
 id: service-port-adapter-role
 title: Service — Port와 Adapter 역할
-description: Port 계약, Adapter 구현, 레거시 *Service 하위 호환을 정리합니다.
+description: "예약 조회 Port와 JPA Adapter를 나누면 조건·매핑이 어디에 남는지 설명합니다. 레거시 *Service 이름과의 차이도 짚습니다."
 tags:
   - backend
   - port
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/service/service-port-adapter-role"
 ---
-
 # Port와 Adapter를 나누면 조회 코드가 어디에 남을까
 
 방문 예약 목록에서 조회 가능 범위를 먼저 정하고, 그 안에서 시간순으로 결과를 보여준다고 가정합니다.<br />

@@ -1,14 +1,13 @@
 ---
 id: repository-custom
 title: 커스텀 Repository
-description: CustomRepository 인터페이스와 Impl 네이밍, JPAQueryFactory 자리를 정리합니다.
+description: "집계처럼 Spec만으로 부족한 조회를 CustomRepository와 Impl에 붙이는 방법을 설명합니다. QueryDSL 자리와도 이어집니다."
 tags:
   - backend
   - spring-data
 status: active
 slug: "/knowledge/backend/repository/repository-custom"
 ---
-
 # Spring Data JPA Custom Repository에 집계 조회 붙이기
 
 호출 이력의 단건 조회나 필터 목록은 Spring Data JPA가 제공하는 메서드로 처리할 수 있습니다.<br />

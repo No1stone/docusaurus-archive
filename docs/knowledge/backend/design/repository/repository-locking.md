@@ -1,7 +1,7 @@
 ---
 id: repository-locking
 title: Repository — Locking
-description: 같은 예약을 수정하는 두 요청으로 JPA @Version과 비관적 락의 차이를 설명합니다.
+description: "같은 예약을 두 관리자가 수정할 때 @Version 낙관적 락과 비관적 락이 어디서 충돌이나 대기를 만드는지 사례로 설명합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-locking"
 ---
-
 # JPA 낙관적 락과 비관적 락, 같은 예약을 두 사람이 수정한다면
 
 관리자 두 명이 방문 예약 42번을 열었습니다.

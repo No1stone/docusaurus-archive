@@ -1,7 +1,7 @@
 ---
 id: knowledge-backend-testing
 title: Testing
-description: Backend test structure
+description: "백엔드 테스트 구조 Knowledge 입구입니다. 계층 경계와 배치·명명·실행 기준을 다루는 글로 이어가며 팀 기준을 맞춥니다."
 slug: "/knowledge/backend/testing/index"
 ---
 # Testing

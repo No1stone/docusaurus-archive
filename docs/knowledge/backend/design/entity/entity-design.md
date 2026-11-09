@@ -1,7 +1,7 @@
 ---
 id: entity-design
 title: 엔티티 설계
-description: JPA 엔티티 Knowledge 허브입니다. 책임과 하위 글 목차, 원셋 최소 사용으로의 수렴을 안내합니다.
+description: "엔티티 책임과 하위 글 목차를 안내하는 허브입니다. 매핑 기능을 익힌 뒤 원셋처럼 엔티티를 작게 유지하는 선택으로 이어집니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/entity/entity-design"
 ---
-
 # 엔티티 설계
 
 예약을 저장하는 엔티티에는 식별자와 상태가 들어갑니다.<br />

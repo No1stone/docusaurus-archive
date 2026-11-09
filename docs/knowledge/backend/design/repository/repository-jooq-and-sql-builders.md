@@ -1,7 +1,7 @@
 ---
 id: repository-jooq-and-sql-builders
 title: jOOQ와 SQL 빌더
-description: QueryDSL과 jOOQ를 비교하고 원셋 기본(JPA+Spec)과의 경계를 정리합니다.
+description: "조회를 엔티티 기준으로 볼지 SQL 기준으로 볼지 QueryDSL JPA와 jOOQ를 비교합니다. 원셋 기본(JPA+Spec) 경계도 밝힙니다."
 tags:
   - backend
   - jooq
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-jooq-and-sql-builders"
 ---
-
 # QueryDSL JPA와 jOOQ, 조회를 엔티티로 볼까 SQL로 볼까
 
 호출 이력 화면에서 URL별 실패 건수를 집계하고, 최근 기간의 결과와 비교한다고 가정합니다.<br />

@@ -1,14 +1,13 @@
 ---
 id: entity-fetch-lazy-eager
 title: LAZY와 EAGER
-description: 예약 목록의 세대 이름 조회로 JPA LAZY, EAGER와 N+1을 설명합니다.
+description: "예약 목록에서 세대 이름을 읽다 N+1이 생기는 과정을 LAZY·EAGER로 풀어, 목록 조회에 맞는 로딩 선택을 설명합니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-fetch-lazy-eager"
 ---
-
 # JPA LAZY와 EAGER, 예약 목록에서 N+1이 생기는 과정
 
 방문 예약을 20건 읽고 각 예약에 세대 이름을 표시한다고 가정합니다.<br />

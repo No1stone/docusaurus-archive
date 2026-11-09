@@ -1,7 +1,7 @@
 ---
 id: knowledge-backend-facade
 title: Facade
-description: 애플리케이션 영역과 공개 진입점
+description: "도메인 Facade를 공개 진입점으로 두는 글 모음입니다. 앱 동작 단위, 트랜잭션 경계, 이름 규칙과 실패 테스트까지 이어서 봅니다."
 slug: "/knowledge/backend/facade/index"
 ---
 # Facade

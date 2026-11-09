@@ -1,7 +1,7 @@
 ---
 id: facade-app-unit-and-transactions
 title: Facade — 앱 동작 단위와 트랜잭션
-description: 예약 저장과 확인 화면의 부분 실패를 예로 BFF Facade와 도메인 Facade의 트랜잭션 경계를 설명합니다.
+description: "예약 저장 후 확인 화면이 부분 실패해도 DB 커밋과 화면 실패를 섞지 않게, BFF와 도메인 Facade의 트랜잭션 경계를 나눕니다."
 tags:
   - backend
   - facade
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/facade/facade-app-unit-and-transactions"
 ---
-
 # BFF Facade와 도메인 Facade의 트랜잭션 경계
 
 방문 예약을 등록한 뒤 확인 화면에 세대 이름과 방문 가능 시간을 함께 보여주는 화면을 생각해 봅니다.

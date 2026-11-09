@@ -1,7 +1,7 @@
 ---
 id: knowledge-backend-entity
 title: Entity
-description: JPA 엔티티 Knowledge. 기능 전개 후 원셋은 최소 사용·CQRS로 수렴합니다.
+description: "JPA 엔티티 Knowledge 모음입니다. 매핑·연관·페치를 펼친 뒤 원셋이 최소 엔티티와 CQRS로 수렴하는 길을 안내합니다."
 slug: "/knowledge/backend/entity/index"
 ---
 # Entity

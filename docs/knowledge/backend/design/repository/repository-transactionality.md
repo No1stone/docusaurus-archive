@@ -1,7 +1,7 @@
 ---
 id: repository-transactionality
 title: Repository — Transactionality
-description: 예약과 이력 저장을 예로 Spring Data JPA 트랜잭션 기본값과 Facade의 경계를 설명합니다.
+description: "예약과 이력을 같이 저장할 때 Repository 기본 트랜잭션만으로는 부족한 이유와, Facade가 경계를 여는 위치를 설명합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/repository/repository-transactionality"
 ---
-
 # Spring Data JPA에서 트랜잭션은 어디서 시작할까
 
 방문 예약을 저장하면서 예약 이력도 남기는 기능을 만든다고 가정합니다.<br />

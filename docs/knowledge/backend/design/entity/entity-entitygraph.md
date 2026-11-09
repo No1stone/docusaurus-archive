@@ -1,14 +1,13 @@
 ---
 id: entity-entitygraph
 title: EntityGraph
-description: 예약 상세 조회로 EntityGraph의 FETCH, LOAD와 페이징 주의점을 설명합니다.
+description: "예약 상세에 필요한 연관만 EntityGraph로 가져오는 방법을 설명합니다. FETCH·LOAD와 페이징에서 생기는 함정도 짚습니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-entitygraph"
 ---
-
 # EntityGraph로 상세 조회에 필요한 연관만 가져오기
 
 예약 목록에는 예약 ID와 방문 시간만 필요합니다.<br />

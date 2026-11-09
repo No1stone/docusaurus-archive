@@ -1,14 +1,13 @@
 ---
 id: repository-querydsl-custom
 title: QueryDSL Custom 자리
-description: Custom Impl과 JPAQueryFactory가 Spec을 넘어서는 시점을 정리합니다.
+description: "Spec을 넘는 조인·프로젝션이 필요할 때 QueryDSL JPA를 Custom Repository Impl에 두는 자리와 호출 경계를 설명합니다."
 tags:
   - backend
   - querydsl
 status: active
 slug: "/knowledge/backend/repository/repository-querydsl-custom"
 ---
-
 # QueryDSL JPA를 Custom Repository에서 사용하는 경우
 
 HTTP 호출 이력 화면에 URL별 실패 건수와 마지막 발생 시각을 보여주려면, 개별 엔티티보다 집계 결과가 필요합니다.<br />

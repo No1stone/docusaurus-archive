@@ -1,14 +1,13 @@
 ---
 id: repository-querydsl-dynamic
 title: QueryDSL 동적 쿼리
-description: BooleanBuilder BooleanExpression으로 Filter를 동적 where로 조립하는 방법을 정리합니다.
+description: "화면에서 고른 선택 조건을 BooleanBuilder·BooleanExpression으로 동적 where에 조합하는 QueryDSL 패턴을 정리합니다."
 tags:
   - backend
   - querydsl
 status: active
 slug: "/knowledge/backend/repository/repository-querydsl-dynamic"
 ---
-
 # QueryDSL에서 화면의 선택 조건을 조합하기
 
 호출 이력에서 메서드가 GET인 건을 보고 싶을 때도 있고, 기간만 지정해 장애 시간대를 확인하고 싶을 때도 있습니다.<br />

@@ -1,14 +1,13 @@
 ---
 id: repository-pagination-and-slice
 title: Page와 Slice
-description: Spring Data Page vs Slice, Pageable, 원셋 PageQuery를 정리합니다.
+description: "총건수가 필요한 관리 화면과 다음 페이지만 알면 되는 화면을 나누어, Page와 Slice·PageQuery 선택을 설명합니다."
 tags:
   - backend
   - spring-data
 status: active
 slug: "/knowledge/backend/repository/repository-pagination-and-slice"
 ---
-
 # Page와 Slice, 총건수가 필요한 화면은 어떤 화면일까
 
 운영자가 호출 이력에서 17페이지로 바로 이동하려면 총건수와 마지막 페이지를 알아야 합니다.<br />

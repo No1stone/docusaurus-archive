@@ -1,7 +1,7 @@
 ---
 id: persistence-from-xml-to-orm
 title: 영속 모델 발전사 — XML에서 ORM까지
-description: SQL·XML 매퍼, Map, VO, DTO, JPA Entity로 이어진 모델 발전을 정리합니다.
+description: "SQL·XML 매퍼에서 Map·VO·DTO·JPA Entity로 바뀐 예약 목록 코드를 따라가며, 각 단계가 무엇을 해결하려 했는지 비교합니다."
 tags:
   - backend
   - jpa
@@ -9,7 +9,6 @@ tags:
 status: active
 slug: "/knowledge/backend/entity/persistence-from-xml-to-orm"
 ---
-
 # SQL 매퍼부터 ORM까지, 예약 목록 코드는 무엇이 달라졌을까
 
 예약 목록에 차량번호와 방문 시간을 표시하는 기능은 JDBC, SQL 매퍼, ORM 어디서든 만들 수 있습니다.<br />

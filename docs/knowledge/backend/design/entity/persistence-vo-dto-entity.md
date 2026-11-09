@@ -1,14 +1,13 @@
 ---
 id: persistence-vo-dto-entity
 title: VO·DTO·Entity
-description: VO DTO Entity Port DTO 용어를 구분하고 Facade 연관 끊기와 맞춥니다.
+description: "원셋 ExampleItem 검색으로 VO·DTO·엔티티·Port 결과 타입을 구분합니다. 표시 이름 조회와 화면별 Item 분리 기준을 이어서 봅니다."
 tags:
   - backend
   - dto
 status: active
 slug: "/knowledge/backend/entity/persistence-vo-dto-entity"
 ---
-
 # VO, DTO, 엔티티를 예약 한 건으로 구분하기
 
 예약을 등록하는 API는 차량번호 문자열을 받습니다.<br />

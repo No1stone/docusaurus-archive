@@ -1,14 +1,13 @@
 ---
 id: entity-annotations-catalog
 title: 엔티티 어노테이션 목록
-description: 엔티티 클래스·필드에 자주 쓰는 JPA·Hibernate 어노테이션과 원셋 사용 여부를 표로 정리합니다.
+description: "엔티티 클래스·필드에 자주 쓰는 JPA·Hibernate 애노테이션을 역할별로 읽고, 원셋에서 쓰는 것과 건너뛰는 것을 표로 구분합니다."
 tags:
   - backend
   - jpa
 status: active
 slug: "/knowledge/backend/entity/entity-annotations-catalog"
 ---
-
 # JPA 엔티티 애노테이션을 역할별로 읽기
 
 엔티티 파일을 처음 열면 테이블 이름, 식별자, 연관, 변경 추적을 위한 애노테이션이 한 클래스에 나옵니다.<br />
