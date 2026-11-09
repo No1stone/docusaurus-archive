@@ -1,7 +1,7 @@
 ---
 id: repository-transactionality
 title: Repository — Transactionality
-description: Spring Data JPA 리포지토리 기본 트랜잭션과 선언 쿼리 메서드, Facade·Adapter join과의 관계를 정리합니다. 하네스 필독이 아닙니다.
+description: 예약과 이력 저장을 예로 Spring Data JPA 트랜잭션 기본값과 Facade의 경계를 설명합니다.
 tags:
   - backend
   - jpa
@@ -10,123 +10,96 @@ status: active
 slug: "/knowledge/backend/repository/repository-transactionality"
 ---
 
-# Repository — Transactionality
+# Spring Data JPA에서 트랜잭션은 어디서 시작할까
 
-> **개요:** Spring Data JPA 리포지토리 메서드에 **어떤 `@Transactional`이 기본으로 붙는지**를 정리합니다.
-> 앱 동작 단위와 Adapter join은 Facade·Service Knowledge에 두고, 여기서는 **리포 계층 기본값**에 집중합니다.
-> **하네스 필독 아님.**
+방문 예약을 저장하면서 예약 이력도 남기는 기능을 만든다고 가정합니다.<br />
+예약과 이력을 같은 DB에 저장하고, 이력 저장에 실패하면 예약도 함께 롤백해야 합니다.
 
-공식 「Transactionality」 축을 이 아카이브 선택으로 다시 씁니다.
+두 Repository에 각각 트랜잭션 기본값이 있어도, 연달아 호출한 두 메서드가 같은 작업으로 묶이는지는 호출하는 쪽에서 결정합니다.<br />
+이 차이를 알면 Repository의 기본 설정과 Facade의 역할을 구분하기 쉽습니다.
 
----
+## 상속한 메서드와 직접 선언한 메서드
 
-## 상속 CRUD의 기본
+Spring Data JPA가 기본 구현을 제공하는 CRUD 메서드는 `SimpleJpaRepository`의 트랜잭션 설정을 따릅니다.<br />
+인터페이스에 직접 선언한 쿼리 메서드에는 같은 기본값이 자동으로 붙지 않습니다.
 
-`SimpleJpaRepository` 구현을 상속하는 CRUD는 대략 이렇게 동작합니다.
+| 호출 | 바깥 트랜잭션이 없을 때 |
+|---|---|
+| 상속한 `findById`, `findAll` | 기본 읽기 전용 트랜잭션 |
+| 상속한 `save`, `delete` | 기본 쓰기 트랜잭션 |
+| 직접 선언한 파생 쿼리, `@Query`, default 메서드 | 별도 선언이 없으면 Repository 트랜잭션 설정을 자동 적용하지 않음 |
+| Custom Repository 프래그먼트 | 구현 메서드에 선언한 설정 적용 |
 
-| 종류 | 기본 TX 요지 |
-|------|----------------|
-| 읽기 (`find…`, `exists…` 등) | `@Transactional(readOnly = true)` |
-| 쓰기 (`save`, `delete` 등) | `@Transactional` (읽기 전용 아님) |
-
-리포지토리 **프래그먼트(Custom Impl)** 메서드에 TX가 있으면 그 설정을 따릅니다.
-
----
-
-## 직접 선언한 쿼리 메서드
-
-인터페이스에 새로 적은 derived / `@Query` / default 메서드는 **자동으로 CRUD와 같은 TX가 붙지 않습니다.**
-트랜잭션 안에서 돌리려면 인터페이스나 메서드에 `@Transactional`을 명시합니다.
+예를 들어 예약 상태를 직접 변경하는 쿼리를 Repository에 직접 선언했다면, 쓰기 트랜잭션이 필요합니다.
 
 ```java
-@Transactional(readOnly = true)
-public interface ExampleItemRepository extends JpaRepository<ExampleItem, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    @Query("…")
-    List<ExampleItem> findFixedSomething(…);
+    @Transactional(readOnly = true)
+    @Query("select r from Reservation r where r.householdId = :householdId")
+    List<Reservation> findForHousehold(@Param("householdId") Long householdId);
 
     @Modifying
-    @Transactional  // 쓰기 — readOnly 해제
-    @Query("delete from …")
-    void bulkDeactivate(…);
+    @Transactional
+    @Query("update Reservation r set r.status = :cancelled where r.id = :id")
+    int cancel(@Param("id") Long id, @Param("cancelled") ReservationStatus cancelled);
 }
 ```
 
-`readOnly = true`는 “쓰기 금지 검사”가 아니라 **힌트**에 가깝습니다.
-JDBC·Hibernate 쪽 최적화(예: flush mode)에 쓰입니다.
-조작 쿼리를 readOnly TX에서 돌리면 DB/드라이버에 따라 거절되거나 예기치 않은 동작이 납니다.
+예제는 메서드의 트랜잭션 설정을 보여주기 위해 단순화했습니다.<br />
+운영에서 상태 전이 규칙과 감사 필드를 함께 적용해야 한다면, 위 벌크 쿼리의 조건과 갱신 필드를 별도로 검토해야 합니다.
 
----
+`readOnly = true`는 조회 경로의 의도를 나타내며 드라이버나 JPA 구현체의 최적화에 쓰입니다.<br />
+쓰기 시도가 항상 차단된다고 가정할 수는 없습니다.<br />
+이미 읽기 전용 트랜잭션에 참여 중이라면 안쪽 쓰기 메서드에 애노테이션을 붙였다고 해서 바깥 설정이 바뀌지는 않습니다.
 
-## `jakarta.transaction.Transactional` — `TxType`
+## 예약과 이력을 같은 작업으로 묶기
 
-Jakarta Transactions 쪽 `@Transactional`은 `value()`로 `TxType`을 고릅니다.
-기본값은 `REQUIRED`입니다.
+원셋에서는 도메인 Facade가 예약 등록이라는 작업 단위를 소유합니다.<br />
+Adapter는 Facade가 연 트랜잭션에서 저장을 수행합니다.
 
 ```java
-package jakarta.transaction;
-
-public @interface Transactional {
-    TxType value() default TxType.REQUIRED;
-    // rollbackOn / dontRollbackOn …
+@Transactional
+public ReservationReceipt reserve(ReserveVisit command) {
+    ReservationReceipt receipt = reservationPort.create(command);
+    reservationHistoryPort.recordCreated(receipt.id());
+    return receipt;
 }
 ```
 
-| `TxType` | TX 없을 때 | TX 있을 때 |
-|----------|------------|------------|
-| `REQUIRED` (기본) | 새 TX 시작 | 기존 TX에 참여 |
-| `REQUIRES_NEW` | 새 TX 시작 | 기존을 잠시 멈추고 **새 TX** |
-| `MANDATORY` | 예외 | 기존 TX에 참여 |
-| `SUPPORTS` | TX 없이 실행 | 기존 TX에 참여 |
-| `NOT_SUPPORTED` | TX 없이 실행 | 기존을 잠시 멈추고 **TX 없이** 실행 |
-| `NEVER` | TX 없이 실행 | 예외 |
+두 Port의 구현이 같은 DB와 트랜잭션 관리자를 사용하고 기존 트랜잭션에 참여한다는 가정입니다.<br />
+이력 저장에서 롤백 대상 예외가 전파되면 예약도 함께 롤백됩니다.
 
-원셋·Spring Data 예제는 보통 `org.springframework.transaction.annotation.Transactional`과 `Propagation`을 씁니다.
-이름(`REQUIRED`, `REQUIRES_NEW` …)은 위와 거의 같고, Spring에는 추가로 `NESTED`가 있습니다.
-원셋은 Facade가 경계를 열고 Adapter는 **참여(join)** 가 기본입니다. `REQUIRES_NEW`는 Facade 단위를 깨기 쉬워 함정에 적어 두었습니다.
-
----
-
-## 원셋: 경계를 Facade에 둔다
-
-공식도 **작업 단위를 시작하는 곳**에 TX를 두는 편을 권합니다.
-원셋·coding-conventions:
-
-- **도메인 Facade**가 앱 동작 단위이자 DB TX를 연다
-- **JPA Adapter**는 같은 TX에 **join** (`readOnly` 기본, 쓰기는 메서드 오버라이드)
-- **Controller에서 TX 시작 금지**
-- Repository에 비즈니스 TX 경계를 새로 쌓지 않음
-
-```mermaid
-flowchart TD
-  facade["Facade_@Transactional"]
-  adapter["Adapter_join"]
-  repo[Repository_CRUD_defaults]
-  facade --> adapter
-  adapter --> repo
+```text
+Facade 트랜잭션 시작
+  ├─ 예약 INSERT
+  ├─ 예약 이력 INSERT
+  └─ 두 작업을 커밋하거나 함께 롤백
 ```
 
-리포 기본 TX는 **Facade 밖에서 리포만 단독 호출할 때** 안전망에 가깝습니다.
-정상 경로에서는 Facade TX 안에서 리포가 참여합니다.
+이력 저장에 `REQUIRES_NEW`를 붙이면 별도 트랜잭션에서 먼저 커밋될 수 있습니다.<br />
+그러면 바깥 예약이 롤백되더라도 이력만 남는 흐름이 생깁니다.<br />
+이력의 독립 저장이 의도된 정책이라면, 그 결과를 테스트에 드러내야 합니다.
 
-서사 분리:
+## Jakarta TxType과 Spring Propagation
 
-- 앱 TX ≠ DB TX, BFF vs 도메인 → [Facade 앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)
-- Adapter join 규칙 → [Service TX join](/docs/knowledge/backend/service/service-tx-join-facade)
-- 잠금 조회와 수정은 **같은** DB TX → [Locking](/docs/knowledge/backend/repository/repository-locking)
+Spring의 `org.springframework.transaction.annotation.Transactional`은 `propagation` 속성으로 전파 방식을 정합니다.<br />
+`jakarta.transaction.Transactional`은 `TxType`을 `value`에 지정합니다.
 
----
+| 전파 방식 | 기존 트랜잭션 없음 | 기존 트랜잭션 있음 |
+|---|---|---|
+| `REQUIRED` | 새 트랜잭션 시작 | 기존 트랜잭션 참여 |
+| `REQUIRES_NEW` | 새 트랜잭션 시작 | 기존 트랜잭션을 보류하고 새로 시작 |
+| `MANDATORY` | 예외 | 기존 트랜잭션 참여 |
+| `SUPPORTS` | 트랜잭션 없이 실행 | 기존 트랜잭션 참여 |
+| `NOT_SUPPORTED` | 트랜잭션 없이 실행 | 기존 트랜잭션을 보류하고 실행 |
+| `NEVER` | 트랜잭션 없이 실행 | 예외 |
 
-## 함정
+원셋은 읽기 전용 여부와 전파 방식을 함께 표현할 수 있는 Spring 애노테이션을 사용합니다.<br />
+Spring에는 트랜잭션 관리자의 지원을 전제로 저장점을 활용할 수 있는 `NESTED`도 있습니다.
+[Facade의 작업 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) / [잠금 조회](/docs/knowledge/backend/repository/repository-locking) / [쿼리 메서드](/docs/knowledge/backend/repository/repository-query-methods)
 
-- Custom/`@Query`만 추가하고 TX·Facade 호출을 잊으면 **TX 없이** 실행될 수 있습니다.
-- 리포에 `REQUIRES_NEW`를 남발하면 Facade 단위가 깨집니다.
-- `readOnly` Facade 안에서 쓰기 리포를 호출하면 참여 규칙·예외에 주의합니다. 쓰기는 Facade/Adapter 쓰기 TX 경로로.
+## 참고 자료
 
----
-
-## 관련
-
-- [Facade — 앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)
-- [Service — Facade DB TX에 join](/docs/knowledge/backend/service/service-tx-join-facade)
-- [Query Methods](/docs/knowledge/backend/repository/repository-query-methods)
+- [Spring Data JPA의 Repository 트랜잭션 기본값](https://docs.spring.io/spring-data/jpa/reference/jpa/transactions.html)
+- [Spring Framework의 트랜잭션 전파](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)

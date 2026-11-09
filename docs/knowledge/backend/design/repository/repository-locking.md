@@ -1,7 +1,7 @@
 ---
 id: repository-locking
 title: Repository — Locking
-description: Version과 Lock 차이, LockModeType 옵션, 낙관적·비관적 락과 원셋·Advice 연결을 정리합니다. 하네스 필독이 아닙니다.
+description: 같은 예약을 수정하는 두 요청으로 JPA @Version과 비관적 락의 차이를 설명합니다.
 tags:
   - backend
   - jpa
@@ -10,185 +10,137 @@ status: active
 slug: "/knowledge/backend/repository/repository-locking"
 ---
 
-# Repository — Locking
+# JPA 낙관적 락과 비관적 락, 같은 예약을 두 사람이 수정한다면
 
-> **개요:** 동시 수정을 다루는 JPA·Spring Data 락입니다.
-> 먼저 **`@Version`과 `@Lock`이 뭐가 다른지**를 한 장으로 두고, 이어서 `LockModeType` 옵션과 원셋 자리를 적습니다.
-> **하네스 필독 아님.** 구현 복사는 원셋·호스트 관례입니다.
+관리자 두 명이 방문 예약 42번을 열었습니다.
 
-공식 Spring Data JPA 「Locking」·Jakarta locking 튜토리얼과 같은 축을, 이 아카이브 선택으로 다시 씁니다.
+둘 다 방문 시간이 오후 2시인 화면을 봤습니다.<br />
+먼저 저장한 관리자는 오후 3시로 변경했고, 나중에 저장한 관리자는 오후 4시로 변경했습니다.
 
----
+두 번째 저장을 그대로 받아들이면 첫 번째 관리자의 변경이 덮어써집니다.<br />
+이때 필요한 것은 **화면을 열었을 때 본 예약과 지금 저장하려는 예약이 같은 버전인지 확인하는 것**입니다.
 
-## 차이 한 장
+## 화면을 열어 둔 동안 생긴 변경을 감지하기
 
-| | `@Version` | `@Lock(LockModeType…)` |
-|--|------------|-------------------------|
-| 정체 | 엔티티의 **버전 컬럼** (낙관적 락의 재료) | 조회·lock·refresh·쿼리에 붙이는 **잠금 모드 지시** |
-| 언제 힘이 발휘되나 | 주로 **UPDATE / 커밋** 때 `WHERE version=?` 검사 | **그 조회(또는 lock)가 나가는 순간** |
-| DB 행 락을 쥐나 | 보통 **안 쥠**. 충돌은 나중에 예외 | **비관적**이면 TX 끝까지 쥠. 낙관적 모드면 버전 쪽 |
-| 요청을 나눠 두고 나중에 저장 | **잘 맞음** (폼 열어 둔 동안) | 비관적은 **같은 DB TX 안**에서만 의미 |
-| 없이도 되나 | 낙관적 검사가 안 됨 | 비관적만으로도 가능. `OPTIMISTIC*`는 버전 전제 |
-
-한 줄로: **버전은 “쓰고 나서 들켰냐”**, **비관적 `@Lock`은 “읽는 순간부터 남이 못 고치게”** 입니다.
-`@Lock`이 항상 비관적인 것은 아닙니다. `LockModeType.OPTIMISTIC*`는 낙관적 계열입니다.
-
-```mermaid
-sequenceDiagram
-  participant A as TxA
-  participant B as TxB
-  participant DB as DB
-  Note over A,DB: Version_낙관적
-  A->>DB: SELECT
-  B->>DB: SELECT
-  A->>DB: UPDATE_WHERE_version
-  B->>DB: UPDATE_WHERE_version
-  Note over B,DB: 한쪽_0건_예외
-  Note over A,DB: Lock_비관적_WRITE
-  A->>DB: SELECT_FOR_UPDATE
-  B->>DB: SELECT_FOR_UPDATE_대기
-  A->>DB: UPDATE_COMMIT
-  B->>DB: 락해제후_진행
-```
-
-### 타임라인
-
-| 시점 | `@Version`만 | `@Lock(PESSIMISTIC_WRITE)` |
-|------|--------------|----------------------------|
-| 읽기 | 그냥 SELECT | SELECT + 행 락 |
-| 메모리에서 수정 | 자유 (아직 DB 미반영) | 같은 TX 안에서만 안전 |
-| flush/커밋 | `UPDATE … WHERE version=?` 후 version++ | UPDATE (락 보유 중) |
-| 다른 TX | 그동안 읽고 쓸 수 있음 → 나중에 충돌 가능 | 락 잡힌 행 수정은 대기·실패 |
-
-### SQL 스케치
-
-낙관적(버전 컬럼 있을 때):
-
-```sql
-UPDATE example_item SET ..., version = 2
-WHERE id = ? AND version = 1;
--- 0건이면 OptimisticLockException 계열
-```
-
-비관적 쓰기 락(방언에 따라):
-
-```sql
-SELECT ... FROM example_item WHERE id = ? FOR UPDATE;
-```
-
-원셋 감사 상위타입 예: [UpdatedEntity](/docs/harness/templates/backend/spring/support/)에 `@Version` 필드가 있습니다.
-
----
-
-## 두 축 표로 다시
-
-| | `@Version` | `@Lock(LockModeType…)` |
-|--|------------|-------------------------|
-| 어디에 | 엔티티 필드 | 리포지토리 메서드 (CRUD 재선언 포함) |
-| 언제 | UPDATE/커밋 검사 | 조회·lock·refresh·Query.setLockMode |
-| 기본 가정 | 충돌은 드묾 | 당장 지키거나(비관), 낙관적 모드를 명시 |
-| DB 락 | 보통 없음 | 비관적이면 TX 끝까지 |
-
-```mermaid
-flowchart TD
-  subgraph optimistic [낙관적_Version]
-    r1[읽기]
-    w1[쓰기_WHERE_version]
-    conflict[충돌시_예외]
-    r1 --> w1
-    w1 --> conflict
-  end
-  subgraph pessimistic [비관적_Lock]
-    r2["조회_@Lock"]
-    hold[행_락_유지]
-    w2[같은_TX에서_수정]
-    r2 --> hold
-    hold --> w2
-  end
-```
-
-원셋·일반 폼 수정은 **`@Version` 낙관적**이 기본 후보입니다.
-재고·좌석처럼 같은 행을 짧은 시간에 많이 건드리면 **`PESSIMISTIC_WRITE`** 를 검토합니다.
-Advice에서 `ObjectOptimisticLockingFailureException` → 전용 코드는 [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope)입니다.
-
----
-
-## 같이 쓰는 경우
-
-서로 대체재가 아닙니다.
-
-- **비관적 조회 + `@Version`**: 잠가서 읽고 같은 TX에서 저장. 버전은 그대로 증가·검사될 수 있음.
-- **`OPTIMISTIC_FORCE_INCREMENT`**: 자식만 바꿔도 부모 버전을 올려 “부모 동시 수정”을 드러낼 때.
-- **`@Lock(OPTIMISTIC)`**: 버전 엔티티에 낙관적 읽기 락을 **조회 경로에 명시**. `@Version` 필드가 전제.
-
-잠금 조회와 수정이 **다른 DB TX**로 갈라지면 비관적 보호는 끝입니다.
-같은 도메인 Facade 앱 단위·TX 안에 두세요 ([앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions), [TX join](/docs/knowledge/backend/service/service-tx-join-facade)).
-
----
-
-## Spring Data에서의 `@Lock`
+JPA 엔티티에 `@Version` 필드를 두면, 영속성 제공자가 엔티티를 읽을 때 버전을 기억하고 변경을 반영할 때 그 버전을 검사합니다.
 
 ```java
-public interface ExampleItemRepository extends JpaRepository<ExampleItem, Long> {
+@Version
+private Long version;
+```
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    Optional<ExampleItem> findWithWriteLockById(Long id);
+두 트랜잭션이 모두 버전 7을 읽었다고 가정해 봅니다.<br />
+첫 번째 트랜잭션이 먼저 반영하면 DB의 버전은 8이 됩니다.<br />
+두 번째 트랜잭션은 여전히 버전 7을 조건으로 수정하므로 변경할 행을 찾지 못합니다.
+
+![예약 수정 요청의 버전 충돌](/img/backend-design/reservation-version-conflict.svg)
+
+실제 SQL은 매핑과 구현체에 따라 달라집니다.<br />
+버전 검사에 필요한 부분만 남기면 다음과 같습니다.
+
+```sql
+UPDATE reservation
+SET visit_hour = 15, version = 8
+WHERE id = 42 AND version = 7;
+```
+
+충돌은 보통 변경을 DB로 보내는 flush에서 드러납니다.<br />
+커밋 과정에서 flush한다면 서비스 메서드가 반환된 뒤, 트랜잭션을 닫는 과정에서 예외가 드러날 수도 있습니다.
+
+**화면 조회와 저장이 별도 HTTP 요청이면 한 가지가 더 필요합니다.**
+저장 요청에도 화면이 처음 받은 버전 7을 보내야 합니다.<br />
+서버가 저장 요청을 받을 때 최신 엔티티를 다시 읽기만 하면, 버전 8을 읽은 다음 변경을 적용하므로 화면이 오래됐다는 사실을 알 수 없습니다.
+
+```java
+@Transactional
+public void changeVisitHour(Long id, Long expectedVersion, int visitHour) {
+    Reservation reservation = reservations.findById(id).orElseThrow();
+    if (!Objects.equals(expectedVersion, reservation.getVersion())) {
+        throw new StaleReservationException(id);
+    }
+    reservation.changeVisitHour(visitHour);
 }
 ```
 
-`EntityManager.find` / `lock` / `refresh` / `Query.setLockMode`로도 같은 `LockModeType`을 줄 수 있습니다.
+예제의 `StaleReservationException`은 애플리케이션에서 정의하는 충돌 예외입니다.<br />
+명시적인 비교는 화면을 연 뒤 이미 바뀐 예약을 걸러냅니다.<br />
+비교 직후 다른 요청이 먼저 커밋하는 경우는 JPA의 버전 검사가 잡습니다.<br />
+HTTP에서 어떤 상태와 본문을 돌려줄지는 [오류 응답 설계](/docs/knowledge/backend/controller/advice-http-status-and-envelope)에 이어집니다.
 
-타임아웃은 벤더·힌트(`jakarta.persistence.lock.timeout` 등)에 따릅니다.
-데드락을 줄이려면 여러 행을 잠글 때 **id 순**처럼 순서를 고정합니다.
+## 조회한 상태를 기준으로 바로 변경해야 할 때
 
----
+같은 예약에 입차 처리를 한다고 가정해 봅니다.<br />
+요청이 들어오면 현재 상태를 읽고, 입차 가능한지 확인하고, 곧바로 상태를 변경합니다.
 
-## `LockModeType` 옵션
+이처럼 한 트랜잭션 안에서 읽고 판단하고 쓰는 작업은 `PESSIMISTIC_WRITE`로 경쟁하는 변경을 조회 시점부터 조율할 수 있습니다.
 
-Jakarta Persistence `LockModeType`입니다.
-신규 코드는 `READ`/`WRITE` 별칭보다 **OPTIMISTIC_*** / **PESSIMISTIC_*** 이름을 쓰는 편이 낫습니다.
+```java
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-| 값 | 성격 | `@Version` 필요? | 하는 일 (요지) |
-|----|------|------------------|----------------|
-| `NONE` | 없음 | 아니오 | 추가 락 없음 |
-| `OPTIMISTIC` | 낙관적 | **예** (실질) | 버전 엔티티 낙관적 읽기 락. TX 끝 버전 검사에 관여 |
-| `OPTIMISTIC_FORCE_INCREMENT` | 낙관적 | **예** | 위 + **버전 강제 증가** |
-| `PESSIMISTIC_READ` | 비관적 | 아니오 | 즉시 장기 읽기 락. 수정·삭제 차단. 공유 읽기는 DB 지원 시. 미지원 시 write로 승격 가능 |
-| `PESSIMISTIC_WRITE` | 비관적 | 아니오 | 즉시 장기 쓰기(배타) 락 (`FOR UPDATE` 등) |
-| `PESSIMISTIC_FORCE_INCREMENT` | 비관적 | 버전 있으면 증가 | 비관적 락 + 버전 증가 |
-| `READ` | 별칭 | OPTIMISTIC과 같음 | 신규는 `OPTIMISTIC` |
-| `WRITE` | 별칭 | FORCE_INCREMENT와 같음 | 신규는 긴 이름 |
-
-```mermaid
-flowchart TD
-  mode[LockModeType]
-  mode --> none[NONE]
-  mode --> opt[OPTIMISTIC]
-  mode --> optFi[OPTIMISTIC_FORCE_INCREMENT]
-  mode --> pRead[PESSIMISTIC_READ]
-  mode --> pWrite[PESSIMISTIC_WRITE]
-  mode --> pFi[PESSIMISTIC_FORCE_INCREMENT]
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("select r from Reservation r where r.id = :id")
+    Optional<Reservation> findForUpdate(@Param("id") Long id);
+}
 ```
 
-비관적 락을 못 얻으면 `PessimisticLockException` / 타임아웃 계열 → 스프링 `PessimisticLockingFailureException` 등.
-낙관적 충돌은 `OptimisticLockException` → `ObjectOptimisticLockingFailureException`.
+```java
+@Transactional
+public void admit(Long id) {
+    Reservation reservation = reservations.findForUpdate(id).orElseThrow();
+    reservation.admit();
+}
+```
 
----
+`admit()`은 예약의 현재 상태가 입차를 허용하는지 확인하고 상태를 바꾸는 업무 메서드입니다.<br />
+조회와 상태 변경을 같은 DB 트랜잭션에 두므로 두 번째 요청은 락을 얻은 뒤 바뀐 상태를 기준으로 판단할 수 있습니다.
 
-## 원셋·이 아카이브에서의 자리
+![예약 입차 처리의 쓰기 락](/img/backend-design/reservation-write-lock.svg)
 
-| 선택 | 메모 |
-|------|------|
-| 기본 동시성 | 호스트가 `@Version`을 쓰면 낙관적. Advice에 전용 handler |
-| 리포 `@Lock` | 핫 패스·짧은 Facade TX 안에서만. 목록 Spec 기본 경로에 남발하지 않음 |
-| Facade TX | 잠금 조회와 수정을 **같은** 도메인 Facade 앱 단위·DB TX에 |
-| 엔티티 최소 | 그래프·cascade로 락 범위를 키우지 않음 ([minimal-CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)) |
+DB와 격리 수준에 따라 경쟁 요청은 기다리거나 타임아웃, 교착 또는 직렬화 실패로 끝날 수 있습니다.<br />
+아래 SQL은 흔히 볼 수 있는 잠금 조회의 예입니다.
 
----
+```sql
+SELECT id, visit_hour, status, version
+FROM reservation
+WHERE id = 42
+FOR UPDATE;
+```
 
-## 관련
+잠금을 잡은 상태에서 외부 API 응답까지 기다리면 다음 요청의 대기도 길어집니다.<br />
+잠금이 필요한 구간에는 상태 확인과 변경만 두고, 여러 행을 잠그는 경로에서는 같은 순서로 접근할 수 있는지 확인합니다.
 
-- [Repository 설계](/docs/knowledge/backend/repository/repository-design) (허브·목차 표)
-- [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope) (낙관적 락 응답)
-- [Facade — 앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)
-- [Service — Facade DB TX에 join](/docs/knowledge/backend/service/service-tx-join-facade)
+## 잠금 모드를 고를 때
+
+`@Version`은 엔티티의 버전 정보를 관리하는 표시입니다.<br />
+Spring Data의 `@Lock`은 해당 Repository 메서드에 JPA 잠금 모드를 지정합니다.<br />
+같은 모드를 `EntityManager.find`, `lock`, `refresh`나 `Query.setLockMode`에서도 지정할 수 있습니다.
+
+| 모드 | 적용할 상황 |
+|---|---|
+| `NONE` | 명시적인 잠금 모드가 필요 없는 조회 |
+| `OPTIMISTIC` | 변경하지 않고 읽은 버전 엔티티에도 낙관적 검사를 명시 |
+| `OPTIMISTIC_FORCE_INCREMENT` | 자식 변경을 부모 버전에도 반영하는 등 버전 증가를 명시 |
+| `PESSIMISTIC_READ` | 트랜잭션이 끝날 때까지 다른 트랜잭션의 변경을 막는 읽기 |
+| `PESSIMISTIC_WRITE` | 같은 행을 변경하는 트랜잭션의 경합을 조회부터 조율 |
+| `PESSIMISTIC_FORCE_INCREMENT` | 버전이 있는 엔티티를 비관적으로 잠그면서 버전도 증가 |
+
+`READ`와 `WRITE`는 각각 `OPTIMISTIC`, `OPTIMISTIC_FORCE_INCREMENT`의 별칭입니다.<br />
+버전 없는 엔티티의 낙관적 잠금은 구현체 간 이식성을 보장하기 어렵습니다.<br />
+`PESSIMISTIC_READ`와 `PESSIMISTIC_WRITE`는 버전 없는 엔티티에도 사용할 수 있습니다.
+
+예약 수정 화면은 오래된 저장을 감지해야 하고, 입차 처리는 같은 행의 상태 전이를 순서대로 적용해야 합니다.<br />
+두 경로가 같은 엔티티를 쓰면 **버전 필드를 둔 채 입차 메서드에서만 비관적 락을 지정**할 수 있습니다.
+
+## 원셋에서는 어디에 두나요?
+
+원셋의 [UpdatedEntity](/docs/harness/templates/backend/spring/support/)는 수정 감사 필드와 함께 `@Version`을 제공합니다.<br />
+수정 충돌을 감지해야 하는 마스터 데이터에 이 상위 타입을 사용하고, 생성 이력을 쌓는 테이블은 `CreatedEntity`를 사용합니다.
+
+비관적 락이 필요하면 도메인 Facade가 변경의 트랜잭션을 열고, Adapter가 그 안에서 잠금 조회와 변경을 수행합니다.<br />
+조회만 하는 목록 경로는 기존 조회 흐름을 사용합니다.
+[Facade의 작업 경계](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) / [Repository 설계](/docs/knowledge/backend/repository/repository-design)
+
+## 참고 자료
+
+- [Spring Data JPA의 Repository 잠금 설정](https://docs.spring.io/spring-data/jpa/reference/jpa/locking.html)
+- [Jakarta Persistence 3.2의 버전 필드와 잠금 모드](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)
