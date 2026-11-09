@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 206" role="img" aria-labelledby="diagram-title">
+<title id="diagram-title">예약 요청이 거절되는 세 지점</title>
+<rect width="480" height="206" rx="12" fill="#edf4fa"/>
+<rect x="16" y="14" width="448" height="48" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="240" y="44" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">본문 형식 오류 → 역직렬화에서 거절</text>
+<path d="M240 62 v14 m-4 -5 l4 5 l4 -5" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="16" y="78" width="448" height="48" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="240" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">필수값 누락 → DTO 검증에서 거절</text>
+<path d="M240 126 v14 m-4 -5 l4 5 l4 -5" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="16" y="142" width="448" height="48" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="240" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">페이지 범위 초과 → 인자나 업무 규칙에서 거절</text>
+</svg>

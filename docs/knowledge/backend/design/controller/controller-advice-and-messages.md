@@ -33,6 +33,14 @@ HTTP 호출부는 어느 단계에서 실패했든 상태 코드와 응답 필�
 
 ---
 
+## 증상으로 읽을 글 고르기
+
+요청 본문이 읽히기도 전에 실패한다면 [입력 검증](/docs/knowledge/backend/controller/advice-validation)부터 봅니다.<br />
+입력은 맞지만 예약 상태 때문에 거절됐다면 [업무 예외 전파](/docs/knowledge/backend/controller/advice-exception-propagation)에서 누가 실패를 판단하는지 확인합니다.
+
+HTTP 상태와 업무 코드가 따로 움직이는 연동이라면 [오류 응답 설계](/docs/knowledge/backend/controller/advice-http-status-and-envelope)가 출발점입니다.<br />
+응답은 이미 성공인데 알림이 도착하지 않았다면 [Advice 밖의 실패](/docs/knowledge/backend/controller/advice-adjacent-boundaries)에서 비동기 기록과 상관 ID를 확인합니다.
+
 ## 관련
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)

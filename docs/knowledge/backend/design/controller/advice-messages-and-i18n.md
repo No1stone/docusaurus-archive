@@ -179,6 +179,23 @@ model은 코드만 알고 문장을 모릅니다.
 
 ---
 
+## 오류 코드 하나를 한국어와 영어로 내려보기
+
+예약 충돌을 표시하는 API의 업무 코드가 `reservation_conflict`라고 가정합니다.<br />
+클라이언트는 이 값으로 화면을 분기하고, 메시지 번들은 선택된 언어로 안내를 제공합니다.
+
+```properties title="messages.properties"
+reservation.conflict=이미 예약된 차량입니다.
+```
+
+```properties title="messages_en.properties"
+reservation.conflict=This vehicle already has a reservation.
+```
+
+기본 번들은 언어별 파일을 고를 때 출발점이 됩니다.<br />
+API 테스트에서는 같은 요청으로 `Accept-Language: ko`와 `Accept-Language: en`을 보낸 뒤 HTTP 상태와 업무 코드는 같은지, 메시지만 달라지는지 확인합니다.<br />
+지원하지 않는 언어를 받았을 때 어떤 문구를 보여줄지도 테스트에 포함하면 환경의 시스템 로케일에 의존하는지 찾기 쉽습니다.
+
 ## 관련
 
 - [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) (허브)

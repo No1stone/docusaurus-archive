@@ -206,6 +206,21 @@ public class CommonExceptionAdvice {
 - [ADR-0014](/docs/decisions/adr-0014)
 - [support](/docs/harness/templates/backend/spring/support/)
 
+## Partner Gateway에서 실제로 확인한 오류 두 가지
+
+세대별 차량 조회 API에서 입력값이 잘못된 경우와, Mopl이 요청을 받은 뒤 세대를 찾지 못한 경우를 나눠 볼 수 있습니다.
+
+| 사례 | 외부 호출 | 확인하는 HT 응답 |
+|---|---|---|
+| `listCount=201` | 최대 크기를 넘긴 입력으로 Mopl 호출을 생략 | HTTP 400, `parameter-002` |
+| 조회할 세대가 없음 | Mopl이 세대 없음 오류를 반환 | HTTP 400, `parameter-003` |
+
+둘 다 HT가 받는 HTTP 상태는 400입니다.<br />
+본문의 결과 코드가 다르므로 호출부는 목록 크기를 줄여야 하는지, 세대 정보를 확인해야 하는지 구분할 수 있습니다.
+
+이 매핑은 Partner Gateway의 HT 연동 계약에 맞춘 사례입니다.<br />
+다른 API에서 HTTP 404를 그대로 전달하는 것이 계약이라면 그 규격에 맞춰 처리합니다.
+
 ## 참고 자료
 
 - [HTTP API 오류 응답 형식, RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html)
