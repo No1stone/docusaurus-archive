@@ -12,38 +12,11 @@ slug: "/knowledge/backend/facade/facade-design"
 
 # 애플리케이션 영역과 Facade
 
-> **개요:** 애플리케이션 영역의 공개 진입점 Knowledge 입구입니다.
-> 이름은 GoF Facade에서 왔고, 이 아카이브에서는 경량 헥사의 유스케이스 조립 층입니다.
-> 구현 복사·검증은 원셋과 coding-conventions입니다 ([ADR-0010](/docs/decisions/adr-0010)).
-> **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.** 깊이 필요할 때만 읽습니다.
-> 세부 서사는 아래 하위 글에 둡니다.
+방문 예약을 등록하는 일과 등록 결과를 화면에 보여주는 일은 서로 다른 범위의 작업입니다.<br />
+도메인 Facade는 예약의 정책과 변경을 맡고, BFF Facade는 공개 유즈케이스를 조합해 화면을 완성합니다.
 
-```mermaid
-flowchart TD
-  entry[Controller_gRPC_GraphQL]
-  bff[BffFacade]
-  domain[DomainFacade]
-  port[Port]
-  adapter[Adapter]
-  db[(DB)]
-  entry --> bff
-  entry --> domain
-  bff --> domain
-  domain --> port
-  port --> adapter
-  adapter --> db
-```
-
-## 한 줄로
-
-| 질문 | 답 |
-|------|-----|
-| 왜 이름이 Facade인가 | GoF Facade: 하위 복잡함을 가린 공개 면 |
-| 헥사에서 어디인가 | 라이트 헥사 **UseCase와 같은 층** (이름만 Facade) |
-| BFF와 도메인을 왜 나누나 | **애플리케이션 동작 단위**가 다르기 때문 (DB `@Transactional`이 정의가 아님) |
-| DTO 연관은 | Facade가 Item 계약만큼만 조립. 전 그래프를 밖으로 안 흘림 |
-
-Port·Adapter·Provider 세부는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)로 갑니다.
+이 시리즈는 두 진입점을 나눈 이유, 트랜잭션의 범위, 실패를 어떻게 테스트하는지 다룹니다.<br />
+실제 구현의 뼈대는 [Spring 원셋](/docs/harness/templates/backend/spring/ONESET)에서 확인할 수 있습니다.
 
 ## 하위 글
 

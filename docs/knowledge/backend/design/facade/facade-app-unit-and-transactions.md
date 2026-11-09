@@ -1,7 +1,7 @@
 ---
 id: facade-app-unit-and-transactions
 title: Facade — 앱 동작 단위와 트랜잭션
-description: 애플리케이션 트랜잭션과 DB 트랜잭션을 구분하고, BFF와 도메인 Facade를 나눈 이유와 구현 규칙을 정리합니다.
+description: 예약 저장과 확인 화면의 부분 실패를 예로 BFF Facade와 도메인 Facade의 트랜잭션 경계를 설명합니다.
 tags:
   - backend
   - facade
@@ -10,130 +10,73 @@ status: active
 slug: "/knowledge/backend/facade/facade-app-unit-and-transactions"
 ---
 
-# Facade — 앱 동작 단위와 트랜잭션
+# BFF Facade와 도메인 Facade의 트랜잭션 경계
 
-> **개요:** BFF Facade와 도메인(유스케이스) Facade를 나눈 **가장 큰 이유**는 DB 어노테이션이 아니라 애플리케이션 동작 단위입니다.
-> 허브는 [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)입니다.
+방문 예약을 등록한 뒤 확인 화면에 세대 이름과 방문 가능 시간을 함께 보여주는 화면을 생각해 봅니다.
 
----
+예약이 저장된 직후 세대 이름을 조회하는 API가 타임아웃되면, 화면에는 오류가 보일 수 있습니다.<br />
+그때 예약까지 취소됐다고 가정하고 같은 요청을 다시 보내면 예약이 중복될 수 있습니다.
 
-## 애플리케이션 트랜잭션 ≠ DB 트랜잭션
+이 사례에서 화면이 끝났는지와 예약이 DB에 반영됐는지는 서로 다른 질문입니다.<br />
+이 아카이브에서 BFF Facade와 도메인 Facade를 나눈 이유가 여기에 있습니다.
 
-| | 의미 | 이 아카이브에서의 자리 |
-|--|------|------------------------|
-| 애플리케이션 트랜잭션 | “이번 동작이 앱에서 어디까지가 한 단위인가” (성공·실패·보상·조합 범위) | Facade가 소유하는 **동작 경계** |
-| DB 트랜잭션 | DB가 commit/rollback으로 묶는 단위 (`@Transactional` 등) | 도메인 Facade 동작이 영속에 닿을 때 Adapter가 **join**하는 구현 수단 |
+## 예약 등록과 확인 화면은 완료 시점이 다릅니다
 
-둘을 같은 말로 쓰면, BFF 시나리오 전체를 한 DB TX로 묶는 설계가 “자연스러워” 보입니다.
-실제로는 락 범위·롤백 의미·도메인 소유가 섞입니다.
+도메인 Facade는 예약이 가능한지 판단하고 예약을 저장합니다.<br />
+이 작업이 DB에서 성공하거나 실패하는 경계는 도메인 Facade가 엽니다.<br />
+JPA Adapter는 그 트랜잭션에 참여합니다.
 
-```mermaid
-flowchart LR
-  subgraph appTx [애플리케이션_동작_단위]
-    step1[정책_판단]
-    step2[Port_호출]
-    step3[DTO_조립]
-  end
-  subgraph dbTx [DB_트랜잭션]
-    commit[commit_or_rollback]
-  end
-  appTx -->|"도메인_Facade가_영속에_닿을_때"| dbTx
-```
+BFF Facade는 예약 등록 결과를 받은 뒤 화면에 필요한 정보를 조회합니다.<br />
+세대 이름 조회에 실패했을 때 예약 ID를 그대로 돌려줄지, 부가 정보만 다시 불러오게 할지는 화면의 정책입니다.
 
----
-
-## 그래서 Facade 레이어를 둘로 나눈다
-
-| | 도메인 Facade | BFF Facade |
-|--|---------------|------------|
-| 앱 동작 단위 | 한 도메인의 유스케이스 | 화면·시나리오 **조합** |
-| DB TX | 그 단위에 맞추는 것이 기본 | 여러 도메인을 **한 DB TX로 승격하지 않음** |
-| 의존 | Port | 도메인 진입만 |
-
-```mermaid
-flowchart TD
-  bff[BffFacade_앱_조합_단위]
-  domA[DomainFacade_A_앱_동작_단위]
-  domB[DomainFacade_B_앱_동작_단위]
-  dbA[DB_TX_A]
-  dbB[DB_TX_B]
-  bff --> domA
-  bff --> domB
-  domA --> dbA
-  domB --> dbB
-```
-
-도메인 Facade가 그 도메인 변경의 로컬 DB TX 경계를 엽니다.
-JPA Adapter는 그 TX에 join합니다 ([coding-conventions Transactions](/docs/harness/context/coding-conventions)).
-
-BFF는 여러 도메인 진입을 시나리오 순서로 호출할 뿐입니다.
-부분 실패를 전체 실패로 볼지, 일부 결과만 줄지는 **BFF의 앱 단위 정책**입니다.
-그 정책을 “더 큰 `@Transactional`”로 대체하지 않습니다.
-
-프로세스 밖 다중 변경의 앱 완수는 [Saga](/docs/patterns/architecture-patterns/saga)입니다.
-BFF 로컬 DB TX로 분산 완수를 흉내 내지 않습니다.
-
-조회 조합이 느린 것은 BFF·조립 이슈일 수 있습니다.
-TX 이야기와 구분해 적습니다 ([ONESET](/docs/harness/templates/backend/spring/ONESET)).
-
----
-
-## 안티패턴: BFF에 큰 DB TX
-
-```mermaid
-flowchart TD
-  bad[BffFacade_큰_Transactional]
-  a[Domain_A]
-  b[Domain_B]
-  one[(하나의_DB_TX)]
-  bad --> a
-  bad --> b
-  a --> one
-  b --> one
-```
-
-이렇게 하면:
-
-- 서로 다른 도메인 락·롤백이 한 덩어리가 됩니다
-- 도메인 Facade가 연 동작 단위의 의미가 흐려집니다
-- 모니터링·재시도·부분 성공 UI와 어긋나기 쉽습니다
-
-BFF가 DomainPort를 직접 보는 것도 같은 계열입니다.
-도메인 TX·정책·표시명 조립을 우회합니다.
-
----
-
-## 구현 메모: `@Transactional` (정의가 아님)
-
-원셋·컨벤션:
-
-- Facade와 JPA Adapter 클래스 기본: `@Transactional(readOnly = true, transactionManager = "transactionManager")`
-- 쓰기 메서드만 `@Transactional`로 오버라이드
-- Adapter TX는 Facade에 **join**
-- Controller에서 TX를 시작하지 않음
+![예약 커밋 이후 확인 화면의 부분 실패](/img/backend-design/reservation-confirmation.svg)
 
 ```java
-@Transactional(readOnly = true, transactionManager = "transactionManager")
-public class ExampleItemFacade {
-    @Transactional // 쓰기
-    public ExampleItemRes.Id save(ExampleItemReq.Create req) { /* ... */ }
+public ReservationConfirmation confirm(ReserveVisit command) {
+    ReservationReceipt receipt = reservationFacade.reserve(command);
+
+    try {
+        HouseholdView household = householdFacade.find(receipt.householdId());
+        return ReservationConfirmation.complete(receipt, household);
+    } catch (HouseholdLookupUnavailableException e) {
+        return ReservationConfirmation.withoutHouseholdName(receipt);
+    }
 }
 ```
 
-이 규칙은 **도메인 앱 단위가 DB에 닿을 때의 구현**입니다.
-“BFF와 도메인을 나눈 정의” 자체가 아닙니다.
-Adapter 쪽 join·전파 세부는 Service Knowledge의 TX 섹터에서 이어 씁니다.
+화면 응답의 조립만 보여주는 예시입니다.<br />
+이 예제는 예약을 먼저 확정하고, 세대 이름을 불러오지 못하면 그 필드만 비워서 응답하도록 정한 경우입니다.<br />
+예약 실패는 이 예외 처리의 대상에 포함되지 않습니다.
 
-catch로 예외를 삼키고 정상 반환하면 앱 단위는 성공처럼 보이는데 DB는 롤백됐을 수 있습니다.
-그 함정은 [Controller Advice — 예외 전파](/docs/knowledge/backend/controller/advice-exception-propagation)와 맞물립니다.
+## 화면 요청 전체에 트랜잭션을 걸면 달라지는 점
 
----
+같은 DB와 트랜잭션 관리자를 쓰는 BFF가 트랜잭션을 열면, 기본 전파 방식인 `REQUIRED`로 실행되는 도메인 Facade는 그 트랜잭션에 참여합니다.<br />
+이 경우 도메인 Facade가 반환되는 시점과 예약이 커밋되는 시점이 달라집니다.
 
-## 관련
+같은 트랜잭션에 참여한 안쪽 메서드가 롤백 전용 상태를 남기면, 바깥에서 예외를 처리해도 커밋할 때 롤백될 수 있습니다.<br />
+화면용 외부 API를 부르는 동안 DB 트랜잭션이 계속 열린다는 점도 고려해야 합니다.
 
-- [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) (허브)
-- [진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming)
-- [테스트와 실패 정책](/docs/knowledge/backend/facade/facade-testing-and-failures)
-- [coding-conventions — Transactions](/docs/harness/context/coding-conventions)
-- [Saga](/docs/patterns/architecture-patterns/saga)
-- [CQRS](/docs/patterns/architecture-patterns/cqrs)
+| 실패 지점 | 이 예제에서의 결과 |
+|---|---|
+| 예약 저장 중 실패 | 예약 변경 롤백, 등록 실패 응답 |
+| 예약 커밋 후 세대 이름 조회 실패 | 예약 유지, 예약 ID와 부분 응답 반환 |
+| 응답을 받기 전에 연결이 끊김 | 서버의 저장 여부 확인 후 재요청 여부 결정 |
+
+프로세스 밖의 여러 서비스에서 변경이 이어지고, 업무상 이전 변경을 되돌려야 한다면 보상 흐름을 따로 설계합니다.<br />
+어떤 작업을 완료로 간주하고 무엇을 되돌릴지는 [Saga 패턴](/docs/patterns/architecture-patterns/saga)에서 다룹니다.
+
+## 원셋에서 확인할 경계
+
+BFF는 각 도메인의 공개 진입점을 호출합니다.<br />
+예약의 검증이나 저장을 직접 맡지 않으므로 예약 정책을 고칠 때 화면 조합 코드까지 찾을 필요가 줄어듭니다.
+
+도메인 Facade는 앱 동작 단위에 맞춰 DB 트랜잭션을 열고, Adapter는 같은 경계에 참여합니다.
+[Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) / [Spring 원셋](/docs/harness/templates/backend/spring/ONESET)
+
+이 예제를 테스트할 때는 예약 저장 실패와 저장 후 조회 실패를 나눕니다.<br />
+첫 번째 케이스는 저장이 롤백됐는지, 두 번째 케이스는 예약 ID가 응답에 남고 예약도 유지됐는지 확인합니다.
+[Facade 테스트와 실패 처리](/docs/knowledge/backend/facade/facade-testing-and-failures)
+
+## 참고 자료
+
+- [Spring Framework의 트랜잭션 전파 규칙](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)
