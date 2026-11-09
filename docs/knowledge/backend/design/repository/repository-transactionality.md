@@ -58,6 +58,35 @@ JDBC·Hibernate 쪽 최적화(예: flush mode)에 쓰입니다.
 
 ---
 
+## `jakarta.transaction.Transactional` — `TxType`
+
+Jakarta Transactions 쪽 `@Transactional`은 `value()`로 `TxType`을 고릅니다.
+기본값은 `REQUIRED`입니다.
+
+```java
+package jakarta.transaction;
+
+public @interface Transactional {
+    TxType value() default TxType.REQUIRED;
+    // rollbackOn / dontRollbackOn …
+}
+```
+
+| `TxType` | TX 없을 때 | TX 있을 때 |
+|----------|------------|------------|
+| `REQUIRED` (기본) | 새 TX 시작 | 기존 TX에 참여 |
+| `REQUIRES_NEW` | 새 TX 시작 | 기존을 잠시 멈추고 **새 TX** |
+| `MANDATORY` | 예외 | 기존 TX에 참여 |
+| `SUPPORTS` | TX 없이 실행 | 기존 TX에 참여 |
+| `NOT_SUPPORTED` | TX 없이 실행 | 기존을 잠시 멈추고 **TX 없이** 실행 |
+| `NEVER` | TX 없이 실행 | 예외 |
+
+원셋·Spring Data 예제는 보통 `org.springframework.transaction.annotation.Transactional`과 `Propagation`을 씁니다.
+이름(`REQUIRED`, `REQUIRES_NEW` …)은 위와 거의 같고, Spring에는 추가로 `NESTED`가 있습니다.
+원셋은 Facade가 경계를 열고 Adapter는 **참여(join)** 가 기본입니다. `REQUIRES_NEW`는 Facade 단위를 깨기 쉬워 함정에 적어 두었습니다.
+
+---
+
 ## 원셋: 경계를 Facade에 둔다
 
 공식도 **작업 단위를 시작하는 곳**에 TX를 두는 편을 권합니다.
