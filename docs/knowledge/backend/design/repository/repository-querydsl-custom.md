@@ -37,6 +37,15 @@ URL과 기간에 따라 호출 이력을 그대로 읽는 화면은 Specificatio
 SQL을 보고 집계 단위와 count 조건이 같은지 확인합니다.
 [Custom Repository](/docs/knowledge/backend/repository/repository-custom) / [QueryDSL 동적 조건](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
 
+## 화면의 총건수를 그룹 수로 계산하기
+
+같은 URL에 실패가 다섯 번 발생해도 URL별 집계 화면에는 한 줄만 나옵니다.<br />
+그런데 총건수 쿼리를 원본 호출 이력에 적용하면 목록은 한 줄인데 페이지 수는 다섯 줄 기준으로 계산될 수 있습니다.
+
+집계 결과를 페이징하는 테스트에는 한 URL에 여러 실패 기록을 만들고 두 번째 URL도 추가합니다.<br />
+첫 페이지의 내용과 함께 총건수가 URL 두 개를 기준으로 계산되는지 확인합니다.<br />
+그룹 조건까지 복잡해진다면 count에 동일한 조건을 어떻게 적용할지 쿼리 설계에서 함께 다룹니다.
+
 ## 참고 자료
 
 - [QueryDSL JPA 참조 문서](https://querydsl.com/static/querydsl/latest/reference/html/ch02.html)

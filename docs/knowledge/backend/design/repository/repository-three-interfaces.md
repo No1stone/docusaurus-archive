@@ -37,3 +37,13 @@ public interface ExampleItemRepository
 Facade가 이 Repository를 직접 조율하지 않도록, 원셋은 Adapter에서 어느 저장소 메서드를 호출할지 결정합니다.<br />
 Custom은 확장 예시이며 단순 조회에 빈 메서드를 추가할 이유는 없습니다.
 [Spring Data 인터페이스](/docs/knowledge/backend/repository/repository-spring-data-hierarchy) / [Specification](/docs/knowledge/backend/repository/repository-spec-and-filter) / [커스텀 Repository](/docs/knowledge/backend/repository/repository-custom)
+
+## 필터 하나와 집계 하나가 동시에 추가된다면
+
+호출 이력 목록에 응답 상태 필터를 붙이고, 별도 화면에는 URL별 오류 건수를 보여준다고 가정합니다.<br />
+상태 필터는 기존 목록의 결과 모양을 바꾸지 않습니다.<br />
+같은 Filter와 Specification에 조건을 추가하면 됩니다.
+
+집계는 결과 한 행의 의미가 달라지므로 Custom Repository의 메서드로 분리할 수 있습니다.<br />
+목록 테스트는 상태별 기록의 포함 여부를, 집계 테스트는 그룹과 건수를 확인합니다.<br />
+두 기능을 같은 저장소에 두더라도 통과 조건을 나누면 어디가 바뀌었는지 읽기 쉽습니다.

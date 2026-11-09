@@ -99,6 +99,16 @@ Spring의 `org.springframework.transaction.annotation.Transactional`은 `propaga
 Spring에는 트랜잭션 관리자의 지원을 전제로 저장점을 활용할 수 있는 `NESTED`도 있습니다.
 [Facade의 작업 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) / [잠금 조회](/docs/knowledge/backend/repository/repository-locking) / [쿼리 메서드](/docs/knowledge/backend/repository/repository-query-methods)
 
+## 테스트에서 바깥 트랜잭션을 확인하는 이유
+
+예약과 이력을 함께 쓰는 테스트 메서드 자체에 트랜잭션이 걸려 있으면, 제품 코드에서 Facade의 트랜잭션이 빠져도 두 쓰기가 테스트의 트랜잭션에 참여할 수 있습니다.<br />
+이 경우 테스트는 통과하지만 실제 요청은 Repository 메서드별로 따로 완료될 수 있습니다.
+
+![예약과 이력의 롤백을 검증하는 순서](/img/backend-design/facade-rollback-test.svg)
+
+경계가 중요한 시나리오는 테스트 메서드 바깥에서 유즈케이스를 호출하고, 실패한 뒤 새 조회로 DB 상태를 확인합니다.<br />
+예약과 이력이 함께 반영되거나 함께 사라지는지 보면 Repository의 기본값과 업무 단위의 설정을 구분할 수 있습니다.
+
 ## 참고 자료
 
 - [Spring Data JPA의 Repository 트랜잭션 기본값](https://docs.spring.io/spring-data/jpa/reference/jpa/transactions.html)

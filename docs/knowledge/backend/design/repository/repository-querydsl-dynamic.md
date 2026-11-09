@@ -41,6 +41,21 @@ if (filter.getEndAt() != null) {
 원셋의 단순 목록에는 [Specification](/docs/knowledge/backend/repository/repository-spec-and-filter)을 사용합니다.<br />
 조인과 DTO 반환까지 함께 조립해야 할 때는 [Custom Repository](/docs/knowledge/backend/repository/repository-querydsl-custom)에서 QueryDSL을 검토합니다.
 
+## OR 그룹에 기간 조건을 빠뜨리지 않는 방법
+
+검색어가 URL이나 요청 본문에 포함된 기록을 찾되, 최근 하루만 조회한다고 가정합니다.<br />
+URL과 본문에 대한 OR 조건을 먼저 만든 뒤 기간을 AND로 결합합니다.
+
+```java
+BooleanExpression keywordMatches =
+    item.url.contains(keyword).or(item.payload.contains(keyword));
+conditions.and(keywordMatches);
+conditions.and(item.createdAt.goe(from));
+```
+
+검색어와 시작 시각이 모두 들어온 경우의 예제입니다.<br />
+기간 밖에 URL만 일치하는 행을 테스트 데이터에 넣으면 OR의 결합 범위가 어긋났는지 확인할 수 있습니다.
+
 ## 참고 자료
 
 - [QueryDSL 동적 표현과 BooleanBuilder](https://querydsl.com/static/querydsl/latest/reference/html/ch03.html)

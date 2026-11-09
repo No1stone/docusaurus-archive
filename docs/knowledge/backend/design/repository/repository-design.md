@@ -41,6 +41,18 @@ PK로 한 건을 읽는 코드와 여러 필터를 조합하는 목록은 서로
 
 ---
 
+## 조회가 느리거나 조건이 늘 때 살펴볼 순서
+
+먼저 화면이 어떤 결과를 요구하는지 봅니다.<br />
+단건의 유일한 결과, 필터 목록, 집계 결과는 같은 테이블을 조회해도 계약이 다릅니다.
+
+| 바꾸는 이유 | 먼저 볼 글 |
+|---|---|
+| 선택 필터 조합이 계속 늘어남 | [Specification과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter) |
+| 전체 건수가 비싸고 다음 목록만 필요함 | [Page와 Slice](/docs/knowledge/backend/repository/repository-pagination-and-slice) |
+| 화면에 집계 결과를 직접 내려주고 싶음 | [Custom Repository](/docs/knowledge/backend/repository/repository-custom) |
+| 두 요청이 같은 행을 변경함 | [JPA 잠금](/docs/knowledge/backend/repository/repository-locking) |
+
 ## 관련
 
 - [엔티티 최소 사용과 CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)

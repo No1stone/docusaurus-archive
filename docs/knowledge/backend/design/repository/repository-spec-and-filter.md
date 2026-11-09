@@ -84,6 +84,25 @@ Specification<ExampleItem> filter =
 화면 전용 DTO, 집계, 복잡한 조인까지 쿼리에서 만들기 시작하면 전용 조회 구현을 검토합니다.
 [Query by Example](/docs/knowledge/backend/repository/repository-query-by-example) / [QueryDSL 동적 조회](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
 
+## 같은 화면에서 필터를 하나씩 켜 보기
+
+원셋의 호출 이력 검색에서 URL과 메서드, 기간이 들어온다고 가정합니다.<br />
+아래 WHERE는 실제 생성 SQL의 로그가 아니라, 각 입력이 어떤 조건을 만드는지 보여주는 예시입니다.
+
+| 요청에 포함된 값 | 만들어지는 조건의 의미 |
+|---|---|
+| `httpMethod=GET` | `http_method = ?` |
+| `url=/api/reservations`, `httpMethod=GET` | URL과 메서드가 모두 일치 |
+| 시작 시각과 종료 시각 | `created_at >= ? AND created_at <= ?` |
+| URL과 기간 | URL 일치 조건에 기간의 양쪽 경계 추가 |
+
+테스트 데이터를 만들 때는 URL만 일치하는 행, 메서드만 일치하는 행, 기간 양 끝에 있는 행을 각각 넣습니다.<br />
+결과 ID와 정렬 순서를 확인하면 조건을 조합하는 과정에서 잘못된 OR가 들어가거나 기간 경계가 누락된 경우를 찾을 수 있습니다.
+
+고정 URL 조회는 메서드 이름이나 `@Query` 하나로 읽기 쉽습니다.<br />
+위처럼 빈 필드를 건너뛰는 검색은 Specification이 맞고, 같은 데이터에서 URL별 실패 건수를 구해 전용 DTO로 반환한다면 집계를 표현하는 QueryDSL이나 SQL을 검토할 만합니다.
+[쿼리 메서드](/docs/knowledge/backend/repository/repository-query-methods) / [QueryDSL로 전용 결과 조회](/docs/knowledge/backend/repository/repository-querydsl-custom)
+
 ## 참고 자료
 
 - [Spring Data JPA Specification과 조건 조합](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)

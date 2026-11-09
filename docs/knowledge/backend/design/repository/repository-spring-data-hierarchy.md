@@ -35,6 +35,20 @@ interface ExampleItemRepository extends JpaRepository<ExampleItem, Long> {
 화면 입력에 따라 WHERE 조건을 만들려면 원셋에서처럼 `JpaSpecificationExecutor`를 추가합니다.<br />
 각 상속이 해결하는 문제는 [Repository를 구성하는 세 인터페이스](/docs/knowledge/backend/repository/repository-three-interfaces)에서 이어집니다.
 
+## 조회 전용 인터페이스가 필요할 때
+
+리포트에서 저장소에 쓰기 메서드를 노출할 이유가 없다면, 범용 `Repository`에 필요한 조회만 선언하는 방식을 검토할 수 있습니다.<br />
+Spring Data JPA가 제공하는 CRUD 전부가 필요한 원셋과는 선택 기준이 다릅니다.
+
+```java
+interface ExampleItemLookup extends Repository<ExampleItem, Long> {
+    Optional<ExampleItem> findById(Long id);
+}
+```
+
+이 예제에서는 호출부가 볼 수 있는 메서드가 한 건 조회뿐입니다.<br />
+조회 전용이라는 의도가 중요한 경계라면 어떤 메서드를 호출할 수 있는지 인터페이스로 드러냅니다.
+
 ## 참고 자료
 
 - [Spring Data Repository 인터페이스 정의](https://docs.spring.io/spring-data/jpa/reference/data-commons/repositories/definition.html)

@@ -39,6 +39,22 @@ dsl.select(EXAMPLE_ITEM.URL, count())
 JPA가 관리하는 엔티티를 변경한 뒤 같은 작업에서 jOOQ로 읽을 경우에는 두 접근이 같은 트랜잭션에 참여하는지와 JPA flush 시점을 확인합니다.
 [QueryDSL 동적 조회](/docs/knowledge/backend/repository/repository-querydsl-dynamic) / [조회와 변경의 경계](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
 
+## 같은 집계를 실제 SQL로 비교하기
+
+URL별로 실패 건수를 세는 두 구현을 비교할 때는 애플리케이션 코드뿐 아니라 실행되는 SQL도 봅니다.<br />
+원셋의 응답 상태는 세 자리 문자열이므로, 예제에서는 4 또는 5로 시작하는 값을 실패로 분류합니다.
+
+```sql
+SELECT url, COUNT(*)
+FROM le_example_item
+WHERE response_http_status LIKE '4%' OR response_http_status LIKE '5%'
+GROUP BY url;
+```
+
+먼저 같은 입력에서 두 구현이 같은 URL과 건수를 반환하는지 확인합니다.<br />
+그다음 기간 조건을 넣은 실제 운영 형태로 실행 계획을 비교합니다.<br />
+SQL 빌더를 바꾸더라도 선택도와 인덱스가 그대로라면 실행 비용이 저절로 줄지는 않습니다.
+
 ## 참고 자료
 
 - [jOOQ SQL DSL](https://www.jooq.org/doc/latest/manual/sql-building/)

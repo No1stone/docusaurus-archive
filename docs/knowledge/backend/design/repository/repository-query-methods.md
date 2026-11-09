@@ -72,6 +72,17 @@ List<ExampleItem> findFailures(@Param("url") String url, Pageable pageable);
 검색 화면에 필터 하나를 추가했을 때 `Filter`와 조건 조립 코드를 함께 보면 어떤 조회에 반영되는지 찾기 쉽습니다.
 [Specification과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter) / [Page와 Slice](/docs/knowledge/backend/repository/repository-pagination-and-slice)
 
+## 같은 메서드에 null을 넘겨 결과를 비교하기
+
+호출 이력에 URL과 메서드가 모두 저장된 GET, POST 로그가 한 건씩 있다고 가정합니다.<br />
+URL을 지정하고 HTTP 메서드를 비웠을 때 운영 화면이 원하는 결과는 두 건입니다.
+
+`findByUrlAndHttpMethod(url, null)`은 파생 동등 비교에서 메서드가 NULL인 행을 찾는 의미가 될 수 있습니다.<br />
+원셋의 Filter에서는 메서드 조건을 아예 추가하지 않으므로 URL이 같은 두 행이 대상입니다.
+
+테스트는 요청값 생략, 명시적 GET, 존재하지 않는 메서드를 각각 넣습니다.<br />
+저장소 메서드를 교체할 때 같은 입력에서 결과 ID가 달라지지 않는지 비교하면 특히 유용합니다.
+
 ## 참고 자료
 
 - [Spring Data JPA의 파생 쿼리, JPQL과 변경 쿼리](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html)

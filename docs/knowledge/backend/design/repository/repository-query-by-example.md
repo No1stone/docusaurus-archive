@@ -68,6 +68,19 @@ QBE는 값 일치나 문자열 패턴이 중심일 때 간결합니다.<br />
 동등 비교가 대부분인 작은 검색에서 QBE를 검토하더라도, 프로브는 HTTP 요청 객체와 분리해 저장 접근 경계에서 구성합니다.
 [Specification과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter) / [쿼리 메서드](/docs/knowledge/backend/repository/repository-query-methods)
 
+## 기본값이 검색 조건으로 들어가는 경우
+
+실패 여부를 나타내는 원시 `boolean` 필드가 있는 호출 이력 엔티티를 가정합니다.<br />
+URL만 검색하려고 프로브를 만들었는데 `failed`를 무시하지 않으면 기본값인 `false`가 검색에 포함될 수 있습니다.
+
+```java
+ExampleMatcher matcher = ExampleMatcher.matchingAll()
+    .withIgnorePaths("id", "failed");
+```
+
+같은 URL의 성공 로그와 실패 로그를 한 건씩 넣고, URL만 검색했을 때 둘 다 나오는지 확인합니다.<br />
+이후 실패 로그만 보겠다는 입력을 별도로 추가하려면 입력의 생략과 `false`가 구별되도록 타입과 매처를 정합니다.
+
 ## 참고 자료
 
 - [Spring Data JPA Query by Example의 매처와 제한](https://docs.spring.io/spring-data/jpa/reference/repositories/query-by-example.html)

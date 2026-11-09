@@ -140,6 +140,20 @@ Spring Data의 `@Lock`은 해당 Repository 메서드에 JPA 잠금 모드를 �
 조회만 하는 목록 경로는 기존 조회 흐름을 사용합니다.
 [Facade의 작업 경계](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) / [Repository 설계](/docs/knowledge/backend/repository/repository-design)
 
+## 실제로 두 번째 요청이 막히는 위치를 검증하기
+
+낙관적 락을 검증할 때는 독립된 두 트랜잭션으로 같은 버전을 읽고, 첫 번째를 커밋한 뒤 두 번째 변경을 flush합니다.<br />
+같은 영속성 컨텍스트에서 객체 하나를 두 번 수정하면 이 상황을 재현할 수 없습니다.
+
+![잠금 테스트에서 두 요청의 순서를 제어하는 흐름](/img/backend-design/jpa-lock-integration-test.svg)
+
+비관적 락 테스트는 첫 요청이 락을 획득한 뒤 두 번째를 시작하게 순서를 제어합니다.<br />
+먼저 첫 트랜잭션이 끝나기 전까지 두 번째가 변경을 완료하지 않는지 보고, 락을 해제한 뒤에는 어떤 결과가 반환되는지 확인합니다.<br />
+고정된 대기 시간에 의존하기보다 두 요청의 시작과 진행을 테스트에서 조율합니다.
+
+실제 서비스에서 사용하는 DB와 격리 수준에 따라 락 대기와 예외가 달라질 수 있습니다.<br />
+테스트의 기대 결과도 운영에 쓰는 조합을 기준으로 정합니다.
+
 ## 참고 자료
 
 - [Spring Data JPA의 Repository 잠금 설정](https://docs.spring.io/spring-data/jpa/reference/jpa/locking.html)

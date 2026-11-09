@@ -41,6 +41,19 @@ ExampleItemAdapter
 그룹 집계나 별도 프로젝션처럼 결과 모양부터 달라지면 전용 메서드를 만들고, 그 구현 안에서 JPQL이나 QueryDSL을 선택합니다.
 [QueryDSL로 커스텀 조회 구현하기](/docs/knowledge/backend/repository/repository-querydsl-custom) / [세 인터페이스 구성](/docs/knowledge/backend/repository/repository-three-interfaces)
 
+## 집계 결과의 단위를 메서드에 드러내기
+
+URL별 실패 건수 조회에서 화면이 필요한 것은 개별 호출 로그가 아니라 URL과 건수입니다.<br />
+예를 들어 동일한 URL에 실패가 4건, 다른 URL에 2건 있다면 결과는 호출 이력 6행이 아니라 그룹 2행입니다.
+
+```java
+record FailureCount(String url, long count) {}
+```
+
+프래그먼트의 반환 타입이 이 결과를 표현하면 호출부가 엔티티를 다시 순회해 그룹을 만들 필요가 줄어듭니다.<br />
+테스트에는 성공 응답과 기간 밖 로그를 섞고, 두 경우가 집계에서 제외되는지 확인합니다.<br />
+페이지가 필요하면 총건수가 그룹 수인지도 별도로 확인합니다.
+
 ## 참고 자료
 
 - [Spring Data JPA의 Repository 프래그먼트](https://docs.spring.io/spring-data/jpa/reference/repositories/custom-implementations.html)
