@@ -3,10 +3,10 @@
 > **개요:** 이 아카이브 하네스의 현재 상태입니다.
 > 과거 작업 로그를 여기에 덧붙이지 않습니다.
 
-## 집 이어서 (2026-10-23)
+## 집 이어서
 
-다음 작업만 이어서 할 때: [`history/home-continue-next.md`](/docs/harness/history/home-continue-next)  
-(메뉴 비노출 `unlisted`. 보류 draft·링크 글 2차·원문 재확인.)
+다음 작업·**글 쓸 주제**는 [`history/home-continue-next.md`](/docs/harness/history/home-continue-next)입니다.  
+(메뉴 비노출 `unlisted`. 보류 draft·링크 글 2차·원문 재확인. 2026-11 하네스 잔여 글 주제 표 포함.)
 
 - 공통 원셋 목표: 검증된 구현·단위/시나리오 테스트·Controller API E2E를 템플릿화하고, 새 작업에서는 복사 후 달라지는 부분만 채웁니다. 안내는 [`templates/backend/spring/ONESET.md`](/docs/harness/templates/backend/spring/ONESET)입니다. 외부 스펙 더미 연동 E2E는 원셋 밖 추가 조건입니다.
 - 기본 흐름·요청 모드·검증·보고 허브는 [`workflows/implement.md`](/docs/harness/workflows/implement)입니다.

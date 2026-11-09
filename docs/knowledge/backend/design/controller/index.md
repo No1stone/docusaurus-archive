@@ -11,5 +11,6 @@ slug: "/knowledge/backend/controller/index"
 Documents about the controller / HTTP edge layer as an engineering concept.
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
+- [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) — 예외·messages·검증·상태 코드. 하네스 필독 아님
 
-Related template path (repo): `docs/harness/templates/backend/spring/controller/`.
+Related template path (repo): `docs/harness/templates/backend/spring/exampleitem/controller/` · support.

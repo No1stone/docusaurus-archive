@@ -51,7 +51,7 @@ Each endpoint is therefore one line of real code. If it is longer, something has
 | Calling a Repository or touching an entity | JPA Adapter only |
 | Converting an enum string back onto the DTO | Application entry (Facade), `of` / `ofNullable` then `getCode()` |
 | Mapping DTO ↔ entity and entity → response DTO | JPA Adapter (`ModelMapperUtil.map` / `mapAll`) |
-| Translating exceptions to HTTP status | a global `@RestControllerAdvice`; controllers never `try/catch` business errors |
+| Translating exceptions to HTTP status | a global `@RestControllerAdvice`; controllers never `try/catch` business errors. Details: [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) (optional Knowledge) |
 | Logging business events, auditing | Adapter / infrastructure concerns |
 
 The controller does not know that enums, `BizErrorException`, or JPA exist.
