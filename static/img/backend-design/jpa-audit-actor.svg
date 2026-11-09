@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 235" role="img" aria-labelledby="title">
+<title id="title">로그인 계정이 감사 컬럼에 기록되는 흐름</title>
+<rect width="720" height="100%" rx="12" fill="#edf4fa"/>
+<rect x="32" y="16" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">인증 정보에 로그인 ID가 들어 있음</text>
+<path d="M360 58 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="77" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">AuditorAware가 현재 작업의 로그인 ID 반환</text>
+<path d="M360 119 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="138" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">엔티티 리스너가 생성 또는 수정 감사 필드에 반영</text>
+</svg>
