@@ -42,6 +42,15 @@ Controller는 요청을 해석해 Facade를 호출합니다.<br />
 외부 API 호출이나 화면 조합까지 트랜잭션으로 묶기 전에 어느 저장 작업이 함께 커밋되어야 하는지 정합니다.
 [Facade의 업무 경계](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Repository 트랜잭션](/docs/knowledge/backend/repository/repository-transactionality)
 
+## 어노테이션을 추가했는데 독립 커밋이 보이지 않는 경우
+
+같은 Facade 안에서 다른 메서드를 직접 호출하면, 기본 프록시 기반 설정에서는 그 내부 호출이 프록시를 통과하지 않습니다.<br />
+내부 메서드에 붙인 전파 설정이 새 트랜잭션을 여는 것으로 가정하면 실제 동작과 어긋날 수 있습니다.
+
+독립 커밋이 요구되는 작업이라면 해당 정책을 별도 빈이나 명시적 트랜잭션 경계에서 표현하고, 바깥 실패 이후 어느 행이 남는지 테스트합니다.<br />
+기존 원셋의 기본 경로는 Facade와 Adapter가 같은 작업을 함께 커밋하는 형태입니다.
+[Spring의 선언적 트랜잭션과 프록시 호출](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html)
+
 ## 참고 자료
 
 - [Spring Framework의 REQUIRED와 REQUIRES_NEW](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)

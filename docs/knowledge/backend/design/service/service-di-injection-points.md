@@ -34,3 +34,13 @@ BFF가 예약 Repository에 직접 접근하면 예약 도메인이 사용하는
 테스트에서 무엇을 대체할지 결정할 때도 같은 화살표를 따릅니다.<br />
 Facade에는 Port를, Controller에는 공개 Facade를 테스트 대역으로 넣습니다.
 [Facade 공개 진입점](/docs/knowledge/backend/facade/facade-entry-and-naming) / [Port와 Adapter](/docs/knowledge/backend/service/service-port-adapter-role)
+
+## 목록의 표시 이름을 어디서 붙일까
+
+원셋의 ExampleItem 목록은 Facade가 Port에서 조회 결과를 받고, `DisplayNameResolver`에 생성자 ID를 전달해 표시값을 조립합니다.<br />
+Controller는 이를 위한 별도 저장소를 주입받을 필요가 없습니다.
+
+테스트에서는 Facade에 목록을 반환하는 Port와 표시값을 조립할 Resolver를 연결합니다.<br />
+Controller 테스트는 Facade가 돌려준 결과가 HTTP 응답으로 바뀌는지만 확인합니다.<br />
+이렇게 두면 표시 이름을 얻는 방법이 달라져도 HTTP 계층의 의존은 늘지 않습니다.
+[조회 결과의 타입과 조립 흐름](/docs/knowledge/backend/entity/persistence-vo-dto-entity)

@@ -37,6 +37,15 @@ Spring의 조립 설정과 MyBatis의 SQL 매핑 파일은 역할이 다릅니�
 집계나 전용 조회가 커지면 Custom Repository에서 쿼리를 명시하고, Facade의 업무 흐름은 그대로 둡니다.
 [DI 방식 비교](/docs/knowledge/backend/service/service-di-evolution) / [Custom Repository](/docs/knowledge/backend/repository/repository-custom)
 
+## 기존 SQL을 옮기기 전에 결과를 고정하기
+
+XML 매퍼로 예약 목록을 읽던 기능을 JPA Adapter로 옮긴다고 가정합니다.<br />
+매퍼를 주입하는 방법을 바꾸는 일과 검색 조건을 바꾸는 일은 구분해 검증합니다.
+
+기존 SQL이 상태값을 생략하면 전체를 보여주는지, 종료 시각과 같은 행을 포함하는지 먼저 확인합니다.<br />
+그 기대 결과로 테스트를 만든 뒤에 Specification이나 Custom Repository로 옮기면 의도하지 않은 조회 범위 변경을 찾기 쉽습니다.<br />
+동일한 결과를 보장한 뒤 실제로 나가는 SQL과 페이지 비용을 비교합니다.
+
 ## 참고 자료
 
 - [MyBatis-Spring의 매퍼 등록](https://mybatis.org/spring/mappers.html)

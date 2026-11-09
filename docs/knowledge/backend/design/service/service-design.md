@@ -46,6 +46,17 @@ slug: "/knowledge/backend/service/service-design"
 
 앱 동작 단위 정의는 [Facade — 앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)입니다.
 
+## 새 Adapter가 빈으로 등록되지 않을 때
+
+유즈케이스가 Port만 참조하는데 Spring에서 구현을 찾지 못한다면 먼저 스캔과 빈 등록을 확인합니다.<br />
+구현은 등록됐지만 일부 저장만 커밋된다면 트랜잭션 경계를 확인합니다.
+
+| 증상 | 먼저 볼 글 |
+|---|---|
+| 구현 클래스는 있는데 빈이 없음 | [스테레오타입과 스캔](/docs/knowledge/backend/service/service-stereotype-scan) |
+| Facade에 어떤 타입을 주입할지 모호함 | [주입 대상과 위치](/docs/knowledge/backend/service/service-di-injection-points) |
+| 읽기는 되는데 쓰기가 예상과 다르게 반영됨 | [Adapter의 트랜잭션 참여](/docs/knowledge/backend/service/service-tx-join-facade) |
+
 ## 관련
 
 - [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
