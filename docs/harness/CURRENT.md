@@ -18,6 +18,6 @@
 - `docs/history`는 엔지니어링 방식의 변천입니다. 작업 로그가 아니며 기본으로 읽지 않습니다.
 - 작업 로그는 [`history/`](/docs/harness/history/harness-work-history)입니다. 필요할 때 해당 월만 검색합니다.
 - 개인 세션 메모는 이 저장소 밖입니다. 여기 기록과 복제하지 않습니다.
-- Backend Knowledge(Controller, Facade, Service, 테스트 구조)는 채택된 구현 기준입니다.
+- Backend 구현 기준은 원셋·coding-conventions·ADR입니다. Facade·Service·Entity·Repository·Advice Knowledge는 기술 블로그이며 **하네스 필독이 아닙니다** (원셋에 구현이 있음).
 - 문서를 작성하거나 수정할 때의 기준은 [`context/writing-conventions.md`](/docs/harness/context/writing-conventions)입니다. 코드 작업에서는 읽지 않습니다.
 - 상황 레시피는 [`orchestrations/index.md`](/docs/harness/orchestrations/)에서 고릅니다. 레시피를 골라도 기본은 단일 에이전트입니다.

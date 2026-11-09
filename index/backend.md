@@ -9,9 +9,16 @@ Map of backend-related engineering assets.
 ### Knowledge
 
 - [controller-design](../docs/knowledge/backend/design/controller/controller-design.md)
-- [controller-advice-and-messages](../docs/knowledge/backend/design/controller/controller-advice-and-messages.md) — Advice·messages (필독 아님)
-- [facade-design](../docs/knowledge/backend/design/facade/facade-design.md)
-- [service-design](../docs/knowledge/backend/design/service/service-design.md)
+- [controller-advice-and-messages](../docs/knowledge/backend/design/controller/controller-advice-and-messages.md) — Advice 허브 (필독 아님)
+  - [advice-messages-and-i18n](../docs/knowledge/backend/design/controller/advice-messages-and-i18n.md)
+  - [advice-exception-propagation](../docs/knowledge/backend/design/controller/advice-exception-propagation.md)
+  - [advice-validation](../docs/knowledge/backend/design/controller/advice-validation.md)
+  - [advice-http-status-and-envelope](../docs/knowledge/backend/design/controller/advice-http-status-and-envelope.md)
+  - [advice-adjacent-boundaries](../docs/knowledge/backend/design/controller/advice-adjacent-boundaries.md)
+- [facade-design](../docs/knowledge/backend/design/facade/facade-design.md) — 허브 (필독 아님, 원셋에 구현)
+- [service-design](../docs/knowledge/backend/design/service/service-design.md) — Port/Adapter·DI (필독 아님)
+- [entity-design](../docs/knowledge/backend/design/entity/entity-design.md) — minimal+CQRS (필독 아님)
+- [repository-design](../docs/knowledge/backend/design/repository/repository-design.md) — 삼중·Spec·QueryDSL (필독 아님)
 - [test-structure](../docs/knowledge/backend/design/testing/test-structure.md)
 
 ### Technology

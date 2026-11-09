@@ -4,6 +4,6 @@
   "collapsed": false,
   "link": {
     "type": "generated-index",
-    "description": "Controller, Facade, Service, Testing 레이어 경계와 설계"
+    "description": "Controller, Facade, Service, Entity, Repository, Testing 레이어 경계와 설계"
   }
 }
