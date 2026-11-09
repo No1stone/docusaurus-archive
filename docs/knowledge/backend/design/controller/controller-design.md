@@ -45,7 +45,7 @@ Each endpoint is therefore one line of real code. If it is longer, something has
 | Must not | Where it goes instead |
 |----------|-----------------------|
 | Rules of one data set: existence, its own state transition, persistence consistency | JPA Adapter behind a Port. See [데이터 접근 경계](/docs/knowledge/backend/service/service-design) |
-| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | `{Feature}BffFacade` (or DomainFacade for one domain). See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) |
+| Policies that coordinate modules or a screen: call order, display composition, masking, what to do when another module fails | `{Feature}BffFacade` (or DomainFacade for one domain). See [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) (optional Knowledge; oneset has the shape) |
 | A stack of application classes on every request | Not required. DomainFacade delegates to one Port (+ DisplayNameResolver). BFF composition is `{Feature}BffFacade` |
 | Transactions (`@Transactional`) | Inside one process, the use-case entry decides the local transaction and the JPA Adapter joins it. After a remote split, that local transaction does not remain |
 | Calling a Repository or touching an entity | JPA Adapter only |
