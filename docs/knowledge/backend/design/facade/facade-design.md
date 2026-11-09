@@ -26,6 +26,17 @@ slug: "/knowledge/backend/facade/facade-design"
 | [앱 동작 단위와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) | 앱 TX ≠ DB TX, BFF vs 도메인, `@Transactional` 구현·안티패턴 |
 | [테스트와 실패 정책](/docs/knowledge/backend/facade/facade-testing-and-failures) | Port 스텁, 부분 실패, Saga 경계 |
 
+## 예약 목록을 어디서부터 읽을까
+
+예약 정책을 고치려면 도메인 Facade의 공개 메서드에서 시작합니다.<br />
+화면에 세대 이름을 함께 표시하거나 조회 실패 시 일부 결과만 내려줘야 한다면 화면을 조립하는 BFF Facade에서 시작합니다.
+
+| 바꾸려는 것 | 이어서 볼 글 |
+|---|---|
+| 화면과 도메인이 호출하는 공개 진입점 | [Facade의 진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming) |
+| 저장 성공과 화면 실패가 동시에 가능한 이유 | [Facade와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) |
+| 성공과 부분 실패를 각각 검증하는 방법 | [Facade 테스트](/docs/knowledge/backend/facade/facade-testing-and-failures) |
+
 ## 관련
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)

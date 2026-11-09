@@ -77,6 +77,23 @@ BFF는 각 도메인의 공개 진입점을 호출합니다.<br />
 첫 번째 케이스는 저장이 롤백됐는지, 두 번째 케이스는 예약 ID가 응답에 남고 예약도 유지됐는지 확인합니다.
 [Facade 테스트와 실패 처리](/docs/knowledge/backend/facade/facade-testing-and-failures)
 
+## 같은 Facade 테스트라도 확인할 결과가 다릅니다
+
+예약 요청을 받았는데 이력 저장이 실패하는 경우와, 예약을 커밋한 다음 화면 조립이 실패하는 경우를 분리합니다.
+
+| 실패를 만드는 곳 | 확인할 API 결과 | 확인할 DB 결과 |
+|---|---|---|
+| 예약 저장 트랜잭션 안에서 이력 저장 실패 | 등록 실패 | 예약과 이력이 함께 롤백 |
+| 예약 저장 성공 뒤 세대 조회 타임아웃 | 정책에 따라 예약 ID가 담긴 부분 응답 | 이미 커밋한 예약 유지 |
+
+BFF 단위 테스트에서는 예약 Facade가 ID를 반환한 뒤 조회 Facade가 예외를 던지도록 설정합니다.<br />
+응답에 같은 ID가 들어 있는지 확인할 수 있습니다.<br />
+예약과 이력이 실제로 함께 롤백되는지는 트랜잭션이 끝난 뒤 별도 조회로 검증합니다.
+
+화면에서 오류를 본 사용자가 다시 등록할 수 있다면, 응답 실패와 업무 실패의 차이가 중복 생성으로 이어질 수 있습니다.<br />
+이때 화면에는 등록 여부를 확인할 수 있는 결과를 제공하고, 동일한 등록 요청이 반복되는 경로는 요청 식별자나 업무 유일성 규칙을 검토합니다.
+[조회 결과를 조립하는 DTO 경계](/docs/knowledge/backend/entity/persistence-vo-dto-entity)
+
 ## 참고 자료
 
 - [Spring Framework의 트랜잭션 전파 규칙](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)
