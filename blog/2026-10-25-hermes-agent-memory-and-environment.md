@@ -1,8 +1,15 @@
 ---
 slug: hermes-agent-memory-and-environment
 title: "Hermes Agent의 자기 개선, 결국 실행 환경에 종속되는 것 아닐까?"
-description: "Agent 내부 기억과 Origemite Archive처럼 Agent 밖에 지식을 두는 방식의 차이"
-authors: []
+description: "Hermes Agent의 자기 개선 기억과, Origemite Archive처럼 Agent 밖에 지식을 두는 방식의 차이를 비교합니다."
+authors: [wonseok]
+keywords:
+  - Hermes Agent
+  - agent memory
+  - harness engineering
+  - Origemite Archive
+  - 실행 환경
+  - AI agent
 tags:
   - hermes-agent
   - harness-engineering

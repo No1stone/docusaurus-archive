@@ -1,8 +1,15 @@
 ---
 slug: anthropic-scion-source-control
 title: "Anthropic은 왜 Git을 버리고 Scion을 만들었을까?"
-description: "AI Agent 시대, 코드 작성보다 버전 관리가 병목이 된 이유"
-authors: []
+description: "Anthropic이 Git 대신 Scion을 만든 배경. AI Agent 시대에 코드 작성보다 버전 관리가 병목이 된 이유를 살펴봅니다."
+authors: [wonseok]
+keywords:
+  - Anthropic
+  - Scion
+  - Git
+  - AI agent
+  - version control
+  - 소스 관리
 tags:
   - anthropic
   - scion

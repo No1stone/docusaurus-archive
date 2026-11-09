@@ -1,8 +1,15 @@
 ---
 slug: how-i-use-ai-with-readable-code
 title: "내가 AI를 쓰는 법 — 코드는 맡기고, 읽는 기준은 유지하기"
-description: "구현은 AI에 맡기되, 익숙한 구조와 검증 기준으로 결과를 읽는 방식"
-authors: []
+description: "구현은 AI에 맡기되, 익숙한 구조와 검증 기준으로 결과를 읽는 방식. Cursor와 하네스에서의 실사용 기준입니다."
+authors: [wonseok]
+keywords:
+  - AI coding
+  - readable code
+  - Cursor
+  - harness engineering
+  - 코드 리뷰
+  - 개발 문화
 tags:
   - ai-engineering
   - harness-engineering

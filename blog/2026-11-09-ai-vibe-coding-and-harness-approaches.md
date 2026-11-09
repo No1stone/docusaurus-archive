@@ -1,8 +1,16 @@
 ---
 slug: ai-vibe-coding-and-harness-approaches
 title: "AI 바이브 코딩과 하네스에는 어떤 방식이 있을까?"
-description: "AI 바이브 코딩과 하네스에서 SDD, 원셋, TDD, 컨텍스트, Eval, SSOT가 각각 어떤 질문에 답하는지, 제 하네스에서 어떻게 같이 쓰는지 정리합니다."
-authors: []
+description: "AI 바이브 코딩과 하네스에서 SDD, 원셋, TDD, Context, Eval, SSOT가 각각 어떤 질문에 답하는지, 제 하네스에서 어떻게 같이 쓰는지 정리합니다."
+authors: [wonseok]
+keywords:
+  - vibe coding
+  - harness engineering
+  - SDD
+  - SSOT
+  - oneset
+  - TDD
+  - Context-Driven Development
 tags:
   - ai-engineering
   - harness-engineering

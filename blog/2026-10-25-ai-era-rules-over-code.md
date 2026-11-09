@@ -1,8 +1,15 @@
 ---
 slug: ai-era-rules-over-code
 title: "설명하다가 깨달은 것"
-description: "AI 시대의 핵심 자산은 코드가 아니라 규칙이다"
-authors: []
+description: "AI 시대의 핵심 자산은 코드가 아니라 규칙이다. 설명 가능한 설계 기준과 하네스 규칙이 왜 자산이 되는지 정리합니다."
+authors: [wonseok]
+keywords:
+  - AI engineering
+  - rules over code
+  - harness engineering
+  - architecture conventions
+  - 개발 규칙
+  - AI 코딩
 tags:
   - ai-engineering
   - harness-engineering

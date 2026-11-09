@@ -1,8 +1,15 @@
 ---
 slug: harness-model-pool-oneset-real-use
 title: "커서 실사용 모델 선택방법"
-description: "Cursor 모델 목록이 초기화돼도 당황하지 않는 이유. Master와 worker 모델 풀, 실사용, ExampleItem 원셋으로 토큰을 줄이는 이야기"
-authors: []
+description: "Cursor 모델 목록이 초기화돼도 당황하지 않는 이유. Master·worker 모델 풀과 ExampleItem 원셋으로 토큰을 줄인 실사용기입니다."
+authors: [wonseok]
+keywords:
+  - Cursor
+  - model pool
+  - oneset
+  - harness engineering
+  - 토큰 비용
+  - AI engineering
 tags:
   - ai-engineering
   - harness-engineering
