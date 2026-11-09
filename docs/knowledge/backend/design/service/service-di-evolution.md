@@ -10,59 +10,25 @@ status: active
 slug: "/knowledge/backend/service/service-di-evolution"
 ---
 
-# Service — DI 발전사
+# XML에서 생성자 주입까지, Spring 빈을 조립하는 코드가 달라진 과정
 
-> **개요:** Spring에서 의존성을 넣는 방식이 어떻게 바뀌어 왔는지, 원셋 Adapter·Facade에 무엇이 남았는지를 적습니다.
-> 허브는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)입니다.
+예전 프로젝트에서는 서비스가 어떤 매퍼를 쓰는지 확인하려면 클래스와 XML을 함께 열었습니다.<br />
+클래스에는 필요한 필드가 있었고, 설정에는 그 필드에 들어갈 빈이 지정돼 있었습니다.
 
-Spring Boot도 생성자 주입과 컴포넌트 스캔을 권장합니다.
-필드 `@Autowired`만으로 필수 의존을 채우던 시절의 습관과 구분합니다.
+XML에서도 생성자를 쓸 수 있었고, 지금도 여러 조립 방법을 함께 사용할 수 있습니다.<br />
+달라진 점은 필요한 협력자를 어디에서 읽고, 언제 확정할 수 있느냐입니다.
 
----
+| 방식 | 의존을 읽는 곳 | 예 |
+|---|---|---|
+| XML 조립 | 빈 정의의 `constructor-arg` 또는 `property` | 서비스에 매퍼 연결 |
+| 필드 주입 | 클래스 필드의 `@Autowired` | 컨테이너가 인스턴스 생성 후 주입 |
+| Setter 주입 | setter 또는 설정 메서드 | 선택적인 협력자 설정 |
+| 생성자 주입 | 클래스의 생성자 매개변수 | 생성 시 필수 Port 전달 |
+| Lombok 생성자 | `final` 필드와 생성자 생성 애노테이션 | 원셋의 Facade와 Adapter |
 
-## 타임라인
+원셋에서는 예약 Facade를 읽었을 때 어떤 Port가 필요한지 바로 찾을 수 있게 생성자 주입을 사용합니다.<br />
+Lombok은 반복되는 생성자만 줄이고, 주입되는 협력자와 역할은 필드에 드러납니다.
 
-```mermaid
-flowchart LR
-  xml[XML_bean_property]
-  field["@Autowired_필드"]
-  setter[setter_주입]
-  ctor[생성자_주입]
-  lombok["@RequiredArgsConstructor"]
-  xml --> field
-  field --> setter
-  setter --> ctor
-  ctor --> lombok
-```
-
-| 시기·방식 | 하는 일 | 남는 문제 |
-|-----------|---------|-----------|
-| XML `<bean>` + property / constructor-arg | 설정 파일에 조립 | XML·클래스 이중 관리 |
-| `@Autowired` 필드 | 애너테이션으로 주입 | final 불가, 테스트·반사, 숨은 의존 |
-| setter `@Autowired` | 선택 의존에 적합 | 필수 의존에 쓰면 null 검사 부담 |
-| 생성자 주입 | 필수 의존을 생성 시 확정 | 인자가 많으면 책임 과다 냄새 |
-| `@RequiredArgsConstructor` + `final` | 생성자 보일러플레이트 감소 | Lombok·`@Value` 필드와 규칙 맞출 것 |
-
-단일 생성자만 있으면 Spring 4.3+에서 생성자에 `@Autowired`를 생략해도 됩니다.
-생성자가 여러 개면 쓸 쪽에 `@Autowired`를 명시합니다.
-
----
-
-## 원셋에 남은 것
-
-Facade·Adapter는 **`final` 필드 + `@RequiredArgsConstructor`**(또는 동등 생성자)가 기본입니다.
-필드 `@Autowired`를 신규에 쓰지 않습니다.
-
-선택 의존은 setter나 `ObjectProvider`·`@Autowired(required = false)`를 검토합니다.
-필수는 생성자로 둡니다.
-
-XML로 Repository를 Service에 넣던 기억은 [XML·매퍼 주입](/docs/knowledge/backend/service/service-di-xml-and-mapper)에 둡니다.
-왜 생성자가 기본인지는 [생성자 주입이 기본인 이유](/docs/knowledge/backend/service/service-di-constructor-preferred)에 둡니다.
-
----
-
-## 관련
-
-- [스테레오타입과 스캔](/docs/knowledge/backend/service/service-stereotype-scan)
-- [생성자 주입이 기본인 이유](/docs/knowledge/backend/service/service-di-constructor-preferred)
-- [어디에 무엇을 주입하나](/docs/knowledge/backend/service/service-di-injection-points)
+예전 코드를 읽는다면 먼저 설정에서 실제 구현이 무엇인지 확인합니다.<br />
+필드 주입을 생성자로 옮길 때는 여러 구현의 선택 기준도 같이 옮겨야 기존 빈 조립이 유지됩니다.
+[XML과 매퍼 조립](/docs/knowledge/backend/service/service-di-xml-and-mapper) / [생성자 주입 선택](/docs/knowledge/backend/service/service-di-constructor-preferred)

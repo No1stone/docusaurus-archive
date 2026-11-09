@@ -9,49 +9,39 @@ status: active
 slug: "/knowledge/backend/service/service-tx-join-facade"
 ---
 
-# Service — Facade DB TX에 join
+# JPA Adapter가 Facade의 트랜잭션에 참여하는 이유
 
-> **개요:** 애플리케이션 동작 단위는 Facade가 정의합니다.
-> 이 글은 Adapter의 DB `@Transactional`이 그 단위에 **어떻게 붙는지**만 다룹니다.
-> 앱 TX ≠ DB TX 서사는 [Facade — 앱 동작 단위](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)입니다.
+방문 예약을 등록하면서 이력도 남긴다고 가정합니다.<br />
+업무 규칙이 두 저장을 함께 완료하도록 요구하면, Facade가 두 호출의 바깥에서 트랜잭션을 엽니다.
 
----
-
-## 규칙
-
-[coding-conventions](/docs/harness/context/coding-conventions):
-
-- Facade·JPA Adapter 클래스: `@Transactional(readOnly = true, transactionManager = "transactionManager")`
-- 쓰기 메서드: `@Transactional` 오버라이드
-- Adapter는 Facade TX에 **join** (새 경계를 함부로 열지 않음)
-- Controller에서 TX 시작 금지
-
-```mermaid
-flowchart TD
-  facade["DomainFacade_@Transactional"]
-  adapter["Adapter_join"]
-  repo[Repository]
-  db[(DB_TX)]
-  facade --> adapter
-  adapter --> repo
-  facade --> db
-  adapter -.->|같은_TX| db
+```java
+@Transactional
+public ReservationReceipt reserve(ReserveVisit command) {
+    ReservationReceipt receipt = reservationPort.create(command);
+    historyPort.recordCreated(receipt.id());
+    return receipt;
+}
 ```
 
-기본 전파(REQUIRED)면 Adapter 호출이 바깥 Facade TX에 참여합니다.
-Adapter에서 `REQUIRES_NEW`로 쪼개면 도메인 앱 단위와 DB 단위가 어긋날 수 있습니다.
-필요할 때만, 이유를 문서화합니다.
+두 Adapter가 같은 트랜잭션 관리자를 사용하고 `REQUIRED`로 실행되면, 각각 호출돼도 같은 트랜잭션에 참여합니다.<br />
+이력 저장 중 롤백 대상 예외가 전파되면 예약 변경도 롤백됩니다.
 
----
+## 읽기에서 쓰기로 넘어갈 때
 
-## readOnly와 쓰기
+원셋에서는 조회용 클래스에 읽기 전용 기본값을 둘 수 있고, 쓰기 진입 메서드에는 쓰기 트랜잭션을 명시합니다.<br />
+이미 바깥에서 읽기 전용 트랜잭션이 열린 상태라면, 안쪽 Adapter 메서드의 쓰기 설정만으로 이를 바꿀 수 없습니다.<br />
+쓰기 유즈케이스가 시작되는 Facade의 설정을 먼저 봅니다.
 
-조회가 많은 Facade·Adapter는 클래스 기본을 readOnly로 두고, 저장·수정·삭제 메서드만 쓰기 TX로 올립니다.
-실수로 읽기 전용 TX 안에서 변경하면 실패하거나 기대와 다른 flush가 납니다.
+| 검증할 조건 | 예상 결과 |
+|---|---|
+| 예약과 이력 모두 성공 | 두 변경 커밋 |
+| 이력 저장에서 예외 전파 | 같은 트랜잭션의 예약과 이력 롤백 |
+| 이력에 `REQUIRES_NEW` 적용 | 독립적으로 커밋될 수 있으므로 별도 정책 필요 |
 
----
+Controller는 요청을 해석해 Facade를 호출합니다.<br />
+외부 API 호출이나 화면 조합까지 트랜잭션으로 묶기 전에 어느 저장 작업이 함께 커밋되어야 하는지 정합니다.
+[Facade의 업무 경계](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) / [Repository 트랜잭션](/docs/knowledge/backend/repository/repository-transactionality)
 
-## 관련
+## 참고 자료
 
-- [Facade — 앱 동작 단위와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)
-- [데이터 접근 경계](/docs/knowledge/backend/service/service-design)
+- [Spring Framework의 REQUIRED와 REQUIRES_NEW](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html)

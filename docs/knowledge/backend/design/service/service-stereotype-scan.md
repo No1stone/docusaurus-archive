@@ -9,51 +9,30 @@ status: active
 slug: "/knowledge/backend/service/service-stereotype-scan"
 ---
 
-# Service — 스테레오타입과 스캔
+# Spring의 Service, Repository, Controller는 어디서 빈이 될까
 
-> **개요:** Spring이 빈을 찾는 표식과, 원셋 Adapter·Facade에 무엇을 붙이는지를 적습니다.
-> 허브는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)입니다.
+새로 만든 예약 서비스가 코드에 있는데도 Controller를 띄우면 빈을 찾지 못할 수 있습니다.<br />
+이때 먼저 볼 것은 클래스 이름보다 등록 방식과 스캔 범위입니다.
 
----
+| 애노테이션 | 역할을 표시하는 대상 |
+|---|---|
+| `@Component` | 컴포넌트 스캔으로 찾을 일반 빈 |
+| `@Service` | 서비스 책임을 가진 컴포넌트 |
+| `@Repository` | 영속성 접근 컴포넌트, 구성에 따라 예외 변환 적용 |
+| `@Controller`, `@RestController` | HTTP 요청을 처리하는 컴포넌트 |
 
-## 스테레오타입
+## 다른 모듈에 있는 Adapter를 연결할 때
 
-| 애너테이션 | 관례적 의미 |
-|------------|-------------|
-| `@Component` | 일반 컴포넌트 |
-| `@Service` | 애플리케이션·도메인 쪽 서비스 빈 (의미 표식) |
-| `@Repository` | 영속 접근. 일부 예외 변환 |
-| `@Controller` / `@RestController` | 웹 진입 |
+`@SpringBootApplication`이 있는 패키지를 기준으로 컴포넌트를 찾는 기본 구성을 생각해 봅니다.<br />
+예약 Port의 구현을 그 범위 밖에 두면, 구현 클래스에 애노테이션이 있어도 검색되지 않을 수 있습니다.
 
-기술적으로 `@Service`·`@Repository`는 `@Component` 특수화에 가깝습니다.
-팀 가독성과 AOP 포인트컷을 위해 역할을 맞춥니다.
+이 경우 패키지 배치를 확인하고, 외부 모듈의 구성이 의도된 경우에는 설정에서 빈을 등록하거나 필요한 설정을 가져옵니다.<br />
+같은 Port의 구현이 여러 개라면 어느 구현을 쓸지 선택 기준도 정합니다.
 
-```mermaid
-flowchart TD
-  scan[ComponentScan]
-  facade["Facade_@Service_또는_@Component"]
-  adapter["Adapter_@Service_또는_@Component"]
-  repo["Repository_인터페이스_스프링데이터"]
-  scan --> facade
-  scan --> adapter
-  scan --> repo
-```
+원셋에서 Facade나 Adapter라는 이름은 설계상 책임을 설명합니다.<br />
+Spring에서 빈으로 동작하는지는 스테레오타입, 스캔, 명시적 빈 설정이 결정합니다.
+[주입 위치](/docs/knowledge/backend/service/service-di-injection-points) / [Port와 Adapter 책임](/docs/knowledge/backend/service/service-port-adapter-role)
 
-원셋 Facade·JPA Adapter는 서비스 계층 빈으로 등록합니다.
-Spring Data `JpaRepository` 인터페이스는 인프라가 구현체를 만듭니다.
-직접 `@Repository`를 인터페이스에 중복으로 요란하게 붙일 필요는 호스트 관례를 따릅니다.
+## 참고 자료
 
----
-
-## 스캔
-
-`@SpringBootApplication`이 보통 컴포넌트 스캔을 켭니다.
-패키지 밖 Adapter는 `@ComponentScan` 범위를 맞춥니다.
-스캔에 안 잡히면 “빈이 없다”로 DI가 실패합니다 — [DI 발전사](/docs/knowledge/backend/service/service-di-evolution)의 생성자 주입과 같이 보면 조기에 드러납니다.
-
----
-
-## 관련
-
-- [DI 발전사](/docs/knowledge/backend/service/service-di-evolution)
-- [어디에 무엇을 주입하나](/docs/knowledge/backend/service/service-di-injection-points)
+- [Spring Framework의 클래스패스 스캔과 컴포넌트](https://docs.spring.io/spring-framework/reference/core/beans/classpath-scanning.html)

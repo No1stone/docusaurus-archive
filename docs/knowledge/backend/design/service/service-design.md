@@ -11,36 +11,13 @@ status: active
 slug: "/knowledge/backend/service/service-design"
 ---
 
-# 데이터 접근 경계 (Port와 Adapter)
+# 데이터 접근 경계와 Spring 서비스 빈
 
-> **개요:** 메뉴·slug의 Service는 하위 호환입니다.
-> 유스케이스는 Facade입니다. 이 층은 **Spring 서비스 빈**이면서 **Port의 Adapter 구현**입니다.
-> 구현 복사·검증은 원셋 persistence와 coding-conventions입니다 ([ADR-0010](/docs/decisions/adr-0010)).
-> **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.** 깊이 필요할 때만 읽습니다.
+예약 Facade를 열면 어떤 업무 흐름이 실행되는지 읽을 수 있어야 합니다.<br />
+그 흐름이 필요로 하는 저장 기능은 Port에 표현하고, 실제 조회나 저장은 Adapter에서 처리합니다.
 
-```mermaid
-flowchart TD
-  facade[DomainFacade]
-  port[Port_계약]
-  adapter[Adapter_Spring빈]
-  repo[Repository]
-  facade --> port
-  port --> adapter
-  adapter --> repo
-```
-
-## 이중 정체성
-
-| 면 | 의미 |
-|----|------|
-| Spring | `@Service`/`@Component` 스캔, 생성자 주입, `@Transactional` 프록시 |
-| 헥사 | Port를 구현하는 Adapter. 레거시 `*Service`의 JPA 감싸기 역할 |
-
-업무 규칙·시나리오 조립은 [Facade](/docs/knowledge/backend/facade/facade-design)로 올립니다.
-DB 제약·영속을 애플리케이션으로 옮기라는 뜻이 아닙니다.
-
-`docs/knowledge/backend/spring/**` 초안은 스프링 **백과** 자리입니다.
-원셋에 맞춘 실무 블로그는 아래 섹터에 둡니다.
+여기서는 이 구성 요소를 Spring 빈으로 연결하는 방법과 읽기, 쓰기의 트랜잭션 경계를 다룹니다.<br />
+레거시 코드에서 저장을 감싸는 클래스 이름에 Service가 붙어 있다면 먼저 그 클래스가 어떤 책임을 맡는지 확인합니다.
 
 ## 하위 글
 

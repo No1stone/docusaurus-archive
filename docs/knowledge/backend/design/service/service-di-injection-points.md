@@ -10,45 +10,27 @@ status: active
 slug: "/knowledge/backend/service/service-di-injection-points"
 ---
 
-# Service — 어디에 무엇을 주입하나
+# Controller, Facade, Adapter에 각각 무엇을 주입할까
 
-> **개요:** 계층마다 주입해도 되는 대상이 다릅니다.
-> 허브는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)입니다.
+방문 예약 API를 추가할 때 한 메서드 안에서 요청 검사부터 Repository 호출까지 모두 처리할 수 있습니다.<br />
+기능을 여러 경로에서 재사용하려면, 요청을 받는 코드와 예약 규칙을 판단하는 코드를 각자의 협력자와 연결합니다.
 
----
+| 클래스 | 원셋에서 주입받는 협력자 | 맡는 일 |
+|---|---|---|
+| Controller | 도메인 Facade 또는 BFF Facade | HTTP 입력을 해석하고 응답 반환 |
+| BFF Facade | 도메인이 공개한 Facade | 여러 공개 기능을 호출해 화면 결과 조립 |
+| 도메인 Facade | 자기 Port, 필요할 때 DisplayNameResolver | 조건 검사와 업무 처리 순서 |
+| JPA Adapter | Repository | 조건에 맞는 조회 실행과 결과 변환 |
 
-## 표
-
-| 빈 | 주입하는 것 | 주입하지 않는 것 |
-|----|-------------|------------------|
-| DomainFacade | 자기 도메인 Port, DisplayNameResolver | Repository, entity, Spec, 다른 도메인 Adapter |
-| BffFacade | 도메인 Facade(들) | DomainPort, Repository |
-| JPA Adapter | Repository, (필요 시) Provider | Facade, 와이어 DTO |
-| Controller | Facade (또는 BffFacade) | Port, Repository |
-
-```mermaid
-flowchart TD
-  ctrl[Controller]
-  bff[BffFacade]
-  dom[DomainFacade]
-  port[Port]
-  adapter[Adapter]
-  repo[Repository]
-  ctrl --> bff
-  ctrl --> dom
-  bff --> dom
-  dom --> port
-  adapter -.->|implements| port
-  adapter --> repo
+```text
+예약 Controller → 예약 Facade → 예약 Port
+                                    ↑ 구현
+                               JPA Adapter → Repository
 ```
 
-`final` + `@RequiredArgsConstructor`로 필수 의존만 생성자에 올립니다.
-Facade가 Repository를 직접 받으면 Port 경계와 테스트 대체가 무너집니다.
+세대 이름이 함께 필요한 화면은 세대 도메인의 공개 진입점을 호출해 조합할 수 있습니다.<br />
+BFF가 예약 Repository에 직접 접근하면 예약 도메인이 사용하는 조회 범위나 정책을 건너뛸 수 있습니다.
 
----
-
-## 관련
-
-- [Port와 Adapter 역할](/docs/knowledge/backend/service/service-port-adapter-role)
-- [생성자 주입이 기본인 이유](/docs/knowledge/backend/service/service-di-constructor-preferred)
-- [Facade — 진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming)
+테스트에서 무엇을 대체할지 결정할 때도 같은 화살표를 따릅니다.<br />
+Facade에는 Port를, Controller에는 공개 Facade를 테스트 대역으로 넣습니다.
+[Facade 공개 진입점](/docs/knowledge/backend/facade/facade-entry-and-naming) / [Port와 Adapter](/docs/knowledge/backend/service/service-port-adapter-role)

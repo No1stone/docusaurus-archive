@@ -10,52 +10,37 @@ status: active
 slug: "/knowledge/backend/service/service-di-constructor-preferred"
 ---
 
-# Service — 생성자 주입이 기본인 이유
+# Spring 생성자 주입을 기본으로 쓰는 이유
 
-> **개요:** Spring 팀이 권하는 필수 의존 주입 방식과 원셋 관례를 맞춥니다.
-> 허브는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)입니다.
-
----
-
-## 왜 생성자인가
-
-- 필드를 `final`로 둘 수 있습니다
-- 빈이 클라이언트에 넘어올 때 **이미 초기화**되어 있습니다
-- 필수 빈이 없으면 기동·생성 시점에 실패합니다 (숨은 NPE보다 낫습니다)
-- 단위 테스트에서 `new Facade(portStub)`로 직접 조립하기 쉽습니다
-
-필드 `@Autowired`는 반사로 넣고, final이 아니며, 테스트가 `@InjectMocks`에 기대기 쉽습니다.
-신규 Adapter·Facade에는 쓰지 않습니다.
+예약 유즈케이스를 테스트할 때 DB나 Spring 컨텍스트를 띄우기 전에, 저장 Port를 테스트 대역으로 바꿔서 정책을 확인하고 싶었습니다.<br />
+생성자가 의존성을 받으면 그 조립을 테스트 코드에서 바로 표현할 수 있습니다.
 
 ```java
-@Service
-@RequiredArgsConstructor
-public class ExampleItemAdapter implements ExampleItemPort {
-    private final ExampleItemRepository exampleItemRepository;
+class ReservationFacade {
+    private final ReservationPort reservations;
+
+    ReservationFacade(ReservationPort reservations) {
+        this.reservations = reservations;
+    }
 }
 ```
 
-생성자 인자가 과도하게 많으면 클래스 책임이 过大한 신호입니다.
-Port를 쪼개거나 Facade/Adapter를 나눕니다.
+Spring에서 빈의 생성자가 하나라면 보통 `@Autowired`를 생략합니다.<br />
+의존 필드는 `final`로 둘 수 있고, 코드에서 필수 협력자가 무엇인지 바로 보입니다.<br />
+단위 테스트에서는 `new ReservationFacade(reservationStub)`로 조립합니다.
 
-선택 의존만 setter·`ObjectProvider`를 검토합니다.
+## Lombok은 같은 생성자를 줄여 씁니다
 
----
+| 애노테이션 | 생성자에 들어가는 필드 |
+|---|---|
+| `@RequiredArgsConstructor` | 초기화하지 않은 `final`과 필요한 `@NonNull` 필드 |
+| `@AllArgsConstructor` | 클래스의 인스턴스 필드 전체 |
 
-## `@RequiredArgsConstructor`와 `@AllArgsConstructor`
+원셋은 주입받는 협력자에 `final`을 붙이고 `@RequiredArgsConstructor`를 사용합니다.<br />
+설정값의 검증이나 구현 선택을 생성 시 드러내야 한다면 명시적인 생성자를 써도 됩니다.<br />
+생성자에 협력자가 계속 늘어난다면 주입 방식을 바꾸기 전에 역할이 한 클래스에 모였는지 확인합니다.
+[주입할 대상을 계층별로 고르기](/docs/knowledge/backend/service/service-di-injection-points)
 
-| | RequiredArgsConstructor | AllArgsConstructor |
-|--|-------------------------|--------------------|
-| 대상 | `final`(및 `@NonNull`) 필드 | 모든 필드 |
-| 원셋 | **기본** | JPA 엔티티 등과 혼동 주의 |
+## 참고 자료
 
-`@Value`로 넣는 설정값은 final + 생성자 파라미터로 맞추거나, 호스트 관례를 문서화합니다.
-
-발전사 전체는 [DI 발전사](/docs/knowledge/backend/service/service-di-evolution)입니다.
-
----
-
-## 관련
-
-- [DI 발전사](/docs/knowledge/backend/service/service-di-evolution)
-- [어디에 무엇을 주입하나](/docs/knowledge/backend/service/service-di-injection-points)
+- [Spring Framework의 생성자 기반 의존성 주입](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html)

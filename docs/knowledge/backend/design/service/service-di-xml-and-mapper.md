@@ -10,51 +10,33 @@ status: active
 slug: "/knowledge/backend/service/service-di-xml-and-mapper"
 ---
 
-# Service — XML·매퍼 주입
+# XML에서 Service와 매퍼를 연결하던 방식
 
-> **개요:** 설정 XML과 SQL 매퍼를 Service에 주입하던 기억을, 지금 JPA Repository·Port 주입과 대응시킵니다.
-> 허브는 [데이터 접근 경계](/docs/knowledge/backend/service/service-design)입니다.
-> 데이터 **모델**이 Map→VO→DTO→Entity로 바뀐 이야기는 Entity/Repository Knowledge(모델 발전사)에 둡니다. 이 글은 **빈에 어떻게 넣었는가**입니다.
+예전 Spring 프로젝트에서 방문 예약을 조회하는 코드를 찾으면, 서비스의 메서드 호출만으로 어떤 SQL이 실행되는지 바로 보이지 않는 경우가 있었습니다.<br />
+빈 설정에서 어떤 매퍼가 주입되는지 확인한 뒤 매퍼 인터페이스와 SQL 파일로 이동했습니다.
 
----
-
-## 예전에 흔했던 모양
-
-```mermaid
-flowchart LR
-  xml[applicationContext.xml]
-  svc[XxxService]
-  mapper[SqlSession_또는_Mapper]
-  xml -->|"property_ref"| svc
-  svc --> mapper
+```xml
+<bean id="reservationService" class="example.ReservationService">
+    <constructor-arg ref="reservationMapper"/>
+</bean>
 ```
 
-- `<bean id="fooService">` + `<property name="fooMapper" ref="..."/>`
-- MyBatis 매퍼 인터페이스를 스캔해 Service 필드에 `@Autowired`
-- JDBC Template·SqlMapClient를 직접 Service가 보유
+이 코드는 `reservationMapper` 빈이 이미 등록돼 있다고 가정합니다.<br />
+MyBatis에서는 매퍼 스캔으로 해당 인터페이스의 프록시를 등록할 수 있습니다.<br />
+Spring의 조립 설정과 MyBatis의 SQL 매핑 파일은 역할이 다릅니다.
 
-클래스를 열기 전에 XML을 찾아다녀야 했고, 리팩터 시 설정과 코드가 어긋나기 쉬웠습니다.
+## 같은 조회를 원셋에서 찾는 위치
 
----
+| 찾는 정보 | XML 매퍼를 사용하는 경우 | JPA 원셋 |
+|---|---|---|
+| 조회를 호출하는 곳 | Service의 매퍼 메서드 호출 | JPA Adapter의 Repository 호출 |
+| 조회 조건 | SQL 매퍼 또는 매퍼 애노테이션 | `Specs.of(filter)` 또는 Custom 구현 |
+| 어떤 구현을 사용하는지 | Spring XML 또는 매퍼 스캔 | 생성자 주입과 빈 구성 |
 
-## 지금 원셋
+복잡한 SQL을 직접 읽는 장점은 JPA로 옮긴 뒤에도 남길 수 있습니다.<br />
+집계나 전용 조회가 커지면 Custom Repository에서 쿼리를 명시하고, Facade의 업무 흐름은 그대로 둡니다.
+[DI 방식 비교](/docs/knowledge/backend/service/service-di-evolution) / [Custom Repository](/docs/knowledge/backend/repository/repository-custom)
 
-```mermaid
-flowchart LR
-  adapter[ExampleItemAdapter]
-  repo[ExampleItemRepository]
-  adapter -->|"생성자_주입"| repo
-```
+## 참고 자료
 
-- Adapter가 `ExampleItemRepository`(Spring Data)를 **생성자**로 받습니다
-- SQL/XML 매퍼 파일을 Service가 직접 쥐지 않습니다
-- 복잡한 SQL이 필요하면 Custom + QueryDSL(또는 이후 jOOQ 비교) 자리로 갑니다 — Repository Knowledge
-
-어노테이션 설정·Java `@Configuration`으로 넘어온 뒤에도, **필수 의존은 생성자**라는 점은 [생성자 주입](/docs/knowledge/backend/service/service-di-constructor-preferred)과 같습니다.
-
----
-
-## 관련
-
-- [DI 발전사](/docs/knowledge/backend/service/service-di-evolution)
-- [Port와 Adapter 역할](/docs/knowledge/backend/service/service-port-adapter-role)
+- [MyBatis-Spring의 매퍼 등록](https://mybatis.org/spring/mappers.html)

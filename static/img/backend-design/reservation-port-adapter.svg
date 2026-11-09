@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 296" role="img" aria-labelledby="title">
+<title id="title">업무 판단과 조회 구현의 경계</title>
+<rect width="720" height="100%" rx="12" fill="#edf4fa"/>
+<rect x="32" y="16" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">Facade가 조회 범위와 조건을 결정</text>
+<path d="M360 58 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="77" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">Port를 통해 필요한 목록을 요청</text>
+<path d="M360 119 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="138" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">JPA Adapter가 Specification과 Pageable로 조회</text>
+<path d="M360 180 v16 m-5 -6 l5 6 l5 -6" fill="none" stroke="#38617f" stroke-width="2"/>
+<rect x="32" y="199" width="656" height="41" rx="8" fill="#fff" stroke="#93adbf"/>
+<text x="360" y="225" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" fill="#142d40">Adapter가 결과 모델을 Facade에 반환</text>
+</svg>
