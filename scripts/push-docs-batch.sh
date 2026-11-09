@@ -65,7 +65,12 @@ if [[ ! -f "$QUEUE_FILE" ]]; then
   exit 0
 fi
 
-mapfile -t QUEUE < <(grep -v '^[[:space:]]*$' "$QUEUE_FILE" | grep -v '^#' || true)
+QUEUE=()
+while IFS= read -r line || [[ -n "${line:-}" ]]; do
+  [[ -z "${line//[[:space:]]/}" || "$line" == \#* ]] && continue
+  QUEUE+=("$line")
+done < "$QUEUE_FILE"
+
 if [[ ${#QUEUE[@]} -eq 0 ]]; then
   log "queue empty; nothing to do"
   exit 0
@@ -76,8 +81,17 @@ if [[ "$N" -gt ${#QUEUE[@]} ]]; then
   N=${#QUEUE[@]}
 fi
 
-BATCH=("${QUEUE[@]:0:$N}")
-REST=("${QUEUE[@]:$N}")
+BATCH=()
+REST=()
+i=0
+for path in "${QUEUE[@]}"; do
+  if [[ "$i" -lt "$N" ]]; then
+    BATCH+=("$path")
+  else
+    REST+=("$path")
+  fi
+  i=$((i + 1))
+done
 
 log "batch=$N dry_run=$DRY_RUN repo=$REPO_ROOT"
 for p in "${BATCH[@]}"; do
