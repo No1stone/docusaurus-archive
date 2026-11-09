@@ -1,7 +1,7 @@
 ---
 id: repository-spec-and-filter
 title: Spec과 Filter
-description: JpaSpecificationExecutor, Specs.of(Filter), null-safe 조합과 원셋 목록 경로를 정리합니다. 하네스 필독이 아닙니다.
+description: HTTP 호출 이력의 검색 예제로 Filter, JPA Specification, 페이징을 연결합니다.
 tags:
   - backend
   - jpa
@@ -10,136 +10,80 @@ status: active
 slug: "/knowledge/backend/repository/repository-spec-and-filter"
 ---
 
-# Spec과 Filter
+# JPA Specification으로 화면 검색 조건을 한곳에서 관리하기
 
-> **개요:** 목록 조건은 `ExampleItemSpecs.of(Filter)` 한 공장으로 모읍니다.
-> Spring Data `Specification` / `JpaSpecificationExecutor`를 원셋 Filter와 어떻게 붙이는지 깊게 적습니다.
-> **하네스 필독 아님.** 구현 복사는 원셋 Spec·Adapter입니다.
+HTTP 호출 이력 화면에는 URL, HTTP 메서드, 발생 기간이 있습니다.<br />
+운영자는 세 조건을 다 넣기도 하고, 발생 기간만 넣어서 장애가 시작된 시점을 살펴보기도 합니다.
 
-공식 Spring Data JPA 「Specifications」 축을, 이 아카이브 선택으로 다시 씁니다.
+이때 조회 메서드를 조건 조합마다 추가하면 검색 규칙이 여러 곳에 흩어집니다.<br />
+원셋은 입력을 Filter로 받고, 값이 들어온 필드만 `Specification` 조건으로 조립합니다.
 
----
+![검색 Filter가 JPA 조회 조건이 되는 과정](/img/backend-design/jpa-specification-filter.svg)
 
-## 왜 Spec인가
+## Filter에서 WHERE 조건까지
 
-derived query method(`findByUrlAndHttpMethod…`)는 조건이 늘 때마다 메서드가 늘거나 이름이 깨집니다.
-조건 조합은 **런타임 Predicate**가 맞습니다.
+`Specification<T>`는 JPA Criteria API로 조회 조건을 만드는 인터페이스입니다.<br />
+Repository에 `JpaSpecificationExecutor<T>`를 붙이면 Specification과 페이징 조건을 함께 넘길 수 있습니다.
 
-Spring Data JPA는 `JpaSpecificationExecutor`로 `findAll(Specification, Pageable)`을 줍니다.
-원셋은 여기에 **요청 Filter DTO**를 한 곳에서 `Specification`으로 바꿉니다.
-
-```mermaid
-flowchart LR
-  filter[Filter_DTO]
-  specs[Specs.of]
-  exec[JpaSpecificationExecutor]
-  page[Page_or_List]
-  filter --> specs
-  specs --> exec
-  exec --> page
+```java
+public interface ExampleItemRepository
+        extends JpaRepository<ExampleItem, Long>,
+                JpaSpecificationExecutor<ExampleItem> {
+}
 ```
 
-| 축 | 역할 |
-|----|------|
-| `ExampleItemReq.Filter` | API·Facade가 넘기는 검색 조건 (`PageQuery` 상속 가능) |
-| `ExampleItemSpecs.of` | Filter → `Specification` |
-| Repository | `JpaRepository` + `JpaSpecificationExecutor` + Custom |
-| Adapter | `findAll(Specs.of(filter), pageable)` 호출, 엔티티→응답 DTO |
-
-세 인터페이스 조립은 [세 인터페이스](/docs/knowledge/backend/repository/repository-three-interfaces)입니다.
-
----
-
-## `Specification`이 하는 일
-
-`Specification<T>`는 `(root, query, criteriaBuilder) → Predicate` 입니다.
-Criteria API로 where를 조립합니다.
-
-여러 Spec을 이어 붙일 때는 `Specification.where(a).and(b).or(c)` 패턴을 씁니다.
-원셋은 **한 메서드 `of(Filter)` 안에서** null이 아닌 필드만 Predicate에 넣는 쪽이 기본입니다.
-조건마다 별도 public Spec 메서드를 잔뜩 두지 않습니다. 재사용이 분명할 때만 조각냅니다.
+아래는 원셋에서 URL과 ID 목록을 조립하는 부분을 발췌한 예입니다.
 
 ```java
 public static Specification<ExampleItem> of(ExampleItemReq.Filter filter) {
     return (root, query, builder) -> {
-        PredicateBuilder predicateBuilder = new PredicateBuilder(builder, root);
-        predicateBuilder.equal(ExampleItem.Fields.url, filter.getUrl());
-        predicateBuilder.in(ExampleItem.Fields.id, filter.getIds());
-        // …
-        return predicateBuilder.build();
+        PredicateBuilder predicates = new PredicateBuilder(builder, root);
+        predicates.equal(ExampleItem.Fields.url, filter.getUrl());
+        predicates.in(ExampleItem.Fields.id, filter.getIds());
+        return predicates.build();
     };
 }
 ```
 
-`PredicateBuilder`는 원셋 support의 null-safe 헬퍼입니다.
-값이 null이면 해당 equal/in을 건너뜁니다.
-그래서 “필터 필드가 비어 있으면 전체(또는 다른 조건만)”가 자연스럽습니다.
+`PredicateBuilder`는 원셋의 헬퍼입니다.<br />
+목록 검색에서 제공되지 않은 조건은 건너뛰고, 값이 들어온 조건을 결합합니다.<br />
+HTTP 메서드 일치와 생성 시각의 상한, 하한도 같은 자리에서 조립할 수 있습니다.
 
----
+페이징과 정렬은 Adapter에서 `Pageable`로 전달합니다.<br />
+Adapter는 엔티티를 읽고 호출부가 사용하는 결과 모델로 바꿉니다.
+[Spring 원셋의 구현 경계](/docs/harness/templates/backend/spring/ONESET) / [Page와 Slice](/docs/knowledge/backend/repository/repository-pagination-and-slice)
 
-## 원셋 Filter 관례
+## ID가 비었다는 의미는 호출 목적에 따라 달라집니다
 
-| Filter 필드 | Spec 쪽 | 메모 |
-|-------------|---------|------|
-| 단일 equal 컬럼 | `equal(필드, 값)` | id, url, httpMethod 등 |
-| `ids` | `in(id, ids)` | 배치·삭제 후보 |
-| `startAt` / `endAt` | `createdAt` goe/loe | `CreatedEntity` 필드 |
-| 페이징 | Spec이 아님 | `Pageable` / `PageQuery` |
+일반 목록에서 ID 필터가 없으면 URL이나 기간만으로 검색할 수 있습니다.<br />
+하지만 **선택한 ID에 해당하는 기록만** 읽는 메서드에서 빈 목록을 받으면 결과도 비어야 합니다.
 
-**`ids`가 null이거나 empty면 조회하지 않고 빈 결과를 반환**하는 관례가 Adapter에 있습니다.
-대량 IN을 실수로 전체 스캔처럼 돌리지 않기 위함입니다. (삭제·배치 경로)
+이 차이는 조건 조립기에만 맡기기 어렵습니다.<br />
+빈 `IN`을 생략하는 로직을 선택 조회에서도 그대로 사용하면, 의도한 대상이 하나도 없는데 전체 조회가 될 수 있습니다.<br />
+원셋은 이 경로에서 Adapter가 먼저 목록이 비었는지 확인합니다.
 
-coding-conventions Persistence와 같습니다.
-**derived query method는 쓰지 않습니다.** 조건이 Spec 밖으로 새면 목록 경로가 둘로 갈라집니다.
+| 입력 | 일반 검색 | ID 선택 조회 |
+|---|---|---|
+| ID 필터 없음 | 다른 검색 조건만 적용 | 빈 결과 |
+| 선택 ID 두 개 | 두 ID에 해당하는 행만 조회 | 두 ID에 해당하는 행만 조회 |
+| 선택 ID 없음 | 호출 계약에 따라 선택 필터 생략 여부 결정 | 빈 결과 |
 
----
+## OR 조건이나 조인이 추가되면
 
-## and / or / 조인
+예를 들어 URL이 일치하거나 메서드가 특정 값인 기록을 찾되 기간은 항상 적용하려면, OR 그룹과 기간 조건을 분리해 결합합니다.
 
-단순 목록은 `of` 안 equal들의 AND로 충분합니다.
-OR 그룹이나 연관 조인이 필요하면:
+```java
+Specification<ExampleItem> filter =
+        urlMatches.or(methodMatches).and(withinPeriod);
+```
 
-1. 같은 `of` 안에서 Criteria로 그룹 Predicate를 만들거나
-2. Custom + QueryDSL로 옮깁니다 → [QueryDSL 동적 쿼리](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
+조인으로 결과 행이 늘어나는 조회에서는 목록과 전체 건수를 같이 확인해야 합니다.<br />
+페이지에 같은 항목이 반복되거나 전체 건수가 달라지면 검색 결과가 있어도 화면에서 다음 페이지를 제대로 계산할 수 없습니다.
 
-`query.distinct(true)`는 조인으로 행이 늘어날 때 검토합니다.
-페이지 total과 distinct를 섞으면 카운트 쿼리 함정이 있으니, 조인 Spec은 신중히 둡니다.
+목록 항목의 동적 조건에 집중할 때는 Specification이 잘 맞습니다.<br />
+화면 전용 DTO, 집계, 복잡한 조인까지 쿼리에서 만들기 시작하면 전용 조회 구현을 검토합니다.
+[Query by Example](/docs/knowledge/backend/repository/repository-query-by-example) / [QueryDSL 동적 조회](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
 
----
+## 참고 자료
 
-## Spec vs QBE vs QueryDSL
-
-| 수단 | 잘 맞는 때 | 원셋 기본 |
-|------|------------|-----------|
-| Spec + Filter | 동적 equal/in/구간, 목록 API | **예** |
-| Query by Example | 프로브 엔티티 exact/문자열 매칭이 단순할 때 | 아니오 → [QBE](/docs/knowledge/backend/repository/repository-query-by-example) |
-| QueryDSL Custom | 복잡한 동적 where, 프로젝션 | 자리만 → [Custom](/docs/knowledge/backend/repository/repository-querydsl-custom) |
-| derived / `@Query` 이름 | 고정 단건·소수 조건 | 목록에 쓰지 않음 → [Query Methods](/docs/knowledge/backend/repository/repository-query-methods) |
-
----
-
-## 페이징
-
-`findAll(spec, pageable)` → `Page`.
-총건수가 비싸면 Slice 전략을 봅니다 → [Page와 Slice](/docs/knowledge/backend/repository/repository-pagination-and-slice).
-
-`Pageable.unpaged()`는 “필터만 적용한 전체 목록”에 Adapter가 쓰는 경우가 있습니다.
-대량 테이블에서는 상한·스트리밍을 따로 생각합니다.
-
----
-
-## 함정
-
-- Spec과 derived를 **같은 필터**에 섞으면 조건이 어긋납니다. 목록은 Spec만.
-- Filter에 새 필드를 추가하고 Spec `of`를 안 고치면 **조용히 무시**됩니다.
-- 연관 fetch를 Spec 조인에 욱여넣으면 페이징이 깨질 수 있습니다. 그래프는 [엔티티 최소·CQRS](/docs/knowledge/backend/entity/entity-minimal-and-cqrs) 쪽.
-- 락이 필요하면 Spec 목록이 아니라 단건 `@Lock` 조회를 짧은 TX에 둡니다 → [Locking](/docs/knowledge/backend/repository/repository-locking).
-
----
-
-## 관련
-
-- [세 인터페이스 조립](/docs/knowledge/backend/repository/repository-three-interfaces)
-- [Query Methods](/docs/knowledge/backend/repository/repository-query-methods)
-- [Query by Example](/docs/knowledge/backend/repository/repository-query-by-example)
-- [support / PageQuery](/docs/harness/templates/backend/spring/support/)
+- [Spring Data JPA Specification과 조건 조합](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)

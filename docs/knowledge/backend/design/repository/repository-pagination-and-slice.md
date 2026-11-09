@@ -9,36 +9,33 @@ status: active
 slug: "/knowledge/backend/repository/repository-pagination-and-slice"
 ---
 
-# Page와 Slice
+# Page와 Slice, 총건수가 필요한 화면은 어떤 화면일까
 
-> **개요:** 목록 API의 페이징 반환 타입입니다.
-> 원셋은 `Filter`(PageQuery) → `toPageable()` → Spec `findAll(spec, pageable)` 입니다.
+운영자가 호출 이력에서 17페이지로 바로 이동하려면 총건수와 마지막 페이지를 알아야 합니다.<br />
+반면 모바일 목록이 아래로 내려갈 때마다 20건을 더 보여준다면, 다음 결과가 있는지만 알아도 됩니다.
 
-| | Page | Slice |
-|--|------|-------|
-| count 쿼리 | 있음 (total) | 없음 |
-| 다음 페이지 | total 기반 | `hasNext` (size+1 관례) |
-| 비용 | count가 무거울 수 있음 | 가벼운 스크롤에 유리 |
+| 응답 | 호출부에 제공하는 정보 | 조회 비용에서 보는 부분 |
+|---|---|---|
+| `Page` | 현재 결과, 전체 건수, 전체 페이지 | 총건수가 필요하면 별도 count 쿼리 사용 가능 |
+| `Slice` | 현재 결과, 다음 묶음 존재 여부 | 다음 항목 확인을 위해 요청 크기보다 한 건 더 조회하는 방식이 일반적 |
 
-```mermaid
-flowchart LR
-  req[Filter_PageQuery]
-  pb[toPageable]
-  repo[findAll]
-  page[Page_또는_Slice]
-  req --> pb
-  pb --> repo
-  repo --> page
+## 원셋에서 목록을 읽는 흐름
+
+```text
+HTTP 검색 조건 → Filter와 PageQuery
+                 → Adapter에서 Pageable로 변환
+                 → Repository에서 Specification과 함께 조회
 ```
 
-원셋 목록은 **Page** 쪽이 기본에 가깝습니다 (총건수 UI).
-무한 스크롤·count 부담이 크면 Slice를 검토합니다.
-`Pageable.unpaged()`는 Name 맵 등 소량 전량에만.
+원셋의 `findAll(specification, pageable)`은 `Page`를 반환합니다.<br />
+화면에서 총건수를 표시하는 목록에는 이 계약이 맞습니다.<br />
+반환값을 `Slice`로 감싸기만 하면 기존 조회에서 이미 실행한 count가 사라지지 않습니다.<br />
+다음 묶음만 제공하려면 실제 조회 경로를 그 목적에 맞게 바꿉니다.
 
-DEFAULT_SIZE 20, MAX_SIZE 100은 [PageQuery / support](/docs/harness/templates/backend/spring/support/)입니다.
+같은 시각에 기록된 행이 여러 개라면 시간에 ID를 보조 정렬로 더해 순서를 일정하게 유지합니다.<br />
+대량 데이터의 깊은 페이지에서는 `Slice`를 써도 큰 offset 자체는 남으므로, 사용자가 이동하는 방식에 맞춰 커서 기반 조회도 검토할 수 있습니다.
+[Specification과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter) / [원셋 PageQuery](/docs/harness/templates/backend/spring/support/)
 
----
+## 참고 자료
 
-## 관련
-
-- [Spec과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter)
+- [Spring Data의 페이지 및 슬라이스 쿼리 메서드](https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html)

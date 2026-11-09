@@ -9,35 +9,38 @@ status: active
 slug: "/knowledge/backend/repository/repository-querydsl-dynamic"
 ---
 
-# QueryDSL 동적 쿼리
+# QueryDSL에서 화면의 선택 조건을 조합하기
 
-> **개요:** 타입 세이프 빌더로 조건을 조합합니다.
-> Spec `of(Filter)`와 같은 “동적 필터”를 QueryDSL로 옮길 때의 패턴입니다.
-> 기존 메모 [DynamicQuery](/docs/knowledge/k-dynamicquery)는 참고 링크, 원셋 관점은 이 글입니다.
+호출 이력에서 메서드가 GET인 건을 보고 싶을 때도 있고, 기간만 지정해 장애 시간대를 확인하고 싶을 때도 있습니다.<br />
+QueryDSL에서는 선택 조건을 명시적으로 추가해 하나의 조회를 구성할 수 있습니다.
 
-```mermaid
-flowchart LR
-  filter[Filter]
-  builder[BooleanBuilder]
-  q[JPAQuery]
-  filter --> builder
-  builder --> q
+```java
+BooleanBuilder conditions = new BooleanBuilder();
+
+if (filter.getHttpMethod() != null) {
+    conditions.and(item.httpMethod.eq(filter.getHttpMethod()));
+}
+if (filter.getStartAt() != null) {
+    conditions.and(item.createdAt.goe(filter.getStartAt()));
+}
+if (filter.getEndAt() != null) {
+    conditions.and(item.createdAt.loe(filter.getEndAt()));
+}
 ```
 
-요지:
+`item`은 호출 이력 엔티티의 Q 타입입니다.<br />
+이 조건을 `where(conditions)`에 넘기고 정렬과 조회 범위를 지정합니다.<br />
+아무 조건도 없는 요청에서 전량을 읽어도 되는지는 먼저 결정하고, 화면 조회라면 페이지 상한을 적용합니다.
 
-- null/blank 필드는 술어에 넣지 않음
-- `BooleanBuilder`에 `and`/`or`로 조합
-- 정렬·페이징은 QueryDSL API 또는 Pageable과 맞춤
-- 빈 술어만 남지 않게 가드
+## 조건이 늘어도 의미를 읽을 수 있게 구성합니다
 
-원셋 목록 기본은 여전히 Spec입니다.
-QueryDSL은 Custom 경로의 확장입니다.
+검색어를 URL 또는 본문에서 찾되 기간은 필수로 적용한다면, URL과 본문의 OR 조건을 하나로 묶은 뒤 기간을 AND로 결합합니다.<br />
+조건을 한 줄씩 추가하더라도 괄호의 범위가 달라지면 조회 대상이 달라집니다.<br />
+테스트에는 URL만 일치하는 행, 본문만 일치하는 행, 기간 밖의 행을 각각 넣어 확인합니다.
 
-jOOQ와의 갈림길: [jOOQ와 SQL 빌더](/docs/knowledge/backend/repository/repository-jooq-and-sql-builders).
+원셋의 단순 목록에는 [Specification](/docs/knowledge/backend/repository/repository-spec-and-filter)을 사용합니다.<br />
+조인과 DTO 반환까지 함께 조립해야 할 때는 [Custom Repository](/docs/knowledge/backend/repository/repository-querydsl-custom)에서 QueryDSL을 검토합니다.
 
----
+## 참고 자료
 
-## 관련
-
-- [QueryDSL Custom 자리](/docs/knowledge/backend/repository/repository-querydsl-custom)
+- [QueryDSL 동적 표현과 BooleanBuilder](https://querydsl.com/static/querydsl/latest/reference/html/ch03.html)

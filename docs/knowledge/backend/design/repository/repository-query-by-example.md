@@ -1,7 +1,7 @@
 ---
 id: repository-query-by-example
 title: Repository — Query by Example
-description: QBE probe·ExampleMatcher와 Spec·Filter 비교, 원셋이 Spec을 기본으로 두는 이유를 정리합니다. 하네스 필독이 아닙니다.
+description: URL과 HTTP 메서드 검색을 예로 Query by Example의 매칭과 적용 범위를 설명합니다.
 tags:
   - backend
   - spring-data
@@ -10,90 +10,64 @@ status: active
 slug: "/knowledge/backend/repository/repository-query-by-example"
 ---
 
-# Repository — Query by Example
+# Query by Example, 채운 필드만 검색 조건으로 쓰기
 
-> **개요:** Query by Example(QBE)은 **예시 엔티티(probe)** 로 조회 조건을 만드는 Spring Data API입니다.
-> Spec·Filter와 겹치는 지점과 **한계**를 적고, 원셋 기본이 Spec인 이유를 밝힙니다.
-> **하네스 필독 아님.**
+호출 이력 화면에서 URL을 정확히 아는 운영자가 기록을 찾는다고 가정합니다.<br />
+URL만 채우면 그 URL을 검색하고, 메서드도 채우면 두 조건을 모두 적용합니다.
 
-공식 「Query by Example」 축을 이 아카이브 선택으로 다시 씁니다.
+Query by Example에서는 이런 조건을 **값이 들어 있는 예시 객체**로 표현합니다.<br />
+Spring Data는 예시 객체와 매칭 규칙을 보고 쿼리를 만듭니다.
 
----
-
-## 구성
-
-| 조각 | 역할 |
-|------|------|
-| Probe | 값이 채워진 도메인 객체 (예시) |
-| `ExampleMatcher` | 문자열 매칭(exact/contain…), null 취급, 무시 경로 |
-| `Example` | probe + matcher |
-| `QueryByExampleExecutor` | `findAll(Example)`, fluent `findBy(Example, …)` |
+## 예시 객체에서 조회 조건이 만들어지는 과정
 
 ```java
 ExampleItem probe = new ExampleItem();
-probe.setUrl("/api/x"); // 개념 스케치 — 실제 엔티티 세터 관례는 호스트를 따름
-ExampleMatcher matcher = ExampleMatcher.matching()
+probe.setUrl("/api/reservations");
+probe.setHttpMethod("GET");
+
+ExampleMatcher matcher = ExampleMatcher.matchingAll()
     .withIgnoreNullValues()
+    .withIgnorePaths("id")
     .withMatcher("url", ExampleMatcher.GenericPropertyMatchers.exact());
+
 Example<ExampleItem> example = Example.of(probe, matcher);
-repository.findAll(example, pageable);
+Page<ExampleItem> result = repository.findAll(example, pageable);
 ```
 
-`JpaRepository`는 보통 `QueryByExampleExecutor`를 이미 포함합니다.
+여기서는 설명을 위해 수정 가능한 프로브를 가정했습니다.<br />
+실제 원셋에 QBE를 도입한다면 Adapter에서 예시 객체를 만드는 코드가 필요합니다.
 
----
+| 구성 요소 | 예제에서 맡는 일 |
+|---|---|
+| Probe | URL과 HTTP 메서드에 어떤 값을 찾는지 표현 |
+| `ExampleMatcher` | 모든 조건을 만족해야 하는지, 어떤 필드를 무시할지 결정 |
+| `Example` | Probe와 매칭 규칙을 묶어 Repository에 전달 |
+| `QueryByExampleExecutor` | 예시와 일치하는 결과 조회. `JpaRepository`에 포함 |
 
-## 잘 맞는 경우 / 한계
+프로브를 만들 때 초기값을 확인해야 합니다.<br />
+원시 타입 `boolean`의 기본값은 `false`라서 값을 직접 넣지 않아도 조건으로 포함될 수 있습니다.<br />
+검색에 관여시키지 않을 필드는 `withIgnorePaths`로 명시합니다.
 
-**잘 맞는 경우**
+## 발생 기간이나 ID 목록이 들어오면
 
-- 필드 exact(또는 단순 문자열) 조건이 대부분일 때
-- 프로브만 채워 동적 조회를 빠르게 실험할 때
-- 도메인 필드 rename에 이름 기반 derived보다 덜 깨질 때(프로브 필드 기준)
+같은 화면에 **오늘 발생한 기록**을 찾는 조건이 추가됐다고 가정합니다.<br />
+시작 시각과 종료 시각을 두 값으로 받은 뒤 범위 조건을 만들어야 합니다.<br />
+선택한 기록만 다시 읽는 화면이라면 `id IN (...)`도 필요합니다.
 
-**한계 (공식과 동일 계열)**
+QBE는 값 일치나 문자열 패턴이 중심일 때 간결합니다.<br />
+기간 범위, ID 목록, 괄호를 포함한 조건 조합은 Specification으로 표현하기 쉽습니다.
 
-- 중첩·그룹 조건: `A = ? OR (B = ? AND C = ?)` 같은 조합이 약함
-- 컬렉션·맵 매칭 없음
-- 문자열 외 타입은 대체로 exact
-- `ids IN (…)`, 날짜 구간(`startAt`/`endAt`) 같은 **목록 API 단골**은 Spec이 낫다
+| 요구사항 | 표현하기 쉬운 도구 |
+|---|---|
+| URL 정확히 일치, 메서드 일치 | QBE의 프로브와 매처 |
+| 발생 시각 범위, ID 목록 | Specification의 범위 조건과 `in` |
+| 여러 테이블을 조인해 화면 전용 결과 구성 | QueryDSL 또는 SQL을 사용하는 별도 조회 구현 |
 
-```mermaid
-flowchart TD
-  q[동적_조회]
-  q --> simple{equal_위주_프로브?}
-  simple -->|예| qbe[QBE_가능]
-  simple -->|구간_IN_OR그룹| spec[Spec_또는_QueryDSL]
-```
+원셋에서는 화면 입력을 Filter로 받고, 조회 조건은 `Specs.of(filter)`에서 만듭니다.<br />
+현재 목록은 날짜 구간과 ID 목록까지 다루므로 이 방식이 적용돼 있습니다.<br />
+동등 비교가 대부분인 작은 검색에서 QBE를 검토하더라도, 프로브는 HTTP 요청 객체와 분리해 저장 접근 경계에서 구성합니다.
+[Specification과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter) / [쿼리 메서드](/docs/knowledge/backend/repository/repository-query-methods)
 
----
+## 참고 자료
 
-## Spec·Filter와 비교
-
-| | QBE | 원셋 Spec + Filter |
-|--|-----|---------------------|
-| 조건 입력 | 엔티티 probe | API Filter DTO |
-| null | matcher ignore | PredicateBuilder skip |
-| IN / 구간 | 약함·우회 | `in`, goe/loe 기본 관례 |
-| API 경계 | 엔티티가 새어 나가기 쉬움 | Filter가 요청 모델 |
-| 원셋 기본 | 쓰지 않음 | **목록 기본** |
-
-Facade·Controller는 엔티티가 아니라 DTO를 봅니다.
-Filter → Spec이 계층과 맞습니다.
-QBE를 쓰면 Adapter 안에서 probe를 조립하더라도, Filter와 이중 모델을 유지하게 됩니다.
-
----
-
-## 이 아카이브 선택
-
-- **목록·검색:** [Spec과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter)
-- **QBE:** 학습·특수 단순 조회 참고. 원셋 ExampleItem 경로의 기본이 아님
-- 더 복잡한 동적 where: [QueryDSL](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
-
----
-
-## 관련
-
-- [Spec과 Filter](/docs/knowledge/backend/repository/repository-spec-and-filter)
-- [Query Methods](/docs/knowledge/backend/repository/repository-query-methods)
-- [Repository 설계](/docs/knowledge/backend/repository/repository-design)
+- [Spring Data JPA Query by Example의 매처와 제한](https://docs.spring.io/spring-data/jpa/reference/repositories/query-by-example.html)

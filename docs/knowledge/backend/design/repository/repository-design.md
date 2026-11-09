@@ -12,28 +12,15 @@ slug: "/knowledge/backend/repository/repository-design"
 
 # Repository 설계
 
-> **개요:** Spring Data Repository는 Adapter 아래 기술 접근입니다.
-> 도메인 Facade는 Port만 호출합니다.
-> 구현 복사는 원셋 repository입니다. **하네스 필수 읽기나 원셋 복사 경로에는 넣지 않습니다.**
+PK로 한 건을 읽는 코드와 여러 필터를 조합하는 목록은 서로 다른 조회입니다.<br />
+조건이 고정된 조회, 동적 목록, 집계를 구분하면 어느 기능을 써야 할지 판단하기 쉽습니다.
 
-```mermaid
-flowchart TD
-  facade[DomainFacade]
-  port[Port]
-  adapter[Adapter]
-  repo[Repository]
-  facade --> port
-  port --> adapter
-  adapter --> repo
-```
-
-목록 기본은 Spec + Pageable입니다.
-derived query method는 원셋에서 쓰지 않습니다.
-하위 글은 [Repository index](/docs/knowledge/backend/repository/index)를 봅니다.
+원셋에서 Facade는 Port를 호출하고, JPA Adapter가 Repository를 사용합니다.<br />
+아래 글은 그 Repository에서 사용할 인터페이스와 조회 방법, 트랜잭션을 다룹니다.
 
 ## Spring Data JPA 공식 목차에서 고른 글 (필독 아님)
 
-공식 사이드바 전부를 옮기지 않습니다.
+공식 사이드바 전부를 옮기지 않습니다.<br />
 원셋·실무에 쓸 것만 씁니다. **아직 없는 글은 링크로 걸지 않습니다.**
 
 | 우선 | 주제 (공식 목차명) | 메모 |

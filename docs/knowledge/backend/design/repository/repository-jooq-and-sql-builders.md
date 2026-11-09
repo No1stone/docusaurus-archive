@@ -10,34 +10,35 @@ status: active
 slug: "/knowledge/backend/repository/repository-jooq-and-sql-builders"
 ---
 
-# jOOQ와 SQL 빌더
+# QueryDSL JPA와 jOOQ, 조회를 엔티티로 볼까 SQL로 볼까
 
-> **개요:** QueryDSL 동적 쿼리까지 오면 “SQL을 타입 세이프하게 쓰자”는 요구가 jOOQ로 이어지기 쉽습니다.
-> 원셋 **기본은 JPA 삼중 + Spec**입니다. jOOQ는 선택·비교이며 하네스 필독이 아닙니다.
+호출 이력 화면에서 URL별 실패 건수를 집계하고, 최근 기간의 결과와 비교한다고 가정합니다.<br />
+JPA 엔티티를 기준으로 조회를 확장할 수도 있고, SQL에서 사용할 테이블과 집계 형태를 먼저 정할 수도 있습니다.
 
-| | QueryDSL (JPA) | jOOQ |
-|--|----------------|------|
-| 중심 | JPA 메타모델 | SQL |
-| 영속 컨텍스트 | EntityManager와 맞물림 | JDBC/SQL 중심 |
-| 잘 맞는 곳 | 도메인 엔티티 조회 확장 | 리포트·복잡 조인·SQL 명시 |
+| 관점 | QueryDSL JPA | jOOQ |
+|---|---|---|
+| 쿼리 모델 | 엔티티 기반 Q 타입 | 생성된 테이블과 컬럼, SQL DSL |
+| 실행 경로 | JPA EntityManager | SQL 실행과 레코드 매핑 |
+| 잘 맞는 예 | 엔티티를 중심으로 필터와 조인 조립 | SQL 기능을 사용하는 보고서와 집계 |
 
-```mermaid
-flowchart TD
-  need[동적_복잡_조회]
-  qdsl[QueryDSL_on_JPA]
-  jooq[jOOQ]
-  need --> qdsl
-  need --> jooq
+예를 들어 URL별 발생 건수를 SQL로 직접 표현하는 jOOQ 코드는 다음처럼 읽힙니다.
+
+```java
+dsl.select(EXAMPLE_ITEM.URL, count())
+    .from(EXAMPLE_ITEM)
+    .where(EXAMPLE_ITEM.RESPONSE_HTTP_STATUS.like("4%").or(EXAMPLE_ITEM.RESPONSE_HTTP_STATUS.like("5%")))
+    .groupBy(EXAMPLE_ITEM.URL)
+    .fetch();
 ```
 
-XML SQL 시절의 “쿼리를 명시”하던 감각은 [모델 발전사](/docs/knowledge/backend/entity/persistence-from-xml-to-orm)와 닿습니다.
-엔티티 최소·CQRS 원셋과도 모순되지 않습니다. jOOQ는 풀 ORM 대신 SQL을 드러내는 갈래입니다.
+예제는 테이블 코드가 스키마에서 생성됐다고 가정합니다.<br />
+실제 결과는 화면에 필요한 형태로 매핑하고, 대상 DB 방언과 SQL을 함께 확인합니다.
 
-스프링 jdbc 쪽 jOOQ 문서는 아직 초안(draft)이라 여기서는 링크하지 않습니다.
+원셋은 기존 목록을 JPA와 Specification으로 조회합니다.<br />
+별도 읽기 모델이 SQL 중심으로 커지는 경우에는 조회 구현 안에서 jOOQ를 검토할 수 있습니다.<br />
+JPA가 관리하는 엔티티를 변경한 뒤 같은 작업에서 jOOQ로 읽을 경우에는 두 접근이 같은 트랜잭션에 참여하는지와 JPA flush 시점을 확인합니다.
+[QueryDSL 동적 조회](/docs/knowledge/backend/repository/repository-querydsl-dynamic) / [조회와 변경의 경계](/docs/knowledge/backend/entity/entity-minimal-and-cqrs)
 
----
+## 참고 자료
 
-## 관련
-
-- [QueryDSL 동적 쿼리](/docs/knowledge/backend/repository/repository-querydsl-dynamic)
-- [세 인터페이스 조립](/docs/knowledge/backend/repository/repository-three-interfaces)
+- [jOOQ SQL DSL](https://www.jooq.org/doc/latest/manual/sql-building/)
