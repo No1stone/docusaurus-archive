@@ -1,8 +1,15 @@
 ---
 slug: spring-mvc-virtual-threads-external-api
 title: "외부 API 연동 서버에 Spring MVC와 Virtual Threads를 선택한 이유"
-description: "내 서버에서 Spring MVC와 Virtual Threads를 선택한 판단"
-authors: []
+description: "외부 API 연동 게이트웨이에서 Spring MVC와 Virtual Threads를 선택한 이유. 블로킹 I/O와 동시성 관점입니다."
+authors: [wonseok]
+keywords:
+  - Spring MVC
+  - Virtual Threads
+  - Spring Boot
+  - 외부 API
+  - Java
+  - 게이트웨이
 tags:
   - java
   - spring-mvc

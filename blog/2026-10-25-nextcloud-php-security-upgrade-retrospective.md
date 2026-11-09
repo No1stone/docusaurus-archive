@@ -1,8 +1,15 @@
 ---
 slug: nextcloud-php-security-upgrade-retrospective
 title: "PHP 보안 패치하려다 Nextcloud 5개 버전을 올렸다"
-description: "PHP 취약점 대응을 시작으로 Nextcloud 30부터 35까지 순차 업그레이드한 실제 운영 후기"
-authors: []
+description: "PHP 취약점 대응을 시작으로 Nextcloud 30부터 35까지 순차 업그레이드한 실제 운영 후기입니다."
+authors: [wonseok]
+keywords:
+  - Nextcloud
+  - PHP security
+  - Docker
+  - 업그레이드 후기
+  - 운영
+  - 보안 패치
 tags:
   - nextcloud
   - php

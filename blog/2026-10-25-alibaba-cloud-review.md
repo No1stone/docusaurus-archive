@@ -1,8 +1,15 @@
 ---
 slug: alibaba-cloud-review
 title: "Alibaba Cloud 검토기"
-description: "중국 시장 대응을 위한 Alibaba Cloud 검토와 AWS 주요 서비스 비교"
-authors: []
+description: "중국 시장 대응을 위한 Alibaba Cloud 검토와 AWS 주요 서비스 비교. ECS, RDS, OSS, CDN 관점으로 정리합니다."
+authors: [wonseok]
+keywords:
+  - Alibaba Cloud
+  - AWS
+  - 중국 클라우드
+  - ECS
+  - OSS
+  - 클라우드 인프라
 tags:
   - alibaba-cloud
   - aws

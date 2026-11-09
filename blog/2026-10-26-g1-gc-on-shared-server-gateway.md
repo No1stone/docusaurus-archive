@@ -1,8 +1,15 @@
 ---
 slug: g1-gc-on-shared-server-gateway
 title: "공유 서버의 작은 게이트웨이, G1 GC로 시작한 이유"
-description: "내 서버를 다른 서비스와 같은 장비에서 돌리며 G1 GC로 시작한 판단"
-authors: []
+description: "공유 서버에서 작은 게이트웨이를 돌리며 Generational ZGC 대신 G1 GC로 시작한 판단과 이유를 정리합니다."
+authors: [wonseok]
+keywords:
+  - G1 GC
+  - ZGC
+  - JVM
+  - Java
+  - 공유 서버
+  - 게이트웨이
 tags:
   - java
   - g1gc

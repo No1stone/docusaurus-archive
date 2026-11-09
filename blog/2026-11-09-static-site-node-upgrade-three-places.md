@@ -2,7 +2,14 @@
 slug: static-site-node-upgrade-three-places
 title: "정적 사이트인데도 Node.js를 올렸습니다. 바꾼 곳은 세 군데였습니다"
 description: "정적 Docusaurus라도 Node2Shell 공지 후 로컬·CI Node를 22.23.4로 맞춘 이유. mise, Actions, engines 세 곳만 바꾼 과정을 정리합니다."
-authors: []
+authors: [wonseok]
+keywords:
+  - Node.js
+  - Node2Shell
+  - Docusaurus
+  - security
+  - mise
+  - GitHub Actions
 tags:
   - nodejs
   - security
