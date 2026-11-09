@@ -89,6 +89,18 @@ if [[ "$DRY_RUN" == "1" ]]; then
   exit 0
 fi
 
+# HTTPS push uses `gh auth git-credential` + active account (not cwd alone).
+GH_PUSH_USER="${GH_PUSH_USER:-No1stone}"
+if ! command -v gh >/dev/null 2>&1; then
+  log "ERROR: gh CLI not found; cannot switch push account"
+  exit 1
+fi
+if ! gh auth switch --user "$GH_PUSH_USER" >>"$LOG_FILE" 2>&1; then
+  log "ERROR: gh auth switch --user $GH_PUSH_USER failed"
+  exit 1
+fi
+log "gh push user: $GH_PUSH_USER"
+
 git fetch origin >>"$LOG_FILE" 2>&1 || true
 
 if ! git merge-base --is-ancestor origin/main HEAD 2>/dev/null; then
