@@ -1,8 +1,19 @@
 ---
 slug: structure-before-ai-coding
 title: "AI에게 코드를 맡기기 전에, 나는 구조부터 만들었다"
-description: "바이브코딩의 오버엔지니어링을 경험하고 템플릿 기반 하네스를 구축하기까지"
-authors: []
+description: "바이브코딩의 오버엔지니어링을 겪고, 책임 경계·코드 컨벤션·원셋·문서 인덱싱으로 템플릿 기반 하네스 엔지니어링을 구축한 경험입니다."
+authors: [wonseok]
+keywords:
+  - harness engineering
+  - oneset
+  - vibe coding
+  - 템플릿 기반 개발
+  - 책임 경계
+  - Spring Security
+  - architecture convention
+  - AI coding
+  - 문서 인덱싱
+  - 토큰 비용
 tags:
   - ai-engineering
   - harness-engineering
