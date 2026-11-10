@@ -1,18 +1,21 @@
 ---
 id: knowledge-backend-facade
 title: Facade
-description: "도메인 Facade를 공개 진입점으로 두는 글 모음입니다. 앱 동작 단위, 트랜잭션 경계, 이름 규칙과 실패 테스트까지 이어서 봅니다."
+description: "예약 정책과 화면 조립이 어디서 갈리는지, 트랜잭션·부분 실패를 어느 글에서 보면 되는지 안내합니다."
 slug: "/knowledge/backend/facade/index"
 ---
 # Facade
 
-> **개요:** 애플리케이션 영역의 책임과 이름 선택, 공개 진입점(`{Domain}Facade` / `{Feature}BffFacade`)을 다룹니다.
-> 공개 여부는 이름만으로 판단하지 않습니다.
-> **하네스 필독 아님.** 구현은 원셋에 있습니다.
+방문 예약을 등록하는 일과 등록 결과를 화면에 보여주는 일은 범위가 다릅니다.<br />
+도메인 Facade는 예약 가능 여부와 저장을 맡고, BFF Facade는 공개 유즈케이스를 조합해 화면 응답을 만듭니다.
 
-- [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) — 허브. 필독 아님
-  - [진입과 이름 (GoF·경량 헥사·연관 끊기)](/docs/knowledge/backend/facade/facade-entry-and-naming)
-  - [앱 동작 단위와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions)
-  - [테스트와 실패 정책](/docs/knowledge/backend/facade/facade-testing-and-failures)
+**하네스 필독이 아닙니다.** 구현은 원셋 DomainFacade에 있습니다.
 
-원셋 DomainFacade: `docs/harness/templates/backend/spring/exampleitem/facade/`
+| 지금 겪는 문제 | 읽을 글 |
+|---|---|
+| 시리즈 전체 흐름과 하위 글 안내 | [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design) |
+| 공개 진입점 이름과 GoF·헥사 대응이 헷갈림 | [진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming) |
+| 예약은 저장됐는데 화면만 실패하는 이유를 알고 싶음 | [앱 동작 단위와 트랜잭션](/docs/knowledge/backend/facade/facade-app-unit-and-transactions) |
+| 예약 불가와 저장 후 조회 실패를 테스트로 나누고 싶음 | [테스트와 실패 정책](/docs/knowledge/backend/facade/facade-testing-and-failures) |
+
+원셋: `docs/harness/templates/backend/spring/exampleitem/facade/`
