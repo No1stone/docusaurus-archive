@@ -1,6 +1,3 @@
-docs/knowledge/backend/design/controller/index.md
-docs/knowledge/backend/design/entity/index.md
-docs/knowledge/backend/design/facade/index.md
 docs/knowledge/backend/design/repository/index.md
 docs/knowledge/backend/design/service/index.md
 docs/knowledge/backend/design/testing/index.md
