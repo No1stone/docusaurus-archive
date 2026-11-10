@@ -1,21 +1,24 @@
 ---
 id: knowledge-backend-controller
 title: Controller
-description: "HTTP 경계 Controller와 Advice 글을 모읍니다. 요청 바인딩, 검증 실패, 예외 응답과 메시지 처리 흐름을 한곳에서 찾습니다."
+description: "예약 요청이 Controller에서 바인딩되고 Advice가 검증·예외를 응답으로 바꾸는 글을, 증상별로 고를 수 있게 안내합니다."
 slug: "/knowledge/backend/controller/index"
 ---
 # Controller
 
-> **개요:** Controller(HTTP 경계) 레이어 지식 모음.
+예약 등록 API를 열었을 때 URL과 DTO 바인딩은 Controller에서 읽고, 차량번호가 비었거나 예약 규칙에 걸리면 Advice가 공통 응답으로 바꿉니다.<br />
+이 목록은 글을 늘리지 않고, 어떤 문제에서 어느 글을 보면 되는지 안내합니다.
 
-Controller는 HTTP 경계입니다. 요청 바인딩과 Advice 오류 처리 글을 이 아래에서 이어 갑니다.
+**하네스 필독이 아닙니다.** 구현은 [Spring 원셋](/docs/harness/templates/backend/spring/ONESET)에 있습니다.
 
-- [Controller Design](/docs/knowledge/backend/controller/controller-design)
-- [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) — 허브. 하네스 필독 아님
-  - [messages와 i18n](/docs/knowledge/backend/controller/advice-messages-and-i18n)
-  - [예외 전파와 try/catch](/docs/knowledge/backend/controller/advice-exception-propagation)
-  - [검증](/docs/knowledge/backend/controller/advice-validation)
-  - [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope)
-  - [인접 경계](/docs/knowledge/backend/controller/advice-adjacent-boundaries)
+| 지금 겪는 문제 | 읽을 글 |
+|---|---|
+| 어느 URL이 어느 Facade를 부르는지 안 보임 | [Controller Design](/docs/knowledge/backend/controller/controller-design) |
+| 검증·예외·메시지 글을 어디부터 볼지 모름 | [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages) |
+| 차량번호 DTO와 페이지 size 인자 실패가 다른 예외로 보임 | [검증](/docs/knowledge/backend/controller/advice-validation) |
+| 같은 업무 오류인데 HTTP 상태·본문 code가 들쭉날쭉함 | [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope) |
+| 메시지 키와 로케일이 응답에 안 실림 | [messages와 i18n](/docs/knowledge/backend/controller/advice-messages-and-i18n) |
+| Controller마다 try/catch를 반복하고 있음 | [예외 전파와 try/catch](/docs/knowledge/backend/controller/advice-exception-propagation) |
+| Filter·Interceptor와 Advice 경계를 나눠야 함 | [인접 경계](/docs/knowledge/backend/controller/advice-adjacent-boundaries) |
 
-Related template path (repo): `docs/harness/templates/backend/spring/exampleitem/controller/` · support.
+원셋 Controller: `docs/harness/templates/backend/spring/exampleitem/controller/`
