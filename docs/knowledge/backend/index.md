@@ -17,6 +17,7 @@ slug: "/knowledge/backend/"
 - [Facade](/docs/knowledge/backend/facade/index) — 애플리케이션 영역과 공개 진입점
 - [Service](/docs/knowledge/backend/service/index) — 데이터 접근 경계 (Port와 Adapter). 경로명 Service는 하위 호환
 - [Testing](/docs/knowledge/backend/testing/index) — 테스트 경계와 배치
+- [알림](/docs/knowledge/backend/notification/index) — 알림함, SSE 배지, 앱, 웹 푸시
 
 ## Technology
 

@@ -68,3 +68,9 @@ docs/knowledge/index.md
 docs/patterns/index.md
 docs/postmortems/index.md
 docusaurus.config.ts
+docs/knowledge/backend/notification/index.md
+docs/knowledge/backend/notification/notification-design-and-delivery.md
+docs/knowledge/backend/notification/inbox-and-read-state.md
+docs/knowledge/backend/notification/sse-inapp-badge.md
+docs/knowledge/backend/notification/mobile-and-web-push.md
+docs/knowledge/backend/index.md

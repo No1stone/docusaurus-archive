@@ -13,6 +13,7 @@ slug: /knowledge/data
 ## 하위 (문서가 있는 것만)
 
 - [JPA / ORM](/docs/knowledge/data/jpa)
+- [DB 성능 튜닝](/docs/knowledge/data/db-performance-tuning) — 병목, 인덱스, 조회 모델, 파티션, 동시성 목차
 - [R2DBC](/docs/knowledge/data/r2dbc-stack)
 - [SQL / Ops](/docs/knowledge/data/sql-ops)
 - [MySQL & MariaDB](/docs/knowledge/data/mysql)

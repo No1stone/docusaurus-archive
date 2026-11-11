@@ -73,6 +73,15 @@ unlisted: true
 - 이미지 깨짐·상대 경로만 보이면 해당 글만 수정
 - 커밋은 논리 단위로 나누기 (이미 푸시된 것과 섞지 말 것)
 
+### 5. 제품·기능 개발 큐
+
+아카이브 글 주제와 별개로, 제품 쪽에서 이어서 할 기능입니다.
+
+| 항목 | 메모 |
+|------|------|
+| SSE (Server-Sent Events) | Knowledge: [SSE로 인앱 알림 배지 갱신](/docs/knowledge/backend/notification/sse-inapp-badge) 작성됨. 제품 연동과 같이 본다. |
+| 알람 뱃지 기능 개발 | 미읽음, 알림 수 뱃지. [알림](/docs/knowledge/backend/notification/index) 설계 글 기준으로 제품 구현. |
+
 ## 글 쓸 주제 (2026-11, 하네스 잔여)
 
 2026-11-09 일괄(index·Database 입구·PageQuery·ADR-0012~14·트레이스·RestClient vs Istio·`spring-messaging-saga`) **밖**에 남은 주제입니다.
@@ -87,6 +96,7 @@ unlisted: true
 | 배치·스케줄과 알림 재발송 | db-design partition-ops / 운영 한 절, 또는 알림 ADR 보완 | Quartz·파티션 배치 자리. 알림은 outbox 없음(ADR-0012) → 실패분 배치 재발송할지 |
 | decisions index 옛 상대 링크 | `docs/decisions/index.md` | ADR-0001~0009 루트 상대 경로 깨짐. 0010 스타일로 경로만 맞춤 |
 | event-saga 적용 근거 (구현 후) | `spring-messaging-saga` · own-events-outbox | 코드/호스트 구현이 생긴 뒤에야 적용 근거로 씀. 지금은 레시피만 |
+| SSE, 알림함, 푸시 | [알림](/docs/knowledge/backend/notification/index) | 설계·알림함·SSE·푸시 글 작성됨. 제품 뱃지 개발과 같이 본다 |
 
 ### Controller Advice (완료 메모)
 
@@ -108,6 +118,26 @@ Advice 분리와 별개입니다.
 - Flyway 승격 → ADR-0013으로 비기본 확정
 
 운영: `main`에 미푸시 커밋이 있으면 push는 별도 요청 시.
+
+## DB·쿼리 튜닝 — 큰 목차 (할 일)
+
+Knowledge 허브: [DB 성능 튜닝](/docs/knowledge/data/db-performance-tuning) (`data` 아래, SQL / Ops와 같은 깊이).
+표의 「들어갈 글」이 세부 작성 할 일입니다. 허브와 이 표를 같이 유지합니다.
+
+| 큰 목차 | 무엇을 바꾸나 | 들어갈 글 |
+|---|---|---|
+| **병목 진단** | 어디서 시간이 걸리는지 확인 | 슬로우 쿼리, 실행 계획, 락 대기, 커넥션 풀 대기 |
+| **쿼리와 인덱스 튜닝** | 같은 데이터를 읽고 쓰는 방법 | 복합 인덱스 순서, 검색 조건과 정렬, N+1과 일괄 조회, 다중 조인 벌크 갱신 |
+| **조회 모델 설계** | 조회 시 조합할 데이터와 미리 저장할 데이터의 경계 | `UNION ALL`을 View로 묶은 경험, 역정규화 테이블로 조회를 단순화한 경험 |
+| **데이터 배치와 분산** | 데이터가 쌓이고 조회되는 단위 | 월별 파티셔닝, `pmax`와 보관 정책, 팜프로 테이블 샤딩, DB 샤딩 |
+| **쓰기와 동시성 튜닝** | 한 번에 처리할 작업량과 트랜잭션 범위 | 대량 갱신 분할, 락 범위, 배치 실패와 재처리 |
+
+연계: 조회 모델 View 사례는 [Union All](/docs/knowledge/k-union-all), 이후 방향은 역정규화. 파티션은 [PARTITION](/docs/knowledge/k-partition) 등 기존 글과 이어서 채웁니다.
+
+## 후속 (별도 패스)
+
+- 개인 Git 실험 레포(`record2023` 등) 주제 목록화 — 플랜에 수집 중, 표는 아직 미반영
+- 부트베이스 전수 리스트화 — 미완
 
 ## 검증
 

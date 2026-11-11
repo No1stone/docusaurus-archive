@@ -5,29 +5,26 @@ description: Failures, incidents, and design mistakes
 unlisted: true
 slug: /postmortems/
 ---
+
 # Postmortems
 
-> **개요:** 실패, 장애, 잘못된 설계 기록입니다.
-> 교훈이 ADR, Knowledge로 흘러가게 합니다.
+:::info[노션에서 옮겨 온 글을 다듬고 있습니다]
 
-이 영역의 일부 글은 기존 노션 자료를 AI의 도움으로 일괄 이전·정리했습니다.
-표현이 어색하거나 설명이 충분하지 않은 부분은 직접 확인하며 순차적으로 다듬고 있습니다.
+이곳의 일부 글은 기존 노션 자료를 AI로 일괄 이전한 기록입니다.<br />
+이전 과정에서 문장이나 구성이 어색해진 글은 제가 하나씩 읽으며 표현과 예제를 다듬고 있습니다.
 
-Failures, incidents, bad designs, and operational problems.
+:::
 
-Intended feedback path:
+개발이 끝난 뒤에는 어떤 구성이 남았는지 볼 수 있지만, 작업 중에 왜 방향을 틀었는지는 잊기 쉽습니다.<br />
+이곳에는 프로젝트를 진행하며 만난 문제와 당시 확인한 범위, 그 뒤에 바꾼 것을 남깁니다.
 
-```text
-Postmortem → Decision / ADR → Knowledge / Pattern → Template → Harness
-```
+잘된 부분은 어떤 조건에서 효과가 있었는지 적습니다.<br />
+시도에서 끝난 부분은 어디까지 됐고 무엇이 남았는지 구분합니다.<br />
+다른 프로젝트에도 적용할 수 있는 판단은 [설계와 결정](/docs/decisions/)이나 [패턴](/docs/patterns/index)에서 이어집니다.
 
-Not default context for routine implementation; load when investigating past lessons.
+## 프로젝트 사례
 
-## 있는 글
-
-### 프로젝트 개선 사례
-
-- [레거시 개선 사례](/docs/postmortems/legacy-improvement-cases) — 레거시 개선 묶음
-- [MSA·IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview) — 권한·MSA·AWS·데이터 경로 사례 묶음
-
-운영 장애 대응 초안(CloudWatch·Redis)은 작성자 검토로 게시에서 제외하거나 보류 중이며, 프로덕션 빌드에 포함하지 않습니다.
+| 사례 | 돌아보는 내용 |
+|---|---|
+| [레거시 개선 사례](/docs/postmortems/legacy-improvement-cases) | 기존 시스템에서 문제를 찾고 동작과 구조를 개선한 과정 |
+| [MSA와 IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview) | 권한 라우팅, 서버 구성과 데이터 전달을 구현하거나 검토한 과정 |

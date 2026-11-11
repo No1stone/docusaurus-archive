@@ -1,0 +1,8 @@
+{
+  "label": "Kafka",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "k-kafka"
+  }
+}

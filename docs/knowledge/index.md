@@ -3,43 +3,35 @@ id: knowledge
 title: Knowledge
 description: Current engineering knowledge by domain
 ---
+
 # Knowledge
 
-> **개요:** 현재 쓰는 엔지니어링 지식입니다.
-> 상위는 제품명이 아니라 분야·역할·문제로 나누고, 그 아래에서 공통 개념과 개별 기술을 구분합니다.
+:::info[노션에서 옮겨 온 글을 다듬고 있습니다]
 
-이 영역의 일부 글은 기존 노션 자료를 AI의 도움으로 일괄 이전·정리했습니다.
-표현이 어색하거나 설명이 충분하지 않은 부분은 직접 확인하며 순차적으로 다듬고 있습니다.
+이곳의 일부 글은 기존 노션 자료를 AI로 일괄 이전한 기록입니다.<br />
+이전 과정에서 문장이나 구성이 어색해진 글은 제가 하나씩 읽으며 표현과 예제를 다듬고 있습니다.
 
-## 분류 원칙
+:::
 
-- 상위 분야는 문서 내용에 맞춰 추가·통합·조정합니다. Backend, Messaging 등은 예시일 뿐 고정 목록이 아닙니다.
-- 모든 분야에 같은 폴더 깊이를 강제하지 않습니다. 글의 주제와 분량에 맞는 깊이만 둡니다.
-- 여러 기술이 섞인 글은 주된 목적에 한 번만 두고, 관련 기술은 태그·링크로 연결합니다.
-- 계층 설계 기준(개념)과 프레임워크 사용법(기술)을 같은 글에 섞지 않습니다.
+기술을 처음 붙여 볼 때는 기동하는 방법부터 찾습니다.<br />
+프로젝트에서 다시 쓰게 되면 설정 하나가 왜 필요했는지, 어떤 조건에서 결과가 달라졌는지가 더 궁금해집니다.
 
-## 현재 분야
+이곳에는 Java와 Spring으로 요청을 처리하는 코드부터 Redis에 데이터를 저장하는 방법, 데이터베이스에서 느린 조회를 확인하는 과정까지 모아 둡니다.<br />
+직접 쓴 구현이나 실험 코드가 있으면 글에서 함께 따라갈 수 있게 연결합니다.
 
-내용이 있어 만든 입구입니다. 없는 분야 폴더는 미리 두지 않습니다.
+## 주제별로 읽기
 
-| 분야 | 역할 |
-|------|------|
-| [Backend](./backend/) | 앱 계층 개념, Java·Spring·Spring Cloud |
-| [Frontend](./frontend/) | 웹 CMS 백오피스 FE 하네스 |
-| [Flutter](./flutter/) | 모바일 Flutter 경량 헥사·원셋 |
-| [Messaging](./messaging/) | 브로커, 채널·봇, 메일·웹훅 전달 |
-| [Data](./data/) | DB, ORM, 캐시, 마이그레이션 |
-| [Networking](./networking/) | HTTP, DNS, 프록시, 전송 경로 |
-| [Infrastructure](./infrastructure/) | 클라우드, 컨테이너, OS, 관측 |
-| [Security](./security/) | 인증·토큰·암호 |
-| [Tooling](./tooling/) | Git, CI, SSH, SDK, 유틸 |
+| 분야 | 이런 내용을 찾을 때 |
+|---|---|
+| [Backend](./backend/) | Java, Spring, Spring Cloud, 애플리케이션 계층과 테스트 |
+| [Frontend](./frontend/) | 웹 화면과 관리 도구, 공통 UI와 구현 예제 |
+| [Flutter](./flutter/) | 모바일 화면과 유즈케이스, 교체 가능한 데이터 접근 |
+| [Messaging](./messaging/) | 메시지 브로커, 메일, 봇과 외부 알림 연동 |
+| [Data](./data/) | 데이터베이스 설계와 튜닝, ORM, Redis |
+| [Networking](./networking/) | HTTP, DNS, 프록시와 요청 경로 |
+| [Infrastructure](./infrastructure/) | 클라우드, 컨테이너, 서버 운영과 관측 |
+| [Security](/docs/security/) | 인증, 토큰과 암호화 |
+| [Tooling](./tooling/) | Git, CI, SSH, 개발 도구와 버전 관리 |
 
-시작 허브: [No1Stone Start Page](./no1stone-start-page.md)
-
-전체 목록: [Notion 이전 문서 목록](../harness/history/notion-import-catalog.md)
-
-## Related
-
-- [Patterns](../patterns/)
-- [Architecture](../architecture/)
-- [Postmortems](../postmortems/)
+여러 기술이 함께 등장하는 글은 해결하려는 문제에 맞춰 한곳에 두고, 다른 분야에서는 링크로 이어집니다.<br />
+예전에 모아 둔 개발 메모는 [No1Stone Start Page](./infrastructure/no1stone-start-page.md)와 [노션 이전 문서 목록](../harness/history/notion-import-catalog.md)에서도 찾을 수 있습니다.

@@ -1,0 +1,8 @@
+{
+  "label": "RabbitMQ",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "messaging-rabbitmq"
+  }
+}

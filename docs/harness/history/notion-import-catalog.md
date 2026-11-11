@@ -113,7 +113,7 @@ unlisted: true
 - [R2dbc config](/docs/knowledge/k-r2dbc-config)
 - [R2dbcService](/docs/knowledge/k-r2dbcservice)
 - Reactive Streame API (게시 보류, `draft`)
-- [Redis](/docs/knowledge/k-redis)
+- [Redis](/docs/knowledge/data/redis)
 - [RedisPubSub](/docs/knowledge/k-redispubsub)
 - [Replication](/docs/knowledge/k-replication)
 - [RequestMapping](/docs/knowledge/k-requestmapping)

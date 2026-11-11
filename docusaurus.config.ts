@@ -1433,7 +1433,11 @@ const config: Config = {
           },
           {
             from: '/docs/knowledge/data/redis/redis',
-            to: '/docs/knowledge/k-redis',
+            to: '/docs/knowledge/data/redis',
+          },
+          {
+            from: '/docs/knowledge/k-redis',
+            to: '/docs/knowledge/data/redis',
           },
           {
             from: '/docs/knowledge/messaging/brokers/redispubsub',

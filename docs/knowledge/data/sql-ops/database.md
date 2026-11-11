@@ -19,7 +19,7 @@ slug: /knowledge/k-database
 
 - [Union All](/docs/knowledge/k-union-all)
 - [Postgresql info](/docs/knowledge/k-postgresql-info)
-- [Redis](/docs/knowledge/k-redis)
+- [Redis](/docs/knowledge/data/redis)
 - [QueryDsl REGEXP](/docs/knowledge/k-querydsl-regexp)
 - [MySql Optimization](/docs/knowledge/k-mysql-optimization)
 - [MYSQL CLI](/docs/knowledge/k-mysql-cli)
