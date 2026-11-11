@@ -142,15 +142,25 @@ else
   printf '%s\n' "${REST[@]}" > "$QUEUE_FILE"
 fi
 
-if [[ "$committed" -eq 0 ]]; then
-  log "no commits created; not building/pushing"
-  exit 0
-fi
-
+# Always persist dequeue (including all-skip), so stuck paths do not block forever.
 git add -- "$QUEUE_FILE"
 if ! git diff --cached --quiet -- "$QUEUE_FILE"; then
   git commit -m "[archive][chore]: doc-push 큐를 갱신한다"
   log "committed queue update"
+fi
+
+if [[ "$committed" -eq 0 ]]; then
+  log "no content commits; pushing queue advance only"
+  if ! git push origin HEAD >>"$LOG_FILE" 2>&1; then
+    log "ERROR: push failed"
+    exit 1
+  fi
+  remaining=0
+  if [[ -f "$QUEUE_FILE" ]]; then
+    remaining="$(grep -c . "$QUEUE_FILE" || true)"
+  fi
+  log "queue-only push done; remaining=$remaining"
+  exit 0
 fi
 
 log "npm run build"
