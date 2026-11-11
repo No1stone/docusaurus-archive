@@ -1,6 +1,7 @@
 # Facade template
 
-> **개요:** 도메인 유스케이스(`{Domain}Facade`)입니다.
+> **개요:** 도메인 유스케이스 영역입니다. 불변식과 애그리거트 관리 주체입니다.
+> 원셋 기본 이름은 `{Domain}Facade`이고, 접미사 목록은 열려 있습니다.
 > 모노리포에서는 **model**에 둡니다. api의 HTTP·gRPC 진입이 이 클래스를 호출합니다.
 > 자기 도메인 Port와 `DisplayNameResolver`만 주입합니다.
 > Adapter, Repository, Spec, 엔티티를 직접 다루지 않습니다.

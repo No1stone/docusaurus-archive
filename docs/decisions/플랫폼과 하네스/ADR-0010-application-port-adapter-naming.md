@@ -20,7 +20,7 @@ slug: "/decisions/adr-0010"
 
 계층은 클래스 접미사가 아니라 패키지, 책임, 의존 관계로 구분한다.
 
-- 애플리케이션 영역: 유스케이스, 정책, 조합. 공개 진입점의 **기본 이름은 Facade**이며 Manager, Checker, Handler, Processor, Resolver 등은 **역할이 분명할 때만** 쓴다. 예시는 닫힌 허용 목록이 아니다.
+- 애플리케이션 영역(유스케이스): 정책, 조합, **불변식과 애그리거트 관리 주체**. 공개 진입점의 **기본 이름은 Facade**이며 Manager, Checker, Handler, Processor, Resolver 등은 **역할이 분명할 때만** 쓴다. 이름은 열린 상태이며 닫힌 허용 목록이 아니다.
 - BFF 조립은 도메인 진입과 위치를 가르고, **도메인 애플리케이션 진입만** 호출한다. DomainPort를 직접 보지 않는다. 이름이 BFF임이 드러나게 둘 수 있다(기본 예 `{Feature}BffFacade`. 호스트 기존명 유지 가능).
 - 모노리포에서 도메인 진입과 `DisplayNameResolver`는 model, BFF 진입과 Controller·GraphQL·gRPC는 api에 둔다.
 - 진입 매핑: gRPC·HTTP 도메인 → 도메인 애플리케이션 진입, GraphQL·HTTP BFF → BFF 애플리케이션 진입 → 도메인 진입.

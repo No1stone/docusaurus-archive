@@ -23,7 +23,7 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 | Layer | Owns | Must not |
 |-------|------|----------|
 | 진입 (Controller / GraphQL Resolver / gRPC service) | 바인딩만. `CommonResponse` 등 프로토콜 응답 | Business rules, Repository, open transactions beyond Facade |
-| 도메인 애플리케이션 진입 | 한 도메인 Port CRUD·상태·정책. **기본 이름 Facade**. 책임이 분명할 때만 Manager, Checker, Handler, Processor, Resolver 등. 조회 직후 `DisplayNameResolver`. enum 시 `getCode()`를 String DTO에 되돌림 | Adapter·entity·Spec·Repository. 다른 도메인 Adapter |
+| 도메인 애플리케이션 진입 (유스케이스) | 한 도메인 Port CRUD·상태·정책. **불변식과 애그리거트 관리 주체**. 이름 기본값은 Facade이며, 접미사 목록은 열려 있음(책임이 분명할 때만 Manager, Checker, Handler, Processor, Resolver 등). 조회 직후 `DisplayNameResolver`. enum 시 `getCode()`를 String DTO에 되돌림 | Adapter·entity·Spec·Repository. 다른 도메인 Adapter. 불변식·애그리거트 규칙을 BFF·Controller·Adapter에 두기 |
 | BFF 애플리케이션 진입 | **필요할 때만** 둡니다. 여러 **도메인 애플리케이션 진입**을 묶어 화면·시나리오만 조립. 기본 예 `{Feature}BffFacade` (호스트 기존명 유지 가능) | DomainPort·Adapter·entity·Spec·Repository. 도메인 규칙을 BFF에 재구현. BFF 전용 Port 신설. 도메인 유스케이스만으로 충분한 요청에 BFF를 끼우기 |
 | Port | 영속·외부 능력 계약. **도메인 진입만** 호출. BFF는 Port를 보지 않음 | HTTP·JPA 타입 |
 | JPA Adapter | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()`. **CQRS 적용점**: optional Read / Command Provider | HTTP, multi-Port 비즈니스 흐름 |
@@ -33,8 +33,11 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 Port names describe capability (`CachePort`, `EncryptionPort`, `TokenPort`, `LockPort`, …), not vendor.
 See [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/).
 
-기본 공개 표면은 **도메인 애플리케이션 진입(Facade 등)** 입니다.
-한 도메인 유스케이스로 응답이 충분하면 진입(HTTP 도메인 Controller, gRPC)이 그 Facade만 호출합니다.
+기본 공개 표면은 **도메인 애플리케이션 진입(유스케이스)** 입니다.
+이 영역이 **불변식과 애그리거트를 관리하는 주체**입니다.
+클래스 이름은 열린 상태입니다. 기본값은 Facade이고, 역할이 분명할 때만 다른 접미사를 씁니다.
+
+한 도메인 유스케이스로 응답이 충분하면 진입(HTTP 도메인 Controller, gRPC)이 그 진입점만 호출합니다.
 BFF는 화면·시나리오가 여러 도메인 진입을 묶어야 할 때 **필요 시** 둡니다.
 클라이언트(웹, 앱)마다 조합이 달라 도메인 API만으로 맞추기 어려울 때도 같습니다.
 
@@ -44,11 +47,12 @@ BFF 진입은 **도메인 애플리케이션 진입만** 호출합니다. Domain
 Skipping a layer is a Reviewer `high` finding.
 Legacy `*Service` that only wraps JPA → Adapter by role.
 
-### 애플리케이션 이름 (기존 원칙)
+### 애플리케이션 이름 (열린 상태)
 
-예시는 **닫힌 허용 목록이 아닙니다**.
+유스케이스 영역의 **역할**(불변식·애그리거트·정책)과 **클래스 이름**은 별개입니다.
+이름은 **닫힌 허용 목록이 아닙니다**.
 특정 접미사를 일률적으로 강제하지 않습니다.
-이름은 역할을 가장 잘 설명하도록 고릅니다.
+역할을 가장 잘 설명하도록 고릅니다.
 
 - **기본값은 Facade**입니다. 원셋도 `ExampleItemFacade`입니다.
 - Manager, Checker, Handler, Processor, Resolver 등은 **책임이 분명할 때만** 씁니다.
@@ -60,8 +64,8 @@ BFF를 둘 때는 조립(여러 도메인 진입)임이 이름에 드러나게 �
 
 | | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스·정책 (**기본**) | **필요 시** 여러 도메인 진입을 묶어 화면·시나리오 조립 |
-| 이름 | 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
+| 책임 | 유스케이스·정책·**불변식·애그리거트 관리** (**기본**) | **필요 시** 여러 도메인 진입을 묶어 화면·시나리오 조립 |
+| 이름 | 열림. 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
 | 모노리포 위치 | **model** | **api** |
 | 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱의 BFF·feature 패키지 |
 | 의존 | 자기 Port + `DisplayNameResolver` | **도메인 애플리케이션 진입만** (Port 없음) |
