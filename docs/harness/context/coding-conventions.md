@@ -24,7 +24,7 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 |-------|------|----------|
 | 진입 (Controller / GraphQL Resolver / gRPC service) | 바인딩만. `CommonResponse` 등 프로토콜 응답 | Business rules, Repository, open transactions beyond Facade |
 | 도메인 애플리케이션 진입 | 한 도메인 Port CRUD·상태·정책. **기본 이름 Facade**. 책임이 분명할 때만 Manager, Checker, Handler, Processor, Resolver 등. 조회 직후 `DisplayNameResolver`. enum 시 `getCode()`를 String DTO에 되돌림 | Adapter·entity·Spec·Repository. 다른 도메인 Adapter |
-| BFF 애플리케이션 진입 | 여러 **도메인 애플리케이션 진입**을 묶어 화면·시나리오만 조립. 기본 예 `{Feature}BffFacade` (호스트 기존명 유지 가능) | DomainPort·Adapter·entity·Spec·Repository. 도메인 규칙을 BFF에 재구현. BFF 전용 Port 신설 |
+| BFF 애플리케이션 진입 | **필요할 때만** 둡니다. 여러 **도메인 애플리케이션 진입**을 묶어 화면·시나리오만 조립. 기본 예 `{Feature}BffFacade` (호스트 기존명 유지 가능) | DomainPort·Adapter·entity·Spec·Repository. 도메인 규칙을 BFF에 재구현. BFF 전용 Port 신설. 도메인 유스케이스만으로 충분한 요청에 BFF를 끼우기 |
 | Port | 영속·외부 능력 계약. **도메인 진입만** 호출. BFF는 Port를 보지 않음 | HTTP·JPA 타입 |
 | JPA Adapter | `Specs.of(Filter)`, `map` / `mapAll`, `BeanUtils.map` on update, `entity.delete()`. **CQRS 적용점**: optional Read / Command Provider | HTTP, multi-Port 비즈니스 흐름 |
 | Provider | Adapter 아래 기술 접근 (`RedisProvider`, `VaultProvider`, …) | Port 이름에 제품명 |
@@ -33,7 +33,12 @@ Project-local rules always win over this page (see [precedence](/docs/harness/co
 Port names describe capability (`CachePort`, `EncryptionPort`, `TokenPort`, `LockPort`, …), not vendor.
 See [adapter README](/docs/harness/templates/backend/spring/exampleitem/persistence/).
 
-진입(Controller·GraphQL·gRPC)은 도메인 또는 BFF 애플리케이션 진입점만 호출합니다.
+기본 공개 표면은 **도메인 애플리케이션 진입(Facade 등)** 입니다.
+한 도메인 유스케이스로 응답이 충분하면 진입(HTTP 도메인 Controller, gRPC)이 그 Facade만 호출합니다.
+BFF는 화면·시나리오가 여러 도메인 진입을 묶어야 할 때 **필요 시** 둡니다.
+클라이언트(웹, 앱)마다 조합이 달라 도메인 API만으로 맞추기 어려울 때도 같습니다.
+
+진입(Controller·GraphQL·gRPC)은 도메인 또는(있을 때) BFF 애플리케이션 진입점만 호출합니다.
 도메인 진입은 자기 도메인 Port만 봅니다.
 BFF 진입은 **도메인 애플리케이션 진입만** 호출합니다. DomainPort를 직접 주입·호출하지 않습니다.
 Skipping a layer is a Reviewer `high` finding.
@@ -50,12 +55,12 @@ Legacy `*Service` that only wraps JPA → Adapter by role.
 - 이름만 보고 Facade를 Manager 등으로 일괄 변경하지 않습니다.
 - 표시명 헬퍼 예는 `DisplayNameResolver`입니다. `UserNameFacade`처럼 표시명 전용 Facade는 두지 않습니다.
 
-BFF 조립(여러 도메인 진입)은 이름이 BFF임이 드러나게 두는 것이 좋습니다.
+BFF를 둘 때는 조립(여러 도메인 진입)임이 이름에 드러나게 두는 것이 좋습니다.
 기본 예는 `{Feature}BffFacade`이고, 호스트에 `*IntegrationFacade` 등이 있으면 호스트를 유지합니다.
 
 | | 도메인 애플리케이션 진입 | BFF 애플리케이션 진입 |
 |--|-------------------------|----------------------|
-| 책임 | 도메인 속성 유스케이스·정책 | 여러 도메인 진입을 묶어 화면·시나리오 조립 |
+| 책임 | 도메인 속성 유스케이스·정책 (**기본**) | **필요 시** 여러 도메인 진입을 묶어 화면·시나리오 조립 |
 | 이름 | 기본 Facade. 책임 분명할 때만 다른 접미 | 기본 예 `BffFacade` (호스트명 유지 가능) |
 | 모노리포 위치 | **model** | **api** |
 | 모놀리식 위치 | 도메인 폴더 (원셋 `facade/`) | 앱의 BFF·feature 패키지 |
@@ -77,10 +82,10 @@ Provider나 Client도 Port를 구현하면 Adapter 역할입니다.
 
 | 진입 (api) | 호출 | 비고 |
 |------------|------|------|
-| GraphQL | BFF 애플리케이션 진입 | 시나리오 조립 |
+| GraphQL | BFF 애플리케이션 진입 | 시나리오 조립이 있을 때. GraphQL을 쓰면 그 진입은 BFF를 거친다 |
 | gRPC | 도메인 애플리케이션 진입 (model) | 도메인 proto ↔ 도메인 유스케이스 |
-| HTTP 도메인 API | 도메인 애플리케이션 진입 (model) | ExampleItem 원셋 → Facade |
-| HTTP BFF API | BFF 애플리케이션 진입 | GraphQL과 같은 층 |
+| HTTP 도메인 API | 도메인 애플리케이션 진입 (model) | 기본. ExampleItem 원셋 → Facade |
+| HTTP BFF API | BFF 애플리케이션 진입 | 화면·시나리오 조립이 필요할 때. GraphQL과 같은 층 |
 
 다른 프로세스로 나가는 gRPC·HTTP는 도메인 쪽 `*ClientPort` / `*ClientAdapter`로 두고, **도메인 진입**이 그 Port를 봅니다.
 BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 API)만 호출합니다.
@@ -93,7 +98,7 @@ BFF는 로컬·원격 모두 도메인 진입(또는 그에 대응하는 공개 
 
 | | 모놀리식 | 모노리포 |
 |--|----------|----------|
-| api / 앱 | 진입(Controller 등) + 필요 시 BFF 애플리케이션 진입. 원셋은 확인용 Controller를 도메인 트리에 둠 | 진입 + BFF 애플리케이션 진입 |
+| api / 앱 | 진입(Controller 등) + **필요 시** BFF 애플리케이션 진입. 원셋은 확인용 Controller를 도메인 트리에 둠 | 진입 + **필요 시** BFF 애플리케이션 진입 |
 | model | (같은 앱 안 도메인 폴더) 도메인 진입(`Facade` 등), `DisplayNameResolver`, dto, Port, Adapter, entity, repository, spec | 동일 구성을 `lib-model`에. 패키지 도메인만, 모듈 쪼개지 않음 |
 | REST 연동 | 앱 `client/` 등 | 복사 예 `outbound-rest/` (공유 lib 아님, 승격은 나중에) |
 | `@BizEnum` 생성물 | 소스에 두지 않음. `clean` 후 재생성 | 동일. 모듈 경계와 별개 |
