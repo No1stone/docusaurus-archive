@@ -1,6 +1,3 @@
-docs/knowledge/data/redis/boot-base/lib-cache.md
-docs/knowledge/data/redis/boot-base/lib-distributed-lock.md
-docs/knowledge/data/redis/caching-annotation.md
 docs/knowledge/data/redis/cashing.md
 docs/knowledge/data/redis/index.md
 docs/knowledge/data/redis/keys/key-design-and-ttl.md
@@ -74,3 +71,10 @@ docs/knowledge/backend/notification/inbox-and-read-state.md
 docs/knowledge/backend/notification/sse-inapp-badge.md
 docs/knowledge/backend/notification/mobile-and-web-push.md
 docs/knowledge/backend/index.md
+docs/knowledge/networking/http-stack/index.md
+docs/knowledge/networking/http-stack/uri.md
+docs/knowledge/networking/http-stack/url-scheme-and-deeplink.md
+docs/knowledge/networking/http-stack/http-message.md
+docs/knowledge/networking/http-stack/content-mime-type.md
+docs/knowledge/networking/http-stack/uri브라우저-흐름.md
+docs/knowledge/networking/index.md
