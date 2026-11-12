@@ -94,3 +94,16 @@ docs/knowledge/backend/design/entity/_category_.json
 docs/knowledge/backend/design/repository/_category_.json
 docs/knowledge/backend/design/testing/_category_.json
 docs/knowledge/backend/design/common/common-rest-client.md
+docs/harness/workflows/sdd/index.md
+docs/harness/workflows/sdd/_category_.json
+docs/harness/templates/sdd/index.md
+docs/harness/templates/sdd/_category_.json
+docs/harness/templates/sdd/_template/requirements-index.md
+docs/harness/templates/sdd/_template/design-index.md
+docs/harness/templates/sdd/_template/work-index.md
+docs/harness/templates/sdd/_template/requirements/_template.md
+docs/harness/templates/sdd/_template/design/_template.md
+docs/harness/templates/sdd/_template/work/_template.md
+docs/harness/workflows/index.md
+docs/harness/workflows/implement.md
+docs/harness/templates/README.md
