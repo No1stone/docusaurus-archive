@@ -1,5 +1,5 @@
-docs/knowledge/data/redis/cashing.md
 docs/knowledge/data/redis/index.md
+docs/knowledge/data/redis/patterns/cashing.md
 docs/knowledge/data/redis/keys/key-design-and-ttl.md
 docs/knowledge/data/redis/keys/list-set-sorted-set.md
 docs/knowledge/data/redis/keys/lua-atomic.md
@@ -7,7 +7,6 @@ docs/knowledge/data/redis/keys/string-and-hash.md
 docs/knowledge/data/redis/ops/persistence-and-memory.md
 docs/knowledge/data/redis/ops/topology.md
 docs/knowledge/data/redis/ops/작업-redis.md
-docs/knowledge/data/redis/patterns/cashing.md
 docs/knowledge/data/redis/patterns/counter-rate-limit.md
 docs/knowledge/data/redis/patterns/dedup.md
 docs/knowledge/data/redis/patterns/distributed-lock.md
@@ -15,14 +14,11 @@ docs/knowledge/data/redis/patterns/pubsub.md
 docs/knowledge/data/redis/patterns/ranking.md
 docs/knowledge/data/redis/patterns/session-and-token.md
 docs/knowledge/data/redis/patterns/work-queue.md
-docs/knowledge/data/redis/r2dbc-redis.md
-docs/knowledge/data/redis/redis.md
+docs/knowledge/data/redis/spring/r2dbc-redis.md
 docs/knowledge/data/redis/spring/caching-annotation.md
 docs/knowledge/data/redis/spring/jedis-lettuce.md
-docs/knowledge/data/redis/spring/r2dbc-redis.md
 docs/knowledge/data/redis/spring/redis-template.md
 docs/knowledge/data/redis/spring/redisson.md
-docs/knowledge/data/redis/작업-redis.md
 docs/knowledge/messaging/rabbitmq/basics/confirm-ack-prefetch.md
 docs/knowledge/messaging/rabbitmq/basics/exchange-and-binding.md
 docs/knowledge/messaging/rabbitmq/basics/producer-exchange-queue-consumer.md
@@ -44,8 +40,6 @@ docs/knowledge/messaging/kafka/patterns/multi-group-consume.md
 docs/knowledge/messaging/kafka/patterns/retention-reprocess.md
 docs/knowledge/messaging/kafka/spring/spring-kafka.md
 docs/knowledge/messaging/brokers/index.md
-docs/knowledge/messaging/brokers/kafka.md
-docs/knowledge/messaging/brokers/pubsub.md
 docs/knowledge/messaging/brokers/redispubsub.md
 docs/knowledge/messaging/compare/redis-rabbit-kafka.md
 docs/knowledge/messaging/index.md
