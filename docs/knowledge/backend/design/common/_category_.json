@@ -1,0 +1,9 @@
+{
+  "label": "공통 설계",
+  "position": 1,
+  "collapsed": false,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/backend/design/common/spring-common-design"
+  }
+}

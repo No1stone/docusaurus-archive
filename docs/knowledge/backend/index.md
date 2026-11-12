@@ -11,8 +11,9 @@ slug: "/knowledge/backend/"
 
 ## Design
 
-레이어 경계와 설계입니다. 메뉴·폴더는 `design/` 아래입니다. 공개 URL(slug)은 하위 호환을 위해 기존 경로를 유지합니다.
+레이어 경계와 설계입니다. 메뉴, 폴더는 `design/` 아래입니다. 공개 URL(slug)은 하위 호환을 위해 기존 경로를 유지합니다.
 
+- [공통 설계](/docs/knowledge/backend/common/spring-common-design) — 응답, 예외, 검증, 인증을 Spring 확장 지점에 모으는 안내
 - [Controller](/docs/knowledge/backend/controller/index) — HTTP 등 수신 경계
 - [Facade](/docs/knowledge/backend/facade/index) — 애플리케이션 영역과 공개 진입점
 - [Service](/docs/knowledge/backend/service/index) — 데이터 접근 경계 (Port와 Adapter). 경로명 Service는 하위 호환
@@ -21,7 +22,7 @@ slug: "/knowledge/backend/"
 
 ## Technology
 
-분량이 있어 나눈 기술 묶음입니다. Spring·Java는 주제별 하위를 둡니다.
+분량이 있어 나눈 기술 묶음입니다. Spring, Java는 주제별 하위를 둡니다.
 
 - [Java](/docs/knowledge/backend/java) — 언어·JVM, [JSON](/docs/knowledge/backend/java/json-utils)
 - [Spring](/docs/knowledge/backend/spring) — Core·Config·Web·WebFlux·Scheduling
@@ -29,5 +30,5 @@ slug: "/knowledge/backend/"
 
 ## Related
 
-- [Security](../security/) — JWT·Spring Security 메모
+- [Security](../security/) — JWT, Spring Security 메모
 - [Patterns](/docs/patterns/index)

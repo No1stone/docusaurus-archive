@@ -1,6 +1,6 @@
 {
   "label": "Testing",
-  "position": 4,
+  "position": 7,
   "link": {
     "type": "doc",
     "id": "knowledge/backend/design/testing/knowledge-backend-testing"

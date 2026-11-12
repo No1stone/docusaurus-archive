@@ -1,6 +1,6 @@
 {
   "label": "Controller",
-  "position": 1,
+  "position": 2,
   "link": {
     "type": "doc",
     "id": "knowledge/backend/design/controller/knowledge-backend-controller"
