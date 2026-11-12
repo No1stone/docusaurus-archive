@@ -229,7 +229,8 @@ Never overwrite with null on update.
 ## Errors and responses
 
 - Business failures throw `BizErrorException` / `BizWarnException` with a `ResponseTypeInterface` value. No ad-hoc `RuntimeException("not found")` and no string-only Biz constructors.
-- `ResponseType` holds **system-common** codes only. Module-specific codes belong in that API module’s enum implementing `ResponseTypeInterface` (separate follow-up).
+- Prefer common `ResponseType` first (supported HTTP statuses and shared reasons). Extend with a module enum implementing `ResponseTypeInterface` only for app-specific reasons or message conversion. Do not add new exception classes or Advice handlers by default—**add enum values**.
+- Do not duplicate common codes (e.g. generic 404) in a module enum.
 - Every Controller method returns `CommonResponse<T>` through `CommonResponseUtils.responseSuccess(...)`. Void writes return `responseSuccess()`.
 - Exception → HTTP mapping belongs to a global handler (`@RestControllerAdvice`), not inside Controllers.
 

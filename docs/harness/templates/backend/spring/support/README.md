@@ -13,7 +13,9 @@
 
 업무 실패는 `BizErrorException` / `BizWarnException`만 던집니다.
 생성자는 `ResponseTypeInterface`만 받습니다.
-`ResponseType`에는 시스템 공통 코드만 두고, API 모듈 전용 코드는 모듈 이넘이 인터페이스를 구현해 넘깁니다.
+`ResponseType`은 지원 HTTP status와 공통 세부 코드를 먼저 담습니다.
+평소에는 공통 값만 쓰고, 앱 특화 사유나 문구 변환이 필요할 때만 모듈 이넘을 `ResponseTypeInterface`로 확장합니다.
+새 예외 클래스나 Advice 핸들러를 늘리지 않고, **이넘만 추가**하는 쪽이 기본입니다.
 전역 변환은 [`CommonExceptionAdvice.java`](./CommonExceptionAdvice.java)가 담당합니다.
 
 ## Files
@@ -62,8 +64,14 @@ throw new BizErrorException(ResponseType.NOT_FOUND_RESOURCE);
 throw new BizWarnException(ResponseType.INVALID_PARAMETER);
 ```
 
-모듈 전용 코드는 3차에서 각 API 모듈 이넘으로 분리합니다.
-지금은 공통 `ResponseType`만 템플릿에 둡니다.
+작업 순서:
+
+1. 공통 `ResponseType`에 맞는 값이 있으면 그것을 씁니다.
+2. 없을 때만 API 모듈에 `implements ResponseTypeInterface` 이넘을 추가해 같은 Biz 생성자로 넘깁니다.
+3. 공통에 이미 있는 404, 400 등을 모듈에서 다시 만들지 않습니다.
+
+템플릿에는 공통 `ResponseType`만 둡니다.
+모듈 이넘 파일 예시는 호스트 모듈에서 필요할 때 추가합니다.
 
 ### `CreatedEntity.java`
 

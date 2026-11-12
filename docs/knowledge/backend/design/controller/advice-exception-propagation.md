@@ -81,7 +81,10 @@ if (conflict) {
 ```
 
 원셋 support는 `BizException` → `BizErrorException` / `BizWarnException` 구조입니다.<br />
-공통 코드는 `ResponseType`, 모듈 전용 코드는 모듈 이넘이 `ResponseTypeInterface`를 구현해 같은 생성자로 넘깁니다.
+공통 `ResponseType`이 지원 HTTP status와 기본 사유를 담당합니다.<br />
+앱 특화 메시지 변환이나 특별한 사유가 있을 때만 모듈 이넘이 `ResponseTypeInterface`를 구현해 같은 생성자로 넘깁니다.<br />
+일상 작업은 새 예외 타입이나 Advice를 늘리기보다 **이넘만 추가**하는 방식입니다.<br />
+공통에 이미 있는 코드는 모듈에서 복제하지 않습니다.
 
 Spring Framework 5.3 이후 `@ExceptionHandler`는 래핑된 cause 체인 깊은 곳의 타입도 매칭할 수 있습니다.<br />
 여러 handler가 맞으면 루트에 가까운 매칭이 선호되고, Advice 빈끼리의 우선순위도 영향을 줍니다.<br />
