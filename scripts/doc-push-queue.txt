@@ -72,3 +72,10 @@ docs/knowledge/networking/http-stack/http-message.md
 docs/knowledge/networking/http-stack/content-mime-type.md
 docs/knowledge/networking/http-stack/uri브라우저-흐름.md
 docs/knowledge/networking/index.md
+docs/harness/templates/backend/spring/support/README.md
+docs/harness/context/coding-conventions.md
+docs/knowledge/backend/design/controller/controller-advice-and-messages.md
+docs/knowledge/backend/design/controller/advice-exception-propagation.md
+docs/knowledge/backend/design/controller/advice-messages-and-i18n.md
+docs/knowledge/backend/design/controller/advice-http-status-and-envelope.md
+docs/knowledge/backend/design/controller/advice-adjacent-boundaries.md

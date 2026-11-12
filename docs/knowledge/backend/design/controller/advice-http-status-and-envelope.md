@@ -53,7 +53,7 @@ Advice는 예외마다 status를 다르게 줄 수 있습니다.<br />
 
 ## handler를 나누어 두는 예
 
-업무 Error / Warn / Known, 검증, 타입 불일치, 인증·인가, 없는 리소스, 업로드 한도, 낙관적 락, 원격 재시도 소진, 그 밖의 Exception.<br />
+업무 Error / Warn, 검증, 타입 불일치, 인증, 인가, 없는 리소스, 업로드 한도, 낙관적 락, 원격 재시도 소진, 그 밖의 Exception.<br />
 각각 로그 수준과 status·코드가 달라서, 하나의 catch-all만 두면 운영이 눈을 가리게 됩니다.
 
 인증·인가 문구는 예외 클래스명 키(`exception.AuthenticationException`)로 messages에 두기도 합니다.<br />
@@ -149,38 +149,39 @@ Problem Details의 `instance`에 요청 경로나 로그 조회용 UUID URN을 �
 ## 최소 골격에서 status와 엔벨로프
 
 ```java
-@Slf4j
 @RestControllerAdvice
-@RequiredArgsConstructor
 public class CommonExceptionAdvice {
 
-    private final MessageSource messageSource;
+    @ExceptionHandler(BizWarnException.class)
+    public CommonResponse<?> handleBizWarn(BizWarnException e, HttpServletResponse response) {
+        response.setStatus(e.getHttpStatus().value());
+        return CommonResponseUtils.response(
+                e.getSystemServiceModule(), e.getResponseType(), e.getErrorMessage());
+    }
 
     @ExceptionHandler(BizErrorException.class)
     public CommonResponse<?> handleBizError(BizErrorException e, HttpServletResponse response) {
-        log.error(e.getMessage(), e);
-        response.setStatus(resolveStatus(e));
-        return toEnvelope(e);
+        response.setStatus(e.getHttpStatus().value());
+        return CommonResponseUtils.response(
+                e.getSystemServiceModule(), e.getResponseType(), e.getErrorMessage(), e.getData());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public CommonResponse<?> handleValid(MethodArgumentNotValidException e, Locale locale) {
-        log.warn(e.getMessage());
-        return validationEnvelope(e, locale, messageSource);
+    public CommonResponse<?> handleValid(MethodArgumentNotValidException e) {
+        return CommonResponseUtils.response(ResponseType.INVALID_PARAMETER);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public CommonResponse<?> handleAny(Exception e) {
-        log.error(e.getMessage(), e);
-        return unknownEnvelope(isDev() ? e.getMessage() : null);
+        return CommonResponseUtils.response(ResponseType.UNKNOWN);
     }
 }
 ```
 
-원셋 `support`에 이 클래스를 올릴지는 선택입니다.<br />
-올려도 필독·필수 복사는 아닙니다.
+원셋 [`support/CommonExceptionAdvice.java`](/docs/harness/templates/backend/spring/support/CommonExceptionAdvice.java)가 이 골격입니다.<br />
+호스트 MessageSource, 검증 상세는 프로젝트에서 보강합니다.
 
 ---
 

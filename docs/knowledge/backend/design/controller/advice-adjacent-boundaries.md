@@ -143,9 +143,9 @@ MDC를 전파해 두었다면 그 핸들러 로그에도 같은 traceId가 찍�
 - 다운스트림 4xx/5xx는 가능하면 **우리 업무 예외로 바꿔 다시 throw** 하여 Advice가 최종 JSON을 만들게 한다
 
 ```java
-// 개념
+// 개념 — 공통 코드 또는 모듈 이넘(ResponseTypeInterface)
 catch (HttpClientErrorException.NotFound e) {
-    throw new BizWarnException(ResponseType.NOT_FOUND_REMOTE);
+    throw new BizWarnException(ResponseType.NOT_FOUND_RESOURCE);
 }
 catch (ResourceAccessException e) {
     throw new BizErrorException(ResponseType.MICRO_SERVICE_CONNECTION_FAILED, e);
@@ -153,8 +153,8 @@ catch (ResourceAccessException e) {
 ```
 
 Feign의 `RetryableException`처럼 “재시도하다 실패한 연결”을 전용 코드로 두는 것도 같은 맥락입니다.<br />
-에러 디코더에서 문자열만 던지면 messages·엔벨로프와 어긋납니다.<br />
-가능하면 응답 코드 이넘(또는 동등)을 싣는 업무 예외로 바꿉니다.
+에러 디코더에서 문자열만 던지면 messages, 엔벨로프와 어긋납니다.<br />
+가능하면 `ResponseTypeInterface`를 싣는 업무 예외로 바꿉니다.
 
 아웃바운드 호출이 `@Async` 안이라면, 위에서 말한 Uncaught handler와 MDC 전파가 다시 필요합니다.<br />
 동기 Facade 안에서 RestClient를 호출하면 Advice 경로로 자연스럽게 올라옵니다.

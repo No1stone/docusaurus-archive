@@ -1,28 +1,36 @@
 package com.example.template.support;
 
-public class BizErrorException extends RuntimeException {
-    private final ResponseType type;
+public class BizErrorException extends BizException {
 
-    public BizErrorException(ResponseType type) {
-        super(type.name());
-        this.type = type;
+    public BizErrorException(ResponseTypeInterface responseType) {
+        super(responseType);
     }
 
-    public ResponseType getType() {
-        return type;
+    public BizErrorException(ResponseTypeInterface responseType, Object... args) {
+        super(responseType, args);
     }
 
-    public BizErrorException addData(String key, Object value) {
-        if (data == null) {
-            data = new java.util.HashMap<>();
-        }
-        data.put(key, value);
-        return this;
+    public BizErrorException(ResponseTypeInterface responseType, Throwable cause) {
+        super(responseType, cause);
     }
 
-    public java.util.Map<String, Object> getData() {
-        return data;
+    public BizErrorException(ResponseTypeInterface responseType, Throwable cause, Object... args) {
+        super(responseType, cause, args);
     }
 
-    private java.util.Map<String, Object> data;
+    public BizErrorException(SystemServiceModule systemServiceModule, ResponseTypeInterface responseType) {
+        super(systemServiceModule, responseType);
+    }
+
+    public BizErrorException(SystemServiceModule systemServiceModule, ResponseTypeInterface responseType, Throwable cause) {
+        super(systemServiceModule, responseType, cause);
+    }
+
+    public BizErrorException(SystemServiceModule systemServiceModule, ResponseTypeInterface responseType, Object... args) {
+        super(systemServiceModule, responseType, args);
+    }
+
+    public BizErrorException(SystemServiceModule systemServiceModule, ResponseTypeInterface responseType, Throwable cause, Object... args) {
+        super(systemServiceModule, responseType, cause, args);
+    }
 }

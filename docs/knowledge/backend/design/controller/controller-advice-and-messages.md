@@ -23,13 +23,14 @@ HTTP 호출부는 어느 단계에서 실패했든 상태 코드와 응답 필�
 | 글 | 다루는 것 |
 |----|-----------|
 | [messages와 i18n](/docs/knowledge/backend/controller/advice-messages-and-i18n) | MessageSource, 키 작성 단위, Locale, 모노리포 소유(열림) |
-| [예외 전파와 try/catch](/docs/knowledge/backend/controller/advice-exception-propagation) | Error/Warn 계층, Runtime, Facade throw, catch 위치 |
+| [예외 전파와 try/catch](/docs/knowledge/backend/controller/advice-exception-propagation) | BizError/BizWarn, ResponseTypeInterface, Facade throw, catch 위치 |
 | [검증](/docs/knowledge/backend/controller/advice-validation) | Bean Validation vs Spring, 두 갈래 MVC 예외, 그룹·함정 |
 | [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope) | 2xx~5xx, 전부 200, CommonResponse vs RFC 9457, 낙관적 락 |
 | [인접 경계](/docs/knowledge/backend/controller/advice-adjacent-boundaries) | Filter/Security, `@Async`·MDC, RestClient/Feign, 상관 ID |
 
 열린 결정(모노리포 messages 소유, HTTP 항상 200 vs status 분리, i18n 기본)은 해당 하위 글에 “열림”으로 남깁니다.<br />
-원셋 `support`에 Advice 코드 템플릿을 올릴지는 선택이며, 올려도 필독·필수 복사는 아닙니다.
+원셋 `support`에 `CommonExceptionAdvice`와 Biz, `ResponseTypeInterface` 골격이 있습니다.
+필독은 아니며 호스트에 동등 타입이 있으면 호스트를 씁니다.
 
 ---
 
@@ -45,6 +46,6 @@ HTTP 상태와 업무 코드가 따로 움직이는 연동이라면 [오류 응�
 
 - [Controller Design](/docs/knowledge/backend/controller/controller-design)
 - [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design)
-- [support (CommonResponse, BizErrorException, PageQuery)](/docs/harness/templates/backend/spring/support/)
+- [support (CommonResponse, BizError/Warn, ResponseTypeInterface, PageQuery)](/docs/harness/templates/backend/spring/support/)
 - [outbound-rest](/docs/harness/templates/backend/spring/outbound-rest/)
 - 자산 맵: 저장소 루트 `index/backend.md`

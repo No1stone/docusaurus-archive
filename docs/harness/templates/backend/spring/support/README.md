@@ -4,19 +4,29 @@
 
 호스트에 같은 역할의 클래스가 있으면 호스트 클래스를 씁니다.
 `BaseEntity`는 `AuditingEntityListener`와 `BaseEntityListener`를 함께 등록합니다.
-등록·수정 감사 컬럼은 `CreatedEntity` / `UpdatedEntity`입니다.
-프로젝트 테이블 설계에서 언제 Created만 쓰는지 등은 [DB 설계 하네스 · Audit](/docs/harness/templates/backend/spring/db-design/audit)을 봅니다.
-`IdGeneratable`·`ServiceProviderble`을 구현한 엔티티만 `BaseEntityListener`가 id·서비스 id를 채웁니다.
+등록, 수정 감사 컬럼은 `CreatedEntity` / `UpdatedEntity`입니다.
+프로젝트 테이블 설계에서 언제 Created만 쓰는지 등은 [DB 설계 하네스, Audit](/docs/harness/templates/backend/spring/db-design/audit)을 봅니다.
+`IdGeneratable`, `ServiceProviderble`을 구현한 엔티티만 `BaseEntityListener`가 id, 서비스 id를 채웁니다.
 서비스 id는 호스트 `WebUtils.getServiceId()` 등으로 채웁니다.
 표시명 치환(`DisplayNameResolver`)은 [exampleitem/support/display](../exampleitem/support/display/DisplayNameResolver.java)에 둡니다.
 `CodeValueConverter.convertToEntityAttribute`의 예외는 호스트의 열거형 오류 예외로 바꿉니다.
 
+업무 실패는 `BizErrorException` / `BizWarnException`만 던집니다.
+생성자는 `ResponseTypeInterface`만 받습니다.
+`ResponseType`에는 시스템 공통 코드만 두고, API 모듈 전용 코드는 모듈 이넘이 인터페이스를 구현해 넘깁니다.
+전역 변환은 [`CommonExceptionAdvice.java`](./CommonExceptionAdvice.java)가 담당합니다.
+
 ## Files
 
+- [`ResponseTypeInterface.java`](./ResponseTypeInterface.java)
+- [`ResponseType.java`](./ResponseType.java)
+- [`SystemServiceModule.java`](./SystemServiceModule.java)
+- [`BizException.java`](./BizException.java)
+- [`BizErrorException.java`](./BizErrorException.java)
+- [`BizWarnException.java`](./BizWarnException.java)
 - [`CommonResponse.java`](./CommonResponse.java)
 - [`CommonResponseUtils.java`](./CommonResponseUtils.java)
-- [`BizErrorException.java`](./BizErrorException.java)
-- [`ResponseType.java`](./ResponseType.java)
+- [`CommonExceptionAdvice.java`](./CommonExceptionAdvice.java)
 - [`CreatedEntity.java`](./CreatedEntity.java)
 - [`UpdatedEntity.java`](./UpdatedEntity.java)
 - [`BaseEntity.java`](./BaseEntity.java)
@@ -34,104 +44,26 @@
 
 ## Source
 
-### `CommonResponse.java`
+### 예외와 응답 코드
+
+소스는 같은 폴더의 `.java` 파일을 원본으로 둡니다.
+요약만 적습니다.
+
+| 타입 | 역할 |
+|---|---|
+| `ResponseTypeInterface` | 공통, 모듈 이넘이 구현하는 계약 (`code`, `desc`, `httpStatus`) |
+| `ResponseType` | 시스템 공통 코드만 |
+| `BizException` | Error/Warn 부모. `ResponseTypeInterface`만 받음 |
+| `BizErrorException` / `BizWarnException` | 던지는 구현체 |
+| `CommonExceptionAdvice` | Biz와 검증 실패를 `CommonResponse`로 변환 |
 
 ```java
-package com.example.template.support;
-
-public class CommonResponse<T> {
-    private String code;
-    private String message;
-    private T data;
-
-    public CommonResponse() {}
-
-    public CommonResponse(String code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
-
-    public static <T> CommonResponse<T> ok(T data) {
-        return new CommonResponse<>("OK", "success", data);
-    }
-
-    public static CommonResponse<Void> ok() {
-        return new CommonResponse<>("OK", "success", null);
-    }
-
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
-    public T getData() { return data; }
-    public void setData(T data) { this.data = data; }
-}
+throw new BizErrorException(ResponseType.NOT_FOUND_RESOURCE);
+throw new BizWarnException(ResponseType.INVALID_PARAMETER);
 ```
 
-### `CommonResponseUtils.java`
-
-```java
-package com.example.template.support;
-
-public final class CommonResponseUtils {
-    private CommonResponseUtils() {}
-
-    public static <T> CommonResponse<T> responseSuccess(T data) {
-        return CommonResponse.ok(data);
-    }
-
-    public static CommonResponse<Void> responseSuccess() {
-        return CommonResponse.ok();
-    }
-}
-```
-
-### `BizErrorException.java`
-
-```java
-package com.example.template.support;
-
-public class BizErrorException extends RuntimeException {
-    private final ResponseType type;
-
-    public BizErrorException(ResponseType type) {
-        super(type.name());
-        this.type = type;
-    }
-
-    public ResponseType getType() {
-        return type;
-    }
-
-    public BizErrorException addData(String key, Object value) {
-        if (data == null) {
-            data = new java.util.HashMap<>();
-        }
-        data.put(key, value);
-        return this;
-    }
-
-    public java.util.Map<String, Object> getData() {
-        return data;
-    }
-
-    private java.util.Map<String, Object> data;
-}
-```
-
-### `ResponseType.java`
-
-```java
-package com.example.template.support;
-
-public enum ResponseType {
-    NOT_FOUND_RESOURCE,
-    UNDEFINED,
-    INVALID_ENUM_VALUE,
-    NOT_ALLOWED_ENUM_VALUE
-}
-```
+모듈 전용 코드는 3차에서 각 API 모듈 이넘으로 분리합니다.
+지금은 공통 `ResponseType`만 템플릿에 둡니다.
 
 ### `CreatedEntity.java`
 

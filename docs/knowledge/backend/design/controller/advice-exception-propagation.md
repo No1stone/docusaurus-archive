@@ -66,23 +66,22 @@ Spring 문서에 따르면 `@Controller`에 선언한 로컬 `@ExceptionHandler`
 
 | 층 | 로그 | 클라이언트에게 | 언제 |
 |----|------|----------------|------|
-| Error | error + 스택 | 업무 코드·메시지, 필요 시 data | 실패로 취급, 보통 TX 롤백 |
-| Warn | warn | 업무 코드·메시지 | 잘못된 입력·상태 거절처럼 예상 가능 |
-| Known | warn (코드 포함) | 업무 코드·메시지 | “알려진” 업무 결과로 남기고 싶을 때 |
-| 미분류 | error | 운영에서는 고정 문구. 로컬·dev만 상세 | 마지막 안전망. 래핑된 업무 예외가 있으면 먼저 꺼냄 |
+| Error (`BizErrorException`) | error + 스택 | 업무 코드, 메시지, 필요 시 data | 실패로 취급, 보통 TX 롤백 |
+| Warn (`BizWarnException`) | warn | 업무 코드, 메시지 | 잘못된 입력, 상태 거절처럼 예상 가능 |
+| 미분류 | error | 운영에서는 고정 문구. 로컬, dev만 상세 | 마지막 안전망. 래핑된 업무 예외가 있으면 먼저 꺼냄 |
 
 ```java
-// 유스케이스 개념
+// 유스케이스 개념 — ResponseTypeInterface 구현체만 넘깁니다.
 if (item == null) {
-    throw new BizWarnException(ResponseType.NOT_FOUND_ITEM);
+    throw new BizWarnException(ResponseType.NOT_FOUND_RESOURCE);
 }
 if (conflict) {
-    throw new BizErrorException(ResponseType.CONFLICT_STATE);
+    throw new BizErrorException(ResponseType.BAD_REQUEST);
 }
 ```
 
-원셋 support의 `BizErrorException`은 이 축의 최소 형태입니다.<br />
-Warn·Known을 호스트가 더 두면 Advice에 handler를 맞춰 추가하면 됩니다.
+원셋 support는 `BizException` → `BizErrorException` / `BizWarnException` 구조입니다.<br />
+공통 코드는 `ResponseType`, 모듈 전용 코드는 모듈 이넘이 `ResponseTypeInterface`를 구현해 같은 생성자로 넘깁니다.
 
 Spring Framework 5.3 이후 `@ExceptionHandler`는 래핑된 cause 체인 깊은 곳의 타입도 매칭할 수 있습니다.<br />
 여러 handler가 맞으면 루트에 가까운 매칭이 선호되고, Advice 빈끼리의 우선순위도 영향을 줍니다.<br />

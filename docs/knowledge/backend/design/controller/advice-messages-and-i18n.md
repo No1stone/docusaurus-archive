@@ -20,8 +20,9 @@ slug: "/knowledge/backend/controller/advice-messages-and-i18n"
 
 ## 업무 코드와 메시지 키의 역할
 
-처음에는 `throw new BizErrorException("주문을 찾을 수 없습니다")`가 편합니다.<br />
+문자열만 넣어 `throw new BizErrorException("주문을 찾을 수 없습니다")`처럼 던지지 않습니다.<br />
 같은 문장이 세 곳에 생기고, 영문 API를 요구받으면 코드를 다시 열게 됩니다.<br />
+업무 코드는 `ResponseTypeInterface` 구현(공통 `ResponseType` 또는 모듈 이넘)으로 싣고, 표시 문구는 MessageSource 키로 둡니다.<br />
 `@NotNull` 기본 메시지는 또 다른 파일(또는 영어 기본값)에 있습니다.
 
 MessageSource에 키를 두면 Advice, 검증 handler, 업무 코드가 **같은 번들**을 봅니다.<br />

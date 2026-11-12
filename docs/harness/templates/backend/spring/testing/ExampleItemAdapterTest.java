@@ -74,6 +74,6 @@ class ExampleItemAdapterTest {
                 BizErrorException.class,
                 () -> exampleItemAdapter.findById(99L));
 
-        assertEquals(ResponseType.NOT_FOUND_RESOURCE, thrown.getType());
+        assertEquals(ResponseType.NOT_FOUND_RESOURCE, thrown.getResponseType());
     }
 }
