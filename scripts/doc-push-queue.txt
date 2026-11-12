@@ -93,3 +93,4 @@ docs/knowledge/backend/design/service/_category_.json
 docs/knowledge/backend/design/entity/_category_.json
 docs/knowledge/backend/design/repository/_category_.json
 docs/knowledge/backend/design/testing/_category_.json
+docs/knowledge/backend/design/common/common-rest-client.md

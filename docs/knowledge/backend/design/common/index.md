@@ -29,6 +29,7 @@ boot-base에서는 여러 기능이 공유하는 동작을 Spring이 제공하�
 | 예외 처리 | 공통 예외와 Advice로 HTTP 상태와 오류 응답 변환 | 실패 조건과 사용할 오류 코드 |
 | 인증 필터 | 요청에서 인증 정보를 꺼내 검증을 위임하고 인증 결과를 연결 | 기능별 접근 권한과 업무상 허용 조건 |
 | 입력 검증 | Bean Validation으로 필수 여부, 길이, 형식 등을 일관되게 검증 | 예약 중복이나 상태 전이처럼 업무 데이터가 필요한 판단 |
+| 아웃바운드 Rest | 호출 형식, 타임아웃, 로깅, status 포함 응답 | 헤더·본문, status 해석, Outbox 기록 |
 | 공통 유틸리티 | JSON 변환이나 객체 매핑에 사용하는 설정과 구현을 재사용 | 기능에 필요한 변환 대상과 필드 선택 |
 
 ## 공통화하면 무엇이 달라지나요?
@@ -51,6 +52,7 @@ JSON 변환 설정을 바꿀 때도 공통 구현을 사용하는 경로를 기�
 | [인증 필터와 인증 Provider](/docs/knowledge/backend/common/auth-filter-and-provider) | 요청 진입 시 인증 흐름과 업무 허용 경계 |
 | [입력 검증과 업무 검증](/docs/knowledge/backend/common/input-and-domain-validation) | Bean Validation과 유즈케이스 검증 경계 |
 | [공통 유틸리티 설계](/docs/knowledge/backend/common/common-utility-design) | JSON 변환, 객체 매핑, 공통 설정 |
+| [공통 RestClient 설계](/docs/knowledge/backend/common/common-rest-client) | 아웃바운드 호출·로깅과 앱의 status/Outbox 경계 (초안) |
 
 구현과 Advice 상세는 [HTTP 상태와 엔벨로프](/docs/knowledge/backend/controller/advice-http-status-and-envelope), [검증](/docs/knowledge/backend/controller/advice-validation), [인접 경계](/docs/knowledge/backend/controller/advice-adjacent-boundaries), [JSON](/docs/knowledge/backend/java/json-utils)을 함께 봅니다.<br />
 Controller Advice 시리즈 허브는 [Controller Advice와 메시지](/docs/knowledge/backend/controller/controller-advice-and-messages)입니다.
