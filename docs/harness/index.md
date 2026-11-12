@@ -22,7 +22,7 @@ AI에게 비슷한 API를 만들어 달라고 해도, 요청을 받는 코드와
 
 | 찾고 있는 내용 | 읽을 곳 |
 |---|---|
-| 작업 흐름과 완료 기준 | [구현 흐름](/docs/harness/workflows/implement), [통과 기준](/docs/harness/workflows/acceptance) |
+| 작업 흐름과 완료 기준 | [구현 흐름](/docs/harness/workflows/implement), [통과 기준](/docs/harness/workflows/acceptance), [SDD](/docs/harness/workflows/sdd/) |
 | 레시피를 고르고 적용하는 방법 | [오케스트레이션](/docs/harness/orchestration), [상황별 레시피](/docs/harness/orchestrations/) |
 | Cursor, Codex에서 시작하는 방법 | [도구별 진입점](/docs/harness/entrypoints/) |
 | 작업 역할과 검증 도구 | [에이전트 역할](/docs/harness/agents/), [도구](/docs/harness/tools/) |

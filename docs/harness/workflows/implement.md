@@ -38,6 +38,7 @@
 통과 기준과 작업별 확인 방법은 [`acceptance.md`](/docs/harness/workflows/acceptance)입니다.
 구현 우선순위와 실행 원칙은 [`implementer.md`](/docs/harness/agents/implementer)입니다.
 커밋은 [`git.md`](/docs/harness/context/git)입니다.
+제품 명세(SDD)가 필요한지는 **대상 저장소 지침**으로 판단합니다. 도입된 경우만 [`sdd/`](/docs/harness/workflows/sdd/)와 [SDD 템플릿](/docs/harness/templates/sdd/)을 적용합니다.
 승인이 없으면 커밋하지 않습니다.
 
 ## 템플릿과 간결한 경로

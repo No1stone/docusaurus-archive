@@ -19,6 +19,7 @@ Lives under `docs/harness/templates/`.
 - [Spring ExampleItem 원셋](./backend/spring/) — 구현, testing, e2e. 안내는 [ONESET.md](/docs/harness/templates/backend/spring/ONESET).
 - [Frontend 원셋](./frontend/) — CMS, auth, layout 등. 안내는 [ONESET.md](/docs/harness/templates/frontend/ONESET). ExampleItem은 CMS 백오피스 `fe-v1`.
 - [Flutter 원셋](./flutter/) — 셸·auth·settings·item-crud 등. 안내는 [ONESET.md](/docs/harness/templates/flutter/ONESET). ExampleItem `nutag_app_v1`.
+- [SDD 템플릿](./sdd/) — 제품 `docs/specs`용 명세 골격. 적용 여부는 [Workflows / SDD](/docs/harness/workflows/sdd/)와 대상 저장소 지침을 확인합니다.
 
 ### Backend (Spring)
 
