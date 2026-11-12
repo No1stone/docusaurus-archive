@@ -79,3 +79,17 @@ docs/knowledge/backend/design/controller/advice-exception-propagation.md
 docs/knowledge/backend/design/controller/advice-messages-and-i18n.md
 docs/knowledge/backend/design/controller/advice-http-status-and-envelope.md
 docs/knowledge/backend/design/controller/advice-adjacent-boundaries.md
+docs/knowledge/backend/design/common/index.md
+docs/knowledge/backend/design/common/common-response-and-biz-exception.md
+docs/knowledge/backend/design/common/_category_.json
+docs/knowledge/backend/design/common/api-response-envelope.md
+docs/knowledge/backend/design/common/auth-filter-and-provider.md
+docs/knowledge/backend/design/common/input-and-domain-validation.md
+docs/knowledge/backend/design/common/common-utility-design.md
+docs/knowledge/backend/design/_category_.json
+docs/knowledge/backend/design/controller/_category_.json
+docs/knowledge/backend/design/facade/_category_.json
+docs/knowledge/backend/design/service/_category_.json
+docs/knowledge/backend/design/entity/_category_.json
+docs/knowledge/backend/design/repository/_category_.json
+docs/knowledge/backend/design/testing/_category_.json
