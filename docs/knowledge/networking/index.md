@@ -11,7 +11,7 @@ slug: /knowledge/networking
 
 ## 하위
 
-- [HTTP](/docs/knowledge/networking/http-stack) — 메시지·메서드·URI·CORS
+- [HTTP](/docs/knowledge/networking/http-stack) — URI, 스킴과 딥링크, 메시지, MIME, CORS
 - [Proxy / Nginx](/docs/knowledge/networking/proxy) — Nginx·upstream·rewrite
 - [Transport](/docs/knowledge/networking/transport) — IP·DNS·포트·TCP/UDP
 - [TLS / HTTPS](/docs/knowledge/networking/tls) — HTTPS·mkcert·ALB ACM
