@@ -5,7 +5,7 @@ title: "MySQL과 MariaDB 임시 테이블 사용법"
 sidebar_label: "임시 테이블"
 description: "CREATE TEMPORARY TABLE의 세션 수명과 InnoDB, MEMORY 저장 방식을 구분하고, 배치에서 ID 목록을 재사용하는 SQL과 Spring JDBC에서 같은 DataSource 연결을 쓰는 조건을 정리합니다."
 slug: /knowledge/data/mysql/design/temporary-tables
-sidebar_position: 5
+sidebar_position: 6
 tags:
   - MySQL
   - MariaDB

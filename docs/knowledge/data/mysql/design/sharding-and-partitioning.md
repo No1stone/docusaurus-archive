@@ -5,7 +5,7 @@ title: "DB 샤딩, 테이블 샤딩과 파티셔닝의 차이"
 sidebar_label: "샤딩과 파티셔닝 비교"
 description: "DB 샤딩과 테이블 샤딩, MySQL 파티셔닝의 분할 대상과 라우팅 책임을 비교하고 테이블별 조회, 전체 집계, 스키마 변경과 재분배의 운영 부담을 SQL 예제로 설명합니다."
 slug: /knowledge/data/mysql/design/sharding-and-partitioning
-sidebar_position: 7
+sidebar_position: 8
 tags:
   - MySQL
   - Database

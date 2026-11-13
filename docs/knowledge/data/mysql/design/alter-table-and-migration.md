@@ -268,6 +268,8 @@ MySQL에서 [한 RENAME TABLE 문장의 이름 교체](https://dev.mysql.com/doc
 아무 ALTER에나 같은 조합을 붙이지 않고 [버전과 작업별 Online DDL 지원 범위](https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html)를 확인합니다.
 Online DDL도 [메타데이터 잠금](https://dev.mysql.com/doc/refman/8.0/en/metadata-locking.html)이 완전히 없는 작업은 아닙니다.
 
+주문 컬럼 이름 변경처럼 `RENAME TABLE`과 `INSERT ... SELECT`만 따라가려면 [RENAME TABLE과 INSERT SELECT로 테이블 이관하기](/docs/knowledge/data/mysql/design/rename-and-insert-select-migration)를 봅니다.
+
 <details>
 <summary>공식 참고 자료</summary>
 
