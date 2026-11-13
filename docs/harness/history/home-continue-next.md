@@ -27,6 +27,11 @@ unlisted: true
 - AdSense 자동 광고만 (수동 AdSlot 제거)
 - 링크 글 재구성 1차 (대표 3: RestAPI / @Scheduled / JWT 포함, details 참고 자료)
 - `npm run build` 통과 상태였음 (커밋 직전 재확인)
+- Architecture cast → Transport 유니/브로드/멀티, 작업도커 → docker 설치 병합
+- Architecture AI Development (TDD, SDD) 글
+- 11-09 이후 Backend design, 알림 Knowledge SEO keywords와 Docs keywords JSON-LD
+- MySQL 임시 테이블 사용법 (`design/temporary-tables`)
+- 아키텍처 글감 컨티뉴 목록(목차, 예정 위치)
 
 ## 집에서 이어서 할 일
 
@@ -133,6 +138,44 @@ Knowledge 허브: [DB 성능 튜닝](/docs/knowledge/data/db-performance-tuning)
 | **쓰기와 동시성 튜닝** | 한 번에 처리할 작업량과 트랜잭션 범위 | 대량 갱신 분할, 락 범위, 배치 실패와 재처리 |
 
 연계: 조회 모델 View 사례는 [Union All](/docs/knowledge/k-union-all), 이후 방향은 역정규화. 파티션은 [PARTITION](/docs/knowledge/k-partition) 등 기존 글과 이어서 채웁니다.
+
+## 아키텍처 글감
+
+Architecture에 둘 글의 **목차와 예정 위치**만 적습니다.<br />
+본문 작성은 별도 패스입니다.<br />
+패턴 자체(Saga, Outbox, Fan-out, CQRS)는 이미 [아키텍처 패턴](/docs/patterns/architecture-patterns)에 있으면 그 글을 연결합니다.
+
+**첫 작성 후보:** 「모놀리스, 모듈러 모놀리스, MSA의 경계」<br />
+**다음 후보:** 「모노리포에서 산출물과 버전을 따로 관리하기」
+
+| 큰 목차 | 글 제목 | 예정 위치 | 연결할 기존 글 |
+|---|---|---|---|
+| 서비스 구성 | 모놀리스, 모듈러 모놀리스, MSA의 경계 (첫 작성 후보) | `docs/architecture/service-topology/` | — |
+| 서비스 구성 | MSA로 분리하는 기준 | `docs/architecture/service-topology/` | — |
+| 서비스 구성 | 단일 인스턴스와 다중 인스턴스 | `docs/architecture/service-topology/` | — |
+| 애플리케이션 구조 | 계층형 아키텍처 | `docs/architecture/application-structure/` | [Controller](/docs/knowledge/backend/controller/index), [Facade](/docs/knowledge/backend/facade/index), [Service](/docs/knowledge/backend/service/index) |
+| 애플리케이션 구조 | 경량 헥사고날 | `docs/architecture/application-structure/` | [진입과 이름](/docs/knowledge/backend/facade/facade-entry-and-naming), [ADR-0010](/docs/decisions/adr-0010) |
+| 애플리케이션 구조 | 도메인 Facade와 BFF | `docs/architecture/application-structure/` | [애플리케이션 영역과 Facade](/docs/knowledge/backend/facade/facade-design), [ONESET](/docs/harness/templates/backend/spring/ONESET) |
+| 애플리케이션 구조 | Port와 Adapter의 조회, 변경 경계 | `docs/architecture/application-structure/` | [Port와 Adapter 역할](/docs/knowledge/backend/service/service-port-adapter-role), [Provider와 CQRS](/docs/knowledge/backend/service/service-provider-and-cqrs), [CQRS](/docs/patterns/architecture-patterns/cqrs) |
+| 저장소와 빌드 | 모노리포와 멀티리포 | `docs/architecture/repo-and-build/` | [coding-conventions 모노리포 표](/docs/harness/context/coding-conventions) |
+| 저장소와 빌드 | Gradle 멀티 프로젝트와 Composite Build | `docs/architecture/repo-and-build/` | — |
+| 저장소와 빌드 | 모노리포에서 산출물과 버전을 따로 관리하기 (다음 후보) | `docs/architecture/repo-and-build/` | — |
+| 서비스 간 통신 | REST와 gRPC | `docs/architecture/service-communication/` | [RestAPI](/docs/knowledge/k-restapi-9f6eac), [CommonRestClient 설계](/docs/knowledge/backend/common/common-rest-client) |
+| 서비스 간 통신 | 동기 호출과 이벤트 | `docs/architecture/service-communication/` | [Messaging](/docs/knowledge/messaging/), [Fan-out](/docs/patterns/architecture-patterns/fan-out) |
+| 서비스 간 통신 | RabbitMQ와 Kafka를 쓰는 구조 | `docs/architecture/service-communication/` | [RabbitMQ](/docs/knowledge/messaging/rabbitmq/), [Kafka](/docs/knowledge/k-kafka), [lib-message-routing](/docs/harness/templates/backend/spring/lib-message-routing/), [lib-message-saga](/docs/harness/templates/backend/spring/lib-message-saga/) |
+| 서비스 간 통신 | 웹훅과 재시도 경계 | `docs/architecture/service-communication/` | `docs/knowledge/messaging/delivery/webhook.md` (게시 보류), [RestClient와 Istio 재시도](/docs/patterns/architecture-patterns/restclient-vs-istio-retries) |
+| 데이터와 정합성 | 공유 DB와 서비스별 DB | `docs/architecture/data-consistency/` | — |
+| 데이터와 정합성 | 조회 모델 분리 | `docs/architecture/data-consistency/` | [CQRS](/docs/patterns/architecture-patterns/cqrs), [CDC](/docs/patterns/architecture-patterns/cdc) |
+| 데이터와 정합성 | 여러 서비스에 걸친 변경과 실패 처리 흐름 | `docs/architecture/data-consistency/` | [Saga](/docs/patterns/architecture-patterns/saga), [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox), [오케스트레이션 Saga와 Outbox](/docs/patterns/architecture-patterns/own-events-outbox). 오케스트레이션과 코레오그래피는 **Patterns의 Saga 글에서 다룰 항목** |
+| 배포와 운영 | Rolling 배포 | `docs/architecture/deploy-and-ops/` | — |
+| 배포와 운영 | Blue-Green 배포 | `docs/architecture/deploy-and-ops/` | — |
+| 배포와 운영 | Canary 배포 | `docs/architecture/deploy-and-ops/` | — |
+| 배포와 운영 | Active-Passive와 Active-Active | `docs/architecture/deploy-and-ops/` | — |
+| 배포와 운영 | 장애 격리와 관측 | `docs/architecture/deploy-and-ops/` | [트레이스 전파 (W3C)](/docs/patterns/architecture-patterns/trace-propagation-w3c) |
+| AI Development | Template-Driven Development (작성됨) | `docs/architecture/ai-development/template-driven-development.md` | [Harness Templates](/docs/harness/templates/), [ONESET](/docs/harness/templates/backend/spring/ONESET) |
+| AI Development | Specification-Driven Development (작성됨) | `docs/architecture/ai-development/specification-driven-development.md` | [SDD 워크플로](/docs/harness/workflows/sdd/), [SDD 템플릿](/docs/harness/templates/sdd/) |
+| AI Development | SSOT와 ADR | `docs/architecture/ai-development/` | [Decisions](/docs/decisions/), 기존 「SDD + SSOT 블로그」 큐 |
+| AI Development | 원셋과 검증 흐름 | `docs/architecture/ai-development/` | [Implement](/docs/harness/workflows/implement), [Acceptance](/docs/harness/workflows/acceptance) |
 
 ## 후속 (별도 패스)
 
