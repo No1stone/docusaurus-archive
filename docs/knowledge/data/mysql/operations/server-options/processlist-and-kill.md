@@ -15,8 +15,8 @@ keywords:
   - "SHOW PROCESSLIST"
   - "KILL QUERY"
   - "KILL CONNECTION"
-  - "metadata lock"
-  - "Waiting for table metadata lock"
+  - "MySQL 실행 중 쿼리 중단"
+  - "메타데이터 잠금"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/show-processlist.html"
   - "https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/show/show-processlist"

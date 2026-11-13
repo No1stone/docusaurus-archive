@@ -15,8 +15,8 @@ keywords:
   - "sql_safe_updates"
   - "ERROR 1175"
   - "safe update mode"
-  - "UPDATE WHERE"
-  - "DELETE WHERE"
+  - "MySQL 안전 업데이트"
+  - "WHERE 없는 UPDATE"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/mysql-tips.html#mysql-tips-safe-updates"
   - "https://mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables#sql_safe_updates"

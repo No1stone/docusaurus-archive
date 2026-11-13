@@ -12,11 +12,11 @@ tags:
   - Database
 status: active
 keywords:
-  - "EXPLAIN"
   - "EXPLAIN ANALYZE"
   - "ANALYZE FORMAT=JSON"
-  - "실행 계획"
-  - "r_rows"
+  - "EXPLAIN"
+  - "MySQL 실행 계획"
+  - "실제 실행 통계"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/explain.html"
   - "https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/analyze-format-json"

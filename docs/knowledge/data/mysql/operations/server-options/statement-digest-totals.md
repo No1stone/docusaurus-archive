@@ -15,8 +15,8 @@ keywords:
   - "performance_schema"
   - "events_statements_summary_by_digest"
   - "DIGEST_TEXT"
-  - "statements_digest"
-  - "누적 실행 시간"
+  - "MySQL 누적 실행 시간"
+  - "다이제스트 통계"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/performance-schema-statement-summary-tables.html"
   - "https://mariadb.com/docs/server/reference/system-tables/performance-schema/performance-schema-tables/performance-schema-events_statements_summary_by_digest-table"
