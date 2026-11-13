@@ -117,9 +117,6 @@ export default function DocItemMetadata(): ReactNode {
         '@id': `${collectionUrl}#collection`,
       };
     }
-    if (fm.keywords?.length) {
-      structuredData.keywords = fm.keywords;
-    }
     if (references.length) {
       structuredData.citation = references;
     }
@@ -132,6 +129,10 @@ export default function DocItemMetadata(): ReactNode {
         name: 'Knowledge',
       };
     }
+  }
+
+  if (fm.keywords?.length) {
+    structuredData.keywords = fm.keywords;
   }
 
   const scriptId = database
@@ -149,6 +150,9 @@ export default function DocItemMetadata(): ReactNode {
       <OriginalMetadata />
       <Head>
         <meta property="og:locale" content="ko_KR" />
+        {fm.keywords?.length ? (
+          <meta name="keywords" content={fm.keywords.join(', ')} />
+        ) : null}
         <script type="application/ld+json" id={`${scriptId}-publisher`}>
           {serializeJsonLd(publisherNode)}
         </script>
