@@ -2,6 +2,10 @@
 id: entity-minimal-and-cqrs
 title: 엔티티 최소 사용과 CQRS
 description: "JPA 기능을 익힌 뒤에도 원셋이 엔티티를 작게 두고 Adapter에서 조회를 나누는 이유를 설명합니다. 목록·상세 분리와 연결합니다."
+keywords:
+  - CQRS
+  - 최소 엔티티
+  - 조회 분리
 tags:
   - backend
   - jpa

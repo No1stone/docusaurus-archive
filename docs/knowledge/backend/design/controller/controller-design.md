@@ -2,6 +2,11 @@
 id: controller-design
 title: Controller Design
 description: "예약 등록 요청이 Controller에서 DTO로 묶여 Facade 유즈케이스로 넘어가고, 응답과 테스트 경계가 어디서 갈리는지 설명합니다."
+keywords:
+  - Controller Design
+  - DTO
+  - Facade
+  - API 진입점
 tags:
   - backend
   - api

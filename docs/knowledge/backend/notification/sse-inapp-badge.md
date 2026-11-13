@@ -1,7 +1,12 @@
 ---
 id: knowledge-backend-notification-sse-inapp-badge
 title: SSE로 인앱 알림 배지 갱신
-description: "사용자별 SSE 연결, 재접속, 이중화와 알림 배지 갱신 흐름을 정리합니다."
+description: "사용자별 SSE 연결, 재접속, 이중화와 인앱 알림 배지 갱신 흐름을 정리합니다."
+keywords:
+  - SSE
+  - Server-Sent Events
+  - 인앱 알림
+  - 배지 갱신
 slug: "/knowledge/backend/notification/sse-inapp-badge"
 tags:
   - backend

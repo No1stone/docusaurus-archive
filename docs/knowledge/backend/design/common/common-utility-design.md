@@ -2,6 +2,11 @@
 id: common-utility-design
 title: "공통 유틸리티 설계"
 description: "JSON 변환과 객체 매핑처럼 같은 동작을 기대하는 호출부를 기준으로 공통 유틸리티를 두고, 용도별 설정과 의도를 구분하는 방법을 정리합니다."
+keywords:
+  - 공통 유틸리티
+  - JSON 변환
+  - 객체 매핑
+  - lib-common
 tags:
   - backend
   - utility

@@ -2,6 +2,11 @@
 id: entity-entitygraph
 title: EntityGraph
 description: "예약 상세에 필요한 연관만 EntityGraph로 가져오는 방법을 설명합니다. FETCH·LOAD와 페이징에서 생기는 함정도 짚습니다."
+keywords:
+  - EntityGraph
+  - FETCH
+  - LOAD
+  - 연관 로딩
 tags:
   - backend
   - jpa

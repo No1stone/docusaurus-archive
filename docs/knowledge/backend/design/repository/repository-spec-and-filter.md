@@ -2,6 +2,11 @@
 id: repository-spec-and-filter
 title: Spec과 Filter
 description: "HTTP 호출 이력 화면의 Filter가 Specs.of를 거쳐 JPA Specification·페이징으로 이어지는 한곳 관리 방식을 설명합니다."
+keywords:
+  - Specification
+  - Filter
+  - Specs.of
+  - 동적 조회
 tags:
   - backend
   - jpa

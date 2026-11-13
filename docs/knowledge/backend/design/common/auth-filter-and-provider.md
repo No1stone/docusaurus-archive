@@ -2,6 +2,11 @@
 id: auth-filter-and-provider
 title: "인증 필터와 인증 Provider"
 description: "요청 진입 시 인증 필터와 AuthenticationProvider로 인증을 공통화하고, 업무 허용 판단은 유즈케이스에 두는 경계를 정리합니다."
+keywords:
+  - AuthenticationProvider
+  - 인증 필터
+  - Spring Security
+  - JWT
 tags:
   - backend
   - security

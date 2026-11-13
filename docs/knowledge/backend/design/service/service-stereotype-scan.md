@@ -2,6 +2,10 @@
 id: service-stereotype-scan
 title: Service — 스테레오타입과 스캔
 description: "Service Component Repository Controller 스테레오타입 차이와 컴포넌트 스캔, Adapter에 무엇을 붙이는지 정리합니다."
+keywords:
+  - "@Service"
+  - 컴포넌트 스캔
+  - 스테레오타입
 tags:
   - backend
   - spring

@@ -2,6 +2,10 @@
 id: repository-transactionality
 title: Repository — Transactionality
 description: "예약과 이력을 같이 저장할 때 Repository 기본 트랜잭션만으로는 부족한 이유와, Facade가 경계를 여는 위치를 설명합니다."
+keywords:
+  - Transactionality
+  - Facade 트랜잭션
+  - Repository TX
 tags:
   - backend
   - jpa

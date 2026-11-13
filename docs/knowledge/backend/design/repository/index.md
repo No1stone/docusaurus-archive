@@ -2,6 +2,11 @@
 id: knowledge-backend-repository
 title: Repository
 description: "예약 목록 조회·잠금·페이징을 Repository에서 구현할 때, 증상별로 어느 글을 보면 되는지 안내합니다."
+keywords:
+  - Spring Data JPA
+  - Repository
+  - 페이징
+  - Specification
 slug: "/knowledge/backend/repository/index"
 ---
 # Repository

@@ -1,7 +1,12 @@
 ---
 id: knowledge-backend-notification-inbox-and-read-state
 title: 알림함과 읽음 상태
-description: "사용자별 알림 데이터 모델과 목록, 미확인, 읽음 처리 API를 정리합니다."
+description: "사용자별 알림함 데이터 모델과 목록, 미확인 건수, 읽음 처리 API를 정리합니다."
+keywords:
+  - 알림함
+  - 읽음 상태
+  - 미확인 알림
+  - inbox
 slug: "/knowledge/backend/notification/inbox-and-read-state"
 tags:
   - backend

@@ -2,6 +2,10 @@
 id: repository-query-methods
 title: Repository — Query Methods
 description: "HTTP 호출 이력 검색에서 조건이 늘 때 파생 쿼리·@Query·Specification 중 어디에 둘지 비교합니다. 원셋은 Spec을 기본으로 둡니다."
+keywords:
+  - Query Methods
+  - "@Query"
+  - 파생 쿼리
 tags:
   - backend
   - spring-data

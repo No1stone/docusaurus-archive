@@ -2,6 +2,10 @@
 id: entity-associations
 title: 엔티티 연관과 cascade
 description: "방문 예약과 세대처럼 목록에 이름만 필요할 때, JPA 연관 매핑과 스칼라 ID 중 무엇을 엔티티에 남길지 선택 기준을 설명합니다."
+keywords:
+  - 연관 매핑
+  - cascade
+  - 스칼라 ID
 tags:
   - backend
   - jpa

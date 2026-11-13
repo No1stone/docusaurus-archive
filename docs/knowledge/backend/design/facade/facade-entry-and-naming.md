@@ -2,6 +2,10 @@
 id: facade-entry-and-naming
 title: Facade — 진입과 이름
 description: "관리 화면이 예약 도메인 Facade만 부르게 두는 이유를 설명합니다. 화면 조합·DTO 교환과 인프라 직접 호출을 구분합니다."
+keywords:
+  - Facade 진입점
+  - 네이밍
+  - 도메인 Facade
 tags:
   - backend
   - facade

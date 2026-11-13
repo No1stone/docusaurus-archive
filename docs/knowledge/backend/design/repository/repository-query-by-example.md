@@ -2,6 +2,10 @@
 id: repository-query-by-example
 title: Repository — Query by Example
 description: "URL·HTTP 메서드처럼 채운 필드만 조건으로 쓰는 Query by Example을 설명합니다. Spec·Filter가 기본인 원셋과의 경계를 둡니다."
+keywords:
+  - Query by Example
+  - QBE
+  - ExampleMatcher
 tags:
   - backend
   - spring-data

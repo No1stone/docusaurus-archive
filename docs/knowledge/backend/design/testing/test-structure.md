@@ -2,6 +2,11 @@
 id: test-structure
 title: 테스트 기본 구조
 description: "Spring 테스트에서 단위·슬라이스·통합 경계를 나누고, 테스트 배치·명명·실행 기준을 팀에 맞게 고정하는 방법을 설명합니다."
+keywords:
+  - 테스트 구조
+  - "@WebMvcTest"
+  - "@DataJpaTest"
+  - 테스트 명명
 tags:
   - backend
   - testing

@@ -2,6 +2,12 @@
 id: advice-adjacent-boundaries
 title: Advice — 인접 경계 (Filter, 비동기, 아웃바운드)
 description: Security 필터·Interceptor와 Advice의 응답 모양, @Async와 MDC, RestClient·Feign 예외 매핑, 상관 ID를 정리합니다. 하네스 필독이 아닙니다.
+keywords:
+  - Security Filter
+  - Interceptor
+  - Async
+  - MDC
+  - RestClient
 tags:
   - backend
   - api

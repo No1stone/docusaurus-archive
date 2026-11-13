@@ -2,6 +2,10 @@
 id: repository-three-interfaces
 title: Repository 세 인터페이스 조립
 description: JpaRepository JpaSpecificationExecutor Custom을 한 리포에 붙이는 원셋 조립을 정리합니다.
+keywords:
+  - JpaSpecificationExecutor
+  - CustomRepository
+  - 인터페이스 조립
 tags:
   - backend
   - spring-data

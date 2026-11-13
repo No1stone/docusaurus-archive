@@ -2,6 +2,11 @@
 id: knowledge-backend-entity
 title: Entity
 description: "예약 한 건을 Entity·DTO·VO로 나눌 때, 매핑·연관·페치 문제를 어느 글에서 보면 되는지 안내합니다."
+keywords:
+  - JPA Entity
+  - DTO
+  - VO
+  - 영속성
 slug: "/knowledge/backend/entity/index"
 ---
 # Entity

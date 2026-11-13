@@ -2,6 +2,10 @@
 id: repository-spring-data-hierarchy
 title: Spring Data Repository 계층
 description: Repository CrudRepository PagingAndSortingRepository JpaRepository 상속과 원셋 선택을 정리합니다.
+keywords:
+  - CrudRepository
+  - JpaRepository
+  - Spring Data
 tags:
   - backend
   - spring-data

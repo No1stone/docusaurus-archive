@@ -2,6 +2,12 @@
 id: common-rest-client
 title: "공통 RestClient 설계"
 description: "아웃바운드 HTTP 호출과 로깅을 lib-common에 두고, HTTP status 해석과 Outbox 기록은 애플리케이션에 두는 경계를 정리합니다. (초안)"
+keywords:
+  - CommonRestClient
+  - RestClient
+  - 아웃바운드 HTTP
+  - 재시도
+  - Outbox
 tags:
   - backend
   - rest

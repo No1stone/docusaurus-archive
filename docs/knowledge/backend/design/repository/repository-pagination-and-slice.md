@@ -2,6 +2,11 @@
 id: repository-pagination-and-slice
 title: Page와 Slice
 description: "총건수가 필요한 관리 화면과 다음 페이지만 알면 되는 화면을 나누어, Page와 Slice·PageQuery 선택을 설명합니다."
+keywords:
+  - Page
+  - Slice
+  - PageQuery
+  - 페이징
 tags:
   - backend
   - spring-data

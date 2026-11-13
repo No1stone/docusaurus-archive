@@ -2,6 +2,11 @@
 id: knowledge-backend-service
 title: Service
 description: "Port·Adapter와 DI·트랜잭션 문제를 증상별로 어느 Service Knowledge 글에서 보면 되는지 안내합니다."
+keywords:
+  - Port
+  - Adapter
+  - DI
+  - Service Knowledge
 slug: "/knowledge/backend/service/index"
 ---
 # Service

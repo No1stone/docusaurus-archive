@@ -2,6 +2,10 @@
 id: repository-custom
 title: 커스텀 Repository
 description: "집계처럼 Spec만으로 부족한 조회를 CustomRepository와 Impl에 붙이는 방법을 설명합니다. QueryDSL 자리와도 이어집니다."
+keywords:
+  - CustomRepository
+  - Impl
+  - 집계 쿼리
 tags:
   - backend
   - spring-data

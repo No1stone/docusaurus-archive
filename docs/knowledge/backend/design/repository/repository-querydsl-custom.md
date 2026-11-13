@@ -2,6 +2,10 @@
 id: repository-querydsl-custom
 title: QueryDSL Custom 자리
 description: "Spec을 넘는 조인·프로젝션이 필요할 때 QueryDSL JPA를 Custom Repository Impl에 두는 자리와 호출 경계를 설명합니다."
+keywords:
+  - QueryDSL
+  - Custom Repository
+  - 프로젝션
 tags:
   - backend
   - querydsl

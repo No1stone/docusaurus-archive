@@ -2,6 +2,10 @@
 id: entity-design
 title: 엔티티 설계
 description: "엔티티 책임과 하위 글 목차를 안내하는 허브입니다. 매핑 기능을 익힌 뒤 원셋처럼 엔티티를 작게 유지하는 선택으로 이어집니다."
+keywords:
+  - 엔티티 설계
+  - JPA
+  - 원셋
 tags:
   - backend
   - jpa

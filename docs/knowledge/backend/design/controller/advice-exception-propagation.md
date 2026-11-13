@@ -2,6 +2,11 @@
 id: advice-exception-propagation
 title: Advice — 예외 전파와 try/catch
 description: 업무 예외 계층, Runtime 전제, Facade에서의 throw, Controller에서 catch를 두지 않는 이유를 정리합니다. 하네스 필독이 아닙니다.
+keywords:
+  - 예외 전파
+  - BizException
+  - try catch
+  - Facade
 tags:
   - backend
   - api

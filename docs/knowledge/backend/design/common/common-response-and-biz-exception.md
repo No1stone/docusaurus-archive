@@ -2,6 +2,12 @@
 id: common-response-and-biz-exception
 title: "공통 응답 코드와 업무 예외"
 description: "공통 ResponseType과 BizError/BizWarn, 모듈 이넘 확장 방식을 boot-base 적용 기준으로 정리합니다."
+keywords:
+  - ResponseType
+  - BizError
+  - BizWarn
+  - 업무 예외
+  - 공통 응답 코드
 tags:
   - backend
   - api

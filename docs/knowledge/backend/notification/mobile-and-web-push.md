@@ -2,6 +2,12 @@
 id: knowledge-backend-notification-mobile-and-web-push
 title: 모바일 앱 푸시와 웹 푸시
 description: "FCM, APNs 기기 토큰과 Web Push 구독, 권한 관리를 정리합니다."
+keywords:
+  - FCM
+  - APNs
+  - Web Push
+  - 푸시 토큰
+  - 구독
 slug: "/knowledge/backend/notification/mobile-and-web-push"
 tags:
   - backend

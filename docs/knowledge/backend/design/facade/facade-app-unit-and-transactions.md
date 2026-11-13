@@ -2,6 +2,11 @@
 id: facade-app-unit-and-transactions
 title: Facade — 앱 동작 단위와 트랜잭션
 description: "예약 저장 후 확인 화면이 부분 실패해도 DB 커밋과 화면 실패를 섞지 않게, BFF와 도메인 Facade의 트랜잭션 경계를 나눕니다."
+keywords:
+  - 트랜잭션
+  - BFF
+  - 부분 실패
+  - 앱 동작 단위
 tags:
   - backend
   - facade

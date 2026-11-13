@@ -1,7 +1,14 @@
 ---
 id: knowledge-backend-notification
 title: 알림
-description: "알림함, 인앱 배지, SSE, 앱, 웹 푸시와 외부 채널을 어떻게 나누는지 안내합니다."
+description: "알림함, 인앱 배지, SSE, 앱과 웹 푸시, 외부 채널을 역할별로 나누는 알림 Knowledge 허브입니다."
+keywords:
+  - 알림
+  - SSE
+  - 푸시 알림
+  - 알림함
+  - 인앱 배지
+  - FCM
 slug: "/knowledge/backend/notification/index"
 ---
 

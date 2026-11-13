@@ -2,6 +2,10 @@
 id: repository-auditing
 title: Repository — Auditing
 description: "로그인한 사용자가 생성자·수정자로 채워지는 Auditing 흐름을 따라가고, 원셋 CreatedEntity·UpdatedEntity 상속과 연결합니다."
+keywords:
+  - JPA Auditing
+  - CreatedBy
+  - LastModifiedBy
 tags:
   - backend
   - jpa

@@ -2,6 +2,11 @@
 id: knowledge-backend-controller
 title: Controller
 description: "예약 요청이 Controller에서 바인딩되고 Advice가 검증·예외를 응답으로 바꾸는 글을, 증상별로 고를 수 있게 안내합니다."
+keywords:
+  - Controller
+  - RestControllerAdvice
+  - DTO 바인딩
+  - Spring MVC
 slug: "/knowledge/backend/controller/index"
 ---
 # Controller

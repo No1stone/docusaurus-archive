@@ -2,6 +2,10 @@
 id: service-tx-join-facade
 title: Service — Facade DB TX에 join
 description: "Adapter의 Transactional이 도메인 Facade 트랜잭션에 참여하는 규칙과 readOnly·쓰기 오버라이드를 정리합니다."
+keywords:
+  - "@Transactional"
+  - Facade TX
+  - readOnly
 tags:
   - backend
   - transaction

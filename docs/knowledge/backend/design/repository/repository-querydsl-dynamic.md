@@ -2,6 +2,10 @@
 id: repository-querydsl-dynamic
 title: QueryDSL 동적 쿼리
 description: "화면에서 고른 선택 조건을 BooleanBuilder·BooleanExpression으로 동적 where에 조합하는 QueryDSL 패턴을 정리합니다."
+keywords:
+  - QueryDSL
+  - BooleanBuilder
+  - 동적 where
 tags:
   - backend
   - querydsl

@@ -2,6 +2,13 @@
 id: spring-common-design
 title: "Spring 기반 백엔드 공통 설계"
 description: "응답 엔벨롭, 예외, 인증, 입력 검증, 공통 유틸리티를 Spring 확장 지점에 모아 기능마다 달라지지 않게 하는 상위 안내입니다."
+keywords:
+  - 공통 설계
+  - CommonResponse
+  - BizException
+  - Bean Validation
+  - RestClient
+  - Spring Security
 tags:
   - backend
   - api

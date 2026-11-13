@@ -2,6 +2,11 @@
 id: persistence-vo-dto-entity
 title: VO·DTO·Entity
 description: "원셋 ExampleItem 검색으로 VO·DTO·엔티티·Port 결과 타입을 구분합니다. 표시 이름 조회와 화면별 Item 분리 기준을 이어서 봅니다."
+keywords:
+  - VO
+  - DTO
+  - Entity
+  - Port 결과
 tags:
   - backend
   - dto

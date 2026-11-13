@@ -2,6 +2,11 @@
 id: advice-messages-and-i18n
 title: Advice — messages와 i18n
 description: "오류 코드를 MessageSource 키로 두고 사용자 문구를 분리합니다. 검증·업무 예외가 같은 메시지 체계를 쓰는지 연결합니다."
+keywords:
+  - MessageSource
+  - i18n
+  - 오류 코드
+  - 다국어 메시지
 tags:
   - backend
   - api

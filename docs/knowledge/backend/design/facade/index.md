@@ -2,6 +2,11 @@
 id: knowledge-backend-facade
 title: Facade
 description: "예약 정책과 화면 조립이 어디서 갈리는지, 트랜잭션·부분 실패를 어느 글에서 보면 되는지 안내합니다."
+keywords:
+  - Facade
+  - 유스케이스
+  - BFF
+  - 트랜잭션 경계
 slug: "/knowledge/backend/facade/index"
 ---
 # Facade

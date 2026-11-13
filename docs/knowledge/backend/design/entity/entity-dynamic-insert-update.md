@@ -2,6 +2,10 @@
 id: entity-dynamic-insert-update
 title: DynamicInsert와 DynamicUpdate
 description: Hibernate DynamicInsert와 DynamicUpdate가 SQL 컬럼과 DB 기본값에 미치는 영향을 설명합니다.
+keywords:
+  - DynamicInsert
+  - DynamicUpdate
+  - Hibernate
 tags:
   - backend
   - jpa

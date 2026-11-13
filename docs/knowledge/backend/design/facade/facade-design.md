@@ -2,6 +2,10 @@
 id: facade-design
 title: 애플리케이션 영역과 Facade
 description: Facade Knowledge 허브입니다. GoF 이름, 경량 헥사 유스케이스, 앱 동작 단위, BFF와 도메인 분리를 하위 글로 나눕니다.
+keywords:
+  - Facade Design
+  - 경량 헥사고날
+  - 앱 동작 단위
 tags:
   - backend
   - facade

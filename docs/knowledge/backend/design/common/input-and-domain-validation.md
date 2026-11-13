@@ -2,6 +2,11 @@
 id: input-and-domain-validation
 title: "입력 검증과 업무 검증"
 description: "Bean Validation으로 요청 형식을 검증하고, 업무 데이터가 필요한 판단은 유즈케이스에 두는 경계를 정리합니다."
+keywords:
+  - Bean Validation
+  - 입력 검증
+  - 업무 검증
+  - DTO validation
 tags:
   - backend
   - validation

@@ -2,6 +2,11 @@
 id: service-port-adapter-role
 title: Service — Port와 Adapter 역할
 description: "예약 조회 Port와 JPA Adapter를 나누면 조건·매핑이 어디에 남는지 설명합니다. 레거시 *Service 이름과의 차이도 짚습니다."
+keywords:
+  - Port
+  - Adapter
+  - 조회 매핑
+  - 레거시 Service
 tags:
   - backend
   - port

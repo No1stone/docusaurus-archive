@@ -2,6 +2,11 @@
 id: service-provider-and-cqrs
 title: Service — Provider와 CQRS
 description: "조회와 변경 구현을 Adapter·Provider로 나누는 이유를 설명합니다. 목록과 상세가 다른 로딩을 쓸 때 코드 수준 CQRS 자리를 둡니다."
+keywords:
+  - CQRS
+  - Provider
+  - 조회 Adapter
+  - 변경 Adapter
 tags:
   - backend
   - cqrs

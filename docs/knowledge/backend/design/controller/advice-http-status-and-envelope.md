@@ -2,6 +2,11 @@
 id: advice-http-status-and-envelope
 title: Advice — HTTP 상태와 응답 엔벨로프
 description: 2xx~5xx 의미, 커스텀 status, CommonResponse와 RFC 9457 Problem Details 비교, 낙관적 락·보안 예외 매핑을 정리합니다. 하네스 필독이 아닙니다.
+keywords:
+  - HTTP status
+  - CommonResponse
+  - Problem Details
+  - RFC 9457
 tags:
   - backend
   - api

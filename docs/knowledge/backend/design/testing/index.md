@@ -2,6 +2,11 @@
 id: knowledge-backend-testing
 title: Testing
 description: "예약 API 테스트를 단위·슬라이스·통합으로 나눌 때 어느 글을 보면 되는지 안내합니다."
+keywords:
+  - Spring 테스트
+  - 단위 테스트
+  - 슬라이스 테스트
+  - 통합 테스트
 slug: "/knowledge/backend/testing/index"
 ---
 # Testing

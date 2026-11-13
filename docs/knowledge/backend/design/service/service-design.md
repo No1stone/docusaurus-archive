@@ -2,6 +2,10 @@
 id: service-design
 title: 데이터 접근 경계 (Port와 Adapter)
 description: Service Knowledge 허브입니다. Spring 서비스 빈과 Port·Adapter 구현의 이중 정체성, DI·TX 섹터로 이어집니다.
+keywords:
+  - Port and Adapter
+  - 헥사고날
+  - 서비스 빈
 tags:
   - backend
   - service

@@ -2,6 +2,10 @@
 id: entity-constraints
 title: 엔티티 제약
 description: "예약 코드 유일성을 DTO 검증, JPA 컬럼, DB 제약 어디에 둘지 비교합니다. 계층마다 막히는 시점이 다름을 보여 줍니다."
+keywords:
+  - 유일성 제약
+  - DB constraint
+  - JPA column
 tags:
   - backend
   - jpa

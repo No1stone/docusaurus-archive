@@ -2,6 +2,10 @@
 id: service-di-constructor-preferred
 title: Service — 생성자 주입이 기본인 이유
 description: 필수 의존에 생성자(또는 RequiredArgsConstructor)를 쓰는 이유와 필드 Autowired 함정을 정리합니다.
+keywords:
+  - 생성자 주입
+  - RequiredArgsConstructor
+  - 필드 주입
 tags:
   - backend
   - spring

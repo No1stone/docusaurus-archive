@@ -2,6 +2,10 @@
 id: service-di-evolution
 title: Service — DI 발전사
 description: XML bean부터 Autowired 필드, 생성자 주입, RequiredArgsConstructor까지의 주입 방식 발전을 정리합니다.
+keywords:
+  - 의존성 주입
+  - DI 발전사
+  - Autowired
 tags:
   - backend
   - spring

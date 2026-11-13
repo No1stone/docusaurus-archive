@@ -2,6 +2,11 @@
 id: advice-validation
 title: Advice — 검증 (Bean Validation과 Spring)
 description: "차량번호 JSON 검증과 페이지 크기 인자 검증처럼 실패 지점이 다를 때, Advice가 어떤 예외로 필드 오류를 응답에 담는지 설명합니다."
+keywords:
+  - Bean Validation
+  - MethodArgumentNotValidException
+  - 검증 실패
+  - Advice
 tags:
   - backend
   - api

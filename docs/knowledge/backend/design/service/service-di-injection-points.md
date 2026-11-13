@@ -2,6 +2,11 @@
 id: service-di-injection-points
 title: Service — 어디에 무엇을 주입하나
 description: Facade·Adapter·Repository 주입 위치와 RequiredArgsConstructor final 필드 관례를 정리합니다.
+keywords:
+  - 주입 위치
+  - Facade
+  - Adapter
+  - Repository
 tags:
   - backend
   - spring

@@ -2,6 +2,11 @@
 id: entity-fetch-lazy-eager
 title: LAZY와 EAGER
 description: "예약 목록에서 세대 이름을 읽다 N+1이 생기는 과정을 LAZY·EAGER로 풀어, 목록 조회에 맞는 로딩 선택을 설명합니다."
+keywords:
+  - LAZY
+  - EAGER
+  - N+1
+  - 페치
 tags:
   - backend
   - jpa

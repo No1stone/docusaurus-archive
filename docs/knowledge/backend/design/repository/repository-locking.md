@@ -2,6 +2,11 @@
 id: repository-locking
 title: Repository — Locking
 description: "같은 예약을 두 관리자가 수정할 때 @Version 낙관적 락과 비관적 락이 어디서 충돌이나 대기를 만드는지 사례로 설명합니다."
+keywords:
+  - 낙관적 락
+  - "@Version"
+  - 비관적 락
+  - "@Lock"
 tags:
   - backend
   - jpa

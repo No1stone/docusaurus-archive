@@ -1,7 +1,13 @@
 ---
 id: knowledge-backend-notification-design-and-delivery
 title: 알림 설계와 전달 방식
-description: "알림함, 인앱 알림, 앱, 웹 푸시, 외부 채널, 장비 이벤트의 종류와 사용 기술을 표로 정리합니다."
+description: "알림함, 인앱 알림, 앱과 웹 푸시, 외부 채널, 장비 이벤트의 종류와 전달에 쓰는 기술을 표로 정리합니다."
+keywords:
+  - 알림 설계
+  - 알림 전달
+  - 푸시
+  - SSE
+  - 외부 채널
 slug: "/knowledge/backend/notification/notification-design-and-delivery"
 tags:
   - backend

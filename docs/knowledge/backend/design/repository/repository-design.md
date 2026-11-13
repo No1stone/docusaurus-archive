@@ -2,6 +2,10 @@
 id: repository-design
 title: Repository 설계
 description: Repository Knowledge 허브입니다. Adapter만 Repo를 보고, 원셋은 JpaRepository·Spec·Custom 삼중입니다.
+keywords:
+  - Repository 설계
+  - JpaRepository
+  - Custom Repository
 tags:
   - backend
   - jpa

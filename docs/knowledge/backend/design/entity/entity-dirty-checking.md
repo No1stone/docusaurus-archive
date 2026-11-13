@@ -2,6 +2,10 @@
 id: entity-dirty-checking
 title: 더티 체킹
 description: "관리 중인 예약을 필드만 바꿔도 flush·커밋 때 UPDATE가 나가는 더티 체킹을 설명합니다. save 호출과의 차이를 구분합니다."
+keywords:
+  - 더티 체킹
+  - flush
+  - dirty checking
 tags:
   - backend
   - jpa

@@ -2,6 +2,11 @@
 id: api-response-envelope
 title: "API 응답 엔벨롭 설계"
 description: "여러 API가 code, message, data를 같은 위치에서 읽도록 CommonResponse 엔벨롭의 역할과 적용 범위를 정리합니다."
+keywords:
+  - CommonResponse
+  - 응답 엔벨롭
+  - API envelope
+  - code message data
 tags:
   - backend
   - api

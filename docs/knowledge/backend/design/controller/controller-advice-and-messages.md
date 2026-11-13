@@ -2,6 +2,11 @@
 id: controller-advice-and-messages
 title: Controller Advice와 메시지
 description: RestControllerAdvice로 예외를 HTTP·공통 응답으로 모으는 Knowledge 허브입니다. 세부 주제는 하위 글로 나눕니다. 하네스 필독이 아닙니다.
+keywords:
+  - RestControllerAdvice
+  - 예외 처리
+  - MessageSource
+  - 공통 응답
 tags:
   - backend
   - api

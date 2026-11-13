@@ -2,6 +2,10 @@
 id: repository-jooq-and-sql-builders
 title: jOOQ와 SQL 빌더
 description: "조회를 엔티티 기준으로 볼지 SQL 기준으로 볼지 QueryDSL JPA와 jOOQ를 비교합니다. 원셋 기본(JPA+Spec) 경계도 밝힙니다."
+keywords:
+  - jOOQ
+  - SQL 빌더
+  - QueryDSL 비교
 tags:
   - backend
   - jooq

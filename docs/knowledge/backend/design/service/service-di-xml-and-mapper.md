@@ -2,6 +2,10 @@
 id: service-di-xml-and-mapper
 title: Service — XML·매퍼 주입
 description: XML bean과 MyBatis mapper를 Service에 넣던 시절에서 어노테이션·JPA Repository 주입으로 온 흐름을 정리합니다.
+keywords:
+  - XML bean
+  - MyBatis
+  - Mapper 주입
 tags:
   - backend
   - spring

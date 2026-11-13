@@ -2,6 +2,10 @@
 id: entity-enum-converter
 title: 엔티티 enum 컨버터
 description: AttributeConverter와 원셋 _Enum BizEnumProcessor ModelMapper 등록, 컨버터 마이그레이션을 연결합니다.
+keywords:
+  - AttributeConverter
+  - enum
+  - BizEnum
 tags:
   - backend
   - jpa

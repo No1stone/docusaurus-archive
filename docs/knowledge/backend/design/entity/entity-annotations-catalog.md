@@ -2,6 +2,10 @@
 id: entity-annotations-catalog
 title: 엔티티 어노테이션 목록
 description: "엔티티 클래스·필드에 자주 쓰는 JPA·Hibernate 애노테이션을 역할별로 읽고, 원셋에서 쓰는 것과 건너뛰는 것을 표로 구분합니다."
+keywords:
+  - JPA 어노테이션
+  - Hibernate
+  - 엔티티 매핑
 tags:
   - backend
   - jpa

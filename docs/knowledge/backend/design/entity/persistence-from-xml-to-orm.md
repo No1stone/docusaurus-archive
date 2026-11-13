@@ -2,6 +2,11 @@
 id: persistence-from-xml-to-orm
 title: 영속 모델 발전사 — XML에서 ORM까지
 description: "SQL·XML 매퍼에서 Map·VO·DTO·JPA Entity로 바뀐 예약 목록 코드를 따라가며, 각 단계가 무엇을 해결하려 했는지 비교합니다."
+keywords:
+  - ORM
+  - MyBatis
+  - JPA
+  - 영속 모델
 tags:
   - backend
   - jpa

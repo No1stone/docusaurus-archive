@@ -2,6 +2,10 @@
 id: facade-testing-and-failures
 title: Facade — 테스트와 실패 정책
 description: "예약 정책 위반과 세대 조회 타임아웃을 예로, Facade 단위 테스트가 업무 판단과 부분 실패 경계를 어떻게 고정하는지 설명합니다."
+keywords:
+  - Facade 테스트
+  - 부분 실패
+  - 단위 테스트
 tags:
   - backend
   - facade
