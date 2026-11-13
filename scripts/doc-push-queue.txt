@@ -1,6 +1,3 @@
-docs/knowledge/data/redis/index.md
-docs/knowledge/data/redis/patterns/cashing.md
-docs/knowledge/data/redis/keys/key-design-and-ttl.md
 docs/knowledge/data/redis/keys/list-set-sorted-set.md
 docs/knowledge/data/redis/keys/lua-atomic.md
 docs/knowledge/data/redis/keys/string-and-hash.md
@@ -107,3 +104,12 @@ docs/harness/templates/sdd/_template/work/_template.md
 docs/harness/workflows/index.md
 docs/harness/workflows/implement.md
 docs/harness/templates/README.md
+docs/knowledge/networking/transport/unicast-broadcast-multicast.md
+docs/knowledge/networking/transport/index.md
+docs/knowledge/infrastructure/docker/docker-설치.md
+docs/knowledge/infrastructure/aws/compute/ec2.md
+docs/patterns/architecture-patterns/fan-out.md
+docs/architecture/ai-development/_category_.json
+docs/architecture/ai-development/index.md
+docs/architecture/ai-development/template-driven-development.md
+docs/architecture/ai-development/specification-driven-development.md
