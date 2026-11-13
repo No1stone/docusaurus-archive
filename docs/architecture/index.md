@@ -23,6 +23,7 @@ unlisted: true
 
 | 찾고 있는 내용 | 읽을 곳 |
 |---|---|
+| 에이전트 구현에서 템플릿과 명세를 쓰는 방식 | [AI Development](/docs/architecture/ai-development) |
 | 여러 시스템에서 반복되는 설계 문제와 해법 | [아키텍처 패턴](/docs/patterns/architecture-patterns) |
 | 당시 검토한 선택지와 결정 이유 | [설계와 결정](/docs/decisions/) |
 | MSA, 권한, AWS 환경을 구성하며 겪은 일 | [MSA와 IAM 포트폴리오](/docs/postmortems/msa-iam-portfolio/overview) |
