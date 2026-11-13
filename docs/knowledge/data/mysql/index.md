@@ -146,6 +146,7 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 | [PK 타입과 공개 ID](/docs/knowledge/data/mysql/design/primary-key-types-and-public-id) | INT, BIGINT와 UUID의 크기 및 내부 키와 외부 ID 분리를 비교합니다. |
 | [공통코드와 상태 관리](/docs/knowledge/data/mysql/design/common-codes-and-status) | 코드 표시와 상태 전이, 변경 이력을 나누어 관리합니다. |
 | [테이블 수정과 마이그레이션](/docs/knowledge/data/mysql/design/alter-table-and-migration) | 컬럼 변경과 INSERT SELECT 이전, 원본 보관과 검증을 설명합니다. |
+| [RENAME TABLE과 INSERT SELECT로 테이블 이관하기](/docs/knowledge/data/mysql/design/rename-and-insert-select-migration) | 원본 이름 변경, 새 테이블 생성, INSERT SELECT 적재와 건수·값 검증을 설명합니다. |
 | [임시 테이블](/docs/knowledge/data/mysql/design/temporary-tables) | 세션 수명, InnoDB와 MEMORY 저장, 배치 ID 재사용과 Spring JDBC 연결 조건을 설명합니다. |
 | [샤딩과 파티셔닝 비교](/docs/knowledge/data/mysql/design/sharding-and-partitioning) | DB와 테이블 분리의 라우팅, 전체 집계와 운영 비용을 비교합니다. |
 | [일반 컬럼과 JSON 컬럼](/docs/knowledge/data/mysql/design/json-columns) | 가변 속성의 저장과 검색 인덱스 구성을 비교합니다. |
@@ -177,6 +178,7 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 | [Spring JPA와 파티션 테이블](/docs/knowledge/data/mysql/operations/spring-jpa-partitioned-tables) | created_at RANGE와 DB 복합 PK, JPA에서 id만 @Id로 두는 시계열 패턴입니다. |
 | [느린 쿼리와 운영 진단](/docs/knowledge/data/mysql/operations/diagnostics) | 연결 수, 누적 쿼리 비용과 잠금 대기를 확인합니다. |
 | [MySQL과 MariaDB Compose 예제](/docs/knowledge/data/mysql/operations/docker-compose-examples) | 전체 설정 예제, 볼륨과 역할별 옵션 및 추가 설정 |
+| [서버 옵션](/docs/knowledge/data/mysql/operations/server-options) | 설정 확인, 기본값, 접속, 메모리와 잠금, 복제와 바이너리 로그, 이벤트 스케줄러 입구 |
 | [Docker 배포와 데이터 보존](/docs/knowledge/data/mysql/operations/docker-and-persistence) | Compose, 데이터 볼륨과 초기화 및 복구를 설명합니다. |
 | [운영 백업 구성](/docs/knowledge/data/mysql/operations/backup) | 전체, 증분, 스냅샷, 로그와 레플리카 백업의 관계 |
 | [XtraBackup과 mariadb-backup](/docs/knowledge/data/mysql/operations/online-physical-backup) | 파일 백업 옵션, prepare와 별도 복원 |

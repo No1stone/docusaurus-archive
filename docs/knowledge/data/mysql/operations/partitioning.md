@@ -5,7 +5,7 @@ title: "MySQL 파티셔닝: 날짜와 ID 기준, pmax와 파티션 삭제"
 sidebar_label: "파티셔닝과 pmax 관리"
 description: "MySQL RANGE 파티셔닝의 기본 원리와 날짜 및 ID 기준의 선택, PK와 유니크 키 제약, pmax 분리와 DROP PARTITION을 예제 SQL로 설명합니다."
 slug: /knowledge/data/mysql/operations/partitioning
-sidebar_position: 4
+sidebar_position: 4.2
 tags:
   - MySQL
   - Database
