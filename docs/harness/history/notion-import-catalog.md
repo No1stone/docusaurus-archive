@@ -12,8 +12,8 @@ unlisted: true
 
 ## architecture
 
-- [cast(uni,broad,multi)](/docs/architecture/arch-castunibroadmulti)
-- [작업 도커](/docs/architecture/arch-작업-도커)
+- [cast(uni,broad,multi)](/docs/knowledge/networking/transport/unicast-broadcast-multicast)
+- [작업 도커](/docs/knowledge/k-docker-설치)
 
 ## decisions
 

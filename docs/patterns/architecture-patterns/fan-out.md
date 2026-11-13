@@ -27,8 +27,8 @@ slug: /patterns/architecture-patterns/fan-out
 | 유니캐스트 | 한 송신자 → 한 수신자 (일반 TCP 요청 등) |
 | 브로드캐스트 / 멀티캐스트 | L2/L3 네트워크 범위의 전송 방식 |
 
-아카이브의 [cast(uni,broad,multi)](../../architecture/castunibroadmulti.md) 메모는 전달 범위를 짧게 구분해 둔 학습 메모입니다.
-그 글에서 연결한 AWS SNS Fan-out 글은 **학습 예제**로 봅니다.
+네트워크 전달 범위(유니캐스트, 브로드캐스트, 멀티캐스트)는 [유니캐스트, 브로드캐스트, 멀티캐스트](/docs/knowledge/networking/transport/unicast-broadcast-multicast)를 봅니다.
+아래 AWS SNS 구성은 **학습 예제**로 둡니다.
 이 아카이브 사례에 SNS Fan-out을 운영 적용했다는 근거로 쓰지 않습니다.
 
 ## 동작 흐름
@@ -67,7 +67,7 @@ Kafka라면 한 토픽을 여러 컨슈머 그룹이 구독하는 형태로 비�
 
 ## 관련 글
 
-- [cast(uni,broad,multi)](../../architecture/castunibroadmulti.md) — 학습 메모
+- [유니캐스트, 브로드캐스트, 멀티캐스트](/docs/knowledge/networking/transport/unicast-broadcast-multicast) — 네트워크 전달 범위
 - [CDC](/docs/patterns/architecture-patterns/cdc) — 변경 캡처 후 토픽으로 보낼 때 Fan-out과 이어질 수 있음
 - [Outbox와 Inbox](/docs/patterns/architecture-patterns/outbox-and-inbox)
 

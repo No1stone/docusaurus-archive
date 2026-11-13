@@ -26,7 +26,7 @@ EC2 환경에서 수행한 작업 메모를 모아 둔 허브입니다.
 - [작업 ec2](/docs/knowledge/k-작업-ec2)
 - [작업 ec2 2](/docs/knowledge/k-작업-ec2-2)
 - [작업 local](../../workspace/작업-local.md)
-- [작업 도커](../../../../architecture/작업-도커.md)
+- [docker 설치](/docs/knowledge/k-docker-설치)
 - [작업 postgreSQL](../../../data/postgresql/작업-postgresql.md)
 - [작업 postgresql 작업2](../../../data/postgresql/작업-postgresql-작업2.md)
 - [작업 postgreSQL 3](../../../data/postgresql/작업-postgresql-3.md)

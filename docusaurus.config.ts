@@ -109,6 +109,23 @@ const config: Config = {
             from: '/docs/architecture/icomsys-msa-iam-portfolio/icomsys-runtime-data-path',
             to: '/docs/postmortems/msa-iam-portfolio/runtime-data-path',
           },
+          {
+            from: '/docs/architecture/castunibroadmulti',
+            to: '/docs/knowledge/networking/transport/unicast-broadcast-multicast',
+          },
+          {
+            from: '/docs/architecture/arch-castunibroadmulti',
+            to: '/docs/knowledge/networking/transport/unicast-broadcast-multicast',
+          },
+          {
+            from: '/docs/architecture/작업-도커',
+            to: '/docs/knowledge/k-docker-설치',
+          },
+          {
+            from: '/docs/architecture/arch-작업-도커',
+            to: '/docs/knowledge/k-docker-설치',
+          },
+
 
           {
             from: '/docs/postmortems/icomsys-msa-iam-portfolio',

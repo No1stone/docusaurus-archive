@@ -13,5 +13,5 @@ slug: /knowledge/networking
 
 - [HTTP](/docs/knowledge/networking/http-stack) — URI, 스킴과 딥링크, 메시지, MIME, CORS
 - [Proxy / Nginx](/docs/knowledge/networking/proxy) — Nginx·upstream·rewrite
-- [Transport](/docs/knowledge/networking/transport) — IP·DNS·포트·TCP/UDP
+- [Transport](/docs/knowledge/networking/transport) — IP, DNS, 포트, TCP/UDP, [유니/브로드/멀티캐스트](/docs/knowledge/networking/transport/unicast-broadcast-multicast)
 - [TLS / HTTPS](/docs/knowledge/networking/tls) — HTTPS·mkcert·ALB ACM
