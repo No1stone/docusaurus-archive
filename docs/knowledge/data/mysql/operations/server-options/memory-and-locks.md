@@ -14,9 +14,9 @@ status: active
 keywords:
   - "innodb_buffer_pool_size"
   - "tmp_table_size"
-  - "temptable_max_ram"
   - "innodb_lock_wait_timeout"
-  - "lock_wait_timeout"
+  - "MySQL 버퍼 풀"
+  - "임시 테이블 메모리"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/innodb-buffer-pool-resize.html"
   - "https://mariadb.com/docs/server/server-usage/storage-engines/innodb/innodb-system-variables"

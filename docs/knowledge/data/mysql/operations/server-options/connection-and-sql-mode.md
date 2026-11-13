@@ -12,11 +12,12 @@ tags:
   - Database
 status: active
 keywords:
-  - "bind_address"
   - "max_connections"
+  - "sql_mode"
+  - "bind_address"
   - "wait_timeout"
   - "max_allowed_packet"
-  - "sql_mode"
+  - "MySQL 접속 옵션"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/server-system-variables.html"
   - "https://mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables"

@@ -13,10 +13,11 @@ tags:
 status: active
 keywords:
   - "SHOW VARIABLES"
-  - "SET SESSION GLOBAL"
+  - "SET GLOBAL"
+  - "SET SESSION"
   - "SET PERSIST"
-  - "time_zone"
-  - "max_connections"
+  - "MySQL 설정 변경"
+  - "세션 변수"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/using-system-variables.html"
   - "https://mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables"

@@ -14,9 +14,10 @@ status: active
 keywords:
   - "character_set_server"
   - "collation_server"
-  - "default-time-zone"
-  - "lower_case_table_names"
   - "utf8mb4"
+  - "lower_case_table_names"
+  - "MySQL 기본 문자셋"
+  - "default-time-zone"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/charset-syntax.html"
   - "https://mariadb.com/docs/server/reference/data-types/string-data-types/character-sets/setting-character-sets-and-collations"

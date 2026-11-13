@@ -14,9 +14,10 @@ status: active
 keywords:
   - "log_bin"
   - "binlog_format"
-  - "log_replica_updates"
-  - "sync_binlog"
   - "gtid_mode"
+  - "sync_binlog"
+  - "MySQL 바이너리 로그"
+  - "복제 옵션"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/replication-options.html"
   - "https://mariadb.com/docs/server/ha-and-performance/standard-replication/replication-and-binary-log-system-variables"
