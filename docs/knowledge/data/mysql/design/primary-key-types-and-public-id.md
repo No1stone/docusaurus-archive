@@ -5,7 +5,7 @@ title: "MySQL PK 선택: INT, BIGINT와 UUID, 공개 ID 분리"
 sidebar_label: "PK 타입과 공개 ID"
 description: "INT와 BIGINT의 크기와 범위, 문자열 및 UUID 키의 인덱스 비용을 비교하고 사용자 ID를 예측하기 어렵게 만드는 이유와 내부 PK 및 공개 ID 분리 예제를 설명합니다."
 slug: /knowledge/data/mysql/design/primary-key-types-and-public-id
-sidebar_position: 5
+sidebar_position: 6
 tags:
   - MySQL
   - Database

@@ -146,6 +146,7 @@ MariaDB 10.4에서는 기본 설치 시 `root@localhost`의 인증 구성이 변
 | [PK 타입과 공개 ID](/docs/knowledge/data/mysql/design/primary-key-types-and-public-id) | INT, BIGINT와 UUID의 크기 및 내부 키와 외부 ID 분리를 비교합니다. |
 | [공통코드와 상태 관리](/docs/knowledge/data/mysql/design/common-codes-and-status) | 코드 표시와 상태 전이, 변경 이력을 나누어 관리합니다. |
 | [테이블 수정과 마이그레이션](/docs/knowledge/data/mysql/design/alter-table-and-migration) | 컬럼 변경과 INSERT SELECT 이전, 원본 보관과 검증을 설명합니다. |
+| [임시 테이블](/docs/knowledge/data/mysql/design/temporary-tables) | 세션 수명, InnoDB와 MEMORY 저장, 배치 ID 재사용과 Spring JDBC 연결 조건을 설명합니다. |
 | [샤딩과 파티셔닝 비교](/docs/knowledge/data/mysql/design/sharding-and-partitioning) | DB와 테이블 분리의 라우팅, 전체 집계와 운영 비용을 비교합니다. |
 | [일반 컬럼과 JSON 컬럼](/docs/knowledge/data/mysql/design/json-columns) | 가변 속성의 저장과 검색 인덱스 구성을 비교합니다. |
 
