@@ -16,7 +16,7 @@ keywords:
   - "table_definition_cache"
   - "open_files_limit"
   - "Opened_tables"
-  - "ulimits nofile"
+  - "MySQL 테이블 캐시"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/table-cache.html"
   - "https://mariadb.com/docs/server/server-management/variables-and-modes/server-system-variables"

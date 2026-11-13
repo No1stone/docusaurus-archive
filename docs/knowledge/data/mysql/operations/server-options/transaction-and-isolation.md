@@ -12,11 +12,11 @@ tags:
   - Database
 status: active
 keywords:
-  - "autocommit"
   - "transaction_isolation"
-  - "READ COMMITTED"
   - "REPEATABLE READ"
-  - "SET TRANSACTION"
+  - "READ COMMITTED"
+  - "autocommit"
+  - "MySQL 트랜잭션 격리 수준"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/commit.html"
   - "https://mariadb.com/docs/server/reference/sql-statements/transactions/start-transaction"

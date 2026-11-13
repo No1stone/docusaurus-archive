@@ -14,9 +14,9 @@ status: active
 keywords:
   - "max_execution_time"
   - "max_statement_time"
+  - "wait_timeout"
   - "net_read_timeout"
-  - "net_write_timeout"
-  - "connect_timeout"
+  - "MySQL 쿼리 타임아웃"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/optimizer-hints.html#optimizer-hints-execution-time"
   - "https://mariadb.com/docs/server/ha-and-performance/optimization-and-tuning/query-optimizations/query-limits-and-timeouts"

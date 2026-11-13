@@ -13,10 +13,10 @@ tags:
 status: active
 keywords:
   - "require_secure_transport"
-  - "ssl_ca"
   - "sslMode"
   - "VERIFY_IDENTITY"
-  - "Ssl_cipher"
+  - "MySQL TLS"
+  - "JDBC SSL 접속"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/using-encrypted-connections.html"
   - "https://mariadb.com/docs/server/security/encryption/data-in-transit-encryption/securing-connections-for-client-and-server"

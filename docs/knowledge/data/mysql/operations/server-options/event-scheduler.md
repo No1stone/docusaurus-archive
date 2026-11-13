@@ -14,8 +14,9 @@ status: active
 keywords:
   - "event_scheduler"
   - "CREATE EVENT"
-  - "MySQL Event Scheduler"
+  - "MySQL 이벤트 스케줄러"
   - "MariaDB Event Scheduler"
+  - "예약 작업"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/events-configuration.html"
   - "https://mariadb.com/docs/server/server-usage/triggers-events/event-scheduler/events"

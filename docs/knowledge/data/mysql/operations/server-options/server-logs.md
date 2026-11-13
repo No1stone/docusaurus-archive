@@ -12,11 +12,11 @@ tags:
   - Database
 status: active
 keywords:
-  - "log_error"
   - "slow_query_log"
   - "long_query_time"
+  - "log_error"
   - "general_log"
-  - "log_output"
+  - "MySQL 슬로우 쿼리 로그"
 references:
   - "https://dev.mysql.com/doc/refman/8.4/en/log-destinations.html"
   - "https://mariadb.com/docs/server/server-management/server-monitoring-logs/overview-of-mariadb-logs"
