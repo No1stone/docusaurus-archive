@@ -17,6 +17,7 @@ keywords:
   - "MySQL 테이블 이관"
   - "MariaDB 테이블 마이그레이션"
   - "암시적 커밋"
+  - "스키마 변경 마이그레이션"
 references:
   - "https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/inserting-loading-data/insert-select"
   - "https://dev.mysql.com/doc/refman/8.4/en/rename-table.html"
