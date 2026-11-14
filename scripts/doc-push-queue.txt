@@ -1,6 +1,3 @@
-docs/knowledge/data/redis/keys/list-set-sorted-set.md
-docs/knowledge/data/redis/keys/lua-atomic.md
-docs/knowledge/data/redis/keys/string-and-hash.md
 docs/knowledge/data/redis/ops/persistence-and-memory.md
 docs/knowledge/data/redis/ops/topology.md
 docs/knowledge/data/redis/ops/작업-redis.md
