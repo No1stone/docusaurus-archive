@@ -1,3 +1,19 @@
+# Tools — deps → code → pages → AdSense theme → navbar/sidebar(config) → validators
+package.json
+package-lock.json
+src/tools/
+src/pages/tools/
+src/theme/AdSenseLoader.tsx
+src/theme/Layout/index.tsx
+docusaurus.config.ts
+scripts/validate-compose-generator.ts
+scripts/validate-new-tools.ts
+scripts/validate-jar-command-generator.ts
+scripts/validate-linux-permissions.ts
+scripts/validate-time-converter.ts
+scripts/validate-tools-ad.ts
+
+# Existing queue (docusaurus.config moved to Tools block)
 docs/knowledge/data/redis/patterns/work-queue.md
 docs/knowledge/data/redis/spring/r2dbc-redis.md
 docs/knowledge/data/redis/spring/caching-annotation.md
@@ -40,16 +56,13 @@ docs/experiments/index.md
 docs/harness/index.md
 docs/history/index.md
 docs/index.md
-docs/knowledge/index.md
 docs/patterns/index.md
 docs/postmortems/index.md
-docusaurus.config.ts
 docs/knowledge/backend/notification/index.md
 docs/knowledge/backend/notification/notification-design-and-delivery.md
 docs/knowledge/backend/notification/inbox-and-read-state.md
 docs/knowledge/backend/notification/sse-inapp-badge.md
 docs/knowledge/backend/notification/mobile-and-web-push.md
-docs/knowledge/backend/index.md
 docs/knowledge/networking/http-stack/index.md
 docs/knowledge/networking/http-stack/uri.md
 docs/knowledge/networking/http-stack/url-scheme-and-deeplink.md
@@ -178,3 +191,38 @@ docs/knowledge/data/mysql/operations/server-options/analyze-table-statistics.md
 docs/knowledge/data/mysql/operations/server-options/functions-and-type-conversion-indexes.md
 docs/knowledge/data/mysql/operations/server-options/lock-waits-and-blocking-sessions.md
 docs/knowledge/data/mysql/operations/partitioning.md
+# Pending local knowledge updates
+# Knowledge additions after Tools
+docs/knowledge/dev-ops-policies.md
+docs/knowledge/security/crypto-and-hash/_category_.json
+docs/knowledge/security/crypto-and-hash/index.md
+docs/knowledge/security/software-supply-chain/_category_.json
+docs/knowledge/security/software-supply-chain/index.md
+docs/knowledge/security/software-supply-chain/license-and-oss-notice.md
+docs/knowledge/security/software-supply-chain/sbom-and-release-artifacts.md
+docs/knowledge/security/vault/_category_.json
+docs/knowledge/security/vault/index.md
+docs/knowledge/security/legacy-notes/_category_.json
+docs/knowledge/security/legacy-notes/index.md
+docs/knowledge/security/legacy-notes/auth256utils.md
+docs/knowledge/security/legacy-notes/authtokeninterceptor.md
+docs/knowledge/security/legacy-notes/exame-bootsecurityjwtrestapi.md
+docs/knowledge/security/legacy-notes/jwt.md
+docs/knowledge/security/legacy-notes/openssl-base64.md
+docs/knowledge/security/legacy-notes/security-info.md
+docs/knowledge/security/legacy-notes/security.md
+docs/knowledge/security/legacy-notes/token.md
+docs/knowledge/security/legacy-notes/webfluxsecurity.md
+docs/knowledge/service-policy/_category_.json
+docs/knowledge/service-policy/index.md
+docs/knowledge/service-policy/privacy-consent-design.md
+docs/knowledge/service-policy/privacy-policy-template.md
+docs/knowledge/service-policy/terms-of-service-template.md
+docs/knowledge/service-policy/terms-of-service-versioning.md
+docs/knowledge/backend/spring-cloud/api-gateway.md
+docs/knowledge/backend/spring/legacy/web/handlerintercepter.md
+docs/knowledge/tooling/common.md
+docs/knowledge/tooling/util.md
+docs/knowledge/security/index.md
+docs/knowledge/index.md
+docs/knowledge/backend/index.md
