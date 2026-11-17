@@ -45,7 +45,7 @@ public class ConfigFilter {
 }
 ```
 
-JWT 검증·Redis Access 확인은 [JWT](../../security/jwt.md)와 [Gateway 권한 라우팅 패턴](/docs/patterns/architecture-patterns/gateway-authorization-routing)을 봅니다.
+JWT 검증과 Redis Access 확인은 [JWT](/docs/knowledge/k-jwt)와 [Gateway 권한 라우팅 패턴](/docs/patterns/architecture-patterns/gateway-authorization-routing)을 봅니다.
 
 ## YAML 라우트 예
 

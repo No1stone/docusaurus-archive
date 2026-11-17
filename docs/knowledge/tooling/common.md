@@ -17,7 +17,7 @@ Linux에서 반복해서 쓰는 공통 작업 메모를 모아 둔 허브입니�
 
 ## 하위 메모
 
-- [openssl base64](../security/openssl-base64.md)
+- [openssl base64](/docs/knowledge/k-openssl-base64)
 - [fileName date](../infrastructure/filename-date.md)
 - [systemctl release](../infrastructure/linux/system/systemctl-release.md)
 - [envVarialbe](../infrastructure/envvarialbe.md)

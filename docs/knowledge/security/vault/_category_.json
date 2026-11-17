@@ -1,0 +1,8 @@
+{
+  "label": "Vault",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/security/vault/security-vault"
+  }
+}

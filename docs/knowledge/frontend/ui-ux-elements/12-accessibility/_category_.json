@@ -1,0 +1,8 @@
+{
+  "label": "접근성과 화면 설정",
+  "position": 12,
+  "link": {
+    "type": "doc",
+    "id": "frontend-ui-accessibility"
+  }
+}

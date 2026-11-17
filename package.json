@@ -21,14 +21,23 @@
     "@docusaurus/preset-classic": "3.10.2",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "cron-parser": "^5.10.6",
+    "fast-xml-parser": "^5.12.1",
+    "js-md5": "^0.10.0",
+    "js-yaml": "^5.5.0",
     "prism-react-renderer": "^2.3.0",
+    "qrcode": "^1.5.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "smol-toml": "^1.9.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
+    "@types/js-md5": "^0.8.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",
     "typescript": "~6.0.2"
   },

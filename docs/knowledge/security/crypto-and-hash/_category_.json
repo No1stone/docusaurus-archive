@@ -1,0 +1,8 @@
+{
+  "label": "암호화와 해시",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/security/crypto-and-hash/security-crypto-and-hash"
+  }
+}
