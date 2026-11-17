@@ -13,6 +13,12 @@ scripts/validate-linux-permissions.ts
 scripts/validate-time-converter.ts
 scripts/validate-tools-ad.ts
 
+# UI/UX demos — components + SEO metadata → docs tree → Frontend index
+src/components/ui-demos/
+src/theme/DocItem/Metadata/index.tsx
+docs/knowledge/frontend/ui-ux-elements/
+docs/knowledge/frontend/index.md
+
 # Existing queue (docusaurus.config moved to Tools block)
 docs/knowledge/data/redis/patterns/work-queue.md
 docs/knowledge/data/redis/spring/r2dbc-redis.md
