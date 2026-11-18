@@ -1,6 +1,6 @@
 ---
 title: "JAR 배포의 Java 버전 고정과 사용자 경로 JDK 교체"
-description: "Java4Shell 대응 Corretto를 사용자 홈에 설치하고, systemd ExecStart의 Java 절대 경로와 JAR 릴리스 전환으로 보안 업데이트와 롤백을 관리합니다."
+description: "Java 11, 17, 21, 25 JAR 서버에서 사용자 경로 JDK, systemd ExecStart 절대 경로, 릴리스 전환으로 보안 패치와 롤백을 관리합니다. 설치 예시는 Amazon Corretto입니다."
 slug: /knowledge/tooling/ci/jar-deployment-with-user-jdk
 sidebar_position: 2
 tags:
@@ -10,14 +10,18 @@ tags:
   - Security
 status: active
 keywords:
+  - "Java 11"
+  - "Java 17"
+  - "Java 21"
+  - "Java 25"
+  - "JDK"
+  - "보안 패치"
   - "JAR 배포"
-  - "Corretto"
-  - "Java4Shell"
   - "systemd ExecStart"
+  - "Java4Shell"
   - "JAVA_HOME"
   - "사용자 경로 JDK"
   - "java -version"
-  - "보안 패치"
   - "롤백"
   - "Linux Java 교체"
 ---
@@ -28,6 +32,7 @@ JAR를 직접 실행하는 서버에서 Java 보안 업데이트를 적용하려
 터미널의 `java -version`과 systemd 서비스가 사용하는 Java는 서로 다를 수 있습니다.
 시스템에 설치된 Java와 함께 서비스 전용 JDK를 사용자 홈 아래에 두고, 실행 파일의 절대 경로를 지정해 버전을 관리할 수 있습니다.
 
+절차는 Java 11, 17, 21, 25에 같고, 다운로드와 경로 예제는 Amazon Corretto를 사용합니다.
 이 글은 Ubuntu에서 이미 존재하는 `appuser` 계정으로 앱을 운영한다고 가정합니다.
 JDK와 JAR는 해당 계정이 읽고 실행할 수 있는 경로에 두고, systemd 시스템 서비스의 등록과 재시작에는 관리자 권한을 사용합니다.
 
@@ -136,8 +141,8 @@ tar -xzf amazon-corretto-25.0.5.1.2-linux-x64.tar.gz \
 /home/appuser/jdks/corretto-25.0.5.1.2/bin/java -version
 ```
 
-Java 17 서버라면 공식 Corretto 17 릴리스의 파일, 체크섬과 경로로 이 과정을 적용합니다.
-릴리스 번호와 실제 파일 목록은 [Corretto 다운로드 안내](https://docs.aws.amazon.com/corretto/latest/corretto-25-ug/downloads-list.html)에서 확인합니다.
+Java 11, 17, 21 서버라면 해당 계열 공식 릴리스의 파일, 체크섬과 경로로 이 과정을 적용합니다.
+릴리스 번호와 실제 파일 목록은 사용 중인 계열의 [Corretto 다운로드 안내](https://docs.aws.amazon.com/corretto/latest/corretto-25-ug/downloads-list.html)에서 확인합니다.
 
 ## Java 11, 17, 21, 25의 경로를 선택합니다
 
@@ -273,6 +278,23 @@ sudo readlink -f /proc/1234/exe
 Docker 방식의 같은 절차는 [이미지 버전과 다이제스트 고정](../../infrastructure/docker/image-tags-and-digest-pinning.md)에서 이어서 볼 수 있습니다.
 
 ## 자주 묻는 질문
+
+### Java 11, 17, 21, 25 중 어떤 JDK 경로를 쓰나요?
+
+앱이 빌드되고 검증된 Java 메이저에 맞춘 설치 경로를 고릅니다.
+위 「Java 11, 17, 21, 25의 경로를 선택합니다」 표의 계열별 디렉터리와 `bin/java`를 ExecStart, JAVA_HOME과 같게 맞춥니다.
+메이저 업그레이드는 보안 패치와 별도로 호환성을 검증합니다.
+
+### Corretto 11은 `CVE-2026-114938` 영향이 없는데 왜 표에 있나요?
+
+AWS 공지에서는 Corretto 11을 영향 없음으로 분류합니다.
+같은 시기의 다른 취약점 수정을 포함한 정식 보안 업데이트이므로, 11을 유지하는 JAR 서버에서도 버전과 설치 경로를 함께 기록합니다.
+
+### Oracle JDK나 Temurin으로도 같은 방식인가요?
+
+같습니다.
+배포판마다 릴리스 일정과 빌드 번호가 다르므로, 쓰는 JDK의 공식 아카이브와 체크섬으로 사용자 경로에 설치한 뒤 ExecStart 절대 경로를 고정합니다.
+본문 다운로드 예제는 Amazon Corretto입니다.
 
 ### 터미널의 `java -version`과 서비스 Java가 다를 수 있나요?
 

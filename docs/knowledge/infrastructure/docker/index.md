@@ -9,7 +9,11 @@ keywords:
   - "Docker Compose"
   - "Dockerfile"
   - "이미지 다이제스트"
-  - "Corretto"
+  - "Java 11"
+  - "Java 17"
+  - "Java 21"
+  - "Java 25"
+  - "JDK"
   - "보안 패치"
 ---
 
