@@ -1,4 +1,5 @@
 ---
+sidebar_position: 96
 format: md
 id: k-alb-nginx-error
 title: "Alb →nginx error"

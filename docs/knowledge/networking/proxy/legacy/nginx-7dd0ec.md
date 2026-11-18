@@ -1,4 +1,5 @@
 ---
+sidebar_position: 92
 format: md
 id: k-nginx-7dd0ec
 title: "nginx"

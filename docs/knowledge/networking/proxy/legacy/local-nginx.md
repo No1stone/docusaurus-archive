@@ -1,4 +1,5 @@
 ---
+sidebar_position: 95
 format: md
 id: k-local-nginx
 title: "local nginx"

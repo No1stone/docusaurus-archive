@@ -33,5 +33,5 @@ EC2 환경에서 수행한 작업 메모를 모아 둔 허브입니다.
 - [작업 redis](../../../data/redis/작업-redis.md)
 - [WORK](../../workspace/work.md)
 - [Work Space](../../workspace/work-space.md)
-- [local nginx](../../../networking/proxy/local-nginx.md)
+- [local nginx](../../../networking/proxy/legacy/local-nginx.md)
 - [작업 spring](../../../backend/spring/core/작업-spring.md)

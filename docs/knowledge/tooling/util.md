@@ -20,15 +20,15 @@ slug: /knowledge/k-util
 
 ## 하위 메모
 
-- [AUTH256Utils](../security/auth256utils.md)
+- [AUTH256Utils](/docs/knowledge/k-auth256utils)
 - [DATEUtils](../backend/java/dateutils.md)
 - [HTTPUtils](../networking/http-stack/httputils.md)
 - [RestTemplate](../backend/spring/web/resttemplate.md)
 - [UriComponent](../networking/http-stack/uricomponent.md)
-- [JWT](../security/jwt.md)
+- [JWT](/docs/knowledge/k-jwt)
 - [Ngrok](../networking/transport/ngrok.md)
 - [Webex RestAPI](../messaging/brokers/message.md)
-- [nginx](../networking/proxy/rewrite.md)
+- [nginx](../networking/proxy/legacy/rewrite.md)
 - [Browser guid](/docs/knowledge/frontend/legacy/browser-guid)
 - [webrtc](/docs/knowledge/frontend/legacy/webrtc)
 - [GIT](/docs/knowledge/k-git)

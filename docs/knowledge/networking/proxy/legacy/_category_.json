@@ -1,0 +1,9 @@
+{
+  "label": "기존 Nginx 메모",
+  "position": 99,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/networking/proxy/legacy/networking-proxy-legacy"
+  }
+}
