@@ -1,11 +1,13 @@
 ---
 id: infrastructure-docker
 title: "Docker"
-description: "Docker 설치, Compose, Dockerfile, 이미지 태그와 다이제스트 고정, 보안 패치 재배포를 다루는 인프라 메모입니다."
+description: "Docker 설치, Compose, Dockerfile, 이미지 태그와 다이제스트 고정, Java4Shell(CVE-2026-114938) 사례의 보안 패치 재배포를 다루는 인프라 메모입니다."
 slug: /knowledge/infrastructure/docker
 status: active
 keywords:
   - "Docker"
+  - "Java4Shell"
+  - "CVE-2026-114938"
   - "Docker Compose"
   - "Dockerfile"
   - "이미지 다이제스트"

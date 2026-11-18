@@ -1,6 +1,6 @@
 ---
 title: "Docker 이미지 버전 관리: 메이저 태그부터 다이제스트 고정까지"
-description: "Java 11, 17, 21, 25 런타임의 Docker 메이저 태그, java -version, 다이제스트 고정, 앱 이미지 재빌드와 재배포를 정리합니다. 본문 검증 예시는 Amazon Corretto입니다."
+description: "Java4Shell(CVE-2026-114938) 대응을 예로 Java 11, 17, 21, 25 Docker 메이저 태그, java -version, 다이제스트 고정, 앱 이미지 재빌드와 재배포를 정리합니다. 검증 예시는 Amazon Corretto입니다."
 slug: /knowledge/infrastructure/docker/image-tags-and-digest-pinning
 sidebar_position: 2
 tags:
@@ -9,15 +9,16 @@ tags:
   - Security
 status: active
 keywords:
+  - "Java4Shell"
+  - "CVE-2026-114938"
+  - "Java 보안 패치"
   - "Java 11"
   - "Java 17"
   - "Java 21"
   - "Java 25"
   - "JDK"
-  - "보안 패치"
   - "Docker 이미지 다이제스트"
   - "digest pinning"
-  - "Java4Shell"
   - "docker pull"
   - "베이스 이미지 고정"
   - "java -version"
@@ -30,7 +31,7 @@ Dockerfile에 `FROM amazoncorretto:25`처럼 Java 메이저 태그를 쓰고 있
 메이저 버전은 그대로여도 같은 태그가 가리키는 이미지가 갱신될 수 있습니다.
 반대로 Dockerfile을 수정하지 않고 재배포만 하면 기존 앱 이미지 속 Java가 계속 실행될 수 있습니다.
 
-이 글에서는 실제 패치가 들어간 베이스 이미지를 확인하고, 그 이미지를 사용해 앱을 다시 빌드한 뒤 배포하는 흐름을 살펴봅니다.
+이 글에서는 Java4Shell로 알려진 `CVE-2026-114938` 대응을 사례로, 실제 패치가 들어간 베이스 이미지를 확인하고 앱 이미지를 다시 빌드한 뒤 배포하는 흐름을 살펴봅니다.
 확인 절차는 Java 11, 17, 21, 25에 같고, 명령 예제와 릴리스 표는 Amazon Corretto를 기준으로 계열을 바꿔 적용합니다.
 
 ## 메이저 업그레이드와 보안 패치 선택
@@ -39,7 +40,7 @@ Java 17에서 21이나 25로 올리면 언어와 런타임의 메이저 업그�
 보안 공지가 나왔다면 먼저 현재 사용하는 Java 계열과 배포판에서 해당 취약점을 수정한 릴리스를 확인합니다.
 Corretto, Oracle JDK, Temurin은 배포 일정과 빌드 번호가 다를 수 있습니다.
 
-아래는 Java 11, 17, 21, 25 계열별로 확인한 Corretto 보안 업데이트입니다.
+아래는 Java4Shell(`CVE-2026-114938`) 시점에 Java 11, 17, 21, 25 계열별로 확인한 Corretto 보안 업데이트입니다.
 
 | Java 계열 | 2026년 11월 18일 확인한 Corretto 정식 릴리스 | 공식 릴리스 |
 |---|---|---|

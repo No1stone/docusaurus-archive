@@ -1,11 +1,13 @@
 ---
 id: tooling-ci
 title: "CI"
-description: "Jenkins, GitHub Actions, JAR 배포와 사용자 경로 JDK 교체를 다루는 CI와 배포 메모입니다."
+description: "Jenkins, GitHub Actions, JAR 배포와 사용자 경로 JDK 교체, Java4Shell(CVE-2026-114938) 사례를 다루는 CI와 배포 메모입니다."
 slug: /knowledge/tooling/ci
 status: active
 keywords:
   - "CI"
+  - "Java4Shell"
+  - "CVE-2026-114938"
   - "Jenkins"
   - "GitHub Actions"
   - "JAR 배포"

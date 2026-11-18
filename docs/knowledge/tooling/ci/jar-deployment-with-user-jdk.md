@@ -1,6 +1,6 @@
 ---
 title: "JAR 배포의 Java 버전 고정과 사용자 경로 JDK 교체"
-description: "Java 11, 17, 21, 25 JAR 서버에서 사용자 경로 JDK, systemd ExecStart 절대 경로, 릴리스 전환으로 보안 패치와 롤백을 관리합니다. 설치 예시는 Amazon Corretto입니다."
+description: "Java4Shell(CVE-2026-114938) 대응을 예로 Java 11, 17, 21, 25 JAR 서버의 사용자 경로 JDK, systemd ExecStart 절대 경로, 릴리스 전환과 롤백을 정리합니다. 설치 예시는 Amazon Corretto입니다."
 slug: /knowledge/tooling/ci/jar-deployment-with-user-jdk
 sidebar_position: 2
 tags:
@@ -10,15 +10,16 @@ tags:
   - Security
 status: active
 keywords:
+  - "Java4Shell"
+  - "CVE-2026-114938"
+  - "Java 보안 패치"
   - "Java 11"
   - "Java 17"
   - "Java 21"
   - "Java 25"
   - "JDK"
-  - "보안 패치"
   - "JAR 배포"
   - "systemd ExecStart"
-  - "Java4Shell"
   - "JAVA_HOME"
   - "사용자 경로 JDK"
   - "java -version"
@@ -32,6 +33,7 @@ JAR를 직접 실행하는 서버에서 Java 보안 업데이트를 적용하려
 터미널의 `java -version`과 systemd 서비스가 사용하는 Java는 서로 다를 수 있습니다.
 시스템에 설치된 Java와 함께 서비스 전용 JDK를 사용자 홈 아래에 두고, 실행 파일의 절대 경로를 지정해 버전을 관리할 수 있습니다.
 
+이 글에서는 Java4Shell로 알려진 `CVE-2026-114938` 대응을 사례로 둡니다.
 절차는 Java 11, 17, 21, 25에 같고, 다운로드와 경로 예제는 Amazon Corretto를 사용합니다.
 이 글은 Ubuntu에서 이미 존재하는 `appuser` 계정으로 앱을 운영한다고 가정합니다.
 JDK와 JAR는 해당 계정이 읽고 실행할 수 있는 경로에 두고, systemd 시스템 서비스의 등록과 재시작에는 관리자 권한을 사용합니다.
@@ -47,6 +49,8 @@ JAR를 그대로 두고 수정된 Java로 다시 실행할 수 있고, 앱 릴�
 | Java 런타임 | Corretto `25.0.5.1.2` | 배포판의 보안 수정 내역과 실제 실행 버전을 확인합니다. |
 | 앱 릴리스 | `1.4.3` | 빌드한 JAR와 검증 결과를 연결합니다. |
 | 배포 기록 | 앱 버전, JAR 해시, JDK 경로 | 실제 어떤 조합이 실행됐는지 남깁니다. |
+
+아래는 Java4Shell(`CVE-2026-114938`) 시점에 확인한 Corretto 정식 릴리스입니다.
 
 | Java 계열 | 2026년 11월 18일 확인한 Corretto 정식 릴리스 | 공식 릴리스 |
 |---|---|---|

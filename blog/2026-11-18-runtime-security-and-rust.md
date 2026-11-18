@@ -1,10 +1,11 @@
 ---
 slug: runtime-security-ai-and-rust
 title: "PHP 다음은 Node.js, 이번에는 Java였습니다"
-description: "PHP, Node.js에 이어 Java 런타임 보안을 확인하며 Docker 이미지 고정과 JAR JDK 교체를 정리했습니다. Spring 유지보수, Rust 관심, AI와 SDD에서 맡길 책임 범위를 기록합니다."
+description: "Java4Shell(CVE-2026-114938)을 계기로 PHP, Node.js에 이어 Java 런타임 보안을 확인하며 Docker 이미지 고정과 JAR JDK 교체를 정리했습니다. Spring 유지보수, Rust, AI와 SDD에서 맡길 책임 범위를 기록합니다."
 authors: [wonseok]
 keywords:
   - Java4Shell
+  - CVE-2026-114938
   - Java 보안 업데이트
   - Docker 다이제스트
   - JAR 배포
@@ -27,7 +28,7 @@ date: 2026-11-18
 # PHP 다음은 Node.js, 이번에는 Java였습니다
 
 최근에는 기능을 만드는 일 사이로 실행 환경의 보안 공지를 확인하는 일이 이어졌습니다.
-Nextcloud의 PHP를 확인하고, Docusaurus를 빌드하는 Node.js를 올리고, 이번에는 Spring 서버가 사용하는 Java 버전을 살펴봤습니다.
+Nextcloud의 PHP를 확인하고, Docusaurus를 빌드하는 Node.js를 올리고, 이번에는 Java4Shell(`CVE-2026-114938`) 공지를 보고 Spring 서버가 사용하는 Java 버전을 살펴봤습니다.
 
 각각의 시스템을 따로 만들었는데, 운영하는 사람의 할 일 목록에는 결국 함께 올라옵니다.
 코드를 고치지 않아도 확인하고 바꿔야 하는 것들이 계속 생깁니다.
