@@ -1,6 +1,3 @@
-src/tools/types.ts
-src/tools/utils.ts
-src/tools/adsConfig.ts
 src/tools/styles.module.css
 src/tools/worklist.ts
 src/tools/utils/composeDiff.ts
