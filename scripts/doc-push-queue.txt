@@ -1,6 +1,3 @@
-src/tools/utils/composeGenerator.ts
-src/tools/utils/curlParse.ts
-src/tools/utils/dnsRecord.ts
 src/tools/utils/httpHeaderAnalyzer.ts
 src/tools/utils/jarCommandGenerator.ts
 src/tools/utils/jsonFieldMap.ts
