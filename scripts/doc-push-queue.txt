@@ -1,6 +1,3 @@
-src/tools/utils/httpHeaderAnalyzer.ts
-src/tools/utils/jarCommandGenerator.ts
-src/tools/utils/jsonFieldMap.ts
 src/tools/utils/linuxPermissions.ts
 src/tools/utils/nginxReverseProxy.ts
 src/tools/utils/shellQuote.ts
