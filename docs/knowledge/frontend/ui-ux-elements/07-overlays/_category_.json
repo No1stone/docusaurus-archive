@@ -1,0 +1,8 @@
+{
+  "label": "오버레이와 보조 화면",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "frontend-ui-overlays"
+  }
+}

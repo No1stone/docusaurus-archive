@@ -1,0 +1,9 @@
+{
+  "label": "로그, 메트릭과 분산 추적",
+  "position": 10,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-observability-index"
+  }
+}

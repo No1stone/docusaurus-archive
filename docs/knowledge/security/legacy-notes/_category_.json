@@ -1,0 +1,9 @@
+{
+  "label": "기존 보안 노트",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/security/legacy-notes/security-legacy-notes"
+  }
+}

@@ -74,13 +74,13 @@ Config Server·Eureka는 Gateway 권한 로직과 역할이 다릅니다.
 
 - 허용 경로 오설정은 인증 우회입니다. 목록 관리를 코드·설정 중 어디에 둘지 명확히 합니다.
 - Redis에만 의존하는 토큰 존재 검사는 Redis 장애 시 전부 실패하거나, 구현에 따라 과도하게 통과할 수 있습니다. boot-base 일부 경로에는 Redis 미스 후 서명 검증이 주석 처리된 구간이 있어, 운영 전에 검증 정책을 확인해야 합니다.
-- `lb://` 라우팅은 서비스 발견이 함께 동작해야 합니다. Eureka 설명은 Gateway 글에 합치지 않고 [Eureka](../../knowledge/backend/spring-cloud/eureka.md)로 둡니다.
+- `lb://` 라우팅은 서비스 발견이 함께 동작해야 합니다. Eureka 설명은 Gateway 글에 합치지 않고 [Eureka](../../knowledge/backend/spring-cloud/legacy/eureka.md)로 둡니다.
 
 ## 관련 글
 
-- [API GATEWAY](../../knowledge/backend/spring-cloud/api-gateway.md)
-- [Config Server](../../knowledge/backend/spring-cloud/config-server.md)
-- [Eureka](../../knowledge/backend/spring-cloud/eureka.md)
+- [API GATEWAY](../../knowledge/backend/spring-cloud/legacy/api-gateway.md)
+- [Config Server](../../knowledge/backend/spring-cloud/legacy/config-server.md)
+- [Eureka](../../knowledge/backend/spring-cloud/legacy/eureka.md)
 - [포트폴리오 포트폴리오 개요](/docs/postmortems/msa-iam-portfolio/overview)
 
 ## 참고

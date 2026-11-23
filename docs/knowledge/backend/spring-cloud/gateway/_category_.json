@@ -1,0 +1,9 @@
+{
+  "label": "Spring Cloud Gateway",
+  "position": 2,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-gateway-index"
+  }
+}

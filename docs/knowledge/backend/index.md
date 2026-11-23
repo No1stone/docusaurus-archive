@@ -30,5 +30,5 @@ slug: "/knowledge/backend/"
 
 ## Related
 
-- [Security](../security/) — JWT, Spring Security 메모
+- [Security](/docs/security/) — Vault, 암호화와 해시, 기존 보안 노트
 - [Patterns](/docs/patterns/index)

@@ -1,0 +1,9 @@
+{
+  "label": "서비스 계약 테스트",
+  "position": 11,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-contracts-index"
+  }
+}

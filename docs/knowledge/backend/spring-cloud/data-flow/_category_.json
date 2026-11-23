@@ -1,0 +1,9 @@
+{
+  "label": "SCDF와 파이프라인 운영",
+  "position": 9,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-data-flow-index"
+  }
+}

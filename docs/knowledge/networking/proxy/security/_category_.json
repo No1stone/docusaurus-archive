@@ -1,0 +1,8 @@
+{
+  "label": "HTTPS와 접근 제어",
+  "position": 7,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/networking/proxy/security/index"
+  }
+}

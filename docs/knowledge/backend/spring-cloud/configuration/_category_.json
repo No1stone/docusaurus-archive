@@ -1,0 +1,9 @@
+{
+  "label": "Config, Vault와 설정 갱신",
+  "position": 4,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-configuration-index"
+  }
+}

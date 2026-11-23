@@ -36,6 +36,6 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 
 ## 관련 메모
 
-- [AuthTokenInterceptor](../../../../security/authtokeninterceptor.md)
+- [AuthTokenInterceptor](/docs/knowledge/k-authtokeninterceptor)
 - [Addinterceptors](/docs/knowledge/k-addinterceptors)
 - [CorsRegistry](../../../../networking/http-stack/corsregistry.md)

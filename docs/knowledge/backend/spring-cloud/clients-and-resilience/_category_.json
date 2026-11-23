@@ -1,0 +1,9 @@
+{
+  "label": "서비스 호출과 장애 제어",
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-clients-and-resilience-index"
+  }
+}

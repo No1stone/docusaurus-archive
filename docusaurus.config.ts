@@ -21,19 +21,24 @@ const config: Config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Google AdSense auto ads — account script once in <head> (no manual units)
-  scripts: [
-    {
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7928208116313519',
-      async: true,
-      crossorigin: 'anonymous',
+  // Docs/blog: AdSenseLoader auto ads. Tools: isolated display unit only
+  // (see customFields.toolsAdSense + ToolsAdSlot sandboxed iframe).
+  customFields: {
+    toolsAdSense: {
+      clientId: 'ca-pub-7928208116313519',
+      // AdSense 반응형 디스플레이 단위 ID. 비우면 Tools 광고 열을 숨깁니다.
+      // 콘솔에서 단위 생성 후 여기에 넣으세요. 예: '1234567890'
+      displaySlotId: process.env.DOCUSAURUS_TOOLS_ADSENSE_SLOT ?? '',
     },
-  ],
+  },
 
   i18n: {
     defaultLocale: 'ko',
     locales: ['ko'],
   },
+
+  markdown: {mermaid: true},
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -2272,6 +2277,7 @@ const config: Config = {
           position: 'left',
           label: 'Archive',
         },
+        {to: '/tools', label: 'Tools', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/No1stone',
@@ -2293,6 +2299,7 @@ const config: Config = {
             {label: 'Decisions', to: '/docs/decisions/'},
             {label: 'Postmortems', to: '/docs/postmortems/'},
             {label: 'Blog', to: '/blog'},
+            {label: 'Tools', to: '/tools'},
             {label: 'Harness', to: '/docs/harness/'},
           ],
         },

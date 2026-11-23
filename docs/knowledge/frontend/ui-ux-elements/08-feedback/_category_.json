@@ -1,0 +1,8 @@
+{
+  "label": "알림과 피드백",
+  "position": 8,
+  "link": {
+    "type": "doc",
+    "id": "frontend-ui-feedback"
+  }
+}

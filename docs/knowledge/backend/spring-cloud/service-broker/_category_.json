@@ -1,0 +1,9 @@
+{
+  "label": "Open Service Broker",
+  "position": 12,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-service-broker-index"
+  }
+}

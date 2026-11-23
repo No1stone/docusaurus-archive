@@ -1,16 +1,26 @@
 ---
-format: md
-id: spring-overview-index
+format: "md"
+id: "spring-overview-index"
 title: "Spring 개요"
 sidebar_label: "개요"
-description: "Spring의 JVM 기반과 Java 및 Kotlin, Framework와 Boot의 관계, Maven과 Gradle, Initializr와 IntelliJ 프로젝트 생성 및 주요 변화의 적용 버전을 설명합니다."
-slug: /knowledge/backend/spring/overview
+description: "Spring Framework와 Boot 관계, 빌드 도구와 프로젝트 시작 방법을 정리한 입구입니다."
+slug: "/knowledge/backend/spring/overview"
 sidebar_position: 0
-status: active
+status: "active"
 tags:
-  - Spring
-  - Java
-  - Kotlin
+  - "Spring"
+  - "Java"
+  - "Kotlin"
+keywords:
+  - "Spring 개요"
+  - "Spring"
+  - "Spring Boot"
+  - "Spring Framework"
+  - "Initializr"
+  - "Gradle"
+  - "Maven"
+  - "Java"
+  - "Kotlin"
 ---
 # Spring 개요
 
@@ -102,3 +112,14 @@ Spring의 API 도입 버전과 Boot의 자동 설정 도입 버전도 같은 뜻
 
 지원 JDK와 빌드 도구 버전은 선택한 Boot 버전의 요구사항에 맞춥니다.\
 이후에는 [Spring Core](/docs/knowledge/backend/spring/spring-core)에서 Bean과 Context를, [Spring Boot](/docs/knowledge/backend/spring/boot)에서 실행과 자동 설정을 살펴봅니다.
+
+## 자주 묻는 질문
+
+### Spring Framework와 Spring Boot는 어떻게 나누나요?
+
+Framework는 IoC와 모듈 API의 기반이고, Boot는 자동 설정과 실행 도움으로 그 위에 올리는 선택입니다.
+
+### 이 문서들의 Java 기준은 무엇인가요?
+
+일반 예제는 Java 17 이상과 Boot 3 계열을 기준으로 두고, 가상 스레드 예제는 Java 21 이상을 전제로 합니다.
+

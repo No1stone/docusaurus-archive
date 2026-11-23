@@ -9,6 +9,7 @@ unlisted: true
 > 매 작업에 이 폴더 전체를 읽지 않습니다.
 > 필요할 때 해당 월만 검색합니다.
 
+- [2026-11](/docs/harness/history/2026-11)
 - [2026-10](/docs/harness/history/2026-10)
 - [Notion 이전 작업 목록](/docs/harness/history/notion-import-worklist) (unlisted)
 - [Notion 원본 목록](/docs/harness/history/notion-import-inventory) (unlisted)

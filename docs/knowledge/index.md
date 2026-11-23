@@ -30,7 +30,9 @@ description: Current engineering knowledge by domain
 | [Data](./data/) | 데이터베이스 설계와 튜닝, ORM, Redis |
 | [Networking](./networking/) | HTTP, DNS, 프록시와 요청 경로 |
 | [Infrastructure](./infrastructure/) | 클라우드, 컨테이너, 서버 운영과 관측 |
-| [Security](/docs/security/) | 인증, 토큰과 암호화 |
+| [Security](/docs/security/) | Vault, 암호화와 해시, 소프트웨어 공급망, 기존 보안 노트 |
+| [개발과 운영 정책](/docs/knowledge/dev-ops-policies) | 서비스 정책과 소프트웨어 공급망 연결 |
+| [서비스 정책](/docs/knowledge/service-policy) | 개인정보 동의, 이용약관과 버전 관리 |
 | [Tooling](./tooling/) | Git, CI, SSH, 개발 도구와 버전 관리 |
 
 여러 기술이 함께 등장하는 글은 해결하려는 문제에 맞춰 한곳에 두고, 다른 분야에서는 링크로 이어집니다.<br />

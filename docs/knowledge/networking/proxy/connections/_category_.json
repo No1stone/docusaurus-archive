@@ -1,0 +1,8 @@
+{
+  "label": "연결과 부하 분산",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/networking/proxy/connections/index"
+  }
+}

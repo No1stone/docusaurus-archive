@@ -1,0 +1,8 @@
+{
+  "label": "정보 표시",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "frontend-ui-display"
+  }
+}

@@ -5,6 +5,7 @@ import Layout from '@theme-original/Layout';
 import type LayoutType from '@theme/Layout';
 import type {WrapperProps} from '@docusaurus/types';
 import {serializeJsonLd, siteGraph} from '@site/src/seo/schema';
+import AdSenseLoader from '../AdSenseLoader';
 
 type Props = WrapperProps<typeof LayoutType>;
 
@@ -23,6 +24,7 @@ export default function LayoutWrapper(props: Props): ReactNode {
           {serializeJsonLd(graph)}
         </script>
       </Head>
+      <AdSenseLoader />
       <Layout {...props} />
     </>
   );

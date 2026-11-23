@@ -1,0 +1,9 @@
+{
+  "label": "서비스 발견과 Eureka",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-discovery-index"
+  }
+}

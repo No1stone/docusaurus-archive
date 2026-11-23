@@ -1,4 +1,9 @@
 {
   "label": "Spring Cloud",
-  "position": 5
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "knowledge-spring-cloud"
+  }
 }

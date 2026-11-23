@@ -1,0 +1,9 @@
+{
+  "label": "Stream과 메시징",
+  "position": 6,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-messaging-index"
+  }
+}

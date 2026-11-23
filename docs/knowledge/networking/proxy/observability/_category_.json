@@ -1,0 +1,8 @@
+{
+  "label": "로그와 장애 분석",
+  "position": 9,
+  "link": {
+    "type": "doc",
+    "id": "knowledge/networking/proxy/observability/index"
+  }
+}

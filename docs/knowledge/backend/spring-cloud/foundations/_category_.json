@@ -1,0 +1,9 @@
+{
+  "label": "구성과 의존성",
+  "position": 1,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "spring-cloud-foundations-index"
+  }
+}

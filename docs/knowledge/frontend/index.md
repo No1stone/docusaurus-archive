@@ -1,7 +1,13 @@
 ---
 sidebar_position: 1
 title: Frontend
-description: CMS 업무 백오피스 FE 하네스 지식 입구. 하드 규칙, 원셋, 표준 문서
+description: "CMS 업무 백오피스 FE 하네스 지식 입구입니다. 하드 규칙, 원셋, 표준 문서와 조작형 UI/UX 데모 모음으로 연결합니다."
+keywords:
+  - "Frontend"
+  - "프론트엔드"
+  - "UI/UX"
+  - "UI 데모"
+  - "CMS 백오피스"
 ---
 
 # Frontend
@@ -84,6 +90,7 @@ Flutter도 같은 경량 헥사 책임입니다. 화면 연결 이름만 ViewMod
 | [console-management-crud-set](./integration/console-management-crud-set) | FE CRUD 마스터 상세 |
 | [error-timeout-policy](./integration/error-timeout-policy) | 타임아웃, suppress |
 | [dark-mode](./design/dark-mode) / [responsive](./design/responsive) / [loading-action-ux](./design/loading-action-ux) | 디자인 계약 (클릭·pending·Skeleton·Toast, 웹+Flutter) |
+| [UI/UX 요소](./ui-ux-elements/) | 조작하며 확인하는 UI 데모 모음 목차 (웹과 모바일 공통) |
 | [Tasks](./tasks/) | CMS CRUD 마이크로 태스크 (해당 작업 시) |
 | [Conventions](./conventions/) | 코딩·UI 컨벤션 |
 | [Operations](./operations/) | 빌드 환경, 모노레포 런북, [fe-v1-findings](./operations/fe-v1-findings) |

@@ -59,9 +59,16 @@ export default function DocItemMetadata(): ReactNode {
   const draftish =
     fm.status === 'draft' || isDraftishDescription(metadata.description);
 
+  const isUiUxCollection =
+    metadata.source.includes('/ui-ux-elements/') &&
+    metadata.source.endsWith('/index.md');
+  const isProxyCollection =
+    metadata.source.includes('/networking/proxy/') &&
+    metadata.source.endsWith('/index.md');
+
   let schemaType: 'CollectionPage' | 'TechArticle' | 'WebPage';
   let idFragment: 'collection' | 'article' | 'webpage';
-  if (isCollection) {
+  if (isCollection || isUiUxCollection || isProxyCollection) {
     schemaType = 'CollectionPage';
     idFragment = 'collection';
   } else if (draftish) {
