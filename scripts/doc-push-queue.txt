@@ -1,6 +1,3 @@
-src/tools/data/dockerCheatsheet.ts
-src/tools/data/firewallCheatsheet.ts
-src/tools/data/gitCheatsheet.ts
 src/tools/data/linuxLogHelper.ts
 src/tools/data/nginxCheatsheet.ts
 src/tools/components/CheatsheetTool.tsx
