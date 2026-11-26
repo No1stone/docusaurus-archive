@@ -1,6 +1,3 @@
-src/tools/data/linuxLogHelper.ts
-src/tools/data/nginxCheatsheet.ts
-src/tools/components/CheatsheetTool.tsx
 src/tools/components/CopyButton.tsx
 src/tools/components/ExternalRequestGate.tsx
 src/tools/components/ToolFaqs.tsx
