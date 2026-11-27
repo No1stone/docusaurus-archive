@@ -1,5 +1,3 @@
-src/tools/components/CopyButton.tsx
-src/tools/components/ExternalRequestGate.tsx
 src/tools/components/ToolFaqs.tsx
 src/tools/components/ToolPage.tsx
 src/tools/components/ToolShell.tsx
