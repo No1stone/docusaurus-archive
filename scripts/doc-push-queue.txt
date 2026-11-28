@@ -1,6 +1,3 @@
-src/tools/components/ToolFaqs.tsx
-src/tools/components/ToolPage.tsx
-src/tools/components/ToolShell.tsx
 src/tools/components/ToolsAdSlot.tsx
 src/tools/components/ToolsLayout.tsx
 src/tools/components/ToolsSeo.tsx
